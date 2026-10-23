@@ -1,0 +1,44 @@
+name: Unpack and publish site
+
+# The site is uploaded through the GitHub web page as site-part*.zip (the web uploader cannot keep folders).
+# This workflow unpacks it into normal files, commits them, and publishes the site with GitHub Pages.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack site.zip (if present) and commit the files
+        run: |
+          shopt -s nullglob
+          parts=(site*.zip)
+          if [ ${#parts[@]} -gt 0 ]; then
+            for z in "${parts[@]}"; do unzip -o -q "$z" -d . ; git rm -q --cached "$z" || true; rm -f "$z"; done
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Unpack site.zip into site files" || echo "Nothing to commit"
+            git push
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
