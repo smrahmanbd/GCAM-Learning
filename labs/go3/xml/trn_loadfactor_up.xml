@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  trn_loadfactor_up.xml : car occupancy (load factor) rises 20% by 2050 (ride-sharing / pooling).
+
+  PURPOSE     Demand-side lever: more passengers per vehicle-km lowers cost and energy per pkm.
+  MODIFIES    transportation_UCD_CORE.xml, table L254.StubTranTechLoadFactor
+              (input/gcamdata/R/zenergy_L254.transportation_UCD.R).
+  CONFIG      After the "transportation" entry in <ScenarioComponents>.
+  STRUCTURE   Header StubTranTechLoadFactor (ModelInterface_headers.txt line 504):
+              ... / stub-technology / period / loadFactor.
+              The C++ reads "loadFactor" (cvs/objects/technologies/include/tran_technology.h line 105),
+              but the OUTPUT database writes it as "load-factor" (reporting/source/xml_db_outputter.cpp),
+              which is the name the "transport load factors" query uses.
+  UNITS       persons per vehicle (passenger) or tonnes per vehicle (freight). Unit-free across versions.
+  VALUES      PLACEHOLDERS for all five Car technologies. Generate real ones with scale_from_base.py
+              (field=loadFactor factor=1.2 ramp=2025:1.0,2050:1.2).
+  ASSUMPTION  Applies to every Car technology so the fuel choice is not distorted.
+  STATUS      Not run in GCAM.
+-->
+<scenario>
+  <world>
+    <region name="Middle East">
+      <supplysector name="trn_pass_road_LDV_4W">
+        <tranSubsector name="Car">
+          <stub-technology name="Liquids"><period year="2050"><loadFactor>1.80</loadFactor></period></stub-technology>
+          <stub-technology name="Hybrid Liquids"><period year="2050"><loadFactor>1.80</loadFactor></period></stub-technology>
+          <stub-technology name="NG"><period year="2050"><loadFactor>1.80</loadFactor></period></stub-technology>
+          <stub-technology name="BEV"><period year="2050"><loadFactor>1.80</loadFactor></period></stub-technology>
+          <stub-technology name="FCEV"><period year="2050"><loadFactor>1.80</loadFactor></period></stub-technology>
+        </tranSubsector>
+      </supplysector>
+    </region>
+  </world>
+</scenario>

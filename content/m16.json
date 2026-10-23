@@ -1,0 +1,458 @@
+{
+ "id": "1.6",
+ "go": 1,
+ "slug": "gcam-end-to-end",
+ "title": "One model, end to end: a tour of GCAM",
+ "minutes": 40,
+ "tag": "GCAM tour",
+ "systems": [
+  "economy",
+  "energy",
+  "land",
+  "water",
+  "climate",
+  "policy"
+ ],
+ "summary": "A guided tour of GCAM: 32 regions, markets cleared every five years, linked energy, land and water, Hector inside; then reference versus policy runs and what IAMs cannot tell us.",
+ "outcomes": [
+  "You can describe GCAM's regions, time steps and linked systems in a few sentences.",
+  "You can explain that GCAM clears markets one period at a time, without foresight.",
+  "You can read a result as a policy run minus a reference run.",
+  "You can explain why a carbon price and an emissions limit are two doors to the same room.",
+  "You can name three things an IAM cannot tell you."
+ ],
+ "narration_en": "Now meet one model from end to end. GCAM, the Global Change Analysis Model, is built at the Pacific Northwest National Laboratory and is free and open source. It splits the world into thirty two energy and economy regions, more than three hundred land units and two hundred and thirty five river basins. It starts from a calibrated base year, twenty twenty one, and then steps forward five years at a time to twenty one hundred. In each step it acts like an auctioneer: it adjusts the prices of fuels, crops, land and water until supply equals demand in every market at once. It does not look ahead; each period is solved in turn. Energy, land and water are linked. Bioenergy needs land, power plants need cooling water, and a carbon price reaches forests too. Emissions go to Hector, a simple climate model, which returns the temperature. How do you read a GCAM result? Never alone. Every study runs a reference scenario, with no new climate policy, and one or more policy scenarios with exactly the same inputs plus one change. The effect of the policy is the difference. A policy can enter as a carbon price, a toll, or as an emissions limit, a gate. The model finds the cut for the toll, or the price for the gate. Finally, remember what models cannot tell you: who pays, how people really behave, and whether the assumptions will come true.",
+ "narration_ar": "لنتعرف الآن على نموذج واحد من أوله إلى آخره. نموذج GCAM، أي نموذج تحليل التغير العالمي، يُطوَّر في مختبر شمال غرب المحيط الهادئ الوطني، وهو مجاني ومفتوح المصدر. يقسم العالم إلى اثنتين وثلاثين منطقة للطاقة والاقتصاد، وأكثر من ثلاثمئة وحدة أرضية، ومئتين وخمسة وثلاثين حوضًا نهريًا. ويبدأ من سنة أساس معايَرة هي ألفان وواحد وعشرون، ثم يتقدم خمس سنوات في كل خطوة حتى عام ألفين ومئة. وفي كل خطوة يتصرف كالدلّال في المزاد: يعدّل أسعار الوقود والمحاصيل والأرض والمياه حتى يتساوى العرض والطلب في كل الأسواق في آن واحد. ولا ينظر إلى المستقبل، بل يحل كل فترة بدورها. والطاقة والأرض والمياه مترابطة: فالطاقة الحيوية تحتاج إلى أرض، ومحطات الكهرباء تحتاج إلى مياه للتبريد، وسعر الكربون يصل إلى الغابات أيضًا. وتذهب الانبعاثات إلى نموذج مناخي بسيط اسمه Hector فيعيد درجة الحرارة. وكيف تقرأ نتيجة النموذج؟ لا تقرؤها وحدها أبدًا. فكل دراسة تشغّل سيناريو مرجعيًا بلا سياسات مناخية جديدة، وسيناريو سياساتيًا أو أكثر بالمدخلات نفسها مع تغيير واحد، وأثر السياسة هو الفرق بينهما. ويمكن أن تدخل السياسة سعرًا للكربون، كرسوم عبور، أو سقفًا للانبعاثات، كبوابة؛ فيجد النموذج مقدار الخفض للرسوم، أو السعر للبوابة. وأخيرًا تذكّر ما لا تخبرك به النماذج: من يدفع، وكيف يتصرف الناس فعلًا، وهل ستتحقق الافتراضات.",
+ "diagram": {
+  "title": "A tour of GCAM",
+  "caption": "Notice that energy, land and water are linked by bioenergy, cooling water and land carbon, and that all of them feed emissions to Hector.",
+  "nodes": [
+   {
+    "id": "socio",
+    "label": "Population and GDP",
+    "sub": "32 regions, SSP inputs",
+    "x": 120,
+    "y": 90,
+    "w": 190,
+    "h": 70,
+    "sys": "economy",
+    "detail": "GCAM v8.2 documentation: 32 energy-economy regions. Population and GDP come from the chosen SSP and drive demand."
+   },
+   {
+    "id": "time",
+    "label": "Time steps",
+    "sub": "2021 base, then every 5 years",
+    "x": 420,
+    "y": 60,
+    "w": 200,
+    "h": 64,
+    "sys": "data",
+    "detail": "Calibrated to a 2021 base year, then solved every five years to 2100. Recursive-dynamic: no foresight; each period is solved in turn."
+   },
+   {
+    "id": "markets",
+    "label": "Marketplace",
+    "sub": "prices adjust until all clear",
+    "x": 750,
+    "y": 90,
+    "w": 210,
+    "h": 70,
+    "sys": "economy",
+    "detail": "An auctioneer: prices of fuels, crops, land and water move until supply equals demand in every market at once, every period."
+   },
+   {
+    "id": "energy",
+    "label": "Energy",
+    "sub": "supply, power, buildings, transport",
+    "x": 170,
+    "y": 280,
+    "w": 230,
+    "h": 80,
+    "sys": "energy",
+    "detail": "Energy resources are turned into electricity, fuels and hydrogen, and used in buildings, industry and transport. Technologies compete by cost."
+   },
+   {
+    "id": "land",
+    "label": "Land",
+    "sub": "300+ units: crops, forests, bio",
+    "x": 450,
+    "y": 280,
+    "w": 210,
+    "h": 80,
+    "sys": "land",
+    "detail": "More than 300 land units (the documentation also gives 396). Land is shared among crops, pasture, forest and bioenergy by profit."
+   },
+   {
+    "id": "water",
+    "label": "Water",
+    "sub": "235 river basins",
+    "x": 730,
+    "y": 280,
+    "w": 200,
+    "h": 80,
+    "sys": "water",
+    "detail": "235 river basins. Farms, power plants, industry and cities withdraw water; supply grows costlier as basins are stressed."
+   },
+   {
+    "id": "emis",
+    "label": "Emissions",
+    "sub": "CO2 and other gases",
+    "x": 300,
+    "y": 450,
+    "w": 190,
+    "h": 64,
+    "sys": "climate",
+    "detail": "Counted from fuels burned and land changed, for CO<sub>2</sub> and many other gases."
+   },
+   {
+    "id": "hector",
+    "label": "Hector climate model",
+    "sub": "concentrations to °C",
+    "x": 620,
+    "y": 450,
+    "w": 210,
+    "h": 64,
+    "sys": "climate",
+    "detail": "GCAM passes emissions to Hector at each step; Hector returns concentrations, forcing and temperature."
+   }
+  ],
+  "edges": [
+   {
+    "from": "socio",
+    "to": "energy",
+    "label": "demand",
+    "sys": "economy"
+   },
+   {
+    "from": "socio",
+    "to": "land",
+    "label": "food demand",
+    "sys": "economy"
+   },
+   {
+    "from": "markets",
+    "to": "energy",
+    "label": "prices",
+    "sys": "economy"
+   },
+   {
+    "from": "markets",
+    "to": "water",
+    "label": "water prices",
+    "sys": "economy"
+   },
+   {
+    "from": "land",
+    "to": "energy",
+    "label": "bioenergy",
+    "sys": "land"
+   },
+   {
+    "from": "water",
+    "to": "energy",
+    "label": "cooling water",
+    "sys": "water"
+   },
+   {
+    "from": "energy",
+    "to": "emis",
+    "label": "fuel CO2",
+    "sys": "energy"
+   },
+   {
+    "from": "land",
+    "to": "emis",
+    "label": "land-use CO2",
+    "sys": "land"
+   },
+   {
+    "from": "emis",
+    "to": "hector",
+    "label": "every step",
+    "sys": "climate"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "socio"
+    ],
+    "edges": [],
+    "text": "GCAM splits the world into 32 regions. Population and GDP from an SSP set what each region wants."
+   },
+   {
+    "focus": [
+     "time"
+    ],
+    "edges": [],
+    "text": "It starts from a calibrated 2021 base year and steps forward five years at a time to 2100, without looking ahead."
+   },
+   {
+    "focus": [
+     "markets"
+    ],
+    "edges": [
+     [
+      "markets",
+      "energy"
+     ],
+     [
+      "markets",
+      "water"
+     ]
+    ],
+    "text": "In each step an auctioneer adjusts prices until supply equals demand in every market at once."
+   },
+   {
+    "focus": [
+     "energy",
+     "land",
+     "water"
+    ],
+    "edges": [
+     [
+      "socio",
+      "energy"
+     ],
+     [
+      "socio",
+      "land"
+     ]
+    ],
+    "text": "Energy, land and water are modelled region by region, basin by basin."
+   },
+   {
+    "focus": [
+     "land",
+     "water",
+     "energy"
+    ],
+    "edges": [
+     [
+      "land",
+      "energy"
+     ],
+     [
+      "water",
+      "energy"
+     ]
+    ],
+    "text": "They are linked: bioenergy needs land, power plants need cooling water, and a carbon price reaches forests."
+   },
+   {
+    "focus": [
+     "emis",
+     "hector"
+    ],
+    "edges": [
+     [
+      "energy",
+      "emis"
+     ],
+     [
+      "land",
+      "emis"
+     ],
+     [
+      "emis",
+      "hector"
+     ]
+    ],
+    "text": "Emissions from energy and land go to Hector, the simple climate model inside GCAM, every step."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "GCAM in one paragraph",
+   "html": "<p>GCAM, the Global Change Analysis Model, comes from the Pacific Northwest National Laboratory's Joint Global Change Research Institute (PNNL/JGCRI) and is free and open source. It splits the world into <b>32 energy-economy regions</b>, more than 300 land units and <b>235 river basins</b>. It starts from a calibrated <b>2021</b> base year and steps forward <b>five years at a time</b> to 2100. Each step is solved on its own: the model has no foresight (it is <b>recursive-dynamic</b>).</p><p>Facts here follow the GCAM v8.2 documentation; the latest release is GCAM 9.1 (2 June 2026). The overview page still says 2015 for the base year, which is out of date.</p>"
+  },
+  {
+   "heading": "An auction in every period",
+   "html": "<p>In each period GCAM behaves like an auctioneer: it adjusts the prices of fuels, crops, land and water until supply equals demand in every market at once. Technologies and land uses compete by cost and share each market. Emissions are counted from the fuels burned and land changed, and handed to <b>Hector</b>, a simple climate model, which returns temperature.</p>"
+  },
+  {
+   "heading": "Read results as Policy minus Reference",
+   "html": "<p>A GCAM result is never read alone. A study runs a <b>Reference</b> scenario (no new climate policy) and one or more <b>policy</b> scenarios with exactly the same inputs plus one change. The effect of the policy is the <b>difference</b> between the two runs. A reference is a yardstick, not a forecast.</p>"
+  },
+  {
+   "heading": "A toll or a gate: price and cap are mirrors",
+   "html": "<p>A policy can enter the model in two ways. A <b>carbon price</b> is a toll: you fix the cost per tonne and the model finds how much emissions fall. An <b>emissions limit</b> is a gate: you fix the emissions and the model finds the price that achieves it. On the same cost curve they are mirror images.</p><p>Illustrative straight-line cost curve (price = 2 × cut%): a $50 toll gives a 25% cut; a gate requiring a 60% cut needs a $120 price.</p>"
+  },
+  {
+   "heading": "What IAMs cannot tell you",
+   "html": "<ul><li><b>Who pays and who gains:</b> regions are large and households are averaged.</li><li><b>How people really behave:</b> choices follow costs and calibrated preferences, not politics or habits.</li><li><b>Whether the assumptions will come true:</b> results lean on assumptions such as future costs and the availability of carbon removal.</li></ul><p>Reviews of IAM criticisms list heavy reliance on carbon removal later in the century, limited transparency and limited behavioural realism. The fair conclusion is not that models are useless, but that their findings are conditional, so keep the model, question the inputs.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Regions, basins and time steps are set in the input files built by GCAM's R data system (gcamdata). In Go 2 you will read results with the R package rgcam or the Python package gcamreader.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"GCAM has a button for each country's climate pledge.\" It does not: turning a pledge into a price or a limit is the modeller's choice, and a good report says how it was done. And \"the models disagree, so they are useless\" is wrong: the reasons they disagree are findings in themselves.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "try",
+   "title": "Try it now",
+   "html": "<p>Your friend says \"GCAM showed that a $50 carbon price cuts emissions by 25%.\" Write the two questions you would ask before believing it. (Compared with which Reference, and what did it assume? Which assumptions, such as costs and demand, matter most, and was there a sensitivity test?)</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "carbonprice",
+  "intro": "Set a starting carbon price and how fast it grows. Watch the price path and the cut it buys on a simple straight-line cost curve.",
+  "predict": "Starting at $25 per tonne in 2025, what yearly growth rate do you need to reach a 60% cut by 2050? Guess first, then check."
+ },
+ "code": [
+  {
+   "title": "A toll or a gate: two doors to one room",
+   "lang": "python",
+   "source": "# Price or limit? Two doors to the same room (straight-line cost curve, illustrative)\n# Each extra 1% cut below Reference costs $2 more per tonne: price = 2 x cut%\ndef cut_from_price(price):\n    return min(price / 2, 100)\n\ndef price_from_cut(cut):\n    return 2 * cut\n\nprint(f\"Set a price of $50/t -> model finds a {cut_from_price(50):.0f}% cut\")\nprint(f\"Set a 60% cut       -> model finds a price of ${price_from_cut(60):.0f}/t\")\nprint(\"Results to report: Policy minus Reference, not the policy run alone.\")\n",
+   "runnable": true,
+   "explain": "Press Run. Then change the price to 80 and the cut to 40, and predict both answers before running. The cost curve is illustrative, not GCAM's.",
+   "expected": "Set a price of $50/t -> model finds a 25% cut\nSet a 60% cut       -> model finds a price of $120/t\nResults to report: Policy minus Reference, not the policy run alone."
+  }
+ ],
+ "takeaways": [
+  "GCAM: 32 regions, 300+ land units, 235 basins; 2021 base year, then 5-year steps to 2100.",
+  "Each period, prices adjust until every market clears; there is no foresight.",
+  "Energy, land and water are linked; emissions go to Hector, which returns temperature.",
+  "Read results as Policy minus Reference; a reference is a yardstick, not a forecast.",
+  "A carbon price (toll) and an emissions limit (gate) are mirrors on the same cost curve.",
+  "IAM findings are conditional: question the assumptions, not just the results."
+ ],
+ "quiz": [
+  {
+   "q": "How many energy-economy regions does GCAM use?",
+   "options": [
+    "5",
+    "32",
+    "235",
+    "300"
+   ],
+   "answer": 1,
+   "explain": "32 regions. 235 is the number of river basins and 'more than 300' is the number of land units."
+  },
+  {
+   "q": "'Recursive-dynamic' means GCAM:",
+   "options": [
+    "Optimises all years at once with perfect foresight",
+    "Solves each 5-year period in turn without looking ahead",
+    "Runs only one year",
+    "Repeats the base year"
+   ],
+   "answer": 1,
+   "explain": "GCAM clears markets one period at a time and does not anticipate the future."
+  },
+  {
+   "q": "The effect of a policy in GCAM should be read as:",
+   "options": [
+    "The policy run on its own",
+    "The Reference run on its own",
+    "Policy run minus Reference run",
+    "The average of all runs"
+   ],
+   "answer": 2,
+   "explain": "Everything else is identical, so the difference isolates the policy's effect."
+  },
+  {
+   "q": "In GCAM, a $50 carbon price is an example of:",
+   "options": [
+    "An output the model finds",
+    "An input, from which the model finds the emissions",
+    "A climate target",
+    "A share weight"
+   ],
+   "answer": 1,
+   "explain": "With a price policy you set the price (a toll) and GCAM works out how far emissions fall."
+  },
+  {
+   "q": "Which is NOT something an IAM can reliably tell you?",
+   "options": [
+    "How a carbon price changes the electricity mix, given assumptions",
+    "How bioenergy demand affects land use, given assumptions",
+    "Exactly how households in one city will behave",
+    "How emissions translate into warming, via a climate model"
+   ],
+   "answer": 2,
+   "explain": "IAMs average households over large regions and model behaviour through costs; detailed behaviour is outside their reach."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "GCAM",
+   "def": "Global Change Analysis Model: an open-source, process-based IAM from PNNL/JGCRI linking economy, energy, land, water and climate."
+  },
+  {
+   "term": "Recursive-dynamic",
+   "def": "Solving one period at a time without foresight, as GCAM does."
+  },
+  {
+   "term": "Base year",
+   "def": "The calibrated starting year of the model; 2021 in recent GCAM versions."
+  },
+  {
+   "term": "Reference scenario",
+   "def": "A run with no new climate policy, used as the yardstick for policy runs."
+  },
+  {
+   "term": "Hector",
+   "def": "The simple climate model inside GCAM that turns emissions into concentrations, forcing and temperature."
+  },
+  {
+   "term": "Emissions constraint",
+   "def": "A policy that fixes emissions; the model finds the carbon price that meets it."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM v8.2 documentation: model overview",
+   "url": "https://jgcri.github.io/gcam-doc/overview.html",
+   "why": "The official tour of GCAM's regions, sectors and how it solves; start with the first two screens."
+  },
+  {
+   "title": "GCAM: Global Change Analysis Model (PNNL)",
+   "url": "https://gcims.pnnl.gov/modeling/gcam-global-change-analysis-model",
+   "why": "The developer's short description of what GCAM represents and who uses it."
+  },
+  {
+   "title": "ScenarioMIP explorer for CMIP7 (IIASA, pre-release)",
+   "url": "https://scenariomip.apps.ece.iiasa.ac.at/about",
+   "why": "The seven CMIP7 scenarios; the high one (H) was produced with GCAM. Pre-release, so it may change."
+  },
+  {
+   "title": "Gambhir et al. (2019) A review of criticisms of integrated assessment models (Energies)",
+   "url": "https://doi.org/10.3390/en12091747",
+   "why": "A balanced, readable list of what IAMs are criticised for and how modellers respond."
+  },
+  {
+   "title": "Q&A: How integrated assessment models are used to study climate change (Carbon Brief)",
+   "url": "https://www.carbonbrief.org/qa-how-integrated-assessment-models-are-used-to-study-climate-change/",
+   "why": "The clearest plain-language introduction to IAMs, their families and their critics."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 1 study guide: See the whole picture (PDF)",
+   "path": "downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf"
+  },
+  {
+   "label": "Week 7 slides: Inside GCAM (PDF)",
+   "path": "downloads/slides/Week07-Inside-GCAM.pdf"
+  },
+  {
+   "label": "Week 10 slides: Emissions carbon removal and policy (PDF)",
+   "path": "downloads/slides/Week10-Emissions-carbon-removal-and-policy.pdf"
+  },
+  {
+   "label": "Week 14 slides: Frontiers and limits (PDF)",
+   "path": "downloads/slides/Week14-Frontiers-and-limits.pdf"
+  }
+ ]
+}

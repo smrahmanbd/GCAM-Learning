@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  configuration_transport_snippet.xml : the lines to ADD to a copy of exe/configuration_ref.xml
+  (gcam-v9.1) for one transport scenario. This is a snippet, not a complete configuration.
+
+  HOW TO USE
+    1. Copy exe/configuration_ref.xml to exe/configuration_trn_bev_low.xml (never edit the original).
+    2. Copy the add-on files from the kit's xml/ folder into input/user/ (create the folder).
+    3. Inside <ScenarioComponents>, AFTER the existing line
+         <Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
+       and BEFORE the solver line, paste the Value lines you need (below).
+       Order matters: later files overwrite earlier values for the same element.
+    4. Change <Value name="scenarioName"> so each run has its own name.
+    5. Run:  gcam.exe -C configuration_trn_bev_low.xml   (Windows) or ./gcam -C ... (Mac/Linux)
+    6. Check the log ends with "Model run completed." and that no period failed to solve.
+
+  Structure checked against exe/configuration_ref.xml in gcam-v9.1 (ScenarioComponents at line 18,
+  transportation entry at line 41, solver at line 106, scenarioName at line 110).
+  Not run.
+-->
+<Configuration>
+  <ScenarioComponents>
+    <!-- ... all base files from configuration_ref.xml stay above this point ... -->
+    <Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
+
+    <!-- Technology and behaviour add-ons (pick the ones the scenario needs) -->
+    <Value name = "trn_bev_cost_low">../input/user/trn_bev_cost_low.xml</Value>
+    <!-- <Value name = "trn_loadfactor_up">../input/user/trn_loadfactor_up.xml</Value> -->
+    <!-- <Value name = "trn_zev_shareweights">../input/user/trn_zev_shareweights.xml</Value> -->
+    <!-- <Value name = "trn_freight_eff">../input/user/trn_freight_truck_efficiency.xml</Value> -->
+
+    <!-- Policies go after technology files -->
+    <!-- <Value name = "policy_ctax">../input/user/policy_carbon_tax.xml</Value> -->
+    <!-- <Value name = "policy_netzero">../input/user/policy_co2_constraint_netzero.xml</Value> -->
+    <!-- <Value name = "policy_zev">../input/user/policy_zev_standard.xml</Value> -->
+
+    <Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
+  </ScenarioComponents>
+  <Strings>
+    <Value name="scenarioName">Trn_BEV_low</Value>
+  </Strings>
+</Configuration>

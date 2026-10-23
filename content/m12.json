@@ -1,0 +1,423 @@
+{
+ "id": "1.2",
+ "go": 1,
+ "slug": "climate-chain",
+ "title": "The climate chain",
+ "minutes": 35,
+ "tag": "Climate",
+ "systems": [
+  "climate"
+ ],
+ "summary": "From emissions to warming in four links, why warming follows the running total of CO2, and the carbon budget as a bathtub.",
+ "outcomes": [
+  "You can trace the chain from emissions to concentration, forcing and temperature.",
+  "You can explain why warming follows cumulative CO2, not this year's emissions.",
+  "You can use about 0.45 °C per 1,000 Gt of CO2 to estimate extra warming.",
+  "You can work out how long a carbon budget lasts at a given emission rate."
+ ],
+ "narration_en": "Every integrated assessment model ends with the same chain. Burning fuel and clearing land puts carbon dioxide into the air. That raises its concentration, measured in parts per million. More carbon dioxide traps more heat; scientists call this extra heat forcing. And extra heat warms the planet. The surprising part is what matters most. Carbon dioxide stays in the air for centuries, so warming follows the running total of everything emitted, not this year's emissions alone. A handy rule says that every thousand billion tonnes of carbon dioxide adds about zero point four five degrees of warming. Picture a bathtub. The tap is yearly emissions, about forty billion tonnes. The drain is almost blocked. The rim is the carbon budget: for a fifty percent chance of staying below one point five degrees, about five hundred billion tonnes were left from the start of twenty twenty. At forty a year, that is about twelve and a half years if emissions stay flat. Turning the tap down slows the rise but does not lower the water. Only reaching net zero stops it rising.",
+ "narration_ar": "ينتهي كل نموذج من نماذج التقييم المتكامل بالسلسلة نفسها. فحرق الوقود وإزالة الغابات يطلقان ثاني أكسيد الكربون في الهواء، فيرتفع تركيزه الذي يقاس بالأجزاء في المليون. وكلما زاد ثاني أكسيد الكربون احتُبست حرارة أكثر، ويسمي العلماء هذه الحرارة الإضافية «التأثير الإشعاعي». وهذه الحرارة الإضافية تؤدي إلى احترار الكوكب. والمفاجأة في ما يهم أكثر: فثاني أكسيد الكربون يبقى في الهواء قرونًا، ولذلك يتبع الاحترار المجموع التراكمي لكل ما انبعث، لا انبعاثات هذا العام وحدها. وتقول قاعدة مفيدة إن كل ألف مليار طن من ثاني أكسيد الكربون تضيف نحو خمسة وأربعين من المئة من الدرجة المئوية من الاحترار. تخيّل حوض استحمام: الصنبور هو الانبعاثات السنوية، نحو أربعين مليار طن، والمصرف يكاد يكون مسدودًا، والحافة هي ميزانية الكربون. فلتحقيق فرصة خمسين في المئة للبقاء دون درجة ونصف، بقي نحو خمسمئة مليار طن منذ بداية عام ألفين وعشرين. وبمعدل أربعين مليارًا في السنة يكفي ذلك نحو اثنتي عشرة سنة ونصف إذا بقيت الانبعاثات ثابتة. وتخفيف الصنبور يبطئ الارتفاع لكنه لا يخفض الماء، ولا يتوقف الارتفاع إلا عند بلوغ صافي انبعاثات صفري.",
+ "diagram": {
+  "title": "The climate chain inside every IAM",
+  "caption": "Notice that each link hands its result to the next. An IAM computes the first link and passes it to a simple climate model for the rest.",
+  "nodes": [
+   {
+    "id": "act",
+    "label": "Human activity",
+    "sub": "fuel burned, land cleared",
+    "x": 110,
+    "y": 110,
+    "w": 170,
+    "h": 70,
+    "sys": "energy",
+    "detail": "Power plants, cars, factories and land clearing. In an IAM this is what the energy and land parts calculate."
+   },
+   {
+    "id": "emis",
+    "label": "Emissions",
+    "sub": "Gt CO2 per year (the tap)",
+    "x": 330,
+    "y": 110,
+    "w": 170,
+    "h": 70,
+    "sys": "climate",
+    "detail": "About 40 Gt of CO<sub>2</sub> a year today (approximate). Gt means billion tonnes."
+   },
+   {
+    "id": "conc",
+    "label": "Concentration",
+    "sub": "ppm of CO2 in the air",
+    "x": 560,
+    "y": 110,
+    "w": 170,
+    "h": 70,
+    "sys": "climate",
+    "detail": "About 280 ppm before industry, about 420 ppm today. CO<sub>2</sub> stays in the air for centuries, so it piles up."
+   },
+   {
+    "id": "forc",
+    "label": "Forcing",
+    "sub": "extra heat trapped, W/m²",
+    "x": 780,
+    "y": 110,
+    "w": 170,
+    "h": 70,
+    "sys": "climate",
+    "detail": "Watts per square metre of extra heat held in. Scenario labels such as SSP2-4.5 name the forcing in 2100: 4.5 W/m²."
+   },
+   {
+    "id": "temp",
+    "label": "Temperature",
+    "sub": "°C above pre-industrial",
+    "x": 780,
+    "y": 300,
+    "w": 170,
+    "h": 70,
+    "sys": "climate",
+    "detail": "About 1.1 °C of warming around 2020. Rule of thumb: about 0.45 °C more per 1,000 Gt of CO<sub>2</sub> emitted."
+   },
+   {
+    "id": "budget",
+    "label": "Carbon budget",
+    "sub": "the rim of the bathtub",
+    "x": 500,
+    "y": 300,
+    "w": 190,
+    "h": 70,
+    "sys": "policy",
+    "detail": "From the start of 2020: about 500 Gt for a 50% chance of 1.5 °C, about 1,150 Gt for a 67% chance of 2 °C (IPCC AR6 WGI)."
+   },
+   {
+    "id": "impacts",
+    "label": "Impacts",
+    "sub": "heat, rain, sea level",
+    "x": 780,
+    "y": 450,
+    "w": 170,
+    "h": 64,
+    "sys": "neutral",
+    "detail": "Most IAMs stop at temperature. Cost-benefit models add a damage function that turns warming into lost output."
+   },
+   {
+    "id": "hector",
+    "label": "Simple climate model",
+    "sub": "Hector inside GCAM",
+    "x": 330,
+    "y": 430,
+    "w": 190,
+    "h": 70,
+    "sys": "data",
+    "detail": "GCAM hands its emissions to Hector, a simple climate model, which computes concentrations, forcing and temperature."
+   }
+  ],
+  "edges": [
+   {
+    "from": "act",
+    "to": "emis",
+    "label": "releases",
+    "sys": "energy"
+   },
+   {
+    "from": "emis",
+    "to": "conc",
+    "label": "accumulates",
+    "sys": "climate"
+   },
+   {
+    "from": "conc",
+    "to": "forc",
+    "label": "traps heat",
+    "sys": "climate"
+   },
+   {
+    "from": "forc",
+    "to": "temp",
+    "label": "warms",
+    "sys": "climate"
+   },
+   {
+    "from": "temp",
+    "to": "impacts",
+    "label": "causes",
+    "sys": "climate"
+   },
+   {
+    "from": "emis",
+    "to": "budget",
+    "label": "running total",
+    "sys": "policy"
+   },
+   {
+    "from": "budget",
+    "to": "temp",
+    "label": "0.45 °C per 1,000 Gt",
+    "sys": "policy"
+   },
+   {
+    "from": "emis",
+    "to": "hector",
+    "label": "handed over",
+    "sys": "data"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "act",
+     "emis"
+    ],
+    "edges": [
+     [
+      "act",
+      "emis"
+     ]
+    ],
+    "text": "Burning fuel and clearing land release CO2: the tap of the bathtub, about 40 Gt a year."
+   },
+   {
+    "focus": [
+     "conc"
+    ],
+    "edges": [
+     [
+      "emis",
+      "conc"
+     ]
+    ],
+    "text": "CO2 stays for centuries, so it piles up: from about 280 ppm before industry to about 420 ppm today."
+   },
+   {
+    "focus": [
+     "forc",
+     "temp"
+    ],
+    "edges": [
+     [
+      "conc",
+      "forc"
+     ],
+     [
+      "forc",
+      "temp"
+     ]
+    ],
+    "text": "More CO2 traps more heat (forcing), and the extra heat warms the planet."
+   },
+   {
+    "focus": [
+     "budget"
+    ],
+    "edges": [
+     [
+      "emis",
+      "budget"
+     ],
+     [
+      "budget",
+      "temp"
+     ]
+    ],
+    "text": "Because CO2 piles up, warming follows the running total: about 0.45 °C per 1,000 Gt. The budget is the room left under the rim."
+   },
+   {
+    "focus": [
+     "hector"
+    ],
+    "edges": [
+     [
+      "emis",
+      "hector"
+     ]
+    ],
+    "text": "Inside GCAM, the emissions are handed to Hector, a simple climate model that does the last three links."
+   },
+   {
+    "focus": [
+     "impacts"
+    ],
+    "edges": [
+     [
+      "temp",
+      "impacts"
+     ]
+    ],
+    "text": "Impacts come last. Most process-based IAMs stop at temperature; cost-benefit models add damages."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Four links from fuel to fever",
+   "html": "<p>Every IAM ends with the same chain. Burning fuel and clearing land put CO<sub>2</sub> into the air (<b>emissions</b>). That raises its <b>concentration</b>, measured in parts per million (ppm). More CO<sub>2</sub> traps more heat: the extra heat is called <b>forcing</b>, in watts per square metre. Extra heat raises the <b>temperature</b>.</p><p>CO<sub>2</sub> stays in the air for centuries. So what matters is not this year's emissions but the <b>total ever emitted</b>.</p>"
+  },
+  {
+   "heading": "Warming follows the running total",
+   "html": "<p>Scientists found a remarkably straight line: each extra 1,000 Gt of CO<sub>2</sub> adds about the same warming, wherever you are on the line.</p><div class=\"eq\">extra warming ≈ 0.45 °C × (CO<sub>2</sub> emitted ÷ 1,000 Gt)</div><p>The 0.45 is a best estimate; the IPCC's likely range is roughly 0.27 to 0.63 °C per 1,000 Gt. Emitting 2,000 Gt more would add about 0.9 °C.</p>"
+  },
+  {
+   "heading": "The carbon budget is a bathtub",
+   "html": "<p>Picture a bathtub. The tap is yearly emissions, about 40 Gt of CO<sub>2</sub>. The drain is almost blocked, because nature removes CO<sub>2</sub> only slowly. The rim is the <b>carbon budget</b>: how much more can go in before a temperature limit is crossed.</p><ul><li>From the start of 2020, about <b>500 Gt</b> for a 50% chance of 1.5 °C.</li><li>About <b>1,150 Gt</b> for a 67% chance of 2 °C.</li></ul><p>At 40 Gt a year, 500 Gt lasts 500 ÷ 40 = <b>12.5 years</b> if emissions stay flat. If emissions fall in a straight line to zero, the total is a triangle, ½ × 40 × T = 500, so T = <b>25 years</b>.</p><p>Where the analogy breaks: a real bath can be bailed out quickly; removing CO<sub>2</sub> from the air is slow and costly.</p>"
+  },
+  {
+   "heading": "Where this sits in GCAM",
+   "html": "<p>GCAM works out emissions from its energy and land systems, then hands them to <b>Hector</b>, a simple climate model, at every time step. Hector computes concentrations, forcing and temperature. You will run Hector yourself in Go 2.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"Emissions are falling, so warming is falling.\" No. While emissions are above zero the bathtub keeps filling, so CO<sub>2</sub> and temperature still rise, just more slowly. Only net zero stops the rise.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "try",
+   "title": "Try it now",
+   "html": "<p>Use the rule: if the world emits 800 Gt more, how much extra warming is that? (Answer: 0.45 × 0.8 = 0.36 °C.) And how many years of today's emissions is 800 Gt? (Answer: 800 ÷ 40 = 20 years.)</p>"
+  },
+  {
+   "after": 2,
+   "kind": "model",
+   "title": "Check the budget numbers",
+   "html": "<p>The budgets and the 0.45 °C figure come from IPCC AR6 Working Group I (2021) and are counted from the start of 2020, so part has already been used. Check them against the report before you teach with them.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "budget",
+  "intro": "Pick a temperature goal and a yearly emission rate, then let the years pass and watch the bathtub fill.",
+  "predict": "Set the goal to 1.5 °C and emissions to 30 Gt a year. How many years until the budget is used up if emissions stay flat? And if they fall in a straight line?"
+ },
+ "code": [
+  {
+   "title": "How long does a carbon budget last?",
+   "lang": "python",
+   "source": "# How long does a carbon budget last?\nbudget = 500      # Gt CO2 left from 2020 for a 50% chance of 1.5 C (IPCC AR6 WGI)\nrate = 40         # Gt CO2 emitted per year today (approx.)\ntcre = 0.45       # C of warming per 1,000 Gt CO2 (best estimate)\n\nflat_years = budget / rate               # emissions stay flat, then stop\nline_years = 2 * budget / rate           # emissions fall in a straight line to zero\nprint(f\"Flat, then sudden stop: {flat_years:.1f} years\")\nprint(f\"Straight-line decline:  {line_years:.1f} years\")\n\nfor total in (500, 1150, 2000):\n    print(f\"Emit {total:>5} Gt more -> about +{tcre * total / 1000:.2f} C\")\n",
+   "runnable": true,
+   "explain": "Press Run. Then change budget to 1150 (the 2 °C budget) or rate to 30 and predict the years before you run it again.",
+   "expected": "Flat, then sudden stop: 12.5 years\nStraight-line decline:  25.0 years\nEmit   500 Gt more -> about +0.23 C\nEmit  1150 Gt more -> about +0.52 C\nEmit  2000 Gt more -> about +0.90 C"
+  }
+ ],
+ "takeaways": [
+  "Emissions → concentration → forcing → temperature: four links in every IAM.",
+  "CO2 stays for centuries, so warming follows the running total of emissions.",
+  "Rule of thumb: about 0.45 °C per 1,000 Gt of CO2 (likely 0.27–0.63).",
+  "About 500 Gt was left from 2020 for 1.5 °C (50% chance): 12.5 years at 40 Gt a year.",
+  "Only net zero stops warming from CO2 rising; turning the tap down only slows it."
+ ],
+ "quiz": [
+  {
+   "q": "The climate responds mainly to:",
+   "options": [
+    "This year's CO2 emissions",
+    "The total CO2 emitted so far",
+    "The price of oil",
+    "The number of climate models"
+   ],
+   "answer": 1,
+   "explain": "CO2 stays for centuries, so warming follows cumulative (total) emissions."
+  },
+  {
+   "q": "Using 0.45 °C per 1,000 Gt, emitting 2,000 Gt more adds about:",
+   "options": [
+    "0.45 °C",
+    "2 °C",
+    "0.9 °C",
+    "4.5 °C"
+   ],
+   "answer": 2,
+   "explain": "0.45 × 2,000 ÷ 1,000 = 0.9 °C."
+  },
+  {
+   "q": "The world emits 40 Gt a year and 500 Gt remain. If emissions fall in a straight line to zero, the budget lasts:",
+   "options": [
+    "12.5 years",
+    "20 years",
+    "50 years",
+    "25 years"
+   ],
+   "answer": 3,
+   "explain": "The area of the triangle is ½ × 40 × T = 500, so T = 25 years: twice as long as a sudden stop."
+  },
+  {
+   "q": "In 'SSP2-4.5', the number 4.5 is:",
+   "options": [
+    "Extra heat trapped (forcing) in 2100, in W/m²",
+    "Warming in °C",
+    "Billions of people",
+    "Gt of CO2 in 2100"
+   ],
+   "answer": 0,
+   "explain": "The second number names the radiative forcing in 2100. Forcing is link three of the chain, not temperature."
+  },
+  {
+   "q": "Emissions fall by half but stay above zero. Warming:",
+   "options": [
+    "Starts falling",
+    "Stops immediately",
+    "Keeps rising, but more slowly",
+    "Is unaffected"
+   ],
+   "answer": 2,
+   "explain": "The bathtub keeps filling while the tap is open. Only net zero stops the rise."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Concentration",
+   "def": "How much CO2 is in the air, in parts per million (ppm). About 280 before industry, about 420 today."
+  },
+  {
+   "term": "Radiative forcing",
+   "def": "Extra heat trapped by greenhouse gases, in watts per square metre (W/m²)."
+  },
+  {
+   "term": "Cumulative emissions",
+   "def": "The running total of CO2 emitted over time."
+  },
+  {
+   "term": "TCRE",
+   "def": "Transient climate response to cumulative emissions: warming per 1,000 Gt of CO2, about 0.45 °C (likely 0.27–0.63)."
+  },
+  {
+   "term": "Carbon budget",
+   "def": "How much more CO2 can be emitted before a temperature limit is crossed, with a stated probability."
+  },
+  {
+   "term": "Net zero",
+   "def": "Emissions released equal emissions removed, so the total in the air stops rising."
+  }
+ ],
+ "resources": [
+  {
+   "title": "Q&A: How do climate models work? (Carbon Brief)",
+   "url": "https://www.carbonbrief.org/qa-how-do-climate-models-work/",
+   "why": "How the climate part of the chain is modelled, from simple to complex models."
+  },
+  {
+   "title": "CO2 and greenhouse gas emissions (Our World in Data)",
+   "url": "https://ourworldindata.org/co2-and-greenhouse-gas-emissions",
+   "why": "Free charts of annual and cumulative emissions by country; switch between the two to see why totals matter."
+  },
+  {
+   "title": "En-ROADS climate solutions simulator",
+   "url": "https://en-roads.climateinteractive.org",
+   "why": "Free browser simulator: move 19 policy sliders and see 2100 warming change in a second."
+  },
+  {
+   "title": "IPCC AR6 Synthesis Report, Summary for Policymakers",
+   "url": "https://www.ipcc.ch/report/ar6/syr/",
+   "why": "The official summary, including carbon budgets and warming stripes for people born in 1950, 1980 and 2020."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 1 study guide: See the whole picture (PDF)",
+   "path": "downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf"
+  },
+  {
+   "label": "Week 2 slides: Climate primer (PDF)",
+   "path": "downloads/slides/Week02-Climate-primer.pdf"
+  }
+ ]
+}

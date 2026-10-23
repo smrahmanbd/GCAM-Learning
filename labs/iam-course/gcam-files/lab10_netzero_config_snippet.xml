@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  lab10_netzero_config_snippet.xml
+  Used by: lab 10. FOR THE INSTRUCTOR: students do not run this scenario,
+  they analyse the instructor's pre-run NetZero results.
+
+  This is NOT a complete configuration file. It shows the edits to a copy
+  of configuration_ref.xml (for example config_netzero.xml).
+
+  The two policy files ship with GCAM in input/policy:
+    ghg_link_global.xml             links CO2 and the other greenhouse
+                                    gases, converted to CO2-equivalent,
+                                    to one policy called GHG
+    ghg_net0_constraint_global.xml  caps the GHG policy: a falling limit
+                                    from 2025 that reaches zero in 2050
+                                    and stays at zero to 2100
+
+  MUST BE CHECKED against the installed GCAM release. The file names and
+  contents were read from gcam-core at tag gcam-v9.1, but the GCAM
+  documentation does not describe this pair of files, so that they are
+  meant to be used together (and in this order) is an inference from their
+  names and contents. Run the scenario well before week 10 and check in
+  exe/logs/main_log.txt that every period solved. If it does not solve,
+  use a looser constraint or the target finder set-up in
+  configuration_policy.xml, and tell students what "NetZero" means in
+  your run.
+-->
+<Configuration>
+	<ScenarioComponents>
+		<!-- ... all the lines of configuration_ref.xml stay as they are ... -->
+
+		<!-- Add these two lines, last before the solver line -->
+		<Value name = "ghg_link">../input/policy/ghg_link_global.xml</Value>
+		<Value name = "ghg_constraint">../input/policy/ghg_net0_constraint_global.xml</Value>
+
+		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
+	</ScenarioComponents>
+	<Strings>
+		<Value name="scenarioName">NetZero</Value>
+	</Strings>
+</Configuration>

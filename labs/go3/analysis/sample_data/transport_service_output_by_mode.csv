@@ -1,0 +1,596 @@
+Units,scenario,region,sector,mode,Year,value
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2020,70.0
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2020,25.0
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2020,6.0
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2020,55.0
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2020,160.0
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2020,45.0
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2020,1150.0
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2025,71.247705
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2025,25.445609
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2025,6.202268
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2025,65.166779
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2025,170.216163
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2025,47.526217
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2025,1260.669697
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2030,71.749437
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2030,25.624799
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2030,6.334842
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2030,76.006879
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2030,176.30952
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2030,48.652567
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2030,1373.002993
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2035,71.767522
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2035,25.631258
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2035,6.418625
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2035,87.584483
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2035,182.839933
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2035,51.013754
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2035,1472.787127
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2040,71.298996
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2040,25.463927
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2040,6.452053
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2040,99.687536
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2040,188.327693
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2040,52.908101
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2040,1569.980807
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2045,70.436897
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2045,25.156035
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2045,6.442588
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2045,112.183495
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2045,192.670063
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2045,54.273961
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2045,1665.303457
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2050,69.258951
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2050,24.73534
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2050,6.396837
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2050,124.917264
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2050,195.77646
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2050,55.045297
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2050,1759.443728
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2055,67.234727
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2055,24.012403
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2055,6.265149
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2055,134.566138
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2055,181.877805
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2055,51.403883
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2055,1917.30955
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2060,65.07713
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2060,23.241832
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2060,6.113171
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2060,143.826741
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2060,168.482222
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2060,47.816026
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2060,2073.826249
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2065,62.843834
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2065,22.444227
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2065,5.946802
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2065,152.621675
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2065,155.781059
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2065,44.346
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2065,2227.684132
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2070,60.580479
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2070,21.635885
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2070,5.770935
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2070,160.883594
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2070,143.889665
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2070,41.038535
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2070,2377.646411
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2075,58.322437
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2075,20.829442
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2075,5.589559
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2075,168.5558
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2075,132.865381
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2075,37.922343
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2075,2522.572735
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2080,56.096493
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2080,20.034462
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2080,5.405863
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2080,175.592599
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2080,122.722787
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2080,35.013389
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2080,2661.437354
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2085,53.922358
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2085,19.257985
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2085,5.222354
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2085,181.959431
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2085,113.446169
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2085,32.317822
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2085,2793.342201
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2090,51.814018
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2090,18.505006
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2090,5.040958
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2090,187.632753
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2090,104.999397
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2090,29.834485
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2090,2917.525265
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2095,49.780882
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2095,17.778886
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2095,4.863121
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2095,192.599683
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2095,97.333532
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2095,27.557017
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2095,3033.36468
+billion pass-km,Reference,Middle East (toy),trn_pass,Walk,2100,47.828765
+billion pass-km,Reference,Middle East (toy),trn_pass,Cycle,2100,17.081702
+billion pass-km,Reference,Middle East (toy),trn_pass,Passenger Rail,2100,4.689894
+billion pass-km,Reference,Middle East (toy),trn_pass,Domestic Aviation,2100,196.857416
+billion pass-km,Reference,Middle East (toy),trn_pass_road,Bus,2100,90.392502
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,2100,25.475539
+billion pass-km,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,2100,3140.378951
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2020,70.0
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2020,25.0
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2020,6.0
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2020,55.0
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2020,160.0
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2020,45.0
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2020,1150.0
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2025,71.247705
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2025,25.445609
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2025,6.202268
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2025,65.166779
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2025,170.216163
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2025,47.526217
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2025,1260.669697
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2030,66.248032
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2030,23.660012
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2030,5.849117
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2030,70.179035
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2030,120.73079
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2030,32.935055
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2030,1801.110957
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2035,66.115665
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2035,23.612737
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2035,5.913143
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2035,80.687004
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2035,124.438334
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2035,34.336291
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2035,1935.441899
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2040,65.560585
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2040,23.414495
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2040,5.932767
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2040,91.66431
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2040,127.61043
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2040,35.472911
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2040,2064.17526
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2045,64.672481
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2045,23.097315
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2045,5.915339
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2045,103.002621
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2045,130.223246
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2045,36.319585
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2045,2187.521994
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2050,63.525629
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2050,22.687725
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2050,5.8673
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2050,114.576495
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2050,132.255115
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2050,36.84473
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2050,2305.671227
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2055,61.734487
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2055,22.048031
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2055,5.752619
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2055,123.557749
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2055,124.479937
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2055,34.949492
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2055,2473.845897
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2060,59.853302
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2060,21.376179
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2060,5.622458
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2060,132.281577
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2060,116.940339
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2060,33.034652
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2060,2635.812349
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2065,57.92517
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2065,20.687561
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2065,5.481357
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2065,140.676273
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2065,109.735094
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2065,31.140466
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2065,2790.492742
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2070,55.983404
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2070,19.994073
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2070,5.333015
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2070,148.675142
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2070,102.925676
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2070,29.296595
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2070,2936.954545
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2075,54.053337
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2075,19.304763
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2075,5.180413
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2075,156.217812
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2075,96.545226
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2075,27.523921
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2075,3074.418912
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2080,52.153847
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2080,18.626374
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2080,5.025921
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2080,163.251374
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2080,90.605914
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2080,25.836223
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2080,3202.264185
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2085,50.298637
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2085,17.963799
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2085,4.871398
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2085,169.731289
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2085,85.104851
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2085,24.241675
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2085,3320.024987
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2090,48.497305
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2090,17.320466
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2090,4.718276
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2090,175.62203
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2090,80.028734
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2090,22.744131
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2090,3427.387442
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2095,46.756222
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2095,16.698651
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2095,4.56764
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2095,180.897427
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2095,75.357411
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2095,21.344205
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2095,3524.18114
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Walk,2100,45.079243
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Cycle,2100,16.09973
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Passenger Rail,2100,4.420287
+billion pass-km,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,2100,185.540715
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road,Bus,2100,71.066582
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,2100,20.040162
+billion pass-km,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,2100,3610.368467
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2020,70.0
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2020,25.0
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2020,6.0
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2020,55.0
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2020,160.0
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2020,45.0
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2020,1150.0
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2025,71.555539
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2025,25.55555
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2025,6.229066
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2025,59.978825
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2025,172.184049
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2025,47.192578
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2025,1241.734806
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2030,71.91635
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2030,25.684411
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2030,6.349579
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2030,68.670526
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2030,176.378027
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2030,48.349562
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2030,1362.551438
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2035,71.942479
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2035,25.693742
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2035,6.434272
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2035,77.632687
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2035,182.939601
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2035,50.940634
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2035,1460.492545
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2040,71.474408
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2040,25.526574
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2040,6.467926
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2040,86.423726
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2040,188.454844
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2040,53.141267
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2040,1555.984451
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2045,70.603025
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2045,25.215366
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2045,6.457783
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2045,94.803762
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2045,192.79
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2045,54.83159
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2045,1650.029573
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2050,69.403893
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2050,24.787105
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2050,6.410224
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2050,102.520204
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2050,195.816161
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2050,55.869871
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2050,1743.676221
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2055,67.394565
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2055,24.069487
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2055,6.280043
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2055,106.03797
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2055,181.865178
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2055,52.317432
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2055,1898.39086
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2060,65.245325
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2060,23.301902
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2060,6.128971
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2060,108.035153
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2060,168.341119
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2060,48.798276
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2060,2052.05747
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2065,63.010057
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2065,22.503592
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2065,5.962531
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2065,108.389491
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2065,155.415739
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2065,45.36154
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2065,2203.918803
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2070,60.730836
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2070,21.689584
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2070,5.785258
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2070,107.04094
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2070,143.196052
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2070,42.036148
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2070,2353.413209
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2075,58.441219
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2075,20.871864
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2075,5.600942
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2075,104.006621
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2075,131.755336
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2075,38.840416
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2075,2500.024811
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2080,56.169966
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2080,20.060702
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2080,5.412943
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2080,99.39179
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2080,121.161467
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2080,35.793627
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2080,2642.983293
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2085,53.943939
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2085,19.265693
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2085,5.224444
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2085,93.391454
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2085,111.491293
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2085,32.924115
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2085,2780.926083
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2090,51.78824
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2090,18.4958
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2090,5.03845
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2090,86.277061
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2090,102.817602
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2090,30.266545
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2090,2911.8295
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2095,49.722769
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2095,17.758132
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2095,4.857443
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2095,78.36818
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2095,95.16929
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2095,27.847694
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2095,3033.499561
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Walk,2100,47.757893
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Cycle,2100,17.05639
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,2100,4.682945
+billion pass-km,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,2100,69.998785
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road,Bus,2100,88.491554
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,2100,25.672115
+billion pass-km,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,2100,3144.433989
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2020,70.0
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2020,25.0
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2020,6.0
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2020,55.0
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2020,160.0
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2020,45.0
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2020,1150.0
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2025,69.471105
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2025,24.811109
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2025,6.090855
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2025,67.804149
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2025,162.621153
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2025,46.329675
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2025,1302.567717
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2030,68.213101
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2030,24.361822
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2030,6.09963
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2030,81.785314
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2030,160.530907
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2030,45.970223
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2030,1462.301985
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2035,66.533554
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2035,23.761984
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2035,6.052436
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2035,96.853229
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2035,158.254062
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2035,46.327403
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2035,1613.804519
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2040,64.463239
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2040,23.022585
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2040,5.952276
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2040,112.552864
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2040,154.585125
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2040,45.870081
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2040,1766.033559
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2045,62.117401
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2045,22.184786
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2045,5.810511
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2045,128.466728
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2045,149.676707
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2045,44.659972
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2045,1918.606434
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2050,59.588022
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2050,21.281436
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2050,5.636975
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2050,144.130752
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2050,143.718077
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2050,42.788199
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2050,2071.062346
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2055,56.526673
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2055,20.188097
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2055,5.399798
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2055,156.016429
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2055,127.424045
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2055,38.325623
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2055,2275.517904
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2060,53.542145
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2060,19.122195
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2060,5.158119
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2060,166.836178
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2060,113.113363
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2060,34.282365
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2060,2469.87669
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2065,50.678053
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2065,18.099305
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2065,4.918074
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2065,176.42956
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2065,100.676114
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2065,30.670797
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2065,2650.874514
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2070,47.959942
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2070,17.128551
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2070,4.683882
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2070,184.684239
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2070,89.940955
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2070,27.477527
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2070,2815.872518
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2075,45.400229
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2075,16.214368
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2075,4.45827
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2075,191.536314
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2075,80.711846
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2075,24.673616
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2075,2962.907255
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2080,43.00217
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2080,15.357918
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2080,4.242852
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2080,196.967882
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2080,72.791127
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2080,22.222139
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2080,3090.695654
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2085,40.762887
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2085,14.558174
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2085,4.03843
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2085,201.002238
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2085,65.992731
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2085,20.083407
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2085,3198.601618
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2090,38.675627
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2090,13.812724
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2090,3.845241
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2090,203.697346
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2090,60.148757
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2090,18.2183
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2090,3286.572695
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2095,36.731384
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2095,13.118351
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2095,3.663134
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2095,205.138361
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2095,55.111838
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2095,16.590221
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2095,3355.056242
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Walk,2100,34.920038
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Cycle,2100,12.471442
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,2100,3.491714
+billion pass-km,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,2100,205.429931
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road,Bus,2100,50.755031
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,2100,15.16608
+billion pass-km,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,2100,3404.904457
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2020,70.0
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2020,25.0
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2020,6.0
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2020,55.0
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2020,160.0
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2020,45.0
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2020,1150.0
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2025,70.492151
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2025,25.175768
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2025,6.136496
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2025,64.475711
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2025,161.253164
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2025,44.892868
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2025,1313.840342
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2030,70.200842
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2030,25.071729
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2030,6.198115
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2030,74.366395
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2030,158.295755
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2030,43.471932
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2030,1487.993507
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2035,69.425193
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2035,24.794712
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2035,6.209135
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2035,84.725924
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2035,155.738493
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2035,43.176663
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2035,1656.66513
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2040,68.177541
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2040,24.349122
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2040,6.169583
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2040,95.323237
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2040,152.315095
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2040,42.47436
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2040,1829.493793
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2045,66.5669
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2045,23.773893
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2045,6.088614
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2045,106.019825
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2045,148.103963
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2045,41.386057
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2045,2006.517036
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2050,64.684691
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2050,23.101675
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2050,5.974353
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2050,116.667009
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2050,143.20073
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2050,39.932956
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2050,2187.621247
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2055,62.833022
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2055,22.440365
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2055,5.854984
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2055,125.756399
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2055,134.359949
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2055,37.748607
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2055,2354.538509
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2060,60.885998
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2060,21.744999
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2060,5.719467
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2060,134.563935
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2060,125.811103
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2060,35.555936
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2060,2516.275185
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2065,58.889157
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2065,21.031842
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2065,5.572577
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2065,143.0174
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2065,117.664919
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2065,33.399325
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2065,2671.68202
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2070,56.877784
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2070,20.313494
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2070,5.418214
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2070,151.050348
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2070,109.989161
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2070,31.311045
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2070,2819.742773
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2075,54.878755
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2075,19.599555
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2075,5.25952
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2075,158.603324
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2075,102.819021
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2075,29.313368
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2075,2959.585898
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2080,52.912112
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2080,18.897183
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2080,5.098993
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2080,165.624886
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2080,96.165679
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2080,27.420522
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2080,3090.491227
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2085,50.992407
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2085,18.211574
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2085,4.938589
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2085,172.072397
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2085,90.023182
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2085,25.640426
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2085,3211.892059
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2090,49.129824
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2090,17.546366
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2090,4.779814
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2090,177.912552
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2090,84.373843
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2090,23.976186
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2090,3323.373131
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2095,47.331101
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2095,16.903965
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2095,4.6238
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2095,183.121604
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2095,79.192385
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2095,22.42734
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2095,3424.665014
+billion pass-km,LF-up,Middle East (toy),trn_pass,Walk,2100,45.600299
+billion pass-km,LF-up,Middle East (toy),trn_pass,Cycle,2100,16.285821
+billion pass-km,LF-up,Middle East (toy),trn_pass,Passenger Rail,2100,4.47138
+billion pass-km,LF-up,Middle East (toy),trn_pass,Domestic Aviation,2100,187.685318
+billion pass-km,LF-up,Middle East (toy),trn_pass_road,Bus,2100,74.449053
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,2100,20.990876
+billion pass-km,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,2100,3515.63554

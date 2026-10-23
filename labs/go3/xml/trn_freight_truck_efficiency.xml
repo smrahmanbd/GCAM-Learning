@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  trn_freight_truck_efficiency.xml : heavy diesel trucks use 25% less fuel per vehicle-km by 2050.
+
+  PURPOSE     Efficiency standard proxy for road freight.
+  MODIFIES    transportation_UCD_CORE.xml, table L254.StubTranTechCoef
+              (input/gcamdata/R/zenergy_L254.transportation_UCD.R).
+  STRUCTURE   Header StubTranTechCoef (ModelInterface_headers.txt line 502):
+              ... / stub-technology / period / minicam-energy-input name / coefficient, market-name.
+              Names: supplysector "trn_freight_road", tranSubsector "Heavy truck", technology "Liquids",
+              input "refined liquids enduse" (UCD_techs_revised.csv).
+  UNITS       GCAM 9.1 (v8.5+): EJ per billion vehicle-km = MJ/vkm x 1e-3 (zenergy_L254 line ~626, CONV_ONES_THOUS;
+              the chunk's add_units label still says "BTU / vkm", which is stale).
+              GCAM 8.2: BTU per vehicle-km. Never mix.
+  VALUES      PLACEHOLDERS. Generate from your base file with
+                python scale_from_base.py  (options shown as name=value; on the command line write them with two leading hyphens, see README)
+                field=coefficient sector=trn_freight_road \
+                  subsector="Heavy truck" tech=Liquids input="refined liquids enduse" \
+                  ramp=2025:1.0,2050:0.75 ...
+  NOTE        Raising efficiency lowers the cost per tkm, so demand rises a little (rebound),
+              because trn_freight has a price elasticity. That is a feature, not a bug.
+  STATUS      Not run in GCAM.
+-->
+<scenario>
+  <world>
+    <region name="Middle East">
+      <supplysector name="trn_freight_road">
+        <tranSubsector name="Heavy truck">
+          <stub-technology name="Liquids">
+            <period year="2030"><minicam-energy-input name="refined liquids enduse"><coefficient>0.0110</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2040"><minicam-energy-input name="refined liquids enduse"><coefficient>0.0100</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2050"><minicam-energy-input name="refined liquids enduse"><coefficient>0.0090</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+          </stub-technology>
+        </tranSubsector>
+      </supplysector>
+    </region>
+  </world>
+</scenario>

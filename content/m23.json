@@ -1,0 +1,443 @@
+{
+ "id": "2.3",
+ "go": 2,
+ "slug": "choice-the-logit",
+ "title": "Choice: the logit",
+ "minutes": 40,
+ "tag": "Choice",
+ "systems": [
+  "energy",
+  "land",
+  "economy"
+ ],
+ "summary": "GCAM never gives the whole market to the cheapest option. A logit shares it out by relative cost, with share weights calibrated to history. Learn the formula, the exponent and nesting.",
+ "outcomes": [
+  "You can compute logit shares for three technologies by hand",
+  "You can explain what the logit exponent and share weights do",
+  "You can tell the relative-cost and absolute-cost logit apart",
+  "You can describe GCAM's nested choice from sector to technology"
+ ],
+ "narration_en": "If coal costs sixty dollars, gas seventy and solar eighty, a simple model would build only coal. Real investors do not behave like that. Sites differ, preferences differ, costs vary from place to place, so cheaper options win more of the market but not all of it. GCAM captures this with the logit, a formula that turns costs into market shares. Each option's cost is raised to a negative power, called the logit exponent, and divided by the sum over all options. A small exponent spreads the market widely. A large exponent behaves almost like winner takes all. Share weights are extra numbers calibrated so that the base year reproduces the shares we actually observe; they carry everything the costs leave out. Choices are also nested: electricity first chooses between fuels, then between technologies within each fuel, then between cooling systems. In this module you will compute shares by hand, calibrate share weights, and build a two-level nest in code.",
+ "narration_ar": "إذا كانت تكلفة الفحم ستين دولارًا والغاز سبعين والطاقة الشمسية ثمانين، فإن نموذجًا بسيطًا سيبني الفحم فقط. لكن المستثمرين الحقيقيين لا يتصرفون هكذا. فالمواقع تختلف والتفضيلات تختلف والتكاليف تتفاوت من مكان لآخر، لذلك يفوز الخيار الأرخص بحصة أكبر من السوق لكن ليس بكاملها. يلتقط نموذج GCAM ذلك بدالة اللوجيت، وهي صيغة تحوّل التكاليف إلى حصص سوقية. تُرفع تكلفة كل خيار إلى قوة سالبة تسمى أُس اللوجيت، وتُقسم على مجموع كل الخيارات. الأُس الصغير يوزع السوق توزيعًا واسعًا، والأُس الكبير يقترب من أن يأخذ الفائز كل شيء. أوزان الحصص أرقام إضافية تُعايَر بحيث تعيد سنة الأساس إنتاج الحصص المرصودة فعلًا، وهي تحمل كل ما لا تعبّر عنه التكاليف. والاختيارات متداخلة أيضًا: فالكهرباء تختار أولًا بين أنواع الوقود، ثم بين التقنيات داخل كل وقود، ثم بين أنظمة التبريد. في هذه الوحدة ستحسب الحصص يدويًا، وتعاير أوزان الحصص، وتبني تداخلًا من مستويين بالشيفرة.",
+ "diagram": {
+  "title": "Nested choice for electricity",
+  "caption": "Each level of the tree has its own logit. Costs flow up the tree; shares flow down it.",
+  "nodes": [
+   {
+    "id": "elec",
+    "label": "Electricity sector",
+    "sub": "demand to be met",
+    "x": 450,
+    "y": 70,
+    "w": 200,
+    "h": 64,
+    "sys": "energy",
+    "detail": "The sector's output must meet demand. It splits its market among subsectors (fuels) with a logit; electricity subsector exponent in the reference example is −3 (choice.html)."
+   },
+   {
+    "id": "coal",
+    "label": "Coal subsector",
+    "sub": "logit among plants",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Within coal, technologies compete with an aggressive exponent (−10 in the reference example): small cost differences swing shares a lot."
+   },
+   {
+    "id": "gas",
+    "label": "Gas subsector",
+    "sub": "",
+    "x": 450,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Gas plants (combined cycle, turbines, with or without CCS) share the gas subsector by their own logit."
+   },
+   {
+    "id": "sol",
+    "label": "Solar subsector",
+    "sub": "PV, CSP, rooftop",
+    "x": 770,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Solar technologies; their effective cost includes a value-factor adjustment that rises with market share (Go 2.4)."
+   },
+   {
+    "id": "pc",
+    "label": "Pulverised coal",
+    "sub": "cost incl. fuel + carbon",
+    "x": 130,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "A technology: cost = non-energy cost + fuel cost + emissions cost (en_technologies.html)."
+   },
+   {
+    "id": "ccs",
+    "label": "Coal with CCS",
+    "sub": "",
+    "x": 130,
+    "y": 400,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Higher non-energy cost, but much lower emissions cost under a carbon price."
+   },
+   {
+    "id": "cool",
+    "label": "Cooling system",
+    "sub": "once-through, recirculating…",
+    "x": 450,
+    "y": 440,
+    "w": 210,
+    "h": 64,
+    "sys": "water",
+    "detail": "For thermal plants the last level chooses one of up to five cooling systems, by a cost logit that includes water prices (demand_water.html)."
+   },
+   {
+    "id": "sw",
+    "label": "Share weights",
+    "sub": "calibrated to 2021",
+    "x": 770,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "data",
+    "detail": "Share weights scale each option so base-year shares match history; they also phase in new technologies (choice.html)."
+   }
+  ],
+  "edges": [
+   {
+    "from": "elec",
+    "to": "coal",
+    "label": "share",
+    "sys": "energy"
+   },
+   {
+    "from": "elec",
+    "to": "gas",
+    "label": "share",
+    "sys": "energy"
+   },
+   {
+    "from": "elec",
+    "to": "sol",
+    "label": "share",
+    "sys": "energy"
+   },
+   {
+    "from": "coal",
+    "to": "pc",
+    "label": "",
+    "sys": "energy"
+   },
+   {
+    "from": "coal",
+    "to": "ccs",
+    "label": "",
+    "sys": "energy"
+   },
+   {
+    "from": "gas",
+    "to": "cool",
+    "label": "",
+    "sys": "water"
+   },
+   {
+    "from": "sw",
+    "to": "sol",
+    "label": "calibrates",
+    "sys": "neutral"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "elec"
+    ],
+    "edges": [],
+    "text": "Electricity demand must be met. The sector does not pick one fuel: it shares the market."
+   },
+   {
+    "focus": [
+     "coal",
+     "gas",
+     "sol"
+    ],
+    "edges": [
+     [
+      "elec",
+      "coal"
+     ],
+     [
+      "elec",
+      "gas"
+     ],
+     [
+      "elec",
+      "sol"
+     ]
+    ],
+    "text": "First level: fuels compete by cost with a moderate exponent (−3 in the reference example)."
+   },
+   {
+    "focus": [
+     "pc",
+     "ccs"
+    ],
+    "edges": [
+     [
+      "coal",
+      "pc"
+     ],
+     [
+      "coal",
+      "ccs"
+     ]
+    ],
+    "text": "Inside coal, technologies compete with a steep exponent (−10): close substitutes switch quickly."
+   },
+   {
+    "focus": [
+     "cool"
+    ],
+    "edges": [
+     [
+      "gas",
+      "cool"
+     ]
+    ],
+    "text": "Thermal plants then choose a cooling system, linking electricity to water prices."
+   },
+   {
+    "focus": [
+     "sw"
+    ],
+    "edges": [
+     [
+      "sw",
+      "sol"
+     ]
+    ],
+    "text": "Share weights calibrate each branch to 2021 data and phase new options in."
+   }
+  ]
+ },
+ "components": {
+  "caption": "Pieces of a logit choice",
+  "rows": [
+   {
+    "name": "Cost (c)",
+    "purpose": "Levelised cost of each option, incl. fuel and carbon",
+    "analogy": "The price tag on each menu item"
+   },
+   {
+    "name": "Logit exponent (γ)",
+    "purpose": "How strongly shares react to cost differences",
+    "analogy": "How price-sensitive the diners are"
+   },
+   {
+    "name": "Share weight (α)",
+    "purpose": "Calibrated preference not captured by cost",
+    "analogy": "The house favourite everyone orders anyway"
+   },
+   {
+    "name": "Share (s)",
+    "purpose": "Fraction of the market each option wins",
+    "analogy": "How many plates of each dish are served"
+   },
+   {
+    "name": "Nest",
+    "purpose": "A level of the choice tree with its own logit",
+    "analogy": "Choose a cuisine first, then a dish"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Why not cheapest-takes-all?",
+   "html": "<p>A model that always picks the single cheapest technology flips its whole mix when costs cross, which real markets never do. Costs vary across sites and investors; some preferences are unmeasured. The <b>logit</b> turns costs into smooth market shares: cheaper wins more, never everything (<a href=\"https://jgcri.github.io/gcam-doc/choice.html\">choice.html</a>).</p>"
+  },
+  {
+   "heading": "The relative-cost logit",
+   "html": "<div class=\"eq\">s<sub>i</sub> = α<sub>i</sub> · c<sub>i</sub><sup>γ</sup> / Σ<sub>j</sub> α<sub>j</sub> · c<sub>j</sub><sup>γ</sup>,  γ &lt; 0</div><p>With equal share weights and γ = −4, coal $60, gas $70, solar $80: 60<sup>−4</sup> = 7.72×10<sup>−8</sup>, 70<sup>−4</sup> = 4.16×10<sup>−8</sup>, 80<sup>−4</sup> = 2.44×10<sup>−8</sup>. The sum is 14.32×10<sup>−8</sup>, so the shares are <b>54%, 29% and 17%</b>. With γ = −1 they are 38/33/29%; with γ = −10, 79/17/4%.</p>"
+  },
+  {
+   "heading": "The absolute-cost logit",
+   "html": "<div class=\"eq\">s<sub>i</sub> = α<sub>i</sub> · exp(β · c<sub>i</sub>) / Σ<sub>j</sub> α<sub>j</sub> · exp(β · c<sub>j</sub>)</div><p>Here the share ratio depends on the cost <i>difference</i> rather than the ratio. GCAM users always enter a logit exponent; for the absolute form GCAM derives β from it. The absolute form behaves well when costs can be near zero or negative, and GCAM uses it in places such as direct air capture and the passenger transport nests (<a href=\"https://jgcri.github.io/gcam-doc/choice.html\">choice.html</a>).</p>"
+  },
+  {
+   "heading": "Share weights and calibration",
+   "html": "<p>Share weights are set so that, at base-year costs, the logit reproduces the observed 2021 shares. If observed shares are 30/50/20% at costs 60/70/80 and γ = −4, then α ∝ share / c<sup>γ</sup>, giving weights <b>1 : 3.088 : 2.107</b> (normalised to coal). They also phase in new technologies: low in their first year, rising toward a neutral value. Future share weights are <i>assumptions</i>, so treat them as a scenario lever, not a fact.</p>"
+  },
+  {
+   "heading": "Nesting",
+   "html": "<p>Choice in GCAM is layered: sector → subsector → technology → (for thermal power) cooling system, each with its own logit (<a href=\"https://jgcri.github.io/gcam-doc/details_energy.html\">details_energy.html</a>). The reference example uses γ = −3 between electricity subsectors and γ = −10 among coal technologies. In the kit's two-level nest (fossil nest with γ = −6 inside, then fossil vs solar with γ = −3) the result is coal 48.2%, gas 19.1%, solar 32.6%. Land and trade use logits too (Go 2.6).</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "try",
+   "title": "Try it",
+   "html": "<p>Coal $60 and gas $70, γ = −2, equal weights. Coal's share? 60<sup>−2</sup> = 2.78×10<sup>−4</sup>, 70<sup>−2</sup> = 2.04×10<sup>−4</sup>, so coal = 2.78 / 4.82 = <b>58%</b>.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Logit exponents are in gcamdata assumption files <code>A21.subsector_logit.csv</code> … <code>A26.subsector_logit.csv</code>; share-weight interpolation rules in <code>A21.subsector_interp.csv</code> and similar (<a href=\"https://jgcri.github.io/gcam-doc/inputs_supply.html\">inputs_supply.html</a>). In XML they appear as <code>&lt;logit-exponent&gt;</code> and <code>&lt;share-weight&gt;</code> under each subsector and technology.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "trap",
+   "title": "\"A share weight is a subsidy\"",
+   "html": "<p>No. A share weight is a calibrated preference multiplier with no money attached. Changing future share weights changes results without changing any cost, so state those assumptions openly.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "logit",
+  "intro": "Set three costs and the logit exponent, and watch the market shares.",
+  "predict": "Coal $60, gas $70, solar $80. Roughly what exponent gives coal 90% of the market?"
+ },
+ "code": [
+  {
+   "title": "Relative logit, calibration and a two-level nest",
+   "lang": "python",
+   "file": "labs/go2/m23_logit.py",
+   "runnable": true,
+   "explain": "Computes shares for three exponents, calibrates share weights to observed shares and builds a nest. Try: make solar $55 and predict whether it becomes the largest share at γ = −4.",
+   "expected": "relative logit, exponent  -4:  {'coal': 0.539, 'gas': 0.291, 'solar': 0.17}\ncalibrated share weights: {'coal': 1.0, 'gas': 3.088, 'solar': 2.107}\nnested: fossil nest 0.674 (coal 0.482, gas 0.191), solar 0.326"
+  },
+  {
+   "title": "The same in R",
+   "lang": "r",
+   "file": "labs/go2/m23_logit.R",
+   "runnable": false,
+   "explain": "Identical numbers in base R."
+  }
+ ],
+ "takeaways": [
+  "The logit turns costs into smooth shares: cheaper wins more, never everything",
+  "The exponent sets how sensitive shares are to cost differences",
+  "Share weights calibrate the base year and phase in new options; future values are assumptions",
+  "GCAM uses relative-cost and absolute-cost logits, nested from sector to technology",
+  "Example exponents: −3 between electricity fuels, −10 among coal technologies"
+ ],
+ "quiz": [
+  {
+   "q": "Costs 60, 70, 80; γ = −4; equal weights. Coal's share is about…",
+   "options": [
+    "33%",
+    "54%",
+    "79%",
+    "100%"
+   ],
+   "answer": 1,
+   "explain": "7.72 / 14.32 = 0.539."
+  },
+  {
+   "q": "Making the exponent more negative (−4 to −10) makes shares…",
+   "options": [
+    "more even",
+    "more concentrated on the cheapest",
+    "unchanged",
+    "random"
+   ],
+   "answer": 1,
+   "explain": "Steeper exponents amplify cost differences."
+  },
+  {
+   "q": "Share weights are…",
+   "options": [
+    "subsidies paid to technologies",
+    "calibrated multipliers that reproduce base-year shares",
+    "the same as costs",
+    "always equal to 1"
+   ],
+   "answer": 1,
+   "explain": "They absorb unmeasured preferences and phase new options in."
+  },
+  {
+   "q": "In the absolute-cost logit, shares depend on…",
+   "options": [
+    "cost ratios",
+    "cost differences",
+    "only share weights",
+    "only the cheapest cost"
+   ],
+   "answer": 1,
+   "explain": "exp(β c) makes share ratios depend on c_i − c_j."
+  },
+  {
+   "q": "Which order matches GCAM's electricity nest?",
+   "options": [
+    "technology → subsector → sector",
+    "sector → subsector → technology → cooling",
+    "cooling → sector → subsector",
+    "one flat choice"
+   ],
+   "answer": 1,
+   "explain": "Sector, then fuel subsector, then technology, then cooling system."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Logit",
+   "def": "A formula that turns costs (or profits) into market shares."
+  },
+  {
+   "term": "Logit exponent",
+   "def": "The parameter that sets how strongly shares respond to cost differences."
+  },
+  {
+   "term": "Share weight",
+   "def": "A calibrated multiplier on each option's attractiveness, set to match base-year data."
+  },
+  {
+   "term": "Nest",
+   "def": "One level of a choice tree, with its own logit."
+  },
+  {
+   "term": "Calibration",
+   "def": "Setting parameters so the model reproduces observed base-year data."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Economic choice",
+   "url": "https://jgcri.github.io/gcam-doc/choice.html",
+   "why": "Both logit forms, share weights and example exponents."
+  },
+  {
+   "title": "GCAM documentation: Energy system details",
+   "url": "https://jgcri.github.io/gcam-doc/details_energy.html",
+   "why": "The nesting of the electricity sector."
+  },
+  {
+   "title": "GCAM documentation: Supply inputs",
+   "url": "https://jgcri.github.io/gcam-doc/inputs_supply.html",
+   "why": "Where exponents and interpolation rules live in gcamdata."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 7 slides: Inside GCAM (PDF)",
+   "path": "downloads/slides/Week07-Inside-GCAM.pdf"
+  }
+ ]
+}

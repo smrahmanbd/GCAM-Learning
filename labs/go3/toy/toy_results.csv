@@ -1,0 +1,2806 @@
+scenario,year,variable,item,value,unit
+Reference,2020,service output by mode,Walk,70,billion pkm
+Reference,2020,mode share,Walk,0.0463269,fraction
+Reference,2020,service output by mode,Cycle,25,billion pkm
+Reference,2020,mode share,Cycle,0.0165453,fraction
+Reference,2020,service output by mode,Passenger Rail,6,billion pkm
+Reference,2020,mode share,Passenger Rail,0.00397088,fraction
+Reference,2020,tech share,Passenger Rail|Electric,1,fraction
+Reference,2020,service output by mode,Domestic Aviation,55,billion pkm
+Reference,2020,mode share,Domestic Aviation,0.0363997,fraction
+Reference,2020,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2020,service output by mode,Bus,160,billion pkm
+Reference,2020,mode share,Bus,0.10589,fraction
+Reference,2020,tech share,Bus|Liquids,0.98125,fraction
+Reference,2020,tech share,Bus|NG,0.01875,fraction
+Reference,2020,tech share,Bus|BEV,0,fraction
+Reference,2020,service output by mode,2W and 3W,45,billion pkm
+Reference,2020,mode share,2W and 3W,0.0297816,fraction
+Reference,2020,tech share,2W and 3W|Liquids,1,fraction
+Reference,2020,tech share,2W and 3W|BEV,0,fraction
+Reference,2020,service output by mode,Car,1150,billion pkm
+Reference,2020,mode share,Car,0.761085,fraction
+Reference,2020,tech share,Car|Liquids,0.973913,fraction
+Reference,2020,tech share,Car|Hybrid Liquids,0.0173913,fraction
+Reference,2020,tech share,Car|NG,0.00869565,fraction
+Reference,2020,tech share,Car|BEV,0,fraction
+Reference,2020,tech share,Car|FCEV,0,fraction
+Reference,2020,service output,trn_pass,1511,billion pkm
+Reference,2020,service price,trn_pass,0.547662,2005$/pkm
+Reference,2020,final energy by fuel,H2 LDV,0,EJ
+Reference,2020,final energy by fuel,delivered gas,0.0153481,EJ
+Reference,2020,final energy by fuel,elect_td_trn,0.000277068,EJ
+Reference,2020,final energy by fuel,refined liquids enduse,1.83874,EJ
+Reference,2020,CO2 (direct),trn_pass,132.943,MtCO2
+Reference,2025,service output by mode,Walk,71.2477,billion pkm
+Reference,2025,mode share,Walk,0.0432729,fraction
+Reference,2025,service output by mode,Cycle,25.4456,billion pkm
+Reference,2025,mode share,Cycle,0.0154546,fraction
+Reference,2025,service output by mode,Passenger Rail,6.20227,billion pkm
+Reference,2025,mode share,Passenger Rail,0.003767,fraction
+Reference,2025,tech share,Passenger Rail|Electric,1,fraction
+Reference,2025,service output by mode,Domestic Aviation,65.1668,billion pkm
+Reference,2025,mode share,Domestic Aviation,0.0395796,fraction
+Reference,2025,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2025,service output by mode,Bus,170.216,billion pkm
+Reference,2025,mode share,Bus,0.103382,fraction
+Reference,2025,tech share,Bus|Liquids,0.981131,fraction
+Reference,2025,tech share,Bus|NG,0.0188691,fraction
+Reference,2025,tech share,Bus|BEV,0,fraction
+Reference,2025,service output by mode,2W and 3W,47.5262,billion pkm
+Reference,2025,mode share,2W and 3W,0.0288654,fraction
+Reference,2025,tech share,2W and 3W|Liquids,1,fraction
+Reference,2025,tech share,2W and 3W|BEV,0,fraction
+Reference,2025,service output by mode,Car,1260.67,billion pkm
+Reference,2025,mode share,Car,0.765678,fraction
+Reference,2025,tech share,Car|Liquids,0.974549,fraction
+Reference,2025,tech share,Car|Hybrid Liquids,0.0167514,fraction
+Reference,2025,tech share,Car|NG,0.00869964,fraction
+Reference,2025,tech share,Car|BEV,0,fraction
+Reference,2025,tech share,Car|FCEV,0,fraction
+Reference,2025,service output,trn_pass,1646.47,billion pkm
+Reference,2025,service price,trn_pass,0.581294,2005$/pkm
+Reference,2025,final energy by fuel,H2 LDV,0,EJ
+Reference,2025,final energy by fuel,delivered gas,0.0166518,EJ
+Reference,2025,final energy by fuel,elect_td_trn,0.000286408,EJ
+Reference,2025,final energy by fuel,refined liquids enduse,2.00127,EJ
+Reference,2025,CO2 (direct),trn_pass,144.692,MtCO2
+Reference,2030,service output by mode,Walk,71.7494,billion pkm
+Reference,2030,mode share,Walk,0.0403613,fraction
+Reference,2030,service output by mode,Cycle,25.6248,billion pkm
+Reference,2030,mode share,Cycle,0.0144147,fraction
+Reference,2030,service output by mode,Passenger Rail,6.33484,billion pkm
+Reference,2030,mode share,Passenger Rail,0.00356354,fraction
+Reference,2030,tech share,Passenger Rail|Electric,1,fraction
+Reference,2030,service output by mode,Domestic Aviation,76.0069,billion pkm
+Reference,2030,mode share,Domestic Aviation,0.0427562,fraction
+Reference,2030,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2030,service output by mode,Bus,176.31,billion pkm
+Reference,2030,mode share,Bus,0.0991795,fraction
+Reference,2030,tech share,Bus|Liquids,0.865063,fraction
+Reference,2030,tech share,Bus|NG,0.0167445,fraction
+Reference,2030,tech share,Bus|BEV,0.118192,fraction
+Reference,2030,service output by mode,2W and 3W,48.6526,billion pkm
+Reference,2030,mode share,2W and 3W,0.0273686,fraction
+Reference,2030,tech share,2W and 3W|Liquids,0.544328,fraction
+Reference,2030,tech share,2W and 3W|BEV,0.455672,fraction
+Reference,2030,service output by mode,Car,1373,billion pkm
+Reference,2030,mode share,Car,0.772356,fraction
+Reference,2030,tech share,Car|Liquids,0.481046,fraction
+Reference,2030,tech share,Car|Hybrid Liquids,0.00793972,fraction
+Reference,2030,tech share,Car|NG,0.00428767,fraction
+Reference,2030,tech share,Car|BEV,0.506727,fraction
+Reference,2030,tech share,Car|FCEV,0,fraction
+Reference,2030,service output,trn_pass,1777.68,billion pkm
+Reference,2030,service price,trn_pass,0.616509,2005$/pkm
+Reference,2030,final energy by fuel,H2 LDV,0,EJ
+Reference,2030,final energy by fuel,delivered gas,0.00923832,EJ
+Reference,2030,final energy by fuel,elect_td_trn,0.327259,EJ
+Reference,2030,final energy by fuel,refined liquids enduse,1.17594,EJ
+Reference,2030,CO2 (direct),trn_pass,84.9919,MtCO2
+Reference,2035,service output by mode,Walk,71.7675,billion pkm
+Reference,2035,mode share,Walk,0.0378113,fraction
+Reference,2035,service output by mode,Cycle,25.6313,billion pkm
+Reference,2035,mode share,Cycle,0.013504,fraction
+Reference,2035,service output by mode,Passenger Rail,6.41862,billion pkm
+Reference,2035,mode share,Passenger Rail,0.00338171,fraction
+Reference,2035,tech share,Passenger Rail|Electric,1,fraction
+Reference,2035,service output by mode,Domestic Aviation,87.5845,billion pkm
+Reference,2035,mode share,Domestic Aviation,0.0461446,fraction
+Reference,2035,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2035,service output by mode,Bus,182.84,billion pkm
+Reference,2035,mode share,Bus,0.0963308,fraction
+Reference,2035,tech share,Bus|Liquids,0.758691,fraction
+Reference,2035,tech share,Bus|NG,0.0147804,fraction
+Reference,2035,tech share,Bus|BEV,0.226528,fraction
+Reference,2035,service output by mode,2W and 3W,51.0138,billion pkm
+Reference,2035,mode share,2W and 3W,0.026877,fraction
+Reference,2035,tech share,2W and 3W|Liquids,0.463031,fraction
+Reference,2035,tech share,2W and 3W|BEV,0.536969,fraction
+Reference,2035,service output by mode,Car,1472.79,billion pkm
+Reference,2035,mode share,Car,0.77595,fraction
+Reference,2035,tech share,Car|Liquids,0.454982,fraction
+Reference,2035,tech share,Car|Hybrid Liquids,0.00769263,fraction
+Reference,2035,tech share,Car|NG,0.00404463,fraction
+Reference,2035,tech share,Car|BEV,0.502509,fraction
+Reference,2035,tech share,Car|FCEV,0.0307727,fraction
+Reference,2035,service output,trn_pass,1898.04,billion pkm
+Reference,2035,service price,trn_pass,0.655465,2005$/pkm
+Reference,2035,final energy by fuel,H2 LDV,0.0312541,EJ
+Reference,2035,final energy by fuel,delivered gas,0.00920486,EJ
+Reference,2035,final energy by fuel,elect_td_trn,0.358729,EJ
+Reference,2035,final energy by fuel,refined liquids enduse,1.19574,EJ
+Reference,2035,CO2 (direct),trn_pass,86.413,MtCO2
+Reference,2040,service output by mode,Walk,71.299,billion pkm
+Reference,2040,mode share,Walk,0.0353996,fraction
+Reference,2040,service output by mode,Cycle,25.4639,billion pkm
+Reference,2040,mode share,Cycle,0.0126427,fraction
+Reference,2040,service output by mode,Passenger Rail,6.45205,billion pkm
+Reference,2040,mode share,Passenger Rail,0.00320341,fraction
+Reference,2040,tech share,Passenger Rail|Electric,1,fraction
+Reference,2040,service output by mode,Domestic Aviation,99.6875,billion pkm
+Reference,2040,mode share,Domestic Aviation,0.0494944,fraction
+Reference,2040,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2040,service output by mode,Bus,188.328,billion pkm
+Reference,2040,mode share,Bus,0.0935038,fraction
+Reference,2040,tech share,Bus|Liquids,0.662703,fraction
+Reference,2040,tech share,Bus|NG,0.0129937,fraction
+Reference,2040,tech share,Bus|BEV,0.324303,fraction
+Reference,2040,service output by mode,2W and 3W,52.9081,billion pkm
+Reference,2040,mode share,2W and 3W,0.0262686,fraction
+Reference,2040,tech share,2W and 3W|Liquids,0.383652,fraction
+Reference,2040,tech share,2W and 3W|BEV,0.616348,fraction
+Reference,2040,service output by mode,Car,1569.98,billion pkm
+Reference,2040,mode share,Car,0.779488,fraction
+Reference,2040,tech share,Car|Liquids,0.426492,fraction
+Reference,2040,tech share,Car|Hybrid Liquids,0.00739244,fraction
+Reference,2040,tech share,Car|NG,0.00377626,fraction
+Reference,2040,tech share,Car|BEV,0.494506,fraction
+Reference,2040,tech share,Car|FCEV,0.0678328,fraction
+Reference,2040,service output,trn_pass,2014.12,billion pkm
+Reference,2040,service price,trn_pass,0.696663,2005$/pkm
+Reference,2040,final energy by fuel,H2 LDV,0.0740931,EJ
+Reference,2040,final energy by fuel,delivered gas,0.00902907,EJ
+Reference,2040,final energy by fuel,elect_td_trn,0.387513,EJ
+Reference,2040,final energy by fuel,refined liquids enduse,1.19979,EJ
+Reference,2040,CO2 (direct),trn_pass,86.6947,MtCO2
+Reference,2045,service output by mode,Walk,70.4369,billion pkm
+Reference,2045,mode share,Walk,0.0331239,fraction
+Reference,2045,service output by mode,Cycle,25.156,billion pkm
+Reference,2045,mode share,Cycle,0.01183,fraction
+Reference,2045,service output by mode,Passenger Rail,6.44259,billion pkm
+Reference,2045,mode share,Passenger Rail,0.00302972,fraction
+Reference,2045,tech share,Passenger Rail|Electric,1,fraction
+Reference,2045,service output by mode,Domestic Aviation,112.183,billion pkm
+Reference,2045,mode share,Domestic Aviation,0.0527558,fraction
+Reference,2045,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2045,service output by mode,Bus,192.67,billion pkm
+Reference,2045,mode share,Bus,0.0906057,fraction
+Reference,2045,tech share,Bus|Liquids,0.577144,fraction
+Reference,2045,tech share,Bus|NG,0.0113891,fraction
+Reference,2045,tech share,Bus|BEV,0.411467,fraction
+Reference,2045,service output by mode,2W and 3W,54.274,billion pkm
+Reference,2045,mode share,2W and 3W,0.0255231,fraction
+Reference,2045,tech share,2W and 3W|Liquids,0.310026,fraction
+Reference,2045,tech share,2W and 3W|BEV,0.689974,fraction
+Reference,2045,service output by mode,Car,1665.3,billion pkm
+Reference,2045,mode share,Car,0.783132,fraction
+Reference,2045,tech share,Car|Liquids,0.395629,fraction
+Reference,2045,tech share,Car|Hybrid Liquids,0.00703591,fraction
+Reference,2045,tech share,Car|NG,0.00348397,fraction
+Reference,2045,tech share,Car|BEV,0.482227,fraction
+Reference,2045,tech share,Car|FCEV,0.111624,fraction
+Reference,2045,service output,trn_pass,2126.47,billion pkm
+Reference,2045,service price,trn_pass,0.74028,2005$/pkm
+Reference,2045,final energy by fuel,H2 LDV,0.130529,EJ
+Reference,2045,final energy by fuel,delivered gas,0.00871546,EJ
+Reference,2045,final energy by fuel,elect_td_trn,0.412555,EJ
+Reference,2045,final energy by fuel,refined liquids enduse,1.18821,EJ
+Reference,2045,CO2 (direct),trn_pass,85.8461,MtCO2
+Reference,2050,service output by mode,Walk,69.259,billion pkm
+Reference,2050,mode share,Walk,0.0309804,fraction
+Reference,2050,service output by mode,Cycle,24.7353,billion pkm
+Reference,2050,mode share,Cycle,0.0110644,fraction
+Reference,2050,service output by mode,Passenger Rail,6.39684,billion pkm
+Reference,2050,mode share,Passenger Rail,0.00286138,fraction
+Reference,2050,tech share,Passenger Rail|Electric,1,fraction
+Reference,2050,service output by mode,Domestic Aviation,124.917,billion pkm
+Reference,2050,mode share,Domestic Aviation,0.055877,fraction
+Reference,2050,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2050,service output by mode,Bus,195.776,billion pkm
+Reference,2050,mode share,Bus,0.0875732,fraction
+Reference,2050,tech share,Bus|Liquids,0.501608,fraction
+Reference,2050,tech share,Bus|NG,0.00996229,fraction
+Reference,2050,tech share,Bus|BEV,0.48843,fraction
+Reference,2050,service output by mode,2W and 3W,55.0453,billion pkm
+Reference,2050,mode share,2W and 3W,0.0246224,fraction
+Reference,2050,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2050,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2050,service output by mode,Car,1759.44,billion pkm
+Reference,2050,mode share,Car,0.787021,fraction
+Reference,2050,tech share,Car|Liquids,0.362588,fraction
+Reference,2050,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2050,tech share,Car|NG,0.00317068,fraction
+Reference,2050,tech share,Car|BEV,0.465286,fraction
+Reference,2050,tech share,Car|FCEV,0.162333,fraction
+Reference,2050,service output,trn_pass,2235.57,billion pkm
+Reference,2050,service price,trn_pass,0.7865,2005$/pkm
+Reference,2050,final energy by fuel,H2 LDV,0.202502,EJ
+Reference,2050,final energy by fuel,delivered gas,0.00827176,EJ
+Reference,2050,final energy by fuel,elect_td_trn,0.432731,EJ
+Reference,2050,final energy by fuel,refined liquids enduse,1.16138,EJ
+Reference,2050,CO2 (direct),trn_pass,83.8951,MtCO2
+Reference,2055,service output by mode,Walk,67.2347,billion pkm
+Reference,2055,mode share,Walk,0.0282182,fraction
+Reference,2055,service output by mode,Cycle,24.0124,billion pkm
+Reference,2055,mode share,Cycle,0.0100779,fraction
+Reference,2055,service output by mode,Passenger Rail,6.26515,billion pkm
+Reference,2055,mode share,Passenger Rail,0.00262947,fraction
+Reference,2055,tech share,Passenger Rail|Electric,1,fraction
+Reference,2055,service output by mode,Domestic Aviation,134.566,billion pkm
+Reference,2055,mode share,Domestic Aviation,0.056477,fraction
+Reference,2055,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2055,service output by mode,Bus,181.878,billion pkm
+Reference,2055,mode share,Bus,0.0763336,fraction
+Reference,2055,tech share,Bus|Liquids,0.501608,fraction
+Reference,2055,tech share,Bus|NG,0.00996229,fraction
+Reference,2055,tech share,Bus|BEV,0.48843,fraction
+Reference,2055,service output by mode,2W and 3W,51.4039,billion pkm
+Reference,2055,mode share,2W and 3W,0.0215741,fraction
+Reference,2055,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2055,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2055,service output by mode,Car,1917.31,billion pkm
+Reference,2055,mode share,Car,0.80469,fraction
+Reference,2055,tech share,Car|Liquids,0.362588,fraction
+Reference,2055,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2055,tech share,Car|NG,0.00317068,fraction
+Reference,2055,tech share,Car|BEV,0.465286,fraction
+Reference,2055,tech share,Car|FCEV,0.162333,fraction
+Reference,2055,service output,trn_pass,2382.67,billion pkm
+Reference,2055,service price,trn_pass,0.824049,2005$/pkm
+Reference,2055,final energy by fuel,H2 LDV,0.220672,EJ
+Reference,2055,final energy by fuel,delivered gas,0.00891508,EJ
+Reference,2055,final energy by fuel,elect_td_trn,0.468186,EJ
+Reference,2055,final energy by fuel,refined liquids enduse,1.25599,EJ
+Reference,2055,CO2 (direct),trn_pass,90.7282,MtCO2
+Reference,2060,service output by mode,Walk,65.0771,billion pkm
+Reference,2060,mode share,Walk,0.0257386,fraction
+Reference,2060,service output by mode,Cycle,23.2418,billion pkm
+Reference,2060,mode share,Cycle,0.00919237,fraction
+Reference,2060,service output by mode,Passenger Rail,6.11317,billion pkm
+Reference,2060,mode share,Passenger Rail,0.00241782,fraction
+Reference,2060,tech share,Passenger Rail|Electric,1,fraction
+Reference,2060,service output by mode,Domestic Aviation,143.827,billion pkm
+Reference,2060,mode share,Domestic Aviation,0.0568849,fraction
+Reference,2060,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2060,service output by mode,Bus,168.482,billion pkm
+Reference,2060,mode share,Bus,0.0666363,fraction
+Reference,2060,tech share,Bus|Liquids,0.501608,fraction
+Reference,2060,tech share,Bus|NG,0.00996229,fraction
+Reference,2060,tech share,Bus|BEV,0.48843,fraction
+Reference,2060,service output by mode,2W and 3W,47.816,billion pkm
+Reference,2060,mode share,2W and 3W,0.0189117,fraction
+Reference,2060,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2060,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2060,service output by mode,Car,2073.83,billion pkm
+Reference,2060,mode share,Car,0.820218,fraction
+Reference,2060,tech share,Car|Liquids,0.362588,fraction
+Reference,2060,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2060,tech share,Car|NG,0.00317068,fraction
+Reference,2060,tech share,Car|BEV,0.465286,fraction
+Reference,2060,tech share,Car|FCEV,0.162333,fraction
+Reference,2060,service output,trn_pass,2528.38,billion pkm
+Reference,2060,service price,trn_pass,0.864242,2005$/pkm
+Reference,2060,final energy by fuel,H2 LDV,0.238686,EJ
+Reference,2060,final energy by fuel,delivered gas,0.00955412,EJ
+Reference,2060,final energy by fuel,elect_td_trn,0.503363,EJ
+Reference,2060,final energy by fuel,refined liquids enduse,1.34928,EJ
+Reference,2060,CO2 (direct),trn_pass,97.4654,MtCO2
+Reference,2065,service output by mode,Walk,62.8438,billion pkm
+Reference,2065,mode share,Walk,0.0235223,fraction
+Reference,2065,service output by mode,Cycle,22.4442,billion pkm
+Reference,2065,mode share,Cycle,0.00840083,fraction
+Reference,2065,service output by mode,Passenger Rail,5.9468,billion pkm
+Reference,2065,mode share,Passenger Rail,0.00222588,fraction
+Reference,2065,tech share,Passenger Rail|Electric,1,fraction
+Reference,2065,service output by mode,Domestic Aviation,152.622,billion pkm
+Reference,2065,mode share,Domestic Aviation,0.057126,fraction
+Reference,2065,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2065,service output by mode,Bus,155.781,billion pkm
+Reference,2065,mode share,Bus,0.0583085,fraction
+Reference,2065,tech share,Bus|Liquids,0.501608,fraction
+Reference,2065,tech share,Bus|NG,0.00996229,fraction
+Reference,2065,tech share,Bus|BEV,0.48843,fraction
+Reference,2065,service output by mode,2W and 3W,44.346,billion pkm
+Reference,2065,mode share,2W and 3W,0.0165986,fraction
+Reference,2065,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2065,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2065,service output by mode,Car,2227.68,billion pkm
+Reference,2065,mode share,Car,0.833818,fraction
+Reference,2065,tech share,Car|Liquids,0.362588,fraction
+Reference,2065,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2065,tech share,Car|NG,0.00317068,fraction
+Reference,2065,tech share,Car|BEV,0.465286,fraction
+Reference,2065,tech share,Car|FCEV,0.162333,fraction
+Reference,2065,service output,trn_pass,2671.67,billion pkm
+Reference,2065,service price,trn_pass,0.907541,2005$/pkm
+Reference,2065,final energy by fuel,H2 LDV,0.256394,EJ
+Reference,2065,final energy by fuel,delivered gas,0.0101838,EJ
+Reference,2065,final energy by fuel,elect_td_trn,0.537979,EJ
+Reference,2065,final energy by fuel,refined liquids enduse,1.44047,EJ
+Reference,2065,CO2 (direct),trn_pass,104.052,MtCO2
+Reference,2070,service output by mode,Walk,60.5805,billion pkm
+Reference,2070,mode share,Walk,0.0215478,fraction
+Reference,2070,service output by mode,Cycle,21.6359,billion pkm
+Reference,2070,mode share,Cycle,0.00769564,fraction
+Reference,2070,service output by mode,Passenger Rail,5.77094,billion pkm
+Reference,2070,mode share,Passenger Rail,0.00205266,fraction
+Reference,2070,tech share,Passenger Rail|Electric,1,fraction
+Reference,2070,service output by mode,Domestic Aviation,160.884,billion pkm
+Reference,2070,mode share,Domestic Aviation,0.0572245,fraction
+Reference,2070,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2070,service output by mode,Bus,143.89,billion pkm
+Reference,2070,mode share,Bus,0.05118,fraction
+Reference,2070,tech share,Bus|Liquids,0.501608,fraction
+Reference,2070,tech share,Bus|NG,0.00996229,fraction
+Reference,2070,tech share,Bus|BEV,0.48843,fraction
+Reference,2070,service output by mode,2W and 3W,41.0385,billion pkm
+Reference,2070,mode share,2W and 3W,0.014597,fraction
+Reference,2070,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2070,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2070,service output by mode,Car,2377.65,billion pkm
+Reference,2070,mode share,Car,0.845702,fraction
+Reference,2070,tech share,Car|Liquids,0.362588,fraction
+Reference,2070,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2070,tech share,Car|NG,0.00317068,fraction
+Reference,2070,tech share,Car|BEV,0.465286,fraction
+Reference,2070,tech share,Car|FCEV,0.162333,fraction
+Reference,2070,service output,trn_pass,2811.45,billion pkm
+Reference,2070,service price,trn_pass,0.954429,2005$/pkm
+Reference,2070,final energy by fuel,H2 LDV,0.273654,EJ
+Reference,2070,final energy by fuel,delivered gas,0.010799,EJ
+Reference,2070,final energy by fuel,elect_td_trn,0.57176,EJ
+Reference,2070,final energy by fuel,refined liquids enduse,1.52884,EJ
+Reference,2070,CO2 (direct),trn_pass,110.435,MtCO2
+Reference,2075,service output by mode,Walk,58.3224,billion pkm
+Reference,2075,mode share,Walk,0.0197927,fraction
+Reference,2075,service output by mode,Cycle,20.8294,billion pkm
+Reference,2075,mode share,Cycle,0.00706884,fraction
+Reference,2075,service output by mode,Passenger Rail,5.58956,billion pkm
+Reference,2075,mode share,Passenger Rail,0.00189691,fraction
+Reference,2075,tech share,Passenger Rail|Electric,1,fraction
+Reference,2075,service output by mode,Domestic Aviation,168.556,billion pkm
+Reference,2075,mode share,Domestic Aviation,0.0572024,fraction
+Reference,2075,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2075,service output by mode,Bus,132.865,billion pkm
+Reference,2075,mode share,Bus,0.0450902,fraction
+Reference,2075,tech share,Bus|Liquids,0.501608,fraction
+Reference,2075,tech share,Bus|NG,0.00996229,fraction
+Reference,2075,tech share,Bus|BEV,0.48843,fraction
+Reference,2075,service output by mode,2W and 3W,37.9223,billion pkm
+Reference,2075,mode share,2W and 3W,0.0128696,fraction
+Reference,2075,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2075,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2075,service output by mode,Car,2522.57,billion pkm
+Reference,2075,mode share,Car,0.856079,fraction
+Reference,2075,tech share,Car|Liquids,0.362588,fraction
+Reference,2075,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2075,tech share,Car|NG,0.00317068,fraction
+Reference,2075,tech share,Car|BEV,0.465286,fraction
+Reference,2075,tech share,Car|FCEV,0.162333,fraction
+Reference,2075,service output,trn_pass,2946.66,billion pkm
+Reference,2075,service price,trn_pass,1.00541,2005$/pkm
+Reference,2075,final energy by fuel,H2 LDV,0.290334,EJ
+Reference,2075,final energy by fuel,delivered gas,0.0113951,EJ
+Reference,2075,final energy by fuel,elect_td_trn,0.604447,EJ
+Reference,2075,final energy by fuel,refined liquids enduse,1.61374,EJ
+Reference,2075,CO2 (direct),trn_pass,116.567,MtCO2
+Reference,2080,service output by mode,Walk,56.0965,billion pkm
+Reference,2080,mode share,Walk,0.018235,fraction
+Reference,2080,service output by mode,Cycle,20.0345,billion pkm
+Reference,2080,mode share,Cycle,0.00651251,fraction
+Reference,2080,service output by mode,Passenger Rail,5.40586,billion pkm
+Reference,2080,mode share,Passenger Rail,0.00175726,fraction
+Reference,2080,tech share,Passenger Rail|Electric,1,fraction
+Reference,2080,service output by mode,Domestic Aviation,175.593,billion pkm
+Reference,2080,mode share,Domestic Aviation,0.0570791,fraction
+Reference,2080,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2080,service output by mode,Bus,122.723,billion pkm
+Reference,2080,mode share,Bus,0.0398929,fraction
+Reference,2080,tech share,Bus|Liquids,0.501608,fraction
+Reference,2080,tech share,Bus|NG,0.00996229,fraction
+Reference,2080,tech share,Bus|BEV,0.48843,fraction
+Reference,2080,service output by mode,2W and 3W,35.0134,billion pkm
+Reference,2080,mode share,2W and 3W,0.0113816,fraction
+Reference,2080,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2080,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2080,service output by mode,Car,2661.44,billion pkm
+Reference,2080,mode share,Car,0.865142,fraction
+Reference,2080,tech share,Car|Liquids,0.362588,fraction
+Reference,2080,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2080,tech share,Car|NG,0.00317068,fraction
+Reference,2080,tech share,Car|BEV,0.465286,fraction
+Reference,2080,tech share,Car|FCEV,0.162333,fraction
+Reference,2080,service output,trn_pass,3076.3,billion pkm
+Reference,2080,service price,trn_pass,1.06103,2005$/pkm
+Reference,2080,final energy by fuel,H2 LDV,0.306316,EJ
+Reference,2080,final energy by fuel,delivered gas,0.0119675,EJ
+Reference,2080,final energy by fuel,elect_td_trn,0.635805,EJ
+Reference,2080,final energy by fuel,refined liquids enduse,1.69456,EJ
+Reference,2080,CO2 (direct),trn_pass,122.405,MtCO2
+Reference,2085,service output by mode,Walk,53.9224,billion pkm
+Reference,2085,mode share,Walk,0.0168535,fraction
+Reference,2085,service output by mode,Cycle,19.258,billion pkm
+Reference,2085,mode share,Cycle,0.00601912,fraction
+Reference,2085,service output by mode,Passenger Rail,5.22235,billion pkm
+Reference,2085,mode share,Passenger Rail,0.00163226,fraction
+Reference,2085,tech share,Passenger Rail|Electric,1,fraction
+Reference,2085,service output by mode,Domestic Aviation,181.959,billion pkm
+Reference,2085,mode share,Domestic Aviation,0.0568718,fraction
+Reference,2085,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2085,service output by mode,Bus,113.446,billion pkm
+Reference,2085,mode share,Bus,0.0354578,fraction
+Reference,2085,tech share,Bus|Liquids,0.501608,fraction
+Reference,2085,tech share,Bus|NG,0.00996229,fraction
+Reference,2085,tech share,Bus|BEV,0.48843,fraction
+Reference,2085,service output by mode,2W and 3W,32.3178,billion pkm
+Reference,2085,mode share,2W and 3W,0.010101,fraction
+Reference,2085,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2085,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2085,service output by mode,Car,2793.34,billion pkm
+Reference,2085,mode share,Car,0.873064,fraction
+Reference,2085,tech share,Car|Liquids,0.362588,fraction
+Reference,2085,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2085,tech share,Car|NG,0.00317068,fraction
+Reference,2085,tech share,Car|BEV,0.465286,fraction
+Reference,2085,tech share,Car|FCEV,0.162333,fraction
+Reference,2085,service output,trn_pass,3199.47,billion pkm
+Reference,2085,service price,trn_pass,1.12184,2005$/pkm
+Reference,2085,final energy by fuel,H2 LDV,0.321498,EJ
+Reference,2085,final energy by fuel,delivered gas,0.0125124,EJ
+Reference,2085,final energy by fuel,elect_td_trn,0.665623,EJ
+Reference,2085,final energy by fuel,refined liquids enduse,1.77079,EJ
+Reference,2085,CO2 (direct),trn_pass,127.912,MtCO2
+Reference,2090,service output by mode,Walk,51.814,billion pkm
+Reference,2090,mode share,Walk,0.0156285,fraction
+Reference,2090,service output by mode,Cycle,18.505,billion pkm
+Reference,2090,mode share,Cycle,0.00558161,fraction
+Reference,2090,service output by mode,Passenger Rail,5.04096,billion pkm
+Reference,2090,mode share,Passenger Rail,0.00152049,fraction
+Reference,2090,tech share,Passenger Rail|Electric,1,fraction
+Reference,2090,service output by mode,Domestic Aviation,187.633,billion pkm
+Reference,2090,mode share,Domestic Aviation,0.0565951,fraction
+Reference,2090,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2090,service output by mode,Bus,104.999,billion pkm
+Reference,2090,mode share,Bus,0.0316707,fraction
+Reference,2090,tech share,Bus|Liquids,0.501608,fraction
+Reference,2090,tech share,Bus|NG,0.00996229,fraction
+Reference,2090,tech share,Bus|BEV,0.48843,fraction
+Reference,2090,service output by mode,2W and 3W,29.8345,billion pkm
+Reference,2090,mode share,2W and 3W,0.00899889,fraction
+Reference,2090,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2090,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2090,service output by mode,Car,2917.53,billion pkm
+Reference,2090,mode share,Car,0.880005,fraction
+Reference,2090,tech share,Car|Liquids,0.362588,fraction
+Reference,2090,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2090,tech share,Car|NG,0.00317068,fraction
+Reference,2090,tech share,Car|BEV,0.465286,fraction
+Reference,2090,tech share,Car|FCEV,0.162333,fraction
+Reference,2090,service output,trn_pass,3315.35,billion pkm
+Reference,2090,service price,trn_pass,1.18844,2005$/pkm
+Reference,2090,final energy by fuel,H2 LDV,0.335791,EJ
+Reference,2090,final energy by fuel,delivered gas,0.0130263,EJ
+Reference,2090,final energy by fuel,elect_td_trn,0.693722,EJ
+Reference,2090,final energy by fuel,refined liquids enduse,1.842,EJ
+Reference,2090,CO2 (direct),trn_pass,133.057,MtCO2
+Reference,2095,service output by mode,Walk,49.7809,billion pkm
+Reference,2095,mode share,Walk,0.0145419,fraction
+Reference,2095,service output by mode,Cycle,17.7789,billion pkm
+Reference,2095,mode share,Cycle,0.00519353,fraction
+Reference,2095,service output by mode,Passenger Rail,4.86312,billion pkm
+Reference,2095,mode share,Passenger Rail,0.0014206,fraction
+Reference,2095,tech share,Passenger Rail|Electric,1,fraction
+Reference,2095,service output by mode,Domestic Aviation,192.6,billion pkm
+Reference,2095,mode share,Domestic Aviation,0.0562618,fraction
+Reference,2095,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2095,service output by mode,Bus,97.3335,billion pkm
+Reference,2095,mode share,Bus,0.0284328,fraction
+Reference,2095,tech share,Bus|Liquids,0.501608,fraction
+Reference,2095,tech share,Bus|NG,0.00996229,fraction
+Reference,2095,tech share,Bus|BEV,0.48843,fraction
+Reference,2095,service output by mode,2W and 3W,27.557,billion pkm
+Reference,2095,mode share,2W and 3W,0.00804989,fraction
+Reference,2095,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2095,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2095,service output by mode,Car,3033.36,billion pkm
+Reference,2095,mode share,Car,0.886099,fraction
+Reference,2095,tech share,Car|Liquids,0.362588,fraction
+Reference,2095,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2095,tech share,Car|NG,0.00317068,fraction
+Reference,2095,tech share,Car|BEV,0.465286,fraction
+Reference,2095,tech share,Car|FCEV,0.162333,fraction
+Reference,2095,service output,trn_pass,3423.28,billion pkm
+Reference,2095,service price,trn_pass,1.26149,2005$/pkm
+Reference,2095,final energy by fuel,H2 LDV,0.349123,EJ
+Reference,2095,final energy by fuel,delivered gas,0.0135063,EJ
+Reference,2095,final energy by fuel,elect_td_trn,0.719951,EJ
+Reference,2095,final energy by fuel,refined liquids enduse,1.90784,EJ
+Reference,2095,CO2 (direct),trn_pass,137.813,MtCO2
+Reference,2100,service output by mode,Walk,47.8288,billion pkm
+Reference,2100,mode share,Walk,0.0135773,fraction
+Reference,2100,service output by mode,Cycle,17.0817,billion pkm
+Reference,2100,mode share,Cycle,0.00484903,fraction
+Reference,2100,service output by mode,Passenger Rail,4.68989,billion pkm
+Reference,2100,mode share,Passenger Rail,0.00133133,fraction
+Reference,2100,tech share,Passenger Rail|Electric,1,fraction
+Reference,2100,service output by mode,Domestic Aviation,196.857,billion pkm
+Reference,2100,mode share,Domestic Aviation,0.0558825,fraction
+Reference,2100,tech share,Domestic Aviation|Liquids,1,fraction
+Reference,2100,service output by mode,Bus,90.3925,billion pkm
+Reference,2100,mode share,Bus,0.02566,fraction
+Reference,2100,tech share,Bus|Liquids,0.501608,fraction
+Reference,2100,tech share,Bus|NG,0.00996229,fraction
+Reference,2100,tech share,Bus|BEV,0.48843,fraction
+Reference,2100,service output by mode,2W and 3W,25.4755,billion pkm
+Reference,2100,mode share,2W and 3W,0.00723181,fraction
+Reference,2100,tech share,2W and 3W|Liquids,0.244914,fraction
+Reference,2100,tech share,2W and 3W|BEV,0.755086,fraction
+Reference,2100,service output by mode,Car,3140.38,billion pkm
+Reference,2100,mode share,Car,0.891468,fraction
+Reference,2100,tech share,Car|Liquids,0.362588,fraction
+Reference,2100,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Reference,2100,tech share,Car|NG,0.00317068,fraction
+Reference,2100,tech share,Car|BEV,0.465286,fraction
+Reference,2100,tech share,Car|FCEV,0.162333,fraction
+Reference,2100,service output,trn_pass,3522.7,billion pkm
+Reference,2100,service price,trn_pass,1.34166,2005$/pkm
+Reference,2100,final energy by fuel,H2 LDV,0.36144,EJ
+Reference,2100,final energy by fuel,delivered gas,0.0139502,EJ
+Reference,2100,final energy by fuel,elect_td_trn,0.744194,EJ
+Reference,2100,final energy by fuel,refined liquids enduse,1.96805,EJ
+Reference,2100,CO2 (direct),trn_pass,142.164,MtCO2
+BEV-low,2020,service output by mode,Walk,70,billion pkm
+BEV-low,2020,mode share,Walk,0.0463269,fraction
+BEV-low,2020,service output by mode,Cycle,25,billion pkm
+BEV-low,2020,mode share,Cycle,0.0165453,fraction
+BEV-low,2020,service output by mode,Passenger Rail,6,billion pkm
+BEV-low,2020,mode share,Passenger Rail,0.00397088,fraction
+BEV-low,2020,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2020,service output by mode,Domestic Aviation,55,billion pkm
+BEV-low,2020,mode share,Domestic Aviation,0.0363997,fraction
+BEV-low,2020,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2020,service output by mode,Bus,160,billion pkm
+BEV-low,2020,mode share,Bus,0.10589,fraction
+BEV-low,2020,tech share,Bus|Liquids,0.98125,fraction
+BEV-low,2020,tech share,Bus|NG,0.01875,fraction
+BEV-low,2020,tech share,Bus|BEV,0,fraction
+BEV-low,2020,service output by mode,2W and 3W,45,billion pkm
+BEV-low,2020,mode share,2W and 3W,0.0297816,fraction
+BEV-low,2020,tech share,2W and 3W|Liquids,1,fraction
+BEV-low,2020,tech share,2W and 3W|BEV,0,fraction
+BEV-low,2020,service output by mode,Car,1150,billion pkm
+BEV-low,2020,mode share,Car,0.761085,fraction
+BEV-low,2020,tech share,Car|Liquids,0.973913,fraction
+BEV-low,2020,tech share,Car|Hybrid Liquids,0.0173913,fraction
+BEV-low,2020,tech share,Car|NG,0.00869565,fraction
+BEV-low,2020,tech share,Car|BEV,0,fraction
+BEV-low,2020,tech share,Car|FCEV,0,fraction
+BEV-low,2020,service output,trn_pass,1511,billion pkm
+BEV-low,2020,service price,trn_pass,0.547662,2005$/pkm
+BEV-low,2020,final energy by fuel,H2 LDV,0,EJ
+BEV-low,2020,final energy by fuel,delivered gas,0.0153481,EJ
+BEV-low,2020,final energy by fuel,elect_td_trn,0.000277068,EJ
+BEV-low,2020,final energy by fuel,refined liquids enduse,1.83874,EJ
+BEV-low,2020,CO2 (direct),trn_pass,132.943,MtCO2
+BEV-low,2025,service output by mode,Walk,71.2477,billion pkm
+BEV-low,2025,mode share,Walk,0.0432729,fraction
+BEV-low,2025,service output by mode,Cycle,25.4456,billion pkm
+BEV-low,2025,mode share,Cycle,0.0154546,fraction
+BEV-low,2025,service output by mode,Passenger Rail,6.20227,billion pkm
+BEV-low,2025,mode share,Passenger Rail,0.003767,fraction
+BEV-low,2025,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2025,service output by mode,Domestic Aviation,65.1668,billion pkm
+BEV-low,2025,mode share,Domestic Aviation,0.0395796,fraction
+BEV-low,2025,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2025,service output by mode,Bus,170.216,billion pkm
+BEV-low,2025,mode share,Bus,0.103382,fraction
+BEV-low,2025,tech share,Bus|Liquids,0.981131,fraction
+BEV-low,2025,tech share,Bus|NG,0.0188691,fraction
+BEV-low,2025,tech share,Bus|BEV,0,fraction
+BEV-low,2025,service output by mode,2W and 3W,47.5262,billion pkm
+BEV-low,2025,mode share,2W and 3W,0.0288654,fraction
+BEV-low,2025,tech share,2W and 3W|Liquids,1,fraction
+BEV-low,2025,tech share,2W and 3W|BEV,0,fraction
+BEV-low,2025,service output by mode,Car,1260.67,billion pkm
+BEV-low,2025,mode share,Car,0.765678,fraction
+BEV-low,2025,tech share,Car|Liquids,0.974549,fraction
+BEV-low,2025,tech share,Car|Hybrid Liquids,0.0167514,fraction
+BEV-low,2025,tech share,Car|NG,0.00869964,fraction
+BEV-low,2025,tech share,Car|BEV,0,fraction
+BEV-low,2025,tech share,Car|FCEV,0,fraction
+BEV-low,2025,service output,trn_pass,1646.47,billion pkm
+BEV-low,2025,service price,trn_pass,0.581294,2005$/pkm
+BEV-low,2025,final energy by fuel,H2 LDV,0,EJ
+BEV-low,2025,final energy by fuel,delivered gas,0.0166518,EJ
+BEV-low,2025,final energy by fuel,elect_td_trn,0.000286408,EJ
+BEV-low,2025,final energy by fuel,refined liquids enduse,2.00127,EJ
+BEV-low,2025,CO2 (direct),trn_pass,144.692,MtCO2
+BEV-low,2030,service output by mode,Walk,66.248,billion pkm
+BEV-low,2030,mode share,Walk,0.0312386,fraction
+BEV-low,2030,service output by mode,Cycle,23.66,billion pkm
+BEV-low,2030,mode share,Cycle,0.0111566,fraction
+BEV-low,2030,service output by mode,Passenger Rail,5.84912,billion pkm
+BEV-low,2030,mode share,Passenger Rail,0.00275809,fraction
+BEV-low,2030,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2030,service output by mode,Domestic Aviation,70.179,billion pkm
+BEV-low,2030,mode share,Domestic Aviation,0.0330922,fraction
+BEV-low,2030,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2030,service output by mode,Bus,120.731,billion pkm
+BEV-low,2030,mode share,Bus,0.0569293,fraction
+BEV-low,2030,tech share,Bus|Liquids,0.865063,fraction
+BEV-low,2030,tech share,Bus|NG,0.0167445,fraction
+BEV-low,2030,tech share,Bus|BEV,0.118192,fraction
+BEV-low,2030,service output by mode,2W and 3W,32.9351,billion pkm
+BEV-low,2030,mode share,2W and 3W,0.0155302,fraction
+BEV-low,2030,tech share,2W and 3W|Liquids,0.544328,fraction
+BEV-low,2030,tech share,2W and 3W|BEV,0.455672,fraction
+BEV-low,2030,service output by mode,Car,1801.11,billion pkm
+BEV-low,2030,mode share,Car,0.849295,fraction
+BEV-low,2030,tech share,Car|Liquids,0.073843,fraction
+BEV-low,2030,tech share,Car|Hybrid Liquids,0.00121879,fraction
+BEV-low,2030,tech share,Car|NG,0.000658179,fraction
+BEV-low,2030,tech share,Car|BEV,0.92428,fraction
+BEV-low,2030,tech share,Car|FCEV,0,fraction
+BEV-low,2030,service output,trn_pass,2120.71,billion pkm
+BEV-low,2030,service price,trn_pass,0.535349,2005$/pkm
+BEV-low,2030,final energy by fuel,H2 LDV,0,EJ
+BEV-low,2030,final energy by fuel,delivered gas,0.00231127,EJ
+BEV-low,2030,final energy by fuel,elect_td_trn,0.769572,EJ
+BEV-low,2030,final energy by fuel,refined liquids enduse,0.394492,EJ
+BEV-low,2030,CO2 (direct),trn_pass,28.4712,MtCO2
+BEV-low,2035,service output by mode,Walk,66.1157,billion pkm
+BEV-low,2035,mode share,Walk,0.0291189,fraction
+BEV-low,2035,service output by mode,Cycle,23.6127,billion pkm
+BEV-low,2035,mode share,Cycle,0.0103996,fraction
+BEV-low,2035,service output by mode,Passenger Rail,5.91314,billion pkm
+BEV-low,2035,mode share,Passenger Rail,0.00260428,fraction
+BEV-low,2035,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2035,service output by mode,Domestic Aviation,80.687,billion pkm
+BEV-low,2035,mode share,Domestic Aviation,0.0355364,fraction
+BEV-low,2035,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2035,service output by mode,Bus,124.438,billion pkm
+BEV-low,2035,mode share,Bus,0.0548055,fraction
+BEV-low,2035,tech share,Bus|Liquids,0.758691,fraction
+BEV-low,2035,tech share,Bus|NG,0.0147804,fraction
+BEV-low,2035,tech share,Bus|BEV,0.226528,fraction
+BEV-low,2035,service output by mode,2W and 3W,34.3363,billion pkm
+BEV-low,2035,mode share,2W and 3W,0.0151225,fraction
+BEV-low,2035,tech share,2W and 3W|Liquids,0.463031,fraction
+BEV-low,2035,tech share,2W and 3W|BEV,0.536969,fraction
+BEV-low,2035,service output by mode,Car,1935.44,billion pkm
+BEV-low,2035,mode share,Car,0.852413,fraction
+BEV-low,2035,tech share,Car|Liquids,0.0621945,fraction
+BEV-low,2035,tech share,Car|Hybrid Liquids,0.00105156,fraction
+BEV-low,2035,tech share,Car|NG,0.000552887,fraction
+BEV-low,2035,tech share,Car|BEV,0.931994,fraction
+BEV-low,2035,tech share,Car|FCEV,0.00420653,fraction
+BEV-low,2035,service output,trn_pass,2270.55,billion pkm
+BEV-low,2035,service price,trn_pass,0.567924,2005$/pkm
+BEV-low,2035,final energy by fuel,H2 LDV,0.00561444,EJ
+BEV-low,2035,final energy by fuel,delivered gas,0.00208112,EJ
+BEV-low,2035,final energy by fuel,elect_td_trn,0.853998,EJ
+BEV-low,2035,final energy by fuel,refined liquids enduse,0.387402,EJ
+BEV-low,2035,CO2 (direct),trn_pass,27.9497,MtCO2
+BEV-low,2040,service output by mode,Walk,65.5606,billion pkm
+BEV-low,2040,mode share,Walk,0.0271604,fraction
+BEV-low,2040,service output by mode,Cycle,23.4145,billion pkm
+BEV-low,2040,mode share,Cycle,0.00970014,fraction
+BEV-low,2040,service output by mode,Passenger Rail,5.93277,billion pkm
+BEV-low,2040,mode share,Passenger Rail,0.00245782,fraction
+BEV-low,2040,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2040,service output by mode,Domestic Aviation,91.6643,billion pkm
+BEV-low,2040,mode share,Domestic Aviation,0.0379746,fraction
+BEV-low,2040,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2040,service output by mode,Bus,127.61,billion pkm
+BEV-low,2040,mode share,Bus,0.0528664,fraction
+BEV-low,2040,tech share,Bus|Liquids,0.662703,fraction
+BEV-low,2040,tech share,Bus|NG,0.0129937,fraction
+BEV-low,2040,tech share,Bus|BEV,0.324303,fraction
+BEV-low,2040,service output by mode,2W and 3W,35.4729,billion pkm
+BEV-low,2040,mode share,2W and 3W,0.0146957,fraction
+BEV-low,2040,tech share,2W and 3W|Liquids,0.383652,fraction
+BEV-low,2040,tech share,2W and 3W|BEV,0.616348,fraction
+BEV-low,2040,service output by mode,Car,2064.18,billion pkm
+BEV-low,2040,mode share,Car,0.855145,fraction
+BEV-low,2040,tech share,Car|Liquids,0.0518867,fraction
+BEV-low,2040,tech share,Car|Hybrid Liquids,0.000899358,fraction
+BEV-low,2040,tech share,Car|NG,0.000459417,fraction
+BEV-low,2040,tech share,Car|BEV,0.938502,fraction
+BEV-low,2040,tech share,Car|FCEV,0.00825248,fraction
+BEV-low,2040,service output,trn_pass,2413.83,billion pkm
+BEV-low,2040,service price,trn_pass,0.602734,2005$/pkm
+BEV-low,2040,final energy by fuel,H2 LDV,0.0118515,EJ
+BEV-low,2040,final energy by fuel,delivered gas,0.00184412,EJ
+BEV-low,2040,final energy by fuel,elect_td_trn,0.939423,EJ
+BEV-low,2040,final energy by fuel,refined liquids enduse,0.378725,EJ
+BEV-low,2040,CO2 (direct),trn_pass,27.3137,MtCO2
+BEV-low,2045,service output by mode,Walk,64.6725,billion pkm
+BEV-low,2045,mode share,Walk,0.0253543,fraction
+BEV-low,2045,service output by mode,Cycle,23.0973,billion pkm
+BEV-low,2045,mode share,Cycle,0.0090551,fraction
+BEV-low,2045,service output by mode,Passenger Rail,5.91534,billion pkm
+BEV-low,2045,mode share,Passenger Rail,0.00231906,fraction
+BEV-low,2045,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2045,service output by mode,Domestic Aviation,103.003,billion pkm
+BEV-low,2045,mode share,Domestic Aviation,0.0403813,fraction
+BEV-low,2045,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2045,service output by mode,Bus,130.223,billion pkm
+BEV-low,2045,mode share,Bus,0.0510529,fraction
+BEV-low,2045,tech share,Bus|Liquids,0.577144,fraction
+BEV-low,2045,tech share,Bus|NG,0.0113891,fraction
+BEV-low,2045,tech share,Bus|BEV,0.411467,fraction
+BEV-low,2045,service output by mode,2W and 3W,36.3196,billion pkm
+BEV-low,2045,mode share,2W and 3W,0.0142388,fraction
+BEV-low,2045,tech share,2W and 3W|Liquids,0.310026,fraction
+BEV-low,2045,tech share,2W and 3W|BEV,0.689974,fraction
+BEV-low,2045,service output by mode,Car,2187.52,billion pkm
+BEV-low,2045,mode share,Car,0.857599,fraction
+BEV-low,2045,tech share,Car|Liquids,0.0428547,fraction
+BEV-low,2045,tech share,Car|Hybrid Liquids,0.000762134,fraction
+BEV-low,2045,tech share,Car|NG,0.000377386,fraction
+BEV-low,2045,tech share,Car|BEV,0.943915,fraction
+BEV-low,2045,tech share,Car|FCEV,0.0120912,fraction
+BEV-low,2045,service output,trn_pass,2550.75,billion pkm
+BEV-low,2045,service price,trn_pass,0.640012,2005$/pkm
+BEV-low,2045,final energy by fuel,H2 LDV,0.0185728,EJ
+BEV-low,2045,final energy by fuel,delivered gas,0.00160955,EJ
+BEV-low,2045,final energy by fuel,elect_td_trn,1.02581,EJ
+BEV-low,2045,final energy by fuel,refined liquids enduse,0.369226,EJ
+BEV-low,2045,CO2 (direct),trn_pass,26.6189,MtCO2
+BEV-low,2050,service output by mode,Walk,63.5256,billion pkm
+BEV-low,2050,mode share,Walk,0.023691,fraction
+BEV-low,2050,service output by mode,Cycle,22.6877,billion pkm
+BEV-low,2050,mode share,Cycle,0.00846106,fraction
+BEV-low,2050,service output by mode,Passenger Rail,5.8673,billion pkm
+BEV-low,2050,mode share,Passenger Rail,0.00218813,fraction
+BEV-low,2050,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2050,service output by mode,Domestic Aviation,114.576,billion pkm
+BEV-low,2050,mode share,Domestic Aviation,0.0427297,fraction
+BEV-low,2050,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2050,service output by mode,Bus,132.255,billion pkm
+BEV-low,2050,mode share,Bus,0.0493226,fraction
+BEV-low,2050,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2050,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2050,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2050,service output by mode,2W and 3W,36.8447,billion pkm
+BEV-low,2050,mode share,2W and 3W,0.0137407,fraction
+BEV-low,2050,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2050,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2050,service output by mode,Car,2305.67,billion pkm
+BEV-low,2050,mode share,Car,0.859867,fraction
+BEV-low,2050,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2050,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2050,tech share,Car|NG,0.000306245,fraction
+BEV-low,2050,tech share,Car|BEV,0.948354,fraction
+BEV-low,2050,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2050,service output,trn_pass,2681.43,billion pkm
+BEV-low,2050,service price,trn_pass,0.680012,2005$/pkm
+BEV-low,2050,final energy by fuel,H2 LDV,0.0256311,EJ
+BEV-low,2050,final energy by fuel,delivered gas,0.00138463,EJ
+BEV-low,2050,final energy by fuel,elect_td_trn,1.11321,EJ
+BEV-low,2050,final energy by fuel,refined liquids enduse,0.359458,EJ
+BEV-low,2050,CO2 (direct),trn_pass,25.9052,MtCO2
+BEV-low,2055,service output by mode,Walk,61.7345,billion pkm
+BEV-low,2055,mode share,Walk,0.0216889,fraction
+BEV-low,2055,service output by mode,Cycle,22.048,billion pkm
+BEV-low,2055,mode share,Cycle,0.00774602,fraction
+BEV-low,2055,service output by mode,Passenger Rail,5.75262,billion pkm
+BEV-low,2055,mode share,Passenger Rail,0.00202104,fraction
+BEV-low,2055,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2055,service output by mode,Domestic Aviation,123.558,billion pkm
+BEV-low,2055,mode share,Domestic Aviation,0.0434089,fraction
+BEV-low,2055,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2055,service output by mode,Bus,124.48,billion pkm
+BEV-low,2055,mode share,Bus,0.0437329,fraction
+BEV-low,2055,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2055,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2055,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2055,service output by mode,2W and 3W,34.9495,billion pkm
+BEV-low,2055,mode share,2W and 3W,0.0122786,fraction
+BEV-low,2055,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2055,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2055,service output by mode,Car,2473.85,billion pkm
+BEV-low,2055,mode share,Car,0.869124,fraction
+BEV-low,2055,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2055,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2055,tech share,Car|NG,0.000306245,fraction
+BEV-low,2055,tech share,Car|BEV,0.948354,fraction
+BEV-low,2055,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2055,service output,trn_pass,2846.37,billion pkm
+BEV-low,2055,service price,trn_pass,0.714778,2005$/pkm
+BEV-low,2055,final energy by fuel,H2 LDV,0.0275006,EJ
+BEV-low,2055,final energy by fuel,delivered gas,0.00143089,EJ
+BEV-low,2055,final energy by fuel,elect_td_trn,1.19256,EJ
+BEV-low,2055,final energy by fuel,refined liquids enduse,0.383257,EJ
+BEV-low,2055,CO2 (direct),trn_pass,27.6179,MtCO2
+BEV-low,2060,service output by mode,Walk,59.8533,billion pkm
+BEV-low,2060,mode share,Walk,0.0199184,fraction
+BEV-low,2060,service output by mode,Cycle,21.3762,billion pkm
+BEV-low,2060,mode share,Cycle,0.00711372,fraction
+BEV-low,2060,service output by mode,Passenger Rail,5.62246,billion pkm
+BEV-low,2060,mode share,Passenger Rail,0.00187108,fraction
+BEV-low,2060,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2060,service output by mode,Domestic Aviation,132.282,billion pkm
+BEV-low,2060,mode share,Domestic Aviation,0.0440217,fraction
+BEV-low,2060,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2060,service output by mode,Bus,116.94,billion pkm
+BEV-low,2060,mode share,Bus,0.0389163,fraction
+BEV-low,2060,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2060,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2060,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2060,service output by mode,2W and 3W,33.0347,billion pkm
+BEV-low,2060,mode share,2W and 3W,0.0109935,fraction
+BEV-low,2060,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2060,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2060,service output by mode,Car,2635.81,billion pkm
+BEV-low,2060,mode share,Car,0.877165,fraction
+BEV-low,2060,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2060,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2060,tech share,Car|NG,0.000306245,fraction
+BEV-low,2060,tech share,Car|BEV,0.948354,fraction
+BEV-low,2060,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2060,service output,trn_pass,3004.92,billion pkm
+BEV-low,2060,service price,trn_pass,0.752737,2005$/pkm
+BEV-low,2060,final energy by fuel,H2 LDV,0.0293011,EJ
+BEV-low,2060,final energy by fuel,delivered gas,0.00147528,EJ
+BEV-low,2060,final energy by fuel,elect_td_trn,1.26896,EJ
+BEV-low,2060,final energy by fuel,refined liquids enduse,0.406295,EJ
+BEV-low,2060,CO2 (direct),trn_pass,29.2759,MtCO2
+BEV-low,2065,service output by mode,Walk,57.9252,billion pkm
+BEV-low,2065,mode share,Walk,0.0183532,fraction
+BEV-low,2065,service output by mode,Cycle,20.6876,billion pkm
+BEV-low,2065,mode share,Cycle,0.00655471,fraction
+BEV-low,2065,service output by mode,Passenger Rail,5.48136,billion pkm
+BEV-low,2065,mode share,Passenger Rail,0.00173673,fraction
+BEV-low,2065,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2065,service output by mode,Domestic Aviation,140.676,billion pkm
+BEV-low,2065,mode share,Domestic Aviation,0.0445723,fraction
+BEV-low,2065,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2065,service output by mode,Bus,109.735,billion pkm
+BEV-low,2065,mode share,Bus,0.0347688,fraction
+BEV-low,2065,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2065,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2065,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2065,service output by mode,2W and 3W,31.1405,billion pkm
+BEV-low,2065,mode share,2W and 3W,0.00986663,fraction
+BEV-low,2065,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2065,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2065,service output by mode,Car,2790.49,billion pkm
+BEV-low,2065,mode share,Car,0.884148,fraction
+BEV-low,2065,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2065,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2065,tech share,Car|NG,0.000306245,fraction
+BEV-low,2065,tech share,Car|BEV,0.948354,fraction
+BEV-low,2065,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2065,service output,trn_pass,3156.14,billion pkm
+BEV-low,2065,service price,trn_pass,0.794268,2005$/pkm
+BEV-low,2065,final energy by fuel,H2 LDV,0.0310207,EJ
+BEV-low,2065,final energy by fuel,delivered gas,0.00151766,EJ
+BEV-low,2065,final energy by fuel,elect_td_trn,1.34191,EJ
+BEV-low,2065,final energy by fuel,refined liquids enduse,0.428405,EJ
+BEV-low,2065,CO2 (direct),trn_pass,30.8671,MtCO2
+BEV-low,2070,service output by mode,Walk,55.9834,billion pkm
+BEV-low,2070,mode share,Walk,0.016969,fraction
+BEV-low,2070,service output by mode,Cycle,19.9941,billion pkm
+BEV-low,2070,mode share,Cycle,0.00606035,fraction
+BEV-low,2070,service output by mode,Passenger Rail,5.33301,billion pkm
+BEV-low,2070,mode share,Passenger Rail,0.00161648,fraction
+BEV-low,2070,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2070,service output by mode,Domestic Aviation,148.675,billion pkm
+BEV-low,2070,mode share,Domestic Aviation,0.0450645,fraction
+BEV-low,2070,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2070,service output by mode,Bus,102.926,billion pkm
+BEV-low,2070,mode share,Bus,0.0311975,fraction
+BEV-low,2070,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2070,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2070,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2070,service output by mode,2W and 3W,29.2966,billion pkm
+BEV-low,2070,mode share,2W and 3W,0.00888001,fraction
+BEV-low,2070,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2070,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2070,service output by mode,Car,2936.95,billion pkm
+BEV-low,2070,mode share,Car,0.890212,fraction
+BEV-low,2070,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2070,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2070,tech share,Car|NG,0.000306245,fraction
+BEV-low,2070,tech share,Car|BEV,0.948354,fraction
+BEV-low,2070,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2070,service output,trn_pass,3299.16,billion pkm
+BEV-low,2070,service price,trn_pass,0.839778,2005$/pkm
+BEV-low,2070,final energy by fuel,H2 LDV,0.0326488,EJ
+BEV-low,2070,final energy by fuel,delivered gas,0.00155783,EJ
+BEV-low,2070,final energy by fuel,elect_td_trn,1.41098,EJ
+BEV-low,2070,final energy by fuel,refined liquids enduse,0.44943,EJ
+BEV-low,2070,CO2 (direct),trn_pass,32.3801,MtCO2
+BEV-low,2075,service output by mode,Walk,54.0533,billion pkm
+BEV-low,2075,mode share,Walk,0.0157441,fraction
+BEV-low,2075,service output by mode,Cycle,19.3048,billion pkm
+BEV-low,2075,mode share,Cycle,0.00562289,fraction
+BEV-low,2075,service output by mode,Passenger Rail,5.18041,billion pkm
+BEV-low,2075,mode share,Passenger Rail,0.0015089,fraction
+BEV-low,2075,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2075,service output by mode,Domestic Aviation,156.218,billion pkm
+BEV-low,2075,mode share,Domestic Aviation,0.0455015,fraction
+BEV-low,2075,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2075,service output by mode,Bus,96.5452,billion pkm
+BEV-low,2075,mode share,Bus,0.0281207,fraction
+BEV-low,2075,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2075,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2075,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2075,service output by mode,2W and 3W,27.5239,billion pkm
+BEV-low,2075,mode share,2W and 3W,0.00801688,fraction
+BEV-low,2075,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2075,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2075,service output by mode,Car,3074.42,billion pkm
+BEV-low,2075,mode share,Car,0.895485,fraction
+BEV-low,2075,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2075,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2075,tech share,Car|NG,0.000306245,fraction
+BEV-low,2075,tech share,Car|BEV,0.948354,fraction
+BEV-low,2075,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2075,service output,trn_pass,3433.24,billion pkm
+BEV-low,2075,service price,trn_pass,0.889702,2005$/pkm
+BEV-low,2075,final energy by fuel,H2 LDV,0.0341769,EJ
+BEV-low,2075,final energy by fuel,delivered gas,0.00159556,EJ
+BEV-low,2075,final energy by fuel,elect_td_trn,1.4758,EJ
+BEV-low,2075,final energy by fuel,refined liquids enduse,0.469224,EJ
+BEV-low,2075,CO2 (direct),trn_pass,33.8046,MtCO2
+BEV-low,2080,service output by mode,Walk,52.1538,billion pkm
+BEV-low,2080,mode share,Walk,0.0146592,fraction
+BEV-low,2080,service output by mode,Cycle,18.6264,billion pkm
+BEV-low,2080,mode share,Cycle,0.00523542,fraction
+BEV-low,2080,service output by mode,Passenger Rail,5.02592,billion pkm
+BEV-low,2080,mode share,Passenger Rail,0.00141266,fraction
+BEV-low,2080,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2080,service output by mode,Domestic Aviation,163.251,billion pkm
+BEV-low,2080,mode share,Domestic Aviation,0.045886,fraction
+BEV-low,2080,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2080,service output by mode,Bus,90.6059,billion pkm
+BEV-low,2080,mode share,Bus,0.0254671,fraction
+BEV-low,2080,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2080,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2080,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2080,service output by mode,2W and 3W,25.8362,billion pkm
+BEV-low,2080,mode share,2W and 3W,0.00726193,fraction
+BEV-low,2080,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2080,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2080,service output by mode,Car,3202.26,billion pkm
+BEV-low,2080,mode share,Car,0.900078,fraction
+BEV-low,2080,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2080,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2080,tech share,Car|NG,0.000306245,fraction
+BEV-low,2080,tech share,Car|BEV,0.948354,fraction
+BEV-low,2080,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2080,service output,trn_pass,3557.76,billion pkm
+BEV-low,2080,service price,trn_pass,0.944514,2005$/pkm
+BEV-low,2080,final energy by fuel,H2 LDV,0.0355981,EJ
+BEV-low,2080,final energy by fuel,delivered gas,0.00163064,EJ
+BEV-low,2080,final energy by fuel,elect_td_trn,1.53608,EJ
+BEV-low,2080,final energy by fuel,refined liquids enduse,0.487661,EJ
+BEV-low,2080,CO2 (direct),trn_pass,35.1315,MtCO2
+BEV-low,2085,service output by mode,Walk,50.2986,billion pkm
+BEV-low,2085,mode share,Walk,0.013697,fraction
+BEV-low,2085,service output by mode,Cycle,17.9638,billion pkm
+BEV-low,2085,mode share,Cycle,0.00489179,fraction
+BEV-low,2085,service output by mode,Passenger Rail,4.8714,billion pkm
+BEV-low,2085,mode share,Passenger Rail,0.00132655,fraction
+BEV-low,2085,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2085,service output by mode,Domestic Aviation,169.731,billion pkm
+BEV-low,2085,mode share,Domestic Aviation,0.0462201,fraction
+BEV-low,2085,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2085,service output by mode,Bus,85.1049,billion pkm
+BEV-low,2085,mode share,Bus,0.0231752,fraction
+BEV-low,2085,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2085,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2085,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2085,service output by mode,2W and 3W,24.2417,billion pkm
+BEV-low,2085,mode share,2W and 3W,0.00660134,fraction
+BEV-low,2085,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2085,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2085,service output by mode,Car,3320.02,billion pkm
+BEV-low,2085,mode share,Car,0.904088,fraction
+BEV-low,2085,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2085,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2085,tech share,Car|NG,0.000306245,fraction
+BEV-low,2085,tech share,Car|BEV,0.948354,fraction
+BEV-low,2085,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2085,service output,trn_pass,3672.24,billion pkm
+BEV-low,2085,service price,trn_pass,1.00473,2005$/pkm
+BEV-low,2085,final energy by fuel,H2 LDV,0.0369072,EJ
+BEV-low,2085,final energy by fuel,delivered gas,0.00166285,EJ
+BEV-low,2085,final energy by fuel,elect_td_trn,1.59159,EJ
+BEV-low,2085,final energy by fuel,refined liquids enduse,0.504633,EJ
+BEV-low,2085,CO2 (direct),trn_pass,36.3529,MtCO2
+BEV-low,2090,service output by mode,Walk,48.4973,billion pkm
+BEV-low,2090,mode share,Walk,0.0128425,fraction
+BEV-low,2090,service output by mode,Cycle,17.3205,billion pkm
+BEV-low,2090,mode share,Cycle,0.0045866,fraction
+BEV-low,2090,service output by mode,Passenger Rail,4.71828,billion pkm
+BEV-low,2090,mode share,Passenger Rail,0.00124944,fraction
+BEV-low,2090,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2090,service output by mode,Domestic Aviation,175.622,billion pkm
+BEV-low,2090,mode share,Domestic Aviation,0.0465062,fraction
+BEV-low,2090,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2090,service output by mode,Bus,80.0287,billion pkm
+BEV-low,2090,mode share,Bus,0.0211923,fraction
+BEV-low,2090,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2090,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2090,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2090,service output by mode,2W and 3W,22.7441,billion pkm
+BEV-low,2090,mode share,2W and 3W,0.00602283,fraction
+BEV-low,2090,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2090,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2090,service output by mode,Car,3427.39,billion pkm
+BEV-low,2090,mode share,Car,0.9076,fraction
+BEV-low,2090,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2090,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2090,tech share,Car|NG,0.000306245,fraction
+BEV-low,2090,tech share,Car|BEV,0.948354,fraction
+BEV-low,2090,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2090,service output,trn_pass,3776.32,billion pkm
+BEV-low,2090,service price,trn_pass,1.07089,2005$/pkm
+BEV-low,2090,final energy by fuel,H2 LDV,0.0381007,EJ
+BEV-low,2090,final energy by fuel,delivered gas,0.00169203,EJ
+BEV-low,2090,final energy by fuel,elect_td_trn,1.64219,EJ
+BEV-low,2090,final energy by fuel,refined liquids enduse,0.520057,EJ
+BEV-low,2090,CO2 (direct),trn_pass,37.4628,MtCO2
+BEV-low,2095,service output by mode,Walk,46.7562,billion pkm
+BEV-low,2095,mode share,Walk,0.0120823,fraction
+BEV-low,2095,service output by mode,Cycle,16.6987,billion pkm
+BEV-low,2095,mode share,Cycle,0.00431512,fraction
+BEV-low,2095,service output by mode,Passenger Rail,4.56764,billion pkm
+BEV-low,2095,mode share,Passenger Rail,0.00118033,fraction
+BEV-low,2095,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2095,service output by mode,Domestic Aviation,180.897,billion pkm
+BEV-low,2095,mode share,Domestic Aviation,0.0467459,fraction
+BEV-low,2095,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2095,service output by mode,Bus,75.3574,billion pkm
+BEV-low,2095,mode share,Bus,0.0194732,fraction
+BEV-low,2095,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2095,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2095,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2095,service output by mode,2W and 3W,21.3442,billion pkm
+BEV-low,2095,mode share,2W and 3W,0.00551558,fraction
+BEV-low,2095,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2095,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2095,service output by mode,Car,3524.18,billion pkm
+BEV-low,2095,mode share,Car,0.910688,fraction
+BEV-low,2095,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2095,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2095,tech share,Car|NG,0.000306245,fraction
+BEV-low,2095,tech share,Car|BEV,0.948354,fraction
+BEV-low,2095,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2095,service output,trn_pass,3869.8,billion pkm
+BEV-low,2095,service price,trn_pass,1.14363,2005$/pkm
+BEV-low,2095,final energy by fuel,H2 LDV,0.0391767,EJ
+BEV-low,2095,final energy by fuel,delivered gas,0.00171804,EJ
+BEV-low,2095,final energy by fuel,elect_td_trn,1.68779,EJ
+BEV-low,2095,final energy by fuel,refined liquids enduse,0.533869,EJ
+BEV-low,2095,CO2 (direct),trn_pass,38.4568,MtCO2
+BEV-low,2100,service output by mode,Walk,45.0792,billion pkm
+BEV-low,2100,mode share,Walk,0.0114049,fraction
+BEV-low,2100,service output by mode,Cycle,16.0997,billion pkm
+BEV-low,2100,mode share,Cycle,0.00407318,fraction
+BEV-low,2100,service output by mode,Passenger Rail,4.42029,billion pkm
+BEV-low,2100,mode share,Passenger Rail,0.00111832,fraction
+BEV-low,2100,tech share,Passenger Rail|Electric,1,fraction
+BEV-low,2100,service output by mode,Domestic Aviation,185.541,billion pkm
+BEV-low,2100,mode share,Domestic Aviation,0.0469413,fraction
+BEV-low,2100,tech share,Domestic Aviation|Liquids,1,fraction
+BEV-low,2100,service output by mode,Bus,71.0666,billion pkm
+BEV-low,2100,mode share,Bus,0.0179796,fraction
+BEV-low,2100,tech share,Bus|Liquids,0.501608,fraction
+BEV-low,2100,tech share,Bus|NG,0.00996229,fraction
+BEV-low,2100,tech share,Bus|BEV,0.48843,fraction
+BEV-low,2100,service output by mode,2W and 3W,20.0402,billion pkm
+BEV-low,2100,mode share,2W and 3W,0.0050701,fraction
+BEV-low,2100,tech share,2W and 3W|Liquids,0.244914,fraction
+BEV-low,2100,tech share,2W and 3W|BEV,0.755086,fraction
+BEV-low,2100,service output by mode,Car,3610.37,billion pkm
+BEV-low,2100,mode share,Car,0.913413,fraction
+BEV-low,2100,tech share,Car|Liquids,0.035021,fraction
+BEV-low,2100,tech share,Car|Hybrid Liquids,0.000639598,fraction
+BEV-low,2100,tech share,Car|NG,0.000306245,fraction
+BEV-low,2100,tech share,Car|BEV,0.948354,fraction
+BEV-low,2100,tech share,Car|FCEV,0.0156792,fraction
+BEV-low,2100,service output,trn_pass,3952.62,billion pkm
+BEV-low,2100,service price,trn_pass,1.22359,2005$/pkm
+BEV-low,2100,final energy by fuel,H2 LDV,0.0401348,EJ
+BEV-low,2100,final energy by fuel,delivered gas,0.00174078,EJ
+BEV-low,2100,final energy by fuel,elect_td_trn,1.72837,EJ
+BEV-low,2100,final energy by fuel,refined liquids enduse,0.546033,EJ
+BEV-low,2100,CO2 (direct),trn_pass,39.3322,MtCO2
+Carbon-price,2020,service output by mode,Walk,70,billion pkm
+Carbon-price,2020,mode share,Walk,0.0463269,fraction
+Carbon-price,2020,service output by mode,Cycle,25,billion pkm
+Carbon-price,2020,mode share,Cycle,0.0165453,fraction
+Carbon-price,2020,service output by mode,Passenger Rail,6,billion pkm
+Carbon-price,2020,mode share,Passenger Rail,0.00397088,fraction
+Carbon-price,2020,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2020,service output by mode,Domestic Aviation,55,billion pkm
+Carbon-price,2020,mode share,Domestic Aviation,0.0363997,fraction
+Carbon-price,2020,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2020,service output by mode,Bus,160,billion pkm
+Carbon-price,2020,mode share,Bus,0.10589,fraction
+Carbon-price,2020,tech share,Bus|Liquids,0.98125,fraction
+Carbon-price,2020,tech share,Bus|NG,0.01875,fraction
+Carbon-price,2020,tech share,Bus|BEV,0,fraction
+Carbon-price,2020,service output by mode,2W and 3W,45,billion pkm
+Carbon-price,2020,mode share,2W and 3W,0.0297816,fraction
+Carbon-price,2020,tech share,2W and 3W|Liquids,1,fraction
+Carbon-price,2020,tech share,2W and 3W|BEV,0,fraction
+Carbon-price,2020,service output by mode,Car,1150,billion pkm
+Carbon-price,2020,mode share,Car,0.761085,fraction
+Carbon-price,2020,tech share,Car|Liquids,0.973913,fraction
+Carbon-price,2020,tech share,Car|Hybrid Liquids,0.0173913,fraction
+Carbon-price,2020,tech share,Car|NG,0.00869565,fraction
+Carbon-price,2020,tech share,Car|BEV,0,fraction
+Carbon-price,2020,tech share,Car|FCEV,0,fraction
+Carbon-price,2020,service output,trn_pass,1511,billion pkm
+Carbon-price,2020,service price,trn_pass,0.547662,2005$/pkm
+Carbon-price,2020,final energy by fuel,H2 LDV,0,EJ
+Carbon-price,2020,final energy by fuel,delivered gas,0.0153481,EJ
+Carbon-price,2020,final energy by fuel,elect_td_trn,0.000277068,EJ
+Carbon-price,2020,final energy by fuel,refined liquids enduse,1.83874,EJ
+Carbon-price,2020,CO2 (direct),trn_pass,132.943,MtCO2
+Carbon-price,2025,service output by mode,Walk,71.5555,billion pkm
+Carbon-price,2025,mode share,Walk,0.0440496,fraction
+Carbon-price,2025,service output by mode,Cycle,25.5555,billion pkm
+Carbon-price,2025,mode share,Cycle,0.015732,fraction
+Carbon-price,2025,service output by mode,Passenger Rail,6.22907,billion pkm
+Carbon-price,2025,mode share,Passenger Rail,0.00383462,fraction
+Carbon-price,2025,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2025,service output by mode,Domestic Aviation,59.9788,billion pkm
+Carbon-price,2025,mode share,Domestic Aviation,0.036923,fraction
+Carbon-price,2025,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2025,service output by mode,Bus,172.184,billion pkm
+Carbon-price,2025,mode share,Bus,0.105997,fraction
+Carbon-price,2025,tech share,Bus|Liquids,0.980891,fraction
+Carbon-price,2025,tech share,Bus|NG,0.0191088,fraction
+Carbon-price,2025,tech share,Bus|BEV,0,fraction
+Carbon-price,2025,service output by mode,2W and 3W,47.1926,billion pkm
+Carbon-price,2025,mode share,2W and 3W,0.0290518,fraction
+Carbon-price,2025,tech share,2W and 3W|Liquids,1,fraction
+Carbon-price,2025,tech share,2W and 3W|BEV,0,fraction
+Carbon-price,2025,service output by mode,Car,1241.73,billion pkm
+Carbon-price,2025,mode share,Car,0.764412,fraction
+Carbon-price,2025,tech share,Car|Liquids,0.973755,fraction
+Carbon-price,2025,tech share,Car|Hybrid Liquids,0.0172324,fraction
+Carbon-price,2025,tech share,Car|NG,0.00901259,fraction
+Carbon-price,2025,tech share,Car|BEV,0,fraction
+Carbon-price,2025,tech share,Car|FCEV,0,fraction
+Carbon-price,2025,service output,trn_pass,1624.43,billion pkm
+Carbon-price,2025,service price,trn_pass,0.587596,2005$/pkm
+Carbon-price,2025,final energy by fuel,H2 LDV,0,EJ
+Carbon-price,2025,final energy by fuel,delivered gas,0.0169958,EJ
+Carbon-price,2025,final energy by fuel,elect_td_trn,0.000287646,EJ
+Carbon-price,2025,final energy by fuel,refined liquids enduse,1.96221,EJ
+Carbon-price,2025,CO2 (direct),trn_pass,141.902,MtCO2
+Carbon-price,2030,service output by mode,Walk,71.9163,billion pkm
+Carbon-price,2030,mode share,Walk,0.0408639,fraction
+Carbon-price,2030,service output by mode,Cycle,25.6844,billion pkm
+Carbon-price,2030,mode share,Cycle,0.0145942,fraction
+Carbon-price,2030,service output by mode,Passenger Rail,6.34958,billion pkm
+Carbon-price,2030,mode share,Passenger Rail,0.00360792,fraction
+Carbon-price,2030,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2030,service output by mode,Domestic Aviation,68.6705,billion pkm
+Carbon-price,2030,mode share,Domestic Aviation,0.0390196,fraction
+Carbon-price,2030,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2030,service output by mode,Bus,176.378,billion pkm
+Carbon-price,2030,mode share,Bus,0.10022,fraction
+Carbon-price,2030,tech share,Bus|Liquids,0.858595,fraction
+Carbon-price,2030,tech share,Bus|NG,0.0168944,fraction
+Carbon-price,2030,tech share,Bus|BEV,0.124511,fraction
+Carbon-price,2030,service output by mode,2W and 3W,48.3496,billion pkm
+Carbon-price,2030,mode share,2W and 3W,0.0274729,fraction
+Carbon-price,2030,tech share,2W and 3W|Liquids,0.476519,fraction
+Carbon-price,2030,tech share,2W and 3W|BEV,0.523481,fraction
+Carbon-price,2030,service output by mode,Car,1362.55,billion pkm
+Carbon-price,2030,mode share,Car,0.774221,fraction
+Carbon-price,2030,tech share,Car|Liquids,0.439511,fraction
+Carbon-price,2030,tech share,Car|Hybrid Liquids,0.00751641,fraction
+Carbon-price,2030,tech share,Car|NG,0.00410047,fraction
+Carbon-price,2030,tech share,Car|BEV,0.548872,fraction
+Carbon-price,2030,tech share,Car|FCEV,0,fraction
+Carbon-price,2030,service output,trn_pass,1759.9,billion pkm
+Carbon-price,2030,service price,trn_pass,0.621487,2005$/pkm
+Carbon-price,2030,final energy by fuel,H2 LDV,0,EJ
+Carbon-price,2030,final energy by fuel,delivered gas,0.00882395,EJ
+Carbon-price,2030,final energy by fuel,elect_td_trn,0.352047,EJ
+Carbon-price,2030,final energy by fuel,refined liquids enduse,1.06947,EJ
+Carbon-price,2030,CO2 (direct),trn_pass,77.3189,MtCO2
+Carbon-price,2035,service output by mode,Walk,71.9425,billion pkm
+Carbon-price,2035,mode share,Walk,0.0383473,fraction
+Carbon-price,2035,service output by mode,Cycle,25.6937,billion pkm
+Carbon-price,2035,mode share,Cycle,0.0136955,fraction
+Carbon-price,2035,service output by mode,Passenger Rail,6.43427,billion pkm
+Carbon-price,2035,mode share,Passenger Rail,0.00342964,fraction
+Carbon-price,2035,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2035,service output by mode,Domestic Aviation,77.6327,billion pkm
+Carbon-price,2035,mode share,Domestic Aviation,0.0413804,fraction
+Carbon-price,2035,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2035,service output by mode,Bus,182.94,billion pkm
+Carbon-price,2035,mode share,Bus,0.0975118,fraction
+Carbon-price,2035,tech share,Bus|Liquids,0.745129,fraction
+Carbon-price,2035,tech share,Bus|NG,0.0148234,fraction
+Carbon-price,2035,tech share,Bus|BEV,0.240048,fraction
+Carbon-price,2035,service output by mode,2W and 3W,50.9406,billion pkm
+Carbon-price,2035,mode share,2W and 3W,0.0271528,fraction
+Carbon-price,2035,tech share,2W and 3W|Liquids,0.378716,fraction
+Carbon-price,2035,tech share,2W and 3W|BEV,0.621284,fraction
+Carbon-price,2035,service output by mode,Car,1460.49,billion pkm
+Carbon-price,2035,mode share,Car,0.778483,fraction
+Carbon-price,2035,tech share,Car|Liquids,0.402973,fraction
+Carbon-price,2035,tech share,Car|Hybrid Liquids,0.00711754,fraction
+Carbon-price,2035,tech share,Car|NG,0.00379585,fraction
+Carbon-price,2035,tech share,Car|BEV,0.552293,fraction
+Carbon-price,2035,tech share,Car|FCEV,0.0338214,fraction
+Carbon-price,2035,service output,trn_pass,1876.08,billion pkm
+Carbon-price,2035,service price,trn_pass,0.661597,2005$/pkm
+Carbon-price,2035,final energy by fuel,H2 LDV,0.0340638,EJ
+Carbon-price,2035,final energy by fuel,delivered gas,0.00862871,EJ
+Carbon-price,2035,final energy by fuel,elect_td_trn,0.391218,EJ
+Carbon-price,2035,final energy by fuel,refined liquids enduse,1.0557,EJ
+Carbon-price,2035,CO2 (direct),trn_pass,76.3191,MtCO2
+Carbon-price,2040,service output by mode,Walk,71.4744,billion pkm
+Carbon-price,2040,mode share,Walk,0.0359625,fraction
+Carbon-price,2040,service output by mode,Cycle,25.5266,billion pkm
+Carbon-price,2040,mode share,Cycle,0.0128437,fraction
+Carbon-price,2040,service output by mode,Passenger Rail,6.46793,billion pkm
+Carbon-price,2040,mode share,Passenger Rail,0.00325435,fraction
+Carbon-price,2040,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2040,service output by mode,Domestic Aviation,86.4237,billion pkm
+Carbon-price,2040,mode share,Domestic Aviation,0.0434842,fraction
+Carbon-price,2040,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2040,service output by mode,Bus,188.455,billion pkm
+Carbon-price,2040,mode share,Bus,0.0948213,fraction
+Carbon-price,2040,tech share,Bus|Liquids,0.641303,fraction
+Carbon-price,2040,tech share,Bus|NG,0.0129146,fraction
+Carbon-price,2040,tech share,Bus|BEV,0.345783,fraction
+Carbon-price,2040,service output by mode,2W and 3W,53.1413,billion pkm
+Carbon-price,2040,mode share,2W and 3W,0.0267381,fraction
+Carbon-price,2040,tech share,2W and 3W|Liquids,0.285619,fraction
+Carbon-price,2040,tech share,2W and 3W|BEV,0.714381,fraction
+Carbon-price,2040,service output by mode,Car,1555.98,billion pkm
+Carbon-price,2040,mode share,Car,0.782896,fraction
+Carbon-price,2040,tech share,Car|Liquids,0.362139,fraction
+Carbon-price,2040,tech share,Car|Hybrid Liquids,0.0066224,fraction
+Carbon-price,2040,tech share,Car|NG,0.00345074,fraction
+Carbon-price,2040,tech share,Car|BEV,0.55206,fraction
+Carbon-price,2040,tech share,Car|FCEV,0.0757277,fraction
+Carbon-price,2040,service output,trn_pass,1987.47,billion pkm
+Carbon-price,2040,service price,trn_pass,0.704125,2005$/pkm
+Carbon-price,2040,final energy by fuel,H2 LDV,0.0819792,EJ
+Carbon-price,2040,final energy by fuel,delivered gas,0.00824588,EJ
+Carbon-price,2040,final energy by fuel,elect_td_trn,0.428872,EJ
+Carbon-price,2040,final energy by fuel,refined liquids enduse,1.0191,EJ
+Carbon-price,2040,CO2 (direct),trn_pass,73.6683,MtCO2
+Carbon-price,2045,service output by mode,Walk,70.603,billion pkm
+Carbon-price,2045,mode share,Walk,0.0337051,fraction
+Carbon-price,2045,service output by mode,Cycle,25.2154,billion pkm
+Carbon-price,2045,mode share,Cycle,0.0120375,fraction
+Carbon-price,2045,service output by mode,Passenger Rail,6.45778,billion pkm
+Carbon-price,2045,mode share,Passenger Rail,0.00308287,fraction
+Carbon-price,2045,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2045,service output by mode,Domestic Aviation,94.8038,billion pkm
+Carbon-price,2045,mode share,Domestic Aviation,0.0452582,fraction
+Carbon-price,2045,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2045,service output by mode,Bus,192.79,billion pkm
+Carbon-price,2045,mode share,Bus,0.0920357,fraction
+Carbon-price,2045,tech share,Bus|Liquids,0.547281,fraction
+Carbon-price,2045,tech share,Bus|NG,0.0111742,fraction
+Carbon-price,2045,tech share,Bus|BEV,0.441545,fraction
+Carbon-price,2045,service output by mode,2W and 3W,54.8316,billion pkm
+Carbon-price,2045,mode share,2W and 3W,0.026176,fraction
+Carbon-price,2045,tech share,2W and 3W|Liquids,0.203431,fraction
+Carbon-price,2045,tech share,2W and 3W|BEV,0.796569,fraction
+Carbon-price,2045,service output by mode,Car,1650.03,billion pkm
+Carbon-price,2045,mode share,Car,0.787705,fraction
+Carbon-price,2045,tech share,Car|Liquids,0.317264,fraction
+Carbon-price,2045,tech share,Car|Hybrid Liquids,0.00602371,fraction
+Carbon-price,2045,tech share,Car|NG,0.00306633,fraction
+Carbon-price,2045,tech share,Car|BEV,0.547023,fraction
+Carbon-price,2045,tech share,Car|FCEV,0.126623,fraction
+Carbon-price,2045,service output,trn_pass,2094.73,billion pkm
+Carbon-price,2045,service price,trn_pass,0.749239,2005$/pkm
+Carbon-price,2045,final energy by fuel,H2 LDV,0.14671,EJ
+Carbon-price,2045,final energy by fuel,delivered gas,0.00767628,EJ
+Carbon-price,2045,final energy by fuel,elect_td_trn,0.463549,EJ
+Carbon-price,2045,final energy by fuel,refined liquids enduse,0.959885,EJ
+Carbon-price,2045,CO2 (direct),trn_pass,69.3834,MtCO2
+Carbon-price,2050,service output by mode,Walk,69.4039,billion pkm
+Carbon-price,2050,mode share,Walk,0.031569,fraction
+Carbon-price,2050,service output by mode,Cycle,24.7871,billion pkm
+Carbon-price,2050,mode share,Cycle,0.0112746,fraction
+Carbon-price,2050,service output by mode,Passenger Rail,6.41022,billion pkm
+Carbon-price,2050,mode share,Passenger Rail,0.00291575,fraction
+Carbon-price,2050,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2050,service output by mode,Domestic Aviation,102.52,billion pkm
+Carbon-price,2050,mode share,Domestic Aviation,0.0466322,fraction
+Carbon-price,2050,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2050,service output by mode,Bus,195.816,billion pkm
+Carbon-price,2050,mode share,Bus,0.0890687,fraction
+Carbon-price,2050,tech share,Bus|Liquids,0.462774,fraction
+Carbon-price,2050,tech share,Bus|NG,0.00959934,fraction
+Carbon-price,2050,tech share,Bus|BEV,0.527627,fraction
+Carbon-price,2050,service output by mode,2W and 3W,55.8699,billion pkm
+Carbon-price,2050,mode share,2W and 3W,0.0254129,fraction
+Carbon-price,2050,tech share,2W and 3W|Liquids,0.136224,fraction
+Carbon-price,2050,tech share,2W and 3W|BEV,0.863776,fraction
+Carbon-price,2050,service output by mode,Car,1743.68,billion pkm
+Carbon-price,2050,mode share,Car,0.793127,fraction
+Carbon-price,2050,tech share,Car|Liquids,0.269144,fraction
+Carbon-price,2050,tech share,Car|Hybrid Liquids,0.00532232,fraction
+Carbon-price,2050,tech share,Car|NG,0.00264801,fraction
+Carbon-price,2050,tech share,Car|BEV,0.535912,fraction
+Carbon-price,2050,tech share,Car|FCEV,0.186974,fraction
+Carbon-price,2050,service output,trn_pass,2198.48,billion pkm
+Carbon-price,2050,service price,trn_pass,0.797097,2005$/pkm
+Carbon-price,2050,final energy by fuel,H2 LDV,0.231149,EJ
+Carbon-price,2050,final energy by fuel,delivered gas,0.00692999,EJ
+Carbon-price,2050,final energy by fuel,elect_td_trn,0.493395,EJ
+Carbon-price,2050,final energy by fuel,refined liquids enduse,0.879587,EJ
+Carbon-price,2050,CO2 (direct),trn_pass,63.5738,MtCO2
+Carbon-price,2055,service output by mode,Walk,67.3946,billion pkm
+Carbon-price,2055,mode share,Walk,0.028846,fraction
+Carbon-price,2055,service output by mode,Cycle,24.0695,billion pkm
+Carbon-price,2055,mode share,Cycle,0.0103022,fraction
+Carbon-price,2055,service output by mode,Passenger Rail,6.28004,billion pkm
+Carbon-price,2055,mode share,Passenger Rail,0.00268797,fraction
+Carbon-price,2055,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2055,service output by mode,Domestic Aviation,106.038,billion pkm
+Carbon-price,2055,mode share,Domestic Aviation,0.0453861,fraction
+Carbon-price,2055,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2055,service output by mode,Bus,181.865,billion pkm
+Carbon-price,2055,mode share,Bus,0.0778414,fraction
+Carbon-price,2055,tech share,Bus|Liquids,0.452094,fraction
+Carbon-price,2055,tech share,Bus|NG,0.0094911,fraction
+Carbon-price,2055,tech share,Bus|BEV,0.538415,fraction
+Carbon-price,2055,service output by mode,2W and 3W,52.3174,billion pkm
+Carbon-price,2055,mode share,2W and 3W,0.0223928,fraction
+Carbon-price,2055,tech share,2W and 3W|Liquids,0.114434,fraction
+Carbon-price,2055,tech share,2W and 3W|BEV,0.885566,fraction
+Carbon-price,2055,service output by mode,Car,1898.39,billion pkm
+Carbon-price,2055,mode share,Car,0.812544,fraction
+Carbon-price,2055,tech share,Car|Liquids,0.246131,fraction
+Carbon-price,2055,tech share,Car|Hybrid Liquids,0.00497537,fraction
+Carbon-price,2055,tech share,Car|NG,0.00250176,fraction
+Carbon-price,2055,tech share,Car|BEV,0.553338,fraction
+Carbon-price,2055,tech share,Car|FCEV,0.193054,fraction
+Carbon-price,2055,service output,trn_pass,2336.36,billion pkm
+Carbon-price,2055,service price,trn_pass,0.837092,2005$/pkm
+Carbon-price,2055,final energy by fuel,H2 LDV,0.259842,EJ
+Carbon-price,2055,final energy by fuel,delivered gas,0.00706278,EJ
+Carbon-price,2055,final energy by fuel,elect_td_trn,0.550584,EJ
+Carbon-price,2055,final energy by fuel,refined liquids enduse,0.879853,EJ
+Carbon-price,2055,CO2 (direct),trn_pass,63.5998,MtCO2
+Carbon-price,2060,service output by mode,Walk,65.2453,billion pkm
+Carbon-price,2060,mode share,Walk,0.0263947,fraction
+Carbon-price,2060,service output by mode,Cycle,23.3019,billion pkm
+Carbon-price,2060,mode share,Cycle,0.00942669,fraction
+Carbon-price,2060,service output by mode,Passenger Rail,6.12897,billion pkm
+Carbon-price,2060,mode share,Passenger Rail,0.00247945,fraction
+Carbon-price,2060,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2060,service output by mode,Domestic Aviation,108.035,billion pkm
+Carbon-price,2060,mode share,Domestic Aviation,0.0437052,fraction
+Carbon-price,2060,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2060,service output by mode,Bus,168.341,billion pkm
+Carbon-price,2060,mode share,Bus,0.0681017,fraction
+Carbon-price,2060,tech share,Bus|Liquids,0.438522,fraction
+Carbon-price,2060,tech share,Bus|NG,0.00934838,fraction
+Carbon-price,2060,tech share,Bus|BEV,0.55213,fraction
+Carbon-price,2060,service output by mode,2W and 3W,48.7983,billion pkm
+Carbon-price,2060,mode share,2W and 3W,0.0197411,fraction
+Carbon-price,2060,tech share,2W and 3W|Liquids,0.0910818,fraction
+Carbon-price,2060,tech share,2W and 3W|BEV,0.908918,fraction
+Carbon-price,2060,service output by mode,Car,2052.06,billion pkm
+Carbon-price,2060,mode share,Car,0.830151,fraction
+Carbon-price,2060,tech share,Car|Liquids,0.218723,fraction
+Carbon-price,2060,tech share,Car|Hybrid Liquids,0.00454706,fraction
+Carbon-price,2060,tech share,Car|NG,0.00231752,fraction
+Carbon-price,2060,tech share,Car|BEV,0.574111,fraction
+Carbon-price,2060,tech share,Car|FCEV,0.200301,fraction
+Carbon-price,2060,service output,trn_pass,2471.91,billion pkm
+Carbon-price,2060,service price,trn_pass,0.880002,2005$/pkm
+Carbon-price,2060,final energy by fuel,H2 LDV,0.29142,EJ
+Carbon-price,2060,final energy by fuel,delivered gas,0.00702348,EJ
+Carbon-price,2060,final energy by fuel,elect_td_trn,0.613672,EJ
+Carbon-price,2060,final energy by fuel,refined liquids enduse,0.854693,EJ
+Carbon-price,2060,CO2 (direct),trn_pass,61.7897,MtCO2
+Carbon-price,2065,service output by mode,Walk,63.0101,billion pkm
+Carbon-price,2065,mode share,Walk,0.0241922,fraction
+Carbon-price,2065,service output by mode,Cycle,22.5036,billion pkm
+Carbon-price,2065,mode share,Cycle,0.00864007,fraction
+Carbon-price,2065,service output by mode,Passenger Rail,5.96253,billion pkm
+Carbon-price,2065,mode share,Passenger Rail,0.00228926,fraction
+Carbon-price,2065,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2065,service output by mode,Domestic Aviation,108.389,billion pkm
+Carbon-price,2065,mode share,Domestic Aviation,0.0416153,fraction
+Carbon-price,2065,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2065,service output by mode,Bus,155.416,billion pkm
+Carbon-price,2065,mode share,Bus,0.0596706,fraction
+Carbon-price,2065,tech share,Bus|Liquids,0.421326,fraction
+Carbon-price,2065,tech share,Bus|NG,0.00915923,fraction
+Carbon-price,2065,tech share,Bus|BEV,0.569515,fraction
+Carbon-price,2065,service output by mode,2W and 3W,45.3615,billion pkm
+Carbon-price,2065,mode share,2W and 3W,0.0174162,fraction
+Carbon-price,2065,tech share,2W and 3W|Liquids,0.0675461,fraction
+Carbon-price,2065,tech share,2W and 3W|BEV,0.932454,fraction
+Carbon-price,2065,service output by mode,Car,2203.92,billion pkm
+Carbon-price,2065,mode share,Car,0.846176,fraction
+Carbon-price,2065,tech share,Car|Liquids,0.187008,fraction
+Carbon-price,2065,tech share,Car|Hybrid Liquids,0.0040294,fraction
+Carbon-price,2065,tech share,Car|NG,0.00208944,fraction
+Carbon-price,2065,tech share,Car|BEV,0.598176,fraction
+Carbon-price,2065,tech share,Car|FCEV,0.208697,fraction
+Carbon-price,2065,service output,trn_pass,2604.56,billion pkm
+Carbon-price,2065,service price,trn_pass,0.926199,2005$/pkm
+Carbon-price,2065,final energy by fuel,H2 LDV,0.326106,EJ
+Carbon-price,2065,final energy by fuel,delivered gas,0.00676921,EJ
+Carbon-price,2065,final energy by fuel,elect_td_trn,0.683119,EJ
+Carbon-price,2065,final energy by fuel,refined liquids enduse,0.801331,EJ
+Carbon-price,2065,CO2 (direct),trn_pass,57.9414,MtCO2
+Carbon-price,2070,service output by mode,Walk,60.7308,billion pkm
+Carbon-price,2070,mode share,Walk,0.0222141,fraction
+Carbon-price,2070,service output by mode,Cycle,21.6896,billion pkm
+Carbon-price,2070,mode share,Cycle,0.00793359,fraction
+Carbon-price,2070,service output by mode,Passenger Rail,5.78526,billion pkm
+Carbon-price,2070,mode share,Passenger Rail,0.00211613,fraction
+Carbon-price,2070,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2070,service output by mode,Domestic Aviation,107.041,billion pkm
+Carbon-price,2070,mode share,Domestic Aviation,0.0391533,fraction
+Carbon-price,2070,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2070,service output by mode,Bus,143.196,billion pkm
+Carbon-price,2070,mode share,Bus,0.0523781,fraction
+Carbon-price,2070,tech share,Bus|Liquids,0.399645,fraction
+Carbon-price,2070,tech share,Bus|NG,0.00890754,fraction
+Carbon-price,2070,tech share,Bus|BEV,0.591448,fraction
+Carbon-price,2070,service output by mode,2W and 3W,42.0361,billion pkm
+Carbon-price,2070,mode share,2W and 3W,0.0153759,fraction
+Carbon-price,2070,tech share,2W and 3W|Liquids,0.045687,fraction
+Carbon-price,2070,tech share,2W and 3W|BEV,0.954313,fraction
+Carbon-price,2070,service output by mode,Car,2353.41,billion pkm
+Carbon-price,2070,mode share,Car,0.860829,fraction
+Carbon-price,2070,tech share,Car|Liquids,0.1518,fraction
+Carbon-price,2070,tech share,Car|Hybrid Liquids,0.00342365,fraction
+Carbon-price,2070,tech share,Car|NG,0.00181487,fraction
+Carbon-price,2070,tech share,Car|BEV,0.62493,fraction
+Carbon-price,2070,tech share,Car|FCEV,0.218031,fraction
+Carbon-price,2070,service output,trn_pass,2733.89,billion pkm
+Carbon-price,2070,service price,trn_pass,0.976028,2005$/pkm
+Carbon-price,2070,final energy by fuel,H2 LDV,0.363801,EJ
+Carbon-price,2070,final energy by fuel,delivered gas,0.0062644,EJ
+Carbon-price,2070,final energy by fuel,elect_td_trn,0.758724,EJ
+Carbon-price,2070,final energy by fuel,refined liquids enduse,0.719729,EJ
+Carbon-price,2070,CO2 (direct),trn_pass,52.0507,MtCO2
+Carbon-price,2075,service output by mode,Walk,58.4412,billion pkm
+Carbon-price,2075,mode share,Walk,0.0204373,fraction
+Carbon-price,2075,service output by mode,Cycle,20.8719,billion pkm
+Carbon-price,2075,mode share,Cycle,0.00729903,fraction
+Carbon-price,2075,service output by mode,Passenger Rail,5.60094,billion pkm
+Carbon-price,2075,mode share,Passenger Rail,0.00195869,fraction
+Carbon-price,2075,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2075,service output by mode,Domestic Aviation,104.007,billion pkm
+Carbon-price,2075,mode share,Domestic Aviation,0.0363718,fraction
+Carbon-price,2075,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2075,service output by mode,Bus,131.755,billion pkm
+Carbon-price,2075,mode share,Bus,0.0460757,fraction
+Carbon-price,2075,tech share,Bus|Liquids,0.372523,fraction
+Carbon-price,2075,tech share,Bus|NG,0.00857186,fraction
+Carbon-price,2075,tech share,Bus|BEV,0.618905,fraction
+Carbon-price,2075,service output by mode,2W and 3W,38.8404,billion pkm
+Carbon-price,2075,mode share,2W and 3W,0.0135827,fraction
+Carbon-price,2075,tech share,2W and 3W|Liquids,0.0274442,fraction
+Carbon-price,2075,tech share,2W and 3W|BEV,0.972556,fraction
+Carbon-price,2075,service output by mode,Car,2500.02,billion pkm
+Carbon-price,2075,mode share,Car,0.874275,fraction
+Carbon-price,2075,tech share,Car|Liquids,0.114942,fraction
+Carbon-price,2075,tech share,Car|Hybrid Liquids,0.00274799,fraction
+Carbon-price,2075,tech share,Car|NG,0.00149824,fraction
+Carbon-price,2075,tech share,Car|BEV,0.65299,fraction
+Carbon-price,2075,tech share,Car|FCEV,0.227821,fraction
+Carbon-price,2075,service output,trn_pass,2859.54,billion pkm
+Carbon-price,2075,service price,trn_pass,1.02984,2005$/pkm
+Carbon-price,2075,final energy by fuel,H2 LDV,0.403817,EJ
+Carbon-price,2075,final energy by fuel,delivered gas,0.00549706,EJ
+Carbon-price,2075,final energy by fuel,elect_td_trn,0.839088,EJ
+Carbon-price,2075,final energy by fuel,refined liquids enduse,0.614368,EJ
+Carbon-price,2075,CO2 (direct),trn_pass,44.4388,MtCO2
+Carbon-price,2080,service output by mode,Walk,56.17,billion pkm
+Carbon-price,2080,mode share,Walk,0.0188428,fraction
+Carbon-price,2080,service output by mode,Cycle,20.0607,billion pkm
+Carbon-price,2080,mode share,Cycle,0.00672958,fraction
+Carbon-price,2080,service output by mode,Passenger Rail,5.41294,billion pkm
+Carbon-price,2080,mode share,Passenger Rail,0.00181583,fraction
+Carbon-price,2080,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2080,service output by mode,Domestic Aviation,99.3918,billion pkm
+Carbon-price,2080,mode share,Domestic Aviation,0.0333421,fraction
+Carbon-price,2080,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2080,service output by mode,Bus,121.161,billion pkm
+Carbon-price,2080,mode share,Bus,0.0406449,fraction
+Carbon-price,2080,tech share,Bus|Liquids,0.339027,fraction
+Carbon-price,2080,tech share,Bus|NG,0.00812491,fraction
+Carbon-price,2080,tech share,Bus|BEV,0.652848,fraction
+Carbon-price,2080,service output by mode,2W and 3W,35.7936,billion pkm
+Carbon-price,2080,mode share,2W and 3W,0.0120074,fraction
+Carbon-price,2080,tech share,2W and 3W|Liquids,0.0141692,fraction
+Carbon-price,2080,tech share,2W and 3W|BEV,0.985831,fraction
+Carbon-price,2080,service output by mode,Car,2642.98,billion pkm
+Carbon-price,2080,mode share,Car,0.886617,fraction
+Carbon-price,2080,tech share,Car|Liquids,0.0793703,fraction
+Carbon-price,2080,tech share,Car|Hybrid Liquids,0.00204413,fraction
+Carbon-price,2080,tech share,Car|NG,0.0011552,fraction
+Carbon-price,2080,tech share,Car|BEV,0.680138,fraction
+Carbon-price,2080,tech share,Car|FCEV,0.237293,fraction
+Carbon-price,2080,service output,trn_pass,2980.97,billion pkm
+Carbon-price,2080,service price,trn_pass,1.08809,2005$/pkm
+Carbon-price,2080,final energy by fuel,H2 LDV,0.444657,EJ
+Carbon-price,2080,final energy by fuel,delivered gas,0.00450094,EJ
+Carbon-price,2080,final energy by fuel,elect_td_trn,0.921175,EJ
+Carbon-price,2080,final energy by fuel,refined liquids enduse,0.495475,EJ
+Carbon-price,2080,CO2 (direct),trn_pass,35.8425,MtCO2
+Carbon-price,2085,service output by mode,Walk,53.9439,billion pkm
+Carbon-price,2085,mode share,Walk,0.0174172,fraction
+Carbon-price,2085,service output by mode,Cycle,19.2657,billion pkm
+Carbon-price,2085,mode share,Cycle,0.00622042,fraction
+Carbon-price,2085,service output by mode,Passenger Rail,5.22444,billion pkm
+Carbon-price,2085,mode share,Passenger Rail,0.00168685,fraction
+Carbon-price,2085,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2085,service output by mode,Domestic Aviation,93.3915,billion pkm
+Carbon-price,2085,mode share,Domestic Aviation,0.0301538,fraction
+Carbon-price,2085,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2085,service output by mode,Bus,111.491,billion pkm
+Carbon-price,2085,mode share,Bus,0.0359978,fraction
+Carbon-price,2085,tech share,Bus|Liquids,0.298499,fraction
+Carbon-price,2085,tech share,Bus|NG,0.00753474,fraction
+Carbon-price,2085,tech share,Bus|BEV,0.693967,fraction
+Carbon-price,2085,service output by mode,2W and 3W,32.9241,billion pkm
+Carbon-price,2085,mode share,2W and 3W,0.0106304,fraction
+Carbon-price,2085,tech share,2W and 3W|Liquids,0.00603912,fraction
+Carbon-price,2085,tech share,2W and 3W|BEV,0.993961,fraction
+Carbon-price,2085,service output by mode,Car,2780.93,billion pkm
+Carbon-price,2085,mode share,Car,0.897893,fraction
+Carbon-price,2085,tech share,Car|Liquids,0.0485979,fraction
+Carbon-price,2085,tech share,Car|Hybrid Liquids,0.00137628,fraction
+Carbon-price,2085,tech share,Car|NG,0.00081423,fraction
+Carbon-price,2085,tech share,Car|BEV,0.703699,fraction
+Carbon-price,2085,tech share,Car|FCEV,0.245513,fraction
+Carbon-price,2085,service output,trn_pass,3097.17,billion pkm
+Carbon-price,2085,service price,trn_pass,1.15138,2005$/pkm
+Carbon-price,2085,final energy by fuel,H2 LDV,0.484072,EJ
+Carbon-price,2085,final energy by fuel,delivered gas,0.00337269,EJ
+Carbon-price,2085,final energy by fuel,elect_td_trn,1.00044,EJ
+Carbon-price,2085,final energy by fuel,refined liquids enduse,0.378074,EJ
+Carbon-price,2085,CO2 (direct),trn_pass,27.3465,MtCO2
+Carbon-price,2090,service output by mode,Walk,51.7882,billion pkm
+Carbon-price,2090,mode share,Walk,0.016151,fraction
+Carbon-price,2090,service output by mode,Cycle,18.4958,billion pkm
+Carbon-price,2090,mode share,Cycle,0.0057682,fraction
+Carbon-price,2090,service output by mode,Passenger Rail,5.03845,billion pkm
+Carbon-price,2090,mode share,Passenger Rail,0.00157132,fraction
+Carbon-price,2090,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2090,service output by mode,Domestic Aviation,86.2771,billion pkm
+Carbon-price,2090,mode share,Domestic Aviation,0.0269068,fraction
+Carbon-price,2090,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2090,service output by mode,Bus,102.818,billion pkm
+Carbon-price,2090,mode share,Bus,0.0320652,fraction
+Carbon-price,2090,tech share,Bus|Liquids,0.25102,fraction
+Carbon-price,2090,tech share,Bus|NG,0.00677023,fraction
+Carbon-price,2090,tech share,Bus|BEV,0.74221,fraction
+Carbon-price,2090,service output by mode,2W and 3W,30.2665,billion pkm
+Carbon-price,2090,mode share,2W and 3W,0.00943908,fraction
+Carbon-price,2090,tech share,2W and 3W|Liquids,0.00202057,fraction
+Carbon-price,2090,tech share,2W and 3W|BEV,0.997979,fraction
+Carbon-price,2090,service output by mode,Car,2911.83,billion pkm
+Carbon-price,2090,mode share,Car,0.908098,fraction
+Carbon-price,2090,tech share,Car|Liquids,0.0255074,fraction
+Carbon-price,2090,tech share,Car|Hybrid Liquids,0.000815438,fraction
+Carbon-price,2090,tech share,Car|NG,0.000511463,fraction
+Carbon-price,2090,tech share,Car|BEV,0.721457,fraction
+Carbon-price,2090,tech share,Car|FCEV,0.251709,fraction
+Carbon-price,2090,service output,trn_pass,3206.51,billion pkm
+Carbon-price,2090,service price,trn_pass,1.2206,2005$/pkm
+Carbon-price,2090,final energy by fuel,H2 LDV,0.519649,EJ
+Carbon-price,2090,final energy by fuel,delivered gas,0.00226358,EJ
+Carbon-price,2090,final energy by fuel,elect_td_trn,1.07199,EJ
+Carbon-price,2090,final energy by fuel,refined liquids enduse,0.277593,EJ
+Carbon-price,2090,CO2 (direct),trn_pass,20.0676,MtCO2
+Carbon-price,2095,service output by mode,Walk,49.7228,billion pkm
+Carbon-price,2095,mode share,Walk,0.0150346,fraction
+Carbon-price,2095,service output by mode,Cycle,17.7581,billion pkm
+Carbon-price,2095,mode share,Cycle,0.0053695,fraction
+Carbon-price,2095,service output by mode,Passenger Rail,4.85744,billion pkm
+Carbon-price,2095,mode share,Passenger Rail,0.00146874,fraction
+Carbon-price,2095,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2095,service output by mode,Domestic Aviation,78.3682,billion pkm
+Carbon-price,2095,mode share,Domestic Aviation,0.0236961,fraction
+Carbon-price,2095,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2095,service output by mode,Bus,95.1693,billion pkm
+Carbon-price,2095,mode share,Bus,0.0287762,fraction
+Carbon-price,2095,tech share,Bus|Liquids,0.198094,fraction
+Carbon-price,2095,tech share,Bus|NG,0.00581413,fraction
+Carbon-price,2095,tech share,Bus|BEV,0.796092,fraction
+Carbon-price,2095,service output by mode,2W and 3W,27.8477,billion pkm
+Carbon-price,2095,mode share,2W and 3W,0.00842026,fraction
+Carbon-price,2095,tech share,2W and 3W|Liquids,0.000497769,fraction
+Carbon-price,2095,tech share,2W and 3W|BEV,0.999502,fraction
+Carbon-price,2095,service output by mode,Car,3033.5,billion pkm
+Carbon-price,2095,mode share,Car,0.917235,fraction
+Carbon-price,2095,tech share,Car|Liquids,0.0110218,fraction
+Carbon-price,2095,tech share,Car|Hybrid Liquids,0.000411295,fraction
+Carbon-price,2095,tech share,Car|NG,0.000277955,fraction
+Carbon-price,2095,tech share,Car|BEV,0.732669,fraction
+Carbon-price,2095,tech share,Car|FCEV,0.25562,fraction
+Carbon-price,2095,service output,trn_pass,3307.22,billion pkm
+Carbon-price,2095,service price,trn_pass,1.29678,2005$/pkm
+Carbon-price,2095,final energy by fuel,H2 LDV,0.549775,EJ
+Carbon-price,2095,final energy by fuel,delivered gas,0.00133176,EJ
+Carbon-price,2095,final energy by fuel,elect_td_trn,1.13257,EJ
+Carbon-price,2095,final energy by fuel,refined liquids enduse,0.203408,EJ
+Carbon-price,2095,CO2 (direct),trn_pass,14.6876,MtCO2
+Carbon-price,2100,service output by mode,Walk,47.7579,billion pkm
+Carbon-price,2100,mode share,Walk,0.0140543,fraction
+Carbon-price,2100,service output by mode,Cycle,17.0564,billion pkm
+Carbon-price,2100,mode share,Cycle,0.0050194,fraction
+Carbon-price,2100,service output by mode,Passenger Rail,4.68294,billion pkm
+Carbon-price,2100,mode share,Passenger Rail,0.00137811,fraction
+Carbon-price,2100,tech share,Passenger Rail|Electric,1,fraction
+Carbon-price,2100,service output by mode,Domestic Aviation,69.9988,billion pkm
+Carbon-price,2100,mode share,Domestic Aviation,0.0205994,fraction
+Carbon-price,2100,tech share,Domestic Aviation|Liquids,1,fraction
+Carbon-price,2100,service output by mode,Bus,88.4916,billion pkm
+Carbon-price,2100,mode share,Bus,0.0260415,fraction
+Carbon-price,2100,tech share,Bus|Liquids,0.143304,fraction
+Carbon-price,2100,tech share,Bus|NG,0.00468528,fraction
+Carbon-price,2100,tech share,Bus|BEV,0.85201,fraction
+Carbon-price,2100,service output by mode,2W and 3W,25.6721,billion pkm
+Carbon-price,2100,mode share,2W and 3W,0.00755486,fraction
+Carbon-price,2100,tech share,2W and 3W|Liquids,8.31409e-05,fraction
+Carbon-price,2100,tech share,2W and 3W|BEV,0.999917,fraction
+Carbon-price,2100,service output by mode,Car,3144.43,billion pkm
+Carbon-price,2100,mode share,Car,0.925352,fraction
+Carbon-price,2100,tech share,Car|Liquids,0.00373226,fraction
+Carbon-price,2100,tech share,Car|Hybrid Liquids,0.000169672,fraction
+Carbon-price,2100,tech share,Car|NG,0.000126118,fraction
+Carbon-price,2100,tech share,Car|BEV,0.738365,fraction
+Carbon-price,2100,tech share,Car|FCEV,0.257607,fraction
+Carbon-price,2100,service output,trn_pass,3398.09,billion pkm
+Carbon-price,2100,service price,trn_pass,1.38088,2005$/pkm
+Carbon-price,2100,final energy by fuel,H2 LDV,0.574311,EJ
+Carbon-price,2100,final energy by fuel,delivered gas,0.000675045,EJ
+Carbon-price,2100,final energy by fuel,elect_td_trn,1.18186,EJ
+Carbon-price,2100,final energy by fuel,refined liquids enduse,0.155083,EJ
+Carbon-price,2100,CO2 (direct),trn_pass,11.1805,MtCO2
+Fast-wage,2020,service output by mode,Walk,70,billion pkm
+Fast-wage,2020,mode share,Walk,0.0463269,fraction
+Fast-wage,2020,service output by mode,Cycle,25,billion pkm
+Fast-wage,2020,mode share,Cycle,0.0165453,fraction
+Fast-wage,2020,service output by mode,Passenger Rail,6,billion pkm
+Fast-wage,2020,mode share,Passenger Rail,0.00397088,fraction
+Fast-wage,2020,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2020,service output by mode,Domestic Aviation,55,billion pkm
+Fast-wage,2020,mode share,Domestic Aviation,0.0363997,fraction
+Fast-wage,2020,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2020,service output by mode,Bus,160,billion pkm
+Fast-wage,2020,mode share,Bus,0.10589,fraction
+Fast-wage,2020,tech share,Bus|Liquids,0.98125,fraction
+Fast-wage,2020,tech share,Bus|NG,0.01875,fraction
+Fast-wage,2020,tech share,Bus|BEV,0,fraction
+Fast-wage,2020,service output by mode,2W and 3W,45,billion pkm
+Fast-wage,2020,mode share,2W and 3W,0.0297816,fraction
+Fast-wage,2020,tech share,2W and 3W|Liquids,1,fraction
+Fast-wage,2020,tech share,2W and 3W|BEV,0,fraction
+Fast-wage,2020,service output by mode,Car,1150,billion pkm
+Fast-wage,2020,mode share,Car,0.761085,fraction
+Fast-wage,2020,tech share,Car|Liquids,0.973913,fraction
+Fast-wage,2020,tech share,Car|Hybrid Liquids,0.0173913,fraction
+Fast-wage,2020,tech share,Car|NG,0.00869565,fraction
+Fast-wage,2020,tech share,Car|BEV,0,fraction
+Fast-wage,2020,tech share,Car|FCEV,0,fraction
+Fast-wage,2020,service output,trn_pass,1511,billion pkm
+Fast-wage,2020,service price,trn_pass,0.547662,2005$/pkm
+Fast-wage,2020,final energy by fuel,H2 LDV,0,EJ
+Fast-wage,2020,final energy by fuel,delivered gas,0.0153481,EJ
+Fast-wage,2020,final energy by fuel,elect_td_trn,0.000277068,EJ
+Fast-wage,2020,final energy by fuel,refined liquids enduse,1.83874,EJ
+Fast-wage,2020,CO2 (direct),trn_pass,132.943,MtCO2
+Fast-wage,2025,service output by mode,Walk,69.4711,billion pkm
+Fast-wage,2025,mode share,Walk,0.0413593,fraction
+Fast-wage,2025,service output by mode,Cycle,24.8111,billion pkm
+Fast-wage,2025,mode share,Cycle,0.0147712,fraction
+Fast-wage,2025,service output by mode,Passenger Rail,6.09085,billion pkm
+Fast-wage,2025,mode share,Passenger Rail,0.00362617,fraction
+Fast-wage,2025,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2025,service output by mode,Domestic Aviation,67.8041,billion pkm
+Fast-wage,2025,mode share,Domestic Aviation,0.0403669,fraction
+Fast-wage,2025,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2025,service output by mode,Bus,162.621,billion pkm
+Fast-wage,2025,mode share,Bus,0.0968158,fraction
+Fast-wage,2025,tech share,Bus|Liquids,0.981131,fraction
+Fast-wage,2025,tech share,Bus|NG,0.0188691,fraction
+Fast-wage,2025,tech share,Bus|BEV,0,fraction
+Fast-wage,2025,service output by mode,2W and 3W,46.3297,billion pkm
+Fast-wage,2025,mode share,2W and 3W,0.0275822,fraction
+Fast-wage,2025,tech share,2W and 3W|Liquids,1,fraction
+Fast-wage,2025,tech share,2W and 3W|BEV,0,fraction
+Fast-wage,2025,service output by mode,Car,1302.57,billion pkm
+Fast-wage,2025,mode share,Car,0.775478,fraction
+Fast-wage,2025,tech share,Car|Liquids,0.974549,fraction
+Fast-wage,2025,tech share,Car|Hybrid Liquids,0.0167514,fraction
+Fast-wage,2025,tech share,Car|NG,0.00869964,fraction
+Fast-wage,2025,tech share,Car|BEV,0,fraction
+Fast-wage,2025,tech share,Car|FCEV,0,fraction
+Fast-wage,2025,service output,trn_pass,1679.7,billion pkm
+Fast-wage,2025,service price,trn_pass,0.594844,2005$/pkm
+Fast-wage,2025,final energy by fuel,H2 LDV,0,EJ
+Fast-wage,2025,final energy by fuel,delivered gas,0.0171261,EJ
+Fast-wage,2025,final energy by fuel,elect_td_trn,0.000281263,EJ
+Fast-wage,2025,final energy by fuel,refined liquids enduse,2.06266,EJ
+Fast-wage,2025,CO2 (direct),trn_pass,149.128,MtCO2
+Fast-wage,2030,service output by mode,Walk,68.2131,billion pkm
+Fast-wage,2030,mode share,Walk,0.0368866,fraction
+Fast-wage,2030,service output by mode,Cycle,24.3618,billion pkm
+Fast-wage,2030,mode share,Cycle,0.0131738,fraction
+Fast-wage,2030,service output by mode,Passenger Rail,6.09963,billion pkm
+Fast-wage,2030,mode share,Passenger Rail,0.00329841,fraction
+Fast-wage,2030,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2030,service output by mode,Domestic Aviation,81.7853,billion pkm
+Fast-wage,2030,mode share,Domestic Aviation,0.0442259,fraction
+Fast-wage,2030,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2030,service output by mode,Bus,160.531,billion pkm
+Fast-wage,2030,mode share,Bus,0.086808,fraction
+Fast-wage,2030,tech share,Bus|Liquids,0.865063,fraction
+Fast-wage,2030,tech share,Bus|NG,0.0167445,fraction
+Fast-wage,2030,tech share,Bus|BEV,0.118192,fraction
+Fast-wage,2030,service output by mode,2W and 3W,45.9702,billion pkm
+Fast-wage,2030,mode share,2W and 3W,0.0248587,fraction
+Fast-wage,2030,tech share,2W and 3W|Liquids,0.544328,fraction
+Fast-wage,2030,tech share,2W and 3W|BEV,0.455672,fraction
+Fast-wage,2030,service output by mode,Car,1462.3,billion pkm
+Fast-wage,2030,mode share,Car,0.790749,fraction
+Fast-wage,2030,tech share,Car|Liquids,0.481046,fraction
+Fast-wage,2030,tech share,Car|Hybrid Liquids,0.00793972,fraction
+Fast-wage,2030,tech share,Car|NG,0.00428767,fraction
+Fast-wage,2030,tech share,Car|BEV,0.506727,fraction
+Fast-wage,2030,tech share,Car|FCEV,0,fraction
+Fast-wage,2030,service output,trn_pass,1849.26,billion pkm
+Fast-wage,2030,service price,trn_pass,0.645833,2005$/pkm
+Fast-wage,2030,final energy by fuel,H2 LDV,0,EJ
+Fast-wage,2030,final energy by fuel,delivered gas,0.009695,EJ
+Fast-wage,2030,final energy by fuel,elect_td_trn,0.347513,EJ
+Fast-wage,2030,final energy by fuel,refined liquids enduse,1.24442,EJ
+Fast-wage,2030,CO2 (direct),trn_pass,89.9374,MtCO2
+Fast-wage,2035,service output by mode,Walk,66.5336,billion pkm
+Fast-wage,2035,mode share,Walk,0.0330752,fraction
+Fast-wage,2035,service output by mode,Cycle,23.762,billion pkm
+Fast-wage,2035,mode share,Cycle,0.0118126,fraction
+Fast-wage,2035,service output by mode,Passenger Rail,6.05244,billion pkm
+Fast-wage,2035,mode share,Passenger Rail,0.00300879,fraction
+Fast-wage,2035,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2035,service output by mode,Domestic Aviation,96.8532,billion pkm
+Fast-wage,2035,mode share,Domestic Aviation,0.0481477,fraction
+Fast-wage,2035,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2035,service output by mode,Bus,158.254,billion pkm
+Fast-wage,2035,mode share,Bus,0.0786712,fraction
+Fast-wage,2035,tech share,Bus|Liquids,0.758691,fraction
+Fast-wage,2035,tech share,Bus|NG,0.0147804,fraction
+Fast-wage,2035,tech share,Bus|BEV,0.226528,fraction
+Fast-wage,2035,service output by mode,2W and 3W,46.3274,billion pkm
+Fast-wage,2035,mode share,2W and 3W,0.0230303,fraction
+Fast-wage,2035,tech share,2W and 3W|Liquids,0.463031,fraction
+Fast-wage,2035,tech share,2W and 3W|BEV,0.536969,fraction
+Fast-wage,2035,service output by mode,Car,1613.8,billion pkm
+Fast-wage,2035,mode share,Car,0.802254,fraction
+Fast-wage,2035,tech share,Car|Liquids,0.454982,fraction
+Fast-wage,2035,tech share,Car|Hybrid Liquids,0.00769263,fraction
+Fast-wage,2035,tech share,Car|NG,0.00404463,fraction
+Fast-wage,2035,tech share,Car|BEV,0.502509,fraction
+Fast-wage,2035,tech share,Car|FCEV,0.0307727,fraction
+Fast-wage,2035,service output,trn_pass,2011.59,billion pkm
+Fast-wage,2035,service price,trn_pass,0.703408,2005$/pkm
+Fast-wage,2035,final energy by fuel,H2 LDV,0.0342467,EJ
+Fast-wage,2035,final energy by fuel,delivered gas,0.00988971,EJ
+Fast-wage,2035,final energy by fuel,elect_td_trn,0.390701,EJ
+Fast-wage,2035,final energy by fuel,refined liquids enduse,1.29866,EJ
+Fast-wage,2035,CO2 (direct),trn_pass,93.8452,MtCO2
+Fast-wage,2040,service output by mode,Walk,64.4632,billion pkm
+Fast-wage,2040,mode share,Walk,0.0296727,fraction
+Fast-wage,2040,service output by mode,Cycle,23.0226,billion pkm
+Fast-wage,2040,mode share,Cycle,0.0105974,fraction
+Fast-wage,2040,service output by mode,Passenger Rail,5.95228,billion pkm
+Fast-wage,2040,mode share,Passenger Rail,0.00273985,fraction
+Fast-wage,2040,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2040,service output by mode,Domestic Aviation,112.553,billion pkm
+Fast-wage,2040,mode share,Domestic Aviation,0.0518085,fraction
+Fast-wage,2040,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2040,service output by mode,Bus,154.585,billion pkm
+Fast-wage,2040,mode share,Bus,0.0711561,fraction
+Fast-wage,2040,tech share,Bus|Liquids,0.662703,fraction
+Fast-wage,2040,tech share,Bus|NG,0.0129937,fraction
+Fast-wage,2040,tech share,Bus|BEV,0.324303,fraction
+Fast-wage,2040,service output by mode,2W and 3W,45.8701,billion pkm
+Fast-wage,2040,mode share,2W and 3W,0.0211142,fraction
+Fast-wage,2040,tech share,2W and 3W|Liquids,0.383652,fraction
+Fast-wage,2040,tech share,2W and 3W|BEV,0.616348,fraction
+Fast-wage,2040,service output by mode,Car,1766.03,billion pkm
+Fast-wage,2040,mode share,Car,0.812911,fraction
+Fast-wage,2040,tech share,Car|Liquids,0.426492,fraction
+Fast-wage,2040,tech share,Car|Hybrid Liquids,0.00739244,fraction
+Fast-wage,2040,tech share,Car|NG,0.00377626,fraction
+Fast-wage,2040,tech share,Car|BEV,0.494506,fraction
+Fast-wage,2040,tech share,Car|FCEV,0.0678328,fraction
+Fast-wage,2040,service output,trn_pass,2172.48,billion pkm
+Fast-wage,2040,service price,trn_pass,0.766512,2005$/pkm
+Fast-wage,2040,final energy by fuel,H2 LDV,0.0833455,EJ
+Fast-wage,2040,final energy by fuel,delivered gas,0.0099217,EJ
+Fast-wage,2040,final energy by fuel,elect_td_trn,0.431675,EJ
+Fast-wage,2040,final energy by fuel,refined liquids enduse,1.33448,EJ
+Fast-wage,2040,CO2 (direct),trn_pass,96.421,MtCO2
+Fast-wage,2045,service output by mode,Walk,62.1174,billion pkm
+Fast-wage,2045,mode share,Walk,0.0266424,fraction
+Fast-wage,2045,service output by mode,Cycle,22.1848,billion pkm
+Fast-wage,2045,mode share,Cycle,0.00951515,fraction
+Fast-wage,2045,service output by mode,Passenger Rail,5.81051,billion pkm
+Fast-wage,2045,mode share,Passenger Rail,0.00249215,fraction
+Fast-wage,2045,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2045,service output by mode,Domestic Aviation,128.467,billion pkm
+Fast-wage,2045,mode share,Domestic Aviation,0.0550999,fraction
+Fast-wage,2045,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2045,service output by mode,Bus,149.677,billion pkm
+Fast-wage,2045,mode share,Bus,0.064197,fraction
+Fast-wage,2045,tech share,Bus|Liquids,0.577144,fraction
+Fast-wage,2045,tech share,Bus|NG,0.0113891,fraction
+Fast-wage,2045,tech share,Bus|BEV,0.411467,fraction
+Fast-wage,2045,service output by mode,2W and 3W,44.66,billion pkm
+Fast-wage,2045,mode share,2W and 3W,0.0191549,fraction
+Fast-wage,2045,tech share,2W and 3W|Liquids,0.310026,fraction
+Fast-wage,2045,tech share,2W and 3W|BEV,0.689974,fraction
+Fast-wage,2045,service output by mode,Car,1918.61,billion pkm
+Fast-wage,2045,mode share,Car,0.822899,fraction
+Fast-wage,2045,tech share,Car|Liquids,0.395629,fraction
+Fast-wage,2045,tech share,Car|Hybrid Liquids,0.00703591,fraction
+Fast-wage,2045,tech share,Car|NG,0.00348397,fraction
+Fast-wage,2045,tech share,Car|BEV,0.482227,fraction
+Fast-wage,2045,tech share,Car|FCEV,0.111624,fraction
+Fast-wage,2045,service output,trn_pass,2331.52,billion pkm
+Fast-wage,2045,service price,trn_pass,0.835896,2005$/pkm
+Fast-wage,2045,final energy by fuel,H2 LDV,0.150383,EJ
+Fast-wage,2045,final energy by fuel,delivered gas,0.00978132,EJ
+Fast-wage,2045,final energy by fuel,elect_td_trn,0.468817,EJ
+Fast-wage,2045,final energy by fuel,refined liquids enduse,1.34995,EJ
+Fast-wage,2045,CO2 (direct),trn_pass,97.5254,MtCO2
+Fast-wage,2050,service output by mode,Walk,59.588,billion pkm
+Fast-wage,2050,mode share,Walk,0.0239482,fraction
+Fast-wage,2050,service output by mode,Cycle,21.2814,billion pkm
+Fast-wage,2050,mode share,Cycle,0.00855292,fraction
+Fast-wage,2050,service output by mode,Passenger Rail,5.63697,billion pkm
+Fast-wage,2050,mode share,Passenger Rail,0.00226548,fraction
+Fast-wage,2050,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2050,service output by mode,Domestic Aviation,144.131,billion pkm
+Fast-wage,2050,mode share,Domestic Aviation,0.0579256,fraction
+Fast-wage,2050,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2050,service output by mode,Bus,143.718,billion pkm
+Fast-wage,2050,mode share,Bus,0.0577597,fraction
+Fast-wage,2050,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2050,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2050,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2050,service output by mode,2W and 3W,42.7882,billion pkm
+Fast-wage,2050,mode share,2W and 3W,0.0171964,fraction
+Fast-wage,2050,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2050,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2050,service output by mode,Car,2071.06,billion pkm
+Fast-wage,2050,mode share,Car,0.832352,fraction
+Fast-wage,2050,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2050,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2050,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2050,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2050,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2050,service output,trn_pass,2488.21,billion pkm
+Fast-wage,2050,service price,trn_pass,0.91241,2005$/pkm
+Fast-wage,2050,final energy by fuel,H2 LDV,0.238368,EJ
+Fast-wage,2050,final energy by fuel,delivered gas,0.00946429,EJ
+Fast-wage,2050,final energy by fuel,elect_td_trn,0.500367,EJ
+Fast-wage,2050,final energy by fuel,refined liquids enduse,1.34361,EJ
+Fast-wage,2050,CO2 (direct),trn_pass,97.0537,MtCO2
+Fast-wage,2055,service output by mode,Walk,56.5267,billion pkm
+Fast-wage,2055,mode share,Walk,0.0210968,fraction
+Fast-wage,2055,service output by mode,Cycle,20.1881,billion pkm
+Fast-wage,2055,mode share,Cycle,0.00753456,fraction
+Fast-wage,2055,service output by mode,Passenger Rail,5.3998,billion pkm
+Fast-wage,2055,mode share,Passenger Rail,0.0020153,fraction
+Fast-wage,2055,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2055,service output by mode,Domestic Aviation,156.016,billion pkm
+Fast-wage,2055,mode share,Domestic Aviation,0.0582282,fraction
+Fast-wage,2055,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2055,service output by mode,Bus,127.424,billion pkm
+Fast-wage,2055,mode share,Bus,0.047557,fraction
+Fast-wage,2055,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2055,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2055,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2055,service output by mode,2W and 3W,38.3256,billion pkm
+Fast-wage,2055,mode share,2W and 3W,0.0143038,fraction
+Fast-wage,2055,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2055,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2055,service output by mode,Car,2275.52,billion pkm
+Fast-wage,2055,mode share,Car,0.849264,fraction
+Fast-wage,2055,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2055,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2055,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2055,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2055,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2055,service output,trn_pass,2679.4,billion pkm
+Fast-wage,2055,service price,trn_pass,0.985852,2005$/pkm
+Fast-wage,2055,final energy by fuel,H2 LDV,0.261899,EJ
+Fast-wage,2055,final energy by fuel,delivered gas,0.0103028,EJ
+Fast-wage,2055,final energy by fuel,elect_td_trn,0.546427,EJ
+Fast-wage,2055,final energy by fuel,refined liquids enduse,1.46529,EJ
+Fast-wage,2055,CO2 (direct),trn_pass,105.842,MtCO2
+Fast-wage,2060,service output by mode,Walk,53.5421,billion pkm
+Fast-wage,2060,mode share,Walk,0.0187084,fraction
+Fast-wage,2060,service output by mode,Cycle,19.1222,billion pkm
+Fast-wage,2060,mode share,Cycle,0.00668157,fraction
+Fast-wage,2060,service output by mode,Passenger Rail,5.15812,billion pkm
+Fast-wage,2060,mode share,Passenger Rail,0.00180232,fraction
+Fast-wage,2060,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2060,service output by mode,Domestic Aviation,166.836,billion pkm
+Fast-wage,2060,mode share,Domestic Aviation,0.058295,fraction
+Fast-wage,2060,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2060,service output by mode,Bus,113.113,billion pkm
+Fast-wage,2060,mode share,Bus,0.0395234,fraction
+Fast-wage,2060,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2060,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2060,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2060,service output by mode,2W and 3W,34.2824,billion pkm
+Fast-wage,2060,mode share,2W and 3W,0.0119788,fraction
+Fast-wage,2060,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2060,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2060,service output by mode,Car,2469.88,billion pkm
+Fast-wage,2060,mode share,Car,0.863011,fraction
+Fast-wage,2060,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2060,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2060,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2060,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2060,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2060,service output,trn_pass,2861.93,billion pkm
+Fast-wage,2060,service price,trn_pass,1.06947,2005$/pkm
+Fast-wage,2060,final energy by fuel,H2 LDV,0.284269,EJ
+Fast-wage,2060,final energy by fuel,delivered gas,0.0111037,EJ
+Fast-wage,2060,final energy by fuel,elect_td_trn,0.590315,EJ
+Fast-wage,2060,final energy by fuel,refined liquids enduse,1.58027,EJ
+Fast-wage,2060,CO2 (direct),trn_pass,114.147,MtCO2
+Fast-wage,2065,service output by mode,Walk,50.6781,billion pkm
+Fast-wage,2065,mode share,Walk,0.0167125,fraction
+Fast-wage,2065,service output by mode,Cycle,18.0993,billion pkm
+Fast-wage,2065,mode share,Cycle,0.00596875,fraction
+Fast-wage,2065,service output by mode,Passenger Rail,4.91807,billion pkm
+Fast-wage,2065,mode share,Passenger Rail,0.00162187,fraction
+Fast-wage,2065,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2065,service output by mode,Domestic Aviation,176.43,billion pkm
+Fast-wage,2065,mode share,Domestic Aviation,0.0581825,fraction
+Fast-wage,2065,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2065,service output by mode,Bus,100.676,billion pkm
+Fast-wage,2065,mode share,Bus,0.0332007,fraction
+Fast-wage,2065,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2065,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2065,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2065,service output by mode,2W and 3W,30.6708,billion pkm
+Fast-wage,2065,mode share,2W and 3W,0.0101145,fraction
+Fast-wage,2065,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2065,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2065,service output by mode,Car,2650.87,billion pkm
+Fast-wage,2065,mode share,Car,0.874199,fraction
+Fast-wage,2065,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2065,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2065,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2065,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2065,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2065,service output,trn_pass,3032.35,billion pkm
+Fast-wage,2065,service price,trn_pass,1.16521,2005$/pkm
+Fast-wage,2065,final energy by fuel,H2 LDV,0.305101,EJ
+Fast-wage,2065,final energy by fuel,delivered gas,0.0118523,EJ
+Fast-wage,2065,final energy by fuel,elect_td_trn,0.631264,EJ
+Fast-wage,2065,final energy by fuel,refined liquids enduse,1.68658,EJ
+Fast-wage,2065,CO2 (direct),trn_pass,121.826,MtCO2
+Fast-wage,2070,service output by mode,Walk,47.9599,billion pkm
+Fast-wage,2070,mode share,Walk,0.0150451,fraction
+Fast-wage,2070,service output by mode,Cycle,17.1286,billion pkm
+Fast-wage,2070,mode share,Cycle,0.00537325,fraction
+Fast-wage,2070,service output by mode,Passenger Rail,4.68388,billion pkm
+Fast-wage,2070,mode share,Passenger Rail,0.00146934,fraction
+Fast-wage,2070,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2070,service output by mode,Domestic Aviation,184.684,billion pkm
+Fast-wage,2070,mode share,Domestic Aviation,0.0579357,fraction
+Fast-wage,2070,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2070,service output by mode,Bus,89.941,billion pkm
+Fast-wage,2070,mode share,Bus,0.0282146,fraction
+Fast-wage,2070,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2070,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2070,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2070,service output by mode,2W and 3W,27.4775,billion pkm
+Fast-wage,2070,mode share,2W and 3W,0.00861973,fraction
+Fast-wage,2070,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2070,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2070,service output by mode,Car,2815.87,billion pkm
+Fast-wage,2070,mode share,Car,0.883342,fraction
+Fast-wage,2070,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2070,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2070,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2070,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2070,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2070,service output,trn_pass,3187.75,billion pkm
+Fast-wage,2070,service price,trn_pass,1.27521,2005$/pkm
+Fast-wage,2070,final energy by fuel,H2 LDV,0.324091,EJ
+Fast-wage,2070,final energy by fuel,delivered gas,0.0125366,EJ
+Fast-wage,2070,final energy by fuel,elect_td_trn,0.668645,EJ
+Fast-wage,2070,final energy by fuel,refined liquids enduse,1.78267,EJ
+Fast-wage,2070,CO2 (direct),trn_pass,128.767,MtCO2
+Fast-wage,2075,service output by mode,Walk,45.4002,billion pkm
+Fast-wage,2075,mode share,Walk,0.0136505,fraction
+Fast-wage,2075,service output by mode,Cycle,16.2144,billion pkm
+Fast-wage,2075,mode share,Cycle,0.00487518,fraction
+Fast-wage,2075,service output by mode,Passenger Rail,4.45827,billion pkm
+Fast-wage,2075,mode share,Passenger Rail,0.00134047,fraction
+Fast-wage,2075,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2075,service output by mode,Domestic Aviation,191.536,billion pkm
+Fast-wage,2075,mode share,Domestic Aviation,0.0575893,fraction
+Fast-wage,2075,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2075,service output by mode,Bus,80.7118,billion pkm
+Fast-wage,2075,mode share,Bus,0.0242677,fraction
+Fast-wage,2075,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2075,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2075,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2075,service output by mode,2W and 3W,24.6736,billion pkm
+Fast-wage,2075,mode share,2W and 3W,0.00741862,fraction
+Fast-wage,2075,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2075,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2075,service output by mode,Car,2962.91,billion pkm
+Fast-wage,2075,mode share,Car,0.890858,fraction
+Fast-wage,2075,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2075,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2075,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2075,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2075,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2075,service output,trn_pass,3325.9,billion pkm
+Fast-wage,2075,service price,trn_pass,1.40188,2005$/pkm
+Fast-wage,2075,final energy by fuel,H2 LDV,0.341014,EJ
+Fast-wage,2075,final energy by fuel,delivered gas,0.0131474,EJ
+Fast-wage,2075,final energy by fuel,elect_td_trn,0.701983,EJ
+Fast-wage,2075,final energy by fuel,refined liquids enduse,1.86738,EJ
+Fast-wage,2075,CO2 (direct),trn_pass,134.887,MtCO2
+Fast-wage,2080,service output by mode,Walk,43.0022,billion pkm
+Fast-wage,2080,mode share,Walk,0.0124815,fraction
+Fast-wage,2080,service output by mode,Cycle,15.3579,billion pkm
+Fast-wage,2080,mode share,Cycle,0.00445767,fraction
+Fast-wage,2080,service output by mode,Passenger Rail,4.24285,billion pkm
+Fast-wage,2080,mode share,Passenger Rail,0.0012315,fraction
+Fast-wage,2080,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2080,service output by mode,Domestic Aviation,196.968,billion pkm
+Fast-wage,2080,mode share,Domestic Aviation,0.0571704,fraction
+Fast-wage,2080,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2080,service output by mode,Bus,72.7911,billion pkm
+Fast-wage,2080,mode share,Bus,0.0211278,fraction
+Fast-wage,2080,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2080,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2080,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2080,service output by mode,2W and 3W,22.2221,billion pkm
+Fast-wage,2080,mode share,2W and 3W,0.00645002,fraction
+Fast-wage,2080,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2080,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2080,service output by mode,Car,3090.7,billion pkm
+Fast-wage,2080,mode share,Car,0.897081,fraction
+Fast-wage,2080,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2080,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2080,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2080,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2080,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2080,service output,trn_pass,3445.28,billion pkm
+Fast-wage,2080,service price,trn_pass,1.54792,2005$/pkm
+Fast-wage,2080,final energy by fuel,H2 LDV,0.355722,EJ
+Fast-wage,2080,final energy by fuel,delivered gas,0.0136787,EJ
+Fast-wage,2080,final energy by fuel,elect_td_trn,0.730959,EJ
+Fast-wage,2080,final energy by fuel,refined liquids enduse,1.94002,EJ
+Fast-wage,2080,CO2 (direct),trn_pass,140.135,MtCO2
+Fast-wage,2085,service output by mode,Walk,40.7629,billion pkm
+Fast-wage,2085,mode share,Walk,0.0114986,fraction
+Fast-wage,2085,service output by mode,Cycle,14.5582,billion pkm
+Fast-wage,2085,mode share,Cycle,0.00410663,fraction
+Fast-wage,2085,service output by mode,Passenger Rail,4.03843,billion pkm
+Fast-wage,2085,mode share,Passenger Rail,0.00113918,fraction
+Fast-wage,2085,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2085,service output by mode,Domestic Aviation,201.002,billion pkm
+Fast-wage,2085,mode share,Domestic Aviation,0.0566996,fraction
+Fast-wage,2085,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2085,service output by mode,Bus,65.9927,billion pkm
+Fast-wage,2085,mode share,Bus,0.0186155,fraction
+Fast-wage,2085,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2085,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2085,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2085,service output by mode,2W and 3W,20.0834,billion pkm
+Fast-wage,2085,mode share,2W and 3W,0.00566521,fraction
+Fast-wage,2085,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2085,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2085,service output by mode,Car,3198.6,billion pkm
+Fast-wage,2085,mode share,Car,0.902275,fraction
+Fast-wage,2085,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2085,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2085,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2085,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2085,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2085,service output,trn_pass,3545.04,billion pkm
+Fast-wage,2085,service price,trn_pass,1.71641,2005$/pkm
+Fast-wage,2085,final energy by fuel,H2 LDV,0.368141,EJ
+Fast-wage,2085,final energy by fuel,delivered gas,0.0141269,EJ
+Fast-wage,2085,final energy by fuel,elect_td_trn,0.755407,EJ
+Fast-wage,2085,final energy by fuel,refined liquids enduse,2.00026,EJ
+Fast-wage,2085,CO2 (direct),trn_pass,144.488,MtCO2
+Fast-wage,2090,service output by mode,Walk,38.6756,billion pkm
+Fast-wage,2090,mode share,Walk,0.0106692,fraction
+Fast-wage,2090,service output by mode,Cycle,13.8127,billion pkm
+Fast-wage,2090,mode share,Cycle,0.00381044,fraction
+Fast-wage,2090,service output by mode,Passenger Rail,3.84524,billion pkm
+Fast-wage,2090,mode share,Passenger Rail,0.00106076,fraction
+Fast-wage,2090,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2090,service output by mode,Domestic Aviation,203.697,billion pkm
+Fast-wage,2090,mode share,Domestic Aviation,0.0561928,fraction
+Fast-wage,2090,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2090,service output by mode,Bus,60.1488,billion pkm
+Fast-wage,2090,mode share,Bus,0.0165929,fraction
+Fast-wage,2090,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2090,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2090,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2090,service output by mode,2W and 3W,18.2183,billion pkm
+Fast-wage,2090,mode share,2W and 3W,0.00502578,fraction
+Fast-wage,2090,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2090,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2090,service output by mode,Car,3286.57,billion pkm
+Fast-wage,2090,mode share,Car,0.906648,fraction
+Fast-wage,2090,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2090,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2090,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2090,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2090,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2090,service output,trn_pass,3624.97,billion pkm
+Fast-wage,2090,service price,trn_pass,1.91088,2005$/pkm
+Fast-wage,2090,final energy by fuel,H2 LDV,0.378266,EJ
+Fast-wage,2090,final energy by fuel,delivered gas,0.0144914,EJ
+Fast-wage,2090,final energy by fuel,elect_td_trn,0.775299,EJ
+Fast-wage,2090,final energy by fuel,refined liquids enduse,2.04816,EJ
+Fast-wage,2090,CO2 (direct),trn_pass,147.949,MtCO2
+Fast-wage,2095,service output by mode,Walk,36.7314,billion pkm
+Fast-wage,2095,mode share,Walk,0.0099667,fraction
+Fast-wage,2095,service output by mode,Cycle,13.1184,billion pkm
+Fast-wage,2095,mode share,Cycle,0.00355954,fraction
+Fast-wage,2095,service output by mode,Passenger Rail,3.66313,billion pkm
+Fast-wage,2095,mode share,Passenger Rail,0.000993956,fraction
+Fast-wage,2095,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2095,service output by mode,Domestic Aviation,205.138,billion pkm
+Fast-wage,2095,mode share,Domestic Aviation,0.0556623,fraction
+Fast-wage,2095,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2095,service output by mode,Bus,55.1118,billion pkm
+Fast-wage,2095,mode share,Bus,0.0149541,fraction
+Fast-wage,2095,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2095,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2095,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2095,service output by mode,2W and 3W,16.5902,billion pkm
+Fast-wage,2095,mode share,2W and 3W,0.0045016,fraction
+Fast-wage,2095,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2095,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2095,service output by mode,Car,3355.06,billion pkm
+Fast-wage,2095,mode share,Car,0.910362,fraction
+Fast-wage,2095,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2095,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2095,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2095,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2095,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2095,service output,trn_pass,3685.41,billion pkm
+Fast-wage,2095,service price,trn_pass,2.13536,2005$/pkm
+Fast-wage,2095,final energy by fuel,H2 LDV,0.386148,EJ
+Fast-wage,2095,final energy by fuel,delivered gas,0.0147736,EJ
+Fast-wage,2095,final energy by fuel,elect_td_trn,0.790724,EJ
+Fast-wage,2095,final energy by fuel,refined liquids enduse,2.08408,EJ
+Fast-wage,2095,CO2 (direct),trn_pass,150.545,MtCO2
+Fast-wage,2100,service output by mode,Walk,34.92,billion pkm
+Fast-wage,2100,mode share,Walk,0.00936913,fraction
+Fast-wage,2100,service output by mode,Cycle,12.4714,billion pkm
+Fast-wage,2100,mode share,Cycle,0.00334612,fraction
+Fast-wage,2100,service output by mode,Passenger Rail,3.49171,billion pkm
+Fast-wage,2100,mode share,Passenger Rail,0.000936835,fraction
+Fast-wage,2100,tech share,Passenger Rail|Electric,1,fraction
+Fast-wage,2100,service output by mode,Domestic Aviation,205.43,billion pkm
+Fast-wage,2100,mode share,Domestic Aviation,0.0551173,fraction
+Fast-wage,2100,tech share,Domestic Aviation|Liquids,1,fraction
+Fast-wage,2100,service output by mode,Bus,50.755,billion pkm
+Fast-wage,2100,mode share,Bus,0.0136177,fraction
+Fast-wage,2100,tech share,Bus|Liquids,0.501608,fraction
+Fast-wage,2100,tech share,Bus|NG,0.00996229,fraction
+Fast-wage,2100,tech share,Bus|BEV,0.48843,fraction
+Fast-wage,2100,service output by mode,2W and 3W,15.1661,billion pkm
+Fast-wage,2100,mode share,2W and 3W,0.00406909,fraction
+Fast-wage,2100,tech share,2W and 3W|Liquids,0.244914,fraction
+Fast-wage,2100,tech share,2W and 3W|BEV,0.755086,fraction
+Fast-wage,2100,service output by mode,Car,3404.9,billion pkm
+Fast-wage,2100,mode share,Car,0.913544,fraction
+Fast-wage,2100,tech share,Car|Liquids,0.362588,fraction
+Fast-wage,2100,tech share,Car|Hybrid Liquids,0.00662203,fraction
+Fast-wage,2100,tech share,Car|NG,0.00317068,fraction
+Fast-wage,2100,tech share,Car|BEV,0.465286,fraction
+Fast-wage,2100,tech share,Car|FCEV,0.162333,fraction
+Fast-wage,2100,service output,trn_pass,3727.14,billion pkm
+Fast-wage,2100,service price,trn_pass,2.3945,2005$/pkm
+Fast-wage,2100,final energy by fuel,H2 LDV,0.391885,EJ
+Fast-wage,2100,final energy by fuel,delivered gas,0.0149768,EJ
+Fast-wage,2100,final energy by fuel,elect_td_trn,0.801867,EJ
+Fast-wage,2100,final energy by fuel,refined liquids enduse,2.10861,EJ
+Fast-wage,2100,CO2 (direct),trn_pass,152.319,MtCO2
+LF-up,2020,service output by mode,Walk,70,billion pkm
+LF-up,2020,mode share,Walk,0.0463269,fraction
+LF-up,2020,service output by mode,Cycle,25,billion pkm
+LF-up,2020,mode share,Cycle,0.0165453,fraction
+LF-up,2020,service output by mode,Passenger Rail,6,billion pkm
+LF-up,2020,mode share,Passenger Rail,0.00397088,fraction
+LF-up,2020,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2020,service output by mode,Domestic Aviation,55,billion pkm
+LF-up,2020,mode share,Domestic Aviation,0.0363997,fraction
+LF-up,2020,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2020,service output by mode,Bus,160,billion pkm
+LF-up,2020,mode share,Bus,0.10589,fraction
+LF-up,2020,tech share,Bus|Liquids,0.98125,fraction
+LF-up,2020,tech share,Bus|NG,0.01875,fraction
+LF-up,2020,tech share,Bus|BEV,0,fraction
+LF-up,2020,service output by mode,2W and 3W,45,billion pkm
+LF-up,2020,mode share,2W and 3W,0.0297816,fraction
+LF-up,2020,tech share,2W and 3W|Liquids,1,fraction
+LF-up,2020,tech share,2W and 3W|BEV,0,fraction
+LF-up,2020,service output by mode,Car,1150,billion pkm
+LF-up,2020,mode share,Car,0.761085,fraction
+LF-up,2020,tech share,Car|Liquids,0.973913,fraction
+LF-up,2020,tech share,Car|Hybrid Liquids,0.0173913,fraction
+LF-up,2020,tech share,Car|NG,0.00869565,fraction
+LF-up,2020,tech share,Car|BEV,0,fraction
+LF-up,2020,tech share,Car|FCEV,0,fraction
+LF-up,2020,service output,trn_pass,1511,billion pkm
+LF-up,2020,service price,trn_pass,0.547662,2005$/pkm
+LF-up,2020,final energy by fuel,H2 LDV,0,EJ
+LF-up,2020,final energy by fuel,delivered gas,0.0153481,EJ
+LF-up,2020,final energy by fuel,elect_td_trn,0.000277068,EJ
+LF-up,2020,final energy by fuel,refined liquids enduse,1.83874,EJ
+LF-up,2020,CO2 (direct),trn_pass,132.943,MtCO2
+LF-up,2025,service output by mode,Walk,70.4922,billion pkm
+LF-up,2025,mode share,Walk,0.0418037,fraction
+LF-up,2025,service output by mode,Cycle,25.1758,billion pkm
+LF-up,2025,mode share,Cycle,0.0149299,fraction
+LF-up,2025,service output by mode,Passenger Rail,6.1365,billion pkm
+LF-up,2025,mode share,Passenger Rail,0.0036391,fraction
+LF-up,2025,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2025,service output by mode,Domestic Aviation,64.4757,billion pkm
+LF-up,2025,mode share,Domestic Aviation,0.0382358,fraction
+LF-up,2025,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2025,service output by mode,Bus,161.253,billion pkm
+LF-up,2025,mode share,Bus,0.0956273,fraction
+LF-up,2025,tech share,Bus|Liquids,0.981131,fraction
+LF-up,2025,tech share,Bus|NG,0.0188691,fraction
+LF-up,2025,tech share,Bus|BEV,0,fraction
+LF-up,2025,service output by mode,2W and 3W,44.8929,billion pkm
+LF-up,2025,mode share,2W and 3W,0.0266226,fraction
+LF-up,2025,tech share,2W and 3W|Liquids,1,fraction
+LF-up,2025,tech share,2W and 3W|BEV,0,fraction
+LF-up,2025,service output by mode,Car,1313.84,billion pkm
+LF-up,2025,mode share,Car,0.779142,fraction
+LF-up,2025,tech share,Car|Liquids,0.974377,fraction
+LF-up,2025,tech share,Car|Hybrid Liquids,0.0169152,fraction
+LF-up,2025,tech share,Car|NG,0.00870824,fraction
+LF-up,2025,tech share,Car|BEV,0,fraction
+LF-up,2025,tech share,Car|FCEV,0,fraction
+LF-up,2025,service output,trn_pass,1686.27,billion pkm
+LF-up,2025,service price,trn_pass,0.570294,2005$/pkm
+LF-up,2025,final energy by fuel,H2 LDV,0,EJ
+LF-up,2025,final energy by fuel,delivered gas,0.0165871,EJ
+LF-up,2025,final energy by fuel,elect_td_trn,0.000283371,EJ
+LF-up,2025,final energy by fuel,refined liquids enduse,1.99176,EJ
+LF-up,2025,CO2 (direct),trn_pass,144.005,MtCO2
+LF-up,2030,service output by mode,Walk,70.2008,billion pkm
+LF-up,2030,mode share,Walk,0.0376291,fraction
+LF-up,2030,service output by mode,Cycle,25.0717,billion pkm
+LF-up,2030,mode share,Cycle,0.013439,fraction
+LF-up,2030,service output by mode,Passenger Rail,6.19812,billion pkm
+LF-up,2030,mode share,Passenger Rail,0.00332232,fraction
+LF-up,2030,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2030,service output by mode,Domestic Aviation,74.3664,billion pkm
+LF-up,2030,mode share,Domestic Aviation,0.039862,fraction
+LF-up,2030,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2030,service output by mode,Bus,158.296,billion pkm
+LF-up,2030,mode share,Bus,0.0848499,fraction
+LF-up,2030,tech share,Bus|Liquids,0.865063,fraction
+LF-up,2030,tech share,Bus|NG,0.0167445,fraction
+LF-up,2030,tech share,Bus|BEV,0.118192,fraction
+LF-up,2030,service output by mode,2W and 3W,43.4719,billion pkm
+LF-up,2030,mode share,2W and 3W,0.0233019,fraction
+LF-up,2030,tech share,2W and 3W|Liquids,0.544328,fraction
+LF-up,2030,tech share,2W and 3W|BEV,0.455672,fraction
+LF-up,2030,service output by mode,Car,1487.99,billion pkm
+LF-up,2030,mode share,Car,0.797596,fraction
+LF-up,2030,tech share,Car|Liquids,0.482,fraction
+LF-up,2030,tech share,Car|Hybrid Liquids,0.0081389,fraction
+LF-up,2030,tech share,Car|NG,0.00430655,fraction
+LF-up,2030,tech share,Car|BEV,0.505554,fraction
+LF-up,2030,tech share,Car|FCEV,0,fraction
+LF-up,2030,service output,trn_pass,1865.6,billion pkm
+LF-up,2030,service price,trn_pass,0.593155,2005$/pkm
+LF-up,2030,final energy by fuel,H2 LDV,0,EJ
+LF-up,2030,final energy by fuel,delivered gas,0.00913107,EJ
+LF-up,2030,final energy by fuel,elect_td_trn,0.323861,EJ
+LF-up,2030,final energy by fuel,refined liquids enduse,1.1618,EJ
+LF-up,2030,CO2 (direct),trn_pass,83.9704,MtCO2
+LF-up,2035,service output by mode,Walk,69.4252,billion pkm
+LF-up,2035,mode share,Walk,0.0340197,fraction
+LF-up,2035,service output by mode,Cycle,24.7947,billion pkm
+LF-up,2035,mode share,Cycle,0.0121499,fraction
+LF-up,2035,service output by mode,Passenger Rail,6.20914,billion pkm
+LF-up,2035,mode share,Passenger Rail,0.0030426,fraction
+LF-up,2035,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2035,service output by mode,Domestic Aviation,84.7259,billion pkm
+LF-up,2035,mode share,Domestic Aviation,0.0415174,fraction
+LF-up,2035,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2035,service output by mode,Bus,155.738,billion pkm
+LF-up,2035,mode share,Bus,0.0763149,fraction
+LF-up,2035,tech share,Bus|Liquids,0.758691,fraction
+LF-up,2035,tech share,Bus|NG,0.0147804,fraction
+LF-up,2035,tech share,Bus|BEV,0.226528,fraction
+LF-up,2035,service output by mode,2W and 3W,43.1767,billion pkm
+LF-up,2035,mode share,2W and 3W,0.0211574,fraction
+LF-up,2035,tech share,2W and 3W|Liquids,0.463031,fraction
+LF-up,2035,tech share,2W and 3W|BEV,0.536969,fraction
+LF-up,2035,service output by mode,Car,1656.67,billion pkm
+LF-up,2035,mode share,Car,0.811798,fraction
+LF-up,2035,tech share,Car|Liquids,0.456532,fraction
+LF-up,2035,tech share,Car|Hybrid Liquids,0.00795898,fraction
+LF-up,2035,tech share,Car|NG,0.00407417,fraction
+LF-up,2035,tech share,Car|BEV,0.498161,fraction
+LF-up,2035,tech share,Car|FCEV,0.0332741,fraction
+LF-up,2035,service output,trn_pass,2040.74,billion pkm
+LF-up,2035,service price,trn_pass,0.618536,2005$/pkm
+LF-up,2035,final energy by fuel,H2 LDV,0.0333875,EJ
+LF-up,2035,final energy by fuel,delivered gas,0.00903799,EJ
+LF-up,2035,final energy by fuel,elect_td_trn,0.349861,EJ
+LF-up,2035,final energy by fuel,refined liquids enduse,1.17242,EJ
+LF-up,2035,CO2 (direct),trn_pass,84.7285,MtCO2
+LF-up,2040,service output by mode,Walk,68.1775,billion pkm
+LF-up,2040,mode share,Walk,0.0307341,fraction
+LF-up,2040,service output by mode,Cycle,24.3491,billion pkm
+LF-up,2040,mode share,Cycle,0.0109765,fraction
+LF-up,2040,service output by mode,Passenger Rail,6.16958,billion pkm
+LF-up,2040,mode share,Passenger Rail,0.00278122,fraction
+LF-up,2040,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2040,service output by mode,Domestic Aviation,95.3232,billion pkm
+LF-up,2040,mode share,Domestic Aviation,0.0429712,fraction
+LF-up,2040,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2040,service output by mode,Bus,152.315,billion pkm
+LF-up,2040,mode share,Bus,0.0686629,fraction
+LF-up,2040,tech share,Bus|Liquids,0.662703,fraction
+LF-up,2040,tech share,Bus|NG,0.0129937,fraction
+LF-up,2040,tech share,Bus|BEV,0.324303,fraction
+LF-up,2040,service output by mode,2W and 3W,42.4744,billion pkm
+LF-up,2040,mode share,2W and 3W,0.0191472,fraction
+LF-up,2040,tech share,2W and 3W|Liquids,0.383652,fraction
+LF-up,2040,tech share,2W and 3W|BEV,0.616348,fraction
+LF-up,2040,service output by mode,Car,1829.49,billion pkm
+LF-up,2040,mode share,Car,0.824727,fraction
+LF-up,2040,tech share,Car|Liquids,0.429136,fraction
+LF-up,2040,tech share,Car|Hybrid Liquids,0.00771212,fraction
+LF-up,2040,tech share,Car|NG,0.00382144,fraction
+LF-up,2040,tech share,Car|BEV,0.485976,fraction
+LF-up,2040,tech share,Car|FCEV,0.0733541,fraction
+LF-up,2040,service output,trn_pass,2218.3,billion pkm
+LF-up,2040,service price,trn_pass,0.644873,2005$/pkm
+LF-up,2040,final energy by fuel,H2 LDV,0.0784888,EJ
+LF-up,2040,final energy by fuel,delivered gas,0.0088096,EJ
+LF-up,2040,final energy by fuel,elect_td_trn,0.370724,EJ
+LF-up,2040,final energy by fuel,refined liquids enduse,1.16709,EJ
+LF-up,2040,CO2 (direct),trn_pass,84.3333,MtCO2
+LF-up,2045,service output by mode,Walk,66.5669,billion pkm
+LF-up,2045,mode share,Walk,0.0277541,fraction
+LF-up,2045,service output by mode,Cycle,23.7739,billion pkm
+LF-up,2045,mode share,Cycle,0.00991216,fraction
+LF-up,2045,service output by mode,Passenger Rail,6.08861,billion pkm
+LF-up,2045,mode share,Passenger Rail,0.00253856,fraction
+LF-up,2045,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2045,service output by mode,Domestic Aviation,106.02,billion pkm
+LF-up,2045,mode share,Domestic Aviation,0.0442034,fraction
+LF-up,2045,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2045,service output by mode,Bus,148.104,billion pkm
+LF-up,2045,mode share,Bus,0.0617497,fraction
+LF-up,2045,tech share,Bus|Liquids,0.577144,fraction
+LF-up,2045,tech share,Bus|NG,0.0113891,fraction
+LF-up,2045,tech share,Bus|BEV,0.411467,fraction
+LF-up,2045,service output by mode,2W and 3W,41.3861,billion pkm
+LF-up,2045,mode share,2W and 3W,0.0172553,fraction
+LF-up,2045,tech share,2W and 3W|Liquids,0.310026,fraction
+LF-up,2045,tech share,2W and 3W|BEV,0.689974,fraction
+LF-up,2045,service output by mode,Car,2006.52,billion pkm
+LF-up,2045,mode share,Car,0.836587,fraction
+LF-up,2045,tech share,Car|Liquids,0.40028,fraction
+LF-up,2045,tech share,Car|Hybrid Liquids,0.00740449,fraction
+LF-up,2045,tech share,Car|NG,0.00355353,fraction
+LF-up,2045,tech share,Car|BEV,0.469359,fraction
+LF-up,2045,tech share,Car|FCEV,0.119403,fraction
+LF-up,2045,service output,trn_pass,2398.46,billion pkm
+LF-up,2045,service price,trn_pass,0.672322,2005$/pkm
+LF-up,2045,final energy by fuel,H2 LDV,0.135311,EJ
+LF-up,2045,final energy by fuel,delivered gas,0.00846265,EJ
+LF-up,2045,final energy by fuel,elect_td_trn,0.385918,EJ
+LF-up,2045,final energy by fuel,refined liquids enduse,1.14732,EJ
+LF-up,2045,CO2 (direct),trn_pass,82.8944,MtCO2
+LF-up,2050,service output by mode,Walk,64.6847,billion pkm
+LF-up,2050,mode share,Walk,0.0250601,fraction
+LF-up,2050,service output by mode,Cycle,23.1017,billion pkm
+LF-up,2050,mode share,Cycle,0.00895004,fraction
+LF-up,2050,service output by mode,Passenger Rail,5.97435,billion pkm
+LF-up,2050,mode share,Passenger Rail,0.00231458,fraction
+LF-up,2050,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2050,service output by mode,Domestic Aviation,116.667,billion pkm
+LF-up,2050,mode share,Domestic Aviation,0.0451991,fraction
+LF-up,2050,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2050,service output by mode,Bus,143.201,billion pkm
+LF-up,2050,mode share,Bus,0.0554787,fraction
+LF-up,2050,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2050,tech share,Bus|NG,0.00996229,fraction
+LF-up,2050,tech share,Bus|BEV,0.48843,fraction
+LF-up,2050,service output by mode,2W and 3W,39.933,billion pkm
+LF-up,2050,mode share,2W and 3W,0.0154708,fraction
+LF-up,2050,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2050,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2050,service output by mode,Car,2187.62,billion pkm
+LF-up,2050,mode share,Car,0.847527,fraction
+LF-up,2050,tech share,Car|Liquids,0.370563,fraction
+LF-up,2050,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2050,tech share,Car|NG,0.00327675,fraction
+LF-up,2050,tech share,Car|BEV,0.448927,fraction
+LF-up,2050,tech share,Car|FCEV,0.170188,fraction
+LF-up,2050,service output,trn_pass,2581.18,billion pkm
+LF-up,2050,service price,trn_pass,0.701059,2005$/pkm
+LF-up,2050,final energy by fuel,H2 LDV,0.20305,EJ
+LF-up,2050,final energy by fuel,delivered gas,0.00801794,EJ
+LF-up,2050,final energy by fuel,elect_td_trn,0.39524,EJ
+LF-up,2050,final energy by fuel,refined liquids enduse,1.11505,EJ
+LF-up,2050,CO2 (direct),trn_pass,80.5526,MtCO2
+LF-up,2055,service output by mode,Walk,62.833,billion pkm
+LF-up,2055,mode share,Walk,0.0229022,fraction
+LF-up,2055,service output by mode,Cycle,22.4404,billion pkm
+LF-up,2055,mode share,Cycle,0.00817937,fraction
+LF-up,2055,service output by mode,Passenger Rail,5.85498,billion pkm
+LF-up,2055,mode share,Passenger Rail,0.0021341,fraction
+LF-up,2055,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2055,service output by mode,Domestic Aviation,125.756,billion pkm
+LF-up,2055,mode share,Domestic Aviation,0.0458374,fraction
+LF-up,2055,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2055,service output by mode,Bus,134.36,billion pkm
+LF-up,2055,mode share,Bus,0.0489734,fraction
+LF-up,2055,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2055,tech share,Bus|NG,0.00996229,fraction
+LF-up,2055,tech share,Bus|BEV,0.48843,fraction
+LF-up,2055,service output by mode,2W and 3W,37.7486,billion pkm
+LF-up,2055,mode share,2W and 3W,0.0137591,fraction
+LF-up,2055,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2055,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2055,service output by mode,Car,2354.54,billion pkm
+LF-up,2055,mode share,Car,0.858214,fraction
+LF-up,2055,tech share,Car|Liquids,0.370563,fraction
+LF-up,2055,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2055,tech share,Car|NG,0.00327675,fraction
+LF-up,2055,tech share,Car|BEV,0.448927,fraction
+LF-up,2055,tech share,Car|FCEV,0.170188,fraction
+LF-up,2055,service output,trn_pass,2743.53,billion pkm
+LF-up,2055,service price,trn_pass,0.736133,2005$/pkm
+LF-up,2055,final energy by fuel,H2 LDV,0.218543,EJ
+LF-up,2055,final energy by fuel,delivered gas,0.00856761,EJ
+LF-up,2055,final energy by fuel,elect_td_trn,0.4233,EJ
+LF-up,2055,final energy by fuel,refined liquids enduse,1.19638,EJ
+LF-up,2055,CO2 (direct),trn_pass,86.4259,MtCO2
+LF-up,2060,service output by mode,Walk,60.886,billion pkm
+LF-up,2060,mode share,Walk,0.0209911,fraction
+LF-up,2060,service output by mode,Cycle,21.745,billion pkm
+LF-up,2060,mode share,Cycle,0.00749684,fraction
+LF-up,2060,service output by mode,Passenger Rail,5.71947,billion pkm
+LF-up,2060,mode share,Passenger Rail,0.00197185,fraction
+LF-up,2060,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2060,service output by mode,Domestic Aviation,134.564,billion pkm
+LF-up,2060,mode share,Domestic Aviation,0.0463925,fraction
+LF-up,2060,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2060,service output by mode,Bus,125.811,billion pkm
+LF-up,2060,mode share,Bus,0.0433748,fraction
+LF-up,2060,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2060,tech share,Bus|NG,0.00996229,fraction
+LF-up,2060,tech share,Bus|BEV,0.48843,fraction
+LF-up,2060,service output by mode,2W and 3W,35.5559,billion pkm
+LF-up,2060,mode share,2W and 3W,0.0122583,fraction
+LF-up,2060,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2060,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2060,service output by mode,Car,2516.28,billion pkm
+LF-up,2060,mode share,Car,0.867515,fraction
+LF-up,2060,tech share,Car|Liquids,0.370563,fraction
+LF-up,2060,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2060,tech share,Car|NG,0.00327675,fraction
+LF-up,2060,tech share,Car|BEV,0.448927,fraction
+LF-up,2060,tech share,Car|FCEV,0.170188,fraction
+LF-up,2060,service output,trn_pass,2900.56,billion pkm
+LF-up,2060,service price,trn_pass,0.774328,2005$/pkm
+LF-up,2060,final energy by fuel,H2 LDV,0.233555,EJ
+LF-up,2060,final energy by fuel,delivered gas,0.00910028,EJ
+LF-up,2060,final energy by fuel,elect_td_trn,0.450477,EJ
+LF-up,2060,final energy by fuel,refined liquids enduse,1.27517,EJ
+LF-up,2060,CO2 (direct),trn_pass,92.1162,MtCO2
+LF-up,2065,service output by mode,Walk,58.8892,billion pkm
+LF-up,2065,mode share,Walk,0.0193,fraction
+LF-up,2065,service output by mode,Cycle,21.0318,billion pkm
+LF-up,2065,mode share,Cycle,0.00689284,fraction
+LF-up,2065,service output by mode,Passenger Rail,5.57258,billion pkm
+LF-up,2065,mode share,Passenger Rail,0.00182632,fraction
+LF-up,2065,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2065,service output by mode,Domestic Aviation,143.017,billion pkm
+LF-up,2065,mode share,Domestic Aviation,0.0468716,fraction
+LF-up,2065,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2065,service output by mode,Bus,117.665,billion pkm
+LF-up,2065,mode share,Bus,0.0385628,fraction
+LF-up,2065,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2065,tech share,Bus|NG,0.00996229,fraction
+LF-up,2065,tech share,Bus|BEV,0.48843,fraction
+LF-up,2065,service output by mode,2W and 3W,33.3993,billion pkm
+LF-up,2065,mode share,2W and 3W,0.0109461,fraction
+LF-up,2065,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2065,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2065,service output by mode,Car,2671.68,billion pkm
+LF-up,2065,mode share,Car,0.8756,fraction
+LF-up,2065,tech share,Car|Liquids,0.370563,fraction
+LF-up,2065,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2065,tech share,Car|NG,0.00327675,fraction
+LF-up,2065,tech share,Car|BEV,0.448927,fraction
+LF-up,2065,tech share,Car|FCEV,0.170188,fraction
+LF-up,2065,service output,trn_pass,3051.26,billion pkm
+LF-up,2065,service price,trn_pass,0.816035,2005$/pkm
+LF-up,2065,final energy by fuel,H2 LDV,0.247979,EJ
+LF-up,2065,final energy by fuel,delivered gas,0.00961232,EJ
+LF-up,2065,final energy by fuel,elect_td_trn,0.476584,EJ
+LF-up,2065,final energy by fuel,refined liquids enduse,1.35086,EJ
+LF-up,2065,CO2 (direct),trn_pass,97.5826,MtCO2
+LF-up,2070,service output by mode,Walk,56.8778,billion pkm
+LF-up,2070,mode share,Walk,0.0178038,fraction
+LF-up,2070,service output by mode,Cycle,20.3135,billion pkm
+LF-up,2070,mode share,Cycle,0.00635849,fraction
+LF-up,2070,service output by mode,Passenger Rail,5.41821,billion pkm
+LF-up,2070,mode share,Passenger Rail,0.001696,fraction
+LF-up,2070,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2070,service output by mode,Domestic Aviation,151.05,billion pkm
+LF-up,2070,mode share,Domestic Aviation,0.0472815,fraction
+LF-up,2070,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2070,service output by mode,Bus,109.989,billion pkm
+LF-up,2070,mode share,Bus,0.0344286,fraction
+LF-up,2070,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2070,tech share,Bus|NG,0.00996229,fraction
+LF-up,2070,tech share,Bus|BEV,0.48843,fraction
+LF-up,2070,service output by mode,2W and 3W,31.311,billion pkm
+LF-up,2070,mode share,2W and 3W,0.00980093,fraction
+LF-up,2070,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2070,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2070,service output by mode,Car,2819.74,billion pkm
+LF-up,2070,mode share,Car,0.882631,fraction
+LF-up,2070,tech share,Car|Liquids,0.370563,fraction
+LF-up,2070,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2070,tech share,Car|NG,0.00327675,fraction
+LF-up,2070,tech share,Car|BEV,0.448927,fraction
+LF-up,2070,tech share,Car|FCEV,0.170188,fraction
+LF-up,2070,service output,trn_pass,3194.7,billion pkm
+LF-up,2070,service price,trn_pass,0.861674,2005$/pkm
+LF-up,2070,final energy by fuel,H2 LDV,0.261722,EJ
+LF-up,2070,final energy by fuel,delivered gas,0.0101004,EJ
+LF-up,2070,final energy by fuel,elect_td_trn,0.501456,EJ
+LF-up,2070,final energy by fuel,refined liquids enduse,1.42295,EJ
+LF-up,2070,CO2 (direct),trn_pass,102.788,MtCO2
+LF-up,2075,service output by mode,Walk,54.8788,billion pkm
+LF-up,2075,mode share,Walk,0.0164798,fraction
+LF-up,2075,service output by mode,Cycle,19.5996,billion pkm
+LF-up,2075,mode share,Cycle,0.00588565,fraction
+LF-up,2075,service output by mode,Passenger Rail,5.25952,billion pkm
+LF-up,2075,mode share,Passenger Rail,0.00157941,fraction
+LF-up,2075,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2075,service output by mode,Domestic Aviation,158.603,billion pkm
+LF-up,2075,mode share,Domestic Aviation,0.0476278,fraction
+LF-up,2075,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2075,service output by mode,Bus,102.819,billion pkm
+LF-up,2075,mode share,Bus,0.030876,fraction
+LF-up,2075,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2075,tech share,Bus|NG,0.00996229,fraction
+LF-up,2075,tech share,Bus|BEV,0.48843,fraction
+LF-up,2075,service output by mode,2W and 3W,29.3134,billion pkm
+LF-up,2075,mode share,2W and 3W,0.00880266,fraction
+LF-up,2075,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2075,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2075,service output by mode,Car,2959.59,billion pkm
+LF-up,2075,mode share,Car,0.888749,fraction
+LF-up,2075,tech share,Car|Liquids,0.370563,fraction
+LF-up,2075,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2075,tech share,Car|NG,0.00327675,fraction
+LF-up,2075,tech share,Car|BEV,0.448927,fraction
+LF-up,2075,tech share,Car|FCEV,0.170188,fraction
+LF-up,2075,service output,trn_pass,3330.06,billion pkm
+LF-up,2075,service price,trn_pass,0.911689,2005$/pkm
+LF-up,2075,final energy by fuel,H2 LDV,0.274702,EJ
+LF-up,2075,final energy by fuel,delivered gas,0.0105617,EJ
+LF-up,2075,final energy by fuel,elect_td_trn,0.524946,EJ
+LF-up,2075,final energy by fuel,refined liquids enduse,1.49097,EJ
+LF-up,2075,CO2 (direct),trn_pass,107.701,MtCO2
+LF-up,2080,service output by mode,Walk,52.9121,billion pkm
+LF-up,2080,mode share,Walk,0.0153075,fraction
+LF-up,2080,service output by mode,Cycle,18.8972,billion pkm
+LF-up,2080,mode share,Cycle,0.00546697,fraction
+LF-up,2080,service output by mode,Passenger Rail,5.09899,billion pkm
+LF-up,2080,mode share,Passenger Rail,0.00147514,fraction
+LF-up,2080,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2080,service output by mode,Domestic Aviation,165.625,billion pkm
+LF-up,2080,mode share,Domestic Aviation,0.0479154,fraction
+LF-up,2080,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2080,service output by mode,Bus,96.1657,billion pkm
+LF-up,2080,mode share,Bus,0.0278208,fraction
+LF-up,2080,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2080,tech share,Bus|NG,0.00996229,fraction
+LF-up,2080,tech share,Bus|BEV,0.48843,fraction
+LF-up,2080,service output by mode,2W and 3W,27.4205,billion pkm
+LF-up,2080,mode share,2W and 3W,0.00793278,fraction
+LF-up,2080,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2080,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2080,service output by mode,Car,3090.49,billion pkm
+LF-up,2080,mode share,Car,0.894081,fraction
+LF-up,2080,tech share,Car|Liquids,0.370563,fraction
+LF-up,2080,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2080,tech share,Car|NG,0.00327675,fraction
+LF-up,2080,tech share,Car|BEV,0.448927,fraction
+LF-up,2080,tech share,Car|FCEV,0.170188,fraction
+LF-up,2080,service output,trn_pass,3456.61,billion pkm
+LF-up,2080,service price,trn_pass,0.966562,2005$/pkm
+LF-up,2080,final energy by fuel,H2 LDV,0.286852,EJ
+LF-up,2080,final energy by fuel,delivered gas,0.0109936,EJ
+LF-up,2080,final energy by fuel,elect_td_trn,0.546935,EJ
+LF-up,2080,final energy by fuel,refined liquids enduse,1.55455,EJ
+LF-up,2080,CO2 (direct),trn_pass,112.293,MtCO2
+LF-up,2085,service output by mode,Walk,50.9924,billion pkm
+LF-up,2085,mode share,Walk,0.0142685,fraction
+LF-up,2085,service output by mode,Cycle,18.2116,billion pkm
+LF-up,2085,mode share,Cycle,0.0050959,fraction
+LF-up,2085,service output by mode,Passenger Rail,4.93859,billion pkm
+LF-up,2085,mode share,Passenger Rail,0.0013819,fraction
+LF-up,2085,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2085,service output by mode,Domestic Aviation,172.072,billion pkm
+LF-up,2085,mode share,Domestic Aviation,0.0481487,fraction
+LF-up,2085,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2085,service output by mode,Bus,90.0232,billion pkm
+LF-up,2085,mode share,Bus,0.02519,fraction
+LF-up,2085,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2085,tech share,Bus|NG,0.00996229,fraction
+LF-up,2085,tech share,Bus|BEV,0.48843,fraction
+LF-up,2085,service output by mode,2W and 3W,25.6404,billion pkm
+LF-up,2085,mode share,2W and 3W,0.00717461,fraction
+LF-up,2085,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2085,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2085,service output by mode,Car,3211.89,billion pkm
+LF-up,2085,mode share,Car,0.89874,fraction
+LF-up,2085,tech share,Car|Liquids,0.370563,fraction
+LF-up,2085,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2085,tech share,Car|NG,0.00327675,fraction
+LF-up,2085,tech share,Car|BEV,0.448927,fraction
+LF-up,2085,tech share,Car|FCEV,0.170188,fraction
+LF-up,2085,service output,trn_pass,3573.77,billion pkm
+LF-up,2085,service price,trn_pass,1.02681,2005$/pkm
+LF-up,2085,final energy by fuel,H2 LDV,0.298121,EJ
+LF-up,2085,final energy by fuel,delivered gas,0.0113943,EJ
+LF-up,2085,final energy by fuel,elect_td_trn,0.567324,EJ
+LF-up,2085,final energy by fuel,refined liquids enduse,1.6134,EJ
+LF-up,2085,CO2 (direct),trn_pass,116.543,MtCO2
+LF-up,2090,service output by mode,Walk,49.1298,billion pkm
+LF-up,2090,mode share,Walk,0.0133465,fraction
+LF-up,2090,service output by mode,Cycle,17.5464,billion pkm
+LF-up,2090,mode share,Cycle,0.00476662,fraction
+LF-up,2090,service output by mode,Passenger Rail,4.77981,billion pkm
+LF-up,2090,mode share,Passenger Rail,0.00129848,fraction
+LF-up,2090,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2090,service output by mode,Domestic Aviation,177.913,billion pkm
+LF-up,2090,mode share,Domestic Aviation,0.0483315,fraction
+LF-up,2090,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2090,service output by mode,Bus,84.3738,billion pkm
+LF-up,2090,mode share,Bus,0.0229209,fraction
+LF-up,2090,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2090,tech share,Bus|NG,0.00996229,fraction
+LF-up,2090,tech share,Bus|BEV,0.48843,fraction
+LF-up,2090,service output by mode,2W and 3W,23.9762,billion pkm
+LF-up,2090,mode share,2W and 3W,0.00651334,fraction
+LF-up,2090,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2090,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2090,service output by mode,Car,3323.37,billion pkm
+LF-up,2090,mode share,Car,0.902823,fraction
+LF-up,2090,tech share,Car|Liquids,0.370563,fraction
+LF-up,2090,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2090,tech share,Car|NG,0.00327675,fraction
+LF-up,2090,tech share,Car|BEV,0.448927,fraction
+LF-up,2090,tech share,Car|FCEV,0.170188,fraction
+LF-up,2090,service output,trn_pass,3681.09,billion pkm
+LF-up,2090,service price,trn_pass,1.093,2005$/pkm
+LF-up,2090,final energy by fuel,H2 LDV,0.308468,EJ
+LF-up,2090,final energy by fuel,delivered gas,0.0117622,EJ
+LF-up,2090,final energy by fuel,elect_td_trn,0.58604,EJ
+LF-up,2090,final energy by fuel,refined liquids enduse,1.66728,EJ
+LF-up,2090,CO2 (direct),trn_pass,120.434,MtCO2
+LF-up,2095,service output by mode,Walk,47.3311,billion pkm
+LF-up,2095,mode share,Walk,0.0125272,fraction
+LF-up,2095,service output by mode,Cycle,16.904,billion pkm
+LF-up,2095,mode share,Cycle,0.004474,fraction
+LF-up,2095,service output by mode,Passenger Rail,4.6238,billion pkm
+LF-up,2095,mode share,Passenger Rail,0.00122379,fraction
+LF-up,2095,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2095,service output by mode,Domestic Aviation,183.122,billion pkm
+LF-up,2095,mode share,Domestic Aviation,0.0484671,fraction
+LF-up,2095,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2095,service output by mode,Bus,79.1924,billion pkm
+LF-up,2095,mode share,Bus,0.02096,fraction
+LF-up,2095,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2095,tech share,Bus|NG,0.00996229,fraction
+LF-up,2095,tech share,Bus|BEV,0.48843,fraction
+LF-up,2095,service output by mode,2W and 3W,22.4273,billion pkm
+LF-up,2095,mode share,2W and 3W,0.00593588,fraction
+LF-up,2095,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2095,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2095,service output by mode,Car,3424.67,billion pkm
+LF-up,2095,mode share,Car,0.906412,fraction
+LF-up,2095,tech share,Car|Liquids,0.370563,fraction
+LF-up,2095,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2095,tech share,Car|NG,0.00327675,fraction
+LF-up,2095,tech share,Car|BEV,0.448927,fraction
+LF-up,2095,tech share,Car|FCEV,0.170188,fraction
+LF-up,2095,service output,trn_pass,3778.27,billion pkm
+LF-up,2095,service price,trn_pass,1.16574,2005$/pkm
+LF-up,2095,final energy by fuel,H2 LDV,0.31787,EJ
+LF-up,2095,final energy by fuel,delivered gas,0.0120964,EJ
+LF-up,2095,final energy by fuel,elect_td_trn,0.603036,EJ
+LF-up,2095,final energy by fuel,refined liquids enduse,1.71603,EJ
+LF-up,2095,CO2 (direct),trn_pass,123.955,MtCO2
+LF-up,2100,service output by mode,Walk,45.6003,billion pkm
+LF-up,2100,mode share,Walk,0.0117979,fraction
+LF-up,2100,service output by mode,Cycle,16.2858,billion pkm
+LF-up,2100,mode share,Cycle,0.00421354,fraction
+LF-up,2100,service output by mode,Passenger Rail,4.47138,billion pkm
+LF-up,2100,mode share,Passenger Rail,0.00115685,fraction
+LF-up,2100,tech share,Passenger Rail|Electric,1,fraction
+LF-up,2100,service output by mode,Domestic Aviation,187.685,billion pkm
+LF-up,2100,mode share,Domestic Aviation,0.0485588,fraction
+LF-up,2100,tech share,Domestic Aviation|Liquids,1,fraction
+LF-up,2100,service output by mode,Bus,74.4491,billion pkm
+LF-up,2100,mode share,Bus,0.0192618,fraction
+LF-up,2100,tech share,Bus|Liquids,0.501608,fraction
+LF-up,2100,tech share,Bus|NG,0.00996229,fraction
+LF-up,2100,tech share,Bus|BEV,0.48843,fraction
+LF-up,2100,service output by mode,2W and 3W,20.9909,billion pkm
+LF-up,2100,mode share,2W and 3W,0.00543085,fraction
+LF-up,2100,tech share,2W and 3W|Liquids,0.244914,fraction
+LF-up,2100,tech share,2W and 3W|BEV,0.755086,fraction
+LF-up,2100,service output by mode,Car,3515.64,billion pkm
+LF-up,2100,mode share,Car,0.90958,fraction
+LF-up,2100,tech share,Car|Liquids,0.370563,fraction
+LF-up,2100,tech share,Car|Hybrid Liquids,0.00704594,fraction
+LF-up,2100,tech share,Car|NG,0.00327675,fraction
+LF-up,2100,tech share,Car|BEV,0.448927,fraction
+LF-up,2100,tech share,Car|FCEV,0.170188,fraction
+LF-up,2100,service output,trn_pass,3865.12,billion pkm
+LF-up,2100,service price,trn_pass,1.2457,2005$/pkm
+LF-up,2100,final energy by fuel,H2 LDV,0.326313,EJ
+LF-up,2100,final energy by fuel,delivered gas,0.0123962,EJ
+LF-up,2100,final energy by fuel,elect_td_trn,0.618287,EJ
+LF-up,2100,final energy by fuel,refined liquids enduse,1.75957,EJ
+LF-up,2100,CO2 (direct),trn_pass,127.1,MtCO2

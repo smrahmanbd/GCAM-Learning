@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  lab8_cheapsolar_config_snippet.xml
+  Used by: lab 8 (the CheapSolar scenario).
+
+  This is NOT a complete configuration file. It shows the two edits to make
+  in your own copy of the reference configuration:
+
+    cd ~/gcam/exe
+    cp configuration_ref.xml config_cheapsolar.xml
+
+  Edit 1 goes at the END of the <ScenarioComponents> list. GCAM reads the
+  components in order and later data replaces earlier data (GCAM user
+  guide), so an add-on file must come after the files it changes. Place it
+  after every input file and directly before the "solver" line.
+
+  Edit 2 replaces the scenario name in the <Strings> section.
+
+  solar_adv.xml is an add-on file that ships with GCAM. It is built by the
+  gcamdata chunk module_energy_elec_tech_scenarios_xml and holds lower
+  ("advanced") capital and operating costs for solar technologies. The
+  release's own exe/batch_SSP_REF.xml uses it in the same way.
+
+  MUST BE CHECKED against the installed GCAM release: confirm that
+  input/gcamdata/xml/solar_adv.xml exists there and run the scenario once.
+  File names were read from gcam-core at tag gcam-v9.1; nothing was run.
+-->
+<Configuration>
+	<ScenarioComponents>
+		<!-- ... all the lines of configuration_ref.xml stay as they are ... -->
+
+		<!-- Edit 1: add this one line, last before the solver line -->
+		<Value name = "solar_adv">../input/gcamdata/xml/solar_adv.xml</Value>
+
+		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
+	</ScenarioComponents>
+	<Strings>
+		<!-- Edit 2: change Reference to CheapSolar -->
+		<Value name="scenarioName">CheapSolar</Value>
+	</Strings>
+</Configuration>

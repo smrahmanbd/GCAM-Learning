@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  policy_carbon_tax.xml : economy-wide CO2 price for one region, 25 $/tC in 2025 rising 5%/yr.
+
+  PURPOSE     Price-based policy scenario (compare with policy_co2_constraint_netzero.xml).
+  TEMPLATE    input/policy/carbon_tax_25_5.xml (gcam-v9.1), restricted to one region.
+              Element names: ghgpolicy / market / fixedTax (cvs/objects/policy/include/policy_ghg.h
+              lines 94-100).
+  POLICY NAME "CO2" is the name of the fossil-fuel and industrial CO2 emission objects, so this
+              prices FFI CO2 only. Land-use CO2 ("CO2_LUC") is a separate gas; link it with a
+              linked-ghg-policy as in input/policy/global_uct.xml if you want land included.
+              (The shipped carbon_tax_*.xml files name their policy "CO2_LTG" with a global market
+              and rely on other linking files; this template keeps one region and one gas.)
+  UNITS       1990$ per tonne of CARBON (policy files declare <price-unit>1990$/tC</price-unit>).
+              25 $/tC = 25 x 12/44 = 6.8 $/tCO2 (1990$). From a target in $/tCO2: multiply by 44/12,
+              then deflate to 1990$.
+  CONFIG      Add after all base files (policies are usually last). A fixed tax needs no
+              target-finder; the market is not solved (policy_ghg.cpp).
+  COVERAGE    Whole regional economy, not transport only. A transport-only price needs a
+              renamed CO2 object or ctax-input on transport technologies: unverified, see README.
+  STATUS      Not run in GCAM. Values computed: 25 x 1.05^(year-2025).
+-->
+<scenario>
+  <world>
+    <region name="Middle East">
+      <ghgpolicy name="CO2">
+        <market>Middle East</market>
+        <fixedTax year="2025">25.00</fixedTax>
+        <fixedTax year="2030">31.91</fixedTax>
+        <fixedTax year="2035">40.72</fixedTax>
+        <fixedTax year="2040">51.97</fixedTax>
+        <fixedTax year="2045">66.33</fixedTax>
+        <fixedTax year="2050">84.66</fixedTax>
+        <fixedTax year="2055">108.05</fixedTax>
+        <fixedTax year="2060">137.90</fixedTax>
+        <fixedTax year="2065">176.00</fixedTax>
+        <fixedTax year="2070">224.63</fixedTax>
+        <fixedTax year="2075">286.68</fixedTax>
+        <fixedTax year="2080">365.89</fixedTax>
+        <fixedTax year="2085">466.98</fixedTax>
+        <fixedTax year="2090">596.00</fixedTax>
+        <fixedTax year="2095">760.66</fixedTax>
+        <fixedTax year="2100">970.82</fixedTax>
+      </ghgpolicy>
+    </region>
+  </world>
+</scenario>

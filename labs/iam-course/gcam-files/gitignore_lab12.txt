@@ -1,0 +1,22 @@
+# Lab 12 (week 12): example .gitignore for the iam-course project.
+# Copy this file to the top folder of the project and rename it to
+#   .gitignore
+# Check the GCAM database folder name against the installed GCAM release
+# (the course's GCAM release); database_basexdb is the name in the
+# reference configuration file.
+#
+# Rule of thumb: Git keeps what you wrote (scripts, small input tables,
+# the report text). It leaves out what is large or what the scripts can
+# make again.
+
+# GCAM output databases and rgcam project files (large)
+database_basexdb/
+*.dat
+
+# Everything the scripts write: figures, tables, knitted reports
+output/
+
+# R and RStudio session files
+.Rproj.user/
+.Rhistory
+.RData

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  trn_zev_shareweights.xml : faster acceptance of zero-emission cars (BEV, FCEV share-weights).
+
+  PURPOSE     Represent non-cost barriers falling (charging, model availability, preferences).
+              A share-weight is a calibrated preference term: changing it is a scenario ASSUMPTION,
+              not a model result. Report it as such.
+  MODIFIES    Global technology database defaults from
+              input/gcamdata/inst/extdata/energy/A54.globaltranTech_shrwt_revised.csv
+              (Car BEV: 0 to 2025, 1 from 2030; Car FCEV: 0 in 2030, 0.5 from 2050)
+              and the interpolation rules from A54.globaltranTech_interp_revised.csv.
+  CONFIG      After the "transportation" entry.
+  STRUCTURE   Header GlobalTranTechShrwt (ModelInterface_headers.txt line 418):
+              global-technology-database / location-info sector-name subsector-name /
+              tranTechnology / period / share-weight.
+              Header GlobalTranTechInterp (line 420) for the interpolation-rule.
+              Without replacing the rule, the default interpolation can re-impose its own path.
+  STATUS      Not run in GCAM. Whether the "fixed" rule below fully overrides the base rule
+              (rather than adding a second rule) is unverified: check the parsed scenario with
+              the debug XML output (xmlDebug) before trusting results.
+-->
+<scenario>
+  <world>
+    <global-technology-database>
+      <location-info sector-name="trn_pass_road_LDV_4W" subsector-name="Car">
+        <tranTechnology name="BEV">
+          <period year="2025"><share-weight>0.5</share-weight></period>
+          <period year="2030"><share-weight>1</share-weight></period>
+          <interpolation-rule apply-to="share-weight" from-year="2030" to-year="2100">
+            <interpolation-function name="fixed"/>
+          </interpolation-rule>
+        </tranTechnology>
+        <tranTechnology name="FCEV">
+          <period year="2030"><share-weight>0.25</share-weight></period>
+          <period year="2040"><share-weight>0.5</share-weight></period>
+          <period year="2050"><share-weight>1</share-weight></period>
+        </tranTechnology>
+      </location-info>
+    </global-technology-database>
+  </world>
+</scenario>

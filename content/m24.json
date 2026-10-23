@@ -1,0 +1,456 @@
+{
+ "id": "2.4",
+ "go": 2,
+ "slug": "energy-supply",
+ "title": "Energy supply",
+ "minutes": 50,
+ "tag": "Supply",
+ "systems": [
+  "energy",
+  "economy",
+  "climate"
+ ],
+ "summary": "Where energy comes from in GCAM: graded fossil resources, renewable supply curves, power plants with levelised costs, and the value-factor rule that makes wind and solar dearer as they grow.",
+ "outcomes": [
+  "You can compute a levelised cost of electricity with a carbon price",
+  "You can explain graded resource supply curves",
+  "You can describe the value-factor method for wind and solar (v7.3 onward)",
+  "You can name where GCAM's technology cost assumptions live"
+ ],
+ "narration_en": "Energy supply in GCAM starts in the ground and in the sky. Coal, oil, gas and uranium are depletable resources described by graded supply curves: the cheap grades are used first, and the price climbs as more is extracted. Wind and solar are flows rather than stocks, described by renewable supply curves. These primary resources feed conversion sectors such as power plants, refineries and hydrogen production. Each technology has a cost built from three parts: a non-energy cost that covers building and running the plant, a fuel cost, and an emissions cost under any carbon price. In this module you will compute a levelised cost of electricity for a gas plant and a solar farm, and see the gas cost rise by about eighteen dollars for every fifty dollars of carbon price. You will also meet the value factor. As wind and solar take a larger share of the grid, each extra unit is worth less, so GCAM divides their cost by a value factor that falls with market share. That simple rule keeps renewables from taking over unrealistically fast.",
+ "narration_ar": "يبدأ إمداد الطاقة في نموذج GCAM من باطن الأرض ومن السماء. الفحم والنفط والغاز واليورانيوم موارد ناضبة تصفها منحنيات عرض متدرجة: تُستخدم الدرجات الرخيصة أولًا، ويرتفع السعر كلما استُخرج المزيد. أما الرياح والشمس فهي تدفقات لا مخزونات، وتصفها منحنيات عرض للطاقة المتجددة. تغذي هذه الموارد الأولية قطاعات التحويل مثل محطات الكهرباء والمصافي وإنتاج الهيدروجين. ولكل تقنية تكلفة من ثلاثة أجزاء: تكلفة غير طاقية تغطي بناء المحطة وتشغيلها، وتكلفة الوقود، وتكلفة الانبعاثات في ظل أي سعر للكربون. في هذه الوحدة ستحسب التكلفة المستوية للكهرباء لمحطة غاز ولمزرعة شمسية، وترى تكلفة الغاز ترتفع بنحو ثمانية عشر دولارًا لكل خمسين دولارًا من سعر الكربون. وستتعرف أيضًا على معامل القيمة. فكلما أخذت الرياح والشمس حصة أكبر من الشبكة قلّت قيمة كل وحدة إضافية، لذلك يقسم النموذج تكلفتهما على معامل قيمة ينخفض مع الحصة السوقية. هذه القاعدة البسيطة تمنع الطاقة المتجددة من السيطرة بسرعة غير واقعية.",
+ "diagram": {
+  "title": "From resources to delivered electricity",
+  "caption": "Resources feed conversion technologies; each technology's cost includes fuel and carbon, and wind/solar get a value-factor adjustment.",
+  "nodes": [
+   {
+    "id": "fos",
+    "label": "Fossil resources",
+    "sub": "graded supply curves",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Coal, oil, gas, uranium: graded curves inside a resource/reserve model; cheap grades first, price rises with use (supply_energy.html). Files A11.fos_curves.csv, A12.U_curves.csv."
+   },
+   {
+    "id": "ren",
+    "label": "Renewable resources",
+    "sub": "wind, solar, geothermal, hydro",
+    "x": 130,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Annual flows with supply curves Q = max·P^b/(Mid^b + P^b). Hydropower is exogenous fixed output; utility solar is nearly unlimited at low price (supply_energy.html)."
+   },
+   {
+    "id": "bio",
+    "label": "Bioenergy",
+    "sub": "from land (Go 2.6)",
+    "x": 130,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "land",
+    "detail": "Purpose-grown energy crops, residues and waste come from the land module and compete with food for land."
+   },
+   {
+    "id": "plant",
+    "label": "Power plants",
+    "sub": "cost = non-energy + fuel + carbon",
+    "x": 450,
+    "y": 260,
+    "w": 220,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Non-energy cost is levelised: overnight capital × capital recovery factor ÷ capacity factor + O&M. Costs from NREL ATB, updated in v8.8 (en_technologies.html)."
+   },
+   {
+    "id": "vf",
+    "label": "Value factor",
+    "sub": "PLCOE = LCOE / VF",
+    "x": 770,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Since v7.3 wind and solar cost is divided by a value factor that falls linearly with market share, e.g. PV intercept 0.972, slope −1.443 (CMP 394)."
+   },
+   {
+    "id": "ccs",
+    "label": "Carbon capture",
+    "sub": "remove-fraction → storage",
+    "x": 770,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "climate",
+    "detail": "CCS is a remove-fraction on a technology's emissions, sent to a storage market (en_technologies.html)."
+   },
+   {
+    "id": "grid",
+    "label": "Electricity market",
+    "sub": "sector logit, price",
+    "x": 770,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Technologies share the electricity market by nested logit; the solved price feeds buildings, industry and transport."
+   },
+   {
+    "id": "cp",
+    "label": "Carbon price",
+    "sub": "$/t added to cost",
+    "x": 450,
+    "y": 450,
+    "w": 180,
+    "h": 64,
+    "sys": "policy",
+    "detail": "Adds emission factor × carbon price to each technology's cost."
+   }
+  ],
+  "edges": [
+   {
+    "from": "fos",
+    "to": "plant",
+    "label": "fuel",
+    "sys": "energy"
+   },
+   {
+    "from": "ren",
+    "to": "plant",
+    "label": "resource",
+    "sys": "energy"
+   },
+   {
+    "from": "bio",
+    "to": "plant",
+    "label": "biomass",
+    "sys": "land"
+   },
+   {
+    "from": "plant",
+    "to": "grid",
+    "label": "output",
+    "sys": "energy"
+   },
+   {
+    "from": "vf",
+    "to": "plant",
+    "label": "adjusts VRE cost",
+    "sys": "energy"
+   },
+   {
+    "from": "plant",
+    "to": "ccs",
+    "label": "captured CO₂",
+    "sys": "climate"
+   },
+   {
+    "from": "cp",
+    "to": "plant",
+    "label": "+ ef × price",
+    "sys": "policy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "fos"
+    ],
+    "edges": [
+     [
+      "fos",
+      "plant"
+     ]
+    ],
+    "text": "Fossil fuels come from graded curves: the more you extract, the higher the cost of the next grade."
+   },
+   {
+    "focus": [
+     "ren",
+     "bio"
+    ],
+    "edges": [
+     [
+      "ren",
+      "plant"
+     ],
+     [
+      "bio",
+      "plant"
+     ]
+    ],
+    "text": "Renewables are flows with their own curves; bioenergy arrives from the land module."
+   },
+   {
+    "focus": [
+     "plant"
+    ],
+    "edges": [],
+    "text": "Each plant's cost = non-energy (capital, O&M) + fuel ÷ efficiency + emissions cost."
+   },
+   {
+    "focus": [
+     "cp"
+    ],
+    "edges": [
+     [
+      "cp",
+      "plant"
+     ]
+    ],
+    "text": "A carbon price adds emission factor × price: gas rises ~$18/MWh per $50/t in the kit example."
+   },
+   {
+    "focus": [
+     "vf"
+    ],
+    "edges": [
+     [
+      "vf",
+      "plant"
+     ]
+    ],
+    "text": "Wind and solar cost is divided by a value factor that shrinks as their share grows, slowing their growth."
+   },
+   {
+    "focus": [
+     "ccs",
+     "grid"
+    ],
+    "edges": [
+     [
+      "plant",
+      "ccs"
+     ],
+     [
+      "plant",
+      "grid"
+     ]
+    ],
+    "text": "CCS sends captured CO₂ to storage; technologies share the electricity market by logit."
+   }
+  ]
+ },
+ "components": {
+  "caption": "Supply-side building blocks",
+  "rows": [
+   {
+    "name": "Depletable resource",
+    "purpose": "Fossil and uranium stocks on graded cost curves",
+    "analogy": "A fruit tree: the low branches first"
+   },
+   {
+    "name": "Renewable resource",
+    "purpose": "Annual flows (wind, sun, geothermal) with supply curves",
+    "analogy": "Rain into a barrel each year"
+   },
+   {
+    "name": "Technology",
+    "purpose": "Converts inputs to outputs at a cost and efficiency",
+    "analogy": "A machine in the factory"
+   },
+   {
+    "name": "Levelised cost",
+    "purpose": "All costs per unit of output over the plant's life",
+    "analogy": "Price per slice, not per oven"
+   },
+   {
+    "name": "Value factor",
+    "purpose": "Lowers the value of variable renewables as their share grows",
+    "analogy": "The 10th umbrella seller at the same corner"
+   },
+   {
+    "name": "Vintage",
+    "purpose": "Plants built in a period that keep running for their lifetime",
+    "analogy": "Cars on the road, not just cars in the showroom"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Resources: stocks and flows",
+   "html": "<p>Depletable resources (coal, oil, unconventional oil, gas, uranium) sit on <b>graded supply curves</b>: as the price rises, more of the resource becomes economic. Technical change can lower extraction costs over time (<a href=\"https://jgcri.github.io/gcam-doc/supply_energy.html\">supply_energy.html</a>). In the kit's toy curve, cost rises from $3/GJ to $12/GJ across four grades, so the price at 200, 800 and 1400 EJ of cumulative use is <b>3.6, 6.0 and 11.0 $/GJ</b>.</p><p>Renewables are annual flows:</p><div class=\"eq\">Q = Q<sub>max</sub> · P<sup>b</sup> / (P<sub>mid</sub><sup>b</sup> + P<sup>b</sup>)</div><p>where P<sub>mid</sub> is the price at which half the maximum is produced.</p>"
+  },
+  {
+   "heading": "Technology cost",
+   "html": "<p>Every technology's cost per unit of output is</p><div class=\"eq\">C = non-energy cost + Σ (input price × input coefficient) + Σ (GHG price × emissions) − secondary output value</div><p>For power plants, non-energy cost is levelised: overnight capital × capital recovery factor ÷ (capacity factor × 8.76) + fixed and variable O&M (<a href=\"https://jgcri.github.io/gcam-doc/en_technologies.html\">en_technologies.html</a>). The kit's gas plant (capex $1,000/kW, capacity factor 0.55, fuel $6/GJ, efficiency 55%) costs <b>61.2 $/MWh</b> with no carbon price, <b>79.5</b> at $50/t and <b>97.9</b> at $100/t. The solar farm (capex $900/kW, CF 0.22) costs 45.4 $/MWh at any carbon price. Illustrative numbers.</p>"
+  },
+  {
+   "heading": "Wind and solar: the value factor",
+   "html": "<p>Since v7.3 GCAM no longer pairs wind and solar with backup turbines. Instead their levelised cost is divided by a <b>value factor</b> that falls linearly with their market share (CMP 394):</p><div class=\"eq\">PLCOE = LCOE / VF,  VF = intercept + slope × share</div><p>For PV the intercept is 0.972 and the slope −1.443 (then divided by 0.903, the non-VRE average); onshore wind 0.91 and −1.2. The relationships come from ReEDS for the contiguous US and may break down above about 75% VRE. Storage is not modelled explicitly.</p>"
+  },
+  {
+   "heading": "Electricity, fuels and hydrogen",
+   "html": "<p>Electricity is nested: fuel subsector → technology → cooling system (up to five types). Refining covers oil, biomass liquids (up to 8 technologies per region, some with CCS), coal-to-liquids and gas-to-liquids. Hydrogen has 10 central and 2 forecourt routes from up to 7 primary sources. CCS is a <code>remove-fraction</code> on emissions sent to a storage market; direct air capture enters with a share weight rising to 1 by 2050 (<a href=\"https://jgcri.github.io/gcam-doc/supply_energy.html\">supply_energy.html</a>, <a href=\"https://jgcri.github.io/gcam-doc/details_energy.html\">details_energy.html</a>).</p>"
+  },
+  {
+   "heading": "Vintages and retirement",
+   "html": "<p>Plants built in one period keep running: GCAM tracks <b>vintages</b>. Three shutdown rules exist: profit shutdown (output falls as variable cost approaches price), an S-curve lifetime, and exogenous output scalars, such as a 2015 US coal plant at 0.5 in 2021 falling to 0 by 2040 (<a href=\"https://jgcri.github.io/gcam-doc/en_technologies.html\">en_technologies.html</a>). This is why the fleet changes more slowly than new investment.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Power plant costs come from NREL ATB files (<code>NREL_ATB_capital.csv</code>, <code>NREL_ATB_OMfixed.csv</code>, <code>NREL_ATB_OMvar.csv</code>); efficiencies, capture rates and retirement in <code>A23.globaltech_*.csv</code> (<a href=\"https://jgcri.github.io/gcam-doc/inputs_supply.html\">inputs_supply.html</a>). Units: capital-overnight in 1975$/kW, prices in 1975$/GJ. Query <b>elec gen by subsector</b> to see the mix. Plant-specific values are not printed on the doc pages.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>The first solar farm in a region sells power at midday when it is valuable. The hundredth floods the same hours and earns less. The value factor charges that crowding as a higher effective cost.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "trap",
+   "title": "\"GCAM learns: costs fall as capacity grows\"",
+   "html": "<p>In the released model, future technology costs are <b>inputs</b> you choose; the model does not learn during a run. Learning curves are one way to <i>write</i> those inputs (the kit computes $900/kW falling to $460.8/kW after three doublings at 20%).</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "valuefactor",
+  "intro": "Move solar's market share and see how the value factor raises its effective cost.",
+  "predict": "At what market share does solar's effective cost double its plain levelised cost?"
+ },
+ "code": [
+  {
+   "title": "Levelised cost, resource curve and learning",
+   "lang": "python",
+   "file": "labs/go2/m24_supply.py",
+   "runnable": true,
+   "explain": "LCOE for gas and solar with a carbon price, a graded resource curve, and a learning curve. Try: set the solar capacity factor to 0.30 and predict its new LCOE.",
+   "expected": "carbon   0 $/t: gas  61.2 $/MWh, solar  45.4 $/MWh\ncarbon  50 $/t: gas  79.5 $/MWh, solar  45.4 $/MWh\nresource price at 200, 800, 1400 EJ: [3.6, 6.0, 11.0] $/GJ\nsolar capex after 3 doublings at 20%: 460.8 $/kW"
+  },
+  {
+   "title": "The same in R",
+   "lang": "r",
+   "file": "labs/go2/m24_supply.R",
+   "runnable": false,
+   "explain": "Identical numbers in base R."
+  },
+  {
+   "title": "Cheap solar add-on used in lab 8",
+   "lang": "xml",
+   "file": "labs/iam-course/gcam-files/lab8_cheapsolar_config_snippet.xml",
+   "runnable": false,
+   "explain": "How a cost-change add-on file is added last in configuration.xml so it overrides the reference input."
+  }
+ ],
+ "takeaways": [
+  "Fossil fuels come from graded supply curves; renewables from flow supply curves",
+  "Technology cost = non-energy cost + fuel cost + emissions cost",
+  "A carbon price raises each option's cost in proportion to its emissions",
+  "Wind and solar costs are divided by a value factor that falls with their share (v7.3+)",
+  "Future costs are inputs, not learned by the model; vintages make the fleet change slowly"
+ ],
+ "quiz": [
+  {
+   "q": "In GCAM v8.2/9.1, the integration cost of wind and solar is represented by…",
+   "options": [
+    "a backup turbine for every VRE plant",
+    "a value factor that falls with market share",
+    "an explicit hourly storage model",
+    "nothing"
+   ],
+   "answer": 1,
+   "explain": "PLCOE = LCOE / VF since v7.3; storage is not explicit."
+  },
+  {
+   "q": "The kit gas plant costs 61.2 $/MWh at zero carbon price and 79.5 at $50/t. At $100/t it costs about…",
+   "options": [
+    "79.5",
+    "88",
+    "97.9",
+    "122"
+   ],
+   "answer": 2,
+   "explain": "Each $50/t adds about 18.3 $/MWh, so 61.2 + 36.7 ≈ 97.9."
+  },
+  {
+   "q": "A graded resource supply curve means…",
+   "options": [
+    "all of the resource costs the same",
+    "cheap grades are used first, so price rises with use",
+    "the resource is renewable",
+    "the price falls as you use more"
+   ],
+   "answer": 1,
+   "explain": "Higher grades are dearer to extract."
+  },
+  {
+   "q": "Does GCAM compute technology learning during a run?",
+   "options": [
+    "Yes, from cumulative capacity",
+    "No: future costs are input assumptions",
+    "Only for solar",
+    "Only under a carbon price"
+   ],
+   "answer": 1,
+   "explain": "Costs are inputs; learning curves can be used to choose them."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Levelised cost (LCOE)",
+   "def": "All lifetime costs of a plant divided by its lifetime output, in $/MWh."
+  },
+  {
+   "term": "Capacity factor",
+   "def": "Actual output divided by the output if the plant ran at full power all year."
+  },
+  {
+   "term": "Value factor",
+   "def": "The value of variable renewable output relative to average power; falls as their share grows."
+  },
+  {
+   "term": "Graded supply curve",
+   "def": "A resource split into grades of rising extraction cost."
+  },
+  {
+   "term": "Vintage",
+   "def": "The cohort of plants built in one period, which keeps operating for its lifetime."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Energy supply",
+   "url": "https://jgcri.github.io/gcam-doc/supply_energy.html",
+   "why": "Resources, electricity, refining, hydrogen and CCS."
+  },
+  {
+   "title": "GCAM documentation: Technology representation",
+   "url": "https://jgcri.github.io/gcam-doc/en_technologies.html",
+   "why": "Cost equation, vintages, shutdown rules."
+  },
+  {
+   "title": "CMP 394: Intermittent electricity integration",
+   "url": "https://jgcri.github.io/gcam-doc/cmp/394-Intermittent_electricity_integration.pdf",
+   "why": "The value-factor method and its coefficients."
+  },
+  {
+   "title": "GCAM releases (latest 9.1)",
+   "url": "https://github.com/JGCRI/gcam-core/releases",
+   "why": "Download GCAM and its input files."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 8 slides: The energy system in GCAM (PDF)",
+   "path": "downloads/slides/Week08-The-energy-system-in-GCAM.pdf"
+  }
+ ]
+}

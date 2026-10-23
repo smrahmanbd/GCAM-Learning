@@ -1,0 +1,33 @@
+Lab 13 (week 13): changes to the GCAM configuration file for the ensemble.
+Instructor file. NOT RUN: check it against the installed GCAM release
+(the course's GCAM release) before use.
+
+Start from a copy of the reference configuration file of your release
+(exe/configuration_ref.xml) and change three values.
+
+1. Under <Files>, point to the batch file:
+     <Value name="BatchFileName">ensemble_batch.xml</Value>
+
+2. Under <Strings>, give the runs a common prefix:
+     <Value name="scenarioName">Ens</Value>
+
+3. Under <Bools>, switch batch mode on:
+     <Value name="BatchMode">1</Value>
+
+Then run GCAM with this configuration file. All 36 runs are written to the
+output database named in the configuration file. Budget several hours.
+
+To build data/ensemble_results.csv afterwards (columns are this course's
+own choice):
+  run, solar_cost, ccs_storage, ssp, carbon_price, co2_2050
+  - read the 36 scenarios into an rgcam project with a query file that
+    holds "CO2 emissions by region";
+  - sum the regions for 2050 and convert to GtCO2
+    (the query reports MTC: x 44/12, then / 1000);
+  - fill the four input columns from each run's FileSet names:
+      _solLow  -> solar_cost "low"      _solHigh  -> "high"
+      _ccsLow  -> ccs_storage "low"     _ccsHigh  -> "high"
+      _ssp1/2/3 -> ssp "SSP1"/"SSP2"/"SSP3"
+      _taxNone -> carbon_price "none"   _taxLow -> "low"   _taxHigh -> "high"
+  - check the exact scenario names GCAM wrote with listScenariosInDB()
+    before you parse them.

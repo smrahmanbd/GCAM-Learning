@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  trn_bev_cost_low.xml : BEV cars 30% cheaper (non-fuel cost) from 2030, one region.
+
+  PURPOSE     Technology-cost sensitivity for battery-electric cars (Go 3, module 3.5).
+  MODIFIES    transportation_UCD_CORE.xml (built by gcamdata chunk
+              input/gcamdata/R/zenergy_L254.transportation_UCD.R, table L254.StubTranTechCost).
+  CONFIG      Add to <ScenarioComponents> AFTER the "transportation" entry, e.g.
+                <Value name="trn_bev_cost_low">../input/user/trn_bev_cost_low.xml</Value>
+              Later files overwrite earlier ones for the same element.
+  STRUCTURE   Header StubTranTechCost in
+              input/gcamdata/inst/extdata/mi_headers/ModelInterface_headers.txt (line 506):
+              region / supplysector / tranSubsector / stub-technology / period /
+              minicam-non-energy-input name="non-energy" / input-cost.
+              Names: supplysector "trn_pass_road_LDV_4W", tranSubsector "Car", technology "BEV"
+              (input/gcamdata/inst/extdata/energy/mappings/UCD_techs_revised.csv).
+  UNITS       GCAM 9.1 (v8.5+): 1975$ per vehicle-km (L254 converts 2005$/vkm with gdp_deflator(2005,1975)).
+              GCAM 8.2 and earlier: 1990$/vkm. Do not copy numbers between versions.
+  VALUES      PLACEHOLDERS. The numbers below are NOT the GCAM base values. Generate real ones with
+                python scale_from_base.py  (options shown as name=value; on the command line write them with two leading hyphens, see README)
+                base=../input/gcamdata/xml/transportation_UCD_CORE.xml \
+                  region="Middle East" sector=trn_pass_road_LDV_4W subsector=Car tech=BEV \
+                  field=input-cost factor=0.70 from-year=2030 out=trn_bev_cost_low.xml
+              which multiplies your own base-file values by 0.70.
+  REGION      "Middle East" is a GCAM 9.1 region name. The public release has no separate Saudi Arabia
+              region (GCAM-KSA splits it out; that version is distributed by KAPSARC, not in gcam-core).
+  STATUS      Not run in GCAM. Element names checked against the gcam-v9.1 source and headers.
+-->
+<scenario>
+  <world>
+    <region name="Middle East">
+      <supplysector name="trn_pass_road_LDV_4W">
+        <tranSubsector name="Car">
+          <stub-technology name="BEV">
+            <period year="2030"><minicam-non-energy-input name="non-energy"><input-cost>0.0700</input-cost></minicam-non-energy-input></period>
+            <period year="2035"><minicam-non-energy-input name="non-energy"><input-cost>0.0680</input-cost></minicam-non-energy-input></period>
+            <period year="2040"><minicam-non-energy-input name="non-energy"><input-cost>0.0660</input-cost></minicam-non-energy-input></period>
+            <period year="2045"><minicam-non-energy-input name="non-energy"><input-cost>0.0650</input-cost></minicam-non-energy-input></period>
+            <period year="2050"><minicam-non-energy-input name="non-energy"><input-cost>0.0640</input-cost></minicam-non-energy-input></period>
+          </stub-technology>
+        </tranSubsector>
+      </supplysector>
+    </region>
+  </world>
+</scenario>

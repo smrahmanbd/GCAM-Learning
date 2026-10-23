@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  transport_queries.xml : ModelInterface batch query file for the Go 3 transport kit.
+  Read by analysis/read_transport.py (gcamreader) and analysis/read_transport.R (rgcam).
+
+  SOURCE  Every query is copied unchanged from output/queries/Main_queries.xml in gcam-core,
+          tag gcam-v9.1, wrapped in <aQuery><all-regions/>...</aQuery> (batch format):
+    transport service output by mode                               lines 3023-3030
+    transport service output by tech                               lines 3031-3038
+    transport service output by tech (new)                         lines 3048-3055
+    transport final energy by fuel                                 lines 2963-2969
+    transport final energy by mode and fuel                        lines 2970-2977
+    transport load factors                                         lines 3056-3062
+    costs of transport modes                                       lines 3077-3083
+    costs of transport techs                                       lines 3084-3090
+    fuel prices to transport                                       lines 3063-3069
+    transport tech share-weights                                   lines 3192-3197
+    CO2 emissions by region                                        lines 4526-4531
+    CO2 emissions by sector (excluding resource production)        lines 4532-4537
+    CO2 emissions by tech (excluding resource production)          lines 4883-4889
+  NOTES   "transport service output by tech (new)" reports new-vintage output only: the closest
+          GCAM gets to sales shares (GCAM has no vehicle stock).
+          The load-factor query reads the output-database name "load-factor" (input files use
+          "loadFactor").
+          Service output is billion pkm / billion tkm and prices are 1975$ in GCAM 9.1 (v8.5+).
+  STATUS  Copied and checked as well-formed XML; not run against a GCAM database.
+-->
+<queries>
+  <!-- Main_queries.xml lines 3023-3030, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="transport service output by mode">
+         <axis1 name="mode">subsector</axis1>
+         <axis2 name="Year">physical-output[@vintage]</axis2>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+    *[@type='subsector']//*[@type='output' (:collapse:) and not(@name='CAFEcredit')]/
+    physical-output/node()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 3031-3038, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="transport service output by tech">
+         <axis1 name="technology">technology</axis1>
+         <axis2 name="Year">physical-output[@vintage]</axis2>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+    *[@type='subsector']/*[@type='technology']/*[@type='output' (:collapse:) and not (@name='CAFEcredit')]/
+    physical-output/node()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 3048-3055, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="transport service output by tech (new)">
+         <axis1 name="technology">technology</axis1>
+         <axis2 name="Year">physical-output[@vintage]</axis2>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+    *[@type='subsector']/*[@type='technology']/*[@type='output' (:collapse:) and not (@name='CAFEcredit')]/
+    physical-output[@vintage=parent::*/parent::*/@year]/node()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 2963-2969, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="transport final energy by fuel">
+         <axis1 name="input">input</axis1>
+         <axis2 name="Year">demand-physical[@vintage]</axis2>
+         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]//
+    *[@type='input' and not (@name='renewable')]/demand-physical[@unit='EJ']/node()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 2970-2977, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="transport final energy by mode and fuel">
+         <axis1 name="mode">subsector</axis1>
+         <axis2 name="Year">demand-physical[@vintage]</axis2>
+         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+    *[@type='subsector']//*[@type='input' and not (@name='renewable')]/
+    demand-physical[@unit='EJ']/node()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 3056-3062, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="transport load factors">
+         <axis1 name="technology">technology</axis1>
+         <axis2 name="Year">technology</axis2>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+    *[@type='subsector']/*[@type='technology']//load-factor/node()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 3077-3083, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="costs of transport modes">
+         <axis1 name="mode">subsector</axis1>
+         <axis2 name="Year">cost</axis2>
+         <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+    *[@type='subsector']/cost/text()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 3084-3090, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="costs of transport techs">
+         <axis1 name="technology">technology</axis1>
+         <axis2 name="Year">cost</axis2>
+         <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+    *[@type='subsector' ]/*[@type='technology']/cost/text()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 3063-3069, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+     <supplyDemandQuery title="fuel prices to transport">
+         <axis1 name="fuel">sector</axis1>
+         <axis2 name="Year">cost</axis2>
+         <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (@name='delivered gas' or @name='delivered coal' or @name='elect_td_trn'
+    or @name='refined liquids enduse' or @name='H2 LDV' or @name='H2 MHDV' or @name='LH2')]/cost/text()</xPath>
+         <comments/>
+     </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 3192-3197, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+    <supplyDemandQuery title="transport tech share-weights">
+        <axis1 name="technology">technology</axis1>
+        <axis2 name="Year">technology</axis2>
+        <xPath buildList="true" dataName="Price" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/*[@type='subsector' ]/*[@type='technology']/share-weight/node()</xPath>
+        <comments/>
+    </supplyDemandQuery>
+  </aQuery>
+  <!-- Main_queries.xml lines 4526-4531, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+    <emissionsQueryBuilder title="CO2 emissions by region">
+        <axis1 name="region">region</axis1>
+        <axis2 name="Year">emissions</axis2>
+        <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+        <comments/>
+    </emissionsQueryBuilder>
+  </aQuery>
+  <!-- Main_queries.xml lines 4532-4537, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+    <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+        <axis1 name="sector">sector</axis1>
+        <axis2 name="Year">emissions</axis2>
+        <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+        <comments/>
+    </emissionsQueryBuilder>
+  </aQuery>
+  <!-- Main_queries.xml lines 4883-4889, copied unchanged -->
+  <aQuery>
+    <all-regions/>
+    <emissionsQueryBuilder title="CO2 emissions by tech (excluding resource production)">
+        <axis1 name="technology">technology</axis1>
+        <axis2 name="Year">emissions</axis2>
+        <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
+    CO2/emissions/node()</xPath>
+        <comments/>
+    </emissionsQueryBuilder>
+  </aQuery>
+</queries>

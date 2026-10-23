@@ -1,0 +1,461 @@
+{
+ "id": "2.1",
+ "go": 2,
+ "slug": "socioeconomic-drivers",
+ "title": "Socioeconomic drivers",
+ "minutes": 40,
+ "tag": "Drivers",
+ "systems": [
+  "economy",
+  "energy",
+  "land",
+  "water"
+ ],
+ "summary": "How many people there are and how rich they become set the size of every demand in GCAM. Learn where population and GDP come from, and how the Kaya identity splits emissions into drivers.",
+ "outcomes": [
+  "You can name the exogenous inputs behind GCAM's population and GDP",
+  "You can explain how GDP per person drives food, energy and water demand",
+  "You can decompose an emissions change with the Kaya identity, by hand and in code",
+  "You can describe what GCAM's macro module (KLEM, now KLEAM) adds"
+ ],
+ "narration_en": "Every number that comes out of GCAM starts with two quiet assumptions: how many people there will be, and how rich they will become. Population comes from the Shared Socioeconomic Pathways, a set of five stories about the future. Income comes from labour productivity growth, and together they give gross domestic product for each of GCAM's thirty-two regions. These drivers then push on everything else. Richer people want more floor space, more travel, more meat and more water, so demand in every sector grows with income per person. In this module you will grow population and income for two invented storylines, a green road and a rocky road, and see how far apart their emissions end up. You will use the Kaya identity, which writes emissions as people times income per person times energy per dollar times carbon per unit of energy. The four factors multiply, they do not add, so small changes compound over eighty years. Finally, you will meet GCAM's macro module, which since version seven can let energy prices feed back into GDP itself.",
+ "narration_ar": "كل رقم يخرج من نموذج GCAM يبدأ بافتراضين هادئين: كم عدد الناس الذين سيعيشون في المستقبل، وإلى أي حد سيصبحون أغنياء. يأتي عدد السكان من مسارات التنمية الاجتماعية والاقتصادية المشتركة، وهي خمس قصص عن المستقبل. ويأتي الدخل من نمو إنتاجية العمل، ومعًا يعطيان الناتج المحلي الإجمالي لكل منطقة من مناطق النموذج الاثنتين والثلاثين. ثم تدفع هذه المحركات كل شيء آخر. فالناس الأغنى يريدون مساحة سكنية أكبر وسفرًا أكثر ولحومًا أكثر وماءً أكثر، لذلك ينمو الطلب في كل قطاع مع دخل الفرد. في هذه الوحدة ستُنمّي السكان والدخل لقصتين مُتخيَّلتين، الطريق الأخضر والطريق الوعر، وترى إلى أي مدى تتباعد انبعاثاتهما. وستستخدم متطابقة كايا، التي تكتب الانبعاثات على أنها عدد السكان مضروبًا في دخل الفرد مضروبًا في الطاقة لكل دولار مضروبًا في الكربون لكل وحدة طاقة. العوامل الأربعة تُضرب ولا تُجمع، لذا تتراكم التغيرات الصغيرة على مدى ثمانين عامًا. وأخيرًا ستتعرف على الوحدة الاقتصادية الكلية في النموذج، التي تسمح منذ الإصدار السابع بأن تؤثر أسعار الطاقة في الناتج المحلي الإجمالي نفسه.",
+ "diagram": {
+  "title": "Drivers in, demands out",
+  "caption": "Population and labour productivity are inputs; GDP per person then drives every demand. Click a box, or press Play.",
+  "nodes": [
+   {
+    "id": "pop",
+    "label": "Population",
+    "sub": "SSP database, by region",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Population by region comes from the SSP database for 2015 to 2100 (UN data before that). In 2100: SSP1 6.9, SSP2 9, SSP3 12.7, SSP5 7.4 billion (ssp.html)."
+   },
+   {
+    "id": "lab",
+    "label": "Labour productivity",
+    "sub": "growth rate, exogenous",
+    "x": 130,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "An exogenous growth rate per region. With labour force participation it sets how fast output per worker grows (economy.html, Table 1)."
+   },
+   {
+    "id": "gdp",
+    "label": "GDP and GDP per person",
+    "sub": "32 regions, 5-year steps",
+    "x": 450,
+    "y": 260,
+    "w": 210,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Regional GDP is the scale of economic activity. Calibrated to history up to the 2021 base year, then projected to 2100 in 5-year steps."
+   },
+   {
+    "id": "bld",
+    "label": "Buildings",
+    "sub": "floorspace, services",
+    "x": 770,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Floorspace per person follows a Gompertz curve in income; services per m² saturate as income rises (demand_energy.html)."
+   },
+   {
+    "id": "trn",
+    "label": "Transport and industry",
+    "sub": "service demand",
+    "x": 770,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Service output grows with income (elasticity α) and falls with price (β): D_t = D_t-1 (Y ratio)^α (P ratio)^β (N ratio)."
+   },
+   {
+    "id": "food",
+    "label": "Food and land",
+    "sub": "staples, non-staples",
+    "x": 770,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "land",
+    "detail": "Food demand uses an income-dependent demand system (Edmonds et al. 2017): richer diets shift from staples to meat and dairy (demand_land.html)."
+   },
+   {
+    "id": "wat",
+    "label": "Municipal water",
+    "sub": "per-person demand",
+    "x": 450,
+    "y": 450,
+    "w": 180,
+    "h": 64,
+    "sys": "water",
+    "detail": "Per-capita municipal water grows with GDP per person (elasticity 0.37) and falls with price (−0.33) and technology (demand_water.html)."
+   },
+   {
+    "id": "macro",
+    "label": "Macro module",
+    "sub": "KLEM → KLEAM (v9.0)",
+    "x": 130,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Since GCAM v7 a CES production function can make GDP respond to energy: energy service efficiency, energy investment and net exports enter (economy.html). v9.0 adds agriculture (KLEAM)."
+   }
+  ],
+  "edges": [
+   {
+    "from": "pop",
+    "to": "gdp",
+    "label": "people",
+    "sys": "economy"
+   },
+   {
+    "from": "lab",
+    "to": "gdp",
+    "label": "output per worker",
+    "sys": "economy"
+   },
+   {
+    "from": "gdp",
+    "to": "bld",
+    "label": "income",
+    "sys": "economy"
+   },
+   {
+    "from": "gdp",
+    "to": "trn",
+    "label": "income",
+    "sys": "economy"
+   },
+   {
+    "from": "gdp",
+    "to": "food",
+    "label": "income",
+    "sys": "economy"
+   },
+   {
+    "from": "gdp",
+    "to": "wat",
+    "label": "income",
+    "sys": "economy"
+   },
+   {
+    "from": "macro",
+    "to": "gdp",
+    "label": "energy feedback",
+    "sys": "economy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "pop"
+    ],
+    "edges": [
+     [
+      "pop",
+      "gdp"
+     ]
+    ],
+    "text": "Start with people. Population is an input from the SSP database, different in each storyline."
+   },
+   {
+    "focus": [
+     "lab"
+    ],
+    "edges": [
+     [
+      "lab",
+      "gdp"
+     ]
+    ],
+    "text": "Labour productivity growth decides how much each worker produces. Together with population it sets GDP."
+   },
+   {
+    "focus": [
+     "gdp"
+    ],
+    "edges": [],
+    "text": "GDP per person is the single most important driver in GCAM. Watch where it flows next."
+   },
+   {
+    "focus": [
+     "bld",
+     "trn"
+    ],
+    "edges": [
+     [
+      "gdp",
+      "bld"
+     ],
+     [
+      "gdp",
+      "trn"
+     ]
+    ],
+    "text": "Energy services grow with income: more floorspace, more travel, more industrial output."
+   },
+   {
+    "focus": [
+     "food",
+     "wat"
+    ],
+    "edges": [
+     [
+      "gdp",
+      "food"
+     ],
+     [
+      "gdp",
+      "wat"
+     ]
+    ],
+    "text": "Diets and municipal water use also follow income, so land and water demand grow too."
+   },
+   {
+    "focus": [
+     "macro"
+    ],
+    "edges": [
+     [
+      "macro",
+      "gdp"
+     ]
+    ],
+    "text": "Optional feedback: the macro module lets energy costs change GDP, closing the loop."
+   }
+  ]
+ },
+ "components": {
+  "caption": "The pieces of the socioeconomic module",
+  "rows": [
+   {
+    "name": "Population",
+    "purpose": "Number of people per region and year",
+    "analogy": "How many guests are coming to dinner"
+   },
+   {
+    "name": "Labour productivity",
+    "purpose": "Output per worker; grows at an assumed rate",
+    "analogy": "How fast each cook can work"
+   },
+   {
+    "name": "GDP",
+    "purpose": "Scale of the regional economy",
+    "analogy": "The size of the whole kitchen's budget"
+   },
+   {
+    "name": "GDP per person",
+    "purpose": "Drives demand for energy services, food and water",
+    "analogy": "How much each guest can afford to order"
+   },
+   {
+    "name": "SSP storyline",
+    "purpose": "A consistent set of population, income and technology assumptions",
+    "analogy": "The menu theme for the evening"
+   },
+   {
+    "name": "Macro module (KLEM/KLEAM)",
+    "purpose": "Optional: lets energy and policy change GDP",
+    "analogy": "A kitchen whose budget shrinks if gas gets dear"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "What this component represents",
+   "html": "<p>The <b>socioeconomic drivers</b> are the number of people and their income, region by region and period by period. They are not results of the energy or land model in the standard setup: they are assumptions you choose, usually from one of the five <b>Shared Socioeconomic Pathways</b> (SSPs).</p><p>GCAM uses <b>32 geopolitical regions</b> and steps forward in <b>5-year periods from 2025 to 2100</b>, after a base year of <b>2021</b>. Population and GDP set the overall scale of activity that every other module must serve (<a href=\"https://jgcri.github.io/gcam-doc/overview.html\">overview.html</a>, <a href=\"https://jgcri.github.io/gcam-doc/common_assumptions.html\">common_assumptions.html</a>).</p>"
+  },
+  {
+   "heading": "How GCAM builds population and GDP",
+   "html": "<p>The economy module reads a small set of exogenous inputs: population (thousands), labour productivity growth, labour force participation, base-year GDP and national accounts (<a href=\"https://jgcri.github.io/gcam-doc/economy.html\">economy.html</a>). Population before 2015 comes from Maddison and the UN; from 2015 the SSP database supplies it. Future GDP comes from the SSP database (OECD model).</p><div class=\"eq\">GDP<sub>r,t</sub> = population<sub>r,t</sub> × labour force share × output per worker<sub>r,t</sub></div><div class=\"eq\">output per worker<sub>t</sub> = output per worker<sub>t−1</sub> × (1 + g)<sup>5</sup></div><p>Here g is the yearly labour productivity growth rate. Five years of growth compound in each model step.</p>"
+  },
+  {
+   "heading": "Income drives every demand",
+   "html": "<p>GDP per person is the bridge to the rest of the model. Buildings floorspace follows a Gompertz curve in income, so it rises fast and then saturates. Industry and transport service output follow</p><div class=\"eq\">D<sub>t</sub> = D<sub>t−1</sub> · (Y<sub>t</sub>/Y<sub>t−1</sub>)<sup>α</sup> · (P<sub>t</sub>/P<sub>t−1</sub>)<sup>β</sup> · (N<sub>t</sub>/N<sub>t−1</sub>)</div><p>where Y is GDP per person, P the service price, N population, α the income elasticity and β the price elasticity (<a href=\"https://jgcri.github.io/gcam-doc/demand_energy.html\">demand_energy.html</a>). Food demand, municipal water (income elasticity 0.37) and air-pollution controls also depend on income (<a href=\"https://jgcri.github.io/gcam-doc/demand_land.html\">demand_land.html</a>, <a href=\"https://jgcri.github.io/gcam-doc/demand_water.html\">demand_water.html</a>).</p>"
+  },
+  {
+   "heading": "The Kaya identity: splitting emissions into drivers",
+   "html": "<p>The <b>Kaya identity</b> writes CO<sub>2</sub> as a product of four factors. It is always true, because the units cancel:</p><div class=\"eq\">CO<sub>2</sub> = population × (GDP / person) × (energy / GDP) × (CO<sub>2</sub> / energy)</div><p>Because the factors multiply, their <i>ratios</i> multiply too. In the kit's invented <i>Green road</i>, population grows 1.10×, income per person 5.70×, energy per dollar falls to 0.132× and carbon per unit of energy to 0.087×. The product is <b>0.072</b>: emissions in 2100 are 7% of 2020. On the <i>Rocky road</i> the ratios are 1.52, 2.22, 0.53 and 0.79, giving <b>1.393</b>, a 39% rise.</p>"
+  },
+  {
+   "heading": "When GDP stops being fixed: the macro module",
+   "html": "<p>Since GCAM v7 a macroeconomic module (KLEM: capital, labour, energy, materials) can make GDP respond to the energy system. A nested CES production function uses an energy-service efficiency index from the energy module, and capital accumulates with depreciation (<a href=\"https://jgcri.github.io/gcam-doc/economy.html\">economy.html</a>). In <b>open-GDP</b> mode a carbon policy changes GDP and consumption directly. GCAM v9.0 extended it to <b>KLEAM</b>, adding agriculture with its own labour and capital. The CES parameter values are not given on the documentation pages.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Population and GDP inputs are built by gcamdata from <code>SSP_database_2024.csv.gz</code>, <code>USDA_GDP_MER.csv</code> and <code>pwt91.csv</code> (<a href=\"https://jgcri.github.io/gcam-doc/inputs_economy.html\">inputs_economy.html</a>). In a run, query <b>GDP by region</b> and <b>Population by region</b> in ModelInterface, or with rgcam/gcamreader. All five SSPs are implemented; GCAM was the marker model for SSP4 (<a href=\"https://jgcri.github.io/gcam-doc/ssp.html\">ssp.html</a>).</p>"
+  },
+  {
+   "after": 3,
+   "kind": "trap",
+   "title": "Adding instead of multiplying",
+   "html": "<p>Avalon's factors change by +20%, +50%, −30% and −20%. Adding gives +20%, which is wrong. Multiply: 1.2 × 1.5 × 0.7 × 0.8 = <b>1.008</b>, so CO<sub>2</sub> rises by only 0.8%.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "research",
+   "title": "Version note",
+   "html": "<p>The online documentation describes GCAM v8.2; the latest release is <b>GCAM 9.1</b> (2 June 2026), which includes KLEAM (v9.0). The overview page still calls 2015 the final calibration year; other pages and the v8.0 notes say <b>2021</b>, which is current.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "kaya",
+  "intro": "Set how population, income, energy per dollar and CO₂ per unit of energy change over 30 years, and watch the CO₂ ratio.",
+  "predict": "If income per person doubles and the other three factors stay the same, what happens to CO₂? Then: how much must energy per dollar fall to hold CO₂ flat?"
+ },
+ "code": [
+  {
+   "title": "Two storylines and a Kaya check",
+   "lang": "python",
+   "file": "labs/go2/m21_drivers.py",
+   "runnable": true,
+   "explain": "Grows population (logistic) and income for two invented storylines, builds CO₂ with the Kaya identity and checks that the factor ratios multiply to the CO₂ ratio. Try: set the Rocky road income growth to 0.022 and predict the new CO₂ ratio before running.",
+   "expected": "Green road: product = 0.072, CO2 ratio = 0.072\nRocky road: product = 1.393, CO2 ratio = 1.393"
+  },
+  {
+   "title": "The same model in R",
+   "lang": "r",
+   "file": "labs/go2/m21_drivers.R",
+   "runnable": false,
+   "explain": "Identical numbers in base R. Run with Rscript m21_drivers.R."
+  },
+  {
+   "title": "Read GDP and population from a GCAM run (R)",
+   "lang": "r",
+   "runnable": false,
+   "source": "library(rgcam)\nconn <- localDBConn('path/to/gcam/output', 'database_basexdb')\nprj  <- addScenario(conn, 'go2.dat', 'Reference', 'go2_queries.xml')\ngdp  <- getQuery(prj, 'GDP by region')   # add this query from Main_queries.xml\nhead(gdp)",
+   "explain": "Not run against a live database. 'GDP by region' is a standard ModelInterface query; copy it from output/queries/Main_queries.xml into your query file."
+  }
+ ],
+ "takeaways": [
+  "Population and labour productivity are inputs, usually taken from an SSP storyline",
+  "GDP per person drives demand for buildings, transport, industry, food and water",
+  "The Kaya factors multiply, so their ratios multiply: never add percentages",
+  "GCAM runs 32 regions in 5-year steps from a 2021 base year to 2100",
+  "The macro module (KLEM, KLEAM from v9.0) can let energy and policy change GDP"
+ ],
+ "quiz": [
+  {
+   "q": "In standard GCAM runs, regional population is…",
+   "options": [
+    "solved by the model each period",
+    "an exogenous input, usually from an SSP",
+    "calculated from food supply",
+    "fixed at 2021 levels"
+   ],
+   "answer": 1,
+   "explain": "Population is an assumption read from the SSP database, not a model result."
+  },
+  {
+   "q": "Population ×1.2, income per person ×1.5, energy per $ ×0.7, CO₂ per energy ×0.8. CO₂ changes by a factor of…",
+   "options": [
+    "1.20",
+    "0.80",
+    "1.008",
+    "4.2"
+   ],
+   "answer": 2,
+   "explain": "Multiply the ratios: 1.2 × 1.5 × 0.7 × 0.8 = 1.008."
+  },
+  {
+   "q": "Which equation form does GCAM use for industry and transport service growth?",
+   "options": [
+    "Demand grows with income ratio to the power α and price ratio to the power β",
+    "Demand is fixed per person",
+    "Demand follows a linear trend in time",
+    "Demand is chosen by optimisation over the century"
+   ],
+   "answer": 0,
+   "explain": "D_t = D_t−1 (Y ratio)^α (P ratio)^β (N ratio), from the energy demand page."
+  },
+  {
+   "q": "What does the macro module (KLEM/KLEAM) add?",
+   "options": [
+    "More regions",
+    "A way for energy and policy to change GDP",
+    "A detailed transport model",
+    "A climate model"
+   ],
+   "answer": 1,
+   "explain": "In open-GDP mode energy costs and efficiency feed back into GDP and consumption."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Exogenous",
+   "def": "Decided outside the model and fed in as an assumption, such as population."
+  },
+  {
+   "term": "Endogenous",
+   "def": "Calculated by the model itself, such as energy prices."
+  },
+  {
+   "term": "Labour productivity",
+   "def": "Output per worker; its growth rate is a key GDP assumption."
+  },
+  {
+   "term": "Income elasticity",
+   "def": "The % change in demand for a 1% change in income per person."
+  },
+  {
+   "term": "KLEAM",
+   "def": "GCAM's v9.0 macro module: capital, labour, energy, agriculture and materials."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Economy",
+   "url": "https://jgcri.github.io/gcam-doc/economy.html",
+   "why": "Inputs, the macro module and how GDP is built."
+  },
+  {
+   "title": "GCAM documentation: Shared Socioeconomic Pathways",
+   "url": "https://jgcri.github.io/gcam-doc/ssp.html",
+   "why": "How each SSP is implemented, with 2100 population and income."
+  },
+  {
+   "title": "GCAM documentation: Economy inputs",
+   "url": "https://jgcri.github.io/gcam-doc/inputs_economy.html",
+   "why": "The raw data files behind population and GDP."
+  },
+  {
+   "title": "rgcam (R)",
+   "url": "https://github.com/JGCRI/rgcam",
+   "why": "Query GCAM databases from R and save shareable project files."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 3 slides: Energy primer and Kaya (PDF)",
+   "path": "downloads/slides/Week03-Energy-primer.pdf"
+  },
+  {
+   "label": "Week 6 slides: Scenario framework (PDF)",
+   "path": "downloads/slides/Week06-The-scenario-framework.pdf"
+  }
+ ]
+}

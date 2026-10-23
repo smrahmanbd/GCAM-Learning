@@ -1,0 +1,557 @@
+{
+ "id": "2.8",
+ "go": 2,
+ "slug": "emissions-climate-policy-system",
+ "title": "Emissions, climate and policy: the system together",
+ "minutes": 60,
+ "tag": "Whole system",
+ "systems": [
+  "economy",
+  "energy",
+  "land",
+  "water",
+  "climate",
+  "policy"
+ ],
+ "summary": "Put all the boxes back together. Follow emissions into Hector, see how GCAM implements carbon prices and caps, and trace five feedback loops that only an integrated model can show.",
+ "outcomes": [
+  "You can explain how GCAM's emissions reach Hector and become warming",
+  "You can describe a carbon price, an emissions cap and a climate target in GCAM",
+  "You can trace at least five cross-component feedback loops",
+  "You can contrast GCAM's market equilibrium with an optimisation model"
+ ],
+ "narration_en": "This module puts all the boxes back together. Emissions come from burning fuels, from land use change and from other gases such as methane and nitrous oxide. In every period GCAM passes them to Hector, a simple climate model, which turns them into concentrations, radiative forcing and global temperature. Policies close the loop. A carbon price is the simplest: you choose the price path and the model finds the emissions. An emissions cap works the other way round: you choose the emissions and the model finds the price that achieves them, and a climate target goes one step further and finds the price path that meets a temperature or forcing goal. Because everything is linked, a single policy ripples through the system. A carbon price raises bioenergy demand, which raises land prices and food prices. It also pays landowners for carbon, which grows forests, and it raises the electricity price, which shifts transport and buildings. In this module you will run a tiny integrated model with a price and a cap, and see that both doors open onto the same room.",
+ "narration_ar": "تعيد هذه الوحدة تجميع كل الصناديق معًا. تأتي الانبعاثات من حرق الوقود، ومن تغيّر استخدام الأرض، ومن غازات أخرى مثل الميثان وأكسيد النيتروز. وفي كل فترة يمررها نموذج GCAM إلى نموذج هيكتور المناخي البسيط، الذي يحولها إلى تركيزات وتأثير إشعاعي ودرجة حرارة عالمية. وتُغلق السياسات الحلقة. أبسطها سعر الكربون: تختار مسار السعر ويجد النموذج الانبعاثات. أما سقف الانبعاثات فيعمل بالعكس: تختار الانبعاثات ويجد النموذج السعر الذي يحققها، ويذهب الهدف المناخي خطوة أبعد فيجد مسار السعر الذي يحقق هدفًا لدرجة الحرارة أو للتأثير الإشعاعي. ولأن كل شيء مترابط، تنتشر سياسة واحدة في النظام كله. فسعر الكربون يرفع الطلب على الطاقة الحيوية، مما يرفع أسعار الأرض والغذاء. ويدفع أيضًا لملاك الأراضي مقابل الكربون، فتنمو الغابات، ويرفع سعر الكهرباء، فيتغير النقل والمباني. في هذه الوحدة ستشغّل نموذجًا متكاملًا صغيرًا بسعر وبسقف، وترى أن البابين يفتحان على الغرفة نفسها.",
+ "diagram": {
+  "title": "The whole system and its feedbacks",
+  "caption": "Five loops to trace: bioenergy–food, carbon–forest, electricity–transport, water–cooling, and emissions–climate–policy.",
+  "nodes": [
+   {
+    "id": "econ",
+    "label": "Economy",
+    "sub": "population, GDP",
+    "x": 130,
+    "y": 90,
+    "w": 160,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Population and GDP drive every demand (Go 2.1). In open-GDP mode energy feeds back to GDP."
+   },
+   {
+    "id": "mkt",
+    "label": "Markets and solver",
+    "sub": "prices clear all markets",
+    "x": 450,
+    "y": 70,
+    "w": 190,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Broyden's method clears a few hundred markets each period (Go 2.2)."
+   },
+   {
+    "id": "en",
+    "label": "Energy",
+    "sub": "supply and demand",
+    "x": 770,
+    "y": 90,
+    "w": 160,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Resources, conversion and end uses (Go 2.4, 2.5). Shares by nested logit (Go 2.3)."
+   },
+   {
+    "id": "land",
+    "label": "Land and food",
+    "sub": "profit-based logit",
+    "x": 130,
+    "y": 260,
+    "w": 160,
+    "h": 64,
+    "sys": "land",
+    "detail": "Crops, pasture, forest and energy crops share land by profit (Go 2.6)."
+   },
+   {
+    "id": "water",
+    "label": "Water",
+    "sub": "235 basins",
+    "x": 130,
+    "y": 430,
+    "w": 160,
+    "h": 64,
+    "sys": "water",
+    "detail": "Basin prices from renewable, groundwater and desalination tiers (Go 2.7)."
+   },
+   {
+    "id": "emis",
+    "label": "Emissions",
+    "sub": "CO₂, LUC, non-CO₂",
+    "x": 450,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "climate",
+    "detail": "CO₂ from fuels × carbon coefficients, land-use change CO₂, and non-CO₂ gases with MAC curves (emissions.html)."
+   },
+   {
+    "id": "hec",
+    "label": "Hector",
+    "sub": "concentrations → °C",
+    "x": 770,
+    "y": 430,
+    "w": 170,
+    "h": 64,
+    "sys": "climate",
+    "detail": "Each period GCAM passes emissions to Hector v3.2, which computes concentrations, forcing and global temperature (hector.html)."
+   },
+   {
+    "id": "pol",
+    "label": "Policy",
+    "sub": "price, cap, target",
+    "x": 770,
+    "y": 260,
+    "w": 160,
+    "h": 64,
+    "sys": "policy",
+    "detail": "fixedTax price paths, emissions constraints solved for a price, or climate targets via target-finder mode (policies.html)."
+   },
+   {
+    "id": "ref",
+    "label": "Reference vs policy",
+    "sub": "the difference is the result",
+    "x": 450,
+    "y": 450,
+    "w": 200,
+    "h": 64,
+    "sys": "data",
+    "detail": "Results are read as policy run minus reference run; never as forecasts."
+   }
+  ],
+  "edges": [
+   {
+    "from": "econ",
+    "to": "mkt",
+    "label": "demand drivers",
+    "sys": "economy"
+   },
+   {
+    "from": "mkt",
+    "to": "en",
+    "label": "prices",
+    "sys": "economy"
+   },
+   {
+    "from": "mkt",
+    "to": "land",
+    "label": "prices",
+    "sys": "economy"
+   },
+   {
+    "from": "en",
+    "to": "land",
+    "label": "bioenergy demand",
+    "sys": "energy"
+   },
+   {
+    "from": "water",
+    "to": "en",
+    "label": "cooling cost",
+    "sys": "water"
+   },
+   {
+    "from": "en",
+    "to": "emis",
+    "label": "fuel CO₂",
+    "sys": "climate"
+   },
+   {
+    "from": "land",
+    "to": "emis",
+    "label": "LUC CO₂",
+    "sys": "climate"
+   },
+   {
+    "from": "emis",
+    "to": "hec",
+    "label": "emissions",
+    "sys": "climate"
+   },
+   {
+    "from": "pol",
+    "to": "en",
+    "label": "carbon price",
+    "sys": "policy"
+   },
+   {
+    "from": "pol",
+    "to": "land",
+    "label": "land carbon",
+    "sys": "policy"
+   },
+   {
+    "from": "hec",
+    "to": "pol",
+    "label": "target check",
+    "sys": "climate"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "econ",
+     "mkt"
+    ],
+    "edges": [
+     [
+      "econ",
+      "mkt"
+     ]
+    ],
+    "text": "Drivers set demands; the solver finds prices that clear every market in the period."
+   },
+   {
+    "focus": [
+     "en",
+     "land"
+    ],
+    "edges": [
+     [
+      "mkt",
+      "en"
+     ],
+     [
+      "mkt",
+      "land"
+     ],
+     [
+      "en",
+      "land"
+     ]
+    ],
+    "text": "Loop 1, bioenergy–food: energy demand for biomass raises land and food prices."
+   },
+   {
+    "focus": [
+     "pol",
+     "land"
+    ],
+    "edges": [
+     [
+      "pol",
+      "land"
+     ]
+    ],
+    "text": "Loop 2, carbon–forest: a carbon price on land pays for stored carbon and expands forests."
+   },
+   {
+    "focus": [
+     "water",
+     "en"
+    ],
+    "edges": [
+     [
+      "water",
+      "en"
+     ]
+    ],
+    "text": "Loop 3, water–cooling: scarce basins raise water prices and shift power-plant cooling."
+   },
+   {
+    "focus": [
+     "pol",
+     "en"
+    ],
+    "edges": [
+     [
+      "pol",
+      "en"
+     ]
+    ],
+    "text": "Loop 4, electricity–transport: carbon prices change electricity costs, shifting EVs and heat pumps."
+   },
+   {
+    "focus": [
+     "emis",
+     "hec"
+    ],
+    "edges": [
+     [
+      "en",
+      "emis"
+     ],
+     [
+      "land",
+      "emis"
+     ],
+     [
+      "emis",
+      "hec"
+     ]
+    ],
+    "text": "All emissions go to Hector, which returns concentrations, forcing and temperature."
+   },
+   {
+    "focus": [
+     "hec",
+     "pol",
+     "ref"
+    ],
+    "edges": [
+     [
+      "hec",
+      "pol"
+     ]
+    ],
+    "text": "Loop 5, climate target: the price path is adjusted until the target is met. Read results as policy minus reference."
+   }
+  ]
+ },
+ "components": {
+  "caption": "Ways to tell GCAM about climate policy",
+  "rows": [
+   {
+    "name": "Carbon price (fixedTax)",
+    "purpose": "You set the price path; GCAM finds emissions",
+    "analogy": "A toll at the door"
+   },
+   {
+    "name": "Emissions constraint",
+    "purpose": "You set emissions; GCAM finds the price",
+    "analogy": "A gate that lets only so many through"
+   },
+   {
+    "name": "Climate target",
+    "purpose": "You set forcing, temperature or concentration; GCAM finds the price path",
+    "analogy": "A thermostat setting"
+   },
+   {
+    "name": "Linked GHG market",
+    "purpose": "Non-CO₂ gases priced via GWPs",
+    "analogy": "One currency for all gases"
+   },
+   {
+    "name": "Standards (RPS, biofuel)",
+    "purpose": "Bounds met by a solved tax or subsidy",
+    "analogy": "A quota with a hidden price"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Emissions",
+   "html": "<p>CO₂ = fuel use × carbon coefficients (consistent with CDIAC), plus cement process CO₂, fugitive CO₂ and land-use change CO₂. Non-CO₂ greenhouse gases (CH₄, N₂O, F-gases) use marginal abatement cost (MAC) curves that read the carbon price:</p><div class=\"eq\">E<sub>t</sub> = A<sub>t</sub> · F<sub>t0</sub> · (1 − MAC(price<sub>t</sub>))</div><p>The MAC curves were updated in v8.9. Outputs: CO₂ in MtC/yr, non-CO₂ in Tg/yr; net CO₂ = CO₂ emissions by region + LUC emissions (<a href=\"https://jgcri.github.io/gcam-doc/emissions.html\">emissions.html</a>, <a href=\"https://jgcri.github.io/gcam-doc/outputs_emissions.html\">outputs_emissions.html</a>).</p>"
+  },
+  {
+   "heading": "Climate: Hector inside GCAM",
+   "html": "<p>Each period GCAM passes its emissions to <b>Hector v3.2</b>, which computes concentrations, radiative forcing and temperature. The coupling is one-way via emissions: climate impacts on yields or runoff are not automatic in core GCAM (<a href=\"https://jgcri.github.io/gcam-doc/hector.html\">hector.html</a>). The kit's toy climate model (impulse-response carbon cycle + two-layer energy balance; not Hector) gives: flat 40 Gt/yr → <b>637 ppm and 2.53 °C</b> in 2100; net zero by 2050 → <b>443 ppm and 1.52 °C</b>.</p><div class=\"eq\">F = 5.35 · ln(C / C<sub>0</sub>) W/m²</div>"
+  },
+  {
+   "heading": "Policy: price, cap, target",
+   "html": "<p>A <b>carbon price</b> (<code>fixedTax</code>) is set by you; a <b>constraint</b> caps emissions and GCAM solves for the price; a <b>climate target</b> (target-finder mode, <code>find-path=1</code>) searches for the least-cost price path to a forcing, temperature or concentration goal and \"substantially increases run time\". Carbon prices are in 1990$ per tonne of carbon (<a href=\"https://jgcri.github.io/gcam-doc/policies.html\">policies.html</a>, <a href=\"https://jgcri.github.io/gcam-doc/user-guide.html\">user-guide.html</a>).</p><p>In the kit's toy system, a cap of −50% by 2050 is met by a price starting at <b>$2.5/t in 2025 growing 5% a year</b>: a price and a cap are two doors to the same room.</p>"
+  },
+  {
+   "heading": "Five feedback loops",
+   "html": "<ol><li><b>Bioenergy → land → food:</b> biomass demand raises energy-crop profit, shifting cropland and raising food prices.</li><li><b>Carbon price → land carbon → forests:</b> the land carbon subsidy expands forest; crops intensify.</li><li><b>Water scarcity → cooling:</b> rising basin prices move power from once-through to recirculating or dry cooling.</li><li><b>Electricity price → transport and buildings:</b> cheaper clean power pulls EVs and heat pumps in, raising electricity demand.</li><li><b>Emissions → Hector → target:</b> in target-finder mode the price path adjusts until the climate goal is met.</li></ol>"
+  },
+  {
+   "heading": "Equilibrium versus optimisation",
+   "html": "<p>GCAM finds market equilibria period by period with no foresight. Optimisation models such as MESSAGEix choose the least-cost system over the whole century with perfect foresight; the shadow price of an emissions cap plays the role of the carbon price. In the week 11 linear program (coal, gas, solar; 100 TWh) a 40 Mt cap gives coal 22.2, gas 50, solar 27.8 TWh at a shadow price of about $22 per tonne. Both paradigms answer \"what if\", not \"what will be\".</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Queries: <b>CO2 emissions by region</b>, <b>global mean temperature</b>, <b>CO2 prices</b>. Policy example files ship in <code>input/policy</code>; the course carbon price file is <code>carbon_price_global.xml</code> and the net-zero setup is in <code>lab10_netzero_config_snippet.xml</code> (<a href=\"https://jgcri.github.io/gcam-doc/policies_examples.html\">policies_examples.html</a>).</p>"
+  },
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Units of the carbon price",
+   "html": "<p>GCAM reports carbon prices in <b>1990$ per tonne of carbon</b>. Multiply by 12/44 to get $/tC from $/tCO₂, or by 44/12 the other way, and convert the dollar year before comparing with studies.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>Push on one box of a mobile hanging from the ceiling and every other box moves. A single carbon price moves energy, land, water and emissions together; that movement is what an integrated model is for.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "carbonprice",
+  "intro": "Set a starting carbon price and its growth rate; watch the price path and the cut it buys on a simple cost curve.",
+  "predict": "What yearly growth rate, from $25 in 2025, reaches a 60% cut by 2050?"
+ },
+ "code": [
+  {
+   "title": "A tiny integrated model: price vs cap",
+   "lang": "python",
+   "file": "labs/go2/m28_system.py",
+   "runnable": true,
+   "explain": "Power-sector logit, a land market for bioenergy with CCS, emissions and warming, under Reference, a carbon price and a cap. Try: lower the growth rate to 3% and predict whether the cap needs a higher or lower starting price.",
+   "expected": "Reference         2050: CO2  15.92 Gt, solar share 0.54, bio land   40.8 Mha\nCarbon price      2050: CO2  -6.66 Gt, solar share 0.80, bio land  510.6 Mha\nCap -50% by 2050  2050: CO2   9.76 Gt, solar share 0.67, bio land   67.0 Mha\nThe cap is met by a carbon price starting at 2.5 $/t in 2025 and growing 5%/yr"
+  },
+  {
+   "title": "Emissions to warming with a toy climate model",
+   "lang": "python",
+   "file": "labs/go2/m28a_climate.py",
+   "runnable": true,
+   "explain": "Impulse-response carbon cycle and two-layer energy balance (rounded textbook parameters; not Hector).",
+   "expected": "Flat at 40 Gt  cumulative   3200 Gt -> CO2   637 ppm, warming 2100 2.53 C\nNet zero 2050  cumulative    580 Gt -> CO2   443 ppm, warming 2100 1.52 C"
+  },
+  {
+   "title": "The same models in R",
+   "lang": "r",
+   "file": "labs/go2/m28_system.R",
+   "runnable": false,
+   "explain": "Identical numbers in base R; see also m28a_climate.R."
+  },
+  {
+   "title": "Pull emissions, temperature and CO2 prices from GCAM (R)",
+   "lang": "r",
+   "file": "labs/go2/gcam/read_gcam.R",
+   "runnable": false,
+   "explain": "rgcam script for the course queries. Not run against a live database."
+  }
+ ],
+ "takeaways": [
+  "Emissions from fuels, land and non-CO₂ gases go to Hector each period",
+  "A carbon price fixes the price; a cap fixes emissions and GCAM finds the price",
+  "Climate targets search for a price path and take much longer to run",
+  "One policy moves energy, land, water and emissions together through feedback loops",
+  "Read every result as policy minus reference, not as a forecast"
+ ],
+ "quiz": [
+  {
+   "q": "Under an emissions constraint in GCAM, the carbon price is…",
+   "options": [
+    "set by the user",
+    "solved by the model to meet the cap",
+    "always zero",
+    "taken from Hector"
+   ],
+   "answer": 1,
+   "explain": "The cap is a market; its solved price is the carbon price."
+  },
+  {
+   "q": "Climate impacts on crop yields in core GCAM are…",
+   "options": [
+    "computed automatically by Hector",
+    "not automatic; they must be imposed as inputs",
+    "always included",
+    "impossible"
+   ],
+   "answer": 1,
+   "explain": "The coupling is one-way via emissions (hector.html)."
+  },
+  {
+   "q": "Which loop links bioenergy to food prices?",
+   "options": [
+    "Energy demand for biomass → land competition → crop prices",
+    "Hector → yields",
+    "Water → solar",
+    "Trade → GDP"
+   ],
+   "answer": 0,
+   "explain": "Energy crops compete with food crops in the cropland nest."
+  },
+  {
+   "q": "GCAM reports carbon prices in…",
+   "options": [
+    "2020$/tCO₂",
+    "1990$/tC",
+    "1975$/GJ",
+    "€/t"
+   ],
+   "answer": 1,
+   "explain": "1990 dollars per tonne of carbon (outputs_prices.html)."
+  },
+  {
+   "q": "The key difference between GCAM and MESSAGEix is that GCAM…",
+   "options": [
+    "has no prices",
+    "solves period by period without foresight",
+    "optimises the whole century",
+    "has only one region"
+   ],
+   "answer": 1,
+   "explain": "Recursive-dynamic equilibrium versus intertemporal optimisation."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Hector",
+   "def": "A simple open-source climate model coupled to GCAM."
+  },
+  {
+   "term": "Radiative forcing",
+   "def": "Extra energy trapped by greenhouse gases, in W/m²."
+  },
+  {
+   "term": "MAC curve",
+   "def": "Marginal abatement cost curve: how much of a gas is cut at each price."
+  },
+  {
+   "term": "Emissions constraint",
+   "def": "A cap on emissions met by a solved carbon price."
+  },
+  {
+   "term": "Target finder",
+   "def": "GCAM mode that searches for a price path meeting a climate target."
+  },
+  {
+   "term": "Shadow price",
+   "def": "In optimisation, the cost of tightening a constraint by one unit."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Emissions",
+   "url": "https://jgcri.github.io/gcam-doc/emissions.html",
+   "why": "CO₂, non-CO₂, MAC curves and pollutants."
+  },
+  {
+   "title": "GCAM documentation: Climate (Hector)",
+   "url": "https://jgcri.github.io/gcam-doc/hector.html",
+   "why": "How emissions reach Hector and what it returns."
+  },
+  {
+   "title": "GCAM documentation: Policies",
+   "url": "https://jgcri.github.io/gcam-doc/policies.html",
+   "why": "Prices, constraints, targets and standards."
+  },
+  {
+   "title": "GCAM documentation: Policy examples",
+   "url": "https://jgcri.github.io/gcam-doc/policies_examples.html",
+   "why": "XML templates for common policies."
+  },
+  {
+   "title": "Hector",
+   "url": "https://github.com/JGCRI/hector",
+   "why": "The climate model itself, as an R package (v3.2.0)."
+  },
+  {
+   "title": "FaIR (Python)",
+   "url": "https://pypi.org/project/fair/",
+   "why": "Another simple climate model, version 2.2.5, to compare with Hector."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 10 slides: Emissions, carbon removal and policy (PDF)",
+   "path": "downloads/slides/Week10-Emissions-carbon-removal-and-policy.pdf"
+  },
+  {
+   "label": "Week 11 slides: Optimisation models (PDF)",
+   "path": "downloads/slides/Week11-Optimisation-models.pdf"
+  }
+ ]
+}

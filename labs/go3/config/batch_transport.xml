@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  batch_transport.xml : a 4 x 3 scenario matrix in one batch run (12 scenarios).
+
+  HOW BATCH MODE WORKS (exe/batch_SSP_REF.xml and batch_SSP_SPA1.xml in gcam-v9.1)
+    * Each <ComponentSet> is one dimension; GCAM runs every combination of one FileSet from
+      each ComponentSet. Scenario names join the FileSet names (e.g. "BEVlow_CTax").
+    * The FileSet files are ADDED to the ScenarioComponents of the configuration you run with.
+  TO RUN
+    In your configuration copy set
+       <Value name="BatchFileName">batch_transport.xml</Value>   (in <Files>)
+       <Value name="BatchMode">1</Value>                          (in <Bools>)
+    and keep the base ScenarioComponents (including transportation_UCD_CORE.xml).
+  UNVERIFIED
+    * An empty FileSet ("Ref" and "NoPolicy" below) is used to mean "no add-on". If your GCAM
+      build rejects empty FileSets, give them a harmless file instead.
+    * The net-zero FileSet contains a solved constraint; those runs take longer.
+  Not run.
+-->
+<BatchRunner xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="batch_runner.xsd">
+  <ComponentSet name="technology">
+    <FileSet name="Ref">
+    </FileSet>
+    <FileSet name="BEVlow">
+      <Value name="trn_bev_cost_low">../input/user/trn_bev_cost_low.xml</Value>
+    </FileSet>
+    <FileSet name="LFup">
+      <Value name="trn_loadfactor_up">../input/user/trn_loadfactor_up.xml</Value>
+    </FileSet>
+    <FileSet name="BEVlow-LFup">
+      <Value name="trn_bev_cost_low">../input/user/trn_bev_cost_low.xml</Value>
+      <Value name="trn_loadfactor_up">../input/user/trn_loadfactor_up.xml</Value>
+    </FileSet>
+  </ComponentSet>
+  <ComponentSet name="policy">
+    <FileSet name="_NoPolicy">
+    </FileSet>
+    <FileSet name="_CTax">
+      <Value name="policy_ctax">../input/user/policy_carbon_tax.xml</Value>
+    </FileSet>
+    <FileSet name="_NetZero">
+      <Value name="policy_netzero">../input/user/policy_co2_constraint_netzero.xml</Value>
+    </FileSet>
+  </ComponentSet>
+</BatchRunner>

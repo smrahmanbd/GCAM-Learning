@@ -1,0 +1,12 @@
+Regional totals reproduced by both methods: max error 8.9e-16 EJ
+          convergence_EJ               proportional_EJ              
+year                2020   2050   2100            2020   2050   2100
+country                                                             
+Country A          0.802  0.773  1.261           0.802  0.780  1.335
+Country B          0.451  0.490  0.977           0.451  0.439  0.751
+Country C          0.251  0.184  0.192           0.251  0.244  0.417
+Country D          0.160  0.142  0.199           0.160  0.156  0.267
+Country E          0.120  0.130  0.257           0.120  0.117  0.200
+Country F          0.070  0.085  0.202           0.070  0.068  0.117
+Harmonisation factor in 2050 (GCAM total / sum of unharmonised country values): 0.601
+wrote downscale_results.csv and downscale_demo.png

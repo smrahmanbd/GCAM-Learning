@@ -1,0 +1,936 @@
+Units,scenario,region,sector,mode,input,Year,value
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2020,0.00027707
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2020,0.13546707
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2020,0.04966224
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2020,0.00094896
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2020,0.0
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2020,0.03461538
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2020,0.0
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2020,1.61899571
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2020,0.01439914
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2020,0.0
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2020,0.0
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2025,0.00028641
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2025,0.15421701
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2025,0.05280009
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2025,0.00101545
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2025,0.0
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2025,0.03655863
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2025,0.0
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2025,1.75769808
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2025,0.01563634
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2025,0.0
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2025,0.0
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2030,0.00029253
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2030,0.17273689
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2030,0.04819596
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2030,0.0009329
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2030,0.00250061
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2030,0.02037149
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2030,0.00511607
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2030,0.93463593
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2030,0.00830542
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2030,0.31934976
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2030,0.0
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2035,0.0002964
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2035,0.19105494
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2035,0.04381303
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2035,0.00085354
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2035,0.00497021
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2035,0.01816994
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2035,0.00632142
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2035,0.94270107
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2035,0.00835131
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2035,0.34714062
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2035,0.03125414
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2040,0.00029794
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2040,0.20860462
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2040,0.03939857
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2040,0.00077249
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2040,0.00732903
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2040,0.01561409
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2040,0.00752533
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2040,0.9361685
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2040,0.00825657
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2040,0.37236083
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2040,0.0740931
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2045,0.00029751
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2045,0.22505876
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2045,0.03508531
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2045,0.00069236
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2045,0.00951328
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2045,0.01294332
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2045,0.00864176
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2045,0.91511787
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2045,0.0080231
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2045,0.39410207
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2045,0.13052907
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2050,0.00029539
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2050,0.24009469
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2050,0.0309693
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2050,0.00061507
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2050,0.01147477
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2050,0.01037027
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2050,0.00959168
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2050,0.87994499
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2050,0.00765668
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2050,0.41136919
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2050,0.20250205
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2055,0.00028931
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2055,0.25864012
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2055,0.02877071
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2055,0.00057141
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2055,0.01066015
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2055,0.00968424
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2055,0.00895716
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2055,0.95889792
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2055,0.00834368
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2055,0.44827923
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2055,0.22067152
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2060,0.00028229
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2060,0.27643927
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2060,0.0266517
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2060,0.00052932
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2060,0.00987501
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2060,0.00900831
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2060,0.00833197
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2060,1.03717612
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2060,0.0090248
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2060,0.48487383
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2060,0.23868571
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2065,0.00027461
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2065,0.29334339
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2065,0.02464254
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2065,0.00048942
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2065,0.00913058
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2065,0.00835457
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2065,0.00772732
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2065,1.11412458
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2065,0.00969435
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2065,0.52084679
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2065,0.25639388
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2070,0.00026649
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2070,0.30922305
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2070,0.02276148
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2070,0.00045206
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2070,0.0084336
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2070,0.00773146
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2070,0.00715099
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2070,1.18912473
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2070,0.01034695
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2070,0.55590893
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2070,0.27365369
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2075,0.00025811
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2075,0.32396925
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2075,0.02101758
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2075,0.00041742
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2075,0.00778745
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2075,0.00714439
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2075,0.00660799
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2075,1.26160627
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2075,0.01097764
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2075,0.58979363
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2075,0.2903339
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2080,0.00024963
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2080,0.33749419
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2080,0.01941315
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2080,0.00038556
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2080,0.00719298
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2080,0.00659635
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2080,0.00610111
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2080,1.3310562
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2080,0.01158195
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2080,0.62226106
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2080,0.30631643
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2085,0.00024116
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2085,0.34973143
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2085,0.01794571
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2085,0.00035641
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2085,0.00664926
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2085,0.00608852
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2085,0.0056314
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2085,1.39702535
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2085,0.01215596
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2085,0.65310126
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2085,0.32149794
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2090,0.00023278
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2090,0.36063572
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2090,0.01660954
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2090,0.00032988
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2090,0.00615418
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2090,0.00562067
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2090,0.00519868
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2090,1.45913263
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2090,0.01269638
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2090,0.68213605
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2090,0.33579071
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2095,0.00022457
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2095,0.37018231
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2095,0.0153969
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2095,0.00030579
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2095,0.00570487
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2095,0.00519161
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2095,0.00480183
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2095,1.51706702
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2095,0.01320049
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2095,0.70922005
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2095,0.34912317
+EJ,Reference,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2100,0.00021657
+EJ,Reference,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2100,0.3783658
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2100,0.01429892
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,delivered gas,2100,0.00028399
+EJ,Reference,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2100,0.00529805
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2100,0.00479947
+EJ,Reference,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2100,0.00443913
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2100,1.57058773
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2100,0.01366619
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2100,0.73424067
+EJ,Reference,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2100,0.36143991
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2020,0.00027707
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2020,0.13546707
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2020,0.04966224
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2020,0.00094896
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2020,0.0
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2020,0.03461538
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2020,0.0
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2020,1.61899571
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2020,0.01439914
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2020,0.0
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2020,0.0
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2025,0.00028641
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2025,0.15421701
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2025,0.05280009
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2025,0.00101545
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2025,0.0
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2025,0.03655863
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2025,0.0
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2025,1.75769808
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2025,0.01563634
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2025,0.0
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2025,0.0
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2030,0.0002701
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2030,0.15949225
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2030,0.03300296
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2030,0.00063882
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2030,0.00171233
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2030,0.01379036
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2030,0.00346329
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2030,0.18820627
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2030,0.00167245
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2030,0.76412652
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2030,0.0
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2035,0.00027306
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2035,0.17600892
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2035,0.02981854
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2035,0.00058091
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2035,0.00338266
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2035,0.01222981
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2035,0.00425482
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2035,0.16934509
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2035,0.00150021
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2035,0.84608795
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2035,0.00561444
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2040,0.00027396
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2040,0.19181534
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2040,0.02669638
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2040,0.00052344
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2040,0.00496613
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2040,0.01046867
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2040,0.00504546
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2040,0.14974452
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2040,0.00132068
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2040,0.9291372
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2040,0.01185154
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2045,0.00027316
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2045,0.2066404
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2045,0.02371372
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2045,0.00046796
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2045,0.00642991
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2045,0.00866154
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2045,0.00578298
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2045,0.13021076
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2045,0.00114159
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2045,1.01332597
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2045,0.01857279
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2050,0.00027094
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2050,0.22021943
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2050,0.02092105
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2050,0.00041551
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2050,0.00775168
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2050,0.00694137
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2050,0.00642022
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2050,0.11137649
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2050,0.00096912
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2050,1.09876267
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2050,0.02563111
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2055,0.00026564
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2055,0.23748166
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2055,0.01969111
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2055,0.00039108
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2055,0.00729597
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2055,0.00658432
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2055,0.00608997
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2055,0.11950024
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2055,0.00103981
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2055,1.17890594
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2055,0.02750063
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2060,0.00025963
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2060,0.25424912
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2060,0.01849845
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2060,0.00036739
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2060,0.00685406
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2060,0.00622357
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2060,0.00575631
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2060,0.1273241
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2060,0.00110789
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2060,1.25609071
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2060,0.02930114
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2065,0.00025312
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2065,0.27038398
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2065,0.01735867
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2065,0.00034476
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2065,0.00643175
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2065,0.00586671
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2065,0.00542625
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2065,0.13479601
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2065,0.0011729
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2065,1.32980332
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2065,0.03102065
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2070,0.00024627
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2070,0.28575804
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2070,0.01628151
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2070,0.00032336
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2070,0.00603264
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2070,0.00551934
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2070,0.00510495
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2070,0.14187091
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2070,0.00123446
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2070,1.39959938
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2070,0.0326488
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2075,0.00023922
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2075,0.30025528
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2075,0.0152722
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2075,0.00030332
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2075,0.00565867
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2075,0.00518537
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2075,0.00479606
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2075,0.14851119
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2075,0.00129224
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2075,1.46510772
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2075,0.03417693
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2080,0.00023209
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2080,0.31377399
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2080,0.01433268
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2080,0.00028466
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2080,0.00531056
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2080,0.00486742
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2080,0.00450198
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2080,0.15468682
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2080,0.00134598
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2080,1.52603211
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2080,0.03559813
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2085,0.00022495
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2085,0.32622858
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2085,0.01346248
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2085,0.00026737
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2085,0.00498813
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2085,0.00456701
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2085,0.00422413
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2085,0.1603753
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2085,0.00139548
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2085,1.58215077
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2085,0.03690723
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2090,0.00021788
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2090,0.33755076
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2090,0.01265951
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2090,0.00025143
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2090,0.00469061
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2090,0.00428488
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2090,0.00396318
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2090,0.1655615
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2090,0.0014406
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2090,1.63331412
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2090,0.03810073
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2095,0.00021092
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2095,0.34769023
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2095,0.01192057
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2095,0.00023675
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2095,0.00441682
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2095,0.00402115
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2095,0.00371924
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2095,0.17023716
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2095,0.00148129
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2095,1.67944095
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2095,0.03917674
+EJ,BEV-low,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2100,0.00020412
+EJ,BEV-low,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2100,0.35661477
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2100,0.01124181
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,delivered gas,2100,0.00022327
+EJ,BEV-low,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2100,0.00416533
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2100,0.00377547
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2100,0.00349201
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2100,0.17440048
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2100,0.00151751
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2100,1.72051333
+EJ,BEV-low,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2100,0.04013484
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2020,0.00027707
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2020,0.13546707
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2020,0.04966224
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2020,0.00094896
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2020,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2020,0.03461538
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2020,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2020,1.61899571
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2020,0.01439914
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2020,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2020,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2025,0.00028765
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2025,0.14193973
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2025,0.05339747
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2025,0.00104024
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2025,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2025,0.03630198
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2025,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2025,1.73056721
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2025,0.01595552
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2025,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2025,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2030,0.00029321
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2030,0.15606394
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2030,0.04785418
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2030,0.00094161
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2030,0.00263531
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2030,0.0177227
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2030,0.00584078
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2030,0.84783199
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2030,0.00788234
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2030,0.34327734
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2030,0.0
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2035,0.00029712
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2035,0.1693463
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2035,0.04305326
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2035,0.00085649
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2035,0.00526972
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2035,0.01484002
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2035,0.00730352
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2035,0.82846277
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2035,0.00777222
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2035,0.37834734
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2035,0.03406377
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2040,0.00029868
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2040,0.18084897
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2040,0.03815202
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2040,0.00076831
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2040,0.00781973
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2040,0.01167551
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2040,0.00876072
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2040,0.78841887
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2040,0.00747757
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2040,0.41199307
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2040,0.0819792
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2045,0.00029821
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2045,0.19019212
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2045,0.03329059
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2045,0.00067971
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2045,0.01021506
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2045,0.00858033
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2045,0.01007934
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2045,0.72782186
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2045,0.00699656
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2045,0.4429568
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2045,0.14671006
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2050,0.00029601
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2050,0.19704688
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2050,0.02857748
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2050,0.00059278
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2050,0.01239814
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2050,0.00585449
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2050,0.0111367
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2050,0.64810796
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2050,0.0063372
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2050,0.46956445
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2050,0.23114946
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2055,0.00029
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2055,0.20380813
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2055,0.02592893
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2055,0.00054434
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2055,0.01175028
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2055,0.00460529
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2055,0.01069167
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2055,0.64551024
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2055,0.00651844
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2055,0.52785188
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2055,0.25984224
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2060,0.00028302
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2060,0.20764677
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2060,0.02328027
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2060,0.00049629
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2060,0.01115354
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2060,0.00341895
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2060,0.01023546
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2060,0.62034741
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2060,0.00652719
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2060,0.59200008
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2060,0.29142005
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2065,0.00027534
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2065,0.20832782
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2065,0.02065
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2065,0.00044891
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2065,0.01062138
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2065,0.00235692
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2065,0.00976097
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2065,0.5699961
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2065,0.0063203
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2065,0.66246161
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2065,0.32610569
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2070,0.00026715
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2070,0.20573587
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2070,0.01804728
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2070,0.00040225
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2070,0.01016316
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2070,0.00147731
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2070,0.00925746
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2070,0.49446818
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2070,0.00586215
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2070,0.73903613
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2070,0.36380054
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2075,0.00025864
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2075,0.19990382
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2075,0.01547845
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2075,0.00035616
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2075,0.00978529
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2075,0.00081996
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2075,0.00871719
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2075,0.39816612
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2075,0.00514089
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2075,0.82032729
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2075,0.40381721
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2080,0.00024996
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2080,0.19103397
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2080,0.01295404
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2080,0.00031045
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2080,0.00949201
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2080,0.00039013
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2080,0.00814303
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2080,0.29109658
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2080,0.00419049
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2080,0.90329023
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2080,0.44465684
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2085,0.00024125
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2085,0.17950115
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2085,0.01049518
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2085,0.00026492
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2085,0.00928455
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2085,0.00015295
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2085,0.00755199
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2085,0.18792493
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2085,0.00310777
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2085,0.98335937
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2085,0.48407196
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2090,0.00023267
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2090,0.16582707
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2090,0.0081392
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2090,0.00021952
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2090,0.00915747
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2090,4.704e-05
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2090,0.00697047
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2090,0.10357991
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2090,0.00204405
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2090,1.05563199
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2090,0.51964914
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2095,0.00022431
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2095,0.15062597
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2095,0.00594531
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2095,0.0001745
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2095,0.00909162
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2095,1.066e-05
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2095,0.00642319
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2095,0.04682617
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2095,0.00115726
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2095,1.11683158
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2095,0.54977547
+EJ,Carbon-price,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2100,0.00021625
+EJ,Carbon-price,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2100,0.13453974
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2100,0.00399915
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,delivered gas,2100,0.00013075
+EJ,Carbon-price,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2100,0.00904749
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2100,1.64e-06
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2100,0.00592384
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2100,0.0165428
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2100,0.00054429
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2100,1.16667364
+EJ,Carbon-price,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2100,0.5743109
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2020,0.00027707
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2020,0.13546707
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2020,0.04966224
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2020,0.00094896
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2020,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2020,0.03461538
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2020,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2020,1.61899571
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2020,0.01439914
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2020,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2020,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2025,0.00028126
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2025,0.16045834
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2025,0.05044416
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2025,0.00097014
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2025,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2025,0.03563821
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2025,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2025,1.8161147
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2025,0.01615601
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2025,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2025,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2030,0.00028167
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2030,0.18586924
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2030,0.04388272
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2030,0.00084941
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2030,0.00227682
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2030,0.01924836
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2030,0.004834
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2030,0.99542389
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2030,0.00884559
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2030,0.34012001
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2030,0.0
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2035,0.00027949
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2035,0.21127359
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2035,0.03792164
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2035,0.00073877
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2035,0.00430188
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2035,0.01650077
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2035,0.00574071
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2035,1.03296344
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2035,0.00915094
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2035,0.38037887
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2035,0.03424668
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2040,0.00027486
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2040,0.23552641
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2040,0.03233955
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2040,0.00063409
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2040,0.00601589
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2040,0.01353705
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2040,0.00652429
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2040,1.05307338
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2040,0.00928762
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2040,0.41885972
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2040,0.08334554
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2045,0.00026832
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2045,0.25772563
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2045,0.0272562
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2045,0.00053786
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2045,0.00739044
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2045,0.01065056
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2045,0.00711098
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2045,1.05431297
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2045,0.00924346
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2045,0.45404743
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2045,0.15038335
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2050,0.0002603
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2050,0.27702359
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2050,0.02273434
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2050,0.00045152
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2050,0.00842354
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2050,0.00806109
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2050,0.00745587
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2050,1.03579382
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2050,0.00901277
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2050,0.48422761
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2050,0.2383676
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2055,0.00024935
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2055,0.29986821
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2055,0.02015683
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2055,0.00040033
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2055,0.00746853
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2055,0.00722036
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2055,0.00667827
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2055,1.13804753
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2055,0.00990252
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2055,0.53203063
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2055,0.26189928
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2060,0.00023819
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2060,0.32066409
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2060,0.01789307
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2060,0.00035537
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2060,0.00662975
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2060,0.00645863
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2060,0.00597373
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2060,1.23525157
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2060,0.01074832
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2060,0.57747295
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2060,0.28426888
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2065,0.00022711
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2065,0.33910285
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2065,0.01592566
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2065,0.00031629
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2065,0.00590079
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2065,0.00577823
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2065,0.00534441
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2065,1.32577344
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2065,0.01153598
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2065,0.6197914
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2065,0.30510071
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2070,0.00021629
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2070,0.35496859
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2070,0.01422749
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2070,0.00028257
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2070,0.00527158
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2070,0.00517663
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2070,0.00478798
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2070,1.40829336
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2070,0.01225401
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2070,0.65836899
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2070,0.32409105
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2075,0.00020587
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2075,0.36813848
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2075,0.01276757
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2075,0.00025357
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2075,0.00473065
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2075,0.00464839
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2075,0.00429939
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2075,1.48182938
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2075,0.01289387
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2075,0.69274665
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2075,0.34101392
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2080,0.00019593
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2080,0.37857812
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2080,0.01151461
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2080,0.00022869
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2080,0.0042664
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2080,0.00418654
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2080,0.00387222
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2080,1.54573978
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2080,0.01344998
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2080,0.7226244
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2080,0.35572164
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2085,0.00018649
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2085,0.38633227
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2085,0.01043919
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2085,0.00020733
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2085,0.00386794
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2085,0.00378362
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2085,0.00349955
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2085,1.59970645
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2085,0.01391956
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2085,0.7478535
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2085,0.36814101
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2090,0.00017757
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2090,0.39151235
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2090,0.00951475
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2090,0.00018897
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2090,0.00352541
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2090,0.00343224
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2090,0.00317455
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2090,1.64370314
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2090,0.01430239
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2090,0.7684217
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2090,0.37826598
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2095,0.00016916
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2095,0.39428202
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2095,0.00871798
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2095,0.00017315
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2095,0.00323019
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2095,0.00312552
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2095,0.00289086
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2095,1.6779536
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2095,0.01460041
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2095,0.78443359
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2095,0.38614805
+EJ,Fast-wage,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2100,0.00016124
+EJ,Fast-wage,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2100,0.39484243
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2100,0.00802879
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,delivered gas,2100,0.00015946
+EJ,Fast-wage,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2100,0.00297483
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2100,0.00285722
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2100,0.0026427
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2100,1.70288403
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2100,0.01481734
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2100,0.79608842
+EJ,Fast-wage,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2100,0.3918853
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2020,0.00027707
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2020,0.13546707
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2020,0.04966224
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2020,0.00094896
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2020,0.0
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2020,0.03461538
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2020,0.0
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2020,1.61899571
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2020,0.01439914
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2020,0.0
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2020,0.0
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2025,0.00028337
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2025,0.1525816
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2025,0.05001982
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2025,0.00096198
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2025,0.0
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2025,0.03453298
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2025,0.0
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2025,1.75462374
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2025,0.01562512
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2025,0.0
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2025,0.0
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2030,0.00028622
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2030,0.16900864
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2030,0.04327172
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2030,0.00083758
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2030,0.00224512
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2030,0.01820229
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2030,0.0045713
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2030,0.93132115
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2030,0.00829349
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2030,0.31675813
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2030,0.0
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2035,0.00028673
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2035,0.18481934
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2035,0.03731884
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2035,0.00072702
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2035,0.0042335
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2035,0.01537855
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2035,0.00535028
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2035,0.93490394
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2035,0.00831096
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2035,0.33999083
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2035,0.03338749
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2040,0.0002849
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2040,0.19947195
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2040,0.03186465
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2040,0.00062478
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2040,0.00592755
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2040,0.01253492
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2040,0.0060413
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2040,0.92321543
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2040,0.00818483
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2040,0.35846979
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2040,0.07848879
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2045,0.00028116
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2045,0.21269341
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2045,0.0269698
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2045,0.00053221
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2045,0.00731278
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2045,0.0098698
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2045,0.00658969
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2045,0.89778331
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2045,0.00793044
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2045,0.37173433
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2045,0.13531121
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2050,0.00027588
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2050,0.22423746
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2050,0.0226525
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2050,0.00044989
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2050,0.00839322
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2050,0.00752318
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2050,0.00695834
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2050,0.86063915
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2050,0.00756805
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2050,0.37961228
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2050,0.20305006
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2055,0.00027037
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2055,0.24170753
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2055,0.021254
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2055,0.00042212
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2055,0.00787505
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2055,0.00711166
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2055,0.00657772
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2055,0.92630662
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2055,0.0081455
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2055,0.408577
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2055,0.21854294
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2060,0.00026411
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2060,0.25863588
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2060,0.01990169
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2060,0.00039526
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2060,0.00737399
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2060,0.00669857
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2060,0.00619565
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2060,0.98993596
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2060,0.00870502
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2060,0.43664275
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2060,0.23355497
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2065,0.00025733
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2065,0.27488369
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2065,0.01861307
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2065,0.00036967
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2065,0.00689653
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2065,0.00629227
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2065,0.00581985
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2065,1.05107507
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2065,0.00924265
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2065,0.4636101
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2065,0.24797948
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2070,0.0002502
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2070,0.29032326
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2070,0.01739886
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2070,0.00034555
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2070,0.00644664
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2070,0.00589885
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2070,0.00545597
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2070,1.10932413
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2070,0.00975486
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2070,0.4893027
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2070,0.26172215
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2075,0.00024287
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2075,0.3048403
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2075,0.01626464
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2075,0.00032303
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2075,0.00602639
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2075,0.0055225
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2075,0.00510787
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2075,1.16434027
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2075,0.01023865
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2075,0.51356932
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2075,0.27470207
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2080,0.00023546
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2080,0.31833595
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2080,0.01521216
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2080,0.00030212
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2080,0.00563642
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2080,0.00516589
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2080,0.00477804
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2080,1.21584016
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2080,0.01069151
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2080,0.53628498
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2080,0.28685241
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2085,0.00022805
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2085,0.33072826
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2085,0.0142405
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2085,0.00028283
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2085,0.0052764
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2085,0.00483053
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2085,0.00446786
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2085,1.26360085
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2085,0.0111115
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2085,0.55735136
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2085,0.29812056
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2090,0.00022072
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2090,0.34195321
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2090,0.01334685
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2090,0.00026508
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2090,0.00494528
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2090,0.004517
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2090,0.00417787
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2090,1.30745898
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2090,0.01149717
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2090,0.57669638
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2090,0.30846798
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2095,0.00021352
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2095,0.35196516
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2095,0.01252721
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2095,0.0002488
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2095,0.00464159
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2095,0.0042252
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2095,0.00390798
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2095,1.34730855
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2095,0.01184758
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2095,0.5942733
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2095,0.31786966
+EJ,LF-up,Middle East (toy),trn_pass,Passenger Rail,elect_td_trn,2100,0.00020648
+EJ,LF-up,Middle East (toy),trn_pass,Domestic Aviation,refined liquids enduse,2100,0.36073676
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,refined liquids enduse,2100,0.01177688
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,delivered gas,2100,0.0002339
+EJ,LF-up,Middle East (toy),trn_pass_road,Bus,elect_td_trn,2100,0.00436358
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,refined liquids enduse,2100,0.00395458
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV,2W and 3W,elect_td_trn,2100,0.00365767
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,refined liquids enduse,2100,1.38309756
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,delivered gas,2100,0.0121623
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,elect_td_trn,2100,0.61005918
+EJ,LF-up,Middle East (toy),trn_pass_road_LDV_4W,Car,H2 LDV,2100,0.32631334

@@ -1,0 +1,13 @@
+scenario_name,socioeconomics,technology,behaviour,policy,add_on_files,purpose,compare_with
+Reference,SSP2,Reference,Reference,None,(none),baseline for all comparisons,
+BEVlow,SSP2,BEV car non-fuel cost -30% from 2030,Reference,None,xml/trn_bev_cost_low.xml,technology-cost sensitivity,Reference
+LFup,SSP2,Reference,car load factor +20% by 2050,None,xml/trn_loadfactor_up.xml,demand-side behaviour,Reference
+ZEVpref,SSP2,faster BEV/FCEV share-weights,Reference,None,xml/trn_zev_shareweights.xml,non-cost barriers fall (assumption),Reference
+TruckEff,SSP2,heavy diesel truck intensity -25% by 2050,Reference,None,xml/trn_freight_truck_efficiency.xml,freight efficiency standard proxy,Reference
+CTax,SSP2,Reference,Reference,carbon tax 25 $/tC 2025 +5%/yr,xml/policy_carbon_tax.xml,price instrument,Reference
+NetZero,SSP2,Reference,Reference,regional CO2 cap to net zero 2060,xml/policy_co2_constraint_netzero.xml,quantity instrument (solved price),Reference
+ZEVstd,SSP2,Reference,Reference,ZEV share of car pkm 10%->70% (2030-2050),xml/policy_zev_standard.xml,sector standard,CTax
+BEVlow_CTax,SSP2,BEV car non-fuel cost -30% from 2030,Reference,carbon tax 25 $/tC 2025 +5%/yr,xml/trn_bev_cost_low.xml; xml/policy_carbon_tax.xml,interaction of technology and policy,CTax
+BEVlow_NetZero,SSP2,BEV car non-fuel cost -30% from 2030,Reference,regional CO2 cap to net zero 2060,xml/trn_bev_cost_low.xml; xml/policy_co2_constraint_netzero.xml,does cheap BEV lower the carbon price?,NetZero
+Ref_SSP1,SSP1,Reference,Reference,None,configuration_ssp (SSP1 files),socioeconomic sensitivity,Reference
+Ref_SSP3,SSP3,Reference,Reference,None,configuration_ssp (SSP3 files),socioeconomic sensitivity,Reference

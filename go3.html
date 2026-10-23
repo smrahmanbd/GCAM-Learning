@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Go 3: Research with GCAM: transport · GCAM in three goes</title>
+<meta name="description" content="Design, build and defend a research study with GCAM, using the transport sector as the running case.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+</head>
+<body data-go="3">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="go1.html">Go 1 · Big picture</a><a href="go2.html">Go 2 · Components</a><a href="go3.html" aria-current=page>Go 3 · Research</a><a href="toolkit.html">Toolkit</a><a href="glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+<main id="main" class="wrap">
+<header class="gohead go3"><p class="eyebrow"><span class="golevel">Go 3 · Research</span></p><h1>Research with GCAM: transport</h1><p class="summary">Design, build and defend a research study with GCAM, using the transport sector as the running case.</p>
+<div class="cta"><a class="btn" href="downloads/Go3-Research-Handbook-GCAM-Transport.pdf">Go 3 handbook (PDF)</a><a class="btn quiet" href="mindmap-go3.html">Zooming mind map</a><a class="btn quiet" href="downloads/go3-transport-kit.zip">Go 3 code kit (zip)</a></div></header>
+<div class="go-grid">
+<section><h2>Is this go for you?</h2><p class="prose"><b>You need:</b> Go 2, or its exit check. A GCAM 9.x installation for the implementation steps, plus R or Python.</p><p class="prose"><b>How it works:</b> Each module reads like a research brief: the question, the method, the implementation in GCAM&#x27;s XML and code, the evidence from the literature, and the pitfalls.</p>
+<h3>Quick entry check</h3><div class="quiz" data-module="go3-entry"><div class="q" data-answer="1"><p>1. Passenger mode choice in GCAM includes…</p><div class="opts"><button class="opt" type="button">Only fuel cost</button><button class="opt" type="button">Money cost plus the value of time</button><button class="opt" type="button">Only vehicle price</button><button class="opt" type="button">Only speed</button></div><p class="fb" hidden><b class="verdict"></b>The generalised cost adds wage-based time cost to money cost.</p></div><div class="q" data-answer="1"><p>2. An add-on XML file…</p><div class="opts"><button class="opt" type="button">Replaces GCAM&#x27;s source code</button><button class="opt" type="button">Changes selected inputs and is loaded after the base files</button><button class="opt" type="button">Is a query</button><button class="opt" type="button">Must contain every region</button></div><p class="fb" hidden><b class="verdict"></b>Add-ons override the base inputs they name; load order matters.</p></div><div class="q" data-answer="1"><p>3. Scenario discovery finds…</p><div class="opts"><button class="opt" type="button">The single best scenario</button><button class="opt" type="button">Which combinations of inputs lead to an outcome of interest</button><button class="opt" type="button">The base year</button><button class="opt" type="button">The solver tolerance</button></div><p class="fb" hidden><b class="verdict"></b>It searches an ensemble for the input ranges that explain, say, high emissions.</p></div><p class="quiz-result" hidden aria-live="polite"></p></div><p class="small muted">All three right? You are ready for the research modules. Not sure? Revisit <a href="go2.html">Go 2</a>.</p></section>
+<section><h2>What you will produce</h2><ul class="prose"><li>A research proposal with a scenario design matrix and an uncertainty plan</li><li>Add-on XML scenarios for transport technologies and policies, run as a batch</li><li>A reproducible analysis: decomposition, sensitivity and scenario discovery</li><li>A short paper and talk following the GCAM community guidelines</li></ul>
+<h2>The path</h2><ol class="mlist"></ol></section></div>
+<section id="exit"><h2>Exit check</h2><p class="prose muted">Tick each statement you can honestly say. Your ticks are saved in this browser.</p>
+<ul class="exitcheck checklist" data-key="go3-exit"><li><label><input type="checkbox"> I can explain how GCAM represents passenger and freight transport, including value of time</label></li><li><label><input type="checkbox"> I can write and load add-on XML for costs, load factors, share weights and policies</label></li><li><label><input type="checkbox"> I can design a scenario matrix with an uncertainty plan</label></li><li><label><input type="checkbox"> I can decompose a change in transport CO2 and run scenario discovery</label></li><li><label><input type="checkbox"> I can place my question in the literature and state what GCAM cannot see</label></li><li><label><input type="checkbox"> I can report results reproducibly and in IAMC format</label></li></ul><p class="exit-msg muted"></p><div class="cta"><a class="btn" href="toolkit.html">Start your project with the toolkit</a></div></section>
+<section><h2>Readings and tools for Go 3</h2><ul class="reslist"></ul></section>
+</main><footer class="site"><div class="wrap">An open course on the Global Change Analysis Model (GCAM), taught in three goes. GCAM is developed by the Joint Global Change Research Institute (PNNL); this is independent teaching material. GCAM facts follow the GCAM v8.2 documentation and the gcam-core v9.1 source; explorers and toy models are teaching versions with illustrative numbers.</div></footer>
+<script src="assets/js/diagrams.js"></script><script src="assets/js/widgets.js"></script><script src="assets/js/site.js"></script>
+</body></html>

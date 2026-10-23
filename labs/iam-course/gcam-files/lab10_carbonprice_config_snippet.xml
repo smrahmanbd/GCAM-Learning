@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  lab10_carbonprice_config_snippet.xml
+  Used by: lab 10 (the CarbonPrice scenario).
+
+  This is NOT a complete configuration file. It shows the two edits to make
+  in your own copy of the reference configuration:
+
+    cd ~/gcam/exe
+    cp configuration_ref.xml config_carbonprice.xml
+
+  Edit 1 adds the course carbon price file as the last input file, directly
+  before the "solver" line. Use the full path to the file in your own
+  iam-course/gcam-files folder (replace YOURNAME).
+
+  Edit 2 replaces the scenario name in the <Strings> section.
+
+  MUST BE CHECKED against the installed GCAM release: run the scenario once
+  and confirm that the "CO2 prices" query returns the price path.
+  Nothing here was run.
+-->
+<Configuration>
+	<ScenarioComponents>
+		<!-- ... all the lines of configuration_ref.xml stay as they are ... -->
+
+		<!-- Edit 1: add this one line, last before the solver line -->
+		<Value name = "carbon_price">/home/YOURNAME/iam-course/gcam-files/carbon_price_global.xml</Value>
+
+		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
+	</ScenarioComponents>
+	<Strings>
+		<!-- Edit 2: change Reference to CarbonPrice -->
+		<Value name="scenarioName">CarbonPrice</Value>
+	</Strings>
+</Configuration>

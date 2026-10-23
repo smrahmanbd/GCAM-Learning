@@ -1,0 +1,425 @@
+{
+ "id": "1.3",
+ "go": 1,
+ "slug": "energy-and-emissions",
+ "title": "Energy and emissions",
+ "minutes": 35,
+ "tag": "Energy",
+ "systems": [
+  "economy",
+  "energy",
+  "climate"
+ ],
+ "summary": "Why people want energy services, not energy, how much is lost along the chain, and the Kaya identity: four drivers that multiply into CO2.",
+ "outcomes": [
+  "You can follow energy from primary energy to final energy to useful services.",
+  "You can explain why saving energy at the end of the chain saves more at the start.",
+  "You can split CO2 into population, income, energy per dollar and CO2 per unit of energy.",
+  "You can combine factor changes by multiplying, not adding."
+ ],
+ "narration_en": "People do not want energy for its own sake. They want services: light, warm homes, travel, cold drinks, steel. Energy travels a chain to get there. It starts as primary energy, the coal, oil, gas, sunlight or wind that nature provides. Power plants and refineries convert it into final energy, such as electricity and petrol, which reaches homes and factories. Each step loses some. Of every hundred units of coal in a typical power plant, only about thirty six reach homes as electricity. So saving one unit at home saves almost three at the mine. To see what drives emissions, split them into four factors that multiply. This is the Kaya identity. Carbon dioxide equals people, times income per person, times energy per dollar, times carbon dioxide per unit of energy. The first two are about society. The last two are about technology, and that is where integrated assessment models spend most of their detail. Because the factors multiply, you cannot add their changes. Twenty percent more people, fifty percent more income, thirty percent less energy per dollar and twenty percent less carbon per unit of energy gives almost no change in emissions, not a twenty percent rise.",
+ "narration_ar": "لا يريد الناس الطاقة لذاتها، بل يريدون خدمات: الإضاءة والبيوت الدافئة والتنقل والمشروبات الباردة والفولاذ. وتمر الطاقة بسلسلة حتى تصل إليهم. فهي تبدأ طاقةً أولية، كالفحم والنفط والغاز وأشعة الشمس والرياح التي توفرها الطبيعة. ثم تحوّلها محطات الكهرباء والمصافي إلى طاقة نهائية، كالكهرباء والبنزين، تصل إلى المنازل والمصانع. وكل خطوة تفقد جزءًا منها؛ فمن كل مئة وحدة من الفحم في محطة كهرباء نموذجية لا يصل إلى المنازل كهرباءً إلا نحو ست وثلاثين وحدة. ولذلك فإن توفير وحدة واحدة في المنزل يوفر قرابة ثلاث وحدات في المنجم. ولمعرفة ما يحرك الانبعاثات نقسمها إلى أربعة عوامل تُضرب بعضها في بعض، وهذه هي «متطابقة كايا». فثاني أكسيد الكربون يساوي عدد السكان، مضروبًا في دخل الفرد، مضروبًا في الطاقة لكل دولار، مضروبًا في ثاني أكسيد الكربون لكل وحدة طاقة. يتعلق العاملان الأولان بالمجتمع، والأخيران بالتكنولوجيا، وفيهما تضع نماذج التقييم المتكامل معظم تفاصيلها. ولأن العوامل تُضرب، لا يجوز جمع تغيراتها. فزيادة السكان بعشرين في المئة، والدخل بخمسين في المئة، مع خفض الطاقة لكل دولار بثلاثين في المئة والكربون لكل وحدة طاقة بعشرين في المئة، لا تكاد تغيّر الانبعاثات، ولا ترفعها بعشرين في المئة.",
+ "diagram": {
+  "title": "From the mine to your phone, and the four Kaya factors",
+  "caption": "Notice that losses happen at every step of the chain, and that the four Kaya factors multiply into CO2.",
+  "nodes": [
+   {
+    "id": "primary",
+    "label": "Primary energy",
+    "sub": "coal, oil, gas, sun, wind",
+    "x": 110,
+    "y": 90,
+    "w": 180,
+    "h": 70,
+    "sys": "energy",
+    "detail": "Energy as nature provides it. Illustrative chain: start with 100 units of coal."
+   },
+   {
+    "id": "convert",
+    "label": "Conversion",
+    "sub": "power plants, refineries",
+    "x": 340,
+    "y": 90,
+    "w": 170,
+    "h": 70,
+    "sys": "energy",
+    "detail": "A 40%-efficient power plant turns 100 units of coal into 40 units of electricity (illustrative)."
+   },
+   {
+    "id": "final",
+    "label": "Final energy",
+    "sub": "electricity, petrol, heat",
+    "x": 560,
+    "y": 90,
+    "w": 170,
+    "h": 70,
+    "sys": "energy",
+    "detail": "What reaches homes and factories. The grid loses about 10%, so 40 becomes 36 (illustrative)."
+   },
+   {
+    "id": "service",
+    "label": "Energy services",
+    "sub": "light, warmth, travel, steel",
+    "x": 780,
+    "y": 90,
+    "w": 170,
+    "h": 70,
+    "sys": "economy",
+    "detail": "What people actually want. IAMs start from demand for services and work backwards to fuels."
+   },
+   {
+    "id": "pop",
+    "label": "People",
+    "sub": "population",
+    "x": 110,
+    "y": 330,
+    "w": 150,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Factor 1 of the Kaya identity: how many people."
+   },
+   {
+    "id": "inc",
+    "label": "Income per person",
+    "sub": "GDP ÷ people",
+    "x": 310,
+    "y": 330,
+    "w": 160,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Factor 2: how rich they are. Richer people usually want more services."
+   },
+   {
+    "id": "eint",
+    "label": "Energy per $",
+    "sub": "energy ÷ GDP",
+    "x": 520,
+    "y": 330,
+    "w": 160,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Factor 3: how much energy each dollar of output needs. Efficiency lowers it."
+   },
+   {
+    "id": "cint",
+    "label": "CO2 per energy",
+    "sub": "CO2 ÷ energy",
+    "x": 730,
+    "y": 330,
+    "w": 160,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Factor 4: how dirty the energy is. Solar, wind and nuclear lower it."
+   },
+   {
+    "id": "co2",
+    "label": "CO2 emissions",
+    "sub": "the four factors multiplied",
+    "x": 450,
+    "y": 460,
+    "w": 220,
+    "h": 64,
+    "sys": "climate",
+    "detail": "CO<sub>2</sub> = people × (GDP ÷ people) × (energy ÷ GDP) × (CO<sub>2</sub> ÷ energy). The terms cancel, so it is always true."
+   }
+  ],
+  "edges": [
+   {
+    "from": "primary",
+    "to": "convert",
+    "label": "100 units",
+    "sys": "energy"
+   },
+   {
+    "from": "convert",
+    "to": "final",
+    "label": "40 units",
+    "sys": "energy"
+   },
+   {
+    "from": "final",
+    "to": "service",
+    "label": "36 units",
+    "sys": "energy"
+   },
+   {
+    "from": "pop",
+    "to": "co2",
+    "label": "×",
+    "sys": "economy"
+   },
+   {
+    "from": "inc",
+    "to": "co2",
+    "label": "×",
+    "sys": "economy"
+   },
+   {
+    "from": "eint",
+    "to": "co2",
+    "label": "×",
+    "sys": "energy"
+   },
+   {
+    "from": "cint",
+    "to": "co2",
+    "label": "×",
+    "sys": "energy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "service"
+    ],
+    "edges": [],
+    "text": "Start at the end: people want services such as light, warmth and travel, not energy itself."
+   },
+   {
+    "focus": [
+     "primary",
+     "convert"
+    ],
+    "edges": [
+     [
+      "primary",
+      "convert"
+     ]
+    ],
+    "text": "Energy starts as primary energy. A power plant that is 40% efficient turns 100 units of coal into 40 of electricity."
+   },
+   {
+    "focus": [
+     "final"
+    ],
+    "edges": [
+     [
+      "convert",
+      "final"
+     ],
+     [
+      "final",
+      "service"
+     ]
+    ],
+    "text": "The grid loses about 10%, so 36 units reach homes. Saving 1 unit at home saves about 2.8 at the mine."
+   },
+   {
+    "focus": [
+     "pop",
+     "inc"
+    ],
+    "edges": [
+     [
+      "pop",
+      "co2"
+     ],
+     [
+      "inc",
+      "co2"
+     ]
+    ],
+    "text": "Now the Kaya identity. The first two factors are about society: how many people and how rich."
+   },
+   {
+    "focus": [
+     "eint",
+     "cint"
+    ],
+    "edges": [
+     [
+      "eint",
+      "co2"
+     ],
+     [
+      "cint",
+      "co2"
+     ]
+    ],
+    "text": "The last two are about technology: energy per dollar and CO2 per unit of energy. IAMs spend most of their detail here."
+   },
+   {
+    "focus": [
+     "co2"
+    ],
+    "edges": [],
+    "text": "The four factors multiply into CO2. Change them by percentages and you must multiply the ratios, not add the percentages."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "People want services, not energy",
+   "html": "<p>Nobody wants a kilowatt-hour for its own sake. People want <b>services</b>: light, warm homes, travel, cold drinks, steel. Energy travels a chain to get there: <b>primary energy</b> is what nature provides (coal, oil, gas, sunlight, wind); <b>conversion</b> in power plants and refineries turns it into <b>final energy</b> (electricity, petrol); final energy becomes services.</p><p>Process-based IAMs follow the whole chain and choose technologies at each step by cost. That is why they can compare supply options, such as solar, with demand options, such as better buildings.</p>"
+  },
+  {
+   "heading": "Every step loses some",
+   "html": "<p>Illustrative chain: 100 units of coal enter a 40%-efficient power plant, leaving 100 × 0.40 = 40 units of electricity. The grid loses 10%, so 40 × 0.90 = 36 units reach homes. About two thirds are lost on the way.</p><p>Turn it around: saving 1 unit at home saves 100 ÷ 36 ≈ <b>2.8 units</b> of coal at the start of the chain.</p>"
+  },
+  {
+   "heading": "The Kaya identity: four drivers",
+   "html": "<p>To see what drives emissions, split them into four factors that multiply, named after the energy economist Yoichi Kaya:</p><div class=\"eq\">CO<sub>2</sub> = people × (GDP ÷ people) × (energy ÷ GDP) × (CO<sub>2</sub> ÷ energy)</div><p>It is not a theory: the units cancel, so it is always true. Its value is as a way of sorting data. The first two factors are about <b>society</b>; the last two are about <b>technology</b>.</p>"
+  },
+  {
+   "heading": "Multiply, never add",
+   "html": "<p>Avalon is an invented country. Over 30 years its population grows 20%, income per person 50%, energy per dollar falls 30% and CO<sub>2</sub> per unit of energy falls 20%.</p><p>Multiply the ratios: 1.2 × 1.5 × 0.7 × 0.8 = <b>1.008</b>. CO<sub>2</sub> rises by under 1%: growth in people and income is almost exactly cancelled by cleaner, more efficient technology. Adding the percentages (+20 + 50 − 30 − 20 = +20%) gives the wrong answer.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>Think of a leaky pipeline from the mine to your phone. Fixing a leak near the end saves the most water, because everything upstream was pumped for it.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>Adding percentage changes. The Kaya factors multiply, so combine their <b>ratios</b> by multiplying: +20% and −20% do not cancel (1.2 × 0.8 = 0.96).</p>"
+  },
+  {
+   "after": 3,
+   "kind": "try",
+   "title": "Try it now",
+   "html": "<p>A country's population doubles and its income per person halves. Energy per dollar and CO<sub>2</sub> per unit of energy stay the same. What happens to its CO<sub>2</sub>? (Answer: 2 × 0.5 = 1, no change.)</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "kaya",
+  "intro": "Set how much each of the four factors changes over 30 years. The bars show each ratio and the CO2 ratio they multiply into.",
+  "predict": "Start from Avalon (+20%, +50%, −30%, −20%). If energy per dollar falls by 50% instead of 30%, what happens to CO2? Guess the percentage, then check."
+ },
+ "code": [
+  {
+   "title": "The Kaya identity for Avalon",
+   "lang": "python",
+   "source": "# Kaya identity: CO2 = people x income per person x energy per $ x CO2 per energy\n# Avalon, an invented country, over 30 years (ratios = end / start)\nratios = {\"population\": 1.20, \"income per person\": 1.50,\n          \"energy per $\": 0.70, \"CO2 per energy\": 0.80}\n\nco2_ratio = 1.0\nfor name, r in ratios.items():\n    co2_ratio *= r\n    print(f\"{name:<18} x{r:.2f}\")\nprint(f\"CO2 ends at x{co2_ratio:.3f}  ({co2_ratio - 1:+.1%})\")\n\n# The common mistake: adding the percentage changes\nwrong = sum(r - 1 for r in ratios.values())\nprint(f\"Adding percentages instead gives {wrong:+.0%}  <- wrong\")\n",
+   "runnable": true,
+   "explain": "Press Run. Then change the CO2 per energy ratio to 0.5 (lots of solar and wind) and predict the CO2 change first.",
+   "expected": "population         x1.20\nincome per person  x1.50\nenergy per $       x0.70\nCO2 per energy     x0.80\nCO2 ends at x1.008  (+0.8%)\nAdding percentages instead gives +20%  <- wrong"
+  }
+ ],
+ "takeaways": [
+  "People want energy services; energy flows from primary to final energy to services.",
+  "Every conversion step loses energy; in the example only 36 of 100 units reach homes.",
+  "Kaya: CO2 = people × income per person × energy per $ × CO2 per energy.",
+  "Society sets the first two factors; technology sets the last two.",
+  "The factors multiply, so combine ratios by multiplying, not by adding percentages."
+ ],
+ "quiz": [
+  {
+   "q": "Which is an energy service?",
+   "options": [
+    "Electricity",
+    "Crude oil",
+    "A warm living room",
+    "Natural gas"
+   ],
+   "answer": 2,
+   "explain": "A service is what people actually want. Electricity is final energy; oil and gas are primary energy."
+  },
+  {
+   "q": "100 units of coal, a 40%-efficient plant and 10% grid losses deliver how many units to homes?",
+   "options": [
+    "40",
+    "36",
+    "90",
+    "60"
+   ],
+   "answer": 1,
+   "explain": "100 × 0.40 = 40, then 40 × 0.90 = 36."
+  },
+  {
+   "q": "People +10%, income per person +20%, energy per $ −50%, CO2 per energy −10%. CO2 changes by a factor of:",
+   "options": [
+    "0.594",
+    "0.70",
+    "1.30",
+    "0.99"
+   ],
+   "answer": 0,
+   "explain": "Multiply the ratios: 1.1 × 1.2 × 0.5 × 0.9 = 0.594, about a 41% fall."
+  },
+  {
+   "q": "Which two Kaya factors are mainly about technology?",
+   "options": [
+    "People and income per person",
+    "Income per person and energy per $",
+    "People and CO2 per energy",
+    "Energy per $ and CO2 per unit of energy"
+   ],
+   "answer": 3,
+   "explain": "Efficiency sets energy per dollar; the fuel mix sets CO2 per unit of energy."
+  },
+  {
+   "q": "Avalon's factors change by +20%, +50%, −30% and −20%. Its CO2:",
+   "options": [
+    "Rises 20%",
+    "Rises about 0.8%",
+    "Falls 20%",
+    "Is unchanged exactly"
+   ],
+   "answer": 1,
+   "explain": "1.2 × 1.5 × 0.7 × 0.8 = 1.008, a rise of about 0.8%. Adding percentages gives the wrong +20%."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Primary energy",
+   "def": "Energy as nature provides it: coal, oil, gas, uranium, sunlight, wind, biomass."
+  },
+  {
+   "term": "Final energy",
+   "def": "Energy delivered to users, such as electricity, petrol and heat."
+  },
+  {
+   "term": "Energy service",
+   "def": "What people actually want from energy: light, warmth, travel, cooling, materials."
+  },
+  {
+   "term": "Kaya identity",
+   "def": "CO2 = population × GDP per person × energy per GDP × CO2 per energy; always true because the units cancel."
+  },
+  {
+   "term": "Energy intensity",
+   "def": "Energy used per dollar of economic output (energy ÷ GDP)."
+  },
+  {
+   "term": "Carbon intensity",
+   "def": "CO2 released per unit of energy (CO2 ÷ energy)."
+  }
+ ],
+ "resources": [
+  {
+   "title": "Kaya Identity Scenario Prognosticator (University of Chicago)",
+   "url": "https://forecast.uchicago.edu/kaya/kaya.html",
+   "why": "Change the four Kaya growth rates and see emissions, CO2 and warming to 2100. Free, no log-in."
+  },
+  {
+   "title": "The Kaya identity (Penn State METEO 469)",
+   "url": "https://courses.ems.psu.edu/meteo469/node/213",
+   "why": "A short lesson that walks through the four factors with real numbers."
+  },
+  {
+   "title": "Energy (Our World in Data)",
+   "url": "https://ourworldindata.org/energy",
+   "why": "Where the world's energy comes from and how it has changed; the energy side of the Kaya identity."
+  },
+  {
+   "title": "Is the world making progress in decarbonizing energy? (Our World in Data)",
+   "url": "https://ourworldindata.org/decarbonizing-energy-progress",
+   "why": "Real trends in energy per dollar and CO2 per unit of energy, the two technology factors."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 1 study guide: See the whole picture (PDF)",
+   "path": "downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf"
+  },
+  {
+   "label": "Week 3 slides: Energy primer (PDF)",
+   "path": "downloads/slides/Week03-Energy-primer.pdf"
+  }
+ ]
+}

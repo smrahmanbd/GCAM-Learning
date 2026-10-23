@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lab 13 (week 13): batch file for the course ensemble. Instructor file.
+
+  THIS FILE HAS NOT BEEN RUN. It must be checked against the installed GCAM
+  release (the course's GCAM release) before use:
+    * every file path below must exist in that release
+      (input/gcamdata/xml and input/policy);
+    * check what each file changes: solar_adv.xml is taken here as the
+      low-cost solar case and solar_low.xml as the high-cost case;
+      ccs_supply_low.xml and ccs_supply_high.xml are taken as low and high
+      CO2 storage supply;
+    * check that reading a socioeconomics_SSP file after the reference
+      configuration's own socioeconomics files gives the intended result;
+    * the release's carbon_tax files name their policy CO2_LTG, which may
+      need extra link files (for example input/policy/linked_ghg_policy.xml)
+      in the same FileSet. Either add them, or replace the two tax files by
+      copies of the course's own carbon_price_global.xml (lab 10) with a
+      lower and a higher price path.
+
+  How it is used (GCAM user guide, section on batch mode):
+    * in the configuration file set, under <Files>,
+        <Value name="BatchFileName">ensemble_batch.xml</Value>
+      and under <Bools>,
+        <Value name="BatchMode">1</Value>
+    * GCAM reads the files of each FileSet after the ScenarioComponents of
+      the configuration file and runs every combination of FileSets across
+      the ComponentSets: 2 x 2 x 3 x 3 = 36 runs.
+    * each run is named from the scenarioName in the configuration file
+      (for example "Ens") with FileSet names appended.
+  An empty FileSet means "change nothing".
+-->
+<BatchRunner>
+	<ComponentSet name="solar">
+		<FileSet name="_solLow">
+			<Value name="solar">../input/gcamdata/xml/solar_adv.xml</Value>
+		</FileSet>
+		<FileSet name="_solHigh">
+			<Value name="solar">../input/gcamdata/xml/solar_low.xml</Value>
+		</FileSet>
+	</ComponentSet>
+	<ComponentSet name="ccs">
+		<FileSet name="_ccsLow">
+			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
+		</FileSet>
+		<FileSet name="_ccsHigh">
+			<Value name="ccs">../input/gcamdata/xml/ccs_supply_high.xml</Value>
+		</FileSet>
+	</ComponentSet>
+	<ComponentSet name="ssp">
+		<FileSet name="_ssp1">
+			<Value name="socio">../input/gcamdata/xml/socioeconomics_SSP1.xml</Value>
+		</FileSet>
+		<FileSet name="_ssp2">
+			<Value name="socio">../input/gcamdata/xml/socioeconomics_SSP2.xml</Value>
+		</FileSet>
+		<FileSet name="_ssp3">
+			<Value name="socio">../input/gcamdata/xml/socioeconomics_SSP3.xml</Value>
+		</FileSet>
+	</ComponentSet>
+	<ComponentSet name="tax">
+		<FileSet name="_taxNone">
+		</FileSet>
+		<FileSet name="_taxLow">
+			<Value name="tax">../input/policy/carbon_tax_10_5.xml</Value>
+		</FileSet>
+		<FileSet name="_taxHigh">
+			<Value name="tax">../input/policy/carbon_tax_25_5.xml</Value>
+		</FileSet>
+	</ComponentSet>
+</BatchRunner>

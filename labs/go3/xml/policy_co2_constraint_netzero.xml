@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  policy_co2_constraint_netzero.xml : regional fossil+industrial CO2 cap falling linearly to net zero in 2060.
+
+  PURPOSE     Quantity-based policy: GCAM solves for the carbon price that meets the cap.
+  TEMPLATE    input/policy/ghg_net0_constraint_global.xml (gcam-v9.1): ghgpolicy / market /
+              constraint (policy_ghg.h line 97). Here for one region and CO2 only.
+  UNITS       MtC (million tonnes of CARBON) per year, the output unit of the CO2 market.
+              1 MtC = 3.667 MtCO2.
+  VALUES      ILLUSTRATIVE. 600 MtC in 2025 is roughly 2,200 MtCO2. Replace the 2025 value with
+              your Reference run's regional "CO2 emissions by region" (MTC) for 2025 and keep
+              the straight line to 0 in 2060.
+  CONFIG      After all base files. A constraint is a SOLVED market: expect more solver iterations.
+              If the run fails to solve, check the log for the "CO2" market and relax early years.
+  COVERAGE    Whole region. Transport responds only through the price the constraint creates;
+              cheaper abatement elsewhere (power, industry) goes first.
+  CAUTION     Net zero for fossil CO2 alone, with no negative-emission options left, can be
+              infeasible. Bioenergy with CCS and direct air capture are in the core model; their
+              availability limits feasibility.
+  STATUS      Not run in GCAM.
+-->
+<scenario>
+  <world>
+    <region name="Middle East">
+      <ghgpolicy name="CO2">
+        <market>Middle East</market>
+        <constraint year="2025">600</constraint>
+        <constraint year="2030">514.3</constraint>
+        <constraint year="2035">428.6</constraint>
+        <constraint year="2040">342.9</constraint>
+        <constraint year="2045">257.1</constraint>
+        <constraint year="2050">171.4</constraint>
+        <constraint year="2055">85.7</constraint>
+        <constraint year="2060">0</constraint>
+        <constraint year="2065">0</constraint>
+        <constraint year="2070">0</constraint>
+        <constraint year="2075">0</constraint>
+        <constraint year="2080">0</constraint>
+        <constraint year="2085">0</constraint>
+        <constraint year="2090">0</constraint>
+        <constraint year="2095">0</constraint>
+        <constraint year="2100">0</constraint>
+      </ghgpolicy>
+    </region>
+  </world>
+</scenario>

@@ -1,0 +1,476 @@
+{
+ "id": "2.6",
+ "go": 2,
+ "slug": "land-food-bioenergy",
+ "title": "Land, food and bioenergy",
+ "minutes": 45,
+ "tag": "Land",
+ "systems": [
+  "land",
+  "energy",
+  "climate",
+  "water"
+ ],
+ "summary": "Land is shared among crops, pasture, forest and energy crops by a logit on profit per hectare. See why bioenergy demand raises food prices and how a carbon price can grow forests.",
+ "outcomes": [
+  "You can compute profit per hectare and logit land shares",
+  "You can estimate the land needed for a bioenergy target",
+  "You can describe GCAM's land nest and its geographic land units",
+  "You can explain how land carbon is priced and how land-use emissions arise"
+ ],
+ "narration_en": "Every hectare of land can only do one job at a time: grow wheat, feed cattle, carry a forest, or grow grass for bioenergy. GCAM divides land among these uses according to how profitable each one is, using a logit, the same family of formulas used for energy technologies but now with a positive exponent on profit. Land is resolved by geographic land units, the overlap of thirty-two regions and river basins, and arranged in a nest, so close substitutes like different crops compete more strongly than cropland and forest. When the energy system wants more bioenergy, the price of energy grass rises, its profit per hectare rises, and land shifts toward it, which pushes up food prices. A carbon price can also be applied to land as a subsidy for holding carbon, which makes forests more profitable and can expand them. In this module you will compute profits and land shares by hand, estimate how many million hectares a bioenergy target needs, and see how yield changes the answer.",
+ "narration_ar": "لا يمكن لكل هكتار من الأرض أن يؤدي إلا وظيفة واحدة في الوقت نفسه: زراعة القمح، أو تغذية الماشية، أو حمل غابة، أو زراعة العشب للطاقة الحيوية. يقسم نموذج GCAM الأرض بين هذه الاستخدامات بحسب ربحية كل منها، مستخدمًا دالة لوجيت، من العائلة نفسها المستخدمة لتقنيات الطاقة لكن بأُس موجب على الربح. وتُمثَّل الأرض بوحدات أرضية جغرافية، هي تقاطع المناطق الاثنتين والثلاثين مع أحواض الأنهار، وتُرتَّب في شجرة متداخلة، بحيث تتنافس البدائل القريبة مثل المحاصيل المختلفة بقوة أكبر من تنافس الأراضي الزراعية والغابات. وعندما يريد نظام الطاقة مزيدًا من الطاقة الحيوية يرتفع سعر عشب الطاقة، فيرتفع ربحه لكل هكتار، وتنتقل الأرض نحوه، مما يرفع أسعار الغذاء. ويمكن أيضًا تطبيق سعر الكربون على الأرض كإعانة مقابل الاحتفاظ بالكربون، مما يجعل الغابات أكثر ربحية وقد يوسّعها. في هذه الوحدة ستحسب الأرباح وحصص الأرض يدويًا، وتقدّر كم مليون هكتار يحتاجه هدف للطاقة الحيوية، وترى كيف تغيّر الإنتاجية الجواب.",
+ "diagram": {
+  "title": "Land competition and its links",
+  "caption": "Profit per hectare sets land shares; bioenergy demand and carbon prices change profits, and land change releases or stores carbon.",
+  "nodes": [
+   {
+    "id": "price",
+    "label": "Crop and biomass prices",
+    "sub": "from food and energy markets",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Crop prices clear food markets; the biomass price clears the bioenergy market that the energy system demands from (supply_land.html)."
+   },
+   {
+    "id": "profit",
+    "label": "Profit per hectare",
+    "sub": "(price − cost) × yield",
+    "x": 450,
+    "y": 70,
+    "w": 180,
+    "h": 64,
+    "sys": "land",
+    "detail": "Profit rate = (price + subsidy − variable cost − input costs) × yield, in 1975$ per area; input costs include fertiliser and water (supply_land.html)."
+   },
+   {
+    "id": "cpr",
+    "label": "Carbon price on land",
+    "sub": "subsidy for carbon stock",
+    "x": 770,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "policy",
+    "detail": "Landowners receive carbon price × carbon density (discounted, annualised): forests gain relative to cropland (land.html)."
+   },
+   {
+    "id": "nest",
+    "label": "Land nest (logit)",
+    "sub": "s = (λπ)^ρ / Σ(λπ)^ρ",
+    "x": 450,
+    "y": 260,
+    "w": 210,
+    "h": 64,
+    "sys": "land",
+    "detail": "Shares by profit with exponent ρ > 0; tighter substitution inside nests than across them. Calibrated profit scalers λ reproduce base-year land (land.html)."
+   },
+   {
+    "id": "crop",
+    "label": "Cropland and food",
+    "sub": "irrigated/rainfed × hi/lo",
+    "x": 130,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "land",
+    "detail": "Every crop splits into irrigated/rainfed × high/low management, allowing price-induced intensification."
+   },
+   {
+    "id": "bioc",
+    "label": "Energy crops",
+    "sub": "herbaceous grass from 2025",
+    "x": 130,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Dedicated energy grass enters the cropland nest; woody biomass sits in the forest nest (details_land.html)."
+   },
+   {
+    "id": "forest",
+    "label": "Forest and natural land",
+    "sub": "managed / unmanaged",
+    "x": 770,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "land",
+    "detail": "Forests grow back slowly: uptake follows a sigmoid with mature age of about 30–100 years (land.html)."
+   },
+   {
+    "id": "luc",
+    "label": "Land-use change CO₂",
+    "sub": "ΔA × carbon density",
+    "x": 770,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "climate",
+    "detail": "E_t = A_t·D_t − A_t−1·D_t−1 for vegetation and soil. Releases are immediate; regrowth uptake is slow (land.html)."
+   }
+  ],
+  "edges": [
+   {
+    "from": "price",
+    "to": "profit",
+    "label": "price",
+    "sys": "economy"
+   },
+   {
+    "from": "profit",
+    "to": "nest",
+    "label": "profit",
+    "sys": "land"
+   },
+   {
+    "from": "cpr",
+    "to": "nest",
+    "label": "subsidy",
+    "sys": "policy"
+   },
+   {
+    "from": "nest",
+    "to": "crop",
+    "label": "share",
+    "sys": "land"
+   },
+   {
+    "from": "nest",
+    "to": "bioc",
+    "label": "share",
+    "sys": "land"
+   },
+   {
+    "from": "nest",
+    "to": "forest",
+    "label": "share",
+    "sys": "land"
+   },
+   {
+    "from": "forest",
+    "to": "luc",
+    "label": "",
+    "sys": "climate"
+   },
+   {
+    "from": "bioc",
+    "to": "price",
+    "label": "supply",
+    "sys": "energy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "price",
+     "profit"
+    ],
+    "edges": [
+     [
+      "price",
+      "profit"
+     ]
+    ],
+    "text": "Prices from food and bioenergy markets set each land use's profit per hectare."
+   },
+   {
+    "focus": [
+     "nest"
+    ],
+    "edges": [
+     [
+      "profit",
+      "nest"
+     ]
+    ],
+    "text": "A logit on profit shares the land: more profitable uses expand, but not all at once."
+   },
+   {
+    "focus": [
+     "crop",
+     "bioc"
+    ],
+    "edges": [
+     [
+      "nest",
+      "crop"
+     ],
+     [
+      "nest",
+      "bioc"
+     ]
+    ],
+    "text": "Energy grass and food crops compete in the same cropland nest: bioenergy demand raises food prices."
+   },
+   {
+    "focus": [
+     "cpr",
+     "forest"
+    ],
+    "edges": [
+     [
+      "cpr",
+      "nest"
+     ],
+     [
+      "nest",
+      "forest"
+     ]
+    ],
+    "text": "A carbon price on land pays for stored carbon, so forests become more profitable and can expand."
+   },
+   {
+    "focus": [
+     "luc"
+    ],
+    "edges": [
+     [
+      "forest",
+      "luc"
+     ]
+    ],
+    "text": "Every change in land cover changes carbon stocks: clearing releases CO₂ fast, regrowth takes it back slowly."
+   },
+   {
+    "focus": [
+     "bioc",
+     "price"
+    ],
+    "edges": [
+     [
+      "bioc",
+      "price"
+     ]
+    ],
+    "text": "Biomass supply feeds back to the bioenergy market, closing the energy–land loop."
+   }
+  ]
+ },
+ "components": {
+  "caption": "Land module building blocks",
+  "rows": [
+   {
+    "name": "Geographic land unit",
+    "purpose": "Region × river basin; the spatial unit for land",
+    "analogy": "A plot on the map"
+   },
+   {
+    "name": "Land nest",
+    "purpose": "Tree of land uses with logit sharing at each node",
+    "analogy": "Family tree of land uses"
+   },
+   {
+    "name": "Profit per hectare",
+    "purpose": "What drives each land use's share",
+    "analogy": "Rent the plot would earn"
+   },
+   {
+    "name": "Profit scaler (λ)",
+    "purpose": "Calibrated so 2021 land matches data",
+    "analogy": "Local preference for a crop"
+   },
+   {
+    "name": "Yield",
+    "purpose": "Output per hectare; grows by assumed productivity",
+    "analogy": "Harvest per field"
+   },
+   {
+    "name": "Carbon density",
+    "purpose": "Vegetation and soil carbon per area by land type",
+    "analogy": "How much carbon each plot stores"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "What this component represents",
+   "html": "<p>The agriculture and land use module (AgLU) decides how land is used, what crops and livestock are produced, and how much carbon land stores. Land is resolved by water-basin-based <b>geographic land units</b>: the overview text says more than 300, its table 396 land subregions (<a href=\"https://jgcri.github.io/gcam-doc/overview.html\">overview.html</a>). Every crop is split into irrigated/rainfed × high/low management, so production can intensify when prices rise.</p>"
+  },
+  {
+   "heading": "Profit and land shares",
+   "html": "<div class=\"eq\">π = (price − cost) × yield</div><div class=\"eq\">s<sub>i</sub> = (λ<sub>i</sub> π<sub>i</sub>)<sup>ρ</sup> / Σ<sub>j</sub> (λ<sub>j</sub> π<sub>j</sub>)<sup>ρ</sup>,  a<sub>i</sub> = a<sub>parent</sub> · s<sub>i</sub></div><p>Worked example (exponent 1, equal scalers): wheat sells at $200/t, costs $120/t, yields 3 t/ha → profit (200 − 120) × 3 = <b>$240/ha</b>. Energy grass at $60/t, cost $30/t, 10 t/ha → (60 − 30) × 10 = <b>$300/ha</b>. Shares: 240 / 540 = <b>44%</b> wheat, 300 / 540 = <b>56%</b> grass. At a grass price of $40/t grass gets 29%; at $90/t, 71% (<a href=\"https://jgcri.github.io/gcam-doc/land.html\">land.html</a>).</p>"
+  },
+  {
+   "heading": "How much land does bioenergy need?",
+   "html": "<div class=\"eq\">land (ha) = energy (GJ) / (yield (t/ha) × energy content (GJ/t))</div><p>With 18 GJ per tonne: 10 EJ at 10 t/ha needs 10×10<sup>9</sup> / 180 = <b>55.6 million ha</b>; 100 EJ needs <b>555.6 million ha</b>; halve the yield and it doubles to <b>1,111 million ha</b>. World cropland is roughly 1.5 billion ha, so large bioenergy targets compete seriously with food. GCAM includes default limits: a negative-emissions budget capped at a share of GDP and a biomass externality cost curve (<a href=\"https://jgcri.github.io/gcam-doc/policies.html\">policies.html</a>).</p>"
+  },
+  {
+   "heading": "Land carbon and land-use change emissions",
+   "html": "<p>Vegetation and soil carbon densities by land unit come from the moirai data system. Land-use change emissions are</p><div class=\"eq\">E<sub>t</sub> = A<sub>t</sub> · D<sub>t</sub> − A<sub>t−1</sub> · D<sub>t−1</sub></div><p>computed separately for vegetation and soil. Clearing releases carbon immediately; regrowth follows a slow sigmoid with forest mature ages of about 30 to 100 years. A <b>carbon price on land</b> works as a subsidy for holding carbon stock: carbon price × carbon density × discounting and annualisation (<a href=\"https://jgcri.github.io/gcam-doc/land.html\">land.html</a>).</p>"
+  },
+  {
+   "heading": "Calibration and yields",
+   "html": "<p>Profit scalers λ are calibrated by inverting the share equation with base-year land shares, then carried forward. Future yields grow by agricultural productivity growth from FAO projections, scaled by SSP (+50% in SSP1/5, −50% in SSP3) (<a href=\"https://jgcri.github.io/gcam-doc/supply_land.html\">supply_land.html</a>, <a href=\"https://jgcri.github.io/gcam-doc/ssp.html\">ssp.html</a>). Numeric land logit exponents are not on the doc pages; they are in the input files.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>Think of plots on a market street. Each landowner rents to whoever pays most per hectare, but habits, soils and contracts mean some keep their old tenants. The logit is the street's average behaviour.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Query <b>aggregated land allocation</b> and <b>LUC emissions by region</b>; net CO₂ = CO₂ emissions by region + LUC emissions (<a href=\"https://jgcri.github.io/gcam-doc/outputs_emissions.html\">outputs_emissions.html</a>). Carbon state is set by <code>aglu.CARBON_STATE</code> in gcamdata's constants; maps by basin with <code>rmap::mapGCAMLand</code>.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "\"Bioenergy is carbon-free, so more is always better\"",
+   "html": "<p>Land conversion can release large stocks of carbon immediately, while regrowth takes decades, and energy crops displace food. GCAM accounts for both through land competition and LUC emissions.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "research",
+   "title": "Docs disagree",
+   "html": "<p>Protected land: the policies page says 90% of non-commercial ecosystems by default; the land page describes a suitability × IUCN method. The land page reads as the newer method. Check your release's input files.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "land",
+  "intro": "Choose a bioenergy target, a yield and the energy-grass price, and see the land needed and the share of contested land.",
+  "predict": "If yields fall from 10 to 5 t/ha, how much more land does 100 EJ need?"
+ },
+ "code": [
+  {
+   "title": "Land shares and land for bioenergy",
+   "lang": "python",
+   "file": "labs/go2/m26_land.py",
+   "runnable": true,
+   "explain": "Profit per hectare, logit land shares at three grass prices, and land needed for bioenergy. Try: raise the logit exponent to 3 and predict how the $60/t grass share changes.",
+   "expected": "grass $60/t: profits wheat 240, grass 300 $/ha -> shares wheat 0.444, grass 0.556\n100 EJ at 10 t/ha ->  555.6 million ha\n100 EJ at  5 t/ha -> 1111.1 million ha"
+  },
+  {
+   "title": "The same in R",
+   "lang": "r",
+   "file": "labs/go2/m26_land.R",
+   "runnable": false,
+   "explain": "Identical numbers in base R."
+  },
+  {
+   "title": "Lab 9: map land and water results",
+   "lang": "r",
+   "file": "labs/iam-course/labs/lab9.R",
+   "runnable": false,
+   "explain": "rgcam + rmap lab from the 15-week course (gaps to fill; solution in labs/iam-course/solutions/lab9_solution.R)."
+  }
+ ],
+ "takeaways": [
+  "Land is shared among uses by a logit on profit per hectare, inside a nest",
+  "Bioenergy and food compete for cropland, so bioenergy demand can raise food prices",
+  "Land needed = energy ÷ (yield × energy content): yield matters as much as the target",
+  "Land-use change emits carbon fast and regrowth absorbs it slowly",
+  "A carbon price on land pays for stored carbon and can expand forests"
+ ],
+ "quiz": [
+  {
+   "q": "Wheat (200 − 120) × 3 and grass (60 − 30) × 10, exponent 1. Grass's land share is…",
+   "options": [
+    "30%",
+    "44%",
+    "56%",
+    "71%"
+   ],
+   "answer": 2,
+   "explain": "300 / (240 + 300) = 0.556."
+  },
+  {
+   "q": "100 EJ of energy grass at 10 t/ha and 18 GJ/t needs about…",
+   "options": [
+    "56 million ha",
+    "556 million ha",
+    "5.6 billion ha",
+    "18 million ha"
+   ],
+   "answer": 1,
+   "explain": "100×10⁹ / 180 ≈ 556 million ha."
+  },
+  {
+   "q": "In GCAM, a carbon price applied to land works as…",
+   "options": [
+    "a tax on crops",
+    "a subsidy for holding carbon stock",
+    "a ban on deforestation",
+    "nothing"
+   ],
+   "answer": 1,
+   "explain": "Carbon price × carbon density, discounted and annualised (land.html)."
+  },
+  {
+   "q": "Why can GCAM's land model intensify production?",
+   "options": [
+    "Crops split into irrigated/rainfed × high/low management",
+    "It assumes yields double",
+    "It ignores land limits",
+    "It imports land"
+   ],
+   "answer": 0,
+   "explain": "Management options let higher prices shift land to high-input practices."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "AgLU",
+   "def": "GCAM's agriculture and land use module."
+  },
+  {
+   "term": "Geographic land unit (GLU)",
+   "def": "The overlap of a GCAM region and a river basin; GCAM's spatial unit for land."
+  },
+  {
+   "term": "Profit rate",
+   "def": "Revenue minus costs per unit of land."
+  },
+  {
+   "term": "Land-use change emissions",
+   "def": "CO₂ released or absorbed when land cover changes."
+  },
+  {
+   "term": "Carbon density",
+   "def": "Carbon stored per area in vegetation and soil."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Land",
+   "url": "https://jgcri.github.io/gcam-doc/land.html",
+   "why": "Land nesting, allocation equations and land carbon."
+  },
+  {
+   "title": "GCAM documentation: Land supply",
+   "url": "https://jgcri.github.io/gcam-doc/supply_land.html",
+   "why": "Profit rate, yields and livestock."
+  },
+  {
+   "title": "GCAM documentation: Land demand",
+   "url": "https://jgcri.github.io/gcam-doc/demand_land.html",
+   "why": "Food, feed and non-food demand."
+  },
+  {
+   "title": "rmap",
+   "url": "https://github.com/JGCRI/rmap",
+   "why": "Built-in GCAM region, basin and land maps for results."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 9 slides: Land, water and bioenergy (PDF)",
+   "path": "downloads/slides/Week09-Land-water-and-bioenergy.pdf"
+  }
+ ]
+}

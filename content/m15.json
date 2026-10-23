@@ -1,0 +1,426 @@
+{
+ "id": "1.5",
+ "go": 1,
+ "slug": "scenarios",
+ "title": "Scenarios: SSPs, RCPs and AR6 categories",
+ "minutes": 35,
+ "tag": "Scenarios",
+ "systems": [
+  "economy",
+  "climate",
+  "policy"
+ ],
+ "summary": "How the research community builds futures: five stories about society (SSPs), forcing levels (RCPs), the matrix that joins them, and how the IPCC sorts pathways.",
+ "outcomes": [
+  "You can say what a scenario is and why it is not a forecast.",
+  "You can name the five SSP stories and decode a label such as SSP2-4.5.",
+  "You can explain why some SSP and forcing combinations cannot be reached.",
+  "You can read an IPCC AR6 category such as C1 or C3, and say what CMIP7 adds."
+ ],
+ "narration_en": "A scenario is a consistent what-if story with numbers stapled to it. Think of a choose-your-own-adventure book with a spreadsheet on every page. Since about twenty sixteen the research community has used two labels together. The first is the shared socioeconomic pathway, or SSP. There are five stories about how society develops: sustainability, middle of the road, regional rivalry, inequality, and fossil-fuelled development. They differ in how hard they make it to cut emissions and to adapt. The second label is a number: how much extra heat the atmosphere traps in twenty one hundred, in watts per square metre. So SSP two four point five means the middle-of-the-road story pushed to four point five watts per square metre, which leads to roughly two point seven degrees of warming. Not every combination works. A fossil-fuelled world can reach low forcing only with huge effort, and in the regional rivalry story most models could not reach the lowest levels at all. For its twenty twenty two report the IPCC collected about three thousand pathways and sorted those it could assess into eight categories, from C1, one point five degrees with little or no overshoot, to C8, above four degrees. In twenty twenty six a new set of scenarios was published for the next generation of climate models. The high one was produced with GCAM.",
+ "narration_ar": "السيناريو قصة متسقة من نوع «ماذا لو» مرفقة بالأرقام، كأنه كتاب مغامرات تختار فيه طريقك مع جدول بيانات في كل صفحة. ومنذ نحو عام ألفين وستة عشر يستخدم المجتمع البحثي تسميتين معًا. الأولى هي «المسار الاجتماعي الاقتصادي المشترك». وهناك خمس قصص عن تطور المجتمع: الاستدامة، والطريق الوسط، والتنافس الإقليمي، وعدم المساواة، والتنمية القائمة على الوقود الأحفوري، وتختلف في مدى صعوبة خفض الانبعاثات والتكيف. والتسمية الثانية رقم يدل على مقدار الحرارة الإضافية التي يحتبسها الغلاف الجوي عام ألفين ومئة، بالواط لكل متر مربع. فالسيناريو SSP2-4.5 يعني قصة الطريق الوسط مدفوعة إلى أربعة ونصف واط لكل متر مربع، وهو ما يؤدي إلى احترار يقارب درجتين وسبعة أعشار. وليست كل التركيبات ممكنة؛ فعالم الوقود الأحفوري لا يبلغ مستوى منخفضًا من التأثير الإشعاعي إلا بجهد هائل، وفي قصة التنافس الإقليمي عجزت معظم النماذج عن بلوغ أدنى المستويات. وفي تقريرها لعام ألفين واثنين وعشرين جمعت الهيئة الحكومية الدولية المعنية بتغير المناخ نحو ثلاثة آلاف مسار، وصنّفت ما أمكن تقييمه منها في ثماني فئات، من الفئة C1 أي درجة ونصف مع تجاوز ضئيل أو معدوم، إلى الفئة C8 أي أكثر من أربع درجات. وفي عام ألفين وستة وعشرين نُشرت مجموعة جديدة من السيناريوهات للجيل القادم من نماذج المناخ، وقد أُنتج السيناريو المرتفع منها بنموذج GCAM.",
+ "diagram": {
+  "title": "Two labels make a scenario",
+  "caption": "Notice that the SSP story and the forcing level are chosen separately, and the IAM works out the energy and land system that joins them.",
+  "nodes": [
+   {
+    "id": "ssp",
+    "label": "SSP story",
+    "sub": "how society develops",
+    "x": 120,
+    "y": 110,
+    "w": 180,
+    "h": 70,
+    "sys": "economy",
+    "detail": "Five stories: SSP1 Sustainability, SSP2 Middle of the road, SSP3 Regional rivalry, SSP4 Inequality, SSP5 Fossil-fuelled development."
+   },
+   {
+    "id": "drivers",
+    "label": "Drivers",
+    "sub": "population, GDP, diets, tech",
+    "x": 120,
+    "y": 290,
+    "w": 180,
+    "h": 70,
+    "sys": "economy",
+    "detail": "Each story is turned into numbers: population, income, urbanisation, and assumptions about technology and diets."
+   },
+   {
+    "id": "rcp",
+    "label": "Forcing target",
+    "sub": "1.9 to 8.5 W/m² in 2100",
+    "x": 420,
+    "y": 110,
+    "w": 190,
+    "h": 70,
+    "sys": "climate",
+    "detail": "Inherited from the Representative Concentration Pathways (RCPs). The number names the extra heat trapped in 2100."
+   },
+   {
+    "id": "iam",
+    "label": "IAM",
+    "sub": "finds an energy and land system",
+    "x": 420,
+    "y": 290,
+    "w": 190,
+    "h": 70,
+    "sys": "energy",
+    "detail": "The model's job: work out the energy and land system that connects a given SSP to a given forcing level, often with a carbon price."
+   },
+   {
+    "id": "label",
+    "label": "Scenario label",
+    "sub": "e.g. SSP2-4.5",
+    "x": 720,
+    "y": 110,
+    "w": 180,
+    "h": 70,
+    "sys": "data",
+    "detail": "SSP2-4.5 = middle-of-the-road story pushed to 4.5 W/m², roughly 2.7 °C of warming (AR6 WGI estimate; check before teaching)."
+   },
+   {
+    "id": "ar6",
+    "label": "AR6 categories",
+    "sub": "C1 to C8 by warming",
+    "x": 720,
+    "y": 290,
+    "w": 180,
+    "h": 70,
+    "sys": "climate",
+    "detail": "The IPCC's 2022 report collected about 3,000 pathways and sorted 1,202 into categories: C1 = 1.5 °C with little or no overshoot … C8 = above 4 °C."
+   },
+   {
+    "id": "cmip7",
+    "label": "CMIP7 (2026)",
+    "sub": "7 scenarios, one per IAM",
+    "x": 720,
+    "y": 450,
+    "w": 180,
+    "h": 64,
+    "sys": "policy",
+    "detail": "The next generation for climate models: seven scenarios, each produced by a different IAM team. The high one (H) was made with GCAM."
+   }
+  ],
+  "edges": [
+   {
+    "from": "ssp",
+    "to": "drivers",
+    "label": "quantified as",
+    "sys": "economy"
+   },
+   {
+    "from": "drivers",
+    "to": "iam",
+    "label": "inputs",
+    "sys": "economy"
+   },
+   {
+    "from": "rcp",
+    "to": "iam",
+    "label": "target",
+    "sys": "climate"
+   },
+   {
+    "from": "iam",
+    "to": "label",
+    "label": "named",
+    "sys": "data"
+   },
+   {
+    "from": "iam",
+    "to": "ar6",
+    "label": "sorted by warming",
+    "sys": "climate"
+   },
+   {
+    "from": "ar6",
+    "to": "cmip7",
+    "label": "next generation",
+    "sys": "policy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "ssp"
+    ],
+    "edges": [],
+    "text": "First choose a story about society: one of five Shared Socioeconomic Pathways."
+   },
+   {
+    "focus": [
+     "drivers"
+    ],
+    "edges": [
+     [
+      "ssp",
+      "drivers"
+     ]
+    ],
+    "text": "The story is turned into numbers: population, income, diets and technology assumptions."
+   },
+   {
+    "focus": [
+     "rcp"
+    ],
+    "edges": [],
+    "text": "Separately, choose a climate outcome: the extra heat trapped in 2100, from 1.9 to 8.5 W/m²."
+   },
+   {
+    "focus": [
+     "iam"
+    ],
+    "edges": [
+     [
+      "drivers",
+      "iam"
+     ],
+     [
+      "rcp",
+      "iam"
+     ]
+    ],
+    "text": "The IAM works out an energy and land system that joins the story to the forcing level, if one exists."
+   },
+   {
+    "focus": [
+     "label",
+     "ar6"
+    ],
+    "edges": [
+     [
+      "iam",
+      "label"
+     ],
+     [
+      "iam",
+      "ar6"
+     ]
+    ],
+    "text": "The result gets a label like SSP2-4.5, and the IPCC sorts pathways into categories C1 to C8 by warming."
+   },
+   {
+    "focus": [
+     "cmip7"
+    ],
+    "edges": [
+     [
+      "ar6",
+      "cmip7"
+     ]
+    ],
+    "text": "Scenarios get updated: CMIP7 (2026) has seven scenarios, each from a different IAM. GCAM made the high one."
+   }
+  ]
+ },
+ "components": {
+  "caption": "The five SSP stories",
+  "rows": [
+   {
+    "name": "SSP1 Sustainability",
+    "purpose": "Green growth, low population, fast clean technology: easy to cut and to adapt",
+    "analogy": "A cooperative neighbourhood that plans ahead"
+   },
+   {
+    "name": "SSP2 Middle of the road",
+    "purpose": "Past trends continue: moderate challenges",
+    "analogy": "Business much as usual"
+   },
+   {
+    "name": "SSP3 Regional rivalry",
+    "purpose": "Nations look inward, slow growth, high population: hard to cut and to adapt",
+    "analogy": "Neighbours behind high fences"
+   },
+   {
+    "name": "SSP4 Inequality",
+    "purpose": "Rich elites and poor majorities: easy to cut, hard to adapt",
+    "analogy": "Gated villas beside shacks"
+   },
+   {
+    "name": "SSP5 Fossil-fuelled development",
+    "purpose": "Fast growth on cheap fossil fuels: hard to cut, easy to adapt",
+    "analogy": "A coal-powered highway"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "What a scenario is",
+   "html": "<p>A <b>scenario</b> is a consistent what-if story with numbers stapled to it, like a choose-your-own-adventure book with a spreadsheet on every page. It is not a forecast, and a set of scenarios is not a list of odds.</p>"
+  },
+  {
+   "heading": "Two labels: a story and a number",
+   "html": "<p>Since about 2016 the community has used two labels together. The <b>Shared Socioeconomic Pathways (SSPs)</b> are five stories about how society develops. They are placed by how hard they make it to cut emissions (mitigation) and to adapt.</p><p>The second label is the <b>radiative forcing</b> in 2100, in W/m², inherited from the older Representative Concentration Pathways (RCPs). Higher number, more warming.</p><p><b>Decode SSP2-4.5:</b> SSP2 is the middle-of-the-road story; 4.5 is forcing in 2100 of 4.5 W/m², not 4.5 °C. It leads to roughly 2.7 °C of warming (check against IPCC AR6 WGI before teaching).</p>"
+  },
+  {
+   "heading": "The scenario matrix",
+   "html": "<p>Put the stories in rows and the forcing levels in columns and you get a matrix. The IPCC's 2021 climate report used five headline cells: SSP1-1.9, SSP1-2.6, SSP2-4.5, SSP3-7.0 and SSP5-8.5.</p><p>Not every cell can be reached. In SSP3's world of regional rivalry, models could not reach the lowest forcing levels. And forcing above a story's no-policy level is not a policy case at all.</p>"
+  },
+  {
+   "heading": "How the IPCC sorts pathways",
+   "html": "<p>For its 2022 mitigation report the IPCC collected about 3,000 pathways and sorted 1,202 into eight <b>categories</b> by the warming they lead to: <b>C1</b> limits warming to 1.5 °C (over 50% chance) with little or no overshoot; <b>C3</b> keeps it below 2 °C (over 67% chance); <b>C8</b> exceeds 4 °C. Check category wording against AR6 WGIII Box SPM.1 before teaching.</p><p>Scenarios get updated. In 2026 a new set of seven scenarios for the next generation of climate models (CMIP7) was published, each produced by a different IAM team; the high one, H, came from GCAM.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"30 of 40 models show it, so it is 75% likely.\" No. Models are not a random sample of futures, and they share data and code. A spread across models describes the tools, not the odds. And the 4.5 in SSP2-4.5 is not degrees.</p>"
+  },
+  {
+   "after": 1,
+   "kind": "try",
+   "title": "Try it now",
+   "html": "<p>Decode SSP5-8.5 and SSP1-2.6 in one sentence each. Which would you call a reference, and why is that word risky? (SSP5-8.5: fossil-fuelled growth reaching 8.5 W/m², a very high-emission world. SSP1-2.6: a sustainable world reaching 2.6 W/m². 'Reference' means 'no new policy', which is a modelling choice, not a prediction.)</p>"
+  },
+  {
+   "after": 3,
+   "kind": "model",
+   "title": "Logging in to the explorers",
+   "html": "<p>The IIASA AR6, SSP and ScenarioMIP explorers show a log-in link, and guest access was not confirmed when this site was written. Our World in Data's IPCC scenarios explorer needs no log-in. Try the IIASA ones before class.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "matrix",
+  "intro": "Click any cell of the SSP × forcing matrix to read its story, its rough warming and whether models found it reachable.",
+  "predict": "Before clicking: can models reach SSP3-1.9 (regional rivalry, lowest forcing)? Write yes or no and one reason."
+ },
+ "code": [
+  {
+   "title": "Decode a scenario label",
+   "lang": "python",
+   "source": "# Decode a scenario label such as \"SSP2-4.5\"\nstories = {1: \"Sustainability\", 2: \"Middle of the road\", 3: \"Regional rivalry\",\n           4: \"Inequality\", 5: \"Fossil-fuelled development\"}\n\ndef decode(label):\n    ssp, forcing = label.replace(\"SSP\", \"\").split(\"-\")\n    return f\"{label}: society = {stories[int(ssp)]}; extra heat-trapping in 2100 = {forcing} W/m2\"\n\nfor lab in (\"SSP1-1.9\", \"SSP2-4.5\", \"SSP5-8.5\"):\n    print(decode(lab))\n",
+   "runnable": true,
+   "explain": "Press Run. Add 'SSP3-7.0' to the list and predict the printed sentence first.",
+   "expected": "SSP1-1.9: society = Sustainability; extra heat-trapping in 2100 = 1.9 W/m2\nSSP2-4.5: society = Middle of the road; extra heat-trapping in 2100 = 4.5 W/m2\nSSP5-8.5: society = Fossil-fuelled development; extra heat-trapping in 2100 = 8.5 W/m2"
+  }
+ ],
+ "takeaways": [
+  "A scenario is a consistent what-if story with numbers, not a forecast or a probability.",
+  "SSP = story about society; the number = forcing in 2100 in W/m², not °C.",
+  "Some SSP × forcing cells cannot be reached, for example SSP3 at the lowest levels.",
+  "The IPCC's 2022 report sorted pathways into categories C1 (1.5 °C) to C8 (above 4 °C).",
+  "CMIP7 (2026) brings seven new scenarios, each from one IAM; GCAM made the high one."
+ ],
+ "quiz": [
+  {
+   "q": "In SSP2-4.5, the 4.5 means:",
+   "options": [
+    "4.5 °C of warming",
+    "Extra heat trapped (forcing) of 4.5 W/m² in 2100",
+    "4.5 billion people",
+    "4.5 Gt of CO2"
+   ],
+   "answer": 1,
+   "explain": "The number is radiative forcing in 2100. SSP2-4.5 leads to roughly 2.7 °C."
+  },
+  {
+   "q": "Which SSP story makes it hard both to cut emissions and to adapt?",
+   "options": [
+    "SSP1 Sustainability",
+    "SSP2 Middle of the road",
+    "SSP4 Inequality",
+    "SSP3 Regional rivalry"
+   ],
+   "answer": 3,
+   "explain": "SSP3 has slow growth, high population and weak cooperation: high challenges for both."
+  },
+  {
+   "q": "30 of 40 models show a fast coal phase-out. You can conclude:",
+   "options": [
+    "It is 75% likely",
+    "Most models behave that way under these assumptions",
+    "The other 10 are wrong",
+    "It is certain"
+   ],
+   "answer": 1,
+   "explain": "Models are not a random sample of futures. Agreement describes the tools and their assumptions, not the odds."
+  },
+  {
+   "q": "AR6 category C1 means:",
+   "options": [
+    "Warming limited to 1.5 °C with little or no overshoot",
+    "Warming above 4 °C",
+    "Below 2 °C with a 67% chance",
+    "A pathway with no climate policy"
+   ],
+   "answer": 0,
+   "explain": "C1 is the most ambitious category; C3 is below 2 °C; C8 is above 4 °C."
+  },
+  {
+   "q": "What is new about the CMIP7 scenarios published in 2026?",
+   "options": [
+    "They drop SSPs entirely",
+    "There is only one scenario",
+    "Seven scenarios, each produced by a different IAM team",
+    "They were all made with GCAM"
+   ],
+   "answer": 2,
+   "explain": "Each of the seven was produced by a different IAM team; the high one (H) came from GCAM."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Scenario",
+   "def": "A consistent what-if story about the future with numbers attached; not a forecast."
+  },
+  {
+   "term": "SSP",
+   "def": "Shared Socioeconomic Pathway: one of five stories about how society develops, used as IAM inputs."
+  },
+  {
+   "term": "RCP",
+   "def": "Representative Concentration Pathway: an earlier scenario set named by its forcing in 2100; the forcing numbers live on in SSP labels."
+  },
+  {
+   "term": "Scenario matrix",
+   "def": "A grid with SSP stories in rows and forcing levels in columns."
+  },
+  {
+   "term": "AR6 category",
+   "def": "One of eight IPCC classes (C1 to C8) that sort pathways by the warming they lead to."
+  },
+  {
+   "term": "CMIP7",
+   "def": "The next round of the climate-model intercomparison; its 2026 scenarios each come from a different IAM."
+  }
+ ],
+ "resources": [
+  {
+   "title": "Explainer: How Shared Socioeconomic Pathways explore future climate change (Carbon Brief)",
+   "url": "https://www.carbonbrief.org/explainer-how-shared-socioeconomic-pathways-explore-future-climate-change/",
+   "why": "The five SSP stories, explained with charts of population, GDP and emissions."
+  },
+  {
+   "title": "IPCC scenarios data explorer (Our World in Data)",
+   "url": "https://ourworldindata.org/explorers/ipcc-scenarios",
+   "why": "The most beginner-friendly way to compare SSP scenarios: pick a scenario and a metric. Free, no log-in."
+  },
+  {
+   "title": "Analysis: What the new IPCC report says about how to limit warming to 1.5C or 2C (Carbon Brief)",
+   "url": "https://www.carbonbrief.org/analysis-what-the-new-ipcc-report-says-about-how-to-limit-warming-to-1-5c-or-2c/",
+   "why": "How the IPCC sorted its pathways into categories C1 to C8."
+  },
+  {
+   "title": "IIASA AR6 Scenario Explorer (about page)",
+   "url": "https://data.ene.iiasa.ac.at/ar6/static/About.html",
+   "why": "The database of IPCC pathways. The explorer shows a log-in link; test access before class."
+  },
+  {
+   "title": "Explainer: The CMIP7 emissions scenarios (Carbon Brief, 2026)",
+   "url": "https://www.carbonbrief.org/explainer-the-cmip7-emissions-scenarios-and-how-they-explore-future-climate-change",
+   "why": "The next generation of scenarios (2026), each produced by a different IAM team."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 1 study guide: See the whole picture (PDF)",
+   "path": "downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf"
+  },
+  {
+   "label": "Week 6 slides: The scenario framework (PDF)",
+   "path": "downloads/slides/Week06-The-scenario-framework.pdf"
+  }
+ ]
+}

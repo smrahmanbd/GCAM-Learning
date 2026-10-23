@@ -1,0 +1,463 @@
+{
+ "id": "2.2",
+ "go": 2,
+ "slug": "markets-and-solving",
+ "title": "Markets, equilibrium and solving",
+ "minutes": 45,
+ "tag": "Solver",
+ "systems": [
+  "economy",
+  "energy",
+  "land",
+  "water"
+ ],
+ "summary": "GCAM is a giant auction: in each 5-year period it searches for the prices that make supply equal demand in every market at once. See how one market clears, then many linked markets.",
+ "outcomes": [
+  "You can define market equilibrium and excess demand",
+  "You can solve one market by hand and with a root finder",
+  "You can explain how GCAM's Broyden solver finds prices for hundreds of markets",
+  "You can say why GCAM is recursive-dynamic, not an optimisation"
+ ],
+ "narration_en": "Imagine an auction hall that never sleeps. In every five-year period GCAM calls out prices for oil, electricity, crops, land and water. Producers say how much they would supply at those prices, consumers say how much they would buy, and the auctioneer raises prices where buyers want more than sellers offer, and lowers them where there is too much. When every market balances at the same time, the period is solved and the model moves on. That balance is called equilibrium, and the gap between demand and supply is called excess demand. In this module you first clear one market by hand, finding the price where demand equals supply. Then you solve three linked markets together, because a change in the oil price shifts demand for electricity and biomass too. GCAM does this for a few hundred markets at once, using Broyden's method, a clever cousin of Newton's method that works in log prices. You will also see why GCAM is recursive-dynamic: it solves one period at a time, without knowing the future.",
+ "narration_ar": "تخيّل قاعة مزاد لا تنام أبدًا. في كل فترة من خمس سنوات يعلن نموذج GCAM أسعارًا للنفط والكهرباء والمحاصيل والأرض والماء. يقول المنتجون كم سيعرضون عند هذه الأسعار، ويقول المستهلكون كم سيشترون، فيرفع الدلّال الأسعار حيث يريد المشترون أكثر مما يعرضه البائعون، ويخفضها حيث يوجد فائض. وعندما تتوازن كل الأسواق في الوقت نفسه تُحَلّ الفترة وينتقل النموذج إلى ما بعدها. يسمى هذا التوازن بالتوازن السوقي، وتسمى الفجوة بين الطلب والعرض بفائض الطلب. في هذه الوحدة ستوازن أولًا سوقًا واحدة يدويًا، فتجد السعر الذي يتساوى عنده الطلب مع العرض. ثم تحل ثلاث أسواق مترابطة معًا، لأن تغيّر سعر النفط يغيّر الطلب على الكهرباء والكتلة الحيوية أيضًا. ويفعل النموذج ذلك لبضع مئات من الأسواق في آن واحد، مستخدمًا طريقة برويدن، وهي قريبة ذكية من طريقة نيوتن تعمل على لوغاريتمات الأسعار. وسترى أيضًا لماذا يُعدّ النموذج ديناميكيًا تتابعيًا: فهو يحل فترة واحدة في كل مرة دون أن يعرف المستقبل.",
+ "diagram": {
+  "title": "One period of the GCAM auction",
+  "caption": "Each period the solver adjusts prices until excess demand is near zero in every market, then the model steps 5 years ahead.",
+  "nodes": [
+   {
+    "id": "guess",
+    "label": "Trial prices",
+    "sub": "log prices, all markets",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "The solver starts from the previous period's prices (plus a preconditioner that nudges bad starting guesses, for example resource turn-on prices) (solver.html)."
+   },
+   {
+    "id": "sup",
+    "label": "Supply bids",
+    "sub": "energy, crops, water",
+    "x": 770,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Every supply sector reports how much it would produce at the trial prices: resource curves, power plants, farms, water sources."
+   },
+   {
+    "id": "dem",
+    "label": "Demand bids",
+    "sub": "buildings, transport, food",
+    "x": 770,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "land",
+    "detail": "Every demand sector reports how much it would buy at those prices."
+   },
+   {
+    "id": "ed",
+    "label": "Excess demand F(p)",
+    "sub": "demand − supply, scaled",
+    "x": 450,
+    "y": 260,
+    "w": 200,
+    "h": 64,
+    "sys": "economy",
+    "detail": "F(p) = D(p) − S(p) for each market. GCAM scales excess demand so markets of different sizes are comparable, and works in log prices."
+   },
+   {
+    "id": "broy",
+    "label": "Broyden update",
+    "sub": "B·δx = −F(x)",
+    "x": 130,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Broyden's method solves B·δx = −F(x) with B a secant approximation of the Jacobian, cutting the step back if it makes things worse. Bisection helps near singular regions (solver.html)."
+   },
+   {
+    "id": "ok",
+    "label": "All markets clear?",
+    "sub": "tolerance 0.001 (example)",
+    "x": 450,
+    "y": 450,
+    "w": 180,
+    "h": 64,
+    "sys": "policy",
+    "detail": "Solved when relative excess demand is below solution-tolerance (example 0.001) with a floor (0.0001). Otherwise iterate, up to max-model-calcs (example 2500)."
+   },
+   {
+    "id": "next",
+    "label": "Next period",
+    "sub": "+5 years, no foresight",
+    "x": 770,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "climate",
+    "detail": "Recursive dynamics: the solved period is fixed, emissions go to Hector, and the model moves to the next 5-year step using what it knows now (overview.html)."
+   }
+  ],
+  "edges": [
+   {
+    "from": "guess",
+    "to": "sup",
+    "label": "prices",
+    "sys": "economy"
+   },
+   {
+    "from": "guess",
+    "to": "dem",
+    "label": "",
+    "sys": "economy"
+   },
+   {
+    "from": "sup",
+    "to": "ed",
+    "label": "quantities"
+   },
+   {
+    "from": "dem",
+    "to": "ed",
+    "label": "quantities"
+   },
+   {
+    "from": "ed",
+    "to": "broy",
+    "label": "residuals",
+    "sys": "economy"
+   },
+   {
+    "from": "broy",
+    "to": "guess",
+    "label": "new prices",
+    "sys": "economy"
+   },
+   {
+    "from": "ed",
+    "to": "ok",
+    "label": "check"
+   },
+   {
+    "from": "ok",
+    "to": "next",
+    "label": "yes"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "guess"
+    ],
+    "edges": [],
+    "text": "The auctioneer calls out a trial price for every market: energy, crops, land, water, and any policy markets."
+   },
+   {
+    "focus": [
+     "sup",
+     "dem"
+    ],
+    "edges": [
+     [
+      "guess",
+      "sup"
+     ],
+     [
+      "guess",
+      "dem"
+     ]
+    ],
+    "text": "Every supplier and every buyer answers: this is how much I would sell, or buy, at those prices."
+   },
+   {
+    "focus": [
+     "ed"
+    ],
+    "edges": [
+     [
+      "sup",
+      "ed"
+     ],
+     [
+      "dem",
+      "ed"
+     ]
+    ],
+    "text": "The gap demand minus supply, market by market, is the excess-demand vector F(p). The target is F(p) ≈ 0 everywhere."
+   },
+   {
+    "focus": [
+     "broy"
+    ],
+    "edges": [
+     [
+      "ed",
+      "broy"
+     ],
+     [
+      "broy",
+      "guess"
+     ]
+    ],
+    "text": "Broyden's method uses the gaps to move all prices together, learning how markets react to each other as it goes."
+   },
+   {
+    "focus": [
+     "ok"
+    ],
+    "edges": [
+     [
+      "ed",
+      "ok"
+     ]
+    ],
+    "text": "When every gap is within tolerance, the period is solved. If not, iterate again."
+   },
+   {
+    "focus": [
+     "next"
+    ],
+    "edges": [
+     [
+      "ok",
+      "next"
+     ]
+    ],
+    "text": "Then step 5 years ahead. Decisions already made stay made: GCAM does not see the future."
+   }
+  ]
+ },
+ "components": {
+  "caption": "Words for the auction",
+  "rows": [
+   {
+    "name": "Market",
+    "purpose": "One good in one place, e.g. crude oil (global) or corn in the USA",
+    "analogy": "One stall in the auction hall"
+   },
+   {
+    "name": "Price",
+    "purpose": "The unknown the solver adjusts",
+    "analogy": "The number the auctioneer shouts"
+   },
+   {
+    "name": "Excess demand",
+    "purpose": "Demand minus supply at a trial price",
+    "analogy": "How many bidders are left unhappy"
+   },
+   {
+    "name": "Solver",
+    "purpose": "Algorithm that moves prices toward F(p) = 0",
+    "analogy": "The auctioneer's strategy"
+   },
+   {
+    "name": "Tolerance",
+    "purpose": "How small the gaps must be to count as solved",
+    "analogy": "Close enough to bang the hammer"
+   },
+   {
+    "name": "Recursive dynamics",
+    "purpose": "Solve period by period, no foresight",
+    "analogy": "Each auction day ignores tomorrow's prices"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "What this component represents",
+   "html": "<p>\"GCAM operates by determining a set of prices that ensure supply is equal to demand for all time steps\" (<a href=\"https://jgcri.github.io/gcam-doc/marketplace.html\">marketplace.html</a>). Each <b>market</b> is a good in a place: energy carriers in EJ per year, crops and land, and water by basin. Supply and demand sectors are representative agents that submit bids; the solver adjusts prices until all markets clear.</p><p>This is <b>partial equilibrium</b>: the energy, land and water markets are solved in detail, while the wider economy enters through GDP.</p>"
+  },
+  {
+   "heading": "One market by hand",
+   "html": "<p>Take the toy electricity market from week 4: demand 1000 − 4p and supply 6(p − 0.9·tax). Excess demand is</p><div class=\"eq\">F(p) = (1000 − 4p) − 6(p − 0.9·tax)</div><p>With no tax, set F = 0: 1000 − 4p = 6p, so 10p = 1000 and <b>p = 100</b>, quantity 600. With a $50 tax: 1000 − 4p = 6p − 270, so 10p = 1270 and <b>p = 127</b>, quantity 492. A root finder (bisection, Brent) finds the same answer by searching for the sign change of F.</p>"
+  },
+  {
+   "heading": "Many linked markets at once",
+   "html": "<p>Real markets are linked: a carbon price raises the cost of burning oil, which shifts demand toward electricity and biomass, which changes their prices, which feeds back on oil. So all prices must be found <i>together</i>. The kit's three-market toy (oil, electricity, biomass) needs a vector root finder. With a $50 carbon price it settles at oil 9.04, electricity 31.60 and biomass 5.25, with every excess demand below 2×10<sup>−10</sup>.</p><div class=\"eq\">find p such that F<sub>m</sub>(p<sub>1</sub>, …, p<sub>M</sub>) = 0 for every market m</div>"
+  },
+  {
+   "heading": "How GCAM's solver works",
+   "html": "<p>GCAM works in <b>log prices</b> with excess demand scaled to a common size. Its main method is <b>Broyden's method</b>: it solves B·δx = −F(x), where B is a cheap secant approximation of the Jacobian (how every market's gap reacts to every price), and shortens the step if a step makes ‖F‖ worse. Bisection moves prices out of flat or singular regions, and a preconditioner fixes bad starting guesses (<a href=\"https://jgcri.github.io/gcam-doc/solver.html\">solver.html</a>).</p><p>The Jacobian covers \"usually a few hundred\" solved markets. Example settings from the sample configuration: solution-tolerance 0.001, solution-floor 0.0001, max-model-calcs 2500 (the defaults themselves are not stated in the docs).</p>"
+  },
+  {
+   "heading": "Recursive dynamics: no crystal ball",
+   "html": "<p>GCAM is <b>dynamic recursive</b>: agents decide with what they know in the current period, then the model steps forward. It is not an intertemporal optimisation, so it can build a coal plant in 2030 that a policy in 2040 makes regrettable (<a href=\"https://jgcri.github.io/gcam-doc/overview.html\">overview.html</a>). Optimisation models such as MESSAGEix instead choose the whole century at once with perfect foresight (Go 2.8 compares the two).</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>Picture a thermostat for each market. Too much demand: the price heats up. Too much supply: it cools down. The solver turns all the thermostats at once, knowing that warming one room changes the others.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>The solver is configured in <code>input/solution/cal_solver_config.xml</code> (pointed to by <code>solver_config</code> in <code>configuration.xml</code>). Check <code>exe/logs/main_log.txt</code>: a good run ends with \"Model exiting successfully\" and lists any unsolved markets. Query <b>prices of all markets</b> to see the solved prices (energy in 1975$/GJ) (<a href=\"https://jgcri.github.io/gcam-doc/user-guide.html\">user-guide.html</a>, <a href=\"https://jgcri.github.io/gcam-doc/outputs_prices.html\">outputs_prices.html</a>).</p>"
+  },
+  {
+   "after": 4,
+   "kind": "trap",
+   "title": "\"The model failed, so the result is still usable\"",
+   "html": "<p>An unsolved period means some market did not clear: its prices and quantities are not an equilibrium. Never report results from a run with unsolved markets; fix tolerances, starting prices or the input that caused it.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "solver",
+  "intro": "Watch a solver iterate prices for two linked markets until both gaps close.",
+  "predict": "If the two markets are strongly linked, will the solver need more or fewer iterations than if they were independent?"
+ },
+ "code": [
+  {
+   "title": "One market, then three linked markets",
+   "lang": "python",
+   "file": "labs/go2/m22_markets.py",
+   "runnable": true,
+   "explain": "Part A solves the week 4 market with Brent's method. Part B solves oil, electricity and biomass together with Broyden's method in log prices. Try: change the carbon price to 100 and predict which price falls and which rises.",
+   "expected": "One market, tax  0: price  100.0, quantity  600.0\nOne market, tax 50: price  127.0, quantity  492.0\nThree markets, carbon 50: prices oil 9.04, electricity 31.60, biomass 5.25; converged=True"
+  },
+  {
+   "title": "The same model in R (with a hand-written Newton solver)",
+   "lang": "r",
+   "file": "labs/go2/m22_markets.R",
+   "runnable": false,
+   "explain": "Base R: uniroot for one market, then a small Newton iteration in log prices. Converges in 5 iterations."
+  }
+ ],
+ "takeaways": [
+  "Equilibrium means supply equals demand in every market at the same time",
+  "Excess demand F(p) is the gap the solver drives to zero",
+  "Linked markets must be solved together; GCAM uses Broyden's method in log prices",
+  "A solved period needs every market within tolerance; check the log",
+  "GCAM solves one 5-year period at a time with no foresight"
+ ],
+ "quiz": [
+  {
+   "q": "Demand 1000 − 4p, supply 6p. The equilibrium price is…",
+   "options": [
+    "60",
+    "100",
+    "127",
+    "167"
+   ],
+   "answer": 1,
+   "explain": "1000 − 4p = 6p gives p = 100."
+  },
+  {
+   "q": "GCAM's primary solution method is…",
+   "options": [
+    "Linear programming",
+    "Broyden's method",
+    "Gradient descent",
+    "Monte Carlo search"
+   ],
+   "answer": 1,
+   "explain": "Broyden's quasi-Newton method, helped by bisection and a preconditioner (solver.html)."
+  },
+  {
+   "q": "Why must linked markets be solved together?",
+   "options": [
+    "Because they share a currency",
+    "Because one price changes demand or supply in other markets",
+    "Because GCAM has one market only",
+    "They don't: they can be solved one by one exactly"
+   ],
+   "answer": 1,
+   "explain": "Cross-effects (oil vs electricity vs biomass) mean each market's balance depends on the other prices."
+  },
+  {
+   "q": "\"Recursive-dynamic\" means GCAM…",
+   "options": [
+    "optimises the whole century at once",
+    "solves each period with current information, then moves on",
+    "repeats the same year",
+    "uses random prices"
+   ],
+   "answer": 1,
+   "explain": "No foresight: each period is solved and then fixed."
+  },
+  {
+   "q": "A run ends with unsolved markets in 2050. You should…",
+   "options": [
+    "Report the results with a footnote",
+    "Ignore 2050 only",
+    "Diagnose and fix before using any results",
+    "Increase the number of regions"
+   ],
+   "answer": 2,
+   "explain": "Unsolved markets are not an equilibrium; downstream periods are affected too."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Equilibrium",
+   "def": "A set of prices at which supply equals demand in every market."
+  },
+  {
+   "term": "Excess demand",
+   "def": "Demand minus supply at a given price; zero at equilibrium."
+  },
+  {
+   "term": "Broyden's method",
+   "def": "A quasi-Newton root finder that updates an approximate Jacobian cheaply each step."
+  },
+  {
+   "term": "Jacobian",
+   "def": "The table of how each market's excess demand changes when each price changes."
+  },
+  {
+   "term": "Recursive dynamics",
+   "def": "Solving one period at a time using only current information."
+  },
+  {
+   "term": "Partial equilibrium",
+   "def": "Detailed markets for some sectors, with the rest of the economy taken as given."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Marketplace",
+   "url": "https://jgcri.github.io/gcam-doc/marketplace.html",
+   "why": "How markets are defined and cleared."
+  },
+  {
+   "title": "GCAM documentation: Solution and computation",
+   "url": "https://jgcri.github.io/gcam-doc/solver.html",
+   "why": "Broyden, bisection, preconditioner and tolerances."
+  },
+  {
+   "title": "GCAM documentation: Model overview",
+   "url": "https://jgcri.github.io/gcam-doc/overview.html",
+   "why": "Recursive dynamics and the scope of the model."
+  },
+  {
+   "title": "gcamwrapper",
+   "url": "https://github.com/JGCRI/gcamwrapper",
+   "why": "Instructor demo: step a compiled GCAM and inspect prices and the Jacobian."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 4 slides: Economics primer (PDF)",
+   "path": "downloads/slides/Week04-Economics-primer.pdf"
+  },
+  {
+   "label": "Week 7 slides: Inside GCAM (PDF)",
+   "path": "downloads/slides/Week07-Inside-GCAM.pdf"
+  }
+ ]
+}

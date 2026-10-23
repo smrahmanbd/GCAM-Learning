@@ -1,0 +1,483 @@
+{
+ "id": "1.1",
+ "go": 1,
+ "slug": "what-is-an-iam",
+ "title": "What an integrated assessment model is",
+ "minutes": 30,
+ "tag": "Big picture",
+ "systems": [
+  "economy",
+  "energy",
+  "land",
+  "water",
+  "climate",
+  "policy"
+ ],
+ "summary": "Why a model of the year 2100 is a consistent what-if machine, not a crystal ball, and what goes in and comes out of one.",
+ "outcomes": [
+  "You can say in two sentences what an integrated assessment model is and what it is not.",
+  "You can sort a list of things into model inputs and model outputs.",
+  "You can explain why consistency is the main thing an IAM adds.",
+  "You can tell a cost-benefit model from a process-based model."
+ ],
+ "narration_en": "Every climate pathway you see in an IPCC report, from a fast transition to a world that keeps burning coal, came out of a computer model. These models are called integrated assessment models. Integrated means they join the economy, energy, land, water and the climate into one calculation, so a change in one part shows up in all the others. Assessment means their job is to inform decisions. An integrated assessment model is not a crystal ball. It does not predict the year 2100. It is a what-if machine. You choose the inputs: how many people there will be, how rich they are, how cheap solar panels become, and which policies exist. The model returns a future that adds up: energy used equals energy produced, emissions match the fuels burned, and warming matches the emissions. That consistency is what it adds. There are two main families. Cost-benefit models weigh the cost of cutting emissions against the damage of warming. Process-based models, such as GCAM, describe energy and land in detail and ask how a goal could be met. In this module you will open the machine from the outside.",
+ "narration_ar": "كل مسار مناخي تراه في تقارير الهيئة الحكومية الدولية المعنية بتغير المناخ، من التحول السريع إلى عالم يواصل حرق الفحم، خرج من نموذج حاسوبي. تُسمّى هذه النماذج نماذج التقييم المتكامل. ومعنى «متكامل» أنها تجمع الاقتصاد والطاقة والأرض والمياه والمناخ في حساب واحد، فيظهر أي تغيير في جزء منها في سائر الأجزاء. ومعنى «التقييم» أن مهمتها دعم اتخاذ القرار. نموذج التقييم المتكامل ليس كرة بلورية، ولا يتنبأ بعام ألفين ومئة. إنه آلة «ماذا لو». أنت تختار المدخلات: عدد السكان، ومستوى دخلهم، ومدى انخفاض تكلفة الألواح الشمسية، والسياسات القائمة. ويعيد النموذج مستقبلًا متسقًا: الطاقة المستهلكة تساوي الطاقة المنتجة، والانبعاثات تطابق الوقود المحروق، والاحترار يطابق الانبعاثات. وهذا الاتساق هو ما يضيفه النموذج. وهناك عائلتان رئيسيتان: نماذج التكلفة والعائد التي توازن بين تكلفة خفض الانبعاثات وأضرار الاحترار، والنماذج القائمة على العمليات، مثل نموذج GCAM، التي تصف الطاقة والأرض بالتفصيل وتسأل كيف يمكن تحقيق هدف ما. في هذه الوحدة ستتعرف على الآلة من الخارج.",
+ "diagram": {
+  "title": "The IAM machine",
+  "caption": "Notice that policies are an input you choose, and temperature is an output. Every box must agree with every other box.",
+  "nodes": [
+   {
+    "id": "inputs",
+    "label": "Inputs you choose",
+    "sub": "people, income, costs, policies",
+    "x": 120,
+    "y": 260,
+    "w": 190,
+    "h": 110,
+    "sys": "neutral",
+    "detail": "<b>Assumptions, not facts.</b> Population, income per person, technology costs, resources and policies. Change an input and you get a different, equally consistent future."
+   },
+   {
+    "id": "economy",
+    "label": "Economy",
+    "sub": "how much is demanded",
+    "x": 400,
+    "y": 80,
+    "w": 170,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Population and income set how much energy, food and materials people want. More income usually means more demand."
+   },
+   {
+    "id": "energy",
+    "label": "Energy",
+    "sub": "how it is supplied",
+    "x": 400,
+    "y": 200,
+    "w": 170,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Coal, gas, oil, solar, wind, nuclear and bioenergy compete to meet demand. Cheaper options win bigger shares."
+   },
+   {
+    "id": "land",
+    "label": "Land and water",
+    "sub": "food, forests, bioenergy",
+    "x": 400,
+    "y": 330,
+    "w": 170,
+    "h": 64,
+    "sys": "land",
+    "detail": "Cropland, pasture and forests compete for land; farms, power plants and cities compete for water."
+   },
+   {
+    "id": "emissions",
+    "label": "Emissions",
+    "sub": "counted from activity",
+    "x": 620,
+    "y": 265,
+    "w": 150,
+    "h": 64,
+    "sys": "climate",
+    "detail": "CO<sub>2</sub> and other gases are counted from the fuels burned and the land cleared. Nothing is guessed separately."
+   },
+   {
+    "id": "climate",
+    "label": "Climate",
+    "sub": "emissions to warming",
+    "x": 620,
+    "y": 430,
+    "w": 150,
+    "h": 64,
+    "sys": "climate",
+    "detail": "A simple climate model turns emissions into concentrations, extra heat-trapping (forcing) and temperature."
+   },
+   {
+    "id": "outputs",
+    "label": "Outputs: what-if results",
+    "sub": "energy mix, prices, emissions, °C",
+    "x": 800,
+    "y": 120,
+    "w": 170,
+    "h": 110,
+    "sys": "data",
+    "detail": "<b>Projections, not predictions.</b> Each output is only as good as the assumptions you fed in."
+   },
+   {
+    "id": "policy",
+    "label": "Policies",
+    "sub": "carbon price, targets",
+    "x": 120,
+    "y": 440,
+    "w": 170,
+    "h": 64,
+    "sys": "policy",
+    "detail": "Policies are inputs too: a carbon price, an emissions limit or a technology standard. The model works out what follows."
+   }
+  ],
+  "edges": [
+   {
+    "from": "inputs",
+    "to": "economy",
+    "label": "drivers",
+    "sys": "economy"
+   },
+   {
+    "from": "inputs",
+    "to": "energy",
+    "label": "costs",
+    "sys": "energy"
+   },
+   {
+    "from": "economy",
+    "to": "energy",
+    "label": "demand",
+    "sys": "economy"
+   },
+   {
+    "from": "economy",
+    "to": "land",
+    "label": "food demand",
+    "sys": "economy"
+   },
+   {
+    "from": "land",
+    "to": "energy",
+    "label": "bioenergy",
+    "sys": "land"
+   },
+   {
+    "from": "energy",
+    "to": "emissions",
+    "label": "fuel burned",
+    "sys": "energy"
+   },
+   {
+    "from": "land",
+    "to": "emissions",
+    "label": "land-use CO2",
+    "sys": "land"
+   },
+   {
+    "from": "emissions",
+    "to": "climate",
+    "label": "gases",
+    "sys": "climate"
+   },
+   {
+    "from": "energy",
+    "to": "outputs",
+    "label": "energy mix",
+    "sys": "energy"
+   },
+   {
+    "from": "climate",
+    "to": "outputs",
+    "label": "warming",
+    "sys": "climate"
+   },
+   {
+    "from": "policy",
+    "to": "energy",
+    "label": "rules and prices",
+    "sys": "policy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "inputs",
+     "policy"
+    ],
+    "edges": [],
+    "text": "Start on the left: you choose the inputs, including the policies. They are assumptions, not facts."
+   },
+   {
+    "focus": [
+     "economy"
+    ],
+    "edges": [
+     [
+      "inputs",
+      "economy"
+     ]
+    ],
+    "text": "People and income set how much energy, food and materials are wanted."
+   },
+   {
+    "focus": [
+     "energy",
+     "land"
+    ],
+    "edges": [
+     [
+      "economy",
+      "energy"
+     ],
+     [
+      "economy",
+      "land"
+     ],
+     [
+      "land",
+      "energy"
+     ]
+    ],
+    "text": "Energy and land systems meet that demand. They are linked: bioenergy needs land."
+   },
+   {
+    "focus": [
+     "emissions"
+    ],
+    "edges": [
+     [
+      "energy",
+      "emissions"
+     ],
+     [
+      "land",
+      "emissions"
+     ]
+    ],
+    "text": "Emissions are counted from what is burned and cleared, so they always match the activity."
+   },
+   {
+    "focus": [
+     "climate"
+    ],
+    "edges": [
+     [
+      "emissions",
+      "climate"
+     ]
+    ],
+    "text": "A simple climate model turns the emissions into warming."
+   },
+   {
+    "focus": [
+     "outputs"
+    ],
+    "edges": [
+     [
+      "energy",
+      "outputs"
+     ],
+     [
+      "climate",
+      "outputs"
+     ]
+    ],
+    "text": "Out come consistent what-if results. Change one input and every box changes with it."
+   }
+  ]
+ },
+ "components": {
+  "caption": "The parts of the machine, in everyday terms",
+  "rows": [
+   {
+    "name": "Inputs (assumptions)",
+    "purpose": "Describe the world you want to explore: people, income, costs, policies",
+    "analogy": "The ingredients you choose for a recipe"
+   },
+   {
+    "name": "Economy",
+    "purpose": "Turns people and income into demand for energy, food and goods",
+    "analogy": "The shopping list"
+   },
+   {
+    "name": "Energy system",
+    "purpose": "Chooses how to supply energy, technology by technology",
+    "analogy": "The kitchen deciding which stove to use"
+   },
+   {
+    "name": "Land and water",
+    "purpose": "Shares land and water among food, forests, bioenergy and cities",
+    "analogy": "The garden and the tap"
+   },
+   {
+    "name": "Emissions",
+    "purpose": "Counts gases from what is burned and cleared",
+    "analogy": "The smoke from the kitchen"
+   },
+   {
+    "name": "Climate",
+    "purpose": "Turns emissions into warming",
+    "analogy": "The thermometer in the room"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "A what-if machine, not a crystal ball",
+   "html": "<p>An <b>integrated assessment model</b> (IAM) joins the pieces of the climate problem into one calculation: the economy, energy, land and water, the emissions they produce, and the climate that responds. <b>Integrated</b> means a change in one part shows up in the others. <b>Assessment</b> means its purpose is to inform decisions.</p><p>Think of a <b>recipe calculator</b>. You type in the ingredients you choose: how many people, how rich, how cheap solar is, which policies exist. The calculator returns a cake that adds up. Where the analogy breaks: a real cake can be tasted, but a 2100 world cannot, so you judge a model by its consistency and its assumptions, not by its result.</p>"
+  },
+  {
+   "heading": "Why consistency is the whole point",
+   "html": "<p>Every box in the diagram must agree with every other box. Energy used must equal energy made. Emissions must match the fuel burned. Warming must match the emissions. That single demand, <b>consistency</b>, is what an IAM adds that a spreadsheet of separate guesses does not.</p><div class=\"eq\">CO<sub>2</sub> = energy used × CO<sub>2</sub> per unit of energy</div><p>With illustrative numbers: 600 units of energy at 0.06 Gt CO<sub>2</sub> each gives 36 Gt. Halve the CO<sub>2</sub> per unit and emissions fall to 18 Gt, a 50% cut. A consistent model cannot claim that cut <i>and</i> keep the old emissions.</p>"
+  },
+  {
+   "heading": "Inputs and outputs",
+   "html": "<p><b>Inputs</b> are assumptions you choose: population in 2050, income per person, the cost of solar panels, the price of carbon. <b>Outputs</b> are what the model works out from them: the energy mix, energy prices, emissions and warming in 2100.</p><p>A useful test: <i>could a different modeller reasonably choose a different value?</i> If yes, it is an input. If the model calculates it, it is an output.</p>"
+  },
+  {
+   "heading": "Two families of models",
+   "html": "<p><b>Cost-benefit models</b>, such as DICE, are small: a few equations for one world. They ask <i>how much should we cut?</i> by weighing the cost of cutting emissions against the damage of warming.</p><p><b>Process-based models</b>, such as GCAM, MESSAGEix, REMIND and IMAGE, have thousands of inputs and many regions. They ask <i>how could a goal be met?</i> They describe power plants, cars, crops and forests, and choose among them by cost. This course uses GCAM, a process-based model.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>An IAM is a <b>consistency machine</b>. It never tells you what will happen. It tells you what <i>follows</i> if your assumptions are true.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"The model predicts 2.7 °C by 2100.\" No: it <b>projects</b> what follows from its assumptions. Change the assumptions and the number changes. An IAM does not decide policy; policies are inputs the user chooses.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "try",
+   "title": "Try it now",
+   "html": "<p>Sort these into inputs or outputs: (a) population in 2050, (b) coal used in 2050, (c) a carbon price, (d) warming in 2100, (e) the cost of solar panels, (f) the price of electricity. Answer: inputs are a, c and e; outputs are b, d and f.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "warming",
+  "intro": "This small explorer is a one-box version of the machine: you choose how emissions change, and it works out the warming.",
+  "predict": "If CO2 emissions peak in 2025 and reach zero in 2070, will 2100 warming be higher or lower than 2 °C? Write down your guess, then check."
+ },
+ "code": [
+  {
+   "title": "A what-if machine in eight lines",
+   "lang": "python",
+   "source": "# A tiny \"what-if machine\": change one input, every output follows.\nenergy = 600            # units of energy used per year (illustrative)\nco2_per_unit = 0.06     # Gt CO2 released per unit of energy\n\nbefore = energy * co2_per_unit\nafter = energy * 0.03   # a policy halves CO2 per unit of energy\nprint(f\"Before: {before:.0f} Gt CO2\")\nprint(f\"After:  {after:.0f} Gt CO2\")\nprint(f\"Cut:    {before - after:.0f} Gt ({(before - after) / before:.0%})\")\n\n# Consistency check: if demand grows 20% at the same time, what happens?\nafter_growth = energy * 1.2 * 0.03\nprint(f\"With 20% more energy use: {after_growth:.1f} Gt CO2\")\n",
+   "runnable": true,
+   "explain": "Press Run. Then change co2_per_unit to 0.04, or the 1.2 growth factor, and predict the result before you run it again. Numbers are illustrative.",
+   "expected": "Before: 36 Gt CO2\nAfter:  18 Gt CO2\nCut:    18 Gt (50%)\nWith 20% more energy use: 21.6 Gt CO2"
+  }
+ ],
+ "takeaways": [
+  "An IAM is a consistent what-if machine, not a forecast.",
+  "Inputs are assumptions you choose, including policies; outputs are projections.",
+  "Consistency (energy, emissions and warming all agree) is what an IAM adds.",
+  "Cost-benefit models ask how much to cut; process-based models like GCAM ask how a goal can be met."
+ ],
+ "quiz": [
+  {
+   "q": "An integrated assessment model is best described as:",
+   "options": [
+    "A forecast of the year 2100",
+    "A consistent what-if calculator for economy, energy, land and climate",
+    "A weather model run for longer",
+    "A tool that chooses climate policy"
+   ],
+   "answer": 1,
+   "explain": "IAMs work out what follows from assumptions and keep every part consistent. They do not forecast or choose policy."
+  },
+  {
+   "q": "Which of these is an input to an IAM?",
+   "options": [
+    "Warming in 2100",
+    "Coal used in 2050",
+    "A carbon price",
+    "The price of electricity"
+   ],
+   "answer": 2,
+   "explain": "Policies such as a carbon price are chosen by the user. The other three are calculated by the model."
+  },
+  {
+   "q": "What does 'integrated' mean in 'integrated assessment model'?",
+   "options": [
+    "The model is written in one language",
+    "A change in one part (energy, land, climate) shows up in the others",
+    "It includes every country",
+    "It is approved by the IPCC"
+   ],
+   "answer": 1,
+   "explain": "Integrated means the economy, energy, land, water and climate are linked in one calculation."
+  },
+  {
+   "q": "GCAM belongs to which family of models?",
+   "options": [
+    "Weather models",
+    "Cost-benefit models",
+    "Statistical forecasting models",
+    "Process-based models"
+   ],
+   "answer": 3,
+   "explain": "GCAM describes technologies, crops and markets in detail, region by region: a process-based IAM."
+  },
+  {
+   "q": "A model shows 2.7 °C of warming by 2100. The right way to say this is:",
+   "options": [
+    "The world will warm 2.7 °C",
+    "If these assumptions hold, warming reaches about 2.7 °C",
+    "Warming cannot exceed 2.7 °C",
+    "2.7 °C is the most likely outcome"
+   ],
+   "answer": 1,
+   "explain": "IAM results are conditional projections. They depend on the assumptions that went in."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Integrated assessment model (IAM)",
+   "def": "A computer model that joins the economy, energy, land, water, emissions and climate into one consistent calculation to inform decisions."
+  },
+  {
+   "term": "Projection",
+   "def": "What follows from a set of assumptions. Unlike a prediction, it does not claim to say what will happen."
+  },
+  {
+   "term": "Input (assumption)",
+   "def": "A value the modeller chooses, such as population, technology costs or a policy."
+  },
+  {
+   "term": "Consistency",
+   "def": "Every part of the model agrees: energy used equals energy made, and emissions match the fuels burned."
+  },
+  {
+   "term": "Cost-benefit model",
+   "def": "A small IAM that weighs the cost of cutting emissions against the damage of warming, for example DICE."
+  },
+  {
+   "term": "Process-based model",
+   "def": "A detailed IAM that represents technologies, sectors and regions and chooses among them by cost, for example GCAM."
+  }
+ ],
+ "resources": [
+  {
+   "title": "Q&A: How integrated assessment models are used to study climate change (Carbon Brief)",
+   "url": "https://www.carbonbrief.org/qa-how-integrated-assessment-models-are-used-to-study-climate-change/",
+   "why": "The clearest plain-language introduction to IAMs, their families and their critics."
+  },
+  {
+   "title": "Integrated assessment models (IAMC documentation wiki)",
+   "url": "https://www.iamcdocumentation.eu/Integrated_assessment_models",
+   "why": "The modelling community's own definition, with a standard reference card for each model."
+  },
+  {
+   "title": "En-ROADS climate solutions simulator",
+   "url": "https://en-roads.climateinteractive.org",
+   "why": "Free browser simulator: move 19 policy sliders and see 2100 warming change in a second."
+  },
+  {
+   "title": "Greenhouse Gas Emissions Scenarios: Background, Issues, and Policy Relevance (CRS R46807, 2021)",
+   "url": "https://sgp.fas.org/crs/misc/R46807.pdf",
+   "why": "A short, beginner-friendly report on what emissions scenarios are and how they are used."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 1 study guide: See the whole picture (PDF)",
+   "path": "downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf"
+  },
+  {
+   "label": "Week 1 slides: Why model the future (PDF)",
+   "path": "downloads/slides/Week01-Why-model-the-future.pdf"
+  }
+ ]
+}

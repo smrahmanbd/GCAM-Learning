@@ -1,0 +1,451 @@
+{
+ "id": "2.7",
+ "go": 2,
+ "slug": "water",
+ "title": "Water",
+ "minutes": 35,
+ "tag": "Water",
+ "systems": [
+  "water",
+  "energy",
+  "land"
+ ],
+ "summary": "GCAM balances water by river basin: cheap renewable water first, then groundwater, then desalination. See how withdrawals for farms, power and cities set the water price.",
+ "outcomes": [
+  "You can name GCAM's six water demand sectors",
+  "You can explain the three supply tiers and the basin water price",
+  "You can compute withdrawals for power cooling",
+  "You can trace the water–energy and water–land links"
+ ],
+ "narration_en": "Water in GCAM is tracked river basin by river basin, two hundred and thirty-five of them. Six sectors withdraw water: agriculture for irrigation, electricity for cooling power plants, manufacturing, primary energy production, livestock and municipal supply. On the supply side, each basin first uses accessible renewable water, which is cheap. When that runs short, it pumps non-renewable groundwater, which costs more, and in the last resort cities and industry can use desalination, which is expensive and uses a lot of electricity. A water price for each basin rises until demand fits supply. That price then feeds back: power plants switch to cooling systems that use less water, and farms face higher costs for irrigation, although GCAM charges irrigation only five percent of the general water price. In this module you will add up withdrawals for a basin and see how switching from dry cooling to once-through cooling can push the basin from cheap renewable water into groundwater.",
+ "narration_ar": "يتتبع نموذج GCAM المياه حوضًا نهريًا بعد حوض، وعددها مئتان وخمسة وثلاثون حوضًا. تسحب ستة قطاعات المياه: الزراعة للري، والكهرباء لتبريد محطات التوليد، والصناعة التحويلية، وإنتاج الطاقة الأولية، والثروة الحيوانية، والإمداد البلدي. وعلى جانب العرض، يستخدم كل حوض أولًا المياه المتجددة المتاحة، وهي رخيصة. وعندما تنقص يضخ المياه الجوفية غير المتجددة، وهي أغلى، وكملاذ أخير يمكن للمدن والصناعة استخدام التحلية، وهي مكلفة وتستهلك كثيرًا من الكهرباء. ويرتفع سعر المياه في كل حوض حتى يتسع العرض للطلب. ثم يعود هذا السعر ليؤثر: فتنتقل محطات الكهرباء إلى أنظمة تبريد أقل استهلاكًا للمياه، وتواجه المزارع تكاليف أعلى للري، مع أن النموذج يحمّل الري خمسة بالمئة فقط من السعر العام للمياه. في هذه الوحدة ستجمع سحوبات المياه لحوض ما، وترى كيف يمكن أن يدفع التحول من التبريد الجاف إلى التبريد بالتدفق المفتوح الحوضَ من المياه المتجددة الرخيصة إلى المياه الجوفية.",
+ "diagram": {
+  "title": "A basin water market",
+  "caption": "Six demand sectors withdraw water; three supply tiers meet it; the basin price feeds back to cooling choice and irrigation.",
+  "nodes": [
+   {
+    "id": "irr",
+    "label": "Irrigation",
+    "sub": "km³ per Mt of crop",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "land",
+    "detail": "Irrigation withdrawals = exogenous coefficient × endogenous crop production, by basin (demand_water.html)."
+   },
+   {
+    "id": "pow",
+    "label": "Power cooling",
+    "sub": "5 cooling options",
+    "x": 130,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Once-through, recirculating, pond, dry and seawater once-through, chosen by a cost logit; dry cooling lowers plant efficiency (demand_water.html)."
+   },
+   {
+    "id": "mun",
+    "label": "Municipal and industry",
+    "sub": "grow with income",
+    "x": 130,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Per-capita municipal water grows with GDP per person (elasticity 0.37) and falls with price (−0.33) and technology."
+   },
+   {
+    "id": "bas",
+    "label": "Basin water market",
+    "sub": "price in 1975$/m³",
+    "x": 450,
+    "y": 260,
+    "w": 200,
+    "h": 64,
+    "sys": "water",
+    "detail": "235 basins. A basin shadow price adjusts until demand equals supply (supply_water.html)."
+   },
+   {
+    "id": "ren",
+    "label": "Renewable water",
+    "sub": "accessible runoff (Xanthos)",
+    "x": 770,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "water",
+    "detail": "Accessible water QA = max(0, min(QT − EFR, QB − EFR + RS)) from Xanthos runoff, environmental flows and reservoir storage. Cheap within the accessible amount."
+   },
+   {
+    "id": "gw",
+    "label": "Groundwater",
+    "sub": "graded, Superwell",
+    "x": 770,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "water",
+    "detail": "Non-renewable groundwater as a graded depletable resource; Superwell gives 20 cost grades per region-basin."
+   },
+   {
+    "id": "des",
+    "label": "Desalination",
+    "sub": "cities and industry only",
+    "x": 770,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Costs are energy, capital and O&M; reverse osmosis uses 2.75 kWh/m³. In core runs only municipal and industrial demand can use it."
+   },
+   {
+    "id": "efw",
+    "label": "Energy for water",
+    "sub": "kWh per m³",
+    "x": 450,
+    "y": 450,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Pumping, treatment and desalination use electricity: a water → energy link (demand_energy.html)."
+   }
+  ],
+  "edges": [
+   {
+    "from": "irr",
+    "to": "bas",
+    "label": "withdrawals",
+    "sys": "land"
+   },
+   {
+    "from": "pow",
+    "to": "bas",
+    "label": "withdrawals",
+    "sys": "energy"
+   },
+   {
+    "from": "mun",
+    "to": "bas",
+    "label": "withdrawals",
+    "sys": "economy"
+   },
+   {
+    "from": "ren",
+    "to": "bas",
+    "label": "tier 1",
+    "sys": "water"
+   },
+   {
+    "from": "gw",
+    "to": "bas",
+    "label": "tier 2",
+    "sys": "water"
+   },
+   {
+    "from": "des",
+    "to": "bas",
+    "label": "tier 3",
+    "sys": "water"
+   },
+   {
+    "from": "bas",
+    "to": "pow",
+    "label": "price",
+    "sys": "water"
+   },
+   {
+    "from": "des",
+    "to": "efw",
+    "label": "electricity",
+    "sys": "energy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "irr",
+     "pow",
+     "mun"
+    ],
+    "edges": [
+     [
+      "irr",
+      "bas"
+     ],
+     [
+      "pow",
+      "bas"
+     ],
+     [
+      "mun",
+      "bas"
+     ]
+    ],
+    "text": "Farms, power plants, cities and industry all withdraw from the same basin."
+   },
+   {
+    "focus": [
+     "ren"
+    ],
+    "edges": [
+     [
+      "ren",
+      "bas"
+     ]
+    ],
+    "text": "Accessible renewable water is used first, and it is cheap."
+   },
+   {
+    "focus": [
+     "gw"
+    ],
+    "edges": [
+     [
+      "gw",
+      "bas"
+     ]
+    ],
+    "text": "When it runs short, groundwater on graded cost curves fills the gap at a higher price."
+   },
+   {
+    "focus": [
+     "des",
+     "efw"
+    ],
+    "edges": [
+     [
+      "des",
+      "bas"
+     ],
+     [
+      "des",
+      "efw"
+     ]
+    ],
+    "text": "Desalination is the last resort for cities and industry, and it uses electricity."
+   },
+   {
+    "focus": [
+     "bas",
+     "pow"
+    ],
+    "edges": [
+     [
+      "bas",
+      "pow"
+     ]
+    ],
+    "text": "The basin price feeds back: power plants shift to cooling that uses less water."
+   }
+  ]
+ },
+ "components": {
+  "caption": "Water module building blocks",
+  "rows": [
+   {
+    "name": "Basin",
+    "purpose": "235 river basins are the water accounting units",
+    "analogy": "One shared tank per valley"
+   },
+   {
+    "name": "Withdrawal",
+    "purpose": "Water taken from a source",
+    "analogy": "Water drawn from the tank"
+   },
+   {
+    "name": "Consumption",
+    "purpose": "Water not returned (evaporated, embodied)",
+    "analogy": "Water that never comes back"
+   },
+   {
+    "name": "Supply tiers",
+    "purpose": "Renewable, groundwater, desalination at rising cost",
+    "analogy": "Tap, well, then bottled water"
+   },
+   {
+    "name": "Water price",
+    "purpose": "Basin shadow price clearing the market",
+    "analogy": "The meter rate in a dry year"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "What this component represents",
+   "html": "<p>GCAM tracks water by <b>235 basins</b> (<a href=\"https://jgcri.github.io/gcam-doc/common_assumptions.html\">common_assumptions.html</a>). Agricultural demand is modelled directly per basin; other sectors are modelled by region and mapped to basins. Demand is reported as withdrawals, consumption, biophysical consumption and seawater (<a href=\"https://jgcri.github.io/gcam-doc/demand_water.html\">demand_water.html</a>).</p>"
+  },
+  {
+   "heading": "Six demand sectors",
+   "html": "<p>Agriculture (irrigation), electricity generation, manufacturing, primary energy, livestock and municipal. Irrigation = coefficient (km³ per Mt) × crop production. Municipal per-capita demand follows</p><div class=\"eq\">pcW<sub>t</sub> = pcW<sub>t−1</sub> · (pcGDP ratio)<sup>0.37</sup> · (price ratio)<sup>−0.33</sup> · (1 − Tech<sub>t</sub>)</div><p>Power plants choose among five cooling systems by a cost logit; water coefficients come from Macknick et al. (2011) (<a href=\"https://jgcri.github.io/gcam-doc/demand_water.html\">demand_water.html</a>).</p>"
+  },
+  {
+   "heading": "Three supply tiers and the water price",
+   "html": "<p>Renewable water comes from Xanthos runoff. Accessible water is</p><div class=\"eq\">QA = max(0, min(QT − EFR, QB − EFR + RS))</div><p>with streamflow QT, baseflow QB, environmental flow requirement EFR and reservoir storage RS. Beyond it, non-renewable groundwater on graded curves, then desalination. A basin price in 1975$/m³ adjusts until demand equals supply; irrigation pays 5% of it (<code>water.IRR_PRICE_SUBSIDY_MULT</code>) (<a href=\"https://jgcri.github.io/gcam-doc/supply_water.html\">supply_water.html</a>).</p>"
+  },
+  {
+   "heading": "Worked example: cooling decides the tier",
+   "html": "<p>Kit toy basin: 50 km³ of renewable water at $0.01/m³, 30 km³ of groundwater at $0.05/m³, then desalination at $0.80/m³. Irrigation 40 km³ and municipal 8 km³. Power at 300 TWh with dry-ish cooling (2 L/kWh) adds 0.6 km³ → total <b>48.6 km³</b>, price <b>$0.01/m³</b>. With once-through cooling (60 L/kWh) power adds 18 km³ → <b>66.0 km³</b>, which exceeds renewable supply: the price jumps to <b>$0.05/m³</b>.</p>"
+  },
+  {
+   "heading": "Water–energy–land links",
+   "html": "<p>Energy for water: desalination by reverse osmosis uses 2.75 kWh/m³, thermal desalination 58.3, groundwater pumping 0.185 (<a href=\"https://jgcri.github.io/gcam-doc/demand_energy.html\">demand_energy.html</a>). Water for energy: primary energy production withdraws water (withdrawal/consumption ratio 3.3; seawater share 95% in the Middle East). Water for land: water costs enter crop profit, shifting irrigated versus rainfed land.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 2,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Query <b>water withdrawals by region</b> and <b>water withdrawals by basin</b> (course query file). Map basins with <code>rmap::mapGCAMBasins</code>. The irrigation price multiplier is <code>water.IRR_PRICE_SUBSIDY_MULT</code> in gcamdata's constants.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "trap",
+   "title": "Withdrawal is not consumption",
+   "html": "<p>A once-through cooled plant withdraws a lot but returns most of it warmer; a recirculating plant withdraws less but evaporates more of what it takes. Always say which measure you report.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "research",
+   "title": "Gulf angle",
+   "html": "<p>In the Middle East region GCAM assumes 95% seawater for primary energy production, and desalination ties city water to electricity demand: a strong water–energy coupling for Saudi Arabia studies.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "budget",
+  "intro": "The same bathtub logic applies to a basin: a fixed renewable amount, filled by yearly withdrawals. Use the bathtub to build intuition for limits.",
+  "predict": "If withdrawals double, does the time until the renewable limit is reached halve?"
+ },
+ "code": [
+  {
+   "title": "Basin supply tiers and cooling water",
+   "lang": "python",
+   "file": "labs/go2/m27_water.py",
+   "runnable": true,
+   "explain": "Adds withdrawals and prices them with three supply tiers. Try: raise irrigation to 60 km³ and predict the price with dry cooling.",
+   "expected": "300 TWh at  2.0 L/kWh: withdrawals   48.6 km3 -> water price $0.01/m3\n300 TWh at 60.0 L/kWh: withdrawals   66.0 km3 -> water price $0.05/m3"
+  },
+  {
+   "title": "The same in R",
+   "lang": "r",
+   "file": "labs/go2/m27_water.R",
+   "runnable": false,
+   "explain": "Identical numbers in base R."
+  },
+  {
+   "title": "Pull basin withdrawals from a GCAM run (Python)",
+   "lang": "python",
+   "file": "labs/go2/gcam/read_gcam.py",
+   "runnable": false,
+   "explain": "gcamreader script for the course queries, including 'water withdrawals by basin'. Not run against a live database."
+  }
+ ],
+ "takeaways": [
+  "Water is balanced by 235 basins with a basin price",
+  "Six sectors withdraw: irrigation, electricity, manufacturing, primary energy, livestock, municipal",
+  "Supply tiers: accessible renewable water, then groundwater, then desalination",
+  "Cooling choice links electricity to water; desalination links water to electricity",
+  "Irrigation pays only 5% of the general water price by default"
+ ],
+ "quiz": [
+  {
+   "q": "How many water basins does GCAM use (common assumptions page)?",
+   "options": [
+    "32",
+    "235",
+    "396",
+    "18"
+   ],
+   "answer": 1,
+   "explain": "235 basins; 396 is the number of land subregions."
+  },
+  {
+   "q": "Which supply tier is used first?",
+   "options": [
+    "Desalination",
+    "Groundwater",
+    "Accessible renewable water",
+    "Imported water"
+   ],
+   "answer": 2,
+   "explain": "Cheap renewable water first, then graded groundwater, then desalination."
+  },
+  {
+   "q": "In core GCAM, who can use desalinated water?",
+   "options": [
+    "Everyone",
+    "Only irrigation",
+    "Municipal and industrial demand",
+    "Only power plants"
+   ],
+   "answer": 2,
+   "explain": "Desalination competes inside the municipal and industrial distribution sectors."
+  },
+  {
+   "q": "Switching from dry to once-through cooling mostly increases…",
+   "options": [
+    "withdrawals",
+    "plant efficiency losses",
+    "carbon emissions",
+    "desalination use by farms"
+   ],
+   "answer": 0,
+   "explain": "Once-through cooling withdraws far more water per kWh."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Withdrawal",
+   "def": "Water taken from a river, lake, aquifer or the sea."
+  },
+  {
+   "term": "Consumption",
+   "def": "The part of a withdrawal that is not returned to the source."
+  },
+  {
+   "term": "Environmental flow requirement",
+   "def": "Water left in rivers to protect ecosystems."
+  },
+  {
+   "term": "Xanthos",
+   "def": "The global hydrology model that supplies GCAM's runoff."
+  },
+  {
+   "term": "Superwell",
+   "def": "The groundwater extraction cost model behind GCAM's groundwater grades."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Water supply",
+   "url": "https://jgcri.github.io/gcam-doc/supply_water.html",
+   "why": "Accessible water, groundwater, desalination and the basin price."
+  },
+  {
+   "title": "GCAM documentation: Water demand",
+   "url": "https://jgcri.github.io/gcam-doc/demand_water.html",
+   "why": "The six sectors and cooling choice."
+  },
+  {
+   "title": "GCAM documentation: Water details",
+   "url": "https://jgcri.github.io/gcam-doc/details_water.html",
+   "why": "Further detail on water accounting."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 9 slides: Land, water and bioenergy (PDF)",
+   "path": "downloads/slides/Week09-Land-water-and-bioenergy.pdf"
+  }
+ ]
+}

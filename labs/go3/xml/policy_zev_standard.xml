@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  policy_zev_standard.xml : zero-emission car standard as a credit market (RES policy).
+  Target: ZEV share of Car passenger-km 10% (2030), 20% (2035), 35% (2040), 50% (2045), 70% (2050).
+
+  DESIGN      Same pattern as the GCAM documentation's renewable/biofuel standard example
+              (https://jgcri.github.io/gcam-doc/policies_examples.html, "BioFuelsCredits"):
+                - DEMAND for credits: every Car technology consumes a "ZEV_credit" input whose
+                  coefficient is the target share.
+                - SUPPLY of credits: BEV and FCEV produce credits through res-secondary-output
+                  with output-ratio 1 (one credit per unit of their output).
+                - POLICY: policy-portfolio-standard name="ZEV_credit", policyType RES. For RES the
+                  constraint value is ignored (documentation); the market solves for a credit price
+                  that taxes non-ZEVs and subsidises ZEVs until supply of credits >= demand.
+              Element names checked in gcam-v9.1: policy_portfolio_standard.cpp (XML name, "RES"
+              branch lines 149-150, 205), res_secondary_output.cpp line 71, secondary_output.h line 189.
+  UNIT ISSUE  In a tranTechnology the energy-input coefficient is per VEHICLE-km while output (and
+              so secondary output) is per PASSENGER-km (output = vkm x loadFactor). To make the
+              target a share of pkm, the credit coefficient below is share x loadFactor
+              (loadFactor 1.6 assumed; use your base file's Car load factor per technology and year).
+              This conversion is the main thing to TEST: check in the output that
+              BEV+FCEV pkm / total Car pkm equals the target in binding years.
+  SCOPE       One region, the "Car" subsector of trn_pass_road_LDV_4W only. Add the same lines for
+              "Large Car and Truck" and "Mini Car" for a full light-duty standard.
+  CONFIG      After the "transportation" entry and after any technology add-ons.
+  STATUS      Not run in GCAM. Unverified: credit input on tranTechnology (unit handling above);
+              whether the RES market clears cleanly in periods where the target is not binding.
+-->
+<scenario>
+  <world>
+    <region name="Middle East">
+      <policy-portfolio-standard name="ZEV_credit">
+        <market>Middle East</market>
+        <policyType>RES</policyType>
+      </policy-portfolio-standard>
+      <supplysector name="trn_pass_road_LDV_4W">
+        <tranSubsector name="Car">
+          <stub-technology name="Liquids">
+            <period year="2030"><minicam-energy-input name="ZEV_credit"><coefficient>0.16</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2035"><minicam-energy-input name="ZEV_credit"><coefficient>0.32</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2040"><minicam-energy-input name="ZEV_credit"><coefficient>0.56</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2045"><minicam-energy-input name="ZEV_credit"><coefficient>0.8</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2050"><minicam-energy-input name="ZEV_credit"><coefficient>1.12</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+          </stub-technology>
+          <stub-technology name="Hybrid Liquids">
+            <period year="2030"><minicam-energy-input name="ZEV_credit"><coefficient>0.16</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2035"><minicam-energy-input name="ZEV_credit"><coefficient>0.32</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2040"><minicam-energy-input name="ZEV_credit"><coefficient>0.56</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2045"><minicam-energy-input name="ZEV_credit"><coefficient>0.8</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2050"><minicam-energy-input name="ZEV_credit"><coefficient>1.12</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+          </stub-technology>
+          <stub-technology name="NG">
+            <period year="2030"><minicam-energy-input name="ZEV_credit"><coefficient>0.16</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2035"><minicam-energy-input name="ZEV_credit"><coefficient>0.32</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2040"><minicam-energy-input name="ZEV_credit"><coefficient>0.56</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2045"><minicam-energy-input name="ZEV_credit"><coefficient>0.8</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+            <period year="2050"><minicam-energy-input name="ZEV_credit"><coefficient>1.12</coefficient><market-name>Middle East</market-name></minicam-energy-input></period>
+          </stub-technology>
+          <stub-technology name="BEV">
+            <period year="2030"><minicam-energy-input name="ZEV_credit"><coefficient>0.16</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2035"><minicam-energy-input name="ZEV_credit"><coefficient>0.32</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2040"><minicam-energy-input name="ZEV_credit"><coefficient>0.56</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2045"><minicam-energy-input name="ZEV_credit"><coefficient>0.8</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2050"><minicam-energy-input name="ZEV_credit"><coefficient>1.12</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+          </stub-technology>
+          <stub-technology name="FCEV">
+            <period year="2030"><minicam-energy-input name="ZEV_credit"><coefficient>0.16</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2035"><minicam-energy-input name="ZEV_credit"><coefficient>0.32</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2040"><minicam-energy-input name="ZEV_credit"><coefficient>0.56</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2045"><minicam-energy-input name="ZEV_credit"><coefficient>0.8</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+            <period year="2050"><minicam-energy-input name="ZEV_credit"><coefficient>1.12</coefficient><market-name>Middle East</market-name></minicam-energy-input><res-secondary-output name="ZEV_credit"><output-ratio>1</output-ratio></res-secondary-output></period>
+          </stub-technology>
+        </tranSubsector>
+      </supplysector>
+    </region>
+  </world>
+</scenario>

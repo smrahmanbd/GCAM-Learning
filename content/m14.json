@@ -1,0 +1,393 @@
+{
+ "id": "1.4",
+ "go": 1,
+ "slug": "prices-and-choices",
+ "title": "Prices and choices",
+ "minutes": 35,
+ "tag": "Economics",
+ "systems": [
+  "economy",
+  "energy",
+  "policy"
+ ],
+ "summary": "Three economic ideas behind every IAM: prices balance markets, a carbon price changes who wins, and discounting weighs the future.",
+ "outcomes": [
+  "You can explain how a market price balances supply and demand.",
+  "You can add a carbon price to a technology's cost and say which option wins.",
+  "You can explain why real models share a market instead of picking one winner.",
+  "You can discount a future amount and say why the rate matters."
+ ],
+ "narration_en": "Only three ideas from economics are needed to read an integrated assessment model. First, a market price keeps moving until what is offered equals what is wanted, like a farmers market at closing time. That balancing price is called the equilibrium. GCAM finds such a price for every fuel and crop, in every region, in each time step. Second, a carbon price adds a charge to every option in proportion to its emissions. Coal costs sixty dollars a megawatt hour and emits zero point nine tonnes of carbon dioxide; with a fifty dollar carbon price it costs one hundred and five. Gas rises to ninety. Solar stays at eighty, because it emits nothing. The winner changes. Real models rarely give everything to the cheapest option. They share the market, so cheaper options get bigger shares. Third, a dollar today is worth more than a dollar later. Discounting turns future amounts into today's money. At three percent a year, one hundred dollars of damage in a hundred years is worth only about five dollars today; at one and a half percent, about twenty two dollars. The rate a modeller chooses changes how much the future counts.",
+ "narration_ar": "لا يلزم من علم الاقتصاد إلا ثلاث أفكار لقراءة نموذج التقييم المتكامل. الأولى أن سعر السوق يظل يتحرك حتى يتساوى المعروض مع المطلوب، كسوق الخضار عند الإغلاق. ويسمى هذا السعر المتوازن «سعر التوازن». ويجد نموذج GCAM سعرًا كهذا لكل وقود ومحصول، في كل منطقة، وفي كل خطوة زمنية. والثانية أن سعر الكربون يضيف رسمًا إلى كل خيار بقدر انبعاثاته. فالفحم يكلف ستين دولارًا للميغاواط ساعة ويطلق تسعة أعشار الطن من ثاني أكسيد الكربون، فإذا فُرض سعر كربون قدره خمسون دولارًا صارت تكلفته مئة وخمسة دولارات، وارتفع الغاز إلى تسعين، وبقيت الطاقة الشمسية عند ثمانين لأنها لا تطلق شيئًا، فيتغير الفائز. ونادرًا ما تمنح النماذج الحقيقية السوق كله للخيار الأرخص، بل تقسّمه، فينال الأرخص حصة أكبر. والثالثة أن الدولار اليوم أثمن من الدولار غدًا، و«الخصم» يحوّل المبالغ المستقبلية إلى قيمتها اليوم. فبمعدل ثلاثة في المئة سنويًا لا تساوي أضرار قيمتها مئة دولار بعد مئة عام إلا نحو خمسة دولارات اليوم، وبمعدل واحد ونصف في المئة نحو اثنين وعشرين دولارًا. فالمعدل الذي يختاره صاحب النموذج يغيّر وزن المستقبل في الحساب.",
+ "diagram": {
+  "title": "How prices drive choices in an IAM",
+  "caption": "Notice the loop: costs set prices, prices set shares, shares set emissions, and a carbon price feeds emissions back into costs.",
+  "nodes": [
+   {
+    "id": "demand",
+    "label": "Demand",
+    "sub": "what buyers want",
+    "x": 110,
+    "y": 110,
+    "w": 160,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Buyers want less when the price is high. Toy lab numbers: demand = 1000 − 4 × price."
+   },
+   {
+    "id": "supply",
+    "label": "Supply",
+    "sub": "what sellers offer",
+    "x": 110,
+    "y": 300,
+    "w": 160,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Sellers offer more when the price is high. Toy numbers: supply = 6 × price."
+   },
+   {
+    "id": "price",
+    "label": "Market price",
+    "sub": "moves until they match",
+    "x": 350,
+    "y": 205,
+    "w": 180,
+    "h": 70,
+    "sys": "economy",
+    "detail": "Equilibrium: 1000 − 4p = 6p, so p = 100 and quantity = 600 (illustrative)."
+   },
+   {
+    "id": "costs",
+    "label": "Technology costs",
+    "sub": "coal 60, gas 70, solar 80",
+    "x": 600,
+    "y": 90,
+    "w": 190,
+    "h": 70,
+    "sys": "energy",
+    "detail": "Illustrative costs in $ per MWh before any carbon price."
+   },
+   {
+    "id": "carbon",
+    "label": "Carbon price",
+    "sub": "$ per tonne CO2",
+    "x": 600,
+    "y": 330,
+    "w": 170,
+    "h": 64,
+    "sys": "policy",
+    "detail": "New cost = start cost + emission factor × carbon price. At $50: coal 105, gas 90, solar 80."
+   },
+   {
+    "id": "shares",
+    "label": "Market shares",
+    "sub": "cheaper gets more",
+    "x": 810,
+    "y": 205,
+    "w": 150,
+    "h": 70,
+    "sys": "energy",
+    "detail": "GCAM does not give everything to the cheapest option. It shares the market by relative cost (a logit choice, Go 2)."
+   },
+   {
+    "id": "future",
+    "label": "Discounting",
+    "sub": "future counts less",
+    "x": 350,
+    "y": 440,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Value today = future amount ÷ (1 + rate)^years. $100 in 100 years: $22.56 at 1.5%, $5.20 at 3%, $0.76 at 5%."
+   }
+  ],
+  "edges": [
+   {
+    "from": "demand",
+    "to": "price",
+    "label": "pulls up",
+    "sys": "economy"
+   },
+   {
+    "from": "supply",
+    "to": "price",
+    "label": "pushes down",
+    "sys": "energy"
+   },
+   {
+    "from": "costs",
+    "to": "shares",
+    "label": "relative cost",
+    "sys": "energy"
+   },
+   {
+    "from": "carbon",
+    "to": "costs",
+    "label": "adds ef × price",
+    "sys": "policy"
+   },
+   {
+    "from": "price",
+    "to": "costs",
+    "label": "fuel prices",
+    "sys": "economy"
+   },
+   {
+    "from": "future",
+    "to": "carbon",
+    "label": "weighs damages",
+    "sys": "economy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "demand",
+     "supply"
+    ],
+    "edges": [],
+    "text": "Idea one: buyers want less when prices are high; sellers offer more."
+   },
+   {
+    "focus": [
+     "price"
+    ],
+    "edges": [
+     [
+      "demand",
+      "price"
+     ],
+     [
+      "supply",
+      "price"
+     ]
+    ],
+    "text": "The price moves until they match: the equilibrium. In the toy market, price 100 and quantity 600."
+   },
+   {
+    "focus": [
+     "carbon",
+     "costs"
+    ],
+    "edges": [
+     [
+      "carbon",
+      "costs"
+     ]
+    ],
+    "text": "Idea two: a carbon price adds emissions × price to each option's cost. Coal is hit hardest, solar not at all."
+   },
+   {
+    "focus": [
+     "shares"
+    ],
+    "edges": [
+     [
+      "costs",
+      "shares"
+     ]
+    ],
+    "text": "Cheaper options win bigger shares. Real models share the market rather than pick a single winner."
+   },
+   {
+    "focus": [
+     "future"
+    ],
+    "edges": [
+     [
+      "future",
+      "carbon"
+     ]
+    ],
+    "text": "Idea three: discounting. The rate decides how much future damage counts today, and so how strong a policy looks worthwhile."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Prices balance markets",
+   "html": "<p>Think of a farmers' market at closing time. If tomatoes pile up unsold, sellers cut the price; if they sell out by noon, they raise it next week. The price keeps moving until what is offered equals what is wanted: the <b>equilibrium</b>.</p><p>Toy numbers from the course lab: demand = 1000 − 4p and supply = 6p. Setting them equal, 1000 = 10p, so <b>p = 100</b> and quantity = 600. GCAM finds a balancing price like this for every fuel and crop, in every region, in every time step.</p>"
+  },
+  {
+   "heading": "A carbon price changes who wins",
+   "html": "<div class=\"eq\">new cost = start cost + emission factor × carbon price</div><table><thead><tr><th>Technology</th><th>Cost, $/MWh</th><th>t CO<sub>2</sub>/MWh</th><th>With $50/t</th></tr></thead><tbody><tr><td>Coal</td><td>60</td><td>0.9</td><td>60 + 0.9 × 50 = 105</td></tr><tr><td>Gas</td><td>70</td><td>0.4</td><td>70 + 0.4 × 50 = 90</td></tr><tr><td>Solar</td><td>80</td><td>0</td><td>80</td></tr></tbody></table><p>Gas beats coal above $20 per tonne; solar beats gas above $25 per tonne (illustrative costs).</p>"
+  },
+  {
+   "heading": "Real models share the market",
+   "html": "<p>In the toy table the cheapest option takes everything. Real people and firms do not all choose the same thing: costs differ by place, and tastes differ. So GCAM <b>shares</b> each market among options by their relative cost: the cheapest gets the biggest share, but not all of it. You will meet the rule, called a logit, in Go 2.</p>"
+  },
+  {
+   "heading": "Discounting weighs the future",
+   "html": "<p>A dollar today is worth more than a dollar later: you could invest it or use it now. <b>Discounting</b> turns future money into today's value:</p><div class=\"eq\">value today = future amount ÷ (1 + r)<sup>years</sup></div><p>$100 of climate damage in 100 years is worth $22.56 today at 1.5%, $5.20 at 3% and $0.76 at 5%. One number chosen by the modeller changes the value of the future roughly thirtyfold. Cost-benefit models such as DICE use discounting to weigh cutting now against damage later; process models use prices to decide which technologies supply each market.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"A carbon price makes everything more expensive.\" Only options that emit. Solar's cost does not change. And \"a high discount rate means we care more about the future\" is backwards: a high rate makes the future count less.</p>"
+  },
+  {
+   "after": 1,
+   "kind": "try",
+   "title": "Try it now",
+   "html": "<p>At a carbon price of $22 per tonne, which technology is cheapest? (Answer: coal 79.8, gas 78.8, solar 80, so gas.)</p>"
+  },
+  {
+   "after": 3,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>A carbon price is a <b>toll</b> charged in proportion to the smoke each option makes. Everything else in the model reacts to the new tolls.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "market",
+  "intro": "Move the carbon price and watch which technology becomes cheapest, and how the market price and quantity shift.",
+  "predict": "At what carbon price does solar first become the cheapest option? Write your guess, then slide to check."
+ },
+ "code": [
+  {
+   "title": "Which plant wins at each carbon price?",
+   "lang": "python",
+   "source": "# Which power plant wins? Cost with a carbon price = base cost + emissions x price\nplants = {\"coal\": (60, 0.9), \"gas\": (70, 0.4), \"solar\": (80, 0.0)}  # $/MWh, t CO2/MWh\n\nfor price in (0, 22, 50):\n    costs = {k: base + ef * price for k, (base, ef) in plants.items()}\n    winner = min(costs, key=costs.get)\n    shown = \", \".join(f\"{k} {v:.1f}\" for k, v in costs.items())\n    print(f\"carbon price ${price:>2}/t: {shown} -> cheapest: {winner}\")\n",
+   "runnable": true,
+   "explain": "Press Run. Then add a price of 30, or give coal carbon capture by lowering its 0.9 to 0.1, and predict the winner first. Costs are illustrative.",
+   "expected": "carbon price $ 0/t: coal 60.0, gas 70.0, solar 80.0 -> cheapest: coal\ncarbon price $22/t: coal 79.8, gas 78.8, solar 80.0 -> cheapest: gas\ncarbon price $50/t: coal 105.0, gas 90.0, solar 80.0 -> cheapest: solar"
+  },
+  {
+   "title": "What is future damage worth today?",
+   "lang": "python",
+   "source": "# What is $100 of damage in 100 years worth today?\nfor rate in (0.015, 0.03, 0.05):\n    today = 100 / (1 + rate) ** 100\n    print(f\"discount rate {rate:.1%}: ${today:.2f}\")\n",
+   "runnable": true,
+   "explain": "Press Run. Change 100 years to 30 and compare: discounting matters most for the far future.",
+   "expected": "discount rate 1.5%: $22.56\ndiscount rate 3.0%: $5.20\ndiscount rate 5.0%: $0.76"
+  }
+ ],
+ "takeaways": [
+  "Prices move until supply equals demand: the equilibrium.",
+  "A carbon price adds emission factor × price to each option's cost, so clean options gain.",
+  "Toy break-evens: gas beats coal above $20/t, solar beats gas above $25/t.",
+  "Real IAMs share markets by relative cost instead of picking one winner.",
+  "Discounting divides future values by (1 + r)^years; the chosen rate changes how much the future counts."
+ ],
+ "quiz": [
+  {
+   "q": "Demand is 1000 − 4p and supply is 6p. The equilibrium price is:",
+   "options": [
+    "60",
+    "167",
+    "100",
+    "125"
+   ],
+   "answer": 2,
+   "explain": "1000 − 4p = 6p, so 10p = 1000 and p = 100."
+  },
+  {
+   "q": "Coal costs 60 $/MWh and emits 0.9 t CO2/MWh. With a $50/t carbon price it costs:",
+   "options": [
+    "105",
+    "65",
+    "95",
+    "110"
+   ],
+   "answer": 0,
+   "explain": "60 + 0.9 × 50 = 105."
+  },
+  {
+   "q": "Why is solar's cost unchanged by a carbon price?",
+   "options": [
+    "It is subsidised",
+    "Its emission factor is zero",
+    "Carbon prices apply only to gas",
+    "It has no fuel cost"
+   ],
+   "answer": 1,
+   "explain": "The charge is emission factor × price, and 0 × anything is 0."
+  },
+  {
+   "q": "At a 3% discount rate, $100 of damage in 100 years is worth about:",
+   "options": [
+    "$97",
+    "$52",
+    "$0.76",
+    "$5.20"
+   ],
+   "answer": 3,
+   "explain": "100 ÷ 1.03^100 ≈ 100 ÷ 19.2 ≈ 5.20."
+  },
+  {
+   "q": "How does GCAM decide which power technologies supply electricity?",
+   "options": [
+    "The cheapest one takes the whole market",
+    "It shares the market, giving cheaper options bigger shares",
+    "The modeller fixes every share by hand",
+    "It picks at random"
+   ],
+   "answer": 1,
+   "explain": "GCAM shares markets by relative cost with a logit rule; cheaper options get bigger, but not complete, shares."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Equilibrium",
+   "def": "The price at which the quantity buyers want equals the quantity sellers offer."
+  },
+  {
+   "term": "Carbon price",
+   "def": "A charge per tonne of CO2 emitted, which raises the cost of each option in proportion to its emissions."
+  },
+  {
+   "term": "Emission factor",
+   "def": "Tonnes of CO2 released per unit of output, for example 0.9 t CO2 per MWh from a coal plant."
+  },
+  {
+   "term": "Discount rate",
+   "def": "The yearly rate used to convert future money into today's value; a higher rate makes the future count less."
+  },
+  {
+   "term": "Present value",
+   "def": "What a future amount is worth today: future amount ÷ (1 + r)^years."
+  },
+  {
+   "term": "Market share",
+   "def": "The fraction of a market supplied by one option, for example solar's share of new electricity."
+  }
+ ],
+ "resources": [
+  {
+   "title": "En-ROADS climate solutions simulator",
+   "url": "https://en-roads.climateinteractive.org",
+   "why": "Free browser simulator: move 19 policy sliders and see 2100 warming change in a second."
+  },
+  {
+   "title": "The social cost of carbon, a SERC teaching unit built on webDICE",
+   "url": "https://serc.carleton.edu/integrate/teaching_materials/carbon_emissions/unit3.html",
+   "why": "A ready-made class activity on discounting and damages. Whether the webDICE tool itself still runs is unconfirmed."
+  },
+  {
+   "title": "SIAM 2.0: a simple integrated assessment model in a spreadsheet (Lancaster University)",
+   "url": "https://doaj.org/article/2716d130a83041ab9a1ed1f8c3159ba4",
+   "why": "Open the equations of a whole IAM in a spreadsheet you can edit."
+  },
+  {
+   "title": "Q&A: How integrated assessment models are used to study climate change (Carbon Brief)",
+   "url": "https://www.carbonbrief.org/qa-how-integrated-assessment-models-are-used-to-study-climate-change/",
+   "why": "The clearest plain-language introduction to IAMs, their families and their critics."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 1 study guide: See the whole picture (PDF)",
+   "path": "downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf"
+  },
+  {
+   "label": "Week 4 slides: Economics primer (PDF)",
+   "path": "downloads/slides/Week04-Economics-primer.pdf"
+  },
+  {
+   "label": "Week 5 slides: Cost benefit IAMs DICE (PDF)",
+   "path": "downloads/slides/Week05-Cost-benefit-IAMs-DICE.pdf"
+  }
+ ]
+}

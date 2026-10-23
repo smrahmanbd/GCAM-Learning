@@ -1,0 +1,443 @@
+{
+ "id": "2.5",
+ "go": 2,
+ "slug": "energy-demand",
+ "title": "Energy demand: buildings, industry, transport",
+ "minutes": 45,
+ "tag": "Demand",
+ "systems": [
+  "energy",
+  "economy",
+  "climate"
+ ],
+ "summary": "People want services, not energy: warm rooms, steel, passenger-kilometres. See how GCAM grows service demand with income and price, and how transport modes compete on money plus time.",
+ "outcomes": [
+  "You can explain service demand with income and price elasticities",
+  "You can compute a mode's generalised cost including the value of time",
+  "You can describe GCAM's buildings, industry and transport demand structure",
+  "You can trace how the electricity price reaches electric cars and heat pumps"
+ ],
+ "narration_en": "Nobody wants a gigajoule for its own sake. People want warm and cool rooms, light, steel for buildings, and trips to work and school. GCAM therefore models demand for energy services first, and only then the fuels needed to deliver them. Service demand grows with income and falls when services get more expensive, through income and price elasticities. Buildings demand depends on floor space, which rises with income and then levels off, and on heating and cooling degree days. Industry is split into sectors such as steel, cement, chemicals and fertiliser. Transport is special because time matters. A trip by bus is cheap in money but slow, while a car or a train is faster. GCAM adds the value of time to the money cost of each mode, using the wage, so as people get richer they move toward faster modes. In this module you will compute service demand, then mode shares for walking, bus, rail and car at three wage levels, and watch the car share grow from three percent to sixty-two percent.",
+ "narration_ar": "لا أحد يريد جيجاجول من الطاقة لذاته. يريد الناس غرفًا دافئة وباردة، وإضاءة، وفولاذًا للمباني، ورحلات إلى العمل والمدرسة. لذلك يُنمذج GCAM الطلب على خدمات الطاقة أولًا، ثم الوقود اللازم لتقديمها. ينمو الطلب على الخدمات مع الدخل وينخفض عندما ترتفع تكلفتها، عبر مرونات الدخل والسعر. ويعتمد الطلب في المباني على المساحة الأرضية، التي ترتفع مع الدخل ثم تستقر، وعلى أيام التدفئة والتبريد. وتنقسم الصناعة إلى قطاعات مثل الحديد والصلب والإسمنت والكيماويات والأسمدة. أما النقل فحالة خاصة لأن الوقت مهم. فالرحلة بالحافلة رخيصة نقدًا لكنها بطيئة، بينما السيارة أو القطار أسرع. يضيف النموذج قيمة الوقت إلى التكلفة النقدية لكل وسيلة، مستخدمًا الأجر، لذلك ينتقل الناس إلى الوسائل الأسرع كلما زاد ثراؤهم. في هذه الوحدة ستحسب الطلب على الخدمات، ثم حصص المشي والحافلة والقطار والسيارة عند ثلاثة مستويات للأجور، وترى حصة السيارة تنمو من ثلاثة بالمئة إلى اثنين وستين بالمئة.",
+ "diagram": {
+  "title": "Energy demand: services first, fuels second",
+  "caption": "Income and prices set service demand; technologies then choose fuels. Electricity prices reach every end use.",
+  "nodes": [
+   {
+    "id": "inc",
+    "label": "Income and population",
+    "sub": "from Go 2.1",
+    "x": 130,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "GDP per person drives floorspace, industrial output and passenger travel through income elasticities (demand_energy.html)."
+   },
+   {
+    "id": "bld",
+    "label": "Buildings",
+    "sub": "floorspace × services",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Residential split into 10 income deciles since v7.1. Floorspace follows a Gompertz curve; heating and cooling depend on degree-days (demand_energy.html)."
+   },
+   {
+    "id": "ind",
+    "label": "Industry",
+    "sub": "steel, cement, chemicals…",
+    "x": 450,
+    "y": 70,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Iron and steel, chemicals, aluminium, cement, fertiliser, food processing and other industry, plus construction, mining and agricultural energy use."
+   },
+   {
+    "id": "trn",
+    "label": "Transport",
+    "sub": "passenger + freight",
+    "x": 450,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Four final demands: passenger aviation, other passenger, international shipping, other freight. Nested modes, size classes and drivetrains (Go 3 goes deep)."
+   },
+   {
+    "id": "vot",
+    "label": "Value of time",
+    "sub": "wage ÷ speed",
+    "x": 130,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "economy",
+    "detail": "Passenger mode cost adds W·V/S: wage per hour × time-value multiplier ÷ speed. Faster modes win as wages rise."
+   },
+   {
+    "id": "elecp",
+    "label": "Electricity price",
+    "sub": "from Go 2.4",
+    "x": 770,
+    "y": 90,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Electric technologies (heat pumps, EVs, electric arc furnaces) pay the solved electricity price, so cheaper power pulls demand toward electricity."
+   },
+   {
+    "id": "fuel",
+    "label": "Final energy by fuel",
+    "sub": "EJ by sector",
+    "x": 770,
+    "y": 260,
+    "w": 180,
+    "h": 64,
+    "sys": "energy",
+    "detail": "Technology choice inside each service turns service demand into final energy by fuel."
+   },
+   {
+    "id": "co2",
+    "label": "Emissions",
+    "sub": "fuel × carbon coefficient",
+    "x": 770,
+    "y": 430,
+    "w": 180,
+    "h": 64,
+    "sys": "climate",
+    "detail": "Combustion CO₂ = fuel use × carbon coefficient; cooling electricity also drives HFC134a (emissions.html)."
+   }
+  ],
+  "edges": [
+   {
+    "from": "inc",
+    "to": "bld",
+    "label": "income",
+    "sys": "economy"
+   },
+   {
+    "from": "inc",
+    "to": "ind",
+    "label": "",
+    "sys": "economy"
+   },
+   {
+    "from": "inc",
+    "to": "trn",
+    "label": "income",
+    "sys": "economy"
+   },
+   {
+    "from": "vot",
+    "to": "trn",
+    "label": "time cost",
+    "sys": "economy"
+   },
+   {
+    "from": "elecp",
+    "to": "fuel",
+    "label": "price signal",
+    "sys": "energy"
+   },
+   {
+    "from": "trn",
+    "to": "fuel",
+    "label": "service → fuel",
+    "sys": "energy"
+   },
+   {
+    "from": "bld",
+    "to": "fuel",
+    "label": "",
+    "sys": "energy"
+   },
+   {
+    "from": "fuel",
+    "to": "co2",
+    "label": "",
+    "sys": "climate"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "inc"
+    ],
+    "edges": [],
+    "text": "Income per person, from Go 2.1, is the main driver of how much service people demand."
+   },
+   {
+    "focus": [
+     "bld",
+     "ind"
+    ],
+    "edges": [
+     [
+      "inc",
+      "bld"
+     ],
+     [
+      "inc",
+      "ind"
+     ]
+    ],
+    "text": "Buildings and industry grow with income and fall with service price; floorspace saturates."
+   },
+   {
+    "focus": [
+     "trn",
+     "vot"
+    ],
+    "edges": [
+     [
+      "inc",
+      "trn"
+     ],
+     [
+      "vot",
+      "trn"
+     ]
+    ],
+    "text": "Transport adds the value of time: richer travellers choose faster modes even if dearer."
+   },
+   {
+    "focus": [
+     "elecp",
+     "fuel"
+    ],
+    "edges": [
+     [
+      "elecp",
+      "fuel"
+     ],
+     [
+      "trn",
+      "fuel"
+     ],
+     [
+      "bld",
+      "fuel"
+     ]
+    ],
+    "text": "Inside each service, technologies compete by cost, so electricity prices steer heat pumps and EVs."
+   },
+   {
+    "focus": [
+     "co2"
+    ],
+    "edges": [
+     [
+      "fuel",
+      "co2"
+     ]
+    ],
+    "text": "Final energy by fuel times carbon coefficients gives demand-side emissions."
+   }
+  ]
+ },
+ "components": {
+  "caption": "Demand-side building blocks",
+  "rows": [
+   {
+    "name": "Energy service",
+    "purpose": "What people want: warmth, steel, passenger-km",
+    "analogy": "The meal, not the gas in the stove"
+   },
+   {
+    "name": "Income elasticity",
+    "purpose": "% change in service demand per 1% income",
+    "analogy": "Ordering more as your salary rises"
+   },
+   {
+    "name": "Price elasticity",
+    "purpose": "% change in service demand per 1% price",
+    "analogy": "Ordering less when the menu gets dearer"
+   },
+   {
+    "name": "Floorspace",
+    "purpose": "Buildings activity; Gompertz curve in income",
+    "analogy": "Rooms to heat and cool"
+   },
+   {
+    "name": "Value of time",
+    "purpose": "Wage-based cost of travel time",
+    "analogy": "Paying for a taxi to save an hour"
+   },
+   {
+    "name": "Load factor",
+    "purpose": "Passengers or tonnes per vehicle",
+    "analogy": "How full each bus is"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Services, not fuels",
+   "html": "<p>GCAM's demand sectors produce <b>energy services</b> (floorspace heated and cooled, industrial output, passenger-km and tonne-km), then choose technologies and fuels to supply them (<a href=\"https://jgcri.github.io/gcam-doc/demand_energy.html\">demand_energy.html</a>). Service demand changes with income and price:</p><div class=\"eq\">D<sub>t</sub> = D<sub>t−1</sub> · (Y<sub>t</sub>/Y<sub>t−1</sub>)<sup>α</sup> · (P<sub>t</sub>/P<sub>t−1</sub>)<sup>β</sup> · (N<sub>t</sub>/N<sub>t−1</sub>)</div><p>With α = 0.6 and β = −0.3, doubling income raises passenger-km from 100 to <b>151.6</b>; if travel also becomes 50% dearer it is <b>134.2</b>.</p>"
+  },
+  {
+   "heading": "Buildings",
+   "html": "<p>Residential demand is split into 10 income deciles (since v7.1). Floorspace per person follows a Gompertz curve in income and population density; services per m² saturate; heating and cooling scale with degree-days and shell efficiency (<a href=\"https://jgcri.github.io/gcam-doc/demand_energy.html\">demand_energy.html</a>). Degree-days link buildings to climate; the helios tool computes them from gridded data. Parameter values for these curves are not given on the doc pages.</p>"
+  },
+  {
+   "heading": "Industry",
+   "html": "<p>Industry includes iron and steel (BOF, EAF with scrap, EAF with DRI), chemicals, aluminium, cement, fertiliser, food processing and other industry, plus construction, mining and agricultural energy. Fertiliser demand is the sum of crop production × fertiliser coefficient: a direct link from farms to the energy system (<a href=\"https://jgcri.github.io/gcam-doc/demand_energy.html\">demand_energy.html</a>).</p>"
+  },
+  {
+   "heading": "Transport: money plus time",
+   "html": "<p>Each vehicle technology has a cost per passenger-km or tonne-km:</p><div class=\"eq\">P<sub>j</sub> = (P<sub>fuel</sub> · I<sub>j</sub> + N<sub>j</sub>) / L<sub>j</sub></div><p>with fuel intensity I, non-fuel cost per vehicle-km N and load factor L. Passenger modes then add the <b>value of time</b>:</p><div class=\"eq\">P<sub>mode</sub> = Σ α<sub>j</sub> P<sub>j</sub> + W · V / S</div><p>W is wage per hour (GDP per person ÷ working hours), V a time-value multiplier, S speed. In the kit toy (value of time = half the wage), car share rises from <b>3%</b> at $2/h to <b>22.5%</b> at $10/h and <b>61.7%</b> at $40/h.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "model",
+   "title": "A useful mental model",
+   "html": "<p>A restaurant plans meals before it orders gas. GCAM does the same: meals = services, gas = fuels. Change the menu (services) or the stove (technology) and the gas bill changes.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Query <b>final energy consumption by sector and fuel</b> and <b>transport service output by mode</b> (<a href=\"https://jgcri.github.io/gcam-doc/outputs_quantity.html\">outputs_quantity.html</a>). Transport inputs are built by gcamdata from the UCD transportation database (<code>UCD_trn_data_SSP*.csv</code>) (<a href=\"https://jgcri.github.io/gcam-doc/ssp.html\">ssp.html</a>). Note: transport units changed in v8.5 (billion pkm, 1975$); Go 3.2 covers the details.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "trap",
+   "title": "\"Richer people always drive more\"",
+   "html": "<p>Not necessarily: they choose <i>faster</i> modes. Where high-speed rail is fast and frequent, rising wages can favour rail. The value of time rewards speed, not cars as such.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "trncost",
+  "intro": "Change the wage, speeds and money costs, and watch the generalised cost and mode shares.",
+  "predict": "If wages quadruple from $10 to $40 an hour, does the bus share rise or fall? By roughly how much?"
+ },
+ "code": [
+  {
+   "title": "Service demand and mode choice with time cost",
+   "lang": "python",
+   "file": "labs/go2/m25_demand.py",
+   "runnable": true,
+   "explain": "Service demand with elasticities, then mode shares from money cost + value of time at three wages. Try: double rail speed and predict the new rail share at $40/h.",
+   "expected": "passenger-km if income doubles, price same: 151.6\n...and if fuel makes travel 50% dearer:      134.2\nwage 40 $/h -> shares {'walk': 0.002, 'bus': 0.059, 'rail': 0.322, 'car': 0.617}"
+  },
+  {
+   "title": "The same in R",
+   "lang": "r",
+   "file": "labs/go2/m25_demand.R",
+   "runnable": false,
+   "explain": "Identical numbers in base R."
+  }
+ ],
+ "takeaways": [
+  "GCAM models energy services first, then the fuels that supply them",
+  "Service demand rises with income (α) and falls with price (β)",
+  "Buildings use floorspace and degree-days; industry is split into subsectors",
+  "Passenger modes compete on money cost plus wage-based time cost",
+  "The electricity price reaches heat pumps, EVs and electric furnaces through technology choice"
+ ],
+ "quiz": [
+  {
+   "q": "Income doubles, α = 0.6, price unchanged. Service demand rises by a factor of…",
+   "options": [
+    "1.2",
+    "1.52",
+    "2.0",
+    "0.6"
+   ],
+   "answer": 1,
+   "explain": "2^0.6 = 1.516."
+  },
+  {
+   "q": "In GCAM's passenger cost, W·V/S represents…",
+   "options": [
+    "fuel tax",
+    "the value of travel time",
+    "vehicle depreciation",
+    "carbon price"
+   ],
+   "answer": 1,
+   "explain": "Wage × time-value multiplier ÷ speed."
+  },
+  {
+   "q": "Why do faster modes gain share as wages rise?",
+   "options": [
+    "They become cheaper in money",
+    "Time becomes more valuable",
+    "Fuel gets cheaper",
+    "Load factors rise"
+   ],
+   "answer": 1,
+   "explain": "The time term grows with the wage and is smaller for fast modes."
+  },
+  {
+   "q": "Which is a link from land to the energy system in the industry module?",
+   "options": [
+    "Cement",
+    "Fertiliser demand driven by crop production",
+    "Aluminium",
+    "Mining"
+   ],
+   "answer": 1,
+   "explain": "Fertiliser = Σ crop production × coefficient."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Energy service",
+   "def": "The useful outcome of energy use: warmth, light, motion, materials."
+  },
+  {
+   "term": "Price elasticity",
+   "def": "The % change in demand for a 1% change in its price."
+  },
+  {
+   "term": "Degree-days",
+   "def": "A measure of how much heating or cooling a climate needs."
+  },
+  {
+   "term": "Value of time",
+   "def": "The money value travellers place on time spent travelling, tied to the wage."
+  },
+  {
+   "term": "Generalised cost",
+   "def": "Money cost plus the money value of travel time."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Energy demand",
+   "url": "https://jgcri.github.io/gcam-doc/demand_energy.html",
+   "why": "Buildings, industry and transport equations."
+  },
+  {
+   "title": "GCAM documentation: Demand inputs",
+   "url": "https://jgcri.github.io/gcam-doc/inputs_demand.html",
+   "why": "Data sources behind the demand sectors."
+  },
+  {
+   "title": "helios (degree-days for GCAM)",
+   "url": "https://github.com/JGCRI/helios",
+   "why": "Compute heating and cooling degree-days for GCAM regions."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 2 handbook: Open the boxes (PDF)",
+   "path": "downloads/Go2-Component-Handbook-Open-the-Boxes.pdf"
+  },
+  {
+   "label": "Go 2 toy-model kit, R and Python (zip)",
+   "path": "downloads/go2-kit.zip"
+  },
+  {
+   "label": "Week 8 slides: The energy system in GCAM (PDF)",
+   "path": "downloads/slides/Week08-The-energy-system-in-GCAM.pdf"
+  }
+ ]
+}
