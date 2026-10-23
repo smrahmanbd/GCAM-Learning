@@ -350,3 +350,30 @@ svg.chart .axis { stroke: var(--muted); }
 @media (max-width: 900px) { .mm-stage { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; } .mm-notes { border-left: 0; border-top: 1px solid var(--line); max-height: 40vh; } }
 .codeblock pre code, .expected pre code { background: none; color: inherit; padding: 0; font-size: inherit; border-radius: 0; }
 .eq .n { float: right; color: var(--muted); font-size: .85em; margin-left: 12px; }
+/* mind maps v2: class-based, embeddable, recall mode */
+.mm-svg { width: 100%; height: 100%; display: block; min-height: 0; cursor: grab; touch-action: none; user-select: none; }
+.mm-svg.dragging { cursor: grabbing; }
+.mm-svg .node-label { font-family: var(--display); font-weight: 700; }
+.mm-svg .br, .mm-svg .leaf { cursor: pointer; }
+.mm-svg .br:focus, .mm-svg .leaf:focus { outline: none; }
+.mm-svg .br:focus-visible .node-box, .mm-svg .leaf:focus-visible .node-box { stroke-width: 5; }
+.mm-svg .leaf .node-label { font-weight: 600; }
+.mm-svg .leaf.picked .node-box { stroke-width: 5; }
+.mm-svg .leaf:hover .node-box { stroke-width: 4; }
+.mm-svg .leaf-q { display: none; font-family: var(--display); font-weight: 800; fill: var(--muted); }
+.mm.recall .leaf:not(.shown) .leaf-label { display: none; }
+.mm.recall .leaf:not(.shown) .leaf-q { display: inline; }
+.mm.recall .leaf:not(.shown) .node-box { stroke-dasharray: 6 6; }
+.mm-recall[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.mm-notes .mm-ideas { padding-left: 1.1em; }
+.mm-notes .mm-ideas li { margin-bottom: 4px; }
+.mm.embed { margin: 12px 0 8px; border: 1px solid var(--line); border-radius: var(--r-m); overflow: hidden; background: var(--card); }
+.mm.embed .mm-bar { padding: 12px 14px 10px; align-items: center; }
+.mm.embed .mm-bar .muted.small { margin: 0; max-width: 62ch; }
+.mm.embed .mm-stage { height: auto; min-height: 0; border-bottom: 0; grid-template-columns: 1fr; grid-template-rows: 480px auto; }
+.mm.embed .mm-notes { border-left: 0; border-top: 1px solid var(--line); max-height: none; }
+.mm.embed .mm-step { top: 10px; bottom: auto; }
+.mm .mm-stage:fullscreen { height: 100vh; grid-template-columns: minmax(0, 1fr) 380px; grid-template-rows: none; }
+.mm .mm-stage:fullscreen .mm-notes { border-top: 0; border-left: 1px solid var(--line); }
+@media (max-width: 700px) { .mm.embed .mm-stage { grid-template-rows: 380px auto; } }
+.mm-main .mm-stage { height: calc(100vh - 240px); }

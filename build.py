@@ -1,7 +1,8 @@
 """Build 'GCAM in three goes' (static site) from content/m*.json.  Usage: python3 build.py"""
-import json, glob, os, html, re
+import json, glob, os, html, re, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(ROOT, "content"))
 SYS = ["economy", "energy", "land", "water", "climate", "policy"]
 SYSNAME = dict(economy="Economy and people", energy="Energy", land="Land and food", water="Water", climate="Emissions and climate", policy="Policy")
 SITE = "GCAM in three goes"
@@ -57,9 +58,9 @@ LABELS = {
     2: dict(overview="Start here", picture="Connections map", explore="Play with it", parts="The parts", code="Build it", take="Remember", quiz="Check yourself", more="Words and links"),
     3: dict(overview="Research brief", picture="The system under study", explore="Stress-test it", parts="Key elements", code="Implement it", take="Research notes", quiz="Check yourself", more="Reading list"),
 }
-ORDER = {1: ["overview", "picture", "explore", "sections", "parts", "code", "take", "quiz", "more"],
-         2: ["overview", "picture", "parts", "sections", "code", "explore", "take", "quiz", "more"],
-         3: ["overview", "picture", "sections", "parts", "code", "explore", "take", "quiz", "more"]}
+ORDER = {1: ["overview", "picture", "explore", "sections", "parts", "code", "mindmap", "take", "quiz", "more"],
+         2: ["overview", "picture", "parts", "sections", "code", "explore", "mindmap", "take", "quiz", "more"],
+         3: ["overview", "picture", "sections", "parts", "code", "explore", "mindmap", "take", "quiz", "more"]}
 
 
 def load():
@@ -199,6 +200,12 @@ def module_page(m, prev, nxt, diagrams):
                  3: "Real files from the Go 3 transport kit. XML and analysis scripts are for your own GCAM installation; Python marked 'Runs in your browser' runs here."}[g]
         sec("code", L["code"], f'<p class="prose">{lead2}</p>' + "".join(code_html(c, mid) for c in m["code"]))
     blocks["code"] = code
+    def mmap():
+        tip = {1: "The whole module on one zooming map. Use it to preview before reading, or to recall afterwards with Test yourself.",
+               2: "Each branch is a section of this module; each box an idea to recall. Try Test yourself before the quiz.",
+               3: "A map of the research module: each branch a section, each box a point to be able to defend."}[g]
+        sec("mindmap", "Mind map", f'<p class="prose">{tip}</p>' + mm_markup(f"m{mid}", "", embed=True, label=f"Mind map of module {mid}"))
+    blocks["mindmap"] = mmap
     blocks["take"] = lambda: sec("takeaways", L["take"], "<ul class='takeaways'>" + "".join(f"<li>{esc(t)}</li>" for t in m["takeaways"]) + "</ul>")
 
     def quiz():
@@ -225,11 +232,11 @@ def module_page(m, prev, nxt, diagrams):
     page += f"""<main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html">Home</a> / <a href="../go{g}.html">Go {g}: {esc(GO[g]["name"])}</a> / Module {mid}</p>
 <header class="mhead go{g}"><p class="eyebrow"><span class="golevel">Go {g} · {GO[g]["depth"]}</span> Module {mid}, {m["minutes"]} minutes, {esc(m["tag"].lower())}</p><h1>{esc(m["title"])}</h1><p class="summary">{esc(m["summary"])}</p><div>{chips(m["systems"])}</div></header>
-<div class="mlayout"><nav class="outline" aria-label="On this page"><p>On this page</p><ol>{"".join(toc)}</ol><p><a href="../mindmap-go{g}.html">Go {g} mind map</a></p></nav>
+<div class="mlayout"><nav class="outline" aria-label="On this page"><p>On this page</p><ol>{"".join(toc)}</ol><p><a href="#mindmap">This module's mind map</a><br><a href="../mindmap-go{g}.html">Go {g} mind map</a></p></nav>
 <div class="mmain">{"".join(body)}
 <div class="done-row"><button class="btn" id="mark-done" type="button" aria-pressed="false">Mark this module as studied</button><span class="muted small">Saved in this browser only.</span></div>
 {pager}</div></div></main>
-""" + foot(depth)
+""" + mm_script(f"m{mid}", module_mindmap_data(m), depth) + foot(depth)
     return page
 
 
@@ -296,20 +303,43 @@ def short(t, n=46):
 
 def mindmap_data(g, mods):
     return {"title": f"Go {g}: {GO[g]['name']}", "center": f"Go {g}", "subtitle": GO[g]["name"], "promise": GO[g]["promise"],
-            "branches": [{"id": m["id"], "title": m["title"], "sys": m["systems"][0], "href": f"modules/{m['slug']}.html", "summary": m["summary"],
-                          "leaves": [short(s["heading"]) for s in m["sections"]][:6], "notes": m["takeaways"][:4]} for m in mods]}
+            "branches": [{"id": m["id"], "title": m["title"], "sys": m["systems"][0], "href": f"modules/{m['slug']}.html", "summary": m["summary"], "hrefLabel": f"Open module {m['id']}",
+                          "leaves": [b[0] for b in __import__("mindmaps").MM[m["id"]]][:6], "notes": m["takeaways"][:4]} for m in mods]}
+
+
+MM_HELP = "Press Start, then Next (or the arrow keys) to zoom into each branch. Select any box to zoom to it, and any idea for its explanation. Scroll or pinch to zoom, drag to move, F for full screen. Test yourself hides the ideas until you select them."
+
+
+def mm_markup(key, title_html, extra_btn="", embed=False, label="Zooming mind map"):
+    return f"""<div class="mm{' embed' if embed else ''}" data-mm="{key}">
+<div class="mm-bar{'' if embed else ' wrap'}"><div>{title_html}<p class="muted small">{MM_HELP}</p></div>
+<div class="btnrow"><button class="btn mm-start" type="button">Start</button><button class="btn quiet mm-prev" type="button">Back</button><button class="btn quiet mm-next" type="button">Next</button><button class="btn quiet mm-all" type="button">Whole map</button><button class="btn quiet mm-recall" type="button" aria-pressed="false">Test yourself</button><button class="btn quiet mm-full" type="button">Full screen</button>{extra_btn}</div></div>
+<div class="mm-stage" tabindex="0" aria-label="{esc(label)}"><svg class="mm-svg" role="img" aria-label="{esc(label)}"></svg>
+<aside class="mm-notes" aria-live="polite"></aside><p class="mm-step"></p></div></div>"""
+
+
+def mm_script(key, data, depth):
+    up = "../" * depth
+    return f'<script>window.MINDMAPS = window.MINDMAPS || {{}}; window.MINDMAPS[{json.dumps(key)}] = {json.dumps(data, ensure_ascii=False)};</script><script src="{up}assets/js/mindmap.js"></script>'
+
+
+def module_mindmap_data(m):
+    from mindmaps import MM
+    branches = []
+    for i, (title, sysk, summary, leaves) in enumerate(MM[m["id"]]):
+        branches.append({"id": str(i + 1), "title": title, "sys": sysk or m["systems"][0], "href": f"#s{i + 1}",
+                         "hrefLabel": "Read this section: " + re.sub(r"<[^>]+>", "", m["sections"][i]["heading"]),
+                         "summary": summary, "leaves": [{"t": t, "n": n} for t, n in leaves]})
+    return {"title": f"Module {m['id']}: {m['title']}", "center": m["title"], "subtitle": f"Go {m['go']} · Module {m['id']}",
+            "promise": m["summary"], "branches": branches}
 
 
 def mindmap_page(g, data):
     page = head(f"Go {g} mind map · {SITE}", f"Zooming mind map of Go {g}: {GO[g]['name']}", 0) + topbar(0, f"go{g}.html", ' class="mm-page"')
     page += f"""<main id="main" class="mm-main">
-<div class="mm-bar wrap"><div><h1 class="mm-title">Go {g} mind map</h1><p class="muted small">Press Start, then use the arrow keys or the buttons to zoom from the whole go into each module. Press F for full screen. Select a module on the map to jump to it.</p></div>
-<div class="btnrow"><button class="btn" id="mm-start" type="button">Start</button><button class="btn quiet" id="mm-prev" type="button">Back</button><button class="btn quiet" id="mm-next" type="button">Next</button><button class="btn quiet" id="mm-all" type="button">Whole map</button><button class="btn quiet" id="mm-full" type="button">Full screen</button><a class="btn quiet" href="downloads/mindmaps/Go{g}-mind-map-path.pdf">PDF (for Prezi import)</a></div></div>
-<div class="mm-stage" id="mm-stage" tabindex="0" aria-label="Zooming mind map"><svg id="mm-svg" role="img" aria-label="Mind map of Go {g}"></svg>
-<aside class="mm-notes" id="mm-notes" aria-live="polite"></aside><p class="mm-step" id="mm-step"></p></div>
+{mm_markup(f"go{g}", f'<h1 class="mm-title">Go {g} mind map</h1>', f'<a class="btn quiet" href="downloads/mindmaps/Go{g}-mind-map-path.pdf">PDF (for Prezi import)</a>', label=f"Mind map of Go {g}")}
 </main>
-<script>window.MINDMAP = {json.dumps(data, ensure_ascii=False)};</script>
-<script src="assets/js/mindmap.js"></script>
+{mm_script(f"go{g}", data, 0)}
 """ + foot(0)
     return page
 
