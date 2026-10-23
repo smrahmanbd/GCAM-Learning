@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.join(ROOT, "content"))
 SYS = ["economy", "energy", "land", "water", "climate", "policy"]
 SYSNAME = dict(economy="Economy and people", energy="Energy", land="Land and food", water="Water", climate="Emissions and climate", policy="Policy")
 SITE = "GCAM in three goes"
+VER = "20261023b"  # cache-busting tag for CSS/JS
 esc = lambda s: html.escape(str(s), quote=True)
 
 # ------------------------------------------------------------------ the three goes
@@ -80,7 +81,7 @@ def head(title, desc, depth=0, extra=""):
 <meta name="description" content="{esc(desc)}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{up}assets/css/site.css">
+<link rel="stylesheet" href="{up}assets/css/site.css?v={VER}">
 <link rel="icon" href="{up}assets/img/icon.svg" type="image/svg+xml">
 {extra}</head>
 """
@@ -102,7 +103,7 @@ def topbar(depth, current, bodyattr=""):
 
 def foot(depth, scripts=True):
     up = "../" * depth
-    s = f'<script src="{up}assets/js/diagrams.js"></script><script src="{up}assets/js/widgets.js"></script><script src="{up}assets/js/site.js"></script>' if scripts else ""
+    s = f'<script src="{up}assets/js/diagrams.js?v={VER}"></script><script src="{up}assets/js/widgets.js?v={VER}"></script><script src="{up}assets/js/site.js?v={VER}"></script>' if scripts else ""
     return f"""<footer class="site"><div class="wrap">An open course on the Global Change Analysis Model (GCAM), taught in three goes. GCAM is developed by the Joint Global Change Research Institute (PNNL); this is independent teaching material. GCAM facts follow the GCAM v8.2 documentation and the gcam-core v9.1 source; explorers and toy models are teaching versions with illustrative numbers.</div></footer>
 {s}
 </body></html>"""
@@ -320,7 +321,7 @@ def mm_markup(key, title_html, extra_btn="", embed=False, label="Zooming mind ma
 
 def mm_script(key, data, depth):
     up = "../" * depth
-    return f'<script>window.MINDMAPS = window.MINDMAPS || {{}}; window.MINDMAPS[{json.dumps(key)}] = {json.dumps(data, ensure_ascii=False)};</script><script src="{up}assets/js/mindmap.js"></script>'
+    return f'<script>window.MINDMAPS = window.MINDMAPS || {{}}; window.MINDMAPS[{json.dumps(key)}] = {json.dumps(data, ensure_ascii=False)};</script><script src="{up}assets/js/mindmap.js?v={VER}"></script>'
 
 
 def module_mindmap_data(m):
