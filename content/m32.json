@@ -1,0 +1,498 @@
+{
+ "id": "3.2",
+ "go": 3,
+ "slug": "transport-in-gcam",
+ "title": "Transport in GCAM, in full",
+ "minutes": 60,
+ "tag": "Model detail",
+ "systems": [
+  "energy",
+  "economy",
+  "climate"
+ ],
+ "summary": "Passenger and freight transport in GCAM 9.1 in full: the nesting tree, the cost per passenger-km, the value of time, two kinds of logit, and how much travel is demanded.",
+ "outcomes": [
+  "Draw GCAM's passenger transport nesting tree from service to technology",
+  "Build a technology's cost per passenger-km from non-fuel cost, fuel and load factor",
+  "Add the value of time to get a mode's generalised cost, using GCAM's 2,000-hour wage rule",
+  "Explain where relative-cost and absolute-cost logits are used, and how service demand responds to income and price"
+ ],
+ "narration_en": "Transport in GCAM is a tree. At the top is passenger service, measured in passenger-kilometres, and freight service, in tonne-kilometres. Passenger service is shared among walking, cycling, rail, domestic aviation and road; road splits into buses and light vehicles; light vehicles split into two and three wheelers and four wheelers; and at the bottom, technologies such as petrol, hybrid, battery electric and fuel-cell cars compete. Each technology's cost per passenger-kilometre is its non-fuel cost plus its fuel cost, divided by how many people ride in the vehicle. Then GCAM adds the cost of time: an hourly wage, which is income per person divided by two thousand hours, times a multiplier for each mode, divided by the mode's speed. As people get richer, time costs more, so fast modes gain. Modes compete through relative-cost logits, and technologies within a mode through absolute-cost logits. Finally, total travel grows with income and falls with price. In version 9.1 the effective vehicle costs and intensities come from a 2023 harmonisation file, not only from the original UC Davis data.",
+ "narration_ar": "النقل في نموذج GCAM شجرة متفرّعة. في أعلاها خدمة نقل الركاب مقيسة بالراكب-كيلومتر، وخدمة نقل البضائع مقيسة بالطن-كيلومتر. وتتوزع خدمة الركاب بين المشي وركوب الدراجات والقطارات والطيران الداخلي والطرق؛ وتنقسم الطرق إلى حافلات ومركبات خفيفة؛ وتنقسم المركبات الخفيفة إلى مركبات ذات عجلتين أو ثلاث ومركبات ذات أربع عجلات؛ وفي الأسفل تتنافس التقنيات مثل السيارات العاملة بالبنزين والهجينة والكهربائية بالبطاريات وبخلايا الوقود. وتكلفة كل تقنية لكل راكب-كيلومتر هي تكلفتها غير الوقودية مضافًا إليها تكلفة الوقود، مقسومة على عدد الركاب في المركبة. ثم يضيف النموذج تكلفة الوقت: أجر الساعة، وهو دخل الفرد مقسومًا على ألفي ساعة، مضروبًا في معامل خاص بكل وسيلة، ومقسومًا على سرعة الوسيلة. وكلما زاد الثراء ارتفعت قيمة الوقت فتكسب الوسائل السريعة. وتتنافس الوسائل عبر نموذج لوجيت للتكلفة النسبية، وتتنافس التقنيات داخل الوسيلة الواحدة عبر لوجيت للتكلفة المطلقة. وأخيرًا ينمو إجمالي السفر مع الدخل وينخفض مع السعر. وفي الإصدار 9.1 تأتي التكاليف والكثافات الفعلية للمركبات من ملف مواءمة صدر عام 2023، وليس فقط من بيانات جامعة كاليفورنيا في ديفيس الأصلية.",
+ "diagram": {
+  "title": "GCAM's passenger transport tree, with freight beside it",
+  "caption": "Each level shares its parent's service by a logit; time cost enters at the mode level.",
+  "nodes": [
+   {
+    "id": "pass",
+    "label": "Passenger service",
+    "sub": "trn_pass, billion pkm",
+    "x": 450,
+    "y": 60,
+    "w": 200,
+    "h": 62,
+    "sys": "economy",
+    "detail": "Total passenger-km demanded, driven by income (elasticity 1.0) and price (−1.25) in A54.demand.csv. Shared among modes by a relative-cost logit (exponent −2)."
+   },
+   {
+    "id": "walk",
+    "label": "Walk and cycle",
+    "sub": "time-heavy modes",
+    "x": 110,
+    "y": 190,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "No money cost, but slow: the time-value multiplier 1.066 times the wage, over 4.8 or 15 km/h."
+   },
+   {
+    "id": "rail",
+    "label": "Passenger rail",
+    "sub": "electric, liquids",
+    "x": 290,
+    "y": 190,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Low money cost per pkm, multiplier 0.80, door-to-door speed around 42 km/h in the Middle East."
+   },
+   {
+    "id": "air",
+    "label": "Domestic aviation",
+    "sub": "fast, costly",
+    "x": 470,
+    "y": 190,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "High money cost, multiplier 1.244 (includes waiting), speed about 197 km/h door to door."
+   },
+   {
+    "id": "road",
+    "label": "Road",
+    "sub": "trn_pass_road",
+    "x": 680,
+    "y": 190,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Buses and light vehicles share road passenger service (logit exponent −4)."
+   },
+   {
+    "id": "bus",
+    "label": "Bus",
+    "sub": "absolute logit −3",
+    "x": 560,
+    "y": 320,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Liquids, natural gas and battery-electric buses compete inside the Bus mode."
+   },
+   {
+    "id": "ldv",
+    "label": "Light vehicles",
+    "sub": "2W/3W and 4W",
+    "x": 790,
+    "y": 320,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "trn_pass_road_LDV splits into two/three-wheelers and four-wheelers (exponent −4). Time value is added once, at the 4W node."
+   },
+   {
+    "id": "car",
+    "label": "Car technologies",
+    "sub": "liquids, hybrid, BEV, FCEV, NG",
+    "x": 560,
+    "y": 450,
+    "w": 220,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Absolute-cost logit (exponent −8) on cost per pkm. BEV share-weight 0 until 2025, 1 from 2030; FCEV rises to 0.5 by 2050."
+   },
+   {
+    "id": "frt",
+    "label": "Freight",
+    "sub": "trn_freight, tkm",
+    "x": 150,
+    "y": 360,
+    "w": 170,
+    "h": 62,
+    "sys": "economy",
+    "detail": "Freight modes (road trucks by size, rail, domestic ship) compete on cost without a time term."
+   },
+   {
+    "id": "intl",
+    "label": "International",
+    "sub": "aviation and shipping",
+    "x": 150,
+    "y": 470,
+    "w": 170,
+    "h": 62,
+    "sys": "climate",
+    "detail": "International aviation and shipping draw on the same refined-liquids pool; there is no separate aviation fuel in the release."
+   }
+  ],
+  "edges": [
+   {
+    "from": "pass",
+    "to": "walk",
+    "label": ""
+   },
+   {
+    "from": "pass",
+    "to": "rail",
+    "label": ""
+   },
+   {
+    "from": "pass",
+    "to": "air",
+    "label": ""
+   },
+   {
+    "from": "pass",
+    "to": "road",
+    "label": ""
+   },
+   {
+    "from": "road",
+    "to": "bus",
+    "label": ""
+   },
+   {
+    "from": "road",
+    "to": "ldv",
+    "label": ""
+   },
+   {
+    "from": "ldv",
+    "to": "car",
+    "label": "4W"
+   },
+   {
+    "from": "frt",
+    "to": "intl",
+    "label": "same fuel pool",
+    "sys": "climate"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "pass"
+    ],
+    "edges": [],
+    "text": "Start from passenger service: billion passenger-km, growing with income and falling with price."
+   },
+   {
+    "focus": [
+     "pass",
+     "walk",
+     "rail",
+     "air",
+     "road"
+    ],
+    "edges": [
+     [
+      "pass",
+      "walk"
+     ],
+     [
+      "pass",
+      "rail"
+     ],
+     [
+      "pass",
+      "air"
+     ],
+     [
+      "pass",
+      "road"
+     ]
+    ],
+    "text": "Modes share the service by a relative-cost logit on generalised cost: money plus time."
+   },
+   {
+    "focus": [
+     "road",
+     "bus",
+     "ldv"
+    ],
+    "edges": [
+     [
+      "road",
+      "bus"
+     ],
+     [
+      "road",
+      "ldv"
+     ]
+    ],
+    "text": "Road splits into buses and light vehicles; light vehicles into two/three-wheelers and four-wheelers."
+   },
+   {
+    "focus": [
+     "ldv",
+     "car"
+    ],
+    "edges": [
+     [
+      "ldv",
+      "car"
+     ]
+    ],
+    "text": "At the bottom, car technologies compete by an absolute-cost logit on cost per passenger-km."
+   },
+   {
+    "focus": [
+     "frt",
+     "intl"
+    ],
+    "edges": [
+     [
+      "frt",
+      "intl"
+     ]
+    ],
+    "text": "Freight is a parallel tree measured in tonne-km, with no time term. International aviation and shipping use the general liquids pool."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "What is in the box",
+   "html": "<p>Transport in GCAM has four <b>final demands</b>, each a service rather than an energy quantity. Energy enters only through the vehicles that provide the service.</p><table ><thead><tr><th>Final demand</th><th>Service unit (v8.5 on)</th><th>v8.2 unit</th><th>Per-capita based</th><th>Price elasticity</th><th>Income elasticity (core / SSP1)</th></tr></thead><tbody><tr><td><code>trn_pass</code></td><td>billion pass-km</td><td>million pass-km</td><td>yes</td><td>−1.25</td><td>1.0 / 0.8</td></tr><tr><td><code>trn_freight</code></td><td>billion ton-km</td><td>million ton-km</td><td>no</td><td>−0.65</td><td>0.75 / 0.5</td></tr><tr><td><code>trn_aviation_intl</code></td><td>billion pass-km</td><td>million pass-km</td><td>yes</td><td>−1.0</td><td>1.0 / 1.0</td></tr><tr><td><code>trn_shipping_intl</code></td><td>billion ton-km</td><td>million ton-km</td><td>no</td><td>−0.65</td><td>0.4 / 0.4</td></tr></tbody></table><p class='small muted'>Source: <code>input/gcamdata/inst/extdata/energy/A54.demand.csv</code> and <code>A54.demand_ssp1.csv</code> (v9.1); unchanged since v5.4. Pipelines and off-road machinery are outside transport; since v6.0 there is a separate <code>Off_road</code> industrial sector.</p>"
+  },
+  {
+   "heading": "The nesting tree",
+   "html": "<p>Each demand is met by a tree of <b>supplysectors</b>, <b>tranSubsectors</b> (modes or size classes) and <b>tranTechnologies</b> (drivetrains). At each branch point a logit shares the market among the branches by cost. Pass-through nodes (\"road\", \"LDV\", \"4W\") simply hand the choice down one level.</p><table ><thead><tr><th style=width:30%>Mode / class</th><th style=width:35%>Technologies (v9.1)</th><th style=width:35%>Fuel input markets</th></tr></thead><tbody><tr><td>Cars (Mini Car, Car, Large Car and Truck)</td><td>Liquids, Hybrid Liquids, NG, BEV, FCEV</td><td>refined liquids enduse, delivered gas, elect_td_trn, <b>H2 LDV</b></td></tr><tr><td>2W and 3W</td><td>Liquids, NG, BEV (LA-BEV share-weight 0)</td><td>as above</td></tr><tr><td>Bus; Light/Medium/Heavy truck</td><td>Liquids, Hybrid Liquids, NG, BEV, FCEV</td><td>FCEV uses <b>H2 MHDV</b></td></tr><tr><td>Passenger rail · HSR</td><td>Liquids, Electric · Electric</td><td>elect_td_trn</td></tr><tr><td>Freight rail</td><td>Coal (phased out), Liquids, Electric, BEV, FCEV, Hybrid</td><td>FCEV uses H2 MHDV</td></tr><tr><td>Domestic and international aviation</td><td>Liquids, BEV, Hydrogen</td><td>Hydrogen uses <b>LH2</b></td></tr><tr><td>Domestic and international ship</td><td>Liquids, Hybrid Liquids, BEV, FCEV</td><td>FCEV uses LH2</td></tr><tr><td>Walk, Cycle</td><td>non-motorised</td><td>none (speed 4.8 and 15 km/h)</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Step 1: the cost of a technology per passenger-km",
+   "html": "<p>Start with one vehicle. It burns <i>I</i> units of fuel per vehicle-km at fuel price <i>P<sub>f</sub></i>, costs <i>N</i> per vehicle-km to own and maintain, and carries <i>L</i> people on average (the <b>load factor</b>). The cost of one passenger-km is the cost of one vehicle-km shared among the passengers:</p><div class=\"eq\">P<sub>j</sub> = ( P<sub>f</sub> · I<sub>j</sub> + N<sub>j</sub> ) ÷ L<sub>j</sub><span class=n>(3.3)</span></div><p>In the code this is <code>TranTechnology</code> (<code>cvs/objects/technologies/source/tran_technology.cpp</code>); in the XML, <i>I</i> is the <code>coefficient</code> of the fuel input, <i>N</i> the <code>input-cost</code> of the <code>minicam-non-energy-input</code> named \"non-energy\", and <i>L</i> the <code>loadFactor</code>. The non-fuel cost is built in gcamdata (<code>zenergy_L154.transportation_UCD.R</code>) from capital and operating costs: capital is annualised with a 10 % discount rate over 10 years and divided by the distance a vehicle travels each year.</p><div class=\"eq\">N = [ (purchase + other + infrastructure) × CRF(10 %, 10 y) + maintenance + registration and insurance + tolls ] ÷ annual vkm<span class=n>(3.4)</span></div><p class='small muted'>Data: <code>UCD_trn_data_CORE.csv</code> (petrol car, operating costs, intensities, load factor 2.33, 14,000 vkm/yr) and <code>OTAQ_trn_data_EMF37.csv</code> (BEV purchase, other and charger costs), Middle East, Compact Car, 2020, v9.1. Fuel prices are illustrative round numbers, not GCAM outputs.</p>"
+  },
+  {
+   "heading": "Step 2: the generalised cost of a mode",
+   "html": "<p>A traveller also pays with time. GCAM converts income into an hourly wage, <i>W</i> = GDP per person ÷ 2,000 hours (40 hours × 50 weeks, hard-coded in <code>TranSubsector::getTimeValue</code>), scales it by a <b>time-value multiplier</b> <i>V</i> and divides by the mode's door-to-door <b>speed</b> <i>S</i>:</p><div class=\"eq\">P<sub>i</sub> = Σ<sub>j</sub> s<sub>ji</sub> P<sub>ji</sub> + W · V<sub>i</sub> ÷ S<sub>i</sub>, &nbsp;&nbsp; W = GDP per capita ÷ (40 h × 50 wk)<span class=n>(3.5)</span></div><p>The time term is added only where <code>addTimeValue</code> = 1: on passenger modes and on the 4W node (once, at the LDV-versus-other-modes level), never on freight or on drivetrain choice. Since v8.5 the GDP used here is deflated from 1990 to 1975 dollars inside the code.</p><table ><thead><tr><th style=width:22%>Mode</th><th style=width:22%>Time-value multiplier V (× wage)</th><th style=width:34%>Built from</th><th style=width:22%>Example speed, Middle East (km/h)</th></tr></thead><tbody><tr><td>Domestic aviation</td><td>1.244</td><td>1.45 in-vehicle, 1.066 wait/walk, 53.7 % wait share</td><td>197</td></tr><tr><td>International aviation</td><td>1.291</td><td>41.5 % wait share</td><td>337</td></tr><tr><td>Rail, HSR</td><td>0.80</td><td>0.77 in-vehicle, 10.2 % wait</td><td>42 (HSR 170)</td></tr><tr><td>Bus</td><td>0.808</td><td>0.77 in-vehicle, 12.8 % wait</td><td>21–24</td></tr><tr><td>Cars, 2W/3W</td><td>0.82</td><td>no waiting</td><td>33 (2005) → 40 (2050)</td></tr><tr><td>Walk, Cycle</td><td>1.066</td><td>—</td><td>4–4.8 / 15</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Step 3: sharing — two kinds of logit",
+   "html": "<p>At every branch, shares follow a logit. GCAM has two forms (documentation, <i>Economic Choice</i>). The <b>relative-cost logit</b> compares cost <i>ratios</i>; the <b>absolute-cost logit</b> compares cost <i>differences</i>, scaled by a base value <i>p</i><sub>0</sub>:</p><div class=\"eq\">relative: s<sub>i</sub> = α<sub>i</sub> P<sub>i</sub><sup>γ</sup> ÷ Σ<sub>k</sub> α<sub>k</sub> P<sub>k</sub><sup>γ</sup> &nbsp;&nbsp;&nbsp; absolute: s<sub>i</sub> = α<sub>i</sub> e<sup>γ P<sub>i</sub>/p<sub>0</sub></sup> ÷ Σ<sub>k</sub> α<sub>k</sub> e<sup>γ P<sub>k</sub>/p<sub>0</sub></sup><span class=n>(3.6)</span></div><p>Which form applies where? In the gcamdata files every tranSubsector (choice among drivetrains) is set to <code>absolute-cost-logit</code>, as is the <code>trn_pass_road_LDV_4W</code> sector. The other supplysectors leave <code>logit.type</code> empty, and gcamdata then fills in the default, the <b>relative-cost logit</b> (<code>add_logit_tables_xml</code> in <code>R/xml.R</code>). So <b>mode choice is relative, drivetrain choice is absolute</b>. The absolute form copes with costs that can be near zero or negative, which matters once carbon prices and subsidies enter.</p>"
+  },
+  {
+   "heading": "Step 4: how much travel",
+   "html": "<p>The total service demand grows with income and population and falls with the aggregate price of the service (the average cost that the nest passes up). In <code>minicam_price_elasticity_function.cpp</code>:</p><div class=\"eq\">D<sub>t</sub> = D<sub>t−1</sub> · (Y<sub>t</sub>/Y<sub>t−1</sub>)<sup>α</sup> · (P<sub>t</sub>/P<sub>t−1</sub>)<sup>β</sup> · (N<sub>t</sub>/N<sub>t−1</sub>)<span class=n>(3.7)</span></div><p>Y is GDP per person, P the service price, N population (only for per-capita demands); α and β are the income and price elasticities in the table above. Because α = 1 for passenger travel, travel per person grows as fast as income unless prices rise.</p><table ><thead><tr><th style=width:16%>Version</th><th style=width:84%>Transport change</th></tr></thead><tbody><tr><td>v6.0 (2022)</td><td>CMP 359: hydrogen and transport update; bottom-up LDV battery and fuel-cell costs; BEV/FCEV trucks, buses, locomotives, ships, aircraft; OTAQ/EMF37 file added</td></tr><tr><td>v7.0 (2023)</td><td>gcamdata chunks renamed to <code>zenergy_L154…/L254…</code></td></tr><tr><td>v7.1 (2024)</td><td>CMP 386: trucks re-characterised with Autonomie/BEAN; charger costs on vehicles; bus load factors halved in Africa, India, SE Asia</td></tr><tr><td>v8.0 / v8.1</td><td>final base year 2021 / Ukraine a separate region</td></tr><tr><td>v8.5 (2025)</td><td>units: billion pkm/tkm, 1975$, EJ per billion vkm (found by diffing the repository)</td></tr><tr><td>v8.8</td><td>hydrogen inputs renamed: <code>H2 LDV</code>, <code>H2 MHDV</code>, <code>LH2</code>; fuel-cell share-weights cut from 1 to 0.5</td></tr><tr><td>v9.0–9.1 (2026)</td><td>KLEAM macro module; transport capital tracked (LDV depreciation 1/15 per year)</td></tr></tbody></table>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "research",
+   "title": "Why this matters",
+   "html": "<p style='margin:0'>For a Saudi driver in our worked example, owning and running a compact petrol car costs about <b>$0.29</b> per passenger-km, of which fuel is only <b>$0.014</b>. The <b>time</b> spent driving, valued at a wage, costs almost as much as the car itself: <b>$0.23</b> per passenger-km. In GCAM, cheap fuel barely moves the mode choice; speed and income do.</p>"
+  },
+  {
+   "after": 1,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>Biofuels, e-fuels and ammonia are not transport technologies.</b> Low-carbon liquids reach vehicles only through the <code>refining</code> sector, which blends oil, gas- and coal-to-liquids, ethanols, biodiesel and FT biofuels into one pool, <code>refined liquids enduse</code>. Aviation and shipping draw on the same pool as cars, so a sustainable-aviation-fuel mandate needs a model change. Core v9.1 has no power-to-liquids or DAC-to-liquids technology, and ammonia is an industrial product, not a transport fuel.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Worked example: a compact car in the Middle East, 2020 (2005$)</b></p><ol><li>CRF = 0.10 × 1.1<sup>10</sup> ÷ (1.1<sup>10</sup> − 1) = 0.1627.</li><li>Petrol car capital: 31,342 purchase + 10,970 other = 42,312 $; × 0.1627 = 6,886 $/yr.</li><li>Operating: 448 maintenance + 1,550 registration and insurance = 1,998 $/yr.</li><li>Non-fuel per vehicle-km: (6,886 + 1,998) ÷ 14,000 km = 0.635 $/vkm.</li><li>Fuel: 3.32 MJ/vkm × 10 $/GJ (illustrative) = 0.0332 $/vkm.</li><li>Per passenger-km: (0.635 + 0.0332) ÷ 2.33 persons = <b>0.286 $/pkm</b>.</li><li>Battery car, same steps (capital 51,991 $ incl. 1,409 $ charger; 1.03 MJ/vkm at 25 $/GJ): <b>0.328 $/pkm</b>.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> the BEV is 15 % dearer per pkm in 2020; capital is 74 % of the petrol car's cost and fuel only 5 %</p>"
+  },
+  {
+   "after": 2,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Which file sets the cost you think you are changing?</b> For cars, trucks, buses, rail, aviation and ships, gcamdata overwrites the UC Davis (UCD) values with <code>OTAQ_trn_data_EMF37.csv</code>: \"MODIFIED intensity and capital cost … based on AUTONOMIE and TEMPO harmonization\" (source workbook dated 14 March 2023). In our example the petrol car's costs still come from UCD (no OTAQ row), but the BEV's come from OTAQ. Edit the wrong file and nothing changes.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Worked example: the price of time</b></p><ol><li>GDP per person $20,000 (illustrative) ÷ 2,000 h = W = $10 per hour.</li><li>Car: 10 × 0.82 ÷ 35 km/h = 0.234 $/pkm.</li><li>Bus: 10 × 0.808 ÷ 21 km/h = 0.385 $/pkm — slower, so time costs more than the bus fare.</li><li>Rail: 10 × 0.80 ÷ 42 km/h = 0.190 $/pkm.</li><li>Double the income and every time cost doubles; fast modes gain on slow ones.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> income growth pushes travellers towards faster modes even if money costs stay the same</p>"
+  },
+  {
+   "after": 4,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Worked example: calibrating a share-weight</b></p><ol><li>Observed 2021: BEVs take 1 % of new car pkm, though they cost 15 % more (p<sub>BEV</sub> = 1.15 p<sub>0</sub>).</li><li>With α<sub>ICE</sub> = 1 and γ = −8: s<sub>BEV</sub>/s<sub>ICE</sub> = α<sub>BEV</sub> · e<sup>−8(1.15 − 1)</sup> = α<sub>BEV</sub> · e<sup>−1.2</sup>.</li><li>Set the ratio to 0.01/0.99 = 0.0101: α<sub>BEV</sub> = 0.0101 ÷ 0.3012 = 0.0335.</li><li>Check: share = 0.010, the observed 1 %.</li><li>Now the future path of α<sub>BEV</sub> (0.034 → 1 by 2030 in the s-curve) does as much work as any cost change.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> α<sub>BEV</sub> ≈ 0.034; the share-weight hides everything costs do not explain</p>"
+  },
+  {
+   "after": 5,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p style='margin:0 0 4px'><b>Where it lives (v9.1).</b> Chunks: <code>input/gcamdata/R/zenergy_L154.transportation_UCD.R</code> (calibration, costs, intensities by UCD region) and <code>zenergy_L254.transportation_UCD.R</code> (level-2 tables such as <code>L254.StubTranTechCost</code>, <code>L254.StubTranTechLoadFactor</code>, <code>L254.tranSubsectorVOTT</code>, <code>L254.IncomeElasticity_trn</code>); XML writer <code>zenergy_xml_transportation_UCD_CORE.R</code> → <code>transportation_UCD_CORE.xml</code>, <code>_SSP1</code>, <code>_SSP3</code>, <code>_SSP5</code>. Assumptions: <code>A54.*_revised.csv</code> (the <code>_revised</code> files are the ones used), <code>UCD_trn_data_*.csv</code>, <code>OTAQ_trn_data_EMF37.csv</code>, mappings <code>UCD_techs_revised.csv</code>, <code>UCD_ctry.csv</code>.</p><p style='margin:0'><b>Calibration.</b> IEA transport energy by country and fuel is split into UCD modes, size classes and technologies with 2005 UCD shares, scaled to GCAM end-use energy, converted to vkm (÷ intensity) and pkm (× load factor); share-weights then reproduce each base year to 2021. Parameters exist for 14 UCD regions and are mapped to GCAM's 32: Saudi values are generic \"Middle East\" values.</p>"
+  },
+  {
+   "after": 5,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>Two documentation pages disagree with the code.</b> <code>en_technologies.html</code> still gives 1990$ and BTU per vehicle-km (v8.2 units). And the docs' general advice that passenger transport suits the relative-cost logit is true for mode choice but not for drivetrain choice, which the input files set to the absolute-cost form. Always check the XML you are running.</p>"
+  },
+  {
+   "after": 5,
+   "kind": "try",
+   "title": "Try it",
+   "html": "<ol style='margin:0'><li>Using Eq. 3.3, what happens to the petrol car's cost per pkm if the load factor falls from 2.33 to 2.0 (the 2050 value)? (Answer key.)</li><li>With γ = −8, how much cheaper must a BEV be than a petrol car for it to take 80 % of the pair, with equal share-weights?</li><li>Why does a carbon price of $200/tCO<sub>2</sub> change car choice less than a 30 % change in battery-car capital cost? Use Figure 3.3.</li></ol>"
+  }
+ ],
+ "takeaways": [
+  "Passenger transport is a tree: service → modes → road → light vehicles → 4W → technologies",
+  "Technology cost per pkm = (non-fuel cost + fuel price × intensity) ÷ load factor",
+  "Mode cost adds wage × time-value multiplier ÷ speed, with wage = GDP per person ÷ 2,000 h",
+  "Modes compete by relative-cost logits; technologies inside a mode by absolute-cost logits",
+  "Edit OTAQ_trn_data_EMF37.csv, not only the UC Davis data, when changing most vehicle costs"
+ ],
+ "quiz": [
+  {
+   "q": "GCAM's hourly wage for the value of time is…",
+   "options": [
+    "A fixed $10 per hour",
+    "GDP per person ÷ 2,000 hours",
+    "The minimum wage",
+    "Fuel price ÷ speed"
+   ],
+   "answer": 1,
+   "explain": "TranSubsector uses GDP per capita over 40 hours × 50 weeks."
+  },
+  {
+   "q": "Car occupancy (load factor) rises from 1.5 to 2.0. The cost per passenger-km…",
+   "options": [
+    "Rises",
+    "Falls by a quarter",
+    "Does not change",
+    "Doubles"
+   ],
+   "answer": 1,
+   "explain": "Cost per vkm is divided by people per vehicle: 1.5/2.0 = 0.75."
+  },
+  {
+   "q": "Which logit type is used for technologies inside the Car mode?",
+   "options": [
+    "Relative-cost",
+    "Absolute-cost",
+    "Nested CES",
+    "None; costs are fixed"
+   ],
+   "answer": 1,
+   "explain": "A54.tranSubsector_logit_revised.csv sets absolute-cost logits within modes (Car −8)."
+  },
+  {
+   "q": "Why do faster modes gain share as countries get richer, even with unchanged prices?",
+   "options": [
+    "Fuel gets cheaper",
+    "Time costs more as wages rise",
+    "Speeds rise automatically",
+    "Share-weights rise"
+   ],
+   "answer": 1,
+   "explain": "The time term grows with the wage, penalising slow modes."
+  },
+  {
+   "q": "Where do most vehicle costs and intensities in GCAM 9.1 come from?",
+   "options": [
+    "Only UC Davis data",
+    "OTAQ_trn_data_EMF37.csv, overriding UC Davis values",
+    "IEA balances",
+    "The SSP database"
+   ],
+   "answer": 1,
+   "explain": "gcamdata overwrites UCD values with the 2023 EMF37/Autonomie/TEMPO harmonisation for most modes."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Load factor",
+   "def": "People (or tonnes) carried per vehicle; divides the vehicle's cost and energy per km."
+  },
+  {
+   "term": "Value of time",
+   "def": "Wage × time-value multiplier ÷ speed: the cost of the hours spent travelling."
+  },
+  {
+   "term": "Generalised cost",
+   "def": "Money cost plus time cost of travelling one passenger-km by a mode."
+  },
+  {
+   "term": "Absolute-cost logit",
+   "def": "A logit on cost differences (exp of cost), used for technologies within a mode."
+  },
+  {
+   "term": "Service demand",
+   "def": "Total passenger-km or tonne-km demanded, driven by income and price elasticities."
+  },
+  {
+   "term": "UCD database",
+   "def": "The University of California, Davis transport database behind GCAM's base transport data."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Energy demand (transportation)",
+   "url": "https://jgcri.github.io/gcam-doc/demand_energy.html",
+   "why": "The official description of GCAM's transport sectors."
+  },
+  {
+   "title": "GCAM change proposal 359: hydrogen and transportation",
+   "url": "https://jgcri.github.io/gcam-doc/cmp/359-Hydrogen_and_transportation.pdf",
+   "why": "How hydrogen fuels for transport were restructured."
+  },
+  {
+   "title": "Mishra et al., UC Davis transportation database documentation",
+   "url": "https://itspubs.ucdavis.edu/publication_detail.php?id=1884",
+   "why": "Source of GCAM's base transport data."
+  },
+  {
+   "title": "Kyle and Kim (2011), alternative light-duty vehicle technologies",
+   "url": "https://doi.org/10.1016/j.enpol.2011.03.016",
+   "why": "Foundational GCAM paper on vehicle technology choice."
+  },
+  {
+   "title": "gcam-core input data (A54 assumption files)",
+   "url": "https://github.com/JGCRI/gcam-core",
+   "why": "Look in input/gcamdata/inst/extdata/energy for A54.* transport files."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 3 handbook (PDF)",
+   "path": "downloads/Go3-Research-Handbook-GCAM-Transport.pdf"
+  },
+  {
+   "label": "Go 3 transport kit (zip)",
+   "path": "downloads/go3-transport-kit.zip"
+  }
+ ],
+ "explorer": {
+  "widget": "trncost",
+  "intro": "Change income, fuel price, the BEV cost, car occupancy and the carbon price. Watch money cost, time cost, mode shares and the BEV share move.",
+  "predict": "If income per person doubles while everything else stays the same, which mode gains share: walking, bus, rail or car? Why?"
+ },
+ "code": [
+  {
+   "title": "Generalised cost and mode shares, GCAM-style",
+   "lang": "python",
+   "source": "# Generalised cost of passenger modes, GCAM-style (illustrative numbers, 2005$)\n# money cost per pkm + wage x time-value multiplier / speed;  wage = GDP per person / 2,000 h\ngdp_per_person = 18000          # $ per year\nwage = gdp_per_person / 2000    # $ per hour\n\n#        name     money $/pkm  multiplier  speed km/h\nmodes = [(\"Walk\",  0.000,      1.066,       4.8),\n         (\"Bus\",   0.070,      0.808,      22.0),\n         (\"Rail\",  0.015,      0.800,      42.0),\n         (\"Car\",   0.294,      0.820,      35.0)]\n\ncosts = {}\nfor name, money, mult, speed in modes:\n    time_cost = wage * mult / speed\n    costs[name] = money + time_cost\n    print(f\"{name:5s} money {money:.3f} + time {time_cost:.3f} = {costs[name]:.3f} $/pkm\")\n\n# Relative-cost logit across modes (exponent -2, equal share-weights for illustration)\nw = {k: c ** -2 for k, c in costs.items()}\ntotal = sum(w.values())\nprint(\"shares:\", {k: round(v / total, 3) for k, v in w.items()})\n\n# Double income: time becomes dearer, so slow modes lose share\nwage2 = 2 * wage\nc2 = {n: m + wage2 * v / s for n, m, v, s in modes}\nw2 = {k: c ** -2 for k, c in c2.items()}\nprint(\"shares at 2x income:\", {k: round(v / sum(w2.values()), 3) for k, v in w2.items()})\n",
+   "runnable": true,
+   "explain": "Money cost per pkm plus wage × time-value multiplier ÷ speed, then a relative-cost logit across modes. Share-weights are equal here, so rail's large share is an artefact: in GCAM, share-weights are calibrated to observed shares. Try doubling income.",
+   "expected": "Walk  money 0.000 + time 1.999 = 1.999 $/pkm\nBus   money 0.070 + time 0.331 = 0.401 $/pkm\nRail  money 0.015 + time 0.171 = 0.186 $/pkm\nCar   money 0.294 + time 0.211 = 0.505 $/pkm\nshares: {'Walk': 0.006, 'Bus': 0.159, 'Rail': 0.734, 'Car': 0.1}\nshares at 2x income: {'Walk': 0.005, 'Bus': 0.16, 'Rail': 0.668, 'Car': 0.167}"
+  },
+  {
+   "title": "The transport toy model (Python)",
+   "lang": "python",
+   "file": "labs/go3/toy/gcam_transport_toy.py",
+   "explain": "A stand-alone passenger model with GCAM's nesting, logit types and exponents, value of time and share-weight calibration. Five scenarios to 2100; Python and R give identical results. Run it on your computer (it writes toy_results.csv)."
+  },
+  {
+   "title": "The same toy model in R",
+   "lang": "r",
+   "file": "labs/go3/toy/gcam_transport_toy.R",
+   "explain": "Identical results to the Python version."
+  }
+ ]
+}

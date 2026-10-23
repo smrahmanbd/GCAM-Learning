@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.5 Building transport scenarios · GCAM in three goes</title>
+<meta name="description" content="Build transport scenarios as GCAM add-on XML: costs, share-weights with interpolation rules, load factors and speeds, carbon taxes, net-zero constraints and a zero-emission-vehicle credit market, run as a batch.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+</head>
+<body data-module="3.5" data-go="3">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../go1.html">Go 1 · Big picture</a><a href="../go2.html">Go 2 · Components</a><a href="../go3.html" aria-current=page>Go 3 · Research</a><a href="../toolkit.html">Toolkit</a><a href="../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html">Home</a> / <a href="../go3.html">Go 3: Research with GCAM: transport</a> / Module 3.5</p>
+<header class="mhead go3"><p class="eyebrow"><span class="golevel">Go 3 · Research</span> Module 3.5, 60 minutes, implementation</p><h1>Building transport scenarios</h1><p class="summary">Build transport scenarios as GCAM add-on XML: costs, share-weights with interpolation rules, load factors and speeds, carbon taxes, net-zero constraints and a zero-emission-vehicle credit market, run as a batch.</p><div><span class="sys-chip"><i class="c-energy"></i>Energy</span><span class="sys-chip"><i class="c-policy"></i>Policy</span></div></header>
+<div class="mlayout"><nav class="outline" aria-label="On this page"><p>On this page</p><ol><li><a href="#start">Research brief</a></li><li><a href="#picture">The system under study</a></li><li><a href="#s1">The anatomy of an add-on file</a></li><li><a href="#s2">Lever 1: costs</a></li><li><a href="#s3">Lever 2: share-weights and their interpolation rules</a></li><li><a href="#s4">Lever 3: how much service, at what speed</a></li><li><a href="#s5">Lever 4: policies</a></li><li><a href="#s6">Batch runs: the scenario matrix as a file</a></li><li><a href="#s7">Systematic changes: go through gcamdata</a></li><li><a href="#code">Implement it</a></li><li><a href="#explore">Stress-test it</a></li><li><a href="#takeaways">Research notes</a></li><li><a href="#check">Check yourself</a></li><li><a href="#more">Reading list</a></li></ol><p><a href="../mindmap-go3.html">Go 3 mind map</a></p></nav>
+<div class="mmain"><section id="start"><h2>Research brief</h2><h3 style="margin-top:0">In this module you will</h3><ul class='outcomes'><li>Write an add-on XML file that changes a technology&#x27;s cost or a mode&#x27;s load factor</li><li>Set a share-weight path with interpolation rules for a new technology</li><li>Implement a carbon tax, an emissions constraint and a ZEV standard as a credit market</li><li>Run a scenario matrix with a batch file, and know when to change gcamdata instead</li></ul><div class="narration" data-module="3.5"><div class="narr-bar"><button class="btn narr-play" type="button">Listen</button><button class="btn quiet narr-stop" type="button">Stop</button><span class="muted small">Spoken overview</span><button class="narr-lang" type="button" data-lang="en" aria-pressed="true">English</button><button class="narr-lang" type="button" data-lang="ar" aria-pressed="false">العربية</button><span class="narr-status" aria-live="polite"></span></div><details><summary>Read the transcript</summary><p class="narr-en">This is where your design becomes files. Each scenario is a small add-on XML file that repeats GCAM&#x27;s own nesting, region, sector, subsector and technology, down to the value you want to change, and nothing else. Load it after the base files in the configuration, because later files win. Lever one is cost: for example, cut the non-fuel cost of battery electric cars by thirty percent from 2030. Lever two is share-weights: they decide when a new technology can enter, and interpolation rules decide how the path continues after the last year you set. Lever three is service: load factors and speeds. Lever four is policy. A carbon tax is a fixed price path. A net-zero target is an emissions constraint, and GCAM finds the price that meets it. A zero-emission vehicle standard can be built as a credit market that cars buy into and electric cars supply. Run all scenarios together with a batch file. And when a change must apply everywhere and consistently, make it in gcamdata instead of by hand. None of the course&#x27;s XML templates has yet been run in a live GCAM installation, so test them first.</p><p class="narr-ar" lang="ar" dir="rtl" hidden>هنا يتحول تصميمك إلى ملفات. فكل سيناريو ملف إضافي صغير بصيغة XML يكرر تفرّع النموذج نفسه، أي المنطقة والقطاع والقطاع الفرعي والتقنية، وصولًا إلى القيمة التي تريد تغييرها، ولا شيء غيرها. حمِّله بعد الملفات الأساسية في ملف الإعدادات، لأن الملف اللاحق هو الذي يُعتمد. الرافعة الأولى هي التكلفة: مثلًا، خفض التكلفة غير الوقودية للسيارات الكهربائية بالبطاريات بنسبة ثلاثين في المئة اعتبارًا من عام 2030. والرافعة الثانية هي أوزان الحصص: فهي تحدد متى يمكن لتقنية جديدة أن تدخل، وتحدد قواعد الاستيفاء كيف يستمر المسار بعد آخر سنة تحددها. والرافعة الثالثة هي الخدمة: معاملات الإشغال والسرعات. والرافعة الرابعة هي السياسات. فضريبة الكربون مسار سعري ثابت. وهدف الحياد الصفري قيدٌ على الانبعاثات يجد النموذج السعر الذي يحققه. ويمكن بناء معيار المركبات عديمة الانبعاثات سوقًا للأرصدة تشتري منه السيارات التقليدية وتورّد إليه السيارات الكهربائية. شغّل جميع السيناريوهات معًا بملف تشغيل دفعي. وعندما يجب أن ينطبق التغيير في كل مكان وبصورة متسقة، فاجعله في gcamdata بدلًا من التعديل اليدوي. ولم يُشغَّل أي من قوالب XML في المقرر بعد على تثبيت فعلي للنموذج، فاختبرها أولًا.</p></details></div></section><section id="picture"><h2>The system under study</h2><p class="prose"><b>How add-on files layer onto the base inputs.</b> Select a box for detail, or play the walkthrough.</p><div class="diagram-box"><div id="dg-3-5" data-diagram="m3.5"><p class="muted">This diagram needs JavaScript. Base files load first; add-ons and policies override them; the batch file runs every combination.</p></div></div></section><section id="s1"><h2>The anatomy of an add-on file</h2><div class="prose"><p>An add-on XML file repeats the path from <code>&lt;world&gt;</code> down to the object you want to change and sets only the values you change. GCAM reads files in the order the configuration lists them; when a later file names an object that already exists, it <b>updates</b> it rather than creating a new one. So an add-on must come <b>after</b> the core file that creates the object, and every name on the path (region, supplysector, tranSubsector, technology) must match exactly. A misspelt name does not cause an error: it quietly creates a new, empty object that nothing uses.</p><table ><thead><tr><th style=width:15%>Path level</th><th style=width:27%>XML element</th><th style=width:30%>Transport example (v9.1)</th><th style=width:28%>Where the names come from</th></tr></thead><tbody><tr><td>Region</td><td><code>region name=</code></td><td>Middle East, USA, China</td><td><code>common/GCAM_region_names.csv</code></td></tr><tr><td>Sector</td><td><code>supplysector name=</code></td><td>trn_pass_road_LDV_4W, trn_freight_road</td><td><code>energy/A54.sector.csv</code></td></tr><tr><td>Mode</td><td><code>tranSubsector name=</code></td><td>Car, Large Car and Truck, Bus, Passenger Rail</td><td><code>A54.tranSubsector_logit_revised.csv</code></td></tr><tr><td>Technology (regional)</td><td><code>stub-technology name=</code></td><td>Liquids, BEV, FCEV, NG, Hybrid Liquids</td><td><code>mappings/UCD_techs_revised.csv</code></td></tr><tr><td>Technology (global)</td><td><code>tranTechnology</code> in <code>global-technology-database</code></td><td>share-weights and interpolation rules</td><td><code>A54.globaltranTech_shrwt_revised.csv</code></td></tr></tbody></table></div><div class="callout research"><h4>Why this matters</h4><p style='margin:0'>In GCAM's Middle East data, a petrol compact car costs about <b>$0.286</b> per passenger-km in money and a battery car <b>$0.328</b> (2020, our worked example). That 15 % gap gives battery cars only 23 % of the pair at the car exponent of −8. Cut the battery car's non-fuel cost by 30 % and the gap flips to -19 %, and its share jumps to 81 %. One number in one add-on file moves the whole story — which is why every number in that file needs a source.</p></div><div class="callout gcam"><h4>In GCAM</h4><p style='margin:0'>Element names were checked against the C++ XML names in <code>cvs/objects/</code> and the ModelInterface headers in <code>input/gcamdata/inst/extdata/mi_headers/ModelInterface_headers.txt</code> (gcam-core v9.1). The fastest way to get a correct path is to open the core file you are modifying, <code>transportation_UCD_CORE.xml</code>, find the object, and copy its parents.</p></div></section><section id="s2"><h2>Lever 1: costs</h2><div class="prose"><p>The non-fuel cost of a transport technology is its <code>input-cost</code> on the <code>minicam-non-energy-input</code>, in dollars per <b>vehicle</b>-km. GCAM divides it by the load factor to get dollars per passenger-km (Eq. 3.3). Fuel enters through a <code>minicam-energy-input</code> with a <b>coefficient</b> (energy per vehicle-km) whose price GCAM finds in the fuel market.</p></div><div class="callout model"><h4>Worked calculation</h4><p style='margin:0 0 3px'><b>What a 30 % cut in BEV non-fuel cost does (Middle East compact car, 2020 values, illustrative fuel prices)</b></p><ol><li>Non-fuel cost per vkm: 0.741 → 0.741 × 0.7 = 0.518 $/vkm.</li><li>Add fuel 0.0257 $/vkm, divide by load factor 2.33: (0.518 + 0.0257) ÷ 2.33 = 0.233 $/pkm.</li><li>Compare the petrol car at 0.286 $/pkm: BEV is now -18.5 % (it was +14.8 %).</li><li>Absolute-cost logit (Eq. 3.6), exponent −8, p<sub>0</sub> = ICE cost as in Figure 3.4: BEV share of the pair 23 % → 81 %.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> BEV share 23 % → 81 % of the two-car choice (money cost only; time cost is the same for both)</p></div><div class="callout trap"><h4>Pitfall</h4><p style='margin:0'><b>Units changed in v8.5.</b> Transport non-fuel costs moved from 1990$ to <b>1975$</b> per vkm and intensities from BTU per vkm to <b>EJ per billion vkm</b>; service is in <b>billion</b> pkm/tkm. A 1990$ value must be multiplied by about 0.47 (gcamdata's <code>gdp_deflator(1975, 1990)</code> = 27.80 ÷ 59.31, from the BEA deflator series in <code>R/pipeline-helpers.R</code>) before it goes into a v9.1 add-on. Copying a v8.2 tutorial value unchanged makes the car about twice as expensive, and the model will still solve.</p></div></section><section id="s3"><h2>Lever 2: share-weights and their interpolation rules</h2><div class="prose"><p>Share-weights (module 3.1) are where calibration lives, so they are also where hidden assumptions live. Future share-weights for transport technologies are set globally in the <code>global-technology-database</code> and moved between years by <b>interpolation rules</b>. If you set a share-weight for 2025 but leave the default rule in place, the rule will re-impose its own path for later years. To make your value stick, add an <code>interpolation-rule</code> with a <code>fixed</code> function (or a path you choose) in the same file.</p></div><div class="callout research"><h4>Research note</h4><p style='margin:0'><b>Report share-weights as a scenario dimension.</b> In the current files the BEV share-weight reaches 1 by 2030 on an s-curve; in v5.4 it was 0.25 in 2030 and 0.625 in 2050. A study that sets BEV share-weights to 1 from 2025 (as some US studies do) is answering "what if consumers treated BEVs like petrol cars from now on?" — a legitimate question, but not a forecast and not a policy. In module 3.6's tornado chart the share-weight path is the second-largest influence, after cost.</p></div></section><section id="s4"><h2>Lever 3: how much service, at what speed</h2><div class="prose"><p>Three mode-level levers change how people travel rather than what they drive. The <b>load factor</b> (passengers per vehicle) divides every per-vehicle cost and intensity; the <b>speed</b> of a mode sets its time cost; the <b>income and price elasticities</b> of <code>trn_pass</code> set how much travel there is at all (module 3.2).</p></div><div class="callout model"><h4>Worked calculation</h4><p style='margin:0 0 3px'><b>Fewer people per car: the load factor falls from 2.33 (2020) to 2.0 (the UC Davis 2050 value, petrol compact car)</b></p><ol><li>Money cost per vkm = non-fuel 0.635 + fuel 0.0332 = 0.668 $/vkm.</li><li>At 2.33 passengers: 0.668 ÷ 2.33 = 0.286 $/pkm.</li><li>At 2.0 passengers: 0.668 ÷ 2.0 = 0.334 $/pkm, +17 %.</li><li>Energy and CO<sub>2</sub> per pkm rise by the same 17 %, because intensity is also per vehicle-km.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> +17 % on cost, energy and CO₂ per passenger-km</p></div><div class="callout gcam"><h4>In GCAM</h4><p style='margin:0'>Input element <code>&lt;loadFactor&gt;</code>; output database name <code>load-factor</code> (<code>reporting/source/xml_db_outputter.cpp</code>), which is what the query "transport load factors" reads. Mode-level levers sit on <code>tranSubsector</code>: <code>&lt;share-weight year=…&gt;</code>, <code>&lt;speed year=…&gt;</code>, <code>&lt;time-value-multiplier year=…&gt;</code>. Demand elasticities sit on <code>&lt;energy-final-demand name="trn_pass"&gt;</code> as <code>&lt;income-elasticity year=…&gt;</code> and <code>&lt;price-elasticity year=…&gt;</code>.</p></div></section><section id="s5"><h2>Lever 4: policies</h2><div class="prose"><p>GCAM has three policy objects that cover almost every transport policy question. Module 3.4 explained when to use which; here is how each looks.</p><p><b>A carbon price</p></b><p><b>An emissions constraint (net zero)</p></b><p>With <code>&lt;constraint year=…&gt;</code> instead of <code>fixedTax</code>, GCAM treats the emissions cap as a market and solves for the price that clears it (the shadow price). Linked gases enter through <code>&lt;linked-ghg-policy&gt;</code> with <code>price-adjust</code> (global-warming potential) and <code>demand-adjust</code>; setting <code>demand-adjust</code> to 0 for <code>CO2_LUC</code> restricts the cap to fossil and industrial CO<sub>2</sub>, as the core file <code>global_ffict.xml</code> does.</p><p><b>A ZEV standard as a credit market</p></b><p>A mandate such as "30 % of car passenger-km must be zero-emission" becomes a market for credits. Every car technology <b>demands</b> 0.3 credits per unit of output; BEVs and FCEVs <b>supply</b> 1 credit per unit; a <code>policy-portfolio-standard</code> of type <code>RES</code> makes demand equal supply. GCAM finds the credit price that does it: a tax on petrol cars and a subsidy to zero-emission cars at the same time. Note the share is in <b>passenger-km</b>, not vehicle sales, because GCAM has no vehicle counts.</p></div><div class="callout model"><h4>Worked calculation</h4><p style='margin:0 0 3px'><b>Units of a carbon price in GCAM</b></p><ol><li>Policy files declare <code>&lt;price-unit&gt;1990$/tC&lt;/price-unit&gt;</code>: dollars of 1990 per tonne of <b>carbon</b>.</li><li>One tonne of carbon is 44 ÷ 12 = 3.667 tonnes of CO<sub>2</sub>.</li><li>So $100 per tonne CO<sub>2</sub> (in 1990$) = 100 × 3.667 = $367 per tonne C.</li><li>Convert today's dollars to 1990$ with the GDP deflator first; say which year's dollars your paper reports.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> $100/tCO₂ = $367/tC (both in 1990$)</p></div><div class="callout model"><h4>Worked calculation</h4><p style='margin:0 0 3px'><b>Balance of a 30 % ZEV credit market</b></p><ol><li>Credit demand = 0.3 × (all car pkm). Credit supply = 1 × (ZEV car pkm).</li><li>Market clears when 1 × ZEV pkm = 0.3 × all pkm, so ZEV pkm ÷ all pkm = 0.3.</li><li>If ZEVs already exceed 30 % without the policy, supply exceeds demand: the credit price falls to zero (the constraint does not bind).</li><li>If they fall short, the credit price rises until enough cars switch — that price is the policy's marginal cost per credit.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> the credit price is the cost of the last unit of compliance</p></div><div class="callout research"><h4>Research note</h4><p style='margin:0'><b>Not yet verified in a running model:</b> (1) whether a transport-only carbon price can be set by renaming the CO<sub>2</sub> object on transport technologies (<code>CO2_TRN</code>); (2) whether negative <code>output-ratio</code> values are accepted for an intensity-style standard; (3) a sustainable-aviation-fuel mandate, which needs an aviation-specific liquids pass-through sector because aviation draws on the generic <code>refined liquids enduse</code>. Test each on one region and one period before building a study on it.</p></div></section><section id="s6"><h2>Batch runs: the scenario matrix as a file</h2><div class="prose"><p>GCAM's batch mode runs every combination of the component sets listed in a batch file. Each <code>ComponentSet</code> is one dimension (for example "BEV cost" with Reference and Low); each <code>FileSet</code> inside it is one level and lists the add-on files for it. Point <code>BatchFileName</code> in the configuration to the batch file and set <code>BatchMode</code> to 1.</p></div></section><section id="s7"><h2>Systematic changes: go through gcamdata</h2><div class="prose"><p>For changes to many regions or years, edit the source tables and rebuild the XML rather than writing long add-ons. Remember that <code>OTAQ_trn_data_EMF37.csv</code> overrides the UC Davis table for most vehicle costs and intensities, so editing <code>UCD_trn_data_CORE.csv</code> alone may change nothing. For a clean record of your change, write a <b>user-modification chunk</b> and pass it to the driver:</p><p class='small muted'>Pattern from <code>input/gcamdata/vignettes/usermod_vignette.Rmd</code> and <code>R/driver.R</code> (gcam-core v9.1). Check how the year column is named after reading ("2030" vs <code>X2030</code>) in your version.</p></div><div class="callout trap"><h4>Pitfall</h4><p style='margin:0'><b>"My add-on changed nothing."</b> The usual causes, in order: (1) the file is listed before the core transport file; (2) a name on the path is misspelt or uses a v8.2 name (hydrogen fuels were renamed in v8.8 to <code>H2 LDV</code>, <code>H2 MHDV</code>, <code>LH2</code>); (3) an interpolation rule overwrote your share-weight; (4) the value is in the old units and so is a factor of 1,000 off in the other direction. Always query the variable you changed.</p></div><div class="callout try"><h4>Try it</h4><ol style='margin:0'><li>Write the XML path (just the element names and attributes) that sets the speed of Passenger Rail in the Middle East to 60 km/h in 2040.</li><li>A v8.2 paper reports a BEV non-fuel cost of 0.30 1990$/vkm. What value goes into a v9.1 add-on? (Use the deflator ratio above.)</li><li>Design a ZEV credit market for trucks only. Which technologies demand credits, which supply them, and what is the coefficient for a 20 % standard?</li></ol></div></section><section id="code"><h2>Implement it</h2><p class="prose">Real files from the Go 3 transport kit. XML and analysis scripts are for your own GCAM installation; Python marked 'Runs in your browser' runs here.</p><div class="codeblock" data-module="3.5"><div class="codehead"><b>Lower BEV costs from 2030</b><span class="lang">XML</span><button class="btn quiet code-copy" type="button">Copy</button><a class="btn quiet" href="../labs/go3/xml/trn_bev_cost_low.xml" download>Download</a></div><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!--
+  trn_bev_cost_low.xml : BEV cars 30% cheaper (non-fuel cost) from 2030, one region.
+
+  PURPOSE     Technology-cost sensitivity for battery-electric cars (Go 3, module 3.5).
+  MODIFIES    transportation_UCD_CORE.xml (built by gcamdata chunk
+              input/gcamdata/R/zenergy_L254.transportation_UCD.R, table L254.StubTranTechCost).
+  CONFIG      Add to &lt;ScenarioComponents&gt; AFTER the &quot;transportation&quot; entry, e.g.
+                &lt;Value name=&quot;trn_bev_cost_low&quot;&gt;../input/user/trn_bev_cost_low.xml&lt;/Value&gt;
+              Later files overwrite earlier ones for the same element.
+  STRUCTURE   Header StubTranTechCost in
+              input/gcamdata/inst/extdata/mi_headers/ModelInterface_headers.txt (line 506):
+              region / supplysector / tranSubsector / stub-technology / period /
+              minicam-non-energy-input name=&quot;non-energy&quot; / input-cost.
+              Names: supplysector &quot;trn_pass_road_LDV_4W&quot;, tranSubsector &quot;Car&quot;, technology &quot;BEV&quot;
+              (input/gcamdata/inst/extdata/energy/mappings/UCD_techs_revised.csv).
+  UNITS       GCAM 9.1 (v8.5+): 1975$ per vehicle-km (L254 converts 2005$/vkm with gdp_deflator(2005,1975)).
+              GCAM 8.2 and earlier: 1990$/vkm. Do not copy numbers between versions.
+  VALUES      PLACEHOLDERS. The numbers below are NOT the GCAM base values. Generate real ones with
+                python scale_from_base.py  (options shown as name=value; on the command line write them with two leading hyphens, see README)
+                base=../input/gcamdata/xml/transportation_UCD_CORE.xml \
+                  region=&quot;Middle East&quot; sector=trn_pass_road_LDV_4W subsector=Car tech=BEV \
+                  field=input-cost factor=0.70 from-year=2030 out=trn_bev_cost_low.xml
+              which multiplies your own base-file values by 0.70.
+  REGION      &quot;Middle East&quot; is a GCAM 9.1 region name. The public release has no separate Saudi Arabia
+              region (GCAM-KSA splits it out; that version is distributed by KAPSARC, not in gcam-core).
+  STATUS      Not run in GCAM. Element names checked against the gcam-v9.1 source and headers.
+--&gt;
+&lt;scenario&gt;
+  &lt;world&gt;
+    &lt;region name=&quot;Middle East&quot;&gt;
+      &lt;supplysector name=&quot;trn_pass_road_LDV_4W&quot;&gt;
+        &lt;tranSubsector name=&quot;Car&quot;&gt;
+          &lt;stub-technology name=&quot;BEV&quot;&gt;
+            &lt;period year=&quot;2030&quot;&gt;&lt;minicam-non-energy-input name=&quot;non-energy&quot;&gt;&lt;input-cost&gt;0.0700&lt;/input-cost&gt;&lt;/minicam-non-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2035&quot;&gt;&lt;minicam-non-energy-input name=&quot;non-energy&quot;&gt;&lt;input-cost&gt;0.0680&lt;/input-cost&gt;&lt;/minicam-non-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2040&quot;&gt;&lt;minicam-non-energy-input name=&quot;non-energy&quot;&gt;&lt;input-cost&gt;0.0660&lt;/input-cost&gt;&lt;/minicam-non-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2045&quot;&gt;&lt;minicam-non-energy-input name=&quot;non-energy&quot;&gt;&lt;input-cost&gt;0.0650&lt;/input-cost&gt;&lt;/minicam-non-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2050&quot;&gt;&lt;minicam-non-energy-input name=&quot;non-energy&quot;&gt;&lt;input-cost&gt;0.0640&lt;/input-cost&gt;&lt;/minicam-non-energy-input&gt;&lt;/period&gt;
+          &lt;/stub-technology&gt;
+        &lt;/tranSubsector&gt;
+      &lt;/supplysector&gt;
+    &lt;/region&gt;
+  &lt;/world&gt;
+&lt;/scenario&gt;
+</code></pre><div class="explain-code">Repeats region → supplysector → subsector → technology → period down to the input-cost. Placeholder numbers: use xml/scale_from_base.py to scale your own base file. Not run in GCAM.</div><div class="code-out" hidden aria-live="polite"></div></div><div class="codeblock" data-module="3.5"><div class="codehead"><b>Share-weight path for zero-emission vehicles</b><span class="lang">XML</span><button class="btn quiet code-copy" type="button">Copy</button><a class="btn quiet" href="../labs/go3/xml/trn_zev_shareweights.xml" download>Download</a></div><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!--
+  trn_zev_shareweights.xml : faster acceptance of zero-emission cars (BEV, FCEV share-weights).
+
+  PURPOSE     Represent non-cost barriers falling (charging, model availability, preferences).
+              A share-weight is a calibrated preference term: changing it is a scenario ASSUMPTION,
+              not a model result. Report it as such.
+  MODIFIES    Global technology database defaults from
+              input/gcamdata/inst/extdata/energy/A54.globaltranTech_shrwt_revised.csv
+              (Car BEV: 0 to 2025, 1 from 2030; Car FCEV: 0 in 2030, 0.5 from 2050)
+              and the interpolation rules from A54.globaltranTech_interp_revised.csv.
+  CONFIG      After the &quot;transportation&quot; entry.
+  STRUCTURE   Header GlobalTranTechShrwt (ModelInterface_headers.txt line 418):
+              global-technology-database / location-info sector-name subsector-name /
+              tranTechnology / period / share-weight.
+              Header GlobalTranTechInterp (line 420) for the interpolation-rule.
+              Without replacing the rule, the default interpolation can re-impose its own path.
+  STATUS      Not run in GCAM. Whether the &quot;fixed&quot; rule below fully overrides the base rule
+              (rather than adding a second rule) is unverified: check the parsed scenario with
+              the debug XML output (xmlDebug) before trusting results.
+--&gt;
+&lt;scenario&gt;
+  &lt;world&gt;
+    &lt;global-technology-database&gt;
+      &lt;location-info sector-name=&quot;trn_pass_road_LDV_4W&quot; subsector-name=&quot;Car&quot;&gt;
+        &lt;tranTechnology name=&quot;BEV&quot;&gt;
+          &lt;period year=&quot;2025&quot;&gt;&lt;share-weight&gt;0.5&lt;/share-weight&gt;&lt;/period&gt;
+          &lt;period year=&quot;2030&quot;&gt;&lt;share-weight&gt;1&lt;/share-weight&gt;&lt;/period&gt;
+          &lt;interpolation-rule apply-to=&quot;share-weight&quot; from-year=&quot;2030&quot; to-year=&quot;2100&quot;&gt;
+            &lt;interpolation-function name=&quot;fixed&quot;/&gt;
+          &lt;/interpolation-rule&gt;
+        &lt;/tranTechnology&gt;
+        &lt;tranTechnology name=&quot;FCEV&quot;&gt;
+          &lt;period year=&quot;2030&quot;&gt;&lt;share-weight&gt;0.25&lt;/share-weight&gt;&lt;/period&gt;
+          &lt;period year=&quot;2040&quot;&gt;&lt;share-weight&gt;0.5&lt;/share-weight&gt;&lt;/period&gt;
+          &lt;period year=&quot;2050&quot;&gt;&lt;share-weight&gt;1&lt;/share-weight&gt;&lt;/period&gt;
+        &lt;/tranTechnology&gt;
+      &lt;/location-info&gt;
+    &lt;/global-technology-database&gt;
+  &lt;/world&gt;
+&lt;/scenario&gt;
+</code></pre><div class="explain-code">Share-weights with an interpolation rule. Check whether the rule replaces or adds to the base rule in your release.</div><div class="code-out" hidden aria-live="polite"></div></div><div class="codeblock" data-module="3.5"><div class="codehead"><b>A carbon tax</b><span class="lang">XML</span><button class="btn quiet code-copy" type="button">Copy</button><a class="btn quiet" href="../labs/go3/xml/policy_carbon_tax.xml" download>Download</a></div><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!--
+  policy_carbon_tax.xml : economy-wide CO2 price for one region, 25 $/tC in 2025 rising 5%/yr.
+
+  PURPOSE     Price-based policy scenario (compare with policy_co2_constraint_netzero.xml).
+  TEMPLATE    input/policy/carbon_tax_25_5.xml (gcam-v9.1), restricted to one region.
+              Element names: ghgpolicy / market / fixedTax (cvs/objects/policy/include/policy_ghg.h
+              lines 94-100).
+  POLICY NAME &quot;CO2&quot; is the name of the fossil-fuel and industrial CO2 emission objects, so this
+              prices FFI CO2 only. Land-use CO2 (&quot;CO2_LUC&quot;) is a separate gas; link it with a
+              linked-ghg-policy as in input/policy/global_uct.xml if you want land included.
+              (The shipped carbon_tax_*.xml files name their policy &quot;CO2_LTG&quot; with a global market
+              and rely on other linking files; this template keeps one region and one gas.)
+  UNITS       1990$ per tonne of CARBON (policy files declare &lt;price-unit&gt;1990$/tC&lt;/price-unit&gt;).
+              25 $/tC = 25 x 12/44 = 6.8 $/tCO2 (1990$). From a target in $/tCO2: multiply by 44/12,
+              then deflate to 1990$.
+  CONFIG      Add after all base files (policies are usually last). A fixed tax needs no
+              target-finder; the market is not solved (policy_ghg.cpp).
+  COVERAGE    Whole regional economy, not transport only. A transport-only price needs a
+              renamed CO2 object or ctax-input on transport technologies: unverified, see README.
+  STATUS      Not run in GCAM. Values computed: 25 x 1.05^(year-2025).
+--&gt;
+&lt;scenario&gt;
+  &lt;world&gt;
+    &lt;region name=&quot;Middle East&quot;&gt;
+      &lt;ghgpolicy name=&quot;CO2&quot;&gt;
+        &lt;market&gt;Middle East&lt;/market&gt;
+        &lt;fixedTax year=&quot;2025&quot;&gt;25.00&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2030&quot;&gt;31.91&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2035&quot;&gt;40.72&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2040&quot;&gt;51.97&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2045&quot;&gt;66.33&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2050&quot;&gt;84.66&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2055&quot;&gt;108.05&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2060&quot;&gt;137.90&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2065&quot;&gt;176.00&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2070&quot;&gt;224.63&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2075&quot;&gt;286.68&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2080&quot;&gt;365.89&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2085&quot;&gt;466.98&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2090&quot;&gt;596.00&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2095&quot;&gt;760.66&lt;/fixedTax&gt;
+        &lt;fixedTax year=&quot;2100&quot;&gt;970.82&lt;/fixedTax&gt;
+      &lt;/ghgpolicy&gt;
+    &lt;/region&gt;
+  &lt;/world&gt;
+&lt;/scenario&gt;
+</code></pre><div class="explain-code">A fixed price path in 1990$ per tonne of carbon: $100 per tCO2 is about $367 per tC.</div><div class="code-out" hidden aria-live="polite"></div></div><div class="codeblock" data-module="3.5"><div class="codehead"><b>A zero-emission-vehicle standard as a credit market</b><span class="lang">XML</span><button class="btn quiet code-copy" type="button">Copy</button><a class="btn quiet" href="../labs/go3/xml/policy_zev_standard.xml" download>Download</a></div><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!--
+  policy_zev_standard.xml : zero-emission car standard as a credit market (RES policy).
+  Target: ZEV share of Car passenger-km 10% (2030), 20% (2035), 35% (2040), 50% (2045), 70% (2050).
+
+  DESIGN      Same pattern as the GCAM documentation&#x27;s renewable/biofuel standard example
+              (https://jgcri.github.io/gcam-doc/policies_examples.html, &quot;BioFuelsCredits&quot;):
+                - DEMAND for credits: every Car technology consumes a &quot;ZEV_credit&quot; input whose
+                  coefficient is the target share.
+                - SUPPLY of credits: BEV and FCEV produce credits through res-secondary-output
+                  with output-ratio 1 (one credit per unit of their output).
+                - POLICY: policy-portfolio-standard name=&quot;ZEV_credit&quot;, policyType RES. For RES the
+                  constraint value is ignored (documentation); the market solves for a credit price
+                  that taxes non-ZEVs and subsidises ZEVs until supply of credits &gt;= demand.
+              Element names checked in gcam-v9.1: policy_portfolio_standard.cpp (XML name, &quot;RES&quot;
+              branch lines 149-150, 205), res_secondary_output.cpp line 71, secondary_output.h line 189.
+  UNIT ISSUE  In a tranTechnology the energy-input coefficient is per VEHICLE-km while output (and
+              so secondary output) is per PASSENGER-km (output = vkm x loadFactor). To make the
+              target a share of pkm, the credit coefficient below is share x loadFactor
+              (loadFactor 1.6 assumed; use your base file&#x27;s Car load factor per technology and year).
+              This conversion is the main thing to TEST: check in the output that
+              BEV+FCEV pkm / total Car pkm equals the target in binding years.
+  SCOPE       One region, the &quot;Car&quot; subsector of trn_pass_road_LDV_4W only. Add the same lines for
+              &quot;Large Car and Truck&quot; and &quot;Mini Car&quot; for a full light-duty standard.
+  CONFIG      After the &quot;transportation&quot; entry and after any technology add-ons.
+  STATUS      Not run in GCAM. Unverified: credit input on tranTechnology (unit handling above);
+              whether the RES market clears cleanly in periods where the target is not binding.
+--&gt;
+&lt;scenario&gt;
+  &lt;world&gt;
+    &lt;region name=&quot;Middle East&quot;&gt;
+      &lt;policy-portfolio-standard name=&quot;ZEV_credit&quot;&gt;
+        &lt;market&gt;Middle East&lt;/market&gt;
+        &lt;policyType&gt;RES&lt;/policyType&gt;
+      &lt;/policy-portfolio-standard&gt;
+      &lt;supplysector name=&quot;trn_pass_road_LDV_4W&quot;&gt;
+        &lt;tranSubsector name=&quot;Car&quot;&gt;
+          &lt;stub-technology name=&quot;Liquids&quot;&gt;
+            &lt;period year=&quot;2030&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.16&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2035&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.32&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2040&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.56&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2045&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.8&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2050&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;1.12&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+          &lt;/stub-technology&gt;
+          &lt;stub-technology name=&quot;Hybrid Liquids&quot;&gt;
+            &lt;period year=&quot;2030&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.16&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2035&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.32&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2040&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.56&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2045&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.8&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2050&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;1.12&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+          &lt;/stub-technology&gt;
+          &lt;stub-technology name=&quot;NG&quot;&gt;
+            &lt;period year=&quot;2030&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.16&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2035&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.32&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2040&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.56&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2045&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.8&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+            &lt;period year=&quot;2050&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;1.12&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;/period&gt;
+          &lt;/stub-technology&gt;
+          &lt;stub-technology name=&quot;BEV&quot;&gt;
+            &lt;period year=&quot;2030&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.16&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2035&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.32&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2040&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.56&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2045&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.8&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2050&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;1.12&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+          &lt;/stub-technology&gt;
+          &lt;stub-technology name=&quot;FCEV&quot;&gt;
+            &lt;period year=&quot;2030&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.16&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2035&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.32&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2040&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.56&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2045&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;0.8&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+            &lt;period year=&quot;2050&quot;&gt;&lt;minicam-energy-input name=&quot;ZEV_credit&quot;&gt;&lt;coefficient&gt;1.12&lt;/coefficient&gt;&lt;market-name&gt;Middle East&lt;/market-name&gt;&lt;/minicam-energy-input&gt;&lt;res-secondary-output name=&quot;ZEV_credit&quot;&gt;&lt;output-ratio&gt;1&lt;/output-ratio&gt;&lt;/res-secondary-output&gt;&lt;/period&gt;
+          &lt;/stub-technology&gt;
+        &lt;/tranSubsector&gt;
+      &lt;/supplysector&gt;
+    &lt;/region&gt;
+  &lt;/world&gt;
+&lt;/scenario&gt;
+</code></pre><div class="explain-code">Cars need credits that ZEVs supply. The credit coefficients assume a load factor of 1.6; check the resulting ZEV share against the target.</div><div class="code-out" hidden aria-live="polite"></div></div><div class="codeblock" data-module="3.5"><div class="codehead"><b>Batch file: the scenario matrix</b><span class="lang">XML</span><button class="btn quiet code-copy" type="button">Copy</button><a class="btn quiet" href="../labs/go3/config/batch_transport.xml" download>Download</a></div><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!--
+  batch_transport.xml : a 4 x 3 scenario matrix in one batch run (12 scenarios).
+
+  HOW BATCH MODE WORKS (exe/batch_SSP_REF.xml and batch_SSP_SPA1.xml in gcam-v9.1)
+    * Each &lt;ComponentSet&gt; is one dimension; GCAM runs every combination of one FileSet from
+      each ComponentSet. Scenario names join the FileSet names (e.g. &quot;BEVlow_CTax&quot;).
+    * The FileSet files are ADDED to the ScenarioComponents of the configuration you run with.
+  TO RUN
+    In your configuration copy set
+       &lt;Value name=&quot;BatchFileName&quot;&gt;batch_transport.xml&lt;/Value&gt;   (in &lt;Files&gt;)
+       &lt;Value name=&quot;BatchMode&quot;&gt;1&lt;/Value&gt;                          (in &lt;Bools&gt;)
+    and keep the base ScenarioComponents (including transportation_UCD_CORE.xml).
+  UNVERIFIED
+    * An empty FileSet (&quot;Ref&quot; and &quot;NoPolicy&quot; below) is used to mean &quot;no add-on&quot;. If your GCAM
+      build rejects empty FileSets, give them a harmless file instead.
+    * The net-zero FileSet contains a solved constraint; those runs take longer.
+  Not run.
+--&gt;
+&lt;BatchRunner xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;batch_runner.xsd&quot;&gt;
+  &lt;ComponentSet name=&quot;technology&quot;&gt;
+    &lt;FileSet name=&quot;Ref&quot;&gt;
+    &lt;/FileSet&gt;
+    &lt;FileSet name=&quot;BEVlow&quot;&gt;
+      &lt;Value name=&quot;trn_bev_cost_low&quot;&gt;../input/user/trn_bev_cost_low.xml&lt;/Value&gt;
+    &lt;/FileSet&gt;
+    &lt;FileSet name=&quot;LFup&quot;&gt;
+      &lt;Value name=&quot;trn_loadfactor_up&quot;&gt;../input/user/trn_loadfactor_up.xml&lt;/Value&gt;
+    &lt;/FileSet&gt;
+    &lt;FileSet name=&quot;BEVlow-LFup&quot;&gt;
+      &lt;Value name=&quot;trn_bev_cost_low&quot;&gt;../input/user/trn_bev_cost_low.xml&lt;/Value&gt;
+      &lt;Value name=&quot;trn_loadfactor_up&quot;&gt;../input/user/trn_loadfactor_up.xml&lt;/Value&gt;
+    &lt;/FileSet&gt;
+  &lt;/ComponentSet&gt;
+  &lt;ComponentSet name=&quot;policy&quot;&gt;
+    &lt;FileSet name=&quot;_NoPolicy&quot;&gt;
+    &lt;/FileSet&gt;
+    &lt;FileSet name=&quot;_CTax&quot;&gt;
+      &lt;Value name=&quot;policy_ctax&quot;&gt;../input/user/policy_carbon_tax.xml&lt;/Value&gt;
+    &lt;/FileSet&gt;
+    &lt;FileSet name=&quot;_NetZero&quot;&gt;
+      &lt;Value name=&quot;policy_netzero&quot;&gt;../input/user/policy_co2_constraint_netzero.xml&lt;/Value&gt;
+    &lt;/FileSet&gt;
+  &lt;/ComponentSet&gt;
+&lt;/BatchRunner&gt;
+</code></pre><div class="explain-code">Crosses component sets into runs. Whether empty FileSets are accepted as 'no add-on' still needs a test run.</div><div class="code-out" hidden aria-live="polite"></div></div></section><section id="explore"><h2>Stress-test it</h2><div class="explorer" data-widget="carbonprice" data-module="3.5"><p class="prose">Set a starting carbon price and its growth rate. See the price path and the cut it buys on a simple cost curve, then find the growth rate for a 60% cut by 2050.</p><div class="predict"><b>Predict first:</b> To reach a 60% cut by 2050 from a $25 starting price, roughly what yearly growth rate will you need?</div><div class="explorer-box"><p class="muted">This explorer needs JavaScript.</p></div></div></section><section id="takeaways"><h2>Research notes</h2><ul class='takeaways'><li>An add-on repeats GCAM&#x27;s nesting down to the one value it changes, and loads after the base files</li><li>Match units to your release: billion pkm and 1975$ in transport since v8.5</li><li>Share-weights with interpolation rules control when new technologies can enter</li><li>A carbon tax fixes the price; a constraint fixes emissions; a ZEV standard can be a credit market</li><li>Make systematic, everywhere changes in gcamdata, not by hand</li></ul></section><section id="check"><h2>Check yourself</h2><div class="quiz" data-module="3.5"><div class="q" data-answer="1"><p>1. An add-on file must contain…</p><div class="opts"><button class="opt" type="button">The whole transport sector</button><button class="opt" type="button">Only the nesting path down to the values it changes</button><button class="opt" type="button">Every region</button><button class="opt" type="button">The solver settings</button></div><p class="fb" hidden><b class="verdict"></b>It repeats the path (region, sector, subsector, technology, period) to the changed values only.</p></div><div class="q" data-answer="2"><p>2. A carbon tax of $100 per tonne of CO2 is about how much per tonne of carbon?</p><div class="opts"><button class="opt" type="button">$27</button><button class="opt" type="button">$100</button><button class="opt" type="button">$367</button><button class="opt" type="button">$1,000</button></div><p class="fb" hidden><b class="verdict"></b>Multiply by 44/12 ≈ 3.67.</p></div><div class="q" data-answer="1"><p>3. In a ZEV credit market, who supplies credits?</p><div class="opts"><button class="opt" type="button">Petrol cars</button><button class="opt" type="button">Zero-emission vehicles</button><button class="opt" type="button">The solver</button><button class="opt" type="button">Refineries</button></div><p class="fb" hidden><b class="verdict"></b>ZEVs produce credits; other cars must buy them, so the credit price penalises them.</p></div><div class="q" data-answer="1"><p>4. When should you change gcamdata instead of writing an add-on?</p><div class="opts"><button class="opt" type="button">Never</button><button class="opt" type="button">When a change must apply consistently across many files or regions</button><button class="opt" type="button">For one value in one region</button><button class="opt" type="button">Only for queries</button></div><p class="fb" hidden><b class="verdict"></b>Systematic changes are safer in the data system, rebuilt from source.</p></div><p class="quiz-result" hidden aria-live="polite"></p><button class="btn quiet quiz-again" type="button">Try the questions again</button></div></section><section id="more"><h2>Reading list</h2><h3 style='margin-top:0'>New words</h3><dl class='glist'><div class="gterm"><dt>ScenarioComponents</dt><dd>The list of input files in a configuration, read in order.</dd></div><div class="gterm"><dt>Interpolation rule</dt><dd>Tells GCAM how to fill share-weights or values between and after the years you set.</dd></div><div class="gterm"><dt>Credit market</dt><dd>A policy market where some technologies produce credits and others must use them.</dd></div><div class="gterm"><dt>Batch file</dt><dd>An XML file that defines several scenarios to run in one go.</dd></div><div class="gterm"><dt>input-cost</dt><dd>The non-fuel cost element of a transport technology in GCAM&#x27;s input files.</dd></div></dl><h3>Read further</h3><ul class='reslist'><li><a href="https://jgcri.github.io/gcam-doc/policies_examples.html" target="_blank" rel="noopener">GCAM documentation: policy examples</a><span class="why">XML for carbon prices, constraints and standards.</span></li><li><a href="https://jgcri.github.io/gcam-doc/user-guide.html" target="_blank" rel="noopener">GCAM documentation: How to get started running GCAM</a><span class="why">Configuration, add-on files and batch mode.</span></li><li><a href="https://jgcri.github.io/gcam-doc/en_technologies.html" target="_blank" rel="noopener">GCAM documentation: Technology representation</a><span class="why">Technology parameters (check units against your release).</span></li><li><a href="https://github.com/JGCRI/gcam-core" target="_blank" rel="noopener">gcam-core on GitHub</a><span class="why">Base transport XML and the gcamdata transport chunks.</span></li></ul><h3>Downloads</h3><div class='dl'><a class="btn quiet" href="../downloads/Go3-Research-Handbook-GCAM-Transport.pdf">Go 3 handbook (PDF)</a><a class="btn quiet" href="../downloads/go3-transport-kit.zip">Go 3 transport kit (zip)</a></div></section>
+<div class="done-row"><button class="btn" id="mark-done" type="button" aria-pressed="false">Mark this module as studied</button><span class="muted small">Saved in this browser only.</span></div>
+<nav class="pager" aria-label="Module navigation"><a href="designing-a-study.html"><span class="dir">Previous</span>3.4 Designing a study</a><a class="next" href="analysing-results.html"><span class="dir">Next</span>3.6 Analysing and stress-testing results</a></nav></div></div></main>
+<footer class="site"><div class="wrap">An open course on the Global Change Analysis Model (GCAM), taught in three goes. GCAM is developed by the Joint Global Change Research Institute (PNNL); this is independent teaching material. GCAM facts follow the GCAM v8.2 documentation and the gcam-core v9.1 source; explorers and toy models are teaching versions with illustrative numbers.</div></footer>
+<script src="../assets/js/diagrams.js"></script><script src="../assets/js/widgets.js"></script><script src="../assets/js/site.js"></script>
+</body></html>

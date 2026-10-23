@@ -1,0 +1,442 @@
+{
+ "id": "3.6",
+ "go": 3,
+ "slug": "analysing-results",
+ "title": "Analysing and stress-testing results",
+ "minutes": 55,
+ "tag": "Analysis",
+ "systems": [
+  "energy",
+  "climate",
+  "economy"
+ ],
+ "summary": "Get results out the same way every time, compare against Reference, decompose changes in transport CO2, stress-test with sensitivity runs and scenario discovery, and benchmark against other models.",
+ "outcomes": [
+  "Extract transport results with saved queries into tidy tables",
+  "Report every policy result as a difference from Reference",
+  "Decompose a change in transport CO2 into activity, structure, intensity and carbon effects",
+  "Stress-test findings with a tornado chart and scenario discovery, and benchmark against AR6"
+ ],
+ "narration_en": "A result is only as good as the way you get it out and test it. Step one: use the same saved queries every time, and save tidy tables, so that every figure can be rebuilt. Step two: never report a policy run alone. Report the difference from the Reference run, and explain it. Step three: decompose the change. The logarithmic mean Divisia index splits a change in transport carbon dioxide into four parts that add up exactly: more travel, a shift between modes, less energy per passenger-kilometre, and less carbon per unit of energy. Step four: stress-test. A tornado chart shows which single assumption moves the result most. An ensemble with scenario discovery finds the combinations of inputs that lead to high emissions. In the course kit's toy ensemble, the battery electric vehicle cost explained most high-emission runs, followed by the carbon price. Step five: benchmark against other models, for example the IPCC's AR6 scenario database, and explain any differences.",
+ "narration_ar": "النتيجة لا تكون أفضل من الطريقة التي تستخرجها بها وتختبرها. الخطوة الأولى: استخدم الاستعلامات المحفوظة نفسها في كل مرة، واحفظ جداول مرتبة، حتى يمكن إعادة بناء كل شكل. الخطوة الثانية: لا تعرض نتيجة سيناريو السياسة وحدها أبدًا، بل اعرض الفرق عن سيناريو الأساس وفسّره. الخطوة الثالثة: فكّك التغيير. فمؤشر ديفيزيا للمتوسط اللوغاريتمي يقسم التغير في انبعاثات ثاني أكسيد الكربون من النقل إلى أربعة أجزاء مجموعها مساوٍ للتغير تمامًا: زيادة السفر، والتحول بين الوسائل، وانخفاض الطاقة لكل راكب-كيلومتر، وانخفاض الكربون لكل وحدة طاقة. الخطوة الرابعة: اختبر متانة النتائج. فمخطط الإعصار يبيّن أي افتراض منفرد يحرّك النتيجة أكثر من غيره. ومجموعة التشغيلات مع اكتشاف السيناريوهات تجد تركيبات المدخلات التي تؤدي إلى انبعاثات مرتفعة. وفي مجموعة التشغيلات التجريبية في حقيبة المقرر، فسّرت تكلفة السيارة الكهربائية بالبطاريات معظم التشغيلات عالية الانبعاثات، يليها سعر الكربون. الخطوة الخامسة: قارن نتائجك بالنماذج الأخرى، مثل قاعدة بيانات سيناريوهات التقرير السادس للهيئة الحكومية الدولية المعنية بتغير المناخ، وفسّر أي اختلافات.",
+ "diagram": {
+  "title": "From database to defensible findings",
+  "caption": "Top row gets clean numbers; second row tests them; only what survives both reaches the findings.",
+  "nodes": [
+   {
+    "id": "db",
+    "label": "Output database",
+    "sub": "all scenarios",
+    "x": 110,
+    "y": 90,
+    "w": 170,
+    "h": 62,
+    "sys": "data",
+    "detail": "One database holding Reference and every policy and sensitivity run."
+   },
+   {
+    "id": "q",
+    "label": "Saved queries",
+    "sub": "transport_queries.xml",
+    "x": 330,
+    "y": 90,
+    "w": 170,
+    "h": 62,
+    "sys": "data",
+    "detail": "Service output by mode, final energy by fuel, CO2 by sector: the same queries every time."
+   },
+   {
+    "id": "tidy",
+    "label": "Tidy tables",
+    "sub": "one row per value",
+    "x": 550,
+    "y": 90,
+    "w": 170,
+    "h": 62,
+    "sys": "data",
+    "detail": "Scenario, region, sector, mode, fuel, year, value, unit: ready for any analysis."
+   },
+   {
+    "id": "diff",
+    "label": "Policy minus Reference",
+    "sub": "the effect",
+    "x": 770,
+    "y": 90,
+    "w": 170,
+    "h": 62,
+    "sys": "policy",
+    "detail": "Every reported result is a difference from Reference, explained."
+   },
+   {
+    "id": "lmdi",
+    "label": "Decomposition",
+    "sub": "activity, structure…",
+    "x": 770,
+    "y": 270,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "LMDI splits the CO2 change into activity, structure, intensity and carbon effects that add up exactly."
+   },
+   {
+    "id": "tor",
+    "label": "Sensitivity",
+    "sub": "tornado chart",
+    "x": 550,
+    "y": 270,
+    "w": 170,
+    "h": 62,
+    "sys": "economy",
+    "detail": "Vary one input at a time between low and high values to rank what matters."
+   },
+   {
+    "id": "sd",
+    "label": "Scenario discovery",
+    "sub": "ensemble + rules",
+    "x": 330,
+    "y": 270,
+    "w": 170,
+    "h": 62,
+    "sys": "economy",
+    "detail": "Search an ensemble for the input ranges that explain high-emission outcomes (coverage and density)."
+   },
+   {
+    "id": "bm",
+    "label": "Benchmark",
+    "sub": "AR6, other models",
+    "x": 110,
+    "y": 270,
+    "w": 170,
+    "h": 62,
+    "sys": "climate",
+    "detail": "Compare with AR6 scenarios with similar carbon prices or warming, and explain differences."
+   },
+   {
+    "id": "find",
+    "label": "Defensible findings",
+    "sub": "what survives the tests",
+    "x": 450,
+    "y": 450,
+    "w": 220,
+    "h": 62,
+    "sys": "neutral",
+    "detail": "Findings that hold across sensitivities, are explained by decomposition and sit sensibly against other models."
+   }
+  ],
+  "edges": [
+   {
+    "from": "db",
+    "to": "q",
+    "label": ""
+   },
+   {
+    "from": "q",
+    "to": "tidy",
+    "label": ""
+   },
+   {
+    "from": "tidy",
+    "to": "diff",
+    "label": ""
+   },
+   {
+    "from": "diff",
+    "to": "lmdi",
+    "label": ""
+   },
+   {
+    "from": "lmdi",
+    "to": "find",
+    "label": ""
+   },
+   {
+    "from": "tor",
+    "to": "find",
+    "label": ""
+   },
+   {
+    "from": "sd",
+    "to": "find",
+    "label": ""
+   },
+   {
+    "from": "bm",
+    "to": "find",
+    "label": ""
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "db",
+     "q",
+     "tidy"
+    ],
+    "edges": [
+     [
+      "db",
+      "q"
+     ],
+     [
+      "q",
+      "tidy"
+     ]
+    ],
+    "text": "Extract results with saved queries into tidy tables, the same way every time."
+   },
+   {
+    "focus": [
+     "tidy",
+     "diff"
+    ],
+    "edges": [
+     [
+      "tidy",
+      "diff"
+     ]
+    ],
+    "text": "Report each policy as its difference from Reference."
+   },
+   {
+    "focus": [
+     "diff",
+     "lmdi"
+    ],
+    "edges": [
+     [
+      "diff",
+      "lmdi"
+     ]
+    ],
+    "text": "Decompose the change to explain it: activity, structure, intensity, carbon."
+   },
+   {
+    "focus": [
+     "tor",
+     "sd"
+    ],
+    "edges": [],
+    "text": "Stress-test: rank single assumptions, then search an ensemble for what drives bad outcomes."
+   },
+   {
+    "focus": [
+     "bm",
+     "find"
+    ],
+    "edges": [
+     [
+      "bm",
+      "find"
+     ],
+     [
+      "lmdi",
+      "find"
+     ],
+     [
+      "tor",
+      "find"
+     ],
+     [
+      "sd",
+      "find"
+     ]
+    ],
+    "text": "Benchmark against other models; keep only findings that survive."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Step 1: get the numbers out, the same way every time",
+   "html": "<p>Write one script that runs every query you need for every scenario and saves one tidy table (scenario, region, year, variable, item, value, unit). Never copy numbers from ModelInterface by hand. The transport queries live in <code>output/queries/Main_queries.xml</code>; the kit's query file collects the ones a transport study needs.</p><table ><thead><tr><th style=width:52%>Query title (Main_queries.xml, v9.1)</th><th style=width:12%>Line</th><th style=width:36%>Use</th></tr></thead><tbody><tr><td>transport service output by mode</td><td>3023</td><td>pkm/tkm by mode (axis: subsector)</td></tr><tr><td>transport service output by tech (new)</td><td>3048</td><td>new-vintage shares: the closest thing to sales</td></tr><tr><td>transport final energy by fuel</td><td>2963</td><td>energy by carrier</td></tr><tr><td>transport load factors / transport speeds</td><td>3056 / 3198</td><td>check your levers took effect</td></tr><tr><td>costs of transport techs / modes</td><td>3084 / 3077</td><td>explain choices</td></tr><tr><td>CO2 emissions by sector (excluding resource production)</td><td>4532</td><td>direct CO<sub>2</sub></td></tr><tr><td>CO2 emissions by tech</td><td>4883</td><td>CO<sub>2</sub> by vehicle technology</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Step 2: compare against Reference, then explain",
+   "html": "<p>The policy effect is the difference between two runs that share everything else. Report absolute differences (Mt) and relative ones (% of Reference), per capita where regions differ in size, and cumulatively where the climate is concerned.</p><table ><thead><tr><th style=width:22%>Toy scenario</th><th style=width:10%>Year</th><th style=width:15%>pkm (bn)</th><th style=width:15%>car share</th><th style=width:22%>BEV share of car pkm</th><th style=width:16%>CO₂ (Mt)</th></tr></thead><tbody><tr><td>Reference</td><td>2050</td><td>2,236</td><td>79 %</td><td>47 %</td><td>84</td></tr><tr><td>Reference</td><td>2100</td><td>3,523</td><td>89 %</td><td>47 %</td><td>142</td></tr><tr><td>BEV-low</td><td>2050</td><td>2,681</td><td>86 %</td><td>95 %</td><td>26</td></tr><tr><td>BEV-low</td><td>2100</td><td>3,953</td><td>91 %</td><td>95 %</td><td>39</td></tr><tr><td>Carbon-price</td><td>2050</td><td>2,198</td><td>79 %</td><td>54 %</td><td>64</td></tr><tr><td>Carbon-price</td><td>2100</td><td>3,398</td><td>93 %</td><td>74 %</td><td>11</td></tr><tr><td>Fast-wage</td><td>2050</td><td>2,488</td><td>83 %</td><td>47 %</td><td>97</td></tr><tr><td>Fast-wage</td><td>2100</td><td>3,727</td><td>91 %</td><td>47 %</td><td>152</td></tr><tr><td>LF-up</td><td>2050</td><td>2,581</td><td>85 %</td><td>45 %</td><td>81</td></tr><tr><td>LF-up</td><td>2100</td><td>3,865</td><td>91 %</td><td>45 %</td><td>127</td></tr></tbody></table><p class='small muted'>From <code>go3-transport-kit/toy/gcam_transport_toy.py</code>: one illustrative region, GCAM-like nesting, logit types and exponents, value of time; no vintages, no fuel-price feedback. Python and R versions print the same table.</p>"
+  },
+  {
+   "heading": "Step 3: decompose the change",
+   "html": "<p>To explain <i>why</i> transport CO<sub>2</sub> differs between two years or two scenarios, split it into factors, exactly like the Kaya identity in Go 1 but for transport. For each mode <i>m</i>:</p><div class=\"eq\">CO<sub>2</sub> = Σ<sub>m</sub> A · S<sub>m</sub> · I<sub>m</sub> · F<sub>m</sub><span class=n>(3.8)</span></div><p>with A total activity (pkm), S<sub>m</sub> the mode share, I<sub>m</sub> energy per pkm and F<sub>m</sub> CO<sub>2</sub> per unit of energy. The <b>logarithmic mean Divisia index</b> (LMDI) attributes the change to each factor with no leftover residual:</p><div class=\"eq\">ΔCO<sub>2</sub>(X) = Σ<sub>m</sub> L(C<sub>m</sub><sup>1</sup>, C<sub>m</sub><sup>0</sup>) · ln(X<sub>m</sub><sup>1</sup> ⁄ X<sub>m</sub><sup>0</sup>), &nbsp;&nbsp; L(a, b) = (a − b) ⁄ (ln a − ln b)<span class=n>(3.9)</span></div>"
+  },
+  {
+   "heading": "Step 4: stress-test",
+   "html": "<p><b>One at a time: the tornado</p></b><p>Move each uncertain input from its low to its high value with everything else central, and plot the range of the output. The longest bar is the input your conclusion depends on most. It is cheap (two runs per input) but misses interactions.</p><table ><thead><tr><th style=width:46%>Input (low / high)</th><th style=width:18%>BEV share at low</th><th style=width:18%>at high</th><th style=width:18%>range</th></tr></thead><tbody><tr><td>BEV cost ±30%</td><td>0.08</td><td>0.92</td><td>0.84</td></tr><tr><td>BEV share-weight 0.25 / 1.5</td><td>0.14</td><td>0.50</td><td>0.36</td></tr><tr><td>carbon price 0 / 200 $/t</td><td>0.40</td><td>0.54</td><td>0.13</td></tr><tr><td>logit exponent −4 / −12</td><td>0.45</td><td>0.36</td><td>0.09</td></tr></tbody></table><p><b>Many at once: ensembles and scenario discovery</p></b><p>Run a full factorial or Latin-hypercube ensemble in batch mode. Label each run \"high\" or \"not high\" for the outcome you care about (for example, 2050 transport CO<sub>2</sub> above a target). Then search for a simple box in input space that captures the high runs — with the PRIM algorithm or a classification tree (lab 13 uses <code>rpart</code>). Judge the box with two numbers:</p><div class=\"eq\">coverage = (high runs inside the box) ⁄ (all high runs), &nbsp;&nbsp; density = (high runs inside the box) ⁄ (all runs inside the box)<span class=n>(3.10)</span></div><p>Read the output like this: the tree splits first on BEV cost, and the PRIM-style box keeps 80 % of the high runs with 92 % of runs inside it high (against a base rate of 25 %). The car load factor and GDP growth were never used — in this synthetic ensemble, they do not explain failure. With real GCAM runs, check that the box is stable when you re-sample.</p>"
+  },
+  {
+   "heading": "Step 5: benchmark against other models",
+   "html": "<p>Put your Reference and policy runs next to the AR6 scenario database (or the newer CMIP7 ScenarioMIP set) for the same region and variables: <code>Final Energy|Transportation</code>, <code>Emissions|CO2|Energy|Demand|Transportation</code>, <code>Energy Service|Transportation|Passenger</code>. Lab 12 shows how to filter AR6 runs to a similar carbon price. Being outside the range is not wrong, but you must be able to say why (module 3.3).</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "research",
+   "title": "Why this matters",
+   "html": "<p style='margin:0'>In the kit's toy transport model, filling cars with more people (the LF-up scenario) should cut emissions. By 2050 it cuts them by only 3 Mt out of 84 — because cheaper car travel makes people travel 15 % more and pulls them out of buses. The first number you look at is rarely the answer; the analysis is in explaining it.</p>"
+  },
+  {
+   "after": 1,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Two toy artefacts worth noticing.</b> (1) In the toy Reference, the BEV share jumps to about half of car pkm in 2030, because the share-weight switches from 0 to 1 between 2025 and 2030 and the toy has no vintages. GCAM smooths this with an s-curve and capital stock. (2) Sales-like shares (\"tech (new)\") move much faster than the stock of vehicles on the road (Figure 3.15 in module 3.7). Always say which one you report.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>LMDI for an illustrative country (three modes, two years)</b></p><ol><li>CO<sub>2</sub> falls from 19.36 to 13.13 Mt: a change of -6.24 Mt.</li><li>Activity (pkm 200 → 300 bn): +6.49 Mt.</li><li>Mode structure (cars 80 % → 70 %, rail 5 % → 15 %): -1.72 Mt.</li><li>Energy intensity (cars 1.6 → 1.1 MJ/pkm, etc.): -5.71 Mt.</li><li>Carbon intensity (fuel switching, cleaner electricity): -5.30 Mt.</li><li>Sum of effects: -6.24 Mt — equal to the total change, with no residual.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> intensity and carbon each cut more than mode shift; activity growth eats most of the gains</p>"
+  },
+  {
+   "after": 3,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Scenario discovery on 36 runs</b></p><ol><li>9 of the 36 runs miss the 2050 target (\"high\").</li><li>Candidate box: \"BEV cost high AND share-weight path slow\" contains 10 runs, of which 7 are high.</li><li>Coverage = 7 ÷ 9 = 0.78: the box explains 78 % of the failures.</li><li>Density = 7 ÷ 10 = 0.70: inside the box, 70 % of runs fail.</li><li>A good box has both high; narrowing the box raises density but lowers coverage — report the trade-off.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> coverage 0.78, density 0.70</p>"
+  },
+  {
+   "after": 4,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>Reporting a percentage of the wrong base.</b> \"Transport CO<sub>2</sub> falls 60 %\" — below what? The 2020 level, or the 2050 Reference? The two can differ by a factor of two when Reference emissions grow. Always say \"relative to Reference in the same year\" or \"relative to 2020\".</p>"
+  },
+  {
+   "after": 4,
+   "kind": "try",
+   "title": "Try it",
+   "html": "<ol style='margin:0'><li>Using Eq. 3.9, what sign does the activity effect have if pkm stays constant? What if pkm falls?</li><li>Your tree's best box has coverage 0.9 and density 0.3. Is it a useful finding? What would you try next?</li><li>In Figure 3.11, which bar would you test first in a full GCAM ensemble, and why?</li></ol>"
+  }
+ ],
+ "takeaways": [
+  "Same queries, tidy tables, scripted figures: every number rebuildable",
+  "Report policy minus Reference, never a policy run alone",
+  "LMDI splits a CO2 change into activity, structure, intensity and carbon effects that add up exactly",
+  "Tornado charts rank single assumptions; scenario discovery finds combinations that matter",
+  "Benchmark against AR6 and other models, and explain the differences"
+ ],
+ "quiz": [
+  {
+   "q": "Why use LMDI rather than a simple ratio method?",
+   "options": [
+    "It is faster",
+    "Its effects add up exactly to the total, with no residual",
+    "It needs no data",
+    "It uses perfect foresight"
+   ],
+   "answer": 1,
+   "explain": "LMDI-I is exact: no unexplained residual."
+  },
+  {
+   "q": "A tornado chart shows…",
+   "options": [
+    "How results vary over time",
+    "Which single input moves the result most",
+    "Mode shares",
+    "Solver iterations"
+   ],
+   "answer": 1,
+   "explain": "One-at-a-time low and high values, ranked by effect size."
+  },
+  {
+   "q": "In scenario discovery, 'density' is…",
+   "options": [
+    "Share of high runs inside your box",
+    "Share of all runs in the ensemble",
+    "Population density",
+    "Energy density of fuels"
+   ],
+   "answer": 0,
+   "explain": "Density is the share of runs inside the box that are high; coverage is the share of all high runs the box catches."
+  },
+  {
+   "q": "In the kit's toy ensemble, which input explained most high-emission runs?",
+   "options": [
+    "GDP growth",
+    "BEV cost multiplier",
+    "Load factor",
+    "Base year"
+   ],
+   "answer": 1,
+   "explain": "The tree split first on the BEV cost multiplier, then on the carbon price."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "LMDI",
+   "def": "Logarithmic mean Divisia index: an exact decomposition of a change into contributing factors."
+  },
+  {
+   "term": "Tornado chart",
+   "def": "Bars showing how much the result moves when each input goes from low to high, one at a time."
+  },
+  {
+   "term": "Coverage",
+   "def": "Share of all outcomes of interest that a scenario-discovery box captures."
+  },
+  {
+   "term": "Density",
+   "def": "Share of runs inside a scenario-discovery box that are outcomes of interest."
+  },
+  {
+   "term": "Benchmarking",
+   "def": "Comparing results with other models or databases to check plausibility."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Outputs (quantity)",
+   "url": "https://jgcri.github.io/gcam-doc/outputs_quantity.html",
+   "why": "What GCAM reports and how."
+  },
+  {
+   "title": "gcamreader (Python)",
+   "url": "https://github.com/JGCRI/gcamreader",
+   "why": "Read GCAM databases into pandas."
+  },
+  {
+   "title": "rgcam (R)",
+   "url": "https://github.com/JGCRI/rgcam",
+   "why": "Read GCAM databases into R data frames."
+  },
+  {
+   "title": "Edelenbosch et al. (2017), decomposing passenger transport futures",
+   "url": "https://doi.org/10.1016/j.trd.2016.07.003",
+   "why": "Decomposition applied across IAMs."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 3 handbook (PDF)",
+   "path": "downloads/Go3-Research-Handbook-GCAM-Transport.pdf"
+  },
+  {
+   "label": "Go 3 transport kit (zip)",
+   "path": "downloads/go3-transport-kit.zip"
+  }
+ ],
+ "explorer": {
+  "widget": "lmdi",
+  "intro": "Change travel growth, car share, energy per pkm and CO2 per unit of energy. See each effect and check that they add up exactly to the total change.",
+  "predict": "If travel grows 40% but energy per pkm falls 30% and carbon per unit falls 40%, will transport CO2 rise or fall overall?"
+ },
+ "code": [
+  {
+   "title": "LMDI decomposition, two modes",
+   "lang": "python",
+   "source": "# LMDI-I decomposition of a change in transport CO2 (two modes, illustrative numbers)\nimport numpy as np\n\ndef L(a, b):                       # logarithmic mean\n    return a if abs(a - b) < 1e-12 else (a - b) / np.log(a / b)\n\nA0, A1 = 1000.0, 1400.0            # passenger-km (billion)\nS0, S1 = np.array([0.6, 0.4]), np.array([0.65, 0.35])   # mode shares: car, bus\nI0, I1 = np.array([2.0, 0.6]), np.array([1.4, 0.42])    # MJ per pkm\nF0, F1 = np.array([0.07, 0.07]), np.array([0.042, 0.042])  # kg CO2 per MJ\n\nC0 = A0 * S0 * I0 * F0             # Mt CO2 by mode\nC1 = A1 * S1 * I1 * F1\nw = np.array([L(C1[i], C0[i]) for i in range(2)])\neffects = {\n    \"activity\":  float((w * np.log(A1 / A0)).sum()),\n    \"structure\": float((w * np.log(S1 / S0)).sum()),\n    \"intensity\": float((w * np.log(I1 / I0)).sum()),\n    \"carbon\":    float((w * np.log(F1 / F0)).sum()),\n}\nfor k, v in effects.items():\n    print(f\"{k:9s} {v:+8.2f} Mt\")\nprint(f\"sum of effects {sum(effects.values()):+.2f} Mt; actual change {C1.sum() - C0.sum():+.2f} Mt\")\n",
+   "runnable": true,
+   "explain": "The four effects use the logarithmic mean of start and end emissions for each mode, so they add up exactly to the total change. Try changing the shares or intensities.",
+   "expected": "activity    +26.88 Mt\nstructure    +3.77 Mt\nintensity   -28.49 Mt\ncarbon      -40.81 Mt\nsum of effects -38.65 Mt; actual change -38.65 Mt"
+  },
+  {
+   "title": "LMDI on the kit's transport tables",
+   "lang": "python",
+   "file": "labs/go3/analysis/decompose_lmdi.py",
+   "explain": "Applies the decomposition to query-shaped tables (sample data in the kit). Kit result for Reference 2020→2050: activity +41.2, structure +7.7, intensity −50.1, carbon −47.9, total −49.0 Mt."
+  },
+  {
+   "title": "Scenario discovery with a decision tree (R)",
+   "lang": "r",
+   "file": "labs/go3/analysis/scenario_discovery.R",
+   "explain": "rpart tree on the kit's 300-run toy ensemble: first split on BEV cost multiplier (0.910), then carbon price (130.9); best box coverage 80%, density 92%."
+  }
+ ]
+}

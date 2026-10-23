@@ -374,7 +374,15 @@ def build():
     for g in (1, 2, 3):
         ms = [m for m in mods if m["go"] == g]
         info = GO[g]
-        eq = "".join(f'<div class="q" data-answer="{a}"><p>{i + 1}. {esc(q)}</p><div class="opts">' + "".join(f'<button class="opt" type="button">{esc(o)}</button>' for o in opts) + f'</div><p class="fb" hidden><b class="verdict"></b>{esc(ex)}</p></div>' for i, (q, opts, a, ex) in enumerate(info["entry"]))
+        def rot(opts, a, i):
+            k = (i * 2 + g) % len(opts)
+            o = opts[k:] + opts[:k]
+            return o, (a - k) % len(opts)
+        eq = ""
+        for i, (q, opts, a, ex) in enumerate(info["entry"]):
+            opts, a = rot(opts, a, i)
+            eq += f'<div class="q" data-answer="{a}"><p>{i + 1}. {esc(q)}</p><div class="opts">' + "".join(f'<button class="opt" type="button">{esc(o)}</button>' for o in opts) + f'</div><p class="fb" hidden><b class="verdict"></b>{esc(ex)}</p></div>'
+
         seen, res = set(), []
         for m in ms:
             for r in m["resources"]:

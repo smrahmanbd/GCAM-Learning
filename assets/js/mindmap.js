@@ -8,27 +8,27 @@
   const wrap = (t, n) => { const w = String(t).split(/\s+/), o = []; let c = ""; w.forEach((x) => { if (c && (c + " " + x).length > n) { o.push(c); c = x; } else c = (c + " " + x).trim(); }); if (c) o.push(c); return o; };
   function box(g, x, y, w, h, lines, size, cls, sub) {
     el("rect", { x: x - w / 2, y: y - h / 2, width: w, height: h, rx: Math.min(18, h / 2.6), class: "node-box", "stroke-width": cls === "center" ? 0 : 2.5 }, g);
-    const lh = size * 1.18, subl = sub ? wrap(sub, 30) : [], tot = lines.length * lh + subl.length * size * 0.85;
+    const lh = size * 1.18, subl = sub ? wrap(sub, 24) : [], tot = lines.length * lh + subl.length * size * 0.85;
     let ty = y - tot / 2 + size * 0.9;
     lines.forEach((l) => { const t = el("text", { x, y: ty, "text-anchor": "middle", class: "node-label", style: `font-size:${size}px` }, g); t.textContent = l; ty += lh; });
     subl.forEach((l) => { const t = el("text", { x, y: ty, "text-anchor": "middle", class: "node-sub", style: `font-size:${size * 0.7}px` }, g); t.textContent = l; ty += size * 0.85; });
   }
-  const n = D.branches.length, R1 = 560, OUT = 330, LW = 270, LH = 58, GAP = 12;
+  const n = D.branches.length, R1 = 660, OUT = 330, LW = 270, LH = 58, GAP = 12;
   const frames = [], bboxes = [];
   const gl = el("g", {}, svg), gn = el("g", {}, svg);
   // centre
   const gc = el("g", { class: "node sys-neutral center" }, gn);
-  box(gc, 0, 0, 320, 120, wrap(D.center, 16), 40, "center", D.subtitle);
+  box(gc, 0, 0, 440, 150, wrap(D.center, 16), 40, "center", D.subtitle);
   gc.querySelector("rect").setAttribute("style", "fill:var(--ink)"); gc.querySelectorAll("text").forEach((t) => t.setAttribute("style", t.getAttribute("style") + ";fill:var(--paper)"));
-  let all = { x0: -160, y0: -60, x1: 160, y1: 60 };
+  let all = { x0: -220, y0: -75, x1: 220, y1: 75 };
   const grow = (b, x0, y0, x1, y1) => { b.x0 = Math.min(b.x0, x0); b.y0 = Math.min(b.y0, y0); b.x1 = Math.max(b.x1, x1); b.y1 = Math.max(b.y1, y1); };
   const groups = [];
   D.branches.forEach((b, i) => {
     const a = -Math.PI / 2 + (2 * Math.PI * i) / n, ux = Math.cos(a), uy = Math.sin(a);
-    const bx = R1 * ux, by = R1 * uy, BW = 320, BH = 96;
+    const bx = R1 * ux, by = R1 * uy, BW = 320, blines = [b.id].concat(wrap(b.title, 24)).slice(0, 4), BH = 28 + 30 * blines.length;
     const g = el("g", { class: `node br sys-${b.sys}`, tabindex: 0, role: "button", "aria-label": `Module ${b.id}: ${b.title}` }, gn);
     el("path", { d: `M0,0 C${R1 * 0.45 * ux},${R1 * 0.45 * uy} ${bx - 140 * ux},${by - 140 * uy} ${bx},${by}`, class: `sysstroke-${b.sys}`, fill: "none", "stroke-width": 7, opacity: 0.55 }, gl);
-    box(g, bx, by, BW, BH, [b.id].concat(wrap(b.title, 24)).slice(0, 3), 24, "branch");
+    box(g, bx, by, BW, BH, blines, 24, "branch");
     const bb = { x0: bx - BW / 2, y0: by - BH / 2, x1: bx + BW / 2, y1: by + BH / 2 };
     // leaves: a stack placed outward from the branch
     const k = b.leaves.length, H = k * LH + (k - 1) * GAP;
@@ -38,7 +38,7 @@
       const ly = ay - H / 2 + LH / 2 + j * (LH + GAP), lx = ax;
       el("path", { d: `M${bx + (Math.abs(ux) > 0.35 ? Math.sign(ux) * BW / 2 : 0)},${by + (Math.abs(ux) > 0.35 ? 0 : Math.sign(uy) * BH / 2)} L${lx - (Math.abs(ux) > 0.35 ? Math.sign(ux) * LW / 2 : 0)},${ly}`, class: `sysstroke-${b.sys}`, fill: "none", "stroke-width": 2.5, opacity: 0.6 }, gl);
       const lg = el("g", { class: `node leaf sys-${b.sys}` }, gn);
-      box(lg, lx, ly, LW, LH, wrap(t, 28).slice(0, 2), 18, "leaf");
+      box(lg, lx, ly, LW, LH, wrap(t, 25).slice(0, 2), 18, "leaf");
       lg.querySelector(".node-label").setAttribute("style", "font-size:18px;font-weight:600"); lg.querySelectorAll(".node-label").forEach((x) => x.setAttribute("style", "font-size:18px;font-weight:600;fill:var(--ink)"));
       lg.querySelector("rect").setAttribute("style", "fill:var(--card)");
       grow(bb, lx - LW / 2, ly - LH / 2, lx + LW / 2, ly + LH / 2);

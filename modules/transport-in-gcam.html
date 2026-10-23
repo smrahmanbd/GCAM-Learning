@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.2 Transport in GCAM, in full · GCAM in three goes</title>
+<meta name="description" content="Passenger and freight transport in GCAM 9.1 in full: the nesting tree, the cost per passenger-km, the value of time, two kinds of logit, and how much travel is demanded.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+</head>
+<body data-module="3.2" data-go="3">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../go1.html">Go 1 · Big picture</a><a href="../go2.html">Go 2 · Components</a><a href="../go3.html" aria-current=page>Go 3 · Research</a><a href="../toolkit.html">Toolkit</a><a href="../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html">Home</a> / <a href="../go3.html">Go 3: Research with GCAM: transport</a> / Module 3.2</p>
+<header class="mhead go3"><p class="eyebrow"><span class="golevel">Go 3 · Research</span> Module 3.2, 60 minutes, model detail</p><h1>Transport in GCAM, in full</h1><p class="summary">Passenger and freight transport in GCAM 9.1 in full: the nesting tree, the cost per passenger-km, the value of time, two kinds of logit, and how much travel is demanded.</p><div><span class="sys-chip"><i class="c-energy"></i>Energy</span><span class="sys-chip"><i class="c-economy"></i>Economy and people</span><span class="sys-chip"><i class="c-climate"></i>Emissions and climate</span></div></header>
+<div class="mlayout"><nav class="outline" aria-label="On this page"><p>On this page</p><ol><li><a href="#start">Research brief</a></li><li><a href="#picture">The system under study</a></li><li><a href="#s1">What is in the box</a></li><li><a href="#s2">The nesting tree</a></li><li><a href="#s3">Step 1: the cost of a technology per passenger-km</a></li><li><a href="#s4">Step 2: the generalised cost of a mode</a></li><li><a href="#s5">Step 3: sharing — two kinds of logit</a></li><li><a href="#s6">Step 4: how much travel</a></li><li><a href="#code">Implement it</a></li><li><a href="#explore">Stress-test it</a></li><li><a href="#takeaways">Research notes</a></li><li><a href="#check">Check yourself</a></li><li><a href="#more">Reading list</a></li></ol><p><a href="../mindmap-go3.html">Go 3 mind map</a></p></nav>
+<div class="mmain"><section id="start"><h2>Research brief</h2><h3 style="margin-top:0">In this module you will</h3><ul class='outcomes'><li>Draw GCAM&#x27;s passenger transport nesting tree from service to technology</li><li>Build a technology&#x27;s cost per passenger-km from non-fuel cost, fuel and load factor</li><li>Add the value of time to get a mode&#x27;s generalised cost, using GCAM&#x27;s 2,000-hour wage rule</li><li>Explain where relative-cost and absolute-cost logits are used, and how service demand responds to income and price</li></ul><div class="narration" data-module="3.2"><div class="narr-bar"><button class="btn narr-play" type="button">Listen</button><button class="btn quiet narr-stop" type="button">Stop</button><span class="muted small">Spoken overview</span><button class="narr-lang" type="button" data-lang="en" aria-pressed="true">English</button><button class="narr-lang" type="button" data-lang="ar" aria-pressed="false">العربية</button><span class="narr-status" aria-live="polite"></span></div><details><summary>Read the transcript</summary><p class="narr-en">Transport in GCAM is a tree. At the top is passenger service, measured in passenger-kilometres, and freight service, in tonne-kilometres. Passenger service is shared among walking, cycling, rail, domestic aviation and road; road splits into buses and light vehicles; light vehicles split into two and three wheelers and four wheelers; and at the bottom, technologies such as petrol, hybrid, battery electric and fuel-cell cars compete. Each technology&#x27;s cost per passenger-kilometre is its non-fuel cost plus its fuel cost, divided by how many people ride in the vehicle. Then GCAM adds the cost of time: an hourly wage, which is income per person divided by two thousand hours, times a multiplier for each mode, divided by the mode&#x27;s speed. As people get richer, time costs more, so fast modes gain. Modes compete through relative-cost logits, and technologies within a mode through absolute-cost logits. Finally, total travel grows with income and falls with price. In version 9.1 the effective vehicle costs and intensities come from a 2023 harmonisation file, not only from the original UC Davis data.</p><p class="narr-ar" lang="ar" dir="rtl" hidden>النقل في نموذج GCAM شجرة متفرّعة. في أعلاها خدمة نقل الركاب مقيسة بالراكب-كيلومتر، وخدمة نقل البضائع مقيسة بالطن-كيلومتر. وتتوزع خدمة الركاب بين المشي وركوب الدراجات والقطارات والطيران الداخلي والطرق؛ وتنقسم الطرق إلى حافلات ومركبات خفيفة؛ وتنقسم المركبات الخفيفة إلى مركبات ذات عجلتين أو ثلاث ومركبات ذات أربع عجلات؛ وفي الأسفل تتنافس التقنيات مثل السيارات العاملة بالبنزين والهجينة والكهربائية بالبطاريات وبخلايا الوقود. وتكلفة كل تقنية لكل راكب-كيلومتر هي تكلفتها غير الوقودية مضافًا إليها تكلفة الوقود، مقسومة على عدد الركاب في المركبة. ثم يضيف النموذج تكلفة الوقت: أجر الساعة، وهو دخل الفرد مقسومًا على ألفي ساعة، مضروبًا في معامل خاص بكل وسيلة، ومقسومًا على سرعة الوسيلة. وكلما زاد الثراء ارتفعت قيمة الوقت فتكسب الوسائل السريعة. وتتنافس الوسائل عبر نموذج لوجيت للتكلفة النسبية، وتتنافس التقنيات داخل الوسيلة الواحدة عبر لوجيت للتكلفة المطلقة. وأخيرًا ينمو إجمالي السفر مع الدخل وينخفض مع السعر. وفي الإصدار 9.1 تأتي التكاليف والكثافات الفعلية للمركبات من ملف مواءمة صدر عام 2023، وليس فقط من بيانات جامعة كاليفورنيا في ديفيس الأصلية.</p></details></div></section><section id="picture"><h2>The system under study</h2><p class="prose"><b>GCAM&#x27;s passenger transport tree, with freight beside it.</b> Select a box for detail, or play the walkthrough.</p><div class="diagram-box"><div id="dg-3-2" data-diagram="m3.2"><p class="muted">This diagram needs JavaScript. Each level shares its parent&#x27;s service by a logit; time cost enters at the mode level.</p></div></div></section><section id="s1"><h2>What is in the box</h2><div class="prose"><p>Transport in GCAM has four <b>final demands</b>, each a service rather than an energy quantity. Energy enters only through the vehicles that provide the service.</p><table ><thead><tr><th>Final demand</th><th>Service unit (v8.5 on)</th><th>v8.2 unit</th><th>Per-capita based</th><th>Price elasticity</th><th>Income elasticity (core / SSP1)</th></tr></thead><tbody><tr><td><code>trn_pass</code></td><td>billion pass-km</td><td>million pass-km</td><td>yes</td><td>−1.25</td><td>1.0 / 0.8</td></tr><tr><td><code>trn_freight</code></td><td>billion ton-km</td><td>million ton-km</td><td>no</td><td>−0.65</td><td>0.75 / 0.5</td></tr><tr><td><code>trn_aviation_intl</code></td><td>billion pass-km</td><td>million pass-km</td><td>yes</td><td>−1.0</td><td>1.0 / 1.0</td></tr><tr><td><code>trn_shipping_intl</code></td><td>billion ton-km</td><td>million ton-km</td><td>no</td><td>−0.65</td><td>0.4 / 0.4</td></tr></tbody></table><p class='small muted'>Source: <code>input/gcamdata/inst/extdata/energy/A54.demand.csv</code> and <code>A54.demand_ssp1.csv</code> (v9.1); unchanged since v5.4. Pipelines and off-road machinery are outside transport; since v6.0 there is a separate <code>Off_road</code> industrial sector.</p></div><div class="callout research"><h4>Why this matters</h4><p style='margin:0'>For a Saudi driver in our worked example, owning and running a compact petrol car costs about <b>$0.29</b> per passenger-km, of which fuel is only <b>$0.014</b>. The <b>time</b> spent driving, valued at a wage, costs almost as much as the car itself: <b>$0.23</b> per passenger-km. In GCAM, cheap fuel barely moves the mode choice; speed and income do.</p></div></section><section id="s2"><h2>The nesting tree</h2><div class="prose"><p>Each demand is met by a tree of <b>supplysectors</b>, <b>tranSubsectors</b> (modes or size classes) and <b>tranTechnologies</b> (drivetrains). At each branch point a logit shares the market among the branches by cost. Pass-through nodes ("road", "LDV", "4W") simply hand the choice down one level.</p><table ><thead><tr><th style=width:30%>Mode / class</th><th style=width:35%>Technologies (v9.1)</th><th style=width:35%>Fuel input markets</th></tr></thead><tbody><tr><td>Cars (Mini Car, Car, Large Car and Truck)</td><td>Liquids, Hybrid Liquids, NG, BEV, FCEV</td><td>refined liquids enduse, delivered gas, elect_td_trn, <b>H2 LDV</b></td></tr><tr><td>2W and 3W</td><td>Liquids, NG, BEV (LA-BEV share-weight 0)</td><td>as above</td></tr><tr><td>Bus; Light/Medium/Heavy truck</td><td>Liquids, Hybrid Liquids, NG, BEV, FCEV</td><td>FCEV uses <b>H2 MHDV</b></td></tr><tr><td>Passenger rail · HSR</td><td>Liquids, Electric · Electric</td><td>elect_td_trn</td></tr><tr><td>Freight rail</td><td>Coal (phased out), Liquids, Electric, BEV, FCEV, Hybrid</td><td>FCEV uses H2 MHDV</td></tr><tr><td>Domestic and international aviation</td><td>Liquids, BEV, Hydrogen</td><td>Hydrogen uses <b>LH2</b></td></tr><tr><td>Domestic and international ship</td><td>Liquids, Hybrid Liquids, BEV, FCEV</td><td>FCEV uses LH2</td></tr><tr><td>Walk, Cycle</td><td>non-motorised</td><td>none (speed 4.8 and 15 km/h)</td></tr></tbody></table></div><div class="callout trap"><h4>Pitfall</h4><p style='margin:0'><b>Biofuels, e-fuels and ammonia are not transport technologies.</b> Low-carbon liquids reach vehicles only through the <code>refining</code> sector, which blends oil, gas- and coal-to-liquids, ethanols, biodiesel and FT biofuels into one pool, <code>refined liquids enduse</code>. Aviation and shipping draw on the same pool as cars, so a sustainable-aviation-fuel mandate needs a model change. Core v9.1 has no power-to-liquids or DAC-to-liquids technology, and ammonia is an industrial product, not a transport fuel.</p></div></section><section id="s3"><h2>Step 1: the cost of a technology per passenger-km</h2><div class="prose"><p>Start with one vehicle. It burns <i>I</i> units of fuel per vehicle-km at fuel price <i>P<sub>f</sub></i>, costs <i>N</i> per vehicle-km to own and maintain, and carries <i>L</i> people on average (the <b>load factor</b>). The cost of one passenger-km is the cost of one vehicle-km shared among the passengers:</p><div class="eq">P<sub>j</sub> = ( P<sub>f</sub> · I<sub>j</sub> + N<sub>j</sub> ) ÷ L<sub>j</sub><span class=n>(3.3)</span></div><p>In the code this is <code>TranTechnology</code> (<code>cvs/objects/technologies/source/tran_technology.cpp</code>); in the XML, <i>I</i> is the <code>coefficient</code> of the fuel input, <i>N</i> the <code>input-cost</code> of the <code>minicam-non-energy-input</code> named "non-energy", and <i>L</i> the <code>loadFactor</code>. The non-fuel cost is built in gcamdata (<code>zenergy_L154.transportation_UCD.R</code>) from capital and operating costs: capital is annualised with a 10 % discount rate over 10 years and divided by the distance a vehicle travels each year.</p><div class="eq">N = [ (purchase + other + infrastructure) × CRF(10 %, 10 y) + maintenance + registration and insurance + tolls ] ÷ annual vkm<span class=n>(3.4)</span></div><p class='small muted'>Data: <code>UCD_trn_data_CORE.csv</code> (petrol car, operating costs, intensities, load factor 2.33, 14,000 vkm/yr) and <code>OTAQ_trn_data_EMF37.csv</code> (BEV purchase, other and charger costs), Middle East, Compact Car, 2020, v9.1. Fuel prices are illustrative round numbers, not GCAM outputs.</p></div><div class="callout model"><h4>Worked calculation</h4><p style='margin:0 0 3px'><b>Worked example: a compact car in the Middle East, 2020 (2005$)</b></p><ol><li>CRF = 0.10 × 1.1<sup>10</sup> ÷ (1.1<sup>10</sup> − 1) = 0.1627.</li><li>Petrol car capital: 31,342 purchase + 10,970 other = 42,312 $; × 0.1627 = 6,886 $/yr.</li><li>Operating: 448 maintenance + 1,550 registration and insurance = 1,998 $/yr.</li><li>Non-fuel per vehicle-km: (6,886 + 1,998) ÷ 14,000 km = 0.635 $/vkm.</li><li>Fuel: 3.32 MJ/vkm × 10 $/GJ (illustrative) = 0.0332 $/vkm.</li><li>Per passenger-km: (0.635 + 0.0332) ÷ 2.33 persons = <b>0.286 $/pkm</b>.</li><li>Battery car, same steps (capital 51,991 $ incl. 1,409 $ charger; 1.03 MJ/vkm at 25 $/GJ): <b>0.328 $/pkm</b>.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> the BEV is 15 % dearer per pkm in 2020; capital is 74 % of the petrol car's cost and fuel only 5 %</p></div><div class="callout research"><h4>Research note</h4><p style='margin:0'><b>Which file sets the cost you think you are changing?</b> For cars, trucks, buses, rail, aviation and ships, gcamdata overwrites the UC Davis (UCD) values with <code>OTAQ_trn_data_EMF37.csv</code>: "MODIFIED intensity and capital cost … based on AUTONOMIE and TEMPO harmonization" (source workbook dated 14 March 2023). In our example the petrol car's costs still come from UCD (no OTAQ row), but the BEV's come from OTAQ. Edit the wrong file and nothing changes.</p></div></section><section id="s4"><h2>Step 2: the generalised cost of a mode</h2><div class="prose"><p>A traveller also pays with time. GCAM converts income into an hourly wage, <i>W</i> = GDP per person ÷ 2,000 hours (40 hours × 50 weeks, hard-coded in <code>TranSubsector::getTimeValue</code>), scales it by a <b>time-value multiplier</b> <i>V</i> and divides by the mode's door-to-door <b>speed</b> <i>S</i>:</p><div class="eq">P<sub>i</sub> = Σ<sub>j</sub> s<sub>ji</sub> P<sub>ji</sub> + W · V<sub>i</sub> ÷ S<sub>i</sub>, &nbsp;&nbsp; W = GDP per capita ÷ (40 h × 50 wk)<span class=n>(3.5)</span></div><p>The time term is added only where <code>addTimeValue</code> = 1: on passenger modes and on the 4W node (once, at the LDV-versus-other-modes level), never on freight or on drivetrain choice. Since v8.5 the GDP used here is deflated from 1990 to 1975 dollars inside the code.</p><table ><thead><tr><th style=width:22%>Mode</th><th style=width:22%>Time-value multiplier V (× wage)</th><th style=width:34%>Built from</th><th style=width:22%>Example speed, Middle East (km/h)</th></tr></thead><tbody><tr><td>Domestic aviation</td><td>1.244</td><td>1.45 in-vehicle, 1.066 wait/walk, 53.7 % wait share</td><td>197</td></tr><tr><td>International aviation</td><td>1.291</td><td>41.5 % wait share</td><td>337</td></tr><tr><td>Rail, HSR</td><td>0.80</td><td>0.77 in-vehicle, 10.2 % wait</td><td>42 (HSR 170)</td></tr><tr><td>Bus</td><td>0.808</td><td>0.77 in-vehicle, 12.8 % wait</td><td>21–24</td></tr><tr><td>Cars, 2W/3W</td><td>0.82</td><td>no waiting</td><td>33 (2005) → 40 (2050)</td></tr><tr><td>Walk, Cycle</td><td>1.066</td><td>—</td><td>4–4.8 / 15</td></tr></tbody></table></div><div class="callout model"><h4>Worked calculation</h4><p style='margin:0 0 3px'><b>Worked example: the price of time</b></p><ol><li>GDP per person $20,000 (illustrative) ÷ 2,000 h = W = $10 per hour.</li><li>Car: 10 × 0.82 ÷ 35 km/h = 0.234 $/pkm.</li><li>Bus: 10 × 0.808 ÷ 21 km/h = 0.385 $/pkm — slower, so time costs more than the bus fare.</li><li>Rail: 10 × 0.80 ÷ 42 km/h = 0.190 $/pkm.</li><li>Double the income and every time cost doubles; fast modes gain on slow ones.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> income growth pushes travellers towards faster modes even if money costs stay the same</p></div></section><section id="s5"><h2>Step 3: sharing — two kinds of logit</h2><div class="prose"><p>At every branch, shares follow a logit. GCAM has two forms (documentation, <i>Economic Choice</i>). The <b>relative-cost logit</b> compares cost <i>ratios</i>; the <b>absolute-cost logit</b> compares cost <i>differences</i>, scaled by a base value <i>p</i><sub>0</sub>:</p><div class="eq">relative: s<sub>i</sub> = α<sub>i</sub> P<sub>i</sub><sup>γ</sup> ÷ Σ<sub>k</sub> α<sub>k</sub> P<sub>k</sub><sup>γ</sup> &nbsp;&nbsp;&nbsp; absolute: s<sub>i</sub> = α<sub>i</sub> e<sup>γ P<sub>i</sub>/p<sub>0</sub></sup> ÷ Σ<sub>k</sub> α<sub>k</sub> e<sup>γ P<sub>k</sub>/p<sub>0</sub></sup><span class=n>(3.6)</span></div><p>Which form applies where? In the gcamdata files every tranSubsector (choice among drivetrains) is set to <code>absolute-cost-logit</code>, as is the <code>trn_pass_road_LDV_4W</code> sector. The other supplysectors leave <code>logit.type</code> empty, and gcamdata then fills in the default, the <b>relative-cost logit</b> (<code>add_logit_tables_xml</code> in <code>R/xml.R</code>). So <b>mode choice is relative, drivetrain choice is absolute</b>. The absolute form copes with costs that can be near zero or negative, which matters once carbon prices and subsidies enter.</p></div><div class="callout model"><h4>Worked calculation</h4><p style='margin:0 0 3px'><b>Worked example: calibrating a share-weight</b></p><ol><li>Observed 2021: BEVs take 1 % of new car pkm, though they cost 15 % more (p<sub>BEV</sub> = 1.15 p<sub>0</sub>).</li><li>With α<sub>ICE</sub> = 1 and γ = −8: s<sub>BEV</sub>/s<sub>ICE</sub> = α<sub>BEV</sub> · e<sup>−8(1.15 − 1)</sup> = α<sub>BEV</sub> · e<sup>−1.2</sup>.</li><li>Set the ratio to 0.01/0.99 = 0.0101: α<sub>BEV</sub> = 0.0101 ÷ 0.3012 = 0.0335.</li><li>Check: share = 0.010, the observed 1 %.</li><li>Now the future path of α<sub>BEV</sub> (0.034 → 1 by 2030 in the s-curve) does as much work as any cost change.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> α<sub>BEV</sub> ≈ 0.034; the share-weight hides everything costs do not explain</p></div></section><section id="s6"><h2>Step 4: how much travel</h2><div class="prose"><p>The total service demand grows with income and population and falls with the aggregate price of the service (the average cost that the nest passes up). In <code>minicam_price_elasticity_function.cpp</code>:</p><div class="eq">D<sub>t</sub> = D<sub>t−1</sub> · (Y<sub>t</sub>/Y<sub>t−1</sub>)<sup>α</sup> · (P<sub>t</sub>/P<sub>t−1</sub>)<sup>β</sup> · (N<sub>t</sub>/N<sub>t−1</sub>)<span class=n>(3.7)</span></div><p>Y is GDP per person, P the service price, N population (only for per-capita demands); α and β are the income and price elasticities in the table above. Because α = 1 for passenger travel, travel per person grows as fast as income unless prices rise.</p><table ><thead><tr><th style=width:16%>Version</th><th style=width:84%>Transport change</th></tr></thead><tbody><tr><td>v6.0 (2022)</td><td>CMP 359: hydrogen and transport update; bottom-up LDV battery and fuel-cell costs; BEV/FCEV trucks, buses, locomotives, ships, aircraft; OTAQ/EMF37 file added</td></tr><tr><td>v7.0 (2023)</td><td>gcamdata chunks renamed to <code>zenergy_L154…/L254…</code></td></tr><tr><td>v7.1 (2024)</td><td>CMP 386: trucks re-characterised with Autonomie/BEAN; charger costs on vehicles; bus load factors halved in Africa, India, SE Asia</td></tr><tr><td>v8.0 / v8.1</td><td>final base year 2021 / Ukraine a separate region</td></tr><tr><td>v8.5 (2025)</td><td>units: billion pkm/tkm, 1975$, EJ per billion vkm (found by diffing the repository)</td></tr><tr><td>v8.8</td><td>hydrogen inputs renamed: <code>H2 LDV</code>, <code>H2 MHDV</code>, <code>LH2</code>; fuel-cell share-weights cut from 1 to 0.5</td></tr><tr><td>v9.0–9.1 (2026)</td><td>KLEAM macro module; transport capital tracked (LDV depreciation 1/15 per year)</td></tr></tbody></table></div><div class="callout gcam"><h4>In GCAM</h4><p style='margin:0 0 4px'><b>Where it lives (v9.1).</b> Chunks: <code>input/gcamdata/R/zenergy_L154.transportation_UCD.R</code> (calibration, costs, intensities by UCD region) and <code>zenergy_L254.transportation_UCD.R</code> (level-2 tables such as <code>L254.StubTranTechCost</code>, <code>L254.StubTranTechLoadFactor</code>, <code>L254.tranSubsectorVOTT</code>, <code>L254.IncomeElasticity_trn</code>); XML writer <code>zenergy_xml_transportation_UCD_CORE.R</code> → <code>transportation_UCD_CORE.xml</code>, <code>_SSP1</code>, <code>_SSP3</code>, <code>_SSP5</code>. Assumptions: <code>A54.*_revised.csv</code> (the <code>_revised</code> files are the ones used), <code>UCD_trn_data_*.csv</code>, <code>OTAQ_trn_data_EMF37.csv</code>, mappings <code>UCD_techs_revised.csv</code>, <code>UCD_ctry.csv</code>.</p><p style='margin:0'><b>Calibration.</b> IEA transport energy by country and fuel is split into UCD modes, size classes and technologies with 2005 UCD shares, scaled to GCAM end-use energy, converted to vkm (÷ intensity) and pkm (× load factor); share-weights then reproduce each base year to 2021. Parameters exist for 14 UCD regions and are mapped to GCAM's 32: Saudi values are generic "Middle East" values.</p></div><div class="callout trap"><h4>Pitfall</h4><p style='margin:0'><b>Two documentation pages disagree with the code.</b> <code>en_technologies.html</code> still gives 1990$ and BTU per vehicle-km (v8.2 units). And the docs' general advice that passenger transport suits the relative-cost logit is true for mode choice but not for drivetrain choice, which the input files set to the absolute-cost form. Always check the XML you are running.</p></div><div class="callout try"><h4>Try it</h4><ol style='margin:0'><li>Using Eq. 3.3, what happens to the petrol car's cost per pkm if the load factor falls from 2.33 to 2.0 (the 2050 value)? (Answer key.)</li><li>With γ = −8, how much cheaper must a BEV be than a petrol car for it to take 80 % of the pair, with equal share-weights?</li><li>Why does a carbon price of $200/tCO<sub>2</sub> change car choice less than a 30 % change in battery-car capital cost? Use Figure 3.3.</li></ol></div></section><section id="code"><h2>Implement it</h2><p class="prose">Real files from the Go 3 transport kit. XML and analysis scripts are for your own GCAM installation; Python marked 'Runs in your browser' runs here.</p><div class="codeblock" data-module="3.2"><div class="codehead"><b>Generalised cost and mode shares, GCAM-style</b><span class="lang">Python</span><span class="runs">Runs in your browser</span><button class="btn code-run" type="button">Run in browser</button><button class="btn quiet code-reset" type="button">Reset</button><button class="btn quiet code-copy" type="button">Copy</button></div><textarea spellcheck="false" aria-label="Editable Python code"># Generalised cost of passenger modes, GCAM-style (illustrative numbers, 2005$)
+# money cost per pkm + wage x time-value multiplier / speed;  wage = GDP per person / 2,000 h
+gdp_per_person = 18000          # $ per year
+wage = gdp_per_person / 2000    # $ per hour
+
+#        name     money $/pkm  multiplier  speed km/h
+modes = [(&quot;Walk&quot;,  0.000,      1.066,       4.8),
+         (&quot;Bus&quot;,   0.070,      0.808,      22.0),
+         (&quot;Rail&quot;,  0.015,      0.800,      42.0),
+         (&quot;Car&quot;,   0.294,      0.820,      35.0)]
+
+costs = {}
+for name, money, mult, speed in modes:
+    time_cost = wage * mult / speed
+    costs[name] = money + time_cost
+    print(f&quot;{name:5s} money {money:.3f} + time {time_cost:.3f} = {costs[name]:.3f} $/pkm&quot;)
+
+# Relative-cost logit across modes (exponent -2, equal share-weights for illustration)
+w = {k: c ** -2 for k, c in costs.items()}
+total = sum(w.values())
+print(&quot;shares:&quot;, {k: round(v / total, 3) for k, v in w.items()})
+
+# Double income: time becomes dearer, so slow modes lose share
+wage2 = 2 * wage
+c2 = {n: m + wage2 * v / s for n, m, v, s in modes}
+w2 = {k: c ** -2 for k, c in c2.items()}
+print(&quot;shares at 2x income:&quot;, {k: round(v / sum(w2.values()), 3) for k, v in w2.items()})
+</textarea><div class="explain-code">Money cost per pkm plus wage × time-value multiplier ÷ speed, then a relative-cost logit across modes. Share-weights are equal here, so rail's large share is an artefact: in GCAM, share-weights are calibrated to observed shares. Try doubling income.</div><div class="expected"><p class="small muted" style="margin:0 0 4px">Expected output</p><pre>Walk  money 0.000 + time 1.999 = 1.999 $/pkm
+Bus   money 0.070 + time 0.331 = 0.401 $/pkm
+Rail  money 0.015 + time 0.171 = 0.186 $/pkm
+Car   money 0.294 + time 0.211 = 0.505 $/pkm
+shares: {&#x27;Walk&#x27;: 0.006, &#x27;Bus&#x27;: 0.159, &#x27;Rail&#x27;: 0.734, &#x27;Car&#x27;: 0.1}
+shares at 2x income: {&#x27;Walk&#x27;: 0.005, &#x27;Bus&#x27;: 0.16, &#x27;Rail&#x27;: 0.668, &#x27;Car&#x27;: 0.167}</pre></div><div class="code-out" hidden aria-live="polite"></div></div><div class="codeblock" data-module="3.2"><div class="codehead"><b>The transport toy model (Python)</b><span class="lang">Python</span><button class="btn quiet code-copy" type="button">Copy</button><a class="btn quiet" href="../labs/go3/toy/gcam_transport_toy.py" download>Download</a></div><pre><code>&quot;&quot;&quot;
+gcam_transport_toy.py -- a stand-alone passenger-transport model that mimics GCAM&#x27;s structure.
+
+WHAT IT MIMICS (GCAM 9.1, gcam-core tag gcam-v9.1; file paths are relative to gcam-core/)
+  * Nesting: trn_pass -&gt; {Walk, Cycle, Passenger Rail, Domestic Aviation, road}
+             road  -&gt; trn_pass_road     -&gt; {Bus, LDV}
+             LDV   -&gt; trn_pass_road_LDV -&gt; {2W and 3W, 4W}
+             4W    -&gt; trn_pass_road_LDV_4W -&gt; {Car}   (GCAM also has Mini Car and Large Car and Truck)
+    Sources: input/gcamdata/inst/extdata/energy/A54.sector.csv,
+             A54.tranSubsector_logit_revised.csv, A54.globaltech_passthru_revised.csv,
+             energy/mappings/UCD_techs_revised.csv
+  * Logit types and exponents
+      - competition among modes (supplysector level): relative-cost logit; trn_pass -2,
+        trn_pass_road -4, trn_pass_road_LDV -4 (A54.sector.csv; a blank logit.type defaults to
+        relative-cost-logit in input/gcamdata/R/xml.R lines 207-208)
+      - competition among technologies inside a mode (tranSubsector level): absolute-cost logit;
+        Car -8, 2W and 3W -8, Bus -3, Passenger Rail -1, Domestic Aviation -6
+        (A54.tranSubsector_logit_revised.csv)
+      - absolute-cost logit: share_i ~ sw_i * exp(beta * p_i / p0), where p0 is the cost of the
+        most expensive calibrated option in the calibration year
+        (cvs/objects/functions/source/absolute_cost_logit.cpp, lines 111-124;
+         cvs/objects/util/base/source/calibrate_share_weight_visitor.cpp, lines 136-162)
+      - relative-cost logit: share_i ~ sw_i * p_i ** gamma (relative_cost_logit.cpp)
+  * Technology cost per passenger-km = (non-fuel cost per vkm + fuel price x intensity) / load factor
+    (cvs/objects/technologies/source/tran_technology.cpp, getTotalInputCost / getEnergyCost)
+  * Mode (subsector) price = share-weighted technology cost + time value when addTimeValue = 1
+    time value = wage x time-value-multiplier / speed, wage = GDP per capita / (40 h x 50 weeks)
+    (cvs/objects/sectors/source/tran_subsector.cpp lines 175-214; multipliers and addTimeValue
+     from A54.tranSubsector_VOTT_revised.csv)
+  * Sector price = share-weighted subsector price (cvs/objects/sectors/source/sector.cpp 324-339)
+  * Service demand D_t = D_{t-1} (Y_t/Y_{t-1})^income (P_t/P_{t-1})^price (N_t/N_{t-1}),
+    trn_pass price elasticity -1.25 and income elasticity 1.0 (A54.demand.csv)
+  * Share-weight calibration to base-year output, anchored on the largest option
+    (calibrate_share_weight_visitor.cpp); new technologies get share-weights from an
+    assumption path like A54.globaltranTech_shrwt_revised.csv (BEV 0 until 2025, 1 from 2030;
+    FCEV 0 in 2030 rising to 0.5 in 2050 -- linear here, GCAM uses an s-curve)
+
+WHAT IT DOES NOT DO: vintages and retirement, the solver (no fuel-price feedback), freight,
+international aviation and shipping, several LDV size classes, fuel-preference elasticities.
+
+NUMBERS: illustrative. Car, bus, rail and aviation costs, intensities, load factors and speeds are
+rounded from the &quot;Middle East&quot; rows of UCD_trn_data_CORE.csv and OTAQ_trn_data_EMF37.csv
+(Compact Car for cars; capital annualised at 10% over 10 years, 14,000 vkm/yr, as in
+R/zenergy_L154.transportation_UCD.R). Money is 2005$ (GCAM 9.1 uses 1975$ internally:
+1975$ = 0.341 x 2005$ with gcamdata&#x27;s gdp_deflator). Base-year activity, fuel prices, 2W and
+BEV-bus costs are invented. This is a teaching model, not GCAM output.
+
+Run:  python gcam_transport_toy.py        (writes toy_results.csv next to this file)
+&quot;&quot;&quot;
+import csv
+import math
+import os
+
+YEARS = list(range(2020, 2101, 5))
+BASE = 2020
+
+# ---------------------------------------------------------------- helpers
+def interp(points, year):
+    &quot;&quot;&quot;Linear interpolation in a {year: value} dict, flat outside the range.&quot;&quot;&quot;
+    ys = sorted(points)
+    if year &lt;= ys[0]:
+        return points[ys[0]]
+    if year &gt;= ys[-1]:
+        return points[ys[-1]]
+    for a, b in zip(ys, ys[1:]):
+        if a &lt;= year &lt;= b:
+            return points[a] + (points[b] - points[a]) * (year - a) / (b - a)
+
+
+EF = {&quot;refined liquids enduse&quot;: 19.6 * 44 / 12 / 1000,   # tCO2 per GJ (A_PrimaryFuelCCoef.csv: 19.6 kgC/GJ)
+      &quot;delivered gas&quot;: 14.2 * 44 / 12 / 1000,            # 14.2 kgC/GJ
+      &quot;elect_td_trn&quot;: 0.0, &quot;H2 LDV&quot;: 0.0, &quot;H2 MHDV&quot;: 0.0}  # emissions counted where power/H2 is made
+
+# ---------------------------------------------------------------- scenario settings
+SCENARIOS = {
+    &quot;Reference&quot;:      dict(),
+    &quot;BEV-low&quot;:        dict(bev_cost_mult=0.70),          # BEV non-fuel cost -30% from 2030
+    &quot;Carbon-price&quot;:   dict(carbon=True),                 # 50 $/tCO2 in 2025, +5%/yr
+    &quot;Fast-wage&quot;:      dict(gdp_growth=0.03),             # GDP per capita +3%/yr instead of +2%/yr
+    &quot;LF-up&quot;:          dict(car_lf_2050=2.60),            # car occupancy rises instead of falling
+}
+
+
+def fuel_price(fuel, year, sc):
+    base = {&quot;refined liquids enduse&quot;: interp({2020: 15.0, 2050: 18.0}, year),
+            &quot;delivered gas&quot;: 8.0,
+            &quot;elect_td_trn&quot;: 30.0,
+            &quot;H2 LDV&quot;: interp({2020: 45.0, 2050: 30.0}, year),
+            &quot;H2 MHDV&quot;: interp({2020: 40.0, 2050: 28.0}, year)}[fuel]        # 2005$/GJ, illustrative
+    if sc.get(&quot;carbon&quot;) and year &gt;= 2025:
+        # carbon price in 2005$/tCO2: 50 in 2025 (or sc[&quot;carbon_start&quot;]) rising 5%/yr
+        base += EF[fuel] * sc.get(&quot;carbon_start&quot;, 50.0) * 1.05 ** (year - 2025)
+    return base
+
+
+def gdp_pc(year, sc):                      # thousand 2005$ per person (illustrative)
+    return 18.0 * (1 + sc.get(&quot;gdp_growth&quot;, 0.02)) ** (year - BASE)
+
+
+def population(year):                      # million people (illustrative logistic)
+    return 260.0 + 140.0 * (1 - math.exp(-0.025 * (year - BASE)))
+
+
+# ---------------------------------------------------------------- technologies
+# per technology: fuel, non-fuel cost (2005$/vkm), intensity (MJ/vkm), load factor (pers/veh),
+# share-weight path for non-calibrated technologies
+def techs(year, sc):
+    car_lf = interp({2020: 2.33, 2050: sc.get(&quot;car_lf_2050&quot;, 2.00)}, year)
+    bev_mult = sc.get(&quot;bev_cost_mult&quot;, 1.0) if year &gt;= 2030 else 1.0
+    car = {
+        &quot;Liquids&quot;:        dict(fuel=&quot;refined liquids enduse&quot;, nf=interp({2020: .6345, 2030: .6747, 2050: .7652}, year),
+                               mj=interp({2020: 3.322, 2030: 3.101, 2050: 2.718}, year), lf=car_lf),
+        &quot;Hybrid Liquids&quot;: dict(fuel=&quot;refined liquids enduse&quot;, nf=interp({2020: .6629, 2030: .7081, 2050: .7872}, year),
+                               mj=interp({2020: 2.581, 2030: 2.454, 2050: 2.226}, year), lf=car_lf),
+        &quot;NG&quot;:             dict(fuel=&quot;delivered gas&quot;, nf=interp({2020: .6599, 2030: .7017, 2050: .7958}, year),
+                               mj=interp({2020: 3.355, 2030: 3.132, 2050: 2.745}, year), lf=car_lf),
+        &quot;BEV&quot;:            dict(fuel=&quot;elect_td_trn&quot;, nf=bev_mult * interp({2020: .7407, 2030: .6894, 2050: .7652}, year),
+                               mj=interp({2020: 1.026, 2030: 1.019, 2050: 1.005}, year), lf=car_lf,
+                               sw={2020: 0, 2025: 0, 2030: 1}),
+        &quot;FCEV&quot;:           dict(fuel=&quot;H2 LDV&quot;, nf=interp({2020: .8050, 2030: .7280, 2050: .7799}, year),
+                               mj=interp({2020: 1.572, 2030: 1.518, 2050: 1.418}, year), lf=car_lf,
+                               sw={2020: 0, 2030: 0, 2050: 0.5}),
+    }
+    bus = {
+        &quot;Liquids&quot;: dict(fuel=&quot;refined liquids enduse&quot;, nf=1.6319, mj=interp({2020: 7.908, 2050: 7.884}, year), lf=25.0),
+        &quot;NG&quot;:      dict(fuel=&quot;delivered gas&quot;, nf=1.7609, mj=interp({2020: 7.908, 2050: 7.884}, year), lf=25.0),
+        &quot;BEV&quot;:     dict(fuel=&quot;elect_td_trn&quot;, nf=interp({2020: 2.00, 2050: 1.70}, year), mj=3.0, lf=25.0,
+                        sw={2020: 0, 2025: 0, 2050: 1}),
+    }
+    two_w = {
+        &quot;Liquids&quot;: dict(fuel=&quot;refined liquids enduse&quot;, nf=0.12, mj=1.0, lf=1.3),
+        &quot;BEV&quot;:     dict(fuel=&quot;elect_td_trn&quot;, nf=interp({2020: 0.14, 2050: 0.11}, year), mj=0.30, lf=1.3,
+                        sw={2020: 0, 2025: 0, 2030: 1}),
+    }
+    rail = {&quot;Electric&quot;: dict(fuel=&quot;elect_td_trn&quot;, nf=16.005, mj=53.197, lf=1152.0)}
+    air = {&quot;Liquids&quot;: dict(fuel=&quot;refined liquids enduse&quot;, nf=13.77, mj=interp({2020: 366.5, 2050: 310.6}, year),
+                           lf=interp({2020: 148.8, 2050: 161.6}, year))}
+    return {&quot;Car&quot;: car, &quot;Bus&quot;: bus, &quot;2W and 3W&quot;: two_w, &quot;Passenger Rail&quot;: rail, &quot;Domestic Aviation&quot;: air}
+
+
+TECH_EXP = {&quot;Car&quot;: -8, &quot;Bus&quot;: -3, &quot;2W and 3W&quot;: -8, &quot;Passenger Rail&quot;: -1, &quot;Domestic Aviation&quot;: -6}
+# mode-level settings: time-value multiplier, addTimeValue, speed (km/h)
+MODES = {
+    &quot;Walk&quot;:              dict(vott=1.066, add=1, speed=lambda y: 4.8),
+    &quot;Cycle&quot;:             dict(vott=1.066, add=1, speed=lambda y: 15.0),
+    &quot;Passenger Rail&quot;:    dict(vott=0.80, add=1, speed=lambda y: 42.0),
+    &quot;Domestic Aviation&quot;: dict(vott=1.244, add=1, speed=lambda y: 197.0),
+    &quot;Bus&quot;:               dict(vott=0.808, add=1, speed=lambda y: interp({2020: 22, 2050: 24, 2100: 25}, y)),
+    &quot;2W and 3W&quot;:         dict(vott=0.82, add=1, speed=lambda y: 30.0),
+    &quot;4W&quot;:                dict(vott=0.82, add=1, speed=lambda y: interp({2020: 35, 2050: 40, 2100: 42}, y)),
+    &quot;road&quot;:              dict(vott=1.0, add=0, speed=lambda y: 1.0),
+    &quot;LDV&quot;:               dict(vott=1.0, add=0, speed=lambda y: 1.0),
+}
+NEST = {  # sector: (logit exponent, children)
+    &quot;trn_pass&quot;:          (-2, [&quot;Walk&quot;, &quot;Cycle&quot;, &quot;Passenger Rail&quot;, &quot;Domestic Aviation&quot;, &quot;road&quot;]),
+    &quot;trn_pass_road&quot;:     (-4, [&quot;Bus&quot;, &quot;LDV&quot;]),
+    &quot;trn_pass_road_LDV&quot;: (-4, [&quot;2W and 3W&quot;, &quot;4W&quot;]),
+}
+CHILD_SECTOR = {&quot;road&quot;: &quot;trn_pass_road&quot;, &quot;LDV&quot;: &quot;trn_pass_road_LDV&quot;, &quot;4W&quot;: &quot;Car&quot;}
+
+# base-year (2020) passenger-km, billion (illustrative)
+BASE_PKM = {&quot;Walk&quot;: 70.0, &quot;Cycle&quot;: 25.0, &quot;Passenger Rail&quot;: 6.0, &quot;Domestic Aviation&quot;: 55.0,
+            &quot;Bus&quot;: {&quot;Liquids&quot;: 157.0, &quot;NG&quot;: 3.0}, &quot;2W and 3W&quot;: {&quot;Liquids&quot;: 45.0},
+            &quot;Car&quot;: {&quot;Liquids&quot;: 1120.0, &quot;Hybrid Liquids&quot;: 20.0, &quot;NG&quot;: 10.0}}
+
+
+# ---------------------------------------------------------------- logit functions
+def rel_shares(prices, sws, g):
+    w = {k: (sws[k] * prices[k] ** g if sws[k] &gt; 0 else 0.0) for k in prices}
+    t = sum(w.values())
+    return {k: v / t for k, v in w.items()}
+
+
+def abs_shares(costs, sws, beta, p0):
+    w = {k: (sws[k] * math.exp(beta * costs[k] / p0) if sws[k] &gt; 0 else 0.0) for k in costs}
+    t = sum(w.values())
+    return {k: v / t for k, v in w.items()}
+
+
+def run(name, sc):
+    cal = {}                     # calibrated share-weights and base costs (from the base year)
+    rows, demand_prev, price_prev = [], None, None
+    for year in YEARS:
+        T = techs(year, sc)
+        wage = gdp_pc(year, sc) * 1000 / (40 * 50)        # 2005$ per hour
+        tech_cost, tech_share, mode_money = {}, {}, {}
+        # 1) technology level (absolute-cost logit inside each mode)
+        for mode, tt in T.items():
+            costs = {k: (v[&quot;nf&quot;] + fuel_price(v[&quot;fuel&quot;], year, sc) * v[&quot;mj&quot;] / 1000) / v[&quot;lf&quot;] for k, v in tt.items()}
+            tech_cost[mode] = costs
+            if year == BASE:
+                base = BASE_PKM[mode] if isinstance(BASE_PKM[mode], dict) else {list(tt)[0]: BASE_PKM[mode]}
+                calk = {k: base.get(k, 0.0) for k in tt}
+                tot = sum(calk.values())
+                p0 = max(costs[k] for k in tt if calk[k] &gt; 0)            # most expensive calibrated option
+                anchor = max(calk, key=calk.get)
+                sws = {}
+                for k in tt:
+                    if calk[k] &gt; 0:   # inverse of the absolute logit (calibrate_share_weight_visitor.cpp)
+                        sws[k] = (calk[k] / tot) / (calk[anchor] / tot) * math.exp(TECH_EXP[mode] / p0 * (costs[anchor] - costs[k]))
+                    else:
+                        sws[k] = 0.0
+                cal[mode] = dict(p0=p0, sw=sws)
+            sws = {k: (interp(v[&quot;sw&quot;], year) if &quot;sw&quot; in v and cal[mode][&quot;sw&quot;][k] == 0 else cal[mode][&quot;sw&quot;][k]) for k, v in tt.items()}
+            sh = abs_shares(costs, sws, TECH_EXP[mode], cal[mode][&quot;p0&quot;])
+            tech_share[mode] = sh
+            mode_money[mode] = sum(sh[k] * costs[k] for k in costs)
+        mode_money[&quot;Walk&quot;] = mode_money[&quot;Cycle&quot;] = 0.0      # non-motorised: no money cost
+        mode_money[&quot;4W&quot;] = mode_money[&quot;Car&quot;]                # pass-through: 4W sector holds only Car
+
+        def mode_price(m):
+            md = MODES[m]
+            tv = wage * md[&quot;vott&quot;] / md[&quot;speed&quot;](year) if md[&quot;add&quot;] else 0.0
+            return mode_money[m] + tv
+
+        # 2) nests from the bottom up (relative-cost logit among modes)
+        sector_price, mode_sh = {}, {}
+        for sector in [&quot;trn_pass_road_LDV&quot;, &quot;trn_pass_road&quot;, &quot;trn_pass&quot;]:
+            g, kids = NEST[sector]
+            prices = {}
+            for k in kids:
+                prices[k] = sector_price[CHILD_SECTOR[k]] if k in (&quot;road&quot;, &quot;LDV&quot;) else mode_price(k)
+            if year == BASE:
+                def base_out(k):
+                    if k == &quot;road&quot;: return base_out(&quot;Bus&quot;) + base_out(&quot;LDV&quot;)
+                    if k == &quot;LDV&quot;: return base_out(&quot;2W and 3W&quot;) + base_out(&quot;4W&quot;)
+                    if k == &quot;4W&quot;: return sum(BASE_PKM[&quot;Car&quot;].values())
+                    v = BASE_PKM[k]
+                    return sum(v.values()) if isinstance(v, dict) else v
+                outs = {k: base_out(k) for k in kids}
+                anchor = max(outs, key=outs.get)
+                cal[sector] = {k: (outs[k] / outs[anchor]) * (prices[anchor] / prices[k]) ** g for k in kids}
+            sh = rel_shares(prices, cal[sector], g)
+            mode_sh[sector] = sh
+            sector_price[sector] = sum(sh[k] * prices[k] for k in kids)
+        P = sector_price[&quot;trn_pass&quot;]
+
+        # 3) total passenger demand (billion pkm)
+        if year == BASE:
+            D = sum(BASE_PKM[m] if not isinstance(BASE_PKM[m], dict) else sum(BASE_PKM[m].values()) for m in BASE_PKM)
+        else:
+            y_ratio = gdp_pc(year, sc) / gdp_pc(year - 5, sc)
+            D = demand_prev * y_ratio ** 1.0 * (P / price_prev) ** -1.25 * population(year) / population(year - 5)
+        demand_prev, price_prev = D, P
+
+        # 4) pkm by mode and technology, energy and CO2
+        top, road, ldv = mode_sh[&quot;trn_pass&quot;], mode_sh[&quot;trn_pass_road&quot;], mode_sh[&quot;trn_pass_road_LDV&quot;]
+        mode_pkm = {&quot;Walk&quot;: D * top[&quot;Walk&quot;], &quot;Cycle&quot;: D * top[&quot;Cycle&quot;], &quot;Passenger Rail&quot;: D * top[&quot;Passenger Rail&quot;],
+                    &quot;Domestic Aviation&quot;: D * top[&quot;Domestic Aviation&quot;], &quot;Bus&quot;: D * top[&quot;road&quot;] * road[&quot;Bus&quot;],
+                    &quot;2W and 3W&quot;: D * top[&quot;road&quot;] * road[&quot;LDV&quot;] * ldv[&quot;2W and 3W&quot;],
+                    &quot;Car&quot;: D * top[&quot;road&quot;] * road[&quot;LDV&quot;] * ldv[&quot;4W&quot;]}
+        energy, co2 = {}, 0.0
+        for m, pk in mode_pkm.items():
+            rows.append((name, year, &quot;service output by mode&quot;, m, pk, &quot;billion pkm&quot;))
+            rows.append((name, year, &quot;mode share&quot;, m, pk / D, &quot;fraction&quot;))
+            if m in T:
+                for k, s in tech_share[m].items():
+                    v = T[m][k]
+                    ej = pk * s / v[&quot;lf&quot;] * v[&quot;mj&quot;] / 1000              # billion vkm x MJ/vkm = PJ -&gt; EJ
+                    energy[v[&quot;fuel&quot;]] = energy.get(v[&quot;fuel&quot;], 0.0) + ej
+                    co2 += ej * 1e3 * EF[v[&quot;fuel&quot;]]                      # EJ -&gt; PJ = million GJ; x t/GJ = Mt
+                    rows.append((name, year, &quot;tech share&quot;, f&quot;{m}|{k}&quot;, s, &quot;fraction&quot;))
+        rows.append((name, year, &quot;service output&quot;, &quot;trn_pass&quot;, D, &quot;billion pkm&quot;))
+        rows.append((name, year, &quot;service price&quot;, &quot;trn_pass&quot;, P, &quot;2005$/pkm&quot;))
+        for f, e in sorted(energy.items()):
+            rows.append((name, year, &quot;final energy by fuel&quot;, f, e, &quot;EJ&quot;))
+        rows.append((name, year, &quot;CO2 (direct)&quot;, &quot;trn_pass&quot;, co2, &quot;MtCO2&quot;))
+    return rows
+
+
+if __name__ == &quot;__main__&quot;:
+    allrows = []
+    for name, sc in SCENARIOS.items():
+        allrows += run(name, sc)
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), &quot;toy_results.csv&quot;)
+    with open(out, &quot;w&quot;, newline=&quot;&quot;) as fh:
+        w = csv.writer(fh)
+        w.writerow([&quot;scenario&quot;, &quot;year&quot;, &quot;variable&quot;, &quot;item&quot;, &quot;value&quot;, &quot;unit&quot;])
+        for r in allrows:
+            w.writerow([r[0], r[1], r[2], r[3], f&quot;{r[4]:.6g}&quot;, r[5]])
+    # tidy summary table
+    get = {(r[0], r[1], r[2], r[3]): r[4] for r in allrows}
+    print(f&quot;{&#x27;scenario&#x27;:&lt;13}{&#x27;year&#x27;:&gt;5}{&#x27;pkm(bn)&#x27;:&gt;9}{&#x27;car%&#x27;:&gt;7}{&#x27;bus%&#x27;:&gt;6}{&#x27;rail%&#x27;:&gt;6}{&#x27;air%&#x27;:&gt;6}&quot;
+          f&quot;{&#x27;BEV%car&#x27;:&gt;8}{&#x27;FCEV%car&#x27;:&gt;9}{&#x27;liqEJ&#x27;:&gt;7}{&#x27;elecEJ&#x27;:&gt;7}{&#x27;CO2 Mt&#x27;:&gt;8}&quot;)
+    for name in SCENARIOS:
+        for year in (2020, 2030, 2050, 2075, 2100):
+            g = lambda v, i: get.get((name, year, v, i), 0.0)
+            print(f&quot;{name:&lt;13}{year:&gt;5}{g(&#x27;service output&#x27;, &#x27;trn_pass&#x27;):9.0f}{100 * g(&#x27;mode share&#x27;, &#x27;Car&#x27;):7.1f}&quot;
+                  f&quot;{100 * g(&#x27;mode share&#x27;, &#x27;Bus&#x27;):6.1f}{100 * g(&#x27;mode share&#x27;, &#x27;Passenger Rail&#x27;):6.1f}&quot;
+                  f&quot;{100 * g(&#x27;mode share&#x27;, &#x27;Domestic Aviation&#x27;):6.1f}{100 * g(&#x27;tech share&#x27;, &#x27;Car|BEV&#x27;):8.1f}&quot;
+                  f&quot;{100 * g(&#x27;tech share&#x27;, &#x27;Car|FCEV&#x27;):9.1f}{g(&#x27;final energy by fuel&#x27;, &#x27;refined liquids enduse&#x27;):7.2f}&quot;
+                  f&quot;{g(&#x27;final energy by fuel&#x27;, &#x27;elect_td_trn&#x27;):7.2f}{g(&#x27;CO2 (direct)&#x27;, &#x27;trn_pass&#x27;):8.0f}&quot;)
+    print(f&quot;\nWrote {out}&quot;)
+</code></pre><div class="explain-code">A stand-alone passenger model with GCAM's nesting, logit types and exponents, value of time and share-weight calibration. Five scenarios to 2100; Python and R give identical results. Run it on your computer (it writes toy_results.csv).</div><div class="code-out" hidden aria-live="polite"></div></div><div class="codeblock" data-module="3.2"><div class="codehead"><b>The same toy model in R</b><span class="lang">R</span><button class="btn quiet code-copy" type="button">Copy</button><a class="btn quiet" href="../labs/go3/toy/gcam_transport_toy.R" download>Download</a></div><pre><code># gcam_transport_toy.R -- R twin of gcam_transport_toy.py (same structure, same numbers).
+#
+# A stand-alone passenger-transport model that mimics GCAM 9.1&#x27;s transport structure:
+#   nests trn_pass -&gt; road -&gt; trn_pass_road -&gt; LDV -&gt; trn_pass_road_LDV -&gt; 4W -&gt; Car;
+#   relative-cost logit among modes (trn_pass -2, trn_pass_road -4, trn_pass_road_LDV -4; A54.sector.csv),
+#   absolute-cost logit among technologies (Car -8, 2W and 3W -8, Bus -3, Passenger Rail -1,
+#   Domestic Aviation -6; A54.tranSubsector_logit_revised.csv);
+#   cost per pkm = (non-fuel $/vkm + fuel price x intensity) / load factor (tran_technology.cpp);
+#   time value = GDP per capita / 2000 h x time-value-multiplier / speed (tran_subsector.cpp 175-214);
+#   demand elasticities income 1.0, price -1.25 (A54.demand.csv);
+#   share-weights calibrated to the 2020 base year (calibrate_share_weight_visitor.cpp).
+# See the header of gcam_transport_toy.py for sources, units and simplifications.
+# Numbers are illustrative (2005$). Run: Rscript gcam_transport_toy.R
+
+YEARS &lt;- seq(2020, 2100, 5); BASE &lt;- 2020
+
+interp &lt;- function(points, year) {           # points: named numeric vector, names = years
+  ys &lt;- as.numeric(names(points)); v &lt;- unname(points); o &lt;- order(ys); ys &lt;- ys[o]; v &lt;- v[o]
+  if (year &lt;= ys[1]) return(v[1]); if (year &gt;= ys[length(ys)]) return(v[length(v)])
+  approx(ys, v, xout = year)$y
+}
+pts &lt;- function(...) { x &lt;- c(...); x }      # pts(`2020` = 1, `2050` = 2)
+
+EF &lt;- c(&quot;refined liquids enduse&quot; = 19.6 * 44 / 12 / 1000, &quot;delivered gas&quot; = 14.2 * 44 / 12 / 1000,
+        &quot;elect_td_trn&quot; = 0, &quot;H2 LDV&quot; = 0, &quot;H2 MHDV&quot; = 0)
+
+SCENARIOS &lt;- list(
+  &quot;Reference&quot;    = list(),
+  &quot;BEV-low&quot;      = list(bev_cost_mult = 0.70),
+  &quot;Carbon-price&quot; = list(carbon = TRUE),
+  &quot;Fast-wage&quot;    = list(gdp_growth = 0.03),
+  &quot;LF-up&quot;        = list(car_lf_2050 = 2.60))
+
+opt &lt;- function(sc, key, default) if (is.null(sc[[key]])) default else sc[[key]]
+
+fuel_price &lt;- function(fuel, year, sc) {
+  base &lt;- switch(fuel,
+    &quot;refined liquids enduse&quot; = interp(pts(`2020` = 15, `2050` = 18), year),
+    &quot;delivered gas&quot; = 8, &quot;elect_td_trn&quot; = 30,
+    &quot;H2 LDV&quot; = interp(pts(`2020` = 45, `2050` = 30), year),
+    &quot;H2 MHDV&quot; = interp(pts(`2020` = 40, `2050` = 28), year))
+  if (isTRUE(sc$carbon) &amp;&amp; year &gt;= 2025) base &lt;- base + EF[[fuel]] * 50 * 1.05^(year - 2025)
+  base
+}
+gdp_pc &lt;- function(year, sc) 18 * (1 + opt(sc, &quot;gdp_growth&quot;, 0.02))^(year - BASE)
+population &lt;- function(year) 260 + 140 * (1 - exp(-0.025 * (year - BASE)))
+
+tech &lt;- function(fuel, nf, mj, lf, sw = NULL) list(fuel = fuel, nf = nf, mj = mj, lf = lf, sw = sw)
+techs &lt;- function(year, sc) {
+  car_lf &lt;- interp(c(`2020` = 2.33, `2050` = opt(sc, &quot;car_lf_2050&quot;, 2.00)), year)
+  bev_mult &lt;- if (year &gt;= 2030) opt(sc, &quot;bev_cost_mult&quot;, 1.0) else 1.0
+  list(
+    &quot;Car&quot; = list(
+      &quot;Liquids&quot; = tech(&quot;refined liquids enduse&quot;, interp(pts(`2020` = .6345, `2030` = .6747, `2050` = .7652), year),
+                       interp(pts(`2020` = 3.322, `2030` = 3.101, `2050` = 2.718), year), car_lf),
+      &quot;Hybrid Liquids&quot; = tech(&quot;refined liquids enduse&quot;, interp(pts(`2020` = .6629, `2030` = .7081, `2050` = .7872), year),
+                       interp(pts(`2020` = 2.581, `2030` = 2.454, `2050` = 2.226), year), car_lf),
+      &quot;NG&quot; = tech(&quot;delivered gas&quot;, interp(pts(`2020` = .6599, `2030` = .7017, `2050` = .7958), year),
+                  interp(pts(`2020` = 3.355, `2030` = 3.132, `2050` = 2.745), year), car_lf),
+      &quot;BEV&quot; = tech(&quot;elect_td_trn&quot;, bev_mult * interp(pts(`2020` = .7407, `2030` = .6894, `2050` = .7652), year),
+                   interp(pts(`2020` = 1.026, `2030` = 1.019, `2050` = 1.005), year), car_lf,
+                   pts(`2020` = 0, `2025` = 0, `2030` = 1)),
+      &quot;FCEV&quot; = tech(&quot;H2 LDV&quot;, interp(pts(`2020` = .8050, `2030` = .7280, `2050` = .7799), year),
+                    interp(pts(`2020` = 1.572, `2030` = 1.518, `2050` = 1.418), year), car_lf,
+                    pts(`2020` = 0, `2030` = 0, `2050` = 0.5))),
+    &quot;Bus&quot; = list(
+      &quot;Liquids&quot; = tech(&quot;refined liquids enduse&quot;, 1.6319, interp(pts(`2020` = 7.908, `2050` = 7.884), year), 25),
+      &quot;NG&quot; = tech(&quot;delivered gas&quot;, 1.7609, interp(pts(`2020` = 7.908, `2050` = 7.884), year), 25),
+      &quot;BEV&quot; = tech(&quot;elect_td_trn&quot;, interp(pts(`2020` = 2.00, `2050` = 1.70), year), 3.0, 25,
+                   pts(`2020` = 0, `2025` = 0, `2050` = 1))),
+    &quot;2W and 3W&quot; = list(
+      &quot;Liquids&quot; = tech(&quot;refined liquids enduse&quot;, 0.12, 1.0, 1.3),
+      &quot;BEV&quot; = tech(&quot;elect_td_trn&quot;, interp(pts(`2020` = 0.14, `2050` = 0.11), year), 0.30, 1.3,
+                   pts(`2020` = 0, `2025` = 0, `2030` = 1))),
+    &quot;Passenger Rail&quot; = list(&quot;Electric&quot; = tech(&quot;elect_td_trn&quot;, 16.005, 53.197, 1152)),
+    &quot;Domestic Aviation&quot; = list(&quot;Liquids&quot; = tech(&quot;refined liquids enduse&quot;, 13.77,
+                               interp(pts(`2020` = 366.5, `2050` = 310.6), year),
+                               interp(pts(`2020` = 148.8, `2050` = 161.6), year))))
+}
+
+TECH_EXP &lt;- c(&quot;Car&quot; = -8, &quot;Bus&quot; = -3, &quot;2W and 3W&quot; = -8, &quot;Passenger Rail&quot; = -1, &quot;Domestic Aviation&quot; = -6)
+MODES &lt;- list(
+  &quot;Walk&quot; = list(vott = 1.066, add = 1, speed = function(y) 4.8),
+  &quot;Cycle&quot; = list(vott = 1.066, add = 1, speed = function(y) 15),
+  &quot;Passenger Rail&quot; = list(vott = 0.80, add = 1, speed = function(y) 42),
+  &quot;Domestic Aviation&quot; = list(vott = 1.244, add = 1, speed = function(y) 197),
+  &quot;Bus&quot; = list(vott = 0.808, add = 1, speed = function(y) interp(pts(`2020` = 22, `2050` = 24, `2100` = 25), y)),
+  &quot;2W and 3W&quot; = list(vott = 0.82, add = 1, speed = function(y) 30),
+  &quot;4W&quot; = list(vott = 0.82, add = 1, speed = function(y) interp(pts(`2020` = 35, `2050` = 40, `2100` = 42), y)))
+NEST &lt;- list(
+  &quot;trn_pass_road_LDV&quot; = list(g = -4, kids = c(&quot;2W and 3W&quot;, &quot;4W&quot;)),
+  &quot;trn_pass_road&quot; = list(g = -4, kids = c(&quot;Bus&quot;, &quot;LDV&quot;)),
+  &quot;trn_pass&quot; = list(g = -2, kids = c(&quot;Walk&quot;, &quot;Cycle&quot;, &quot;Passenger Rail&quot;, &quot;Domestic Aviation&quot;, &quot;road&quot;)))
+CHILD_SECTOR &lt;- c(&quot;road&quot; = &quot;trn_pass_road&quot;, &quot;LDV&quot; = &quot;trn_pass_road_LDV&quot;)
+BASE_PKM &lt;- list(&quot;Walk&quot; = 70, &quot;Cycle&quot; = 25, &quot;Passenger Rail&quot; = 6, &quot;Domestic Aviation&quot; = 55,
+                 &quot;Bus&quot; = c(&quot;Liquids&quot; = 157, &quot;NG&quot; = 3), &quot;2W and 3W&quot; = c(&quot;Liquids&quot; = 45),
+                 &quot;Car&quot; = c(&quot;Liquids&quot; = 1120, &quot;Hybrid Liquids&quot; = 20, &quot;NG&quot; = 10))
+
+rel_shares &lt;- function(prices, sws, g) { w &lt;- ifelse(sws &gt; 0, sws * prices^g, 0); w / sum(w) }
+abs_shares &lt;- function(costs, sws, beta, p0) { w &lt;- ifelse(sws &gt; 0, sws * exp(beta * costs / p0), 0); w / sum(w) }
+base_out &lt;- function(k) {
+  if (k == &quot;road&quot;) return(base_out(&quot;Bus&quot;) + base_out(&quot;LDV&quot;))
+  if (k == &quot;LDV&quot;) return(base_out(&quot;2W and 3W&quot;) + base_out(&quot;4W&quot;))
+  if (k == &quot;4W&quot;) return(sum(BASE_PKM[[&quot;Car&quot;]]))
+  sum(BASE_PKM[[k]])
+}
+
+run &lt;- function(name, sc) {
+  cal &lt;- list(); rows &lt;- list(); D_prev &lt;- NA; P_prev &lt;- NA
+  add &lt;- function(year, var, item, value, unit)
+    rows[[length(rows) + 1]] &lt;&lt;- data.frame(scenario = name, year = year, variable = var, item = item, value = value, unit = unit)
+  for (year in YEARS) {
+    Tt &lt;- techs(year, sc); wage &lt;- gdp_pc(year, sc) * 1000 / (40 * 50)
+    tech_share &lt;- list(); mode_money &lt;- c()
+    for (mode in names(Tt)) {
+      tt &lt;- Tt[[mode]]
+      costs &lt;- sapply(tt, function(v) (v$nf + fuel_price(v$fuel, year, sc) * v$mj / 1000) / v$lf)
+      if (year == BASE) {
+        b &lt;- BASE_PKM[[mode]]; if (is.null(names(b))) names(b) &lt;- names(tt)[1]
+        calk &lt;- sapply(names(tt), function(k) if (k %in% names(b)) b[[k]] else 0)
+        tot &lt;- sum(calk); p0 &lt;- max(costs[calk &gt; 0]); anchor &lt;- names(which.max(calk))
+        sws &lt;- sapply(names(tt), function(k) if (calk[[k]] &gt; 0)
+          (calk[[k]] / tot) / (calk[[anchor]] / tot) * exp(TECH_EXP[[mode]] / p0 * (costs[[anchor]] - costs[[k]])) else 0)
+        cal[[mode]] &lt;- list(p0 = p0, sw = sws)
+      }
+      sws &lt;- sapply(names(tt), function(k) if (!is.null(tt[[k]]$sw) &amp;&amp; cal[[mode]]$sw[[k]] == 0) interp(tt[[k]]$sw, year) else cal[[mode]]$sw[[k]])
+      sh &lt;- abs_shares(costs, sws, TECH_EXP[[mode]], cal[[mode]]$p0)
+      tech_share[[mode]] &lt;- sh; mode_money[mode] &lt;- sum(sh * costs)
+    }
+    mode_money[&quot;Walk&quot;] &lt;- 0; mode_money[&quot;Cycle&quot;] &lt;- 0; mode_money[&quot;4W&quot;] &lt;- mode_money[[&quot;Car&quot;]]
+    mode_price &lt;- function(m) { md &lt;- MODES[[m]]; mode_money[[m]] + if (md$add == 1) wage * md$vott / md$speed(year) else 0 }
+    sector_price &lt;- c(); mode_sh &lt;- list()
+    for (sector in names(NEST)) {
+      g &lt;- NEST[[sector]]$g; kids &lt;- NEST[[sector]]$kids
+      prices &lt;- sapply(kids, function(k) if (k %in% names(CHILD_SECTOR)) sector_price[[CHILD_SECTOR[[k]]]] else mode_price(k))
+      if (year == BASE) {
+        outs &lt;- sapply(kids, base_out); anchor &lt;- names(which.max(outs))
+        cal[[sector]] &lt;- (outs / outs[[anchor]]) * (prices[[anchor]] / prices)^g
+      }
+      sh &lt;- rel_shares(prices, cal[[sector]], g); mode_sh[[sector]] &lt;- sh
+      sector_price[sector] &lt;- sum(sh * prices)
+    }
+    P &lt;- sector_price[[&quot;trn_pass&quot;]]
+    if (year == BASE) D &lt;- sum(sapply(BASE_PKM, sum)) else
+      D &lt;- D_prev * (gdp_pc(year, sc) / gdp_pc(year - 5, sc))^1.0 * (P / P_prev)^-1.25 * population(year) / population(year - 5)
+    D_prev &lt;- D; P_prev &lt;- P
+    top &lt;- mode_sh[[&quot;trn_pass&quot;]]; road &lt;- mode_sh[[&quot;trn_pass_road&quot;]]; ldv &lt;- mode_sh[[&quot;trn_pass_road_LDV&quot;]]
+    mode_pkm &lt;- c(&quot;Walk&quot; = D * top[[&quot;Walk&quot;]], &quot;Cycle&quot; = D * top[[&quot;Cycle&quot;]], &quot;Passenger Rail&quot; = D * top[[&quot;Passenger Rail&quot;]],
+                  &quot;Domestic Aviation&quot; = D * top[[&quot;Domestic Aviation&quot;]], &quot;Bus&quot; = D * top[[&quot;road&quot;]] * road[[&quot;Bus&quot;]],
+                  &quot;2W and 3W&quot; = D * top[[&quot;road&quot;]] * road[[&quot;LDV&quot;]] * ldv[[&quot;2W and 3W&quot;]],
+                  &quot;Car&quot; = D * top[[&quot;road&quot;]] * road[[&quot;LDV&quot;]] * ldv[[&quot;4W&quot;]])
+    energy &lt;- c(); co2 &lt;- 0
+    for (m in names(mode_pkm)) {
+      pk &lt;- mode_pkm[[m]]
+      add(year, &quot;service output by mode&quot;, m, pk, &quot;billion pkm&quot;); add(year, &quot;mode share&quot;, m, pk / D, &quot;fraction&quot;)
+      if (m %in% names(Tt)) for (k in names(tech_share[[m]])) {
+        v &lt;- Tt[[m]][[k]]; s &lt;- tech_share[[m]][[k]]
+        ej &lt;- pk * s / v$lf * v$mj / 1000
+        energy[v$fuel] &lt;- (if (v$fuel %in% names(energy)) energy[[v$fuel]] else 0) + ej
+        co2 &lt;- co2 + ej * 1e3 * EF[[v$fuel]]
+        add(year, &quot;tech share&quot;, paste0(m, &quot;|&quot;, k), s, &quot;fraction&quot;)
+      }
+    }
+    add(year, &quot;service output&quot;, &quot;trn_pass&quot;, D, &quot;billion pkm&quot;); add(year, &quot;service price&quot;, &quot;trn_pass&quot;, P, &quot;2005$/pkm&quot;)
+    for (f in sort(names(energy))) add(year, &quot;final energy by fuel&quot;, f, energy[[f]], &quot;EJ&quot;)
+    add(year, &quot;CO2 (direct)&quot;, &quot;trn_pass&quot;, co2, &quot;MtCO2&quot;)
+  }
+  do.call(rbind, rows)
+}
+
+args &lt;- commandArgs(trailingOnly = FALSE)
+here &lt;- dirname(normalizePath(sub(&quot;--file=&quot;, &quot;&quot;, args[grep(&quot;--file=&quot;, args)][1])))
+res &lt;- do.call(rbind, lapply(names(SCENARIOS), function(n) run(n, SCENARIOS[[n]])))
+res$value &lt;- signif(res$value, 6)
+write.csv(res, file.path(here, &quot;toy_results_R.csv&quot;), row.names = FALSE)
+g &lt;- function(sn, y, v, i) { x &lt;- res$value[res$scenario == sn &amp; res$year == y &amp; res$variable == v &amp; res$item == i]; if (length(x)) x else 0 }
+cat(sprintf(&quot;%-13s%5s%9s%7s%6s%6s%6s%8s%9s%7s%7s%8s\n&quot;, &quot;scenario&quot;, &quot;year&quot;, &quot;pkm(bn)&quot;, &quot;car%&quot;, &quot;bus%&quot;, &quot;rail%&quot;, &quot;air%&quot;, &quot;BEV%car&quot;, &quot;FCEV%car&quot;, &quot;liqEJ&quot;, &quot;elecEJ&quot;, &quot;CO2 Mt&quot;))
+for (sn in names(SCENARIOS)) for (y in c(2020, 2030, 2050, 2075, 2100))
+  cat(sprintf(&quot;%-13s%5d%9.0f%7.1f%6.1f%6.1f%6.1f%8.1f%9.1f%7.2f%7.2f%8.0f\n&quot;, sn, y, g(sn, y, &quot;service output&quot;, &quot;trn_pass&quot;),
+      100 * g(sn, y, &quot;mode share&quot;, &quot;Car&quot;), 100 * g(sn, y, &quot;mode share&quot;, &quot;Bus&quot;), 100 * g(sn, y, &quot;mode share&quot;, &quot;Passenger Rail&quot;),
+      100 * g(sn, y, &quot;mode share&quot;, &quot;Domestic Aviation&quot;), 100 * g(sn, y, &quot;tech share&quot;, &quot;Car|BEV&quot;), 100 * g(sn, y, &quot;tech share&quot;, &quot;Car|FCEV&quot;),
+      g(sn, y, &quot;final energy by fuel&quot;, &quot;refined liquids enduse&quot;), g(sn, y, &quot;final energy by fuel&quot;, &quot;elect_td_trn&quot;), g(sn, y, &quot;CO2 (direct)&quot;, &quot;trn_pass&quot;)))
+cat(&quot;\nWrote&quot;, file.path(here, &quot;toy_results_R.csv&quot;), &quot;\n&quot;)
+</code></pre><div class="explain-code">Identical results to the Python version.</div><div class="code-out" hidden aria-live="polite"></div></div></section><section id="explore"><h2>Stress-test it</h2><div class="explorer" data-widget="trncost" data-module="3.2"><p class="prose">Change income, fuel price, the BEV cost, car occupancy and the carbon price. Watch money cost, time cost, mode shares and the BEV share move.</p><div class="predict"><b>Predict first:</b> If income per person doubles while everything else stays the same, which mode gains share: walking, bus, rail or car? Why?</div><div class="explorer-box"><p class="muted">This explorer needs JavaScript.</p></div></div></section><section id="takeaways"><h2>Research notes</h2><ul class='takeaways'><li>Passenger transport is a tree: service → modes → road → light vehicles → 4W → technologies</li><li>Technology cost per pkm = (non-fuel cost + fuel price × intensity) ÷ load factor</li><li>Mode cost adds wage × time-value multiplier ÷ speed, with wage = GDP per person ÷ 2,000 h</li><li>Modes compete by relative-cost logits; technologies inside a mode by absolute-cost logits</li><li>Edit OTAQ_trn_data_EMF37.csv, not only the UC Davis data, when changing most vehicle costs</li></ul></section><section id="check"><h2>Check yourself</h2><div class="quiz" data-module="3.2"><div class="q" data-answer="1"><p>1. GCAM&#x27;s hourly wage for the value of time is…</p><div class="opts"><button class="opt" type="button">A fixed $10 per hour</button><button class="opt" type="button">GDP per person ÷ 2,000 hours</button><button class="opt" type="button">The minimum wage</button><button class="opt" type="button">Fuel price ÷ speed</button></div><p class="fb" hidden><b class="verdict"></b>TranSubsector uses GDP per capita over 40 hours × 50 weeks.</p></div><div class="q" data-answer="1"><p>2. Car occupancy (load factor) rises from 1.5 to 2.0. The cost per passenger-km…</p><div class="opts"><button class="opt" type="button">Rises</button><button class="opt" type="button">Falls by a quarter</button><button class="opt" type="button">Does not change</button><button class="opt" type="button">Doubles</button></div><p class="fb" hidden><b class="verdict"></b>Cost per vkm is divided by people per vehicle: 1.5/2.0 = 0.75.</p></div><div class="q" data-answer="1"><p>3. Which logit type is used for technologies inside the Car mode?</p><div class="opts"><button class="opt" type="button">Relative-cost</button><button class="opt" type="button">Absolute-cost</button><button class="opt" type="button">Nested CES</button><button class="opt" type="button">None; costs are fixed</button></div><p class="fb" hidden><b class="verdict"></b>A54.tranSubsector_logit_revised.csv sets absolute-cost logits within modes (Car −8).</p></div><div class="q" data-answer="1"><p>4. Why do faster modes gain share as countries get richer, even with unchanged prices?</p><div class="opts"><button class="opt" type="button">Fuel gets cheaper</button><button class="opt" type="button">Time costs more as wages rise</button><button class="opt" type="button">Speeds rise automatically</button><button class="opt" type="button">Share-weights rise</button></div><p class="fb" hidden><b class="verdict"></b>The time term grows with the wage, penalising slow modes.</p></div><div class="q" data-answer="1"><p>5. Where do most vehicle costs and intensities in GCAM 9.1 come from?</p><div class="opts"><button class="opt" type="button">Only UC Davis data</button><button class="opt" type="button">OTAQ_trn_data_EMF37.csv, overriding UC Davis values</button><button class="opt" type="button">IEA balances</button><button class="opt" type="button">The SSP database</button></div><p class="fb" hidden><b class="verdict"></b>gcamdata overwrites UCD values with the 2023 EMF37/Autonomie/TEMPO harmonisation for most modes.</p></div><p class="quiz-result" hidden aria-live="polite"></p><button class="btn quiet quiz-again" type="button">Try the questions again</button></div></section><section id="more"><h2>Reading list</h2><h3 style='margin-top:0'>New words</h3><dl class='glist'><div class="gterm"><dt>Load factor</dt><dd>People (or tonnes) carried per vehicle; divides the vehicle&#x27;s cost and energy per km.</dd></div><div class="gterm"><dt>Value of time</dt><dd>Wage × time-value multiplier ÷ speed: the cost of the hours spent travelling.</dd></div><div class="gterm"><dt>Generalised cost</dt><dd>Money cost plus time cost of travelling one passenger-km by a mode.</dd></div><div class="gterm"><dt>Absolute-cost logit</dt><dd>A logit on cost differences (exp of cost), used for technologies within a mode.</dd></div><div class="gterm"><dt>Service demand</dt><dd>Total passenger-km or tonne-km demanded, driven by income and price elasticities.</dd></div><div class="gterm"><dt>UCD database</dt><dd>The University of California, Davis transport database behind GCAM&#x27;s base transport data.</dd></div></dl><h3>Read further</h3><ul class='reslist'><li><a href="https://jgcri.github.io/gcam-doc/demand_energy.html" target="_blank" rel="noopener">GCAM documentation: Energy demand (transportation)</a><span class="why">The official description of GCAM&#x27;s transport sectors.</span></li><li><a href="https://jgcri.github.io/gcam-doc/cmp/359-Hydrogen_and_transportation.pdf" target="_blank" rel="noopener">GCAM change proposal 359: hydrogen and transportation</a><span class="why">How hydrogen fuels for transport were restructured.</span></li><li><a href="https://itspubs.ucdavis.edu/publication_detail.php?id=1884" target="_blank" rel="noopener">Mishra et al., UC Davis transportation database documentation</a><span class="why">Source of GCAM&#x27;s base transport data.</span></li><li><a href="https://doi.org/10.1016/j.enpol.2011.03.016" target="_blank" rel="noopener">Kyle and Kim (2011), alternative light-duty vehicle technologies</a><span class="why">Foundational GCAM paper on vehicle technology choice.</span></li><li><a href="https://github.com/JGCRI/gcam-core" target="_blank" rel="noopener">gcam-core input data (A54 assumption files)</a><span class="why">Look in input/gcamdata/inst/extdata/energy for A54.* transport files.</span></li></ul><h3>Downloads</h3><div class='dl'><a class="btn quiet" href="../downloads/Go3-Research-Handbook-GCAM-Transport.pdf">Go 3 handbook (PDF)</a><a class="btn quiet" href="../downloads/go3-transport-kit.zip">Go 3 transport kit (zip)</a></div></section>
+<div class="done-row"><button class="btn" id="mark-done" type="button" aria-pressed="false">Mark this module as studied</button><span class="muted small">Saved in this browser only.</span></div>
+<nav class="pager" aria-label="Module navigation"><a href="gcam-research-software.html"><span class="dir">Previous</span>3.1 GCAM as research software</a><a class="next" href="transport-literature.html"><span class="dir">Next</span>3.3 What the literature knows</a></nav></div></div></main>
+<footer class="site"><div class="wrap">An open course on the Global Change Analysis Model (GCAM), taught in three goes. GCAM is developed by the Joint Global Change Research Institute (PNNL); this is independent teaching material. GCAM facts follow the GCAM v8.2 documentation and the gcam-core v9.1 source; explorers and toy models are teaching versions with illustrative numbers.</div></footer>
+<script src="../assets/js/diagrams.js"></script><script src="../assets/js/widgets.js"></script><script src="../assets/js/site.js"></script>
+</body></html>

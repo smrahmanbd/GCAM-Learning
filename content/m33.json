@@ -1,0 +1,353 @@
+{
+ "id": "3.3",
+ "go": 3,
+ "slug": "transport-literature",
+ "title": "What the literature knows",
+ "minutes": 50,
+ "tag": "Evidence",
+ "systems": [
+  "energy",
+  "climate",
+  "policy"
+ ],
+ "summary": "A structured review of what GCAM and other integrated assessment models say about decarbonising transport: foundations, model comparisons, applications by mode and fuel, and Saudi Arabia.",
+ "outcomes": [
+  "Place a transport research question within four strands of GCAM literature",
+  "Summarise what model comparisons say about why IAMs disagree on transport",
+  "Identify what is known, what is disputed and what is still unknown",
+  "Find the Saudi Arabia and downscaling studies that a regional study must cite"
+ ],
+ "narration_en": "Before you design a study, find out what is already known. This module organises the GCAM transport literature into four strands. The first is foundations: the papers that built GCAM's transport sector, including the University of California Davis database and early work on vehicle technologies. The second is model comparison: studies that ran several integrated assessment models on the same question and found that they disagree, mostly because of different assumptions about behaviour, costs and demand, not because of different maths. The third is applications: electric vehicles, hydrogen, biofuels for aviation, freight, and country studies. The fourth is Saudi Arabia and downscaling: the GCAM-KSA model, which separates Saudi Arabia from the Middle East region, and methods for taking regional results down to countries. The module ends with a synthesis of what is agreed, what is disputed and what remains unknown. Most links have been checked; a few details are marked as unverified, and you should check them before you cite.",
+ "narration_ar": "قبل أن تصمم دراستك، اعرف ما هو معروف بالفعل. تنظّم هذه الوحدة أدبيات النقل في نموذج GCAM في أربعة مسارات. الأول هو الأسس: الأوراق التي بنت قطاع النقل في النموذج، ومنها قاعدة بيانات جامعة كاليفورنيا في ديفيس والأعمال المبكرة عن تقنيات المركبات. والثاني هو مقارنة النماذج: دراسات شغّلت عدة نماذج للتقييم المتكامل على السؤال نفسه فوجدت أنها تختلف، ويرجع ذلك في الغالب إلى اختلاف الافتراضات حول السلوك والتكاليف والطلب، لا إلى اختلاف الرياضيات. والثالث هو التطبيقات: المركبات الكهربائية والهيدروجين والوقود الحيوي للطيران والشحن والدراسات القُطرية. والرابع هو المملكة العربية السعودية وتقليص المقياس: نموذج GCAM-KSA الذي يفصل المملكة عن منطقة الشرق الأوسط، وطرق نقل النتائج الإقليمية إلى مستوى الدول. وتختتم الوحدة بخلاصة لما هو متفق عليه وما هو مختلف فيه وما يبقى مجهولًا. وقد جرى التحقق من معظم الروابط، وبعض التفاصيل موسومة بأنها غير متحقق منها، فتحقق منها قبل أن تستشهد بها.",
+ "diagram": {
+  "title": "The GCAM transport literature in four strands",
+  "caption": "Every strand feeds the synthesis; your question should start from its gaps.",
+  "nodes": [
+   {
+    "id": "core",
+    "label": "GCAM transport literature",
+    "sub": "2011–2026",
+    "x": 450,
+    "y": 260,
+    "w": 220,
+    "h": 62,
+    "sys": "neutral",
+    "detail": "About 33 peer-reviewed studies and grey literature collected for this course; DOIs checked where possible."
+   },
+   {
+    "id": "a",
+    "label": "Foundations",
+    "sub": "how the sector was built",
+    "x": 150,
+    "y": 90,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "UC Davis database, Kyle and Kim (2011) on light-duty vehicles, GCAM model descriptions and gcamdata."
+   },
+   {
+    "id": "b",
+    "label": "Model comparisons",
+    "sub": "why IAMs disagree",
+    "x": 750,
+    "y": 90,
+    "w": 170,
+    "h": 62,
+    "sys": "economy",
+    "detail": "Edelenbosch et al. (2017) and related studies: decomposing passenger futures across IAMs; behaviour and demand assumptions dominate."
+   },
+   {
+    "id": "c",
+    "label": "Applications",
+    "sub": "modes, fuels, countries",
+    "x": 150,
+    "y": 430,
+    "w": 170,
+    "h": 62,
+    "sys": "climate",
+    "detail": "Electric vehicles, hydrogen, biojet fuels for aviation, freight, zero-emission transport (Speizer et al., 2024), USA, China, India."
+   },
+   {
+    "id": "d",
+    "label": "Saudi Arabia, downscaling",
+    "sub": "GCAM-KSA, DSCALE",
+    "x": 750,
+    "y": 430,
+    "w": 170,
+    "h": 62,
+    "sys": "policy",
+    "detail": "GCAM-KSA papers (2024–2025), KAPSARC transport studies with 2060 results, and DSCALE (Sferra et al., 2026)."
+   },
+   {
+    "id": "syn",
+    "label": "Synthesis",
+    "sub": "known, disputed, unknown",
+    "x": 450,
+    "y": 90,
+    "w": 170,
+    "h": 62,
+    "sys": "data",
+    "detail": "Agreed: electrification dominates light-duty decarbonisation. Disputed: speed of uptake, role of hydrogen and biofuels. Unknown: behaviour, freight and aviation fuels at scale."
+   }
+  ],
+  "edges": [
+   {
+    "from": "a",
+    "to": "core",
+    "label": ""
+   },
+   {
+    "from": "b",
+    "to": "core",
+    "label": ""
+   },
+   {
+    "from": "c",
+    "to": "core",
+    "label": ""
+   },
+   {
+    "from": "d",
+    "to": "core",
+    "label": ""
+   },
+   {
+    "from": "core",
+    "to": "syn",
+    "label": "what it adds up to"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "a",
+     "core"
+    ],
+    "edges": [
+     [
+      "a",
+      "core"
+     ]
+    ],
+    "text": "Start with the foundations: how GCAM's transport sector and data were built."
+   },
+   {
+    "focus": [
+     "b",
+     "core"
+    ],
+    "edges": [
+     [
+      "b",
+      "core"
+     ]
+    ],
+    "text": "Model comparisons show why IAMs disagree: assumptions about behaviour, cost and demand."
+   },
+   {
+    "focus": [
+     "c",
+     "core"
+    ],
+    "edges": [
+     [
+      "c",
+      "core"
+     ]
+    ],
+    "text": "Applications test technologies, fuels and policies by mode and by country."
+   },
+   {
+    "focus": [
+     "d",
+     "core"
+    ],
+    "edges": [
+     [
+      "d",
+      "core"
+     ]
+    ],
+    "text": "Saudi Arabia and downscaling: GCAM-KSA and methods to reach country level."
+   },
+   {
+    "focus": [
+     "core",
+     "syn"
+    ],
+    "edges": [
+     [
+      "core",
+      "syn"
+     ]
+    ],
+    "text": "Read the synthesis last: the gaps there are where new research is needed."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "How this review was built",
+   "html": "<p>The list was compiled on 23 October 2026 from journal searches, PNNL/OSTI records, JGCRI model proposals and the KAPSARC publication pages. Each DOI below was checked against a publisher, PNNL, OSTI, IDEAS or Semantic Scholar record. Items whose DOI, pages or model list could not be confirmed are marked <span style='color:#8f3520'>[U]</span>. Read the papers themselves before citing a finding; the one-line summaries here are a map, not a substitute.</p>"
+  },
+  {
+   "heading": "Theme A — Foundations: how GCAM transport was built",
+   "html": "<table ><thead><tr><th style=width:22%>Study</th><th style=width:22%>Question</th><th style=width:24%>Model and change</th><th style=width:32%>Key finding</th></tr></thead><tbody><tr><td>Kyle &amp; Kim (2011) <i>Energy Policy</i> 39, 3012–3024. doi:10.1016/j.enpol.2011.03.016</td><td>Value of BEV, FCEV, NGV and advanced ICE</td><td>Early GCAM with detailed LDV competition <span style='color:#8f3520'>[U]</span></td><td>Electric and H<sub>2</sub> vehicles lower 2095 CO<sub>2</sub> concentration by about 25 ppmv, more than advanced ICE or gas cars</td></tr><tr><td>Mishra et al. (2013) UC Davis ITS report UCD-ITS-RR-13-05 (grey)</td><td>Build the transport database</td><td>14 UCD regions, 2005 base, all modes and size classes</td><td>Source of today's <code>UCD_trn_data_*</code> files; still the main description of the database</td></tr><tr><td>Calvin et al. (2019) <i>GMD</i> 12, 677–698. doi:10.5194/gmd-12-677-2019</td><td>Document GCAM v5.1</td><td>Reference paper</td><td>Describes the nesting and time value; the paper to cite for structure</td></tr><tr><td>Bond-Lamberty et al. (2019) <i>J. Open Res. Softw.</i> doi:10.5334/jors.232 <span style='color:#8f3520'>[U]</span></td><td>The data system</td><td>gcamdata R package</td><td>Chunk architecture used in module 3.5</td></tr><tr><td>Binsted et al. (2022) <i>GMD</i> 15, 2533–2559. doi:10.5194/gmd-15-2533-2022 <span style='color:#8f3520'>[U]</span></td><td>Subnational US model</td><td>GCAM-USA</td><td>Template for a country-detail variant such as GCAM-KSA</td></tr><tr><td>Kyle et al. (2022) CMP 359; Kyle et al. (2024) CMP 386, PNNL-35913 (grey)</td><td>Update H<sub>2</sub> and vehicle data</td><td>v6.0 and v7.1 core changes</td><td>The technology data now in the release</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Theme B — Model comparisons and realism",
+   "html": "<table ><thead><tr><th style=width:22%>Study</th><th style=width:22%>Question</th><th style=width:24%>Model and change</th><th style=width:32%>Key finding</th></tr></thead><tbody><tr><td>Girod et al. (2013) <i>Climatic Change</i> 118, 595–608. doi:10.1007/s10584-012-0663-6</td><td>Compare transport in five global models</td><td>GCAM among them (authorship) <span style='color:#8f3520'>[U]</span></td><td>A $200/tCO<sub>2</sub> tax in 2050 stops or reverses transport emission growth in all models</td></tr><tr><td>Pietzcker et al. (2014) <i>Energy</i> 64, 95–108. doi:10.1016/j.energy.2013.08.059</td><td>Transport demand and climate policy</td><td>Five energy-economy models <span style='color:#8f3520'>[U]</span></td><td>Transport lags other sectors by 10–30 years at a given carbon price but can exceed 90 % cuts late in the century</td></tr><tr><td>Creutzig et al. (2015) <i>Science</i> 350, 911–912. doi:10.1126/science.aac8033</td><td>Is transport a roadblock?</td><td>Perspective</td><td>IAMs under-represent demand-side and behavioural options</td></tr><tr><td>Edelenbosch et al. (2017) <i>Transp. Res. D</i> 55, 281–293. doi:10.1016/j.trd.2016.07.003</td><td>Decompose passenger futures</td><td>About 8 IAMs incl. GCAM; Laspeyres decomposition</td><td>Cuts come from intensity and fuel switching; mode shift and activity contribute little</td></tr><tr><td>Yeh et al. (2017) <i>Transp. Res. D</i> 55, 294–309. doi:10.1016/j.trd.2016.11.001</td><td>Compare model structures and projections</td><td>GCAM, MESSAGE-Transport, IEA MoMo, ICCT Roadmap <span style='color:#8f3520'>[U]</span></td><td>Large base-year data differences; IAMs favour low-carbon fuels, sectoral models favour efficiency</td></tr><tr><td>McCollum et al. (2017) <i>Transp. Res. D</i> 55, 322–342. doi:10.1016/j.trd.2016.04.003</td><td>Behavioural realism in vehicle choice</td><td>MESSAGE-Transport with consumer groups and disutility costs</td><td>Preferences slow alternative vehicles unless non-price policies are added</td></tr><tr><td>McCollum et al. (2018) <i>Nature Energy</i> 3, 664–673. doi:10.1038/s41560-018-0195-z</td><td>Preferences and climate policy</td><td>Multi-model (not GCAM)</td><td>Carbon pricing alone does not bring low-carbon vehicles to the mass market</td></tr><tr><td>Muratori et al. (2020) <i>Renew. Sustain. Energy Rev.</i> 119, 109541. doi:10.1016/j.rser.2019.109541</td><td>Integrated mobility–energy modelling</td><td>Review</td><td>Calls for coupled models with more spatial and temporal detail</td></tr><tr><td>Rottoli et al. (2021) <i>Transp. Res. D</i> 99, 103005. doi:10.1016/j.trd.2021.103005</td><td>Direct vs indirect electrification of cars</td><td>REMIND/EDGE-T (a comparator) <span style='color:#8f3520'>[U]</span></td><td>Fuel cells or e-fuels need nearly twice the primary energy of BEVs</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Theme C — GCAM applications: modes, fuels, countries",
+   "html": "<table ><thead><tr><th style=width:22%>Study</th><th style=width:22%>Question</th><th style=width:24%>Model and change</th><th style=width:32%>Key finding</th></tr></thead><tbody><tr><td>Chaturvedi &amp; Kim (2015) <i>Energy Policy</i> 81, 176–185. doi:10.1016/j.enpol.2014.11.013</td><td>Global shift to electric rail</td><td>GCAM <span style='color:#8f3520'>[U]</span></td><td>Transport emissions fall 8–49 %; carbon prices 3–17 % lower</td></tr><tr><td>Yin et al. (2015) <i>Energy Policy</i> 82, 233–248. doi:10.1016/j.enpol.2015.03.021</td><td>China transport in a global frame</td><td>Detailed China transport in GCAM</td><td>Carbon prices cut emissions but barely shift demand or modes</td></tr><tr><td>Muratori et al. (2017) <i>Environ. Sci. Technol.</i> 51, 3526–3533. doi:10.1021/acs.est.6b04515</td><td>Role of freight</td><td>GCAM</td><td>Freight grows fastest; mitigation relies on low-carbon liquids and demand reduction</td></tr><tr><td>Wise et al. (2017) <i>Transp. Res. D</i> 52, 244–253. doi:10.1016/j.trd.2017.03.006 <span style='color:#8f3520'>[U]</span></td><td>Biojet in aviation</td><td>GCAM with biojet pathways</td><td>Biojet, especially with CCS, decarbonises aviation without disrupting other bioenergy</td></tr><tr><td>Paladugula et al. (2018) <i>Energy Policy</i> 116, 10–18. doi:10.1016/j.enpol.2018.01.037 <span style='color:#8f3520'>[U]</span></td><td>India transport to 2050</td><td>Five teams <span style='color:#8f3520'>[U]</span></td><td>Reference transport CO<sub>2</sub> grows about sevenfold 2010–2050</td></tr><tr><td>Ou et al. (2021) <i>Applied Energy</i> 300, 117364. doi:10.1016/j.apenergy.2021.117364</td><td>Large-scale US EV deployment</td><td>GCAM-USA</td><td>High EV adoption lowers net US CO<sub>2</sub> to 2050 even with a fossil-heavy grid</td></tr><tr><td>Wolfram et al. (2022) <i>Nature Energy</i> 7, 1112–1114. doi:10.1038/s41560-022-01124-4</td><td>Ammonia as a shipping fuel</td><td>GCAM with an ammonia extension <span style='color:#8f3520'>[U]</span></td><td>Unmanaged NH<sub>3</sub>/N<sub>2</sub>O releases could perturb the nitrogen cycle</td></tr><tr><td>Browning et al. (2023) <i>Energy Clim. Change</i> 4, 100104. doi:10.1016/j.egycc.2023.100104</td><td>US net zero 2050 (EMF 37)</td><td>Multi-model incl. GCAM-USA</td><td>Deep transport electrification plus clean power; origin of the EMF37 vehicle file</td></tr><tr><td>Speizer et al. (2024) <i>Nature Comms</i> 15, 4439. doi:10.1038/s41467-024-48424-9</td><td>A zero-emission global transport sector</td><td>GCAM 6.0 + DAC-based e-fuels, FT bio-jet/marine, H<sub>2</sub> aviation and ships</td><td>Zero direct emissions by 2050 feasible in the High case; aviation and shipping ≈ 34 % of savings; long-haul aviation break-even above $1,300/tCO<sub>2</sub></td></tr><tr><td>Wolfram et al. (2024) <i>One Earth</i> 7, 885–895. doi:10.1016/j.oneear.2024.04.012</td><td>Value of a hydrogen economy</td><td>GCAM with CMP 386 hydrogen</td><td>Hydrogen lowers mitigation costs by up to 22 % by 2050</td></tr><tr><td>Sadavarte et al. (2025) <i>PLOS Climate</i> 4, e0000714. doi:10.1371/journal.pclm.0000714</td><td>BEV vs ICE climate and air-pollution footprints</td><td>GCAM-USA v7.0; BEV share-weights set to 1</td><td>BEV damages 2–3.5× lower; cumulative CO<sub>2</sub> break-even about 2 years</td></tr><tr><td>Muratori et al. (2021) <i>Prog. Energy</i> 3, 022002. doi:10.1088/2516-1083/abe0ad <span style='color:#8f3520'>[U]</span>; update Muratori et al. (2025) <i>Nat. Rev. Clean Technol.</i> 1, 827–845. doi:10.1038/s44359-025-00108-3</td><td>Status of EVs</td><td>Review</td><td>EVs were 22 % of global car sales in 2024: data for 2020–2025 share-weights</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Theme D — Saudi Arabia and downscaling",
+   "html": "<table ><thead><tr><th style=width:22%>Study</th><th style=width:22%>Question</th><th style=width:24%>Model and change</th><th style=width:32%>Key finding</th></tr></thead><tbody><tr><td>Kamboj et al. (2024) KAPSARC Discussion Paper, doi:10.30573/KS--2024-DP01 <span style='color:#8f3520'>[U]</span></td><td>Saudi transport to net zero 2060</td><td>GCAM-KSA v1.0 (GCAM 6.0, Saudi Arabia split from Middle East, 2015 calibration)</td><td>Transport CO<sub>2</sub> in 2060: 418 Mt (No Policy), 320 (Current), 158 (NDC continued), 115 (NZ2060), vs 176 Mt in 2015; ≈ 80 % of new 4W and 65 % of new truck sales zero/low-emission</td></tr><tr><td>Kamboj et al. (2024) <i>Energy Strategy Rev.</i> 55, 101537. doi:10.1016/j.esr.2024.101537</td><td>Economy-wide path to 2060</td><td>GCAM-KSA</td><td>NDC ambition must roughly triple; transport and industry hardest; carbon removal needed</td></tr><tr><td>Apeaning et al. (2025) <i>Energy Clim. Change</i> 6, 100184. doi:10.1016/j.egycc.2025.100184</td><td>Cost of delay</td><td>GCAM-KSA</td><td>Early action cuts net-zero policy costs by 38–72 %</td></tr><tr><td>Qiu et al. (2024) <i>Environ. Res. Lett.</i> 19, 064042 <span style='color:#8f3520'>[U]</span></td><td>Direct air capture timing</td><td>GCAM-KSA</td><td>DACCS removes 0.28–0.33 GtCO<sub>2</sub>/yr by 2060; early deployment saves about $420 bn</td></tr><tr><td>KAPSARC (2025) <i>Decarbonizing Road Freight Transportation in Saudi Arabia</i> (grey)</td><td>Freight to 2060</td><td>GCAM-KSA</td><td>Land freight CO<sub>2</sub> 29.4 Mt in 2060 under net zero; rail 30.6 %, ZEVs 25.9 % of land freight</td></tr><tr><td>Sferra et al. (2026) <i>GMD</i> 19, 3157–3191. doi:10.5194/gmd-19-3157-2026</td><td>Downscale regional pathways to countries</td><td>DSCALE v0.1, 143 countries, MESSAGE/NGFS</td><td>Blends national trends and regional paths with a convergence year; splits final energy by sector</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Synthesis: known, disputed, unknown",
+   "html": "<table ><thead><tr><th style=width:33%>Known (several studies agree)</th><th style=width:34%>Disputed (results depend on model or assumption)</th><th style=width:33%>Unknown or barely studied</th></tr></thead><tbody><tr><td><ul style='margin:0'><li>Transport cuts lag power and buildings at the same carbon price</li><li>In IAMs, cuts come mostly from vehicle efficiency and fuel switching</li><li>Freight and aviation are the hardest residuals</li><li>Battery cars are the cheapest route for light-duty road transport</li></ul></td><td><ul style='margin:0'><li>How much travel and mode shift policy can deliver (models vs sectoral studies)</li><li>Role of hydrogen and e-fuels vs biofuels in aviation and shipping</li><li>Speed of BEV uptake: share-weights and preferences decide it</li><li>Size of the time-value effect</li></ul></td><td><ul style='margin:0'><li>GCAM transport studies for Latin America since 2023 (none found)</li><li>Explicit vehicle stocks inside GCAM</li><li>Oil-exporter fuel-price reform and transport demand (Gulf hindcasts)</li><li>Sub-national charging load from global scenarios</li></ul></td></tr></tbody></table>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "research",
+   "title": "Why this matters",
+   "html": "<p style='margin:0'>When eight global models were run with the same climate policy, almost all of the passenger-transport emission cuts came from cleaner fuels and more efficient vehicles; travelling less or switching to rail barely registered (Edelenbosch et al. 2017). Is that a fact about the world, or about how the models were built? That question runs through this whole module.</p>"
+  },
+  {
+   "after": 5,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Reading a model-comparison paper.</b> Ask four questions: (1) Were the scenarios harmonised in GDP, population and policy, or only in name? (2) Which differences come from base-year data (Yeh et al. 2017 found these large) and which from structure? (3) Does the decomposition method (Laspeyres, LMDI) leave a residual? (4) Which options could a model not choose because it does not contain them? The last one is why \"little mode shift\" can be a structural result rather than an empirical one.</p>"
+  },
+  {
+   "after": 5,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>Citing a finding without its version.</b> Kyle &amp; Kim (2011) used a GCAM with different technologies, costs and share-weight paths from today's v9.1; the GCAM-KSA papers use GCAM 6.0 with a 2015 base year. A finding is a statement about a model version under stated assumptions. Report it that way, and do not compare numbers across versions without saying so.</p>"
+  },
+  {
+   "after": 5,
+   "kind": "try",
+   "title": "Try it",
+   "html": "<ol style='margin:0'><li>Pick one study from Theme C. Write its research question as a single decision someone could take, and name the output variable that answers it.</li><li>Which two studies would you put side by side to argue that GCAM under-states mode shift? What evidence would change your mind?</li></ol>"
+  }
+ ],
+ "takeaways": [
+  "Read the four strands before choosing a question: foundations, comparisons, applications, Saudi Arabia and downscaling",
+  "Models disagree mainly through assumptions on behaviour, costs and demand",
+  "Electrification of light vehicles is the most robust finding; aviation, shipping and freight fuels are the least settled",
+  "Check every DOI and detail marked unverified before citing it"
+ ],
+ "quiz": [
+  {
+   "q": "According to model-comparison studies, IAMs disagree on transport mainly because of…",
+   "options": [
+    "Different programming languages",
+    "Different assumptions about behaviour, costs and demand",
+    "Different base years only",
+    "Rounding"
+   ],
+   "answer": 1,
+   "explain": "Comparisons trace most of the spread to input and behavioural assumptions."
+  },
+  {
+   "q": "What does GCAM-KSA change compared with the public GCAM release?",
+   "options": [
+    "It removes transport",
+    "It separates Saudi Arabia from the Middle East region",
+    "It uses perfect foresight",
+    "It is a CGE model"
+   ],
+   "answer": 1,
+   "explain": "GCAM-KSA (built on GCAM 6.0) models Saudi Arabia as its own region."
+  },
+  {
+   "q": "Which transport segment is least settled in the literature?",
+   "options": [
+    "Light-duty electrification",
+    "Aviation and shipping fuels",
+    "Walking",
+    "Urban buses in rich countries"
+   ],
+   "answer": 1,
+   "explain": "Fuels for long-haul aviation and shipping remain the most disputed."
+  },
+  {
+   "q": "DSCALE is used to…",
+   "options": [
+    "Calibrate share-weights",
+    "Downscale regional pathways to countries",
+    "Run GCAM in batch",
+    "Compute the value of time"
+   ],
+   "answer": 1,
+   "explain": "Sferra et al. (2026) describe DSCALE for downscaling regional and global pathways to country level."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Model intercomparison",
+   "def": "Running several models on the same scenarios to compare results and understand why they differ."
+  },
+  {
+   "term": "Grey literature",
+   "def": "Reports and discussion papers not published in peer-reviewed journals, such as KAPSARC papers."
+  },
+  {
+   "term": "GCAM-KSA",
+   "def": "A version of GCAM with Saudi Arabia as its own region, developed with KAPSARC."
+  },
+  {
+   "term": "Downscaling",
+   "def": "Turning results for a model region into results for the countries inside it."
+  }
+ ],
+ "resources": [
+  {
+   "title": "Edelenbosch et al. (2017), decomposing passenger transport futures",
+   "url": "https://doi.org/10.1016/j.trd.2016.07.003",
+   "why": "Classic comparison of transport in global IAMs."
+  },
+  {
+   "title": "Speizer et al. (2024), a zero-emissions global transportation sector",
+   "url": "https://doi.org/10.1038/s41467-024-48424-9",
+   "why": "Recent GCAM study of full transport decarbonisation."
+  },
+  {
+   "title": "Wise, Muratori and Kyle (2017), biojet fuels in aviation",
+   "url": "https://doi.org/10.1016/j.trd.2017.03.006",
+   "why": "GCAM analysis of aviation biofuels."
+  },
+  {
+   "title": "Kamboj et al. (2024), Saudi Arabia's path to 2060",
+   "url": "https://doi.org/10.1016/j.esr.2024.101537",
+   "why": "GCAM-KSA study of Saudi Arabia's long-term emission pathway."
+  },
+  {
+   "title": "Apeaning et al. (2025), policy cost of Saudi net zero",
+   "url": "https://doi.org/10.1016/j.egycc.2025.100184",
+   "why": "GCAM-KSA analysis of energy transition initiatives."
+  },
+  {
+   "title": "Sferra et al. (2026), DSCALE v0.1",
+   "url": "https://doi.org/10.5194/gmd-19-3157-2026",
+   "why": "Open-source downscaling of mitigation pathways to countries."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 3 handbook (PDF)",
+   "path": "downloads/Go3-Research-Handbook-GCAM-Transport.pdf"
+  }
+ ],
+ "explorer": {
+  "widget": "disagree",
+  "intro": "Two toy models, one carbon price. Change one model's solar cost or demand response and watch how far their 2050 emissions move apart.",
+  "predict": "Which assumption do you think moves the answer more: technology cost or how strongly people cut demand when prices rise?"
+ }
+}

@@ -348,3 +348,5 @@ svg.chart .axis { stroke: var(--muted); }
 .mm-notes { position: static; width: auto; max-height: none; border-radius: 0; border: 0; border-left: 1px solid var(--line); overflow: auto; }
 .mm-notes:empty { display: block; }
 @media (max-width: 900px) { .mm-stage { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; } .mm-notes { border-left: 0; border-top: 1px solid var(--line); max-height: 40vh; } }
+.codeblock pre code, .expected pre code { background: none; color: inherit; padding: 0; font-size: inherit; border-radius: 0; }
+.eq .n { float: right; color: var(--muted); font-size: .85em; margin-left: 12px; }

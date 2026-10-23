@@ -1,0 +1,468 @@
+{
+ "id": "3.5",
+ "go": 3,
+ "slug": "building-transport-scenarios",
+ "title": "Building transport scenarios",
+ "minutes": 60,
+ "tag": "Implementation",
+ "systems": [
+  "energy",
+  "policy"
+ ],
+ "summary": "Build transport scenarios as GCAM add-on XML: costs, share-weights with interpolation rules, load factors and speeds, carbon taxes, net-zero constraints and a zero-emission-vehicle credit market, run as a batch.",
+ "outcomes": [
+  "Write an add-on XML file that changes a technology's cost or a mode's load factor",
+  "Set a share-weight path with interpolation rules for a new technology",
+  "Implement a carbon tax, an emissions constraint and a ZEV standard as a credit market",
+  "Run a scenario matrix with a batch file, and know when to change gcamdata instead"
+ ],
+ "narration_en": "This is where your design becomes files. Each scenario is a small add-on XML file that repeats GCAM's own nesting, region, sector, subsector and technology, down to the value you want to change, and nothing else. Load it after the base files in the configuration, because later files win. Lever one is cost: for example, cut the non-fuel cost of battery electric cars by thirty percent from 2030. Lever two is share-weights: they decide when a new technology can enter, and interpolation rules decide how the path continues after the last year you set. Lever three is service: load factors and speeds. Lever four is policy. A carbon tax is a fixed price path. A net-zero target is an emissions constraint, and GCAM finds the price that meets it. A zero-emission vehicle standard can be built as a credit market that cars buy into and electric cars supply. Run all scenarios together with a batch file. And when a change must apply everywhere and consistently, make it in gcamdata instead of by hand. None of the course's XML templates has yet been run in a live GCAM installation, so test them first.",
+ "narration_ar": "هنا يتحول تصميمك إلى ملفات. فكل سيناريو ملف إضافي صغير بصيغة XML يكرر تفرّع النموذج نفسه، أي المنطقة والقطاع والقطاع الفرعي والتقنية، وصولًا إلى القيمة التي تريد تغييرها، ولا شيء غيرها. حمِّله بعد الملفات الأساسية في ملف الإعدادات، لأن الملف اللاحق هو الذي يُعتمد. الرافعة الأولى هي التكلفة: مثلًا، خفض التكلفة غير الوقودية للسيارات الكهربائية بالبطاريات بنسبة ثلاثين في المئة اعتبارًا من عام 2030. والرافعة الثانية هي أوزان الحصص: فهي تحدد متى يمكن لتقنية جديدة أن تدخل، وتحدد قواعد الاستيفاء كيف يستمر المسار بعد آخر سنة تحددها. والرافعة الثالثة هي الخدمة: معاملات الإشغال والسرعات. والرافعة الرابعة هي السياسات. فضريبة الكربون مسار سعري ثابت. وهدف الحياد الصفري قيدٌ على الانبعاثات يجد النموذج السعر الذي يحققه. ويمكن بناء معيار المركبات عديمة الانبعاثات سوقًا للأرصدة تشتري منه السيارات التقليدية وتورّد إليه السيارات الكهربائية. شغّل جميع السيناريوهات معًا بملف تشغيل دفعي. وعندما يجب أن ينطبق التغيير في كل مكان وبصورة متسقة، فاجعله في gcamdata بدلًا من التعديل اليدوي. ولم يُشغَّل أي من قوالب XML في المقرر بعد على تثبيت فعلي للنموذج، فاختبرها أولًا.",
+ "diagram": {
+  "title": "How add-on files layer onto the base inputs",
+  "caption": "Base files load first; add-ons and policies override them; the batch file runs every combination.",
+  "nodes": [
+   {
+    "id": "base",
+    "label": "Base input XML",
+    "sub": "transportation_UCD_CORE.xml",
+    "x": 140,
+    "y": 90,
+    "w": 200,
+    "h": 62,
+    "sys": "data",
+    "detail": "GCAM's standard transport inputs, built by gcamdata. Never edit them by hand."
+   },
+   {
+    "id": "cost",
+    "label": "Cost add-on",
+    "sub": "trn_bev_cost_low.xml",
+    "x": 140,
+    "y": 220,
+    "w": 200,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Lowers the BEV input-cost from 2030. Values must match the base file's units (billion pkm, 1975$ since v8.5)."
+   },
+   {
+    "id": "sw",
+    "label": "Share-weight add-on",
+    "sub": "trn_zev_shareweights.xml",
+    "x": 140,
+    "y": 350,
+    "w": 200,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Sets share-weight values and an interpolation rule so new technologies enter on your schedule."
+   },
+   {
+    "id": "lf",
+    "label": "Service add-on",
+    "sub": "trn_loadfactor_up.xml",
+    "x": 140,
+    "y": 470,
+    "w": 200,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Raises car load factors: more people per car means lower cost and energy per pkm."
+   },
+   {
+    "id": "cfg",
+    "label": "Configuration",
+    "sub": "ScenarioComponents in order",
+    "x": 470,
+    "y": 280,
+    "w": 200,
+    "h": 62,
+    "sys": "neutral",
+    "detail": "Lists base files first and add-ons after. Later files override earlier ones."
+   },
+   {
+    "id": "pol",
+    "label": "Policy files",
+    "sub": "tax, constraint, ZEV credits",
+    "x": 470,
+    "y": 460,
+    "w": 200,
+    "h": 62,
+    "sys": "policy",
+    "detail": "policy_carbon_tax.xml, policy_co2_constraint_netzero.xml and policy_zev_standard.xml."
+   },
+   {
+    "id": "batch",
+    "label": "Batch file",
+    "sub": "batch_transport.xml",
+    "x": 770,
+    "y": 280,
+    "w": 170,
+    "h": 62,
+    "sys": "data",
+    "detail": "Crosses component sets into a scenario matrix: Reference, BEV-low, LF-up, Carbon-tax, NetZero and combinations."
+   },
+   {
+    "id": "run",
+    "label": "GCAM runs",
+    "sub": "one database",
+    "x": 770,
+    "y": 450,
+    "w": 170,
+    "h": 62,
+    "sys": "neutral",
+    "detail": "All scenarios write to one output database for side-by-side queries."
+   }
+  ],
+  "edges": [
+   {
+    "from": "base",
+    "to": "cfg",
+    "label": "first"
+   },
+   {
+    "from": "cost",
+    "to": "cfg",
+    "label": ""
+   },
+   {
+    "from": "sw",
+    "to": "cfg",
+    "label": ""
+   },
+   {
+    "from": "lf",
+    "to": "cfg",
+    "label": ""
+   },
+   {
+    "from": "pol",
+    "to": "cfg",
+    "label": "last"
+   },
+   {
+    "from": "cfg",
+    "to": "batch",
+    "label": ""
+   },
+   {
+    "from": "batch",
+    "to": "run",
+    "label": ""
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "base",
+     "cfg"
+    ],
+    "edges": [
+     [
+      "base",
+      "cfg"
+     ]
+    ],
+    "text": "Base files load first and stay untouched."
+   },
+   {
+    "focus": [
+     "cost",
+     "sw",
+     "lf",
+     "cfg"
+    ],
+    "edges": [
+     [
+      "cost",
+      "cfg"
+     ],
+     [
+      "sw",
+      "cfg"
+     ],
+     [
+      "lf",
+      "cfg"
+     ]
+    ],
+    "text": "Each lever is a small add-on that repeats the nesting down to one value."
+   },
+   {
+    "focus": [
+     "pol",
+     "cfg"
+    ],
+    "edges": [
+     [
+      "pol",
+      "cfg"
+     ]
+    ],
+    "text": "Policies load last: a tax, a constraint, or a credit market for zero-emission vehicles."
+   },
+   {
+    "focus": [
+     "batch",
+     "run"
+    ],
+    "edges": [
+     [
+      "cfg",
+      "batch"
+     ],
+     [
+      "batch",
+      "run"
+     ]
+    ],
+    "text": "A batch file runs every combination into one database."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "The anatomy of an add-on file",
+   "html": "<p>An add-on XML file repeats the path from <code>&lt;world&gt;</code> down to the object you want to change and sets only the values you change. GCAM reads files in the order the configuration lists them; when a later file names an object that already exists, it <b>updates</b> it rather than creating a new one. So an add-on must come <b>after</b> the core file that creates the object, and every name on the path (region, supplysector, tranSubsector, technology) must match exactly. A misspelt name does not cause an error: it quietly creates a new, empty object that nothing uses.</p><table ><thead><tr><th style=width:15%>Path level</th><th style=width:27%>XML element</th><th style=width:30%>Transport example (v9.1)</th><th style=width:28%>Where the names come from</th></tr></thead><tbody><tr><td>Region</td><td><code>region name=</code></td><td>Middle East, USA, China</td><td><code>common/GCAM_region_names.csv</code></td></tr><tr><td>Sector</td><td><code>supplysector name=</code></td><td>trn_pass_road_LDV_4W, trn_freight_road</td><td><code>energy/A54.sector.csv</code></td></tr><tr><td>Mode</td><td><code>tranSubsector name=</code></td><td>Car, Large Car and Truck, Bus, Passenger Rail</td><td><code>A54.tranSubsector_logit_revised.csv</code></td></tr><tr><td>Technology (regional)</td><td><code>stub-technology name=</code></td><td>Liquids, BEV, FCEV, NG, Hybrid Liquids</td><td><code>mappings/UCD_techs_revised.csv</code></td></tr><tr><td>Technology (global)</td><td><code>tranTechnology</code> in <code>global-technology-database</code></td><td>share-weights and interpolation rules</td><td><code>A54.globaltranTech_shrwt_revised.csv</code></td></tr></tbody></table>"
+  },
+  {
+   "heading": "Lever 1: costs",
+   "html": "<p>The non-fuel cost of a transport technology is its <code>input-cost</code> on the <code>minicam-non-energy-input</code>, in dollars per <b>vehicle</b>-km. GCAM divides it by the load factor to get dollars per passenger-km (Eq. 3.3). Fuel enters through a <code>minicam-energy-input</code> with a <b>coefficient</b> (energy per vehicle-km) whose price GCAM finds in the fuel market.</p>"
+  },
+  {
+   "heading": "Lever 2: share-weights and their interpolation rules",
+   "html": "<p>Share-weights (module 3.1) are where calibration lives, so they are also where hidden assumptions live. Future share-weights for transport technologies are set globally in the <code>global-technology-database</code> and moved between years by <b>interpolation rules</b>. If you set a share-weight for 2025 but leave the default rule in place, the rule will re-impose its own path for later years. To make your value stick, add an <code>interpolation-rule</code> with a <code>fixed</code> function (or a path you choose) in the same file.</p>"
+  },
+  {
+   "heading": "Lever 3: how much service, at what speed",
+   "html": "<p>Three mode-level levers change how people travel rather than what they drive. The <b>load factor</b> (passengers per vehicle) divides every per-vehicle cost and intensity; the <b>speed</b> of a mode sets its time cost; the <b>income and price elasticities</b> of <code>trn_pass</code> set how much travel there is at all (module 3.2).</p>"
+  },
+  {
+   "heading": "Lever 4: policies",
+   "html": "<p>GCAM has three policy objects that cover almost every transport policy question. Module 3.4 explained when to use which; here is how each looks.</p><p><b>A carbon price</p></b><p><b>An emissions constraint (net zero)</p></b><p>With <code>&lt;constraint year=…&gt;</code> instead of <code>fixedTax</code>, GCAM treats the emissions cap as a market and solves for the price that clears it (the shadow price). Linked gases enter through <code>&lt;linked-ghg-policy&gt;</code> with <code>price-adjust</code> (global-warming potential) and <code>demand-adjust</code>; setting <code>demand-adjust</code> to 0 for <code>CO2_LUC</code> restricts the cap to fossil and industrial CO<sub>2</sub>, as the core file <code>global_ffict.xml</code> does.</p><p><b>A ZEV standard as a credit market</p></b><p>A mandate such as \"30 % of car passenger-km must be zero-emission\" becomes a market for credits. Every car technology <b>demands</b> 0.3 credits per unit of output; BEVs and FCEVs <b>supply</b> 1 credit per unit; a <code>policy-portfolio-standard</code> of type <code>RES</code> makes demand equal supply. GCAM finds the credit price that does it: a tax on petrol cars and a subsidy to zero-emission cars at the same time. Note the share is in <b>passenger-km</b>, not vehicle sales, because GCAM has no vehicle counts.</p>"
+  },
+  {
+   "heading": "Batch runs: the scenario matrix as a file",
+   "html": "<p>GCAM's batch mode runs every combination of the component sets listed in a batch file. Each <code>ComponentSet</code> is one dimension (for example \"BEV cost\" with Reference and Low); each <code>FileSet</code> inside it is one level and lists the add-on files for it. Point <code>BatchFileName</code> in the configuration to the batch file and set <code>BatchMode</code> to 1.</p>"
+  },
+  {
+   "heading": "Systematic changes: go through gcamdata",
+   "html": "<p>For changes to many regions or years, edit the source tables and rebuild the XML rather than writing long add-ons. Remember that <code>OTAQ_trn_data_EMF37.csv</code> overrides the UC Davis table for most vehicle costs and intensities, so editing <code>UCD_trn_data_CORE.csv</code> alone may change nothing. For a clean record of your change, write a <b>user-modification chunk</b> and pass it to the driver:</p><p class='small muted'>Pattern from <code>input/gcamdata/vignettes/usermod_vignette.Rmd</code> and <code>R/driver.R</code> (gcam-core v9.1). Check how the year column is named after reading (\"2030\" vs <code>X2030</code>) in your version.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "research",
+   "title": "Why this matters",
+   "html": "<p style='margin:0'>In GCAM's Middle East data, a petrol compact car costs about <b>$0.286</b> per passenger-km in money and a battery car <b>$0.328</b> (2020, our worked example). That 15 % gap gives battery cars only 23 % of the pair at the car exponent of −8. Cut the battery car's non-fuel cost by 30 % and the gap flips to -19 %, and its share jumps to 81 %. One number in one add-on file moves the whole story — which is why every number in that file needs a source.</p>"
+  },
+  {
+   "after": 0,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p style='margin:0'>Element names were checked against the C++ XML names in <code>cvs/objects/</code> and the ModelInterface headers in <code>input/gcamdata/inst/extdata/mi_headers/ModelInterface_headers.txt</code> (gcam-core v9.1). The fastest way to get a correct path is to open the core file you are modifying, <code>transportation_UCD_CORE.xml</code>, find the object, and copy its parents.</p>"
+  },
+  {
+   "after": 1,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>What a 30 % cut in BEV non-fuel cost does (Middle East compact car, 2020 values, illustrative fuel prices)</b></p><ol><li>Non-fuel cost per vkm: 0.741 → 0.741 × 0.7 = 0.518 $/vkm.</li><li>Add fuel 0.0257 $/vkm, divide by load factor 2.33: (0.518 + 0.0257) ÷ 2.33 = 0.233 $/pkm.</li><li>Compare the petrol car at 0.286 $/pkm: BEV is now -18.5 % (it was +14.8 %).</li><li>Absolute-cost logit (Eq. 3.6), exponent −8, p<sub>0</sub> = ICE cost as in Figure 3.4: BEV share of the pair 23 % → 81 %.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> BEV share 23 % → 81 % of the two-car choice (money cost only; time cost is the same for both)</p>"
+  },
+  {
+   "after": 1,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>Units changed in v8.5.</b> Transport non-fuel costs moved from 1990$ to <b>1975$</b> per vkm and intensities from BTU per vkm to <b>EJ per billion vkm</b>; service is in <b>billion</b> pkm/tkm. A 1990$ value must be multiplied by about 0.47 (gcamdata's <code>gdp_deflator(1975, 1990)</code> = 27.80 ÷ 59.31, from the BEA deflator series in <code>R/pipeline-helpers.R</code>) before it goes into a v9.1 add-on. Copying a v8.2 tutorial value unchanged makes the car about twice as expensive, and the model will still solve.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Report share-weights as a scenario dimension.</b> In the current files the BEV share-weight reaches 1 by 2030 on an s-curve; in v5.4 it was 0.25 in 2030 and 0.625 in 2050. A study that sets BEV share-weights to 1 from 2025 (as some US studies do) is answering \"what if consumers treated BEVs like petrol cars from now on?\" — a legitimate question, but not a forecast and not a policy. In module 3.6's tornado chart the share-weight path is the second-largest influence, after cost.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Fewer people per car: the load factor falls from 2.33 (2020) to 2.0 (the UC Davis 2050 value, petrol compact car)</b></p><ol><li>Money cost per vkm = non-fuel 0.635 + fuel 0.0332 = 0.668 $/vkm.</li><li>At 2.33 passengers: 0.668 ÷ 2.33 = 0.286 $/pkm.</li><li>At 2.0 passengers: 0.668 ÷ 2.0 = 0.334 $/pkm, +17 %.</li><li>Energy and CO<sub>2</sub> per pkm rise by the same 17 %, because intensity is also per vehicle-km.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> +17 % on cost, energy and CO₂ per passenger-km</p>"
+  },
+  {
+   "after": 3,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p style='margin:0'>Input element <code>&lt;loadFactor&gt;</code>; output database name <code>load-factor</code> (<code>reporting/source/xml_db_outputter.cpp</code>), which is what the query \"transport load factors\" reads. Mode-level levers sit on <code>tranSubsector</code>: <code>&lt;share-weight year=…&gt;</code>, <code>&lt;speed year=…&gt;</code>, <code>&lt;time-value-multiplier year=…&gt;</code>. Demand elasticities sit on <code>&lt;energy-final-demand name=\"trn_pass\"&gt;</code> as <code>&lt;income-elasticity year=…&gt;</code> and <code>&lt;price-elasticity year=…&gt;</code>.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Units of a carbon price in GCAM</b></p><ol><li>Policy files declare <code>&lt;price-unit&gt;1990$/tC&lt;/price-unit&gt;</code>: dollars of 1990 per tonne of <b>carbon</b>.</li><li>One tonne of carbon is 44 ÷ 12 = 3.667 tonnes of CO<sub>2</sub>.</li><li>So $100 per tonne CO<sub>2</sub> (in 1990$) = 100 × 3.667 = $367 per tonne C.</li><li>Convert today's dollars to 1990$ with the GDP deflator first; say which year's dollars your paper reports.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> $100/tCO₂ = $367/tC (both in 1990$)</p>"
+  },
+  {
+   "after": 4,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Balance of a 30 % ZEV credit market</b></p><ol><li>Credit demand = 0.3 × (all car pkm). Credit supply = 1 × (ZEV car pkm).</li><li>Market clears when 1 × ZEV pkm = 0.3 × all pkm, so ZEV pkm ÷ all pkm = 0.3.</li><li>If ZEVs already exceed 30 % without the policy, supply exceeds demand: the credit price falls to zero (the constraint does not bind).</li><li>If they fall short, the credit price rises until enough cars switch — that price is the policy's marginal cost per credit.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> the credit price is the cost of the last unit of compliance</p>"
+  },
+  {
+   "after": 4,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Not yet verified in a running model:</b> (1) whether a transport-only carbon price can be set by renaming the CO<sub>2</sub> object on transport technologies (<code>CO2_TRN</code>); (2) whether negative <code>output-ratio</code> values are accepted for an intensity-style standard; (3) a sustainable-aviation-fuel mandate, which needs an aviation-specific liquids pass-through sector because aviation draws on the generic <code>refined liquids enduse</code>. Test each on one region and one period before building a study on it.</p>"
+  },
+  {
+   "after": 6,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>\"My add-on changed nothing.\"</b> The usual causes, in order: (1) the file is listed before the core transport file; (2) a name on the path is misspelt or uses a v8.2 name (hydrogen fuels were renamed in v8.8 to <code>H2 LDV</code>, <code>H2 MHDV</code>, <code>LH2</code>); (3) an interpolation rule overwrote your share-weight; (4) the value is in the old units and so is a factor of 1,000 off in the other direction. Always query the variable you changed.</p>"
+  },
+  {
+   "after": 6,
+   "kind": "try",
+   "title": "Try it",
+   "html": "<ol style='margin:0'><li>Write the XML path (just the element names and attributes) that sets the speed of Passenger Rail in the Middle East to 60 km/h in 2040.</li><li>A v8.2 paper reports a BEV non-fuel cost of 0.30 1990$/vkm. What value goes into a v9.1 add-on? (Use the deflator ratio above.)</li><li>Design a ZEV credit market for trucks only. Which technologies demand credits, which supply them, and what is the coefficient for a 20 % standard?</li></ol>"
+  }
+ ],
+ "takeaways": [
+  "An add-on repeats GCAM's nesting down to the one value it changes, and loads after the base files",
+  "Match units to your release: billion pkm and 1975$ in transport since v8.5",
+  "Share-weights with interpolation rules control when new technologies can enter",
+  "A carbon tax fixes the price; a constraint fixes emissions; a ZEV standard can be a credit market",
+  "Make systematic, everywhere changes in gcamdata, not by hand"
+ ],
+ "quiz": [
+  {
+   "q": "An add-on file must contain…",
+   "options": [
+    "The whole transport sector",
+    "Only the nesting path down to the values it changes",
+    "Every region",
+    "The solver settings"
+   ],
+   "answer": 1,
+   "explain": "It repeats the path (region, sector, subsector, technology, period) to the changed values only."
+  },
+  {
+   "q": "A carbon tax of $100 per tonne of CO2 is about how much per tonne of carbon?",
+   "options": [
+    "$27",
+    "$100",
+    "$367",
+    "$1,000"
+   ],
+   "answer": 2,
+   "explain": "Multiply by 44/12 ≈ 3.67."
+  },
+  {
+   "q": "In a ZEV credit market, who supplies credits?",
+   "options": [
+    "Petrol cars",
+    "Zero-emission vehicles",
+    "The solver",
+    "Refineries"
+   ],
+   "answer": 1,
+   "explain": "ZEVs produce credits; other cars must buy them, so the credit price penalises them."
+  },
+  {
+   "q": "When should you change gcamdata instead of writing an add-on?",
+   "options": [
+    "Never",
+    "When a change must apply consistently across many files or regions",
+    "For one value in one region",
+    "Only for queries"
+   ],
+   "answer": 1,
+   "explain": "Systematic changes are safer in the data system, rebuilt from source."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "ScenarioComponents",
+   "def": "The list of input files in a configuration, read in order."
+  },
+  {
+   "term": "Interpolation rule",
+   "def": "Tells GCAM how to fill share-weights or values between and after the years you set."
+  },
+  {
+   "term": "Credit market",
+   "def": "A policy market where some technologies produce credits and others must use them."
+  },
+  {
+   "term": "Batch file",
+   "def": "An XML file that defines several scenarios to run in one go."
+  },
+  {
+   "term": "input-cost",
+   "def": "The non-fuel cost element of a transport technology in GCAM's input files."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: policy examples",
+   "url": "https://jgcri.github.io/gcam-doc/policies_examples.html",
+   "why": "XML for carbon prices, constraints and standards."
+  },
+  {
+   "title": "GCAM documentation: How to get started running GCAM",
+   "url": "https://jgcri.github.io/gcam-doc/user-guide.html",
+   "why": "Configuration, add-on files and batch mode."
+  },
+  {
+   "title": "GCAM documentation: Technology representation",
+   "url": "https://jgcri.github.io/gcam-doc/en_technologies.html",
+   "why": "Technology parameters (check units against your release)."
+  },
+  {
+   "title": "gcam-core on GitHub",
+   "url": "https://github.com/JGCRI/gcam-core",
+   "why": "Base transport XML and the gcamdata transport chunks."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 3 handbook (PDF)",
+   "path": "downloads/Go3-Research-Handbook-GCAM-Transport.pdf"
+  },
+  {
+   "label": "Go 3 transport kit (zip)",
+   "path": "downloads/go3-transport-kit.zip"
+  }
+ ],
+ "explorer": {
+  "widget": "carbonprice",
+  "intro": "Set a starting carbon price and its growth rate. See the price path and the cut it buys on a simple cost curve, then find the growth rate for a 60% cut by 2050.",
+  "predict": "To reach a 60% cut by 2050 from a $25 starting price, roughly what yearly growth rate will you need?"
+ },
+ "code": [
+  {
+   "title": "Lower BEV costs from 2030",
+   "lang": "xml",
+   "file": "labs/go3/xml/trn_bev_cost_low.xml",
+   "explain": "Repeats region → supplysector → subsector → technology → period down to the input-cost. Placeholder numbers: use xml/scale_from_base.py to scale your own base file. Not run in GCAM."
+  },
+  {
+   "title": "Share-weight path for zero-emission vehicles",
+   "lang": "xml",
+   "file": "labs/go3/xml/trn_zev_shareweights.xml",
+   "explain": "Share-weights with an interpolation rule. Check whether the rule replaces or adds to the base rule in your release."
+  },
+  {
+   "title": "A carbon tax",
+   "lang": "xml",
+   "file": "labs/go3/xml/policy_carbon_tax.xml",
+   "explain": "A fixed price path in 1990$ per tonne of carbon: $100 per tCO2 is about $367 per tC."
+  },
+  {
+   "title": "A zero-emission-vehicle standard as a credit market",
+   "lang": "xml",
+   "file": "labs/go3/xml/policy_zev_standard.xml",
+   "explain": "Cars need credits that ZEVs supply. The credit coefficients assume a load factor of 1.6; check the resulting ZEV share against the target."
+  },
+  {
+   "title": "Batch file: the scenario matrix",
+   "lang": "xml",
+   "file": "labs/go3/config/batch_transport.xml",
+   "explain": "Crosses component sets into runs. Whether empty FileSets are accepted as 'no add-on' still needs a test run."
+  }
+ ]
+}

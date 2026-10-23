@@ -1,0 +1,405 @@
+{
+ "id": "3.7",
+ "go": 3,
+ "slug": "finer-and-wider",
+ "title": "Going finer and wider",
+ "minutes": 45,
+ "tag": "Scale",
+ "systems": [
+  "energy",
+  "economy",
+  "policy"
+ ],
+ "summary": "Go finer by giving a country its own region (the GCAM-KSA approach) or downscaling regional results to countries, and go wider by coupling GCAM with vehicle-stock and national energy models.",
+ "outcomes": [
+  "Describe what it takes to model a country as its own GCAM region, as GCAM-KSA does",
+  "Compare proportional and convergence downscaling, and their assumptions",
+  "Explain why GCAM's sales-based transport needs a stock model to talk about fleets",
+  "Sketch a soft-link between GCAM, a vehicle-stock model and a national model such as LEAP"
+ ],
+ "narration_en": "Global regions are often too coarse for national policy. There are two ways to go finer. The first is to give the country its own region, as the GCAM-KSA model does for Saudi Arabia, separating it from the Middle East region. That means splitting data for population, economy, energy, land and water, and recalibrating. KAPSARC transport studies with GCAM-KSA report 2060 transport emissions under several scenarios. The second is downscaling: running the regional model and then sharing its results among countries. Proportional downscaling keeps today's shares. Convergence methods, inspired by DSCALE, let countries' intensities move towards the regional average over time, then rescale so the countries still add up to the regional total. To go wider, couple GCAM with other models. GCAM's transport sector works in sales and service, not vehicle fleets, so a vehicle-stock model is needed to talk about how many cars are on the road. National models such as LEAP can take GCAM's prices and demands. The hard part of coupling is convergence: deciding which variables pass between models, and iterating until they agree.",
+ "narration_ar": "كثيرًا ما تكون المناطق العالمية أوسع من أن تخدم السياسات الوطنية. وهناك طريقتان للوصول إلى تفاصيل أدق. الأولى أن تُمنح الدولة منطقتها الخاصة، كما يفعل نموذج GCAM-KSA للمملكة العربية السعودية بفصلها عن منطقة الشرق الأوسط. ويتطلب ذلك تقسيم بيانات السكان والاقتصاد والطاقة والأراضي والمياه، ثم إعادة المعايرة. وتعرض دراسات النقل الصادرة عن مركز الملك عبدالله للدراسات والبحوث البترولية باستخدام GCAM-KSA انبعاثات النقل في عام 2060 ضمن عدة سيناريوهات. والثانية هي تقليص المقياس: تشغيل النموذج الإقليمي ثم توزيع نتائجه على الدول. فالتقليص التناسبي يحافظ على الحصص الحالية. أما طرق التقارب المستوحاة من DSCALE فتسمح لكثافات الدول بالاقتراب من متوسط المنطقة مع الوقت، ثم تعيد القياس بحيث يظل مجموع الدول مساويًا لإجمالي المنطقة. وللتوسع، يمكن ربط GCAM بنماذج أخرى. فقطاع النقل في GCAM يتعامل مع المبيعات والخدمة لا مع أساطيل المركبات، لذلك يلزم نموذج لمخزون المركبات للحديث عن عدد السيارات على الطرق. ويمكن للنماذج الوطنية مثل LEAP أن تأخذ أسعار GCAM وطلباته. والجزء الصعب في الربط هو التقارب: تحديد المتغيرات التي تنتقل بين النماذج، والتكرار حتى تتفق.",
+ "diagram": {
+  "title": "Going finer (top) and wider (bottom)",
+  "caption": "Top row: a region's results shared among its countries. Bottom: GCAM linked with a stock model and a national model.",
+  "nodes": [
+   {
+    "id": "reg",
+    "label": "Middle East region",
+    "sub": "GCAM results",
+    "x": 140,
+    "y": 100,
+    "w": 170,
+    "h": 62,
+    "sys": "economy",
+    "detail": "Public GCAM releases group Saudi Arabia with its neighbours in one region."
+   },
+   {
+    "id": "ds",
+    "label": "Downscaling",
+    "sub": "proportional or convergence",
+    "x": 450,
+    "y": 100,
+    "w": 200,
+    "h": 62,
+    "sys": "data",
+    "detail": "Share regional results among countries: keep today's shares, or converge intensities towards the regional average (DSCALE-style), then harmonise to the regional total."
+   },
+   {
+    "id": "cty",
+    "label": "Countries",
+    "sub": "add up to the region",
+    "x": 760,
+    "y": 100,
+    "w": 170,
+    "h": 62,
+    "sys": "economy",
+    "detail": "Country pathways that still sum to the regional result in every year."
+   },
+   {
+    "id": "ksa",
+    "label": "GCAM-KSA",
+    "sub": "Saudi Arabia as its own region",
+    "x": 140,
+    "y": 280,
+    "w": 190,
+    "h": 62,
+    "sys": "policy",
+    "detail": "Built on GCAM 6.0 by KAPSARC with PNNL: Saudi Arabia split from the Middle East, data split and recalibrated."
+   },
+   {
+    "id": "g",
+    "label": "GCAM transport",
+    "sub": "sales, service, prices",
+    "x": 450,
+    "y": 300,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "GCAM reports service, energy and new-vehicle choices; it does not track the vehicle stock."
+   },
+   {
+    "id": "stock",
+    "label": "Vehicle stock model",
+    "sub": "fleets, retirements",
+    "x": 760,
+    "y": 280,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Turns sales shares into fleets with survival curves, so 'cars on the road' can be reported."
+   },
+   {
+    "id": "leap",
+    "label": "LEAP national model",
+    "sub": "detailed national system",
+    "x": 760,
+    "y": 440,
+    "w": 170,
+    "h": 62,
+    "sys": "policy",
+    "detail": "Takes GCAM prices and demands as drivers; can return national detail for the next iteration."
+   },
+   {
+    "id": "loop",
+    "label": "Convergence",
+    "sub": "iterate until they agree",
+    "x": 450,
+    "y": 450,
+    "w": 170,
+    "h": 62,
+    "sys": "neutral",
+    "detail": "Decide which variables pass each way and iterate until the models agree within a tolerance."
+   }
+  ],
+  "edges": [
+   {
+    "from": "reg",
+    "to": "ds",
+    "label": ""
+   },
+   {
+    "from": "ds",
+    "to": "cty",
+    "label": ""
+   },
+   {
+    "from": "g",
+    "to": "stock",
+    "label": "sales shares"
+   },
+   {
+    "from": "stock",
+    "to": "leap",
+    "label": "fleet"
+   },
+   {
+    "from": "leap",
+    "to": "loop",
+    "label": ""
+   },
+   {
+    "from": "loop",
+    "to": "g",
+    "label": "update"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "reg",
+     "ds",
+     "cty"
+    ],
+    "edges": [
+     [
+      "reg",
+      "ds"
+     ],
+     [
+      "ds",
+      "cty"
+     ]
+    ],
+    "text": "Finer, option 1: downscale regional results to countries, keeping the regional total."
+   },
+   {
+    "focus": [
+     "ksa"
+    ],
+    "edges": [],
+    "text": "Finer, option 2: model the country as its own region, as GCAM-KSA does for Saudi Arabia."
+   },
+   {
+    "focus": [
+     "g",
+     "stock"
+    ],
+    "edges": [
+     [
+      "g",
+      "stock"
+     ]
+    ],
+    "text": "GCAM chooses new vehicles; a stock model turns sales into fleets."
+   },
+   {
+    "focus": [
+     "stock",
+     "leap",
+     "loop",
+     "g"
+    ],
+    "edges": [
+     [
+      "stock",
+      "leap"
+     ],
+     [
+      "leap",
+      "loop"
+     ],
+     [
+      "loop",
+      "g"
+     ]
+    ],
+    "text": "Wider: soft-link with a national model and iterate until the models agree."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "A country of its own: the GCAM-KSA approach",
+   "html": "<p>Core GCAM has 32 regions; Saudi Arabia is inside \"Middle East\", and its transport parameters come from the UC Davis \"Middle East\" region (<code>energy/mappings/UCD_ctry.csv</code>). GCAM-KSA v1.0 is GCAM 6.0 with Saudi Arabia as a 33rd region, calibrated to 2015 with KAPSARC data. To build a country region yourself:</p><ol><li>Add the country to <code>common/iso_GCAM_regID.csv</code> and the region-name table, so gcamdata splits it from its parent region.</li><li>Check every mapping that is by country or by UCD region (transport uses <code>UCD_ctry.csv</code>) so the new region gets parameters.</li><li>Override region-average values with national data where you have it: fleet, efficiency, load factors, fuel prices, elasticities (KAPSARC used its transport and infrastructure team's data and Saudi literature such as fuel-price elasticity studies).</li><li>Re-check calibration: base-year transport energy by fuel must match national balances.</li></ol><table ><thead><tr><th style=width:48%>GCAM-KSA study (verified)</th><th style=width:52%>Transport-relevant finding</th></tr></thead><tbody><tr><td>Kamboj et al. (2024) <i>Energy Strategy Reviews</i> 55, 101537, doi:10.1016/j.esr.2024.101537</td><td>NDC must roughly triple for net zero 2060; transport and industry are the hardest sectors; carbon removal needed</td></tr><tr><td>Kamboj et al. (2024) KAPSARC DP, doi:10.30573/KS--2024-DP01 (DOI resolution not confirmed)</td><td>2060 transport CO<sub>2</sub> 418 / 320 / 158 / 115 Mt; ≈80 % of new cars and ≈65 % of new trucks ZEV or low-emission in net zero</td></tr><tr><td>Apeaning et al. (2025) <i>Energy and Climate Change</i> 6, 100184, doi:10.1016/j.egycc.2025.100184</td><td>Early action cuts the policy cost of net zero by 38–72 % versus delay</td></tr><tr><td>Qiu et al. (2024) <i>Environ. Res. Lett.</i> 19, 064042 (DOI not confirmed)</td><td>Direct air capture removes 0.28–0.33 Gt/yr by 2060 — the backstop for aviation and shipping residuals</td></tr><tr><td>KAPSARC (2025) <i>Decarbonizing Road Freight Transportation in Saudi Arabia</i> (grey)</td><td>Land freight CO<sub>2</sub> 29.4 Mt in 2060 under net zero; rail 30.6 % and ZEVs 25.9 % of land freight</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Downscaling: from a region to its countries",
+   "html": "<p>When building a new region is too expensive, results can be <b>downscaled</b>: a regional pathway is split among countries using country data, with the rule that the countries add back to the region. The simplest rule keeps today's shares; better rules let shares move.</p><p><b>DSCALE</b> (Sferra et al. 2026, <i>Geosci. Model Dev.</i> 19, 3157–3191, doi:10.5194/gmd-19-3157-2026) downscales regional mitigation pathways to 143 countries. Its central idea is <b>convergence</b>: each country starts on its own trend and converges towards the regional pattern by a chosen year. In its simplest form, for a country's share s of a regional variable:</p><div class=\"eq\">s<sub>c</sub>(t) = (1 − w<sub>t</sub>) · s<sub>c</sub>(t<sub>0</sub>) + w<sub>t</sub> · s<sub>c</sub><sup>*</sup>, &nbsp;&nbsp; w<sub>t</sub> = min(1, (t − t<sub>0</sub>) ⁄ (T<sub>conv</sub> − t<sub>0</sub>))<span class=n>(3.11)</span></div><p class='small'>This linear blend is a teaching simplification of DSCALE's method, which blends a national-trend projection with the regional IAM pathway, reconciles energy variables by iterated proportional rescaling and treats emissions separately. Read the paper before using the method in research.</p><p>The kit's demo goes one step beyond Eq. 3.11: it converges each country's <b>energy intensity</b> (energy per unit of GDP) log-linearly towards the regional intensity, multiplies by each country's own GDP path, and then <b>harmonises</b> — rescales — so the countries add up exactly to the GCAM regional total. On its synthetic six-country region both methods reproduce the regional total to within 10<sup>−15</sup> EJ, but they disagree strongly by 2100: the fast-growing Country B gets 0.98 EJ under convergence against 0.75 EJ under fixed shares. The 2050 harmonisation factor of 0.60 shows how far the unharmonised country paths overshoot the region — a number worth reporting.</p>"
+  },
+  {
+   "heading": "Fleets: what GCAM does not count",
+   "html": "<p>GCAM tracks transport as <b>service output</b> by technology and vintage of service, not as vehicles. The query \"transport service output by tech (new)\" is the nearest thing to sales, but there are no vehicle counts, survival curves or second-hand markets. The difference between new sales and the vehicles on the road is large and slow:</p>"
+  },
+  {
+   "heading": "Coupling GCAM with other models",
+   "html": "<p>When a question needs detail GCAM does not have — fleet counts, hourly charging load, national policy detail, behaviour by consumer group — the usual answer is a <b>soft link</b>: two models exchange numbers through files, run in turn, until they agree.</p><table ><thead><tr><th style=width:22%>Partner model</th><th style=width:28%>What it adds</th><th style=width:25%>What passes from GCAM</th><th style=width:25%>What passes back</th></tr></thead><tbody><tr><td>Vehicle stock-turnover model</td><td>fleet counts, sales, survival, stock lag</td><td>service demand by mode, fuel prices</td><td>sales shares → share-weights or vintage adjustments</td></tr><tr><td>LEAP (with NEMO optimisation)</td><td>national sector detail, local data, power dispatch</td><td>fuel and carbon prices, regional demand trends</td><td>national electricity mix, demand corrections</td></tr><tr><td>MESSAGEix-Transport</td><td>consumer groups with disutility costs (McCollum et al. 2017)</td><td>—(comparison)</td><td>behavioural parameters to emulate in GCAM (RQ10)</td></tr><tr><td>Hourly power / charging model</td><td>peak load, flexibility</td><td>transport electricity (<code>elect_td_trn</code>)</td><td>storage and grid cost signals</td></tr></tbody></table>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "research",
+   "title": "Why this matters",
+   "html": "<p style='margin:0'>In GCAM-KSA, the version of GCAM in which KAPSARC and PNNL split Saudi Arabia out of the Middle East, Saudi transport CO<sub>2</sub> in 2060 ranges from 418 Mt with no policy to 115 Mt under net zero — against 176 Mt in 2015. Even in the net-zero case, around 80 % of new cars are zero- or low-emission, and aviation and shipping dominate what is left. None of these numbers can be read from core GCAM, where Saudi Arabia shares its transport parameters with Iran, Iraq and the rest of the region.</p>"
+  },
+  {
+   "after": 0,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Access.</b> The GCAM-KSA documentation (KAPSARC, dated 2 June 2026) sits behind a registration form and was not read for this handbook; GCAM-KSA itself is not part of the public gcam-core release. Students without access can (a) work with the Middle East region of core GCAM and state that Saudi values are regional averages, or (b) build a country split as above, which is a substantial project in itself.</p>"
+  },
+  {
+   "after": 1,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Downscale Saudi Arabia's share of Middle East transport energy</b></p><ol><li>Starting share in 2020: 0.50 (illustrative). Long-run target share s* (e.g. from GDP share): 0.42.</li><li>Convergence by 2060: in 2050, w = (2050 − 2020) ÷ (2060 − 2020) = 0.75, so s = 0.25 × 0.50 + 0.75 × 0.42 = 0.44.</li><li>Convergence by 2100: w = 30 ÷ 80 = 0.375, so s = 0.625 × 0.50 + 0.375 × 0.42 = 0.47.</li><li>Multiply by the regional total; repeat for the other countries and rescale so shares sum to 1.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> 0.44 or 0.47 of the region in 2050 — the convergence year is itself an uncertain assumption</p>"
+  },
+  {
+   "after": 2,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>Sales versus stock with a 15-year vehicle life</b></p><ol><li>Battery-car share of new sales follows an s-curve passing 50 % in 2035.</li><li>Stock share in 2035 = average of the last 15 years of sales shares = 0.15.</li><li>In 2050 sales are 99.5 % battery cars, but the stock is only 88 %.</li><li>Fuel use and CO<sub>2</sub> follow the stock, not the sales.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> stock lags sales by roughly a decade: 15 % of cars on the road when half of sales are electric</p>"
+  },
+  {
+   "after": 3,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Convergence is the hard part.</b> Decide in advance which variables must agree (for example, new-vintage BEV share within 2 percentage points in every period), the maximum number of iterations, and what you report if they do not converge. Coupled-model papers that skip this step usually show one model's result labelled as both.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>Downscaled numbers are not observations.</b> A country pathway from a downscaling method inherits every assumption of the regional run plus those of the method. Never compare it with a national model as if one were \"data\"; compare both with history and with each other, and report the convergence year.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "try",
+   "title": "Try it",
+   "html": "<ol style='margin:0'><li>Recompute the 2050 Saudi share with convergence by 2040. Why does it no longer change after 2040?</li><li>With a 12-year vehicle life instead of 15, is the 2035 stock share higher or lower than 0.15? Explain without calculating.</li><li>Sketch the files that would pass between GCAM and LEAP-KSA in one iteration, naming one query and one input element.</li></ol>"
+  }
+ ],
+ "takeaways": [
+  "Two ways to go finer: a country region (GCAM-KSA) or downscaling regional results",
+  "Downscaled countries must still add up to the regional total; state the convergence assumption",
+  "GCAM models sales and service, not fleets: use a stock model for vehicles on the road",
+  "Coupling is about which variables pass each way and iterating to agreement"
+ ],
+ "quiz": [
+  {
+   "q": "What is the main advantage of a country region over downscaling?",
+   "options": [
+    "It needs no data",
+    "The country's own data and policies drive its results",
+    "It is faster",
+    "It avoids calibration"
+   ],
+   "answer": 1,
+   "explain": "A separate region is calibrated to national data and can carry national policies."
+  },
+  {
+   "q": "Downscaled country results must…",
+   "options": [
+    "Exceed the region",
+    "Add up to the regional total",
+    "Equal each other",
+    "Ignore GDP"
+   ],
+   "answer": 1,
+   "explain": "Harmonisation keeps the sum equal to the regional result."
+  },
+  {
+   "q": "Why add a vehicle-stock model to GCAM?",
+   "options": [
+    "GCAM has no transport",
+    "GCAM chooses new vehicles but does not track the fleet",
+    "To compute the value of time",
+    "To replace Hector"
+   ],
+   "answer": 1,
+   "explain": "Fleet turnover lags sales; a stock model turns sales into vehicles on the road."
+  },
+  {
+   "q": "The hard part of soft-linking two models is…",
+   "options": [
+    "File formats only",
+    "Deciding what passes between them and iterating to agreement",
+    "Choosing colours",
+    "Licensing"
+   ],
+   "answer": 1,
+   "explain": "Convergence between the models is the core difficulty."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Convergence downscaling",
+   "def": "Downscaling in which country intensities move towards the regional average over time."
+  },
+  {
+   "term": "Harmonisation",
+   "def": "Rescaling country results so they add up to the regional total."
+  },
+  {
+   "term": "Vehicle stock model",
+   "def": "A model that tracks vehicles on the road from sales and survival curves."
+  },
+  {
+   "term": "Soft-link",
+   "def": "Connecting two models by passing outputs as inputs between separate runs."
+  },
+  {
+   "term": "LEAP",
+   "def": "Low Emissions Analysis Platform, a widely used national energy planning tool."
+  }
+ ],
+ "resources": [
+  {
+   "title": "Sferra et al. (2026), DSCALE v0.1",
+   "url": "https://doi.org/10.5194/gmd-19-3157-2026",
+   "why": "Open-source downscaling algorithm for mitigation pathways."
+  },
+  {
+   "title": "KAPSARC: GCAM-KSA, an integrated assessment model for Saudi Arabia",
+   "url": "https://www.kapsarc.org/our-offerings/publications/gcam-ksa-an-integrated-assessment-model-for-saudi-arabia",
+   "why": "How Saudi Arabia was separated as its own GCAM region."
+  },
+  {
+   "title": "IAMC documentation: GCAM-KSA",
+   "url": "https://iamcdocumentation.eu/GCAM-KSA",
+   "why": "Reference card for the GCAM-KSA model."
+  },
+  {
+   "title": "Kamboj et al. (2024), Saudi Arabia's path to 2060",
+   "url": "https://doi.org/10.1016/j.esr.2024.101537",
+   "why": "GCAM-KSA pathway study."
+  },
+  {
+   "title": "Binsted et al. (2022), GCAM-USA",
+   "url": "https://doi.org/10.5194/gmd-15-2533-2022",
+   "why": "Subnational GCAM within a global framework."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 3 handbook (PDF)",
+   "path": "downloads/Go3-Research-Handbook-GCAM-Transport.pdf"
+  },
+  {
+   "label": "Go 3 transport kit (zip)",
+   "path": "downloads/go3-transport-kit.zip"
+  }
+ ],
+ "explorer": {
+  "widget": "downscale",
+  "intro": "Share a region's energy among three countries. Change the convergence year and regional growth, and compare proportional with convergence downscaling.",
+  "predict": "Under convergence, will the poorer, low-intensity country's share of regional energy grow or shrink by 2050?"
+ },
+ "code": [
+  {
+   "title": "Proportional vs convergence downscaling",
+   "lang": "python",
+   "source": "# Downscaling a regional total to countries: proportional vs convergence (illustrative)\nimport numpy as np\n\nyears = np.array([2020, 2030, 2040, 2050])\nregional = np.array([10.0, 11.5, 13.0, 14.0])          # EJ of transport energy in the region\ngdp0 = np.array([800.0, 400.0, 200.0])                  # GDP 2020 by country, billion $\ngrowth = np.array([0.015, 0.03, 0.045])                 # GDP growth per year\nintensity0 = np.array([9.0, 6.0, 4.0])                  # MJ per $ in 2020\nconv_year = 2100\n\nbase = gdp0 * intensity0\nfor y, total in zip(years, regional):\n    gdp = gdp0 * (1 + growth) ** (y - 2020)\n    reg_int = (gdp0 * intensity0).sum() / gdp0.sum()                 # regional average intensity, 2020\n    wgt = min(1.0, (y - 2020) / (conv_year - 2020))                 # how far along the convergence path\n    raw = gdp * (intensity0 * (1 - wgt) + reg_int * wgt)\n    conv = total * raw / raw.sum()                                    # harmonised to the regional total\n    prop = total * base / base.sum()\n    print(y, \"proportional\", np.round(prop, 2), \" convergence\", np.round(conv, 2), \" sum\", round(conv.sum(), 2))\n",
+   "runnable": true,
+   "explain": "Both methods reproduce the regional total every year. Convergence moves countries' intensities towards the regional average by the convergence year. A simplified rule inspired by DSCALE, not the DSCALE algorithm.",
+   "expected": "2020 proportional [6.92 2.31 0.77]  convergence [6.92 2.31 0.77]  sum 10.0\n2030 proportional [7.96 2.65 0.88]  convergence [7.3  2.97 1.23]  sum 11.5\n2040 proportional [9. 3. 1.]  convergence [7.44 3.68 1.88]  sum 13.0\n2050 proportional [9.69 3.23 1.08]  convergence [7.07 4.27 2.66]  sum 14.0"
+  },
+  {
+   "title": "Downscaling demo from the kit",
+   "lang": "python",
+   "file": "labs/go3/downscale/downscale_demo.py",
+   "explain": "Downscales the kit's sample transport energy to three countries with both methods and plots them (harmonisation factor in 2050: 0.601)."
+  }
+ ]
+}

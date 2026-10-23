@@ -1,0 +1,373 @@
+{
+ "id": "3.4",
+ "go": 3,
+ "slug": "designing-a-study",
+ "title": "Designing a study",
+ "minutes": 45,
+ "tag": "Method",
+ "systems": [
+  "policy",
+  "economy",
+  "energy"
+ ],
+ "summary": "Turn a topic into a research question GCAM can answer, design a Reference and levers, choose price or quantity policies, and plan the uncertainty analysis before you run anything.",
+ "outcomes": [
+  "Turn a broad topic into a question with a decision, a metric and a comparison",
+  "Design a scenario matrix with a Reference, levers, policies and sensitivity cases",
+  "Choose between a carbon price and an emissions constraint for a given question",
+  "Write an uncertainty plan and a validity argument before running GCAM"
+ ],
+ "narration_en": "A good GCAM study answers one clear question. A topic, such as electric vehicles in Saudi Arabia, is not yet a question. A question names a decision, a metric and a comparison: for example, how much would cheaper batteries reduce transport carbon dioxide in 2050 compared with a carbon price that costs the same. Next comes the scenario logic. The Reference run keeps today's policies and assumptions. Levers change one assumption at a time, such as vehicle costs, load factors or the value of time. Policies are added on top, either as a price on carbon, where the model finds the emissions, or as a cap on emissions, where the model finds the price. Then, before you run anything, plan the uncertainty: which inputs are most uncertain, what ranges you will test, and whether you need a small sensitivity analysis or a full ensemble. Finally, write down why anyone should believe your results: calibration, comparison with history, and comparison with other models.",
+ "narration_ar": "الدراسة الجيدة باستخدام GCAM تجيب عن سؤال واحد واضح. فالموضوع، مثل المركبات الكهربائية في المملكة العربية السعودية، ليس سؤالًا بعد. السؤال يحدد قرارًا ومقياسًا ومقارنة: مثلًا، كم ستخفض البطاريات الأرخص انبعاثات ثاني أكسيد الكربون من النقل عام 2050 مقارنةً بسعر للكربون يكلّف القدر نفسه. ثم يأتي منطق السيناريوهات. فسيناريو الأساس يُبقي السياسات والافتراضات الحالية. والروافع تغيّر افتراضًا واحدًا في كل مرة، مثل تكاليف المركبات أو معامل الإشغال أو قيمة الوقت. وتُضاف السياسات فوق ذلك، إما سعرًا للكربون يجد النموذج عنده الانبعاثات، وإما سقفًا للانبعاثات يجد النموذج عنده السعر. وقبل أن تشغّل أي شيء، خطِّط لعدم اليقين: ما المدخلات الأكثر غموضًا، وما النطاقات التي ستختبرها، وهل تحتاج تحليل حساسية صغيرًا أم مجموعة كاملة من التشغيلات. وأخيرًا، اكتب لماذا ينبغي لأي أحد أن يصدّق نتائجك: المعايرة، والمقارنة بالتاريخ، والمقارنة بالنماذج الأخرى.",
+ "diagram": {
+  "title": "The study design cycle",
+  "caption": "Each box is a decision you write down before running GCAM; validity feeds back into the question.",
+  "nodes": [
+   {
+    "id": "q",
+    "label": "Question",
+    "sub": "decision, metric, comparison",
+    "x": 450,
+    "y": 60,
+    "w": 200,
+    "h": 62,
+    "sys": "policy",
+    "detail": "A topic becomes a question when it names a decision, a metric (for example 2050 transport CO2) and a comparison (against Reference or another policy)."
+   },
+   {
+    "id": "ref",
+    "label": "Reference",
+    "sub": "today's policies",
+    "x": 760,
+    "y": 170,
+    "w": 170,
+    "h": 62,
+    "sys": "economy",
+    "detail": "The counterfactual world: a stated SSP, current policies, default technology assumptions. Report it in full."
+   },
+   {
+    "id": "lev",
+    "label": "Levers",
+    "sub": "one change at a time",
+    "x": 760,
+    "y": 350,
+    "w": 170,
+    "h": 62,
+    "sys": "energy",
+    "detail": "Vehicle costs, load factors, share-weight paths, value of time, fuel prices: each changed alone first."
+   },
+   {
+    "id": "pol",
+    "label": "Policies",
+    "sub": "price or quantity",
+    "x": 450,
+    "y": 460,
+    "w": 170,
+    "h": 62,
+    "sys": "policy",
+    "detail": "A carbon price (model finds emissions) or a constraint (model finds the price); standards as credit markets."
+   },
+   {
+    "id": "unc",
+    "label": "Uncertainty plan",
+    "sub": "ranges, ensemble",
+    "x": 140,
+    "y": 350,
+    "w": 170,
+    "h": 62,
+    "sys": "data",
+    "detail": "Choose uncertain inputs, ranges and method: one-at-a-time sensitivity, a factorial matrix, or an ensemble with scenario discovery."
+   },
+   {
+    "id": "val",
+    "label": "Validity",
+    "sub": "why believe it?",
+    "x": 140,
+    "y": 170,
+    "w": 170,
+    "h": 62,
+    "sys": "neutral",
+    "detail": "Calibration, hindcast against recent history, and benchmarking against other models and the AR6 database."
+   }
+  ],
+  "edges": [
+   {
+    "from": "q",
+    "to": "ref",
+    "label": ""
+   },
+   {
+    "from": "ref",
+    "to": "lev",
+    "label": ""
+   },
+   {
+    "from": "lev",
+    "to": "pol",
+    "label": ""
+   },
+   {
+    "from": "pol",
+    "to": "unc",
+    "label": ""
+   },
+   {
+    "from": "unc",
+    "to": "val",
+    "label": ""
+   },
+   {
+    "from": "val",
+    "to": "q",
+    "label": "refine"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "q"
+    ],
+    "edges": [],
+    "text": "Start with a question that names a decision, a metric and a comparison."
+   },
+   {
+    "focus": [
+     "ref",
+     "lev"
+    ],
+    "edges": [
+     [
+      "q",
+      "ref"
+     ],
+     [
+      "ref",
+      "lev"
+     ]
+    ],
+    "text": "Define the Reference, then change one lever at a time."
+   },
+   {
+    "focus": [
+     "pol"
+    ],
+    "edges": [
+     [
+      "lev",
+      "pol"
+     ]
+    ],
+    "text": "Add policies as a price or a quantity, depending on what your question asks."
+   },
+   {
+    "focus": [
+     "unc"
+    ],
+    "edges": [
+     [
+      "pol",
+      "unc"
+     ]
+    ],
+    "text": "Plan the uncertainty analysis before running: inputs, ranges and method."
+   },
+   {
+    "focus": [
+     "val",
+     "q"
+    ],
+    "edges": [
+     [
+      "unc",
+      "val"
+     ],
+     [
+      "val",
+      "q"
+     ]
+    ],
+    "text": "Argue validity, and refine the question if the design cannot answer it."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "From topic to question",
+   "html": "<p>\"EVs in Saudi Arabia\" is a topic. A research question names a <b>decision</b>, a <b>metric</b> and a <b>comparison</b>:</p><table ><thead><tr><th style=width:24%>Weak</th><th style=width:50%>Strong</th><th style=width:26%>Why stronger</th></tr></thead><tbody><tr><td>What is the future of EVs in KSA?</td><td>How much do 2060 Saudi transport CO<sub>2</sub> emissions differ between a ZEV sales standard and a carbon price that achieves the same 2040 car-emission cut, and at what cost?</td><td>Decision (instrument choice), metric (CO<sub>2</sub>, cost), comparison (equal-effort policies)</td></tr><tr><td>Can aviation be decarbonised?</td><td>At what CO<sub>2</sub> price does bio-jet with CCS beat DAC offsets for Gulf aviation residuals, and how sensitive is it to biomass supply?</td><td>A threshold and a sensitivity, both computable</td></tr><tr><td>Will rail help freight?</td><td>How much do Saudi freight emissions fall by 2050 if rail's share-weight doubles, and how much of that survives a freight logit exponent of −4 instead of −2?</td><td>Separates the policy effect from a structural assumption</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Scenario logic: Reference, levers and policies",
+   "html": "<p>Every GCAM study compares runs that differ in a controlled way. Three layers are enough for most transport questions:</p><ol><li><b>Background world</b>: an SSP (population, GDP, the matching transport file <code>transportation_UCD_SSP1/3/5.xml</code>; SSP2 uses CORE) and current policies.</li><li><b>Levers</b>: the assumptions your question is about — BEV cost, share-weight path, load factors, speed of rail, a fuel technology you add.</li><li><b>Policies</b>: none, a carbon price, an emissions constraint (net zero), a standard (ZEV credits, fuel quantity cap).</li></ol><p>Hold everything else at Reference. If two things change at once, you cannot say which caused the difference.</p><div class='nobreak'><p><b>A worked design matrix (from the kit)</p></b><table ><thead><tr><th style=width:14%>Scenario</th><th style=width:26%>Technology lever</th><th style=width:20%>Behaviour lever</th><th style=width:20%>Policy</th><th style=width:20%>Purpose</th></tr></thead><tbody><tr><td>Reference</td><td>Reference</td><td>Reference</td><td>None</td><td>baseline for all comparisons</td></tr><tr><td>BEVlow</td><td>BEV car non-fuel cost -30% from 2030</td><td>Reference</td><td>None</td><td>technology-cost sensitivity</td></tr><tr><td>LFup</td><td>Reference</td><td>car load factor +20% by 2050</td><td>None</td><td>demand-side behaviour</td></tr><tr><td>ZEVpref</td><td>faster BEV/FCEV share-weights</td><td>Reference</td><td>None</td><td>non-cost barriers fall (assumption)</td></tr><tr><td>TruckEff</td><td>heavy diesel truck intensity -25% by 2050</td><td>Reference</td><td>None</td><td>freight efficiency standard proxy</td></tr><tr><td>CTax</td><td>Reference</td><td>Reference</td><td>carbon tax 25 $/tC 2025 +5%/yr</td><td>price instrument</td></tr><tr><td>NetZero</td><td>Reference</td><td>Reference</td><td>regional CO2 cap to net zero 2060</td><td>quantity instrument (solved price)</td></tr><tr><td>ZEVstd</td><td>Reference</td><td>Reference</td><td>ZEV share of car pkm 10%->70% (2030-2050)</td><td>sector standard</td></tr><tr><td>BEVlow_CTax</td><td>BEV car non-fuel cost -30% from 2030</td><td>Reference</td><td>carbon tax 25 $/tC 2025 +5%/yr</td><td>interaction of technology and policy</td></tr><tr><td>BEVlow_NetZero</td><td>BEV car non-fuel cost -30% from 2030</td><td>Reference</td><td>regional CO2 cap to net zero 2060</td><td>does cheap BEV lower the carbon price?</td></tr><tr><td>Ref_SSP1</td><td>Reference</td><td>Reference</td><td>None</td><td>socioeconomic sensitivity</td></tr><tr><td>Ref_SSP3</td><td>Reference</td><td>Reference</td><td>None</td><td>socioeconomic sensitivity</td></tr></tbody></table></div><p class='small muted'>From <code>go3-transport-kit/templates/scenario_design_matrix.csv</code>.</p>"
+  },
+  {
+   "heading": "Policies: price or quantity?",
+   "html": "<p>GCAM implements a carbon price (<code>fixedTax</code>), an emissions constraint (<code>constraint</code>, for which the model solves the shadow price), and portfolio standards (credit markets). A price fixes cost and lets emissions follow; a cap fixes emissions and lets the price follow. For comparisons of instruments, match them on one dimension: either equal emissions (then compare cost) or equal price (then compare emissions). Go 2 showed that a cap and a price can be two doors to the same room; in a study you must say which door you used.</p><table ><thead><tr><th>Instrument</th><th>You specify</th><th>GCAM returns</th><th>Good for</th></tr></thead><tbody><tr><td>Carbon tax</td><td>price path ($/tC, 1990$)</td><td>emissions, technology mix</td><td>\"what does $X buy?\"</td></tr><tr><td>Emissions constraint</td><td>emissions path</td><td>the shadow price</td><td>net-zero targets, budgets</td></tr><tr><td>Policy portfolio standard</td><td>a credit market and its constraint</td><td>credit price, compliance mix</td><td>ZEV mandates, fuel standards</td></tr><tr><td>Share-weight or cost change</td><td>an assumption</td><td>uptake</td><td>\"what if technology X were cheaper/preferred?\" (not a policy!)</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Plan the uncertainty before you run",
+   "html": "<p>Write a table of 3–6 uncertain inputs, each with a low, central and high value <i>and a source</i>. Choose a design: one-at-a-time (cheap, misses interactions), full factorial (clean, explodes in size), or a Latin-hypercube sample (efficient for many inputs, analysed with regression or scenario discovery). Module 3.6 analyses the results.</p><table ><thead><tr><th style=width:28%>Uncertain input</th><th style=width:16%>Low</th><th style=width:18%>Central</th><th style=width:14%>High</th><th style=width:24%>Source of the range</th></tr></thead><tbody><tr><td>BEV non-energy cost (2030)</td><td>−30 %</td><td>release value</td><td>+30 %</td><td>BNEF pack prices ($108/kWh in 2025); NREL ATB</td></tr><tr><td>BEV share-weight path</td><td>v5.4-style (0.25 in 2030)</td><td>release s-curve (1 by 2030)</td><td>1 from 2025</td><td>repository history; IEA EV sales (22 % in 2024)</td></tr><tr><td>Drivetrain logit exponent</td><td>−4</td><td>−8</td><td>−12</td><td>sensitivity convention</td></tr><tr><td>Passenger income elasticity</td><td>0.8 (SSP1 file)</td><td>1.0</td><td>1.1</td><td>A54 files; literature</td></tr><tr><td>Load factor 2050</td><td>1.8</td><td>2.0</td><td>2.3</td><td>UCD trend vs 2020 level</td></tr></tbody></table>"
+  },
+  {
+   "heading": "Validity: why should anyone believe it?",
+   "html": "<ul><li><b>Calibration check</b>: base-year outputs reproduce IEA energy by fuel (they should, by construction — so this checks the data, not the model).</li><li><b>Hindcast</b>: run from 2015 with observed prices and compare 2021–2024 with data you did not calibrate to (e.g. Saudi gasoline demand after the 2016 and 2018 price reforms; IEA EV sales).</li><li><b>Benchmark</b>: compare your Reference with other models in the AR6 database or EMF studies for the same region and variables.</li><li><b>Face validity</b>: show results to people who know the sector; implausible numbers usually reveal an input error.</li></ul>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "research",
+   "title": "Why this matters",
+   "html": "<p style='margin:0'>Four uncertain inputs with three values each make 81 GCAM runs. Add three policies and you have 243. At two hours a run on four cores, that is about five days of computing — before a single one has failed to solve. Design is the step where you decide which runs answer the question and which only fill a hard drive.</p>"
+  },
+  {
+   "after": 1,
+   "kind": "model",
+   "title": "Worked calculation",
+   "html": "<p style='margin:0 0 3px'><b>How many runs, and how long?</b></p><ol><li>Full factorial: 3 SSPs × 2 BEV cost levels × 2 share-weight paths × 3 policies = 36 runs.</li><li>At about 2 hours per run (machine-dependent; check your own) and 4 runs in parallel: 36 × 2 ÷ 4 = 18 hours.</li><li>Add a 3-level freight exponent test only for the central SSP and two policies: + 3 × 2 = 6 runs.</li><li>Allow 10 % for failed runs and re-runs: about 46 runs in total.</li></ol><p style='margin:4px 0 2px'><b>Answer:</b> ≈ 46 runs, a day of computing — feasible; the 243-run version is not</p>"
+  },
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Pitfall",
+   "html": "<p style='margin:0'><b>Calling an assumption a policy.</b> Setting BEV share-weights to 1 makes BEVs popular; it does not say which policy would make them popular, or what it would cost. If your scenario is \"high EV preference\", name it as an assumption and, if you can, pair it with a policy (credit standard, subsidy via <code>input-subsidy</code>) whose cost GCAM reports.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "research",
+   "title": "Research note",
+   "html": "<p style='margin:0'><b>Pre-register your design.</b> Before the first run, write down the scenarios, the uncertain ranges and the figures you will make (the kit's <code>templates/research_proposal.md</code> has the headings). It protects you from running until something looks interesting, and it makes the honest \"what the model cannot tell us\" section much easier to write.</p>"
+  },
+  {
+   "after": 4,
+   "kind": "try",
+   "title": "Try it",
+   "html": "<ol style='margin:0'><li>Rewrite this into a strong question: \"Hydrogen trucks in the Gulf\". Name the decision, metric and comparison.</li><li>Your design has 2 SSPs × 3 BEV costs × 2 exponents × 3 policies. How many runs? Which factor would you drop first, and why?</li></ol>"
+  }
+ ],
+ "takeaways": [
+  "A question names a decision, a metric and a comparison",
+  "Change one lever at a time against a fully described Reference",
+  "A price fixes cost and finds emissions; a cap fixes emissions and finds the price",
+  "Plan inputs, ranges and method for uncertainty before the first run",
+  "State why results are credible: calibration, history and other models"
+ ],
+ "quiz": [
+  {
+   "q": "Which of these is a research question rather than a topic?",
+   "options": [
+    "Electric vehicles in Saudi Arabia",
+    "Transport and climate",
+    "How much would 30% cheaper BEVs cut 2050 transport CO2 relative to Reference?",
+    "GCAM and hydrogen"
+   ],
+   "answer": 2,
+   "explain": "It names a lever, a metric and a comparison."
+  },
+  {
+   "q": "You must meet a fixed emissions target and want to know its cost. Use…",
+   "options": [
+    "A carbon price",
+    "An emissions constraint",
+    "A share-weight change",
+    "A query"
+   ],
+   "answer": 1,
+   "explain": "A constraint fixes the quantity; GCAM finds the shadow price."
+  },
+  {
+   "q": "Why change one lever at a time first?",
+   "options": [
+    "GCAM cannot change two",
+    "So each effect can be attributed",
+    "It is faster to run",
+    "To avoid calibration"
+   ],
+   "answer": 1,
+   "explain": "One-at-a-time runs show what each assumption does before combinations."
+  },
+  {
+   "q": "Scenario discovery is most useful when…",
+   "options": [
+    "You have one run",
+    "You have an ensemble and an outcome of interest",
+    "You only want the base year",
+    "You use perfect foresight"
+   ],
+   "answer": 1,
+   "explain": "It searches an ensemble for input ranges that explain outcomes."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Reference scenario",
+   "def": "The counterfactual run without the policy or change being studied."
+  },
+  {
+   "term": "Lever",
+   "def": "A single assumption you change to test its effect."
+  },
+  {
+   "term": "Scenario matrix",
+   "def": "The planned set of runs crossing levers, policies and sensitivity cases."
+  },
+  {
+   "term": "Shadow price",
+   "def": "The carbon price GCAM finds when an emissions constraint binds."
+  },
+  {
+   "term": "Hindcast",
+   "def": "Running a model over a past period to compare with what actually happened."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: Policies",
+   "url": "https://jgcri.github.io/gcam-doc/policies.html",
+   "why": "Price, constraint, climate target and standard policy types."
+  },
+  {
+   "title": "GCAM documentation: policy examples",
+   "url": "https://jgcri.github.io/gcam-doc/policies_examples.html",
+   "why": "Worked XML examples of policies."
+  },
+  {
+   "title": "GCAM documentation: Shared Socioeconomic Pathways",
+   "url": "https://jgcri.github.io/gcam-doc/ssp.html",
+   "why": "How SSPs are implemented as reference worlds."
+  },
+  {
+   "title": "Browning et al. (2023), net-zero scenarios for the US in EMF 37",
+   "url": "https://doi.org/10.1016/j.egycc.2023.100104",
+   "why": "A multi-model study design to learn from."
+  }
+ ],
+ "downloads": [
+  {
+   "label": "Go 3 handbook (PDF)",
+   "path": "downloads/Go3-Research-Handbook-GCAM-Transport.pdf"
+  },
+  {
+   "label": "Go 3 transport kit (zip)",
+   "path": "downloads/go3-transport-kit.zip"
+  }
+ ],
+ "explorer": {
+  "widget": "ensemble",
+  "intro": "Generate an ensemble over three uncertain inputs, define 'high emissions', and find a simple rule that explains the high runs.",
+  "predict": "Of GDP growth, clean-technology cost decline and efficiency gain, which do you expect to explain most high-emission runs?"
+ },
+ "code": [
+  {
+   "title": "Scenario design matrix template",
+   "lang": "csv",
+   "file": "labs/go3/templates/scenario_design_matrix.csv",
+   "explain": "One row per scenario: technology, behaviour and policy settings, and its purpose."
+  },
+  {
+   "title": "Research proposal template",
+   "lang": "markdown",
+   "file": "labs/go3/templates/research_proposal.md",
+   "explain": "Question, motivation, scenarios, uncertainty plan, validity and expected outputs."
+  }
+ ]
+}
