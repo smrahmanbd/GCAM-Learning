@@ -377,3 +377,45 @@ svg.chart .axis { stroke: var(--muted); }
 .mm .mm-stage:fullscreen .mm-notes { border-top: 0; border-left: 1px solid var(--line); }
 @media (max-width: 700px) { .mm.embed .mm-stage { grid-template-rows: 380px auto; } }
 .mm-main .mm-stage { height: calc(100vh - 240px); }
+/* ---------- question bank ---------- */
+.qb-controls { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); padding: 12px 0 10px; margin-bottom: 8px; }
+.qb-row { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-top: 10px; }
+.qb-row label { display: inline-flex; gap: 8px; align-items: center; font-size: .95rem; }
+.qb-row select, .qb-row input[type=search] { font: inherit; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); max-width: 100%; }
+.qb-row .qb-module { max-width: min(360px, 80vw); }
+.qb-kind { font-size: .92rem; }
+.qb-summary { margin: 10px 0 6px; font-size: .92rem; color: var(--ink-soft); }
+.qb-bar { display: flex; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.qb-bar-known { background: var(--land); transition: width .3s; } .qb-bar-review { background: var(--energy); transition: width .3s; }
+.qb-mod { font-size: 1.15rem; margin: 30px 0 6px; padding-top: 6px; border-top: 2px solid var(--ink); }
+.qb-item { border: 1px solid var(--line); border-left: 5px solid var(--line); border-radius: var(--r-m); background: var(--card); padding: 14px 18px; margin: 12px 0; }
+.qb-item.is-known { border-left-color: var(--land); } .qb-item.is-review { border-left-color: var(--energy); }
+.qb-item h3, .qb-card h3 { font-size: 1.08rem; margin: 4px 0 10px; line-height: 1.4; }
+.qb-n { color: var(--muted); font-weight: 600; margin-right: 2px; }
+.qb-meta { margin: 0; font-size: .85rem; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.qb-meta a { color: var(--ink-soft); }
+.qb-k { font-size: .78rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; border: 1px solid currentColor; }
+.qb-k-recall { color: var(--water); } .qb-k-explain { color: var(--economy); } .qb-k-calculate { color: var(--energy); } .qb-k-apply { color: var(--climate); }
+.qb-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.qb-draft { display: block; width: 100%; margin-top: 10px; font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); }
+.qb-answer { margin-top: 12px; padding: 12px 14px; background: var(--paper-2); border-radius: 10px; }
+.qb-answer p { margin: 0 0 10px; }
+.qb-mark { display: flex; flex-wrap: wrap; gap: 8px; }
+.qb-known[aria-pressed="true"] { background: var(--land); color: #fff; border-color: var(--land); }
+.qb-review[aria-pressed="true"] { background: var(--energy); color: #fff; border-color: var(--energy); }
+.qb-card { max-width: 760px; margin: 24px auto; border: 1px solid var(--line); border-radius: var(--r-m); background: var(--card); padding: 24px 26px; min-height: 280px; display: flex; flex-direction: column; gap: 10px; }
+.qb-card:focus-visible { outline: 3px solid var(--ink); }
+.qb-card .qb-front { font-size: 1.35rem; margin: 8px 0; }
+.qb-card .btnrow { margin-top: auto; }
+.qb-count { margin: 0; }
+@media print {
+  .topbar, header.site, nav, .qb-controls, .cta, .qb-actions, .qb-mark, .qb-draft, footer.site { display: none !important; }
+  .qb-answer[hidden] { display: block !important; }
+  .qb-item { break-inside: avoid; border-left-width: 1px; }
+}
+.qb-controls { position: static; }
+.qb-draft[hidden], .qb-answer[hidden] { display: none; }
+.qb-mark .btn.qb-known[aria-pressed="true"], .qb-mark .btn.qb-known[aria-pressed="true"]:hover { background: var(--land); color: #fff; border-color: var(--land); }
+.qb-mark .btn.qb-review[aria-pressed="true"], .qb-mark .btn.qb-review[aria-pressed="true"]:hover { background: var(--energy); color: #fff; border-color: var(--energy); }
+@media (max-width: 600px) { .qb-row label { display: grid; gap: 4px; width: 100%; } .qb-row select, .qb-row input[type=search], .qb-row .qb-module { width: 100%; max-width: 100%; } }
+.qb-controls [hidden] { display: none; }

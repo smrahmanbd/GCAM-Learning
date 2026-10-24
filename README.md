@@ -4,9 +4,9 @@ An open, interactive course on the **Global Change Analysis Model (GCAM)**, taug
 
 | Go | Name | What you do |
 | --- | --- | --- |
-| 1 | See the whole picture | Click-through diagrams and predict-then-check explorers: what an integrated assessment model is, the climate chain, energy and emissions, prices, scenarios, and a tour of GCAM. |
-| 2 | Open the boxes | Each GCAM component, its rule and its links to the others, with small models you run in the browser (Python) or in R. |
-| 3 | Research with GCAM: transport | A research brief for each step of a GCAM transport study: model structure, literature, scenario design, add-on XML, analysis, downscaling and write-up. |
+| 1 | Foundations of Integrated Assessment Modelling | Click-through diagrams and predict-then-check explorers: what an integrated assessment model is, the climate chain, energy and emissions, prices, scenarios, and a tour of GCAM. |
+| 2 | GCAM Architecture and System Interactions | Each GCAM component, its rule and its links to the others, with small models you run in the browser (Python) or in R. |
+| 3 | Applied Research with GCAM: Transport Systems | A research brief for each step of a GCAM transport study: model structure, literature, scenario design, add-on XML, analysis, downscaling and write-up. |
 
 **Live site:** https://smrahmanbd.github.io/GCAM-Learning/
 

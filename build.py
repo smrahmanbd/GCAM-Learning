@@ -3,15 +3,16 @@ import json, glob, os, html, re, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "content"))
+from qbank import Q as QB
 SYS = ["economy", "energy", "land", "water", "climate", "policy"]
 SYSNAME = dict(economy="Economy and people", energy="Energy", land="Land and food", water="Water", climate="Emissions and climate", policy="Policy")
 SITE = "GCAM in three goes"
-VER = "20261023b"  # cache-busting tag for CSS/JS
+VER = "20261024a"  # cache-busting tag for CSS/JS
 esc = lambda s: html.escape(str(s), quote=True)
 
 # ------------------------------------------------------------------ the three goes
 GO = {
-    1: dict(name="See the whole picture", short="Big picture", depth="Surface",
+    1: dict(name="Foundations of Integrated Assessment Modelling", short="Foundations", depth="Introductory",
             promise="Understand what GCAM and other integrated assessment models are for, what goes in, what comes out, and how to read a scenario.",
             style="Pictures first. Every idea is a diagram you can click and a small explorer where you predict an answer, then check it. No code needed and no maths beyond percentages.",
             need="Nothing. Curiosity about climate and energy, and comfort reading a simple chart.",
@@ -25,7 +26,7 @@ GO = {
                   "I can split CO2 into people, income, energy per $ and CO2 per energy", "I can explain what a carbon price does and why the discount rate matters",
                   "I can decode an SSP-RCP label and an AR6 category", "I can describe GCAM's main parts and why results are read as Policy minus Reference"],
             handbook="downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf", kit=None),
-    2: dict(name="Open the boxes", short="Components", depth="Inside",
+    2: dict(name="GCAM Architecture and System Interactions", short="Architecture", depth="Intermediate",
             promise="Open each GCAM component, see the rule it follows and the numbers it needs, and trace how it pushes on the others.",
             style="Every module starts from a connections map, explains the mechanism with a worked calculation, and ends with a small model you build and run, in Python in the browser or in R on your machine.",
             need="Go 1, or its exit check. Basic Python or R: variables, functions, a loop.",
@@ -38,7 +39,7 @@ GO = {
                   "I can explain how GCAM's solver clears many markets in each period", "I can trace at least three feedbacks, such as bioenergy to land to food prices",
                   "I can run the toy models and change an assumption", "I can read GCAM output into R or Python and compare a policy run with the Reference"],
             handbook="downloads/Go2-Component-Handbook-Open-the-Boxes.pdf", kit="downloads/go2-kit.zip"),
-    3: dict(name="Research with GCAM: transport", short="Research", depth="Research",
+    3: dict(name="Applied Research with GCAM: Transport Systems", short="Applied research", depth="Advanced",
             promise="Design, build and defend a research study with GCAM, using the transport sector as the running case.",
             style="Each module reads like a research brief: the question, the method, the implementation in GCAM's XML and code, the evidence from the literature, and the pitfalls.",
             need="Go 2, or its exit check. A GCAM 9.x installation for the implementation steps, plus R or Python.",
@@ -89,7 +90,7 @@ def head(title, desc, depth=0, extra=""):
 
 def topbar(depth, current, bodyattr=""):
     up = "../" * depth
-    items = [("go1.html", "Go 1 · Big picture"), ("go2.html", "Go 2 · Components"), ("go3.html", "Go 3 · Research"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
+    items = [("go1.html", "Go 1 · Foundations"), ("go2.html", "Go 2 · Architecture"), ("go3.html", "Go 3 · Applied research"), ("questions.html", "Question bank"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
     nav = "".join(f'<a href="{up}{h}"{" aria-current=page" if h == current else ""}>{t}</a>' for h, t in items)
     dots = "".join(f'<i class="c-{s}"></i>' for s in SYS)
     return f"""<body{bodyattr}>
@@ -214,7 +215,7 @@ def module_page(m, prev, nxt, diagrams):
         for i, q in enumerate(m["quiz"]):
             opts = "".join(f'<button class="opt" type="button">{esc(o)}</button>' for o in q["options"])
             qs.append(f'<div class="q" data-answer="{q["answer"]}"><p>{i + 1}. {esc(q["q"])}</p><div class="opts">{opts}</div><p class="fb" hidden><b class="verdict"></b>{esc(q["explain"])}</p></div>')
-        sec("check", L["quiz"], f'<div class="quiz" data-module="{mid}">{"".join(qs)}<p class="quiz-result" hidden aria-live="polite"></p><button class="btn quiet quiz-again" type="button">Try the questions again</button></div>')
+        sec("check", L["quiz"], f'<div class="quiz" data-module="{mid}">{"".join(qs)}<p class="quiz-result" hidden aria-live="polite"></p><button class="btn quiet quiz-again" type="button">Try the questions again</button></div><p class="prose">More practice: <a href="../questions.html?m={mid}">{sum(1 for q in QB if q[0] == mid)} short-answer questions with model answers</a> for this module in the question bank.</p>')
     blocks["quiz"] = quiz
 
     def more():
@@ -345,6 +346,47 @@ def mindmap_page(g, data):
     return page
 
 
+# ------------------------------------------------------------------ question bank
+def questions_page(mods):
+    import csv
+    titles = {m["id"]: m["title"] for m in mods}
+    slugs = {m["id"]: m["slug"] for m in mods}
+    data = [{"i": i, "m": m, "g": int(m.split(".")[0]), "k": k, "q": q, "a": a} for i, (m, k, q, a) in enumerate(QB)]
+    os.makedirs(os.path.join(ROOT, "downloads"), exist_ok=True)
+    with open(os.path.join(ROOT, "downloads", "GCAM-question-bank.csv"), "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f); w.writerow(["number", "go", "module", "module title", "kind", "question", "model answer"])
+        for d in data: w.writerow([d["i"] + 1, d["g"], d["m"], titles[d["m"]], d["k"], d["q"], d["a"]])
+    counts = {g: sum(1 for d in data if d["g"] == g) for g in (1, 2, 3)}
+    modopts = "".join(f'<option value="{m["id"]}" data-go="{m["go"]}">{m["id"]} {esc(m["title"])}</option>' for m in mods)
+    gobtns = '<button class="narr-lang qb-go" type="button" data-go="0" aria-pressed="true">All goes</button>' + "".join(
+        f'<button class="narr-lang qb-go" type="button" data-go="{g}" aria-pressed="false">Go {g} · {esc(GO[g]["short"])} ({counts[g]})</button>' for g in (1, 2, 3))
+    kinds = "".join(f'<label class="qb-kind"><input type="checkbox" value="{k}" checked> {k}</label>' for k in ("Recall", "Explain", "Calculate", "Apply"))
+    meta = {"titles": titles, "slugs": slugs, "goes": {g: GO[g]["name"] for g in (1, 2, 3)}}
+    page = head(f"Question bank · {SITE}", f"{len(data)} short-answer questions with model answers across the three goes of the GCAM course.", 0) + topbar(0, "questions.html")
+    page += f"""<main id="main" class="wrap qb">
+<header class="gohead"><p class="eyebrow">Practice</p><h1>Question bank</h1>
+<p class="summary">{len(data)} short-answer questions with model answers, covering every module of the three goes: {counts[1]} for Go 1, {counts[2]} for Go 2 and {counts[3]} for Go 3. Answer in your own words first, then reveal the model answer and mark how you did. Your marks are saved in this browser.</p>
+<div class="cta"><a class="btn quiet" href="downloads/GCAM-question-bank.csv">Download all questions (CSV)</a><button class="btn quiet qb-print" type="button">Print with answers</button></div></header>
+<section class="qb-controls" aria-label="Filter questions">
+<div class="btnrow" role="group" aria-label="Go">{gobtns}</div>
+<div class="qb-row"><label>Module <select class="qb-module"><option value="">All modules</option>{modopts}</select></label>
+<label>Search <input class="qb-search" type="search" placeholder="e.g. logit, Hector, LMDI"></label>
+<label>Show <select class="qb-status"><option value="all">All questions</option><option value="new">Not yet marked</option><option value="review">Marked 'review again'</option><option value="known">Marked 'I knew it'</option></select></label></div>
+<div class="qb-row"><span class="muted small">Kind:</span>{kinds}</div>
+<div class="qb-row"><div class="btnrow" role="group" aria-label="View"><button class="narr-lang qb-view" type="button" data-view="list" aria-pressed="true">List</button><button class="narr-lang qb-view" type="button" data-view="cards" aria-pressed="false">Flashcards</button></div>
+<button class="btn quiet qb-shuffle" type="button">Shuffle</button><button class="btn quiet qb-expand" type="button">Reveal all answers</button><button class="btn quiet qb-reset" type="button">Clear my marks</button></div>
+<p class="qb-summary" aria-live="polite"></p><div class="qb-bar" aria-hidden="true"><span class="qb-bar-known"></span><span class="qb-bar-review"></span></div>
+</section>
+<section class="qb-list" aria-label="Questions"></section>
+<section class="qb-cards" hidden aria-label="Flashcards"></section>
+<noscript><p>This page needs JavaScript; the <a href="downloads/GCAM-question-bank.csv">CSV</a> has every question and answer.</p></noscript>
+</main>
+<script>window.QBANK = {json.dumps(data, ensure_ascii=False)}; window.QBMETA = {json.dumps(meta, ensure_ascii=False)};</script>
+<script src="assets/js/qbank.js?v={VER}"></script>
+""" + foot(0)
+    return page
+
+
 # ------------------------------------------------------------------ build
 def build():
     mods = load()
@@ -355,6 +397,7 @@ def build():
         same = [x for x in mods if x["go"] == m["go"]]
         j = same.index(m)
         open(os.path.join(ROOT, "modules", m["slug"] + ".html"), "w").write(module_page(m, same[j - 1] if j else None, same[j + 1] if j + 1 < len(same) else None, diagrams))
+    open(os.path.join(ROOT, "questions.html"), "w").write(questions_page(mods))
     open(os.path.join(ROOT, "assets/js/diagrams.js"), "w").write("window.GCAM_DIAGRAMS = " + json.dumps(diagrams, ensure_ascii=False) + ";\n")
     for f in ("progress.html", "labs.html", "resources.html", "downloads.html"):
         p = os.path.join(ROOT, f)
@@ -384,9 +427,9 @@ def build():
 <h2>The same system, three depths</h2>
 <p class="prose muted">Every go covers the whole model. Choose a depth and select any part of GCAM to see how the course treats it at that level.</p>
 <div class="levels"><div class="btnrow" role="group" aria-label="Choose a depth">
-<button class="narr-lang lv" type="button" data-level="1" aria-pressed="true" data-blurb="Go 1: what each part is and why it matters.">Go 1 · Big picture</button>
-<button class="narr-lang lv" type="button" data-level="2" aria-pressed="false" data-blurb="Go 2: the rule each part follows and what it trades with the others.">Go 2 · Components</button>
-<button class="narr-lang lv" type="button" data-level="3" aria-pressed="false" data-blurb="Go 3: what a transport researcher changes, measures or worries about here.">Go 3 · Research</button></div>
+<button class="narr-lang lv" type="button" data-level="1" aria-pressed="true" data-blurb="Go 1: what each part is and why it matters.">Go 1 · Foundations</button>
+<button class="narr-lang lv" type="button" data-level="2" aria-pressed="false" data-blurb="Go 2: the rule each part follows and what it trades with the others.">Go 2 · Architecture</button>
+<button class="narr-lang lv" type="button" data-level="3" aria-pressed="false" data-blurb="Go 3: what a transport researcher changes, measures or worries about here.">Go 3 · Applied research</button></div>
 <p class="lv-blurb muted">Go 1: what each part is and why it matters.</p>
 <div class="diagram-box"><div id="dg-hero" data-diagram="hero" data-intro="1" data-level="1" data-hint="Select a part of GCAM."><p class="muted">GCAM connects people, energy, land, water, emissions and climate through markets.</p></div></div></div>
 </div></section>
@@ -419,7 +462,7 @@ def build():
             for r in m["resources"]:
                 if r["url"] in seen: continue
                 seen.add(r["url"]); res.append(f'<li><a href="{esc(r["url"])}" target="_blank" rel="noopener">{esc(r["title"])}</a><span class="why">{esc(r["why"])} <span class="muted">· module {m["id"]}</span></span></li>')
-        mats = [f'<a class="btn" href="{info["handbook"]}">Go {g} handbook (PDF)</a>', f'<a class="btn quiet" href="mindmap-go{g}.html">Zooming mind map</a>']
+        mats = [f'<a class="btn" href="{info["handbook"]}">Go {g} handbook (PDF)</a>', f'<a class="btn quiet" href="mindmap-go{g}.html">Zooming mind map</a>', f'<a class="btn quiet" href="questions.html?go={g}">Question bank ({sum(1 for q in QB if q[0].startswith(str(g) + "."))} questions)</a>']
         if info["kit"]: mats.append(f'<a class="btn quiet" href="{info["kit"]}">Go {g} code kit (zip)</a>')
         prev_go = f'<a href="go{g - 1}.html">Go {g - 1}</a>' if g > 1 else ""
         nxt = f'<a class="btn" href="go{g + 1}.html">Go on to Go {g + 1}: {esc(GO[g + 1]["name"])}</a>' if g < 3 else '<a class="btn" href="toolkit.html">Start your project with the toolkit</a>'
@@ -459,9 +502,9 @@ def build():
 
     def item(p, t, d):
         return f'<li><a href="{p}">{esc(t)}</a> <span class="muted small">{size(p)}</span><span class="why">{esc(d)}</span></li>' if os.path.exists(os.path.join(ROOT, p)) else ""
-    hand = "".join([item(GO[1]["handbook"], "Go 1 study guide: See the whole picture (35 pages)", "Visual overview with predict-then-check activities, a quiz and a cheat sheet."),
-                    item(GO[2]["handbook"], "Go 2 handbook: Open the boxes (48 pages)", "Each GCAM component, its links to the others, and the toy models."),
-                    item(GO[3]["handbook"], "Go 3 handbook: Research with GCAM, transport (68 pages)", "GCAM transport in full, literature review, scenario building, analysis, downscaling."),
+    hand = "".join([item(GO[1]["handbook"], "Go 1 study guide: Foundations of Integrated Assessment Modelling (35 pages)", "Visual overview with predict-then-check activities, a quiz and a cheat sheet."),
+                    item(GO[2]["handbook"], "Go 2 handbook: GCAM Architecture and System Interactions (48 pages)", "Each GCAM component, its links to the others, and the toy models."),
+                    item(GO[3]["handbook"], "Go 3 handbook: Applied Research with GCAM, Transport Systems (68 pages)", "GCAM transport in full, literature review, scenario building, analysis, downscaling."),
                     item("downloads/Course-Structure-3-Goes.pdf", "Course structure in three goes", "Modules, outcomes, assessment, and how the original 15 weeks map onto the goes.")])
     kits = "".join([item("downloads/go2-kit.zip", "Go 2 kit: toy models in Python and R", "Nine toy models with identical Python and R versions, plus GCAM reader scripts."),
                     item("downloads/go3-transport-kit.zip", "Go 3 transport research kit", "Transport toy model, add-on XML templates, batch file, queries, decomposition, scenario discovery, downscaling, templates."),
