@@ -8,12 +8,12 @@ from qhooks import H as QH, PALACE
 SYS = ["economy", "energy", "land", "water", "climate", "policy"]
 SYSNAME = dict(economy="Economy and people", energy="Energy", land="Land and food", water="Water", climate="Emissions and climate", policy="Policy")
 SITE = "GCAM in three goes"
-VER = "20261024b"  # cache-busting tag for CSS/JS
+VER = "20261024c"  # cache-busting tag for CSS/JS
 esc = lambda s: html.escape(str(s), quote=True)
 
 # ------------------------------------------------------------------ the three goes
 GO = {
-    1: dict(name="Foundations of Integrated Assessment Modelling", short="Foundations", depth="Introductory",
+    1: dict(name="Foundations", short="Foundations", depth="Introductory",
             promise="Understand what GCAM and other integrated assessment models are for, what goes in, what comes out, and how to read a scenario.",
             style="Pictures first. Every idea is a diagram you can click and a small explorer where you predict an answer, then check it. No code needed and no maths beyond percentages.",
             need="Nothing. Curiosity about climate and energy, and comfort reading a simple chart.",
@@ -27,7 +27,7 @@ GO = {
                   "I can split CO2 into people, income, energy per $ and CO2 per energy", "I can explain what a carbon price does and why the discount rate matters",
                   "I can decode an SSP-RCP label and an AR6 category", "I can describe GCAM's main parts and why results are read as Policy minus Reference"],
             handbook="downloads/Go1-Study-Guide-See-the-Whole-Picture.pdf", kit=None),
-    2: dict(name="GCAM Architecture and System Interactions", short="Architecture", depth="Intermediate",
+    2: dict(name="Build and Implement", short="Build and Implement", depth="Intermediate",
             promise="Open each GCAM component, see the rule it follows and the numbers it needs, and trace how it pushes on the others.",
             style="Every module starts from a connections map, explains the mechanism with a worked calculation, and ends with a small model you build and run, in Python in the browser or in R on your machine.",
             need="Go 1, or its exit check. Basic Python or R: variables, functions, a loop.",
@@ -40,7 +40,7 @@ GO = {
                   "I can explain how GCAM's solver clears many markets in each period", "I can trace at least three feedbacks, such as bioenergy to land to food prices",
                   "I can run the toy models and change an assumption", "I can read GCAM output into R or Python and compare a policy run with the Reference"],
             handbook="downloads/Go2-Component-Handbook-Open-the-Boxes.pdf", kit="downloads/go2-kit.zip"),
-    3: dict(name="Applied Research with GCAM: Transport Systems", short="Applied research", depth="Advanced",
+    3: dict(name="Research Frontier", short="Research Frontier", depth="Advanced",
             promise="Design, build and defend a research study with GCAM, using the transport sector as the running case.",
             style="Each module reads like a research brief: the question, the method, the implementation in GCAM's XML and code, the evidence from the literature, and the pitfalls.",
             need="Go 2, or its exit check. A GCAM 9.x installation for the implementation steps, plus R or Python.",
@@ -91,7 +91,7 @@ def head(title, desc, depth=0, extra=""):
 
 def topbar(depth, current, bodyattr=""):
     up = "../" * depth
-    items = [("go1.html", "Go 1 · Foundations"), ("go2.html", "Go 2 · Architecture"), ("go3.html", "Go 3 · Applied research"), ("questions.html", "Question bank"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
+    items = [("go1.html", "Foundations"), ("go2.html", "Build and Implement"), ("go3.html", "Research Frontier"), ("questions.html", "Questions"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
     nav = "".join(f'<a href="{up}{h}"{" aria-current=page" if h == current else ""}>{t}</a>' for h, t in items)
     dots = "".join(f'<i class="c-{s}"></i>' for s in SYS)
     return f"""<body{bodyattr}>
@@ -449,8 +449,8 @@ def build():
 <p class="prose muted">Every go covers the whole model. Choose a depth and select any part of GCAM to see how the course treats it at that level.</p>
 <div class="levels"><div class="btnrow" role="group" aria-label="Choose a depth">
 <button class="narr-lang lv" type="button" data-level="1" aria-pressed="true" data-blurb="Go 1: what each part is and why it matters.">Go 1 · Foundations</button>
-<button class="narr-lang lv" type="button" data-level="2" aria-pressed="false" data-blurb="Go 2: the rule each part follows and what it trades with the others.">Go 2 · Architecture</button>
-<button class="narr-lang lv" type="button" data-level="3" aria-pressed="false" data-blurb="Go 3: what a transport researcher changes, measures or worries about here.">Go 3 · Applied research</button></div>
+<button class="narr-lang lv" type="button" data-level="2" aria-pressed="false" data-blurb="Go 2: the rule each part follows and what it trades with the others.">Go 2 · Build and Implement</button>
+<button class="narr-lang lv" type="button" data-level="3" aria-pressed="false" data-blurb="Go 3: what a transport researcher changes, measures or worries about here.">Go 3 · Research Frontier</button></div>
 <p class="lv-blurb muted">Go 1: what each part is and why it matters.</p>
 <div class="diagram-box"><div id="dg-hero" data-diagram="hero" data-intro="1" data-level="1" data-hint="Select a part of GCAM."><p class="muted">GCAM connects people, energy, land, water, emissions and climate through markets.</p></div></div></div>
 </div></section>
@@ -523,9 +523,9 @@ def build():
 
     def item(p, t, d):
         return f'<li><a href="{p}">{esc(t)}</a> <span class="muted small">{size(p)}</span><span class="why">{esc(d)}</span></li>' if os.path.exists(os.path.join(ROOT, p)) else ""
-    hand = "".join([item(GO[1]["handbook"], "Go 1 study guide: Foundations of Integrated Assessment Modelling (35 pages)", "Visual overview with predict-then-check activities, a quiz and a cheat sheet."),
-                    item(GO[2]["handbook"], "Go 2 handbook: GCAM Architecture and System Interactions (48 pages)", "Each GCAM component, its links to the others, and the toy models."),
-                    item(GO[3]["handbook"], "Go 3 handbook: Applied Research with GCAM, Transport Systems (68 pages)", "GCAM transport in full, literature review, scenario building, analysis, downscaling."),
+    hand = "".join([item(GO[1]["handbook"], "Go 1 study guide: Foundations (35 pages)", "Visual overview with predict-then-check activities, a quiz and a cheat sheet."),
+                    item(GO[2]["handbook"], "Go 2 handbook: Build and Implement (48 pages)", "Each GCAM component, its links to the others, and the toy models."),
+                    item(GO[3]["handbook"], "Go 3 handbook: Research Frontier (68 pages)", "GCAM transport in full, literature review, scenario building, analysis, downscaling."),
                     item("downloads/Course-Structure-3-Goes.pdf", "Course structure in three goes", "Modules, outcomes, assessment, and how the original 15 weeks map onto the goes.")])
     kits = "".join([item("downloads/go2-kit.zip", "Go 2 kit: toy models in Python and R", "Nine toy models with identical Python and R versions, plus GCAM reader scripts."),
                     item("downloads/go3-transport-kit.zip", "Go 3 transport research kit", "Transport toy model, add-on XML templates, batch file, queries, decomposition, scenario discovery, downscaling, templates."),
