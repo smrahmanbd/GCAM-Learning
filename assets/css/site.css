@@ -419,3 +419,20 @@ svg.chart .axis { stroke: var(--muted); }
 .qb-mark .btn.qb-review[aria-pressed="true"], .qb-mark .btn.qb-review[aria-pressed="true"]:hover { background: var(--energy); color: #fff; border-color: var(--energy); }
 @media (max-width: 600px) { .qb-row label { display: grid; gap: 4px; width: 100%; } .qb-row select, .qb-row input[type=search], .qb-row .qb-module { width: 100%; max-width: 100%; } }
 .qb-controls [hidden] { display: none; }
+/* question bank: memory aids */
+.qb-howto { border: 1px solid var(--line); border-radius: var(--r-m); background: var(--card); padding: 12px 16px; margin: 6px 0 12px; }
+.qb-howto summary { cursor: pointer; }
+.qb-howto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px 22px; margin-top: 8px; }
+.qb-howto-grid h3 { font-size: 1rem; margin: 10px 0 4px; }
+.qb-howto-grid p { margin: 0; font-size: .93rem; }
+.qb-intuition { border-left: 3px solid var(--water); padding-left: 10px; }
+.qb-hook { border-left: 3px solid var(--energy); padding-left: 10px; }
+.qb-hintbox { margin: 10px 0 0; padding: 8px 12px; border-left: 3px solid var(--energy); background: var(--paper-2); border-radius: 8px; }
+.qb-hintbox[hidden], .qb-scene[hidden] { display: none; }
+.qb-when { align-self: center; }
+.qb-route { list-style: none; padding: 0; margin: 10px 0 24px; counter-reset: none; }
+.qb-station { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.qb-step { width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-weight: 700; }
+.qb-loc { margin: 4px 0; } .qb-scene { margin: 4px 0 6px; font-size: 1.02rem; }
+.remember h4 { text-transform: none; }
+@media print { .qb-howto, .qb-hintbox, .qb-palace { display: none !important; } }

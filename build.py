@@ -4,10 +4,11 @@ import json, glob, os, html, re, sys
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "content"))
 from qbank import Q as QB
+from qhooks import H as QH, PALACE
 SYS = ["economy", "energy", "land", "water", "climate", "policy"]
 SYSNAME = dict(economy="Economy and people", energy="Energy", land="Land and food", water="Water", climate="Emissions and climate", policy="Policy")
 SITE = "GCAM in three goes"
-VER = "20261024a"  # cache-busting tag for CSS/JS
+VER = "20261024b"  # cache-busting tag for CSS/JS
 esc = lambda s: html.escape(str(s), quote=True)
 
 # ------------------------------------------------------------------ the three goes
@@ -208,7 +209,12 @@ def module_page(m, prev, nxt, diagrams):
                3: "A map of the research module: each branch a section, each box a point to be able to defend."}[g]
         sec("mindmap", "Mind map", f'<p class="prose">{tip}</p>' + mm_markup(f"m{mid}", "", embed=True, label=f"Mind map of module {mid}"))
     blocks["mindmap"] = mmap
-    blocks["take"] = lambda: sec("takeaways", L["take"], "<ul class='takeaways'>" + "".join(f"<li>{esc(t)}</li>" for t in m["takeaways"]) + "</ul>")
+    def take():
+        st = next((x for x in PALACE[g]["stations"] if x[0] == mid), None)
+        box = (f'<div class="callout try remember"><h4>Remember it: memory palace, {esc(PALACE[g]["place"].lower())} · {esc(st[1].lower())}</h4>'
+               f'<p>{esc(st[2])}</p><p class="small">Picture the scene for ten seconds. Then <a href="../questions.html?m={mid}">test yourself on this module</a>, with an intuition and a memory hook for every answer, or <a href="../questions.html?go={g}&amp;view=palace">walk the whole Go {g} palace</a>.</p></div>') if st else ""
+        sec("takeaways", L["take"], "<ul class='takeaways'>" + "".join(f"<li>{esc(t)}</li>" for t in m["takeaways"]) + "</ul>" + box)
+    blocks["take"] = take
 
     def quiz():
         qs = []
@@ -351,11 +357,16 @@ def questions_page(mods):
     import csv
     titles = {m["id"]: m["title"] for m in mods}
     slugs = {m["id"]: m["slug"] for m in mods}
-    data = [{"i": i, "m": m, "g": int(m.split(".")[0]), "k": k, "q": q, "a": a} for i, (m, k, q, a) in enumerate(QB)]
+    seen = {}
+    data = []
+    for i, (m, k, q, a) in enumerate(QB):
+        j = seen.get(m, 0); seen[m] = j + 1
+        it, hk = QH[m][j]
+        data.append({"i": i, "m": m, "g": int(m.split(".")[0]), "k": k, "q": q, "a": a, "it": it, "hk": hk})
     os.makedirs(os.path.join(ROOT, "downloads"), exist_ok=True)
     with open(os.path.join(ROOT, "downloads", "GCAM-question-bank.csv"), "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f); w.writerow(["number", "go", "module", "module title", "kind", "question", "model answer"])
-        for d in data: w.writerow([d["i"] + 1, d["g"], d["m"], titles[d["m"]], d["k"], d["q"], d["a"]])
+        w = csv.writer(f); w.writerow(["number", "go", "module", "module title", "kind", "question", "model answer", "intuition", "memory hook"])
+        for d in data: w.writerow([d["i"] + 1, d["g"], d["m"], titles[d["m"]], d["k"], d["q"], d["a"], d["it"], d["hk"]])
     counts = {g: sum(1 for d in data if d["g"] == g) for g in (1, 2, 3)}
     modopts = "".join(f'<option value="{m["id"]}" data-go="{m["go"]}">{m["id"]} {esc(m["title"])}</option>' for m in mods)
     gobtns = '<button class="narr-lang qb-go" type="button" data-go="0" aria-pressed="true">All goes</button>' + "".join(
@@ -365,23 +376,33 @@ def questions_page(mods):
     page = head(f"Question bank · {SITE}", f"{len(data)} short-answer questions with model answers across the three goes of the GCAM course.", 0) + topbar(0, "questions.html")
     page += f"""<main id="main" class="wrap qb">
 <header class="gohead"><p class="eyebrow">Practice</p><h1>Question bank</h1>
-<p class="summary">{len(data)} short-answer questions with model answers, covering every module of the three goes: {counts[1]} for Go 1, {counts[2]} for Go 2 and {counts[3]} for Go 3. Answer in your own words first, then reveal the model answer and mark how you did. Your marks are saved in this browser.</p>
+<p class="summary">{len(data)} short-answer questions with model answers, covering every module of the three goes: {counts[1]} for Go 1, {counts[2]} for Go 2 and {counts[3]} for Go 3. Answer in your own words first, then reveal the model answer with its intuition and a memory hook, and mark how you did. Marked questions come back on a spaced-repetition schedule; your marks are saved in this browser.</p>
 <div class="cta"><a class="btn quiet" href="downloads/GCAM-question-bank.csv">Download all questions (CSV)</a><button class="btn quiet qb-print" type="button">Print with answers</button></div></header>
+<details class="qb-howto"><summary><b>How to make it stick:</b> six memory techniques built into this page</summary>
+<div class="qb-howto-grid">
+<div><h3>1. Retrieve before you read</h3><p>Answer from memory first, aloud or with <i>Write my answer first</i>. Struggling to recall is what strengthens memory; rereading feels productive but fades fast.</p></div>
+<div><h3>2. Space it out</h3><p>Mark each question honestly. <i>I knew it</i> sends it away for longer (1, 3, 7, 14, then 30 days); <i>Review again</i> brings it back tomorrow. Choose <i>Due for review</i> to see only what is due today.</p></div>
+<div><h3>3. Understand the why</h3><p>Every answer comes with an <b>intuition</b>: one line on why it must be so. A fact you can rebuild from a reason is a fact you cannot lose.</p></div>
+<div><h3>4. Picture it</h3><p>Every answer also has a <b>memory hook</b>, a vivid and slightly absurd image. Strange pictures stick; dry sentences slide off. Use <i>Hint</i> to see the hook as a cue before the answer.</p></div>
+<div><h3>5. Place it</h3><p>The <b>memory palace</b> view parks each module in a room of a place you know. Walk the route in your head and each room hands you its module.</p></div>
+<div><h3>6. Mix it up</h3><p><i>Shuffle</i> across modules and goes. Mixing topics forces you to decide which idea applies, which is exactly what an exam or a research problem asks of you.</p></div>
+</div></details>
 <section class="qb-controls" aria-label="Filter questions">
 <div class="btnrow" role="group" aria-label="Go">{gobtns}</div>
 <div class="qb-row"><label>Module <select class="qb-module"><option value="">All modules</option>{modopts}</select></label>
 <label>Search <input class="qb-search" type="search" placeholder="e.g. logit, Hector, LMDI"></label>
-<label>Show <select class="qb-status"><option value="all">All questions</option><option value="new">Not yet marked</option><option value="review">Marked 'review again'</option><option value="known">Marked 'I knew it'</option></select></label></div>
+<label>Show <select class="qb-status"><option value="all">All questions</option><option value="due">Due for review (spaced)</option><option value="new">Not yet marked</option><option value="review">Marked 'review again'</option><option value="known">Marked 'I knew it'</option></select></label></div>
 <div class="qb-row"><span class="muted small">Kind:</span>{kinds}</div>
-<div class="qb-row"><div class="btnrow" role="group" aria-label="View"><button class="narr-lang qb-view" type="button" data-view="list" aria-pressed="true">List</button><button class="narr-lang qb-view" type="button" data-view="cards" aria-pressed="false">Flashcards</button></div>
+<div class="qb-row"><div class="btnrow" role="group" aria-label="View"><button class="narr-lang qb-view" type="button" data-view="list" aria-pressed="true">List</button><button class="narr-lang qb-view" type="button" data-view="cards" aria-pressed="false">Flashcards</button><button class="narr-lang qb-view" type="button" data-view="palace" aria-pressed="false">Memory palace</button></div>
 <button class="btn quiet qb-shuffle" type="button">Shuffle</button><button class="btn quiet qb-expand" type="button">Reveal all answers</button><button class="btn quiet qb-reset" type="button">Clear my marks</button></div>
 <p class="qb-summary" aria-live="polite"></p><div class="qb-bar" aria-hidden="true"><span class="qb-bar-known"></span><span class="qb-bar-review"></span></div>
 </section>
 <section class="qb-list" aria-label="Questions"></section>
 <section class="qb-cards" hidden aria-label="Flashcards"></section>
+<section class="qb-palace" hidden aria-label="Memory palace"></section>
 <noscript><p>This page needs JavaScript; the <a href="downloads/GCAM-question-bank.csv">CSV</a> has every question and answer.</p></noscript>
 </main>
-<script>window.QBANK = {json.dumps(data, ensure_ascii=False)}; window.QBMETA = {json.dumps(meta, ensure_ascii=False)};</script>
+<script>window.QBANK = {json.dumps(data, ensure_ascii=False)}; window.QBMETA = {json.dumps(meta, ensure_ascii=False)}; window.QBPALACE = {json.dumps(PALACE, ensure_ascii=False)};</script>
 <script src="assets/js/qbank.js?v={VER}"></script>
 """ + foot(0)
     return page
