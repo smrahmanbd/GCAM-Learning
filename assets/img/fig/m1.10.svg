@@ -1,0 +1,25 @@
+<svg class="fig-anim" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Uncertainty fan"><title>Uncertainty fan</title><style>
+.fg-t{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:15px;fill:var(--ink,#14283a)}
+.fg-h{font-family:Archivo,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:18px;fill:var(--ink,#14283a)}
+.fg-s{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:12.5px;fill:var(--muted,#5d6f7d)}
+.fg-box{fill:var(--card,#ffffff);stroke-width:2.5}
+.fg-ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fg-ic{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fg-draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:fgDraw 3.2s ease-out infinite}
+.fg-pop{transform-box:fill-box;transform-origin:center;animation:fgPop 4s ease-in-out infinite}
+.fg-pulse{transform-box:fill-box;transform-origin:center;animation:fgPulse 2.4s ease-in-out infinite}
+.fg-swing{transform-box:view-box;animation:fgSwing 3.6s ease-in-out infinite}
+.fg-spin{transform-box:fill-box;transform-origin:center;animation:fgSpin 9s linear infinite}
+.fg-flow{stroke-dasharray:10 10;animation:fgFlow 1s linear infinite}
+.fg-grow{transform-box:fill-box;transform-origin:bottom;animation:fgGrow 4.5s ease-out infinite}
+.fg-fade{animation:fgFade 4.5s ease-in-out infinite}
+@keyframes fgDraw{0%{stroke-dashoffset:1400}60%,100%{stroke-dashoffset:0}}
+@keyframes fgPop{0%,8%{opacity:0;transform:scale(.5)}18%,85%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes fgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes fgSwing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes fgSpin{to{transform:rotate(360deg)}}
+@keyframes fgFlow{to{stroke-dashoffset:-20}}
+@keyframes fgGrow{0%{transform:scaleY(0)}35%,90%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:.4}}
+@keyframes fgFade{0%,10%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fg-draw{stroke-dashoffset:0}}
+</style><text class="fg-h" x="24" y="34">Uncertainty: many plausible runs, one honest range</text><text class="fg-s" x="24" y="54">Vary the uncertain inputs, run the model many times, and report the spread</text><line x1="80" y1="320" x2="560" y2="320" stroke="var(--ink,#14283a)" stroke-width="2"/><path d="M80,250 C250,220 400,130 560,80 L560,230 C400,240 250,250 80,250 Z" fill="var(--water-t,#e1edf7)" stroke="none"/><path d="M80,250 C250,235 400,200 560,215" class="fg-ln fg-draw" stroke="var(--water,#2470a8)" style="stroke-width:1.6;animation-delay:0.0s;opacity:.8"/><path d="M80,250 C250,229 400,186 560,185" class="fg-ln fg-draw" stroke="var(--water,#2470a8)" style="stroke-width:1.6;animation-delay:0.3s;opacity:.8"/><path d="M80,250 C250,223 400,172 560,155" class="fg-ln fg-draw" stroke="var(--water,#2470a8)" style="stroke-width:1.6;animation-delay:0.6s;opacity:.8"/><path d="M80,250 C250,217 400,158 560,125" class="fg-ln fg-draw" stroke="var(--water,#2470a8)" style="stroke-width:1.6;animation-delay:0.8999999999999999s;opacity:.8"/><path d="M80,250 C250,211 400,144 560,95" class="fg-ln fg-draw" stroke="var(--water,#2470a8)" style="stroke-width:1.6;animation-delay:1.2s;opacity:.8"/><path d="M80,250 C250,205 400,130 560,65" class="fg-ln fg-draw" stroke="var(--water,#2470a8)" style="stroke-width:1.6;animation-delay:1.5s;opacity:.8"/><path d="M80,250 C250,228 400,170 560,150" class="fg-ln" stroke="var(--ink,#14283a)" stroke-width="4"/><text class="fg-s" x="566" y="152">median</text><text class="fg-s" x="566" y="84">high end</text><text class="fg-s" x="566" y="232">low end</text><path d="M660,310 C700,310 720,140 760,140 C800,140 820,310 860,310" class="fg-ln fg-draw" stroke="var(--climate,#a8323e)" stroke-width="3"/><path class="fg-ic fg-spin" d="M4 4h16v16H4zM8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01" transform="translate(810.0,100.0) scale(1.6666666666666667)" stroke="var(--economy,#5a4e8c)" stroke-width="1.32"/><text class="fg-t" x="760" y="340" text-anchor="middle">spread of outcomes</text></svg>

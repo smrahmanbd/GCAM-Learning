@@ -1,0 +1,446 @@
+{
+ "id": "3.9",
+ "go": 3,
+ "slug": "the-iam-family",
+ "title": "The IAM family: individual models side by side",
+ "minutes": 50,
+ "tag": "Model compare",
+ "systems": [
+  "economy",
+  "energy",
+  "land",
+  "climate"
+ ],
+ "summary": "GCAM is one of several global IAMs. Compare it with MESSAGEix-GLOBIOM, REMIND-MAgPIE, IMAGE, AIM-Hub, WITCH and DICE: how each solves, what it sees, and how it treats transport.",
+ "outcomes": [
+  "Classify an IAM by solution concept, foresight and economic scope",
+  "Explain how each of seven models solves, in one sentence each",
+  "Predict how model structure shapes results such as carbon price paths",
+  "Choose and justify a model or a model comparison for a research question"
+ ],
+ "narration_en": "GCAM is not the only integrated assessment model, and a good researcher knows its relatives. The models differ in three big choices. The first is foresight. GCAM, IMAGE and AIM-Hub are recursive: they solve one period at a time without knowing the future. MESSAGEix, REMIND and WITCH have perfect foresight: they choose every period at once. The second is how much of the economy they cover. GCAM and IMAGE are partial equilibrium models of energy and land markets, while AIM-Hub, REMIND and WITCH represent the whole economy. The third is how they solve. MESSAGEix minimises total system cost with a large linear programme. REMIND maximises welfare over the century. WITCH lets regions play a game against each other. IMAGE simulates land and the environment on a fine grid. DICE, the simplest, weighs the cost of cutting emissions against the damage avoided. These choices shape results. Foresight models tend to act early and smoothly, with carbon prices rising at the discount rate. Recursive models react period by period. In transport, REMIND's EDGE-T module is a fork of GCAM's transport model. Open the model atlas to explore each one.",
+ "narration_ar": "ليس جي كام نموذج التقييم المتكامل الوحيد، والباحث الجيد يعرف أقرباءه. تختلف النماذج في ثلاثة خيارات كبرى. الأول هو الاستشراف. فنماذج جي كام وإيميج وإيم هب نماذج تتابعية: تحل فترة واحدة في كل مرة دون معرفة المستقبل. أما مسج وريمايند وويتش فلديها استشراف كامل: تختار جميع الفترات دفعة واحدة. والثاني هو مقدار ما تغطيه من الاقتصاد. فجي كام وإيميج نماذج توازن جزئي لأسواق الطاقة والأرض، بينما تمثل إيم هب وريمايند وويتش الاقتصاد كله. والثالث هو طريقة الحل. فنموذج مسج يقلل التكلفة الكلية للنظام ببرنامج خطي كبير. وريمايند يعظّم الرفاه على مدى القرن. وويتش يجعل المناطق تلعب لعبة ضد بعضها. وإيميج يحاكي الأرض والبيئة على شبكة دقيقة. ودايس، أبسطها، يوازن تكلفة خفض الانبعاثات مقابل الضرر الذي يُتجنب. وهذه الخيارات تشكّل النتائج. فنماذج الاستشراف تميل إلى التحرك مبكرًا وبسلاسة، مع ارتفاع أسعار الكربون بمعدل الخصم. والنماذج التتابعية تستجيب فترة بعد فترة. وفي النقل، فإن وحدة إيدج تي في ريمايند فرع من نموذج النقل في جي كام. افتح أطلس النماذج لاستكشاف كل منها.",
+ "diagram": {
+  "title": "Seven models by solution concept",
+  "caption": "Each model's place depends on foresight, economic scope and solution method. Select a model for its one-line profile.",
+  "nodes": [
+   {
+    "id": "gcam",
+    "label": "GCAM",
+    "sub": "PNNL · recursive market",
+    "x": 130,
+    "y": 90,
+    "w": 180,
+    "h": 66,
+    "sys": "energy",
+    "detail": "Partial equilibrium, recursive dynamic, 5-year steps; logit choice; 32 energy-economy regions, 235 water basins. Open source."
+   },
+   {
+    "id": "image",
+    "label": "IMAGE",
+    "sub": "PBL · simulation, grid",
+    "x": 130,
+    "y": 260,
+    "w": 180,
+    "h": 66,
+    "sys": "land",
+    "detail": "Recursive simulation framework: TIMER energy model, land on a grid, MAGNET agro-economy, earth-system modules."
+   },
+   {
+    "id": "aim",
+    "label": "AIM-Hub",
+    "sub": "NIES · CGE",
+    "x": 130,
+    "y": 430,
+    "w": 180,
+    "h": 66,
+    "sys": "economy",
+    "detail": "Recursive dynamic computable general equilibrium (formerly AIM/CGE), 1-year steps, solved as a mixed complementarity problem."
+   },
+   {
+    "id": "msg",
+    "label": "MESSAGEix-GLOBIOM",
+    "sub": "IIASA · LP, foresight",
+    "x": 450,
+    "y": 90,
+    "w": 210,
+    "h": 66,
+    "sys": "water",
+    "detail": "Linear-programming energy model minimising discounted system cost with perfect foresight, linked to GLOBIOM (land) and MACRO."
+   },
+   {
+    "id": "rem",
+    "label": "REMIND-MAgPIE",
+    "sub": "PIK · welfare, foresight",
+    "x": 450,
+    "y": 260,
+    "w": 210,
+    "h": 66,
+    "sys": "economy",
+    "detail": "Intertemporal Ramsey growth model with energy detail, soft-linked to MAgPIE (land); EDGE-T transport is a fork of GCAM's."
+   },
+   {
+    "id": "witch",
+    "label": "WITCH",
+    "sub": "EIEE · regional game",
+    "x": 450,
+    "y": 430,
+    "w": 210,
+    "h": 66,
+    "sys": "policy",
+    "detail": "Hybrid optimal-growth model: regions maximise welfare strategically (Nash) or in coalitions; endogenous technical change."
+   },
+   {
+    "id": "dice",
+    "label": "DICE",
+    "sub": "Yale · cost–benefit",
+    "x": 770,
+    "y": 260,
+    "w": 190,
+    "h": 66,
+    "sys": "climate",
+    "detail": "One global region; optimal growth with a damage function; computes the social cost of carbon. Latest: DICE-2023."
+   },
+   {
+    "id": "q",
+    "label": "Your question",
+    "sub": "which lens fits?",
+    "x": 770,
+    "y": 430,
+    "w": 190,
+    "h": 66,
+    "sys": "neutral",
+    "detail": "Myopic or foresight? Energy-land detail or whole economy? Optimal policy or a what-if? Choose the model to match."
+   }
+  ],
+  "edges": [
+   {
+    "from": "gcam",
+    "to": "msg",
+    "label": "same scope, + foresight"
+   },
+   {
+    "from": "gcam",
+    "to": "rem",
+    "label": "transport fork"
+   },
+   {
+    "from": "aim",
+    "to": "witch",
+    "label": "whole economy"
+   },
+   {
+    "from": "msg",
+    "to": "rem",
+    "label": "foresight"
+   },
+   {
+    "from": "rem",
+    "to": "witch",
+    "label": "welfare"
+   },
+   {
+    "from": "witch",
+    "to": "dice",
+    "label": "simplify"
+   },
+   {
+    "from": "dice",
+    "to": "q",
+    "label": "guides"
+   },
+   {
+    "from": "image",
+    "to": "gcam",
+    "label": "both recursive"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "gcam",
+     "image",
+     "aim"
+    ],
+    "text": "Recursive models: solve one period at a time, no foresight."
+   },
+   {
+    "focus": [
+     "msg",
+     "rem",
+     "witch"
+    ],
+    "edges": [
+     [
+      "msg",
+      "rem"
+     ],
+     [
+      "rem",
+      "witch"
+     ]
+    ],
+    "text": "Foresight models: choose every period at once."
+   },
+   {
+    "focus": [
+     "aim",
+     "rem",
+     "witch"
+    ],
+    "edges": [
+     [
+      "aim",
+      "witch"
+     ]
+    ],
+    "text": "Whole-economy models: GDP loss emerges from general equilibrium."
+   },
+   {
+    "focus": [
+     "gcam",
+     "rem"
+    ],
+    "edges": [
+     [
+      "gcam",
+      "rem"
+     ]
+    ],
+    "text": "Transport: REMIND's EDGE-T began as a fork of GCAM's transport module."
+   },
+   {
+    "focus": [
+     "dice",
+     "q"
+    ],
+    "edges": [
+     [
+      "witch",
+      "dice"
+     ],
+     [
+      "dice",
+      "q"
+     ]
+    ],
+    "text": "Cost–benefit models ask how much to cut; process models ask how to meet a goal."
+   },
+   {
+    "focus": [
+     "q"
+    ],
+    "text": "Match the model to the question, and compare models when structure might drive the answer."
+   }
+  ]
+ },
+ "components": {
+  "caption": "The seven models in one table (from the IAMC model documentation and each model's own documentation).",
+  "rows": [
+   {
+    "name": "GCAM",
+    "purpose": "Recursive partial equilibrium of energy, land, water; logit choice",
+    "analogy": "An auction held anew every five years"
+   },
+   {
+    "name": "MESSAGEix-GLOBIOM",
+    "purpose": "Least-cost energy system with perfect foresight (LP), land via GLOBIOM",
+    "analogy": "An engineer planning the whole century at once"
+   },
+   {
+    "name": "REMIND-MAgPIE",
+    "purpose": "Welfare-maximising growth model with energy detail, land via MAgPIE",
+    "analogy": "A planner balancing saving and spending"
+   },
+   {
+    "name": "IMAGE",
+    "purpose": "Simulation of energy, land and environment on a grid",
+    "analogy": "A detailed weather map of land use"
+   },
+   {
+    "name": "AIM-Hub",
+    "purpose": "Recursive computable general equilibrium of the whole economy",
+    "analogy": "Every market in a country clearing together"
+   },
+   {
+    "name": "WITCH",
+    "purpose": "Regions play a dynamic game; endogenous innovation",
+    "analogy": "Negotiators each guarding their own interest"
+   },
+   {
+    "name": "DICE",
+    "purpose": "Global cost–benefit optimal growth; social cost of carbon",
+    "analogy": "A single scale weighing costs against damages"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Three choices that define a model",
+   "html": "<p><b>Foresight</b>: recursive (myopic) models solve each period with today's information; intertemporal models optimise all periods together. <b>Economic scope</b>: partial equilibrium (energy, land, water markets, with GDP given) or general equilibrium (all markets, GDP responds). <b>Solution method</b>: market clearing, cost minimisation, welfare maximisation, simulation or a game.</p><table><thead><tr><th>Model</th><th>Foresight</th><th>Scope</th><th>Method</th></tr></thead><tbody><tr><td>GCAM</td><td>Recursive</td><td>Partial</td><td>Market clearing</td></tr><tr><td>IMAGE</td><td>Recursive</td><td>Partial</td><td>Simulation</td></tr><tr><td>AIM-Hub</td><td>Recursive</td><td>General</td><td>CGE (MCP)</td></tr><tr><td>MESSAGEix-GLOBIOM</td><td>Perfect</td><td>Partial + MACRO</td><td>LP cost minimisation</td></tr><tr><td>REMIND-MAgPIE</td><td>Perfect</td><td>General (growth)</td><td>Welfare maximisation</td></tr><tr><td>WITCH</td><td>Perfect</td><td>General (growth)</td><td>Non-cooperative game</td></tr><tr><td>DICE</td><td>Perfect</td><td>Aggregate growth</td><td>Cost–benefit optimum</td></tr></tbody></table>"
+  },
+  {
+   "heading": "How each one solves",
+   "html": "<ul><li><b>GCAM</b>: in each 5-year period, a solver adjusts prices until every market clears; technologies share markets by logit.</li><li><b>MESSAGEix</b>: one linear programme picks all technologies in all periods to meet demand at least discounted cost; a constraint's shadow price is the carbon price.</li><li><b>REMIND</b>: a social planner maximises discounted welfare; investment in energy competes with consumption.</li><li><b>IMAGE</b>: simulates year by year; land demand is allocated to grid cells by suitability.</li><li><b>AIM-Hub</b>: all goods and factor markets clear each year; policy cost shows up as GDP or consumption loss.</li><li><b>WITCH</b>: each region optimises given the others' choices until no one wants to change (Nash equilibrium), or a coalition optimises jointly.</li><li><b>DICE</b>: cuts until the marginal cost of abatement equals the social cost of carbon.</li></ul>"
+  },
+  {
+   "heading": "Structure shapes results",
+   "html": "<p>Foresight models under a carbon budget tend to produce carbon prices that rise at about the discount rate (the Hotelling rule) and act early where it is cheap. Recursive models respond to the price path you give them. General-equilibrium models report GDP losses; partial-equilibrium models report the area under a cost curve. Logit models spread markets across technologies; pure LP models can switch abruptly unless constrained. When two models disagree, check these differences before blaming the data.</p>"
+  },
+  {
+   "heading": "Transport across the family",
+   "html": "<p>GCAM represents passenger and freight transport by mode, size class and technology with a value-of-time cost and logit choice (module 3.2). REMIND couples <b>EDGE-T</b>, which its developers describe as a fork of the GCAM transport module, run between REMIND iterations. MESSAGEix has a detailed <b>MESSAGEix-Transport</b> variant. IMAGE's TIMER model includes a passenger transport module. This shared ancestry is one reason transport results from GCAM and REMIND can be compared closely.</p>"
+  },
+  {
+   "heading": "Choosing a model, or several",
+   "html": "<p>Ask what your question needs. Policy what-ifs with rich energy-land-water detail and open code: GCAM. Least-cost pathways and investment timing: MESSAGEix or REMIND. Economy-wide costs and trade: AIM-Hub or another CGE. Strategic behaviour between regions: WITCH. The optimal carbon price: DICE. For a robust finding, use a <b>model comparison</b> with harmonised inputs, as in the EMF and IPCC exercises.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 0,
+   "kind": "model",
+   "title": "Check before you cite",
+   "html": "<p>Model versions change. Confirm features in the IAMC documentation wiki and each model's own documentation for the version you cite; the course's ratings are teaching simplifications.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"Model A says $200 per tonne, model B $80, so one is wrong.\" A GDP-loss cost and an area-under-curve cost are different measures, and foresight changes the timing. Compare like with like.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "research",
+   "title": "Research idea",
+   "html": "<p>Run the same transport policy (say, a ZEV standard) in GCAM and compare with published REMIND-EDGE-T results: where do the logit settings and value of time explain the gap?</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "modelcompare",
+  "intro": "Pick two models and compare their profiles. Then open the model atlas for each model's animation, simulator and mind map.",
+  "predict": "Which model do you expect to cover the most of the economy and also have perfect foresight?"
+ },
+ "takeaways": [
+  "Models differ in foresight, economic scope and solution method.",
+  "GCAM: recursive, partial equilibrium, logit, open source.",
+  "Foresight models act early; carbon prices tend to rise at the discount rate.",
+  "REMIND's EDGE-T transport began as a fork of GCAM's transport module.",
+  "Match the model to the question; compare models when structure may drive the answer."
+ ],
+ "quiz": [
+  {
+   "q": "Which model minimises total discounted energy-system cost with perfect foresight using linear programming?",
+   "options": [
+    "GCAM",
+    "MESSAGEix",
+    "IMAGE",
+    "AIM-Hub"
+   ],
+   "answer": 1,
+   "explain": "MESSAGEix is an LP cost-minimisation model with foresight."
+  },
+  {
+   "q": "Which pair are both recursive (myopic)?",
+   "options": [
+    "REMIND and WITCH",
+    "GCAM and AIM-Hub",
+    "DICE and MESSAGEix",
+    "WITCH and DICE"
+   ],
+   "answer": 1,
+   "explain": "GCAM and AIM-Hub solve period by period."
+  },
+  {
+   "q": "WITCH's distinctive feature is…",
+   "options": [
+    "A grid land model",
+    "Regions playing a strategic game",
+    "A single global region",
+    "No economy"
+   ],
+   "answer": 1,
+   "explain": "Regions optimise strategically: a Nash equilibrium or coalitions."
+  },
+  {
+   "q": "Under a carbon budget, foresight models often give a carbon price that…",
+   "options": [
+    "Is constant",
+    "Rises at about the discount rate",
+    "Falls over time",
+    "Is zero until 2100"
+   ],
+   "answer": 1,
+   "explain": "The Hotelling rule: least-cost paths raise the price at the discount rate."
+  },
+  {
+   "q": "REMIND's transport module EDGE-T is…",
+   "options": [
+    "Unrelated to GCAM",
+    "A fork of GCAM's transport module",
+    "A CGE model",
+    "A climate model"
+   ],
+   "answer": 1,
+   "explain": "Its documentation describes it as a fork of the GCAM transport module."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Recursive dynamic",
+   "def": "Solving one period at a time using only current information (myopic)."
+  },
+  {
+   "term": "Perfect foresight",
+   "def": "Choosing all periods together, knowing future prices and policies."
+  },
+  {
+   "term": "Computable general equilibrium (CGE)",
+   "def": "A model in which all markets in the economy, including labour and capital, clear together."
+  },
+  {
+   "term": "Hotelling rule",
+   "def": "On a least-cost path under a fixed budget, the carbon price rises at the discount rate."
+  },
+  {
+   "term": "Nash equilibrium",
+   "def": "A set of choices where no player gains by changing its own choice alone."
+  },
+  {
+   "term": "Social cost of carbon",
+   "def": "The present value of damages from emitting one more tonne of CO2."
+  }
+ ],
+ "resources": [
+  {
+   "title": "IAMC model documentation wiki",
+   "url": "https://www.iamcdocumentation.eu/",
+   "why": "Reference cards for each model: solution concept, foresight, regions."
+  },
+  {
+   "title": "MESSAGEix documentation",
+   "url": "https://docs.messageix.org",
+   "why": "The MESSAGEix framework and the global MESSAGEix-GLOBIOM model."
+  },
+  {
+   "title": "REMIND on GitHub",
+   "url": "https://github.com/remindmodel/remind",
+   "why": "Open-source code and documentation of REMIND."
+  },
+  {
+   "title": "IMAGE documentation (PBL)",
+   "url": "https://models.pbl.nl/image/",
+   "why": "The IMAGE framework and its component models."
+  },
+  {
+   "title": "WITCH model",
+   "url": "https://www.witchmodel.org",
+   "why": "Documentation and code of the WITCH model."
+  },
+  {
+   "title": "Barrage and Nordhaus (2024), DICE-2023, PNAS",
+   "url": "https://doi.org/10.1073/pnas.2312030121",
+   "why": "The latest DICE model and its social cost of carbon."
+  }
+ ]
+}

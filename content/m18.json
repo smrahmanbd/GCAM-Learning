@@ -1,0 +1,342 @@
+{
+ "id": "1.8",
+ "go": 1,
+ "slug": "options-and-costs",
+ "title": "Cutting emissions: options and costs",
+ "minutes": 30,
+ "tag": "Mitigation",
+ "systems": [
+  "energy",
+  "policy",
+  "economy"
+ ],
+ "summary": "Not all tonnes of CO2 cost the same to avoid. A marginal abatement cost curve lines options up from cheapest to dearest, and a carbon price buys every option below it.",
+ "outcomes": [
+  "Read a marginal abatement cost curve: width, height and order",
+  "Explain why a carbon price buys all cuts cheaper than itself",
+  "Tell marginal from average cost",
+  "Explain how falling technology costs reshape the curve"
+ ],
+ "narration_en": "There are many ways to cut emissions: using energy more efficiently, fixing methane leaks, building wind and solar power, switching to electric cars, changing industrial fuels, capturing carbon, or even pulling it out of the air. They do not all cost the same. A marginal abatement cost curve lines them up from cheapest to most expensive. Each bar is one option. Its width is how many tonnes it can cut each year, and its height is the cost of cutting one tonne. Some bars sit below zero, because those options save money over their lifetime. Now add a carbon price. Every option whose cost is below the price is worth doing, and every option above it is not, yet. So raising the price walks along the curve, buying more and more cuts. Notice two things. First, the last tonne bought is the most expensive one, so the average cost is far below the price. Second, technology changes the curve: when solar gets cheaper, its bar drops and more is bought at the same price. Models like GCAM do not use a fixed curve, but the same logic of cheapest first, up to the price, runs through them.",
+ "narration_ar": "هناك طرق كثيرة لخفض الانبعاثات: استخدام الطاقة بكفاءة أكبر، وإصلاح تسربات الميثان، وبناء محطات الرياح والطاقة الشمسية، والتحول إلى السيارات الكهربائية، وتغيير الوقود الصناعي، واحتجاز الكربون، بل وسحبه من الهواء. وهي لا تكلّف جميعها القدر نفسه. يرتّب منحنى التكلفة الحدية للخفض هذه الخيارات من الأرخص إلى الأغلى. كل عمود خيار واحد. عرضه هو عدد الأطنان التي يمكنه خفضها كل عام، وارتفاعه هو تكلفة خفض طن واحد. بعض الأعمدة يقع تحت الصفر، لأن تلك الخيارات توفر المال على مدى عمرها. أضف الآن سعرًا للكربون. كل خيار تقل تكلفته عن السعر يستحق التنفيذ، وكل خيار فوقه لا يستحق بعد. لذا فإن رفع السعر يسير على طول المنحنى ويشتري مزيدًا من التخفيضات. لاحظ أمرين. أولًا، الطن الأخير الذي يُشترى هو الأغلى، لذا فإن متوسط التكلفة أقل بكثير من السعر. ثانيًا، التكنولوجيا تغيّر المنحنى: فعندما تصبح الطاقة الشمسية أرخص ينخفض عمودها ويُشترى منها المزيد بالسعر نفسه. لا تستخدم نماذج مثل جي كام منحنى ثابتًا، لكن المنطق نفسه، الأرخص أولًا حتى السعر، يسري فيها.",
+ "diagram": {
+  "title": "From options to a carbon price",
+  "caption": "Options are ranked by cost per tonne; the carbon price sets the cut-off; technology costs shift the bars.",
+  "nodes": [
+   {
+    "id": "opt",
+    "label": "Abatement options",
+    "sub": "efficiency … air capture",
+    "x": 140,
+    "y": 100,
+    "w": 180,
+    "h": 66,
+    "sys": "energy",
+    "detail": "Each option can cut some tonnes per year at some cost per tonne."
+   },
+   {
+    "id": "rank",
+    "label": "Rank by cost",
+    "sub": "the MAC curve",
+    "x": 400,
+    "y": 100,
+    "w": 180,
+    "h": 66,
+    "sys": "neutral",
+    "detail": "Line options up from cheapest to most expensive; width = tonnes, height = $ per tonne."
+   },
+   {
+    "id": "price",
+    "label": "Carbon price",
+    "sub": "$ per tonne CO2",
+    "x": 400,
+    "y": 270,
+    "w": 180,
+    "h": 66,
+    "sys": "policy",
+    "detail": "Every option cheaper than the price is worth doing."
+   },
+   {
+    "id": "cut",
+    "label": "Cuts bought",
+    "sub": "all bars below the price",
+    "x": 680,
+    "y": 270,
+    "w": 180,
+    "h": 66,
+    "sys": "climate",
+    "detail": "Total abatement = the width of all bars under the price line."
+   },
+   {
+    "id": "tech",
+    "label": "Technology cost",
+    "sub": "learning, R&D",
+    "x": 140,
+    "y": 270,
+    "w": 180,
+    "h": 66,
+    "sys": "energy",
+    "detail": "When a technology gets cheaper, its bar drops down the curve."
+   },
+   {
+    "id": "cost",
+    "label": "Marginal vs average",
+    "sub": "last tonne is dearest",
+    "x": 680,
+    "y": 100,
+    "w": 180,
+    "h": 66,
+    "sys": "economy",
+    "detail": "The price equals the cost of the <b>last</b> tonne; the average tonne is much cheaper."
+   },
+   {
+    "id": "gcam",
+    "label": "In GCAM",
+    "sub": "costs emerge from competition",
+    "x": 400,
+    "y": 430,
+    "w": 240,
+    "h": 66,
+    "sys": "neutral",
+    "detail": "GCAM has no fixed curve: logit competition among technologies produces a cost curve you can trace by running many prices."
+   }
+  ],
+  "edges": [
+   {
+    "from": "opt",
+    "to": "rank",
+    "label": "sort"
+   },
+   {
+    "from": "rank",
+    "to": "price",
+    "label": "cut-off"
+   },
+   {
+    "from": "price",
+    "to": "cut",
+    "label": "buys"
+   },
+   {
+    "from": "tech",
+    "to": "rank",
+    "label": "shifts"
+   },
+   {
+    "from": "cut",
+    "to": "cost",
+    "label": "costs"
+   },
+   {
+    "from": "price",
+    "to": "gcam",
+    "label": "same logic"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "opt",
+     "rank"
+    ],
+    "edges": [
+     [
+      "opt",
+      "rank"
+     ]
+    ],
+    "text": "List the options and sort them by cost per tonne."
+   },
+   {
+    "focus": [
+     "rank",
+     "price",
+     "cut"
+    ],
+    "edges": [
+     [
+      "rank",
+      "price"
+     ],
+     [
+      "price",
+      "cut"
+     ]
+    ],
+    "text": "A carbon price buys every option that costs less than itself."
+   },
+   {
+    "focus": [
+     "cut",
+     "cost"
+    ],
+    "edges": [
+     [
+      "cut",
+      "cost"
+     ]
+    ],
+    "text": "The price is the cost of the last tonne; the average is lower."
+   },
+   {
+    "focus": [
+     "tech",
+     "rank"
+    ],
+    "edges": [
+     [
+      "tech",
+      "rank"
+     ]
+    ],
+    "text": "Cheaper technology lowers a bar, so more is bought at the same price."
+   },
+   {
+    "focus": [
+     "gcam"
+    ],
+    "edges": [
+     [
+      "price",
+      "gcam"
+     ]
+    ],
+    "text": "GCAM gets the same behaviour from technology competition rather than a fixed list."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Many ways to cut a tonne",
+   "html": "<p>Efficiency, methane fixes, renewables, electric vehicles, fuel switching in industry, carbon capture and storage (CCS), and direct air capture all cut CO<sub>2</sub>, at very different costs. Some, such as efficient lighting, save money over their life: their cost per tonne is negative.</p>"
+  },
+  {
+   "heading": "Reading the curve",
+   "html": "<p>On a marginal abatement cost (MAC) curve each option is a bar: <b>width</b> = tonnes cut per year, <b>height</b> = cost per tonne. Bars are sorted from cheapest to dearest, so the curve rises to the right.</p><div class=\"eq\">cuts bought at price P = total width of all bars with cost ≤ P</div>"
+  },
+  {
+   "heading": "Marginal and average cost",
+   "html": "<p>At a price of $100 per tonne you buy every option up to $100. The <b>marginal</b> cost (the last tonne) is $100, but the <b>average</b> cost may be $30, because many cheap or negative-cost options came first. Total cost = the area of the bars bought, not price × tonnes.</p>"
+  },
+  {
+   "heading": "Technology moves the curve",
+   "html": "<p>Learning and research lower costs, which drops bars down the curve: since 2010 solar and battery costs fell so much that options once near the top moved toward the bottom. Scenarios that assume faster cost declines therefore reach the same cut with a lower carbon price.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"A $100 carbon price costs $100 for every tonne cut.\" No: only the last tonne costs $100. Most of the tonnes bought were cheaper.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>GCAM builds no MAC curve for CO<sub>2</sub>; it lets technologies compete by logit at each carbon price. But for non-CO<sub>2</sub> gases (methane, nitrous oxide, F-gases) GCAM does use marginal abatement cost curves.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "macc",
+  "intro": "Move the carbon price, or make wind and solar cheaper, and see which options are bought. Press Play to sweep the price.",
+  "predict": "At a $100 carbon price, will the average cost of the tonnes bought be above, equal to, or below $100?"
+ },
+ "code": [
+  {
+   "title": "Buy every option cheaper than the price",
+   "lang": "python",
+   "runnable": true,
+   "source": "options = [  # (name, cost $/t, potential Gt/yr), illustrative\n    ('Efficiency', -20, 4), ('Methane fixes', 10, 2.5), ('Wind and solar', 25, 7),\n    ('Electric cars', 60, 3.5), ('Industry fuel switch', 90, 4), ('CCS', 120, 3), ('Air capture', 300, 4)]\nfor price in (0, 50, 100, 200):\n    bought = [o for o in options if o[1] <= price]\n    tonnes = sum(o[2] for o in bought)\n    cost = sum(o[1] * o[2] for o in bought)\n    avg = cost / tonnes if tonnes else 0\n    print(f'${price:>3}/t: cut {tonnes:4.1f} Gt, average cost ${avg:5.1f}/t')\n",
+   "explain": "Press Run. Compare the price with the average cost in each line.",
+   "expected": "$  0/t: cut  4.0 Gt, average cost $-20.0/t\n$ 50/t: cut 13.5 Gt, average cost $  8.9/t\n$100/t: cut 21.0 Gt, average cost $ 32.9/t\n$200/t: cut 24.0 Gt, average cost $ 43.8/t"
+  }
+ ],
+ "takeaways": [
+  "Options differ hugely in cost per tonne; some save money.",
+  "A carbon price buys every option cheaper than itself.",
+  "The price is the marginal cost; the average cost is lower.",
+  "Falling technology costs shift bars down and cheapen deep cuts."
+ ],
+ "quiz": [
+  {
+   "q": "On a MAC curve, the width of a bar shows…",
+   "options": [
+    "Its cost per tonne",
+    "How many tonnes it can cut",
+    "When it starts",
+    "Its emissions"
+   ],
+   "answer": 1,
+   "explain": "Width = abatement potential; height = cost per tonne."
+  },
+  {
+   "q": "With a carbon price of $60 per tonne, which options are worth doing?",
+   "options": [
+    "Only the one costing exactly $60",
+    "All costing $60 or less",
+    "All costing more than $60",
+    "None until $100"
+   ],
+   "answer": 1,
+   "explain": "Every option below the price saves more in carbon costs than it costs."
+  },
+  {
+   "q": "Why is the average cost of the cuts bought below the carbon price?",
+   "options": [
+    "Because of discounting",
+    "Because cheaper options are bought first",
+    "Because prices fall",
+    "It is not; it is always equal"
+   ],
+   "answer": 1,
+   "explain": "The price is the cost of the last tonne; the earlier ones were cheaper."
+  },
+  {
+   "q": "In GCAM, MAC curves are used mainly for…",
+   "options": [
+    "CO2 from power plants",
+    "Non-CO2 gases such as methane",
+    "Land prices",
+    "Population"
+   ],
+   "answer": 1,
+   "explain": "CO2 abatement emerges from technology competition; non-CO2 gases use MAC curves."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Marginal abatement cost (MAC)",
+   "def": "The cost of cutting one more tonne of emissions."
+  },
+  {
+   "term": "MAC curve",
+   "def": "Options sorted by cost per tonne, showing how much can be cut at each price."
+  },
+  {
+   "term": "Abatement",
+   "def": "A reduction in emissions below what they would otherwise have been."
+  },
+  {
+   "term": "Direct air capture",
+   "def": "Machines that remove CO2 from the ambient air for storage; currently expensive."
+  }
+ ],
+ "resources": [
+  {
+   "title": "IPCC AR6 WGIII Summary for Policymakers",
+   "url": "https://www.ipcc.ch/report/ar6/wg3/chapter/summary-for-policymakers/",
+   "why": "Mitigation options and how much each could cut below $100 per tonne."
+  },
+  {
+   "title": "GCAM documentation: policies",
+   "url": "https://jgcri.github.io/gcam-doc/policies.html",
+   "why": "How carbon prices and emissions constraints enter GCAM."
+  },
+  {
+   "title": "GCAM documentation: emissions",
+   "url": "https://jgcri.github.io/gcam-doc/emissions.html",
+   "why": "Where GCAM uses marginal abatement cost curves for non-CO2 gases."
+  }
+ ]
+}

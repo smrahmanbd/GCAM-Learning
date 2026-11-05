@@ -58,7 +58,7 @@
     const X = (x) => L + ((x - x0) / (x1 - x0 || 1)) * (W - L - R), Y = (y) => T + (1 - (y - yMin) / (top - yMin)) * (H - T - B);
     const g = el("g", { class: "grid" }, s);
     for (let i = 0; i <= 4; i++) { const v = yMin + ((top - yMin) * i) / 4; el("line", { x1: L, x2: W - R, y1: Y(v), y2: Y(v) }, g); const t = el("text", { x: L - 8, y: Y(v) + 4, "text-anchor": "end" }, s); t.textContent = fmt(v, top - yMin < 5 ? 1 : 0); }
-    const ticks = 6; for (let i = 0; i <= ticks; i++) { const v = x0 + ((x1 - x0) * i) / ticks; const t = el("text", { x: X(v), y: H - B + 18, "text-anchor": "middle" }, s); t.textContent = fmt(v, Math.abs(x1 - x0) < 10 ? 1 : 0); }
+    const ticks = 6; for (let i = 0; i <= ticks; i++) { const v = x0 + ((x1 - x0) * i) / ticks; const t = el("text", { x: X(v), y: H - B + 18, "text-anchor": "middle" }, s); t.textContent = x0 >= 1800 && x1 <= 2300 ? String(Math.round(v)) : fmt(v, Math.abs(x1 - x0) < 10 ? 1 : 0); }
     el("line", { x1: L, x2: W - R, y1: Y(yMin), y2: Y(yMin), class: "axis" }, s);
     if (xTitle) { const t = el("text", { x: (L + W - R) / 2, y: H - 6, "text-anchor": "middle", class: "ttl" }, s); t.textContent = xTitle; }
     if (yTitle) { const t = el("text", { x: 14, y: (T + H - B) / 2, "text-anchor": "middle", transform: `rotate(-90 14 ${(T + H - B) / 2})`, class: "ttl" }, s); t.textContent = yTitle; }

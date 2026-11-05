@@ -1,0 +1,25 @@
+<svg class="fig-anim" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Add-on XML"><title>Add-on XML</title><style>
+.fg-t{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:15px;fill:var(--ink,#14283a)}
+.fg-h{font-family:Archivo,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:18px;fill:var(--ink,#14283a)}
+.fg-s{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:12.5px;fill:var(--muted,#5d6f7d)}
+.fg-box{fill:var(--card,#ffffff);stroke-width:2.5}
+.fg-ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fg-ic{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fg-draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:fgDraw 3.2s ease-out infinite}
+.fg-pop{transform-box:fill-box;transform-origin:center;animation:fgPop 4s ease-in-out infinite}
+.fg-pulse{transform-box:fill-box;transform-origin:center;animation:fgPulse 2.4s ease-in-out infinite}
+.fg-swing{transform-box:view-box;animation:fgSwing 3.6s ease-in-out infinite}
+.fg-spin{transform-box:fill-box;transform-origin:center;animation:fgSpin 9s linear infinite}
+.fg-flow{stroke-dasharray:10 10;animation:fgFlow 1s linear infinite}
+.fg-grow{transform-box:fill-box;transform-origin:bottom;animation:fgGrow 4.5s ease-out infinite}
+.fg-fade{animation:fgFade 4.5s ease-in-out infinite}
+@keyframes fgDraw{0%{stroke-dashoffset:1400}60%,100%{stroke-dashoffset:0}}
+@keyframes fgPop{0%,8%{opacity:0;transform:scale(.5)}18%,85%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes fgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes fgSwing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes fgSpin{to{transform:rotate(360deg)}}
+@keyframes fgFlow{to{stroke-dashoffset:-20}}
+@keyframes fgGrow{0%{transform:scaleY(0)}35%,90%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:.4}}
+@keyframes fgFade{0%,10%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fg-draw{stroke-dashoffset:0}}
+</style><text class="fg-h" x="24" y="34">Building scenarios with add-on files</text><text class="fg-s" x="24" y="54">Base files load first; your add-on changes only what it names. Order matters.</text><rect x="120" y="110" width="240" height="170" rx="10" fill="var(--card,#ffffff)" stroke="var(--policy,#3d5a6c)" stroke-width="2"/><rect x="134" y="124" width="240" height="170" rx="10" fill="var(--card,#ffffff)" stroke="var(--policy,#3d5a6c)" stroke-width="2"/><rect x="148" y="138" width="240" height="170" rx="10" fill="var(--card,#ffffff)" stroke="var(--policy,#3d5a6c)" stroke-width="2"/><text class="fg-h" x="275" y="200" text-anchor="middle">base XML</text><text class="fg-s" x="275" y="222" text-anchor="middle">thousands of inputs</text><g><animateTransform attributeName="transform" type="translate" values="200 0;0 0;0 0;200 0" keyTimes="0;.35;.8;1" dur="6s" repeatCount="indefinite"/><rect x="250" y="160" width="220" height="120" rx="10" fill="var(--energy-t,#fbf0dc)" stroke="var(--energy,#b8790f)" stroke-width="3"/><path class="fg-ic " d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4" transform="translate(267.0,177.0) scale(1.0833333333333333)" stroke="var(--energy,#b8790f)" stroke-width="2.03"/><text class="fg-h" x="370" y="196" text-anchor="middle" style="font-size:15px">add-on</text><text class="fg-s" x="360" y="222" text-anchor="middle">BEV cost × 0.7</text><text class="fg-s" x="360" y="242" text-anchor="middle">load factor + 10%</text></g><g class=""><rect class="fg-box" x="660.0" y="110.0" width="200" height="60" rx="14" stroke="var(--land,#4e7f2f)" fill="var(--card,#ffffff)"/><path class="fg-ic " d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" transform="translate(673.0,127.0) scale(1.0833333333333333)" stroke="var(--land,#4e7f2f)" stroke-width="2.03"/><text class="fg-h" x="774" y="136" text-anchor="middle" style="font-size:16px">Same names</text><text class="fg-s" x="774" y="156" text-anchor="middle">override the base</text></g><g class=""><rect class="fg-box" x="660.0" y="220.0" width="200" height="60" rx="14" stroke="var(--climate,#a8323e)" fill="var(--card,#ffffff)"/><path class="fg-ic " d="M12 3l10 18H2zM12 10v5M12 18h.01" transform="translate(673.0,237.0) scale(1.0833333333333333)" stroke="var(--climate,#a8323e)" stroke-width="2.03"/><text class="fg-h" x="774" y="246" text-anchor="middle" style="font-size:16px">Misspelt name</text><text class="fg-s" x="774" y="266" text-anchor="middle">creates a ghost</text></g></svg>

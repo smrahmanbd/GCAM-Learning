@@ -1,0 +1,25 @@
+<svg class="fig-anim" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scenario fan"><title>Scenario fan</title><style>
+.fg-t{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:15px;fill:var(--ink,#14283a)}
+.fg-h{font-family:Archivo,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:18px;fill:var(--ink,#14283a)}
+.fg-s{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:12.5px;fill:var(--muted,#5d6f7d)}
+.fg-box{fill:var(--card,#ffffff);stroke-width:2.5}
+.fg-ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fg-ic{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fg-draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:fgDraw 3.2s ease-out infinite}
+.fg-pop{transform-box:fill-box;transform-origin:center;animation:fgPop 4s ease-in-out infinite}
+.fg-pulse{transform-box:fill-box;transform-origin:center;animation:fgPulse 2.4s ease-in-out infinite}
+.fg-swing{transform-box:view-box;animation:fgSwing 3.6s ease-in-out infinite}
+.fg-spin{transform-box:fill-box;transform-origin:center;animation:fgSpin 9s linear infinite}
+.fg-flow{stroke-dasharray:10 10;animation:fgFlow 1s linear infinite}
+.fg-grow{transform-box:fill-box;transform-origin:bottom;animation:fgGrow 4.5s ease-out infinite}
+.fg-fade{animation:fgFade 4.5s ease-in-out infinite}
+@keyframes fgDraw{0%{stroke-dashoffset:1400}60%,100%{stroke-dashoffset:0}}
+@keyframes fgPop{0%,8%{opacity:0;transform:scale(.5)}18%,85%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes fgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes fgSwing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes fgSpin{to{transform:rotate(360deg)}}
+@keyframes fgFlow{to{stroke-dashoffset:-20}}
+@keyframes fgGrow{0%{transform:scaleY(0)}35%,90%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:.4}}
+@keyframes fgFade{0%,10%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fg-draw{stroke-dashoffset:0}}
+</style><text class="fg-h" x="24" y="34">Scenarios: a story (SSP) and a number (forcing in 2100)</text><text class="fg-s" x="24" y="54">Same starting point, different choices: each line is one consistent what-if</text><line x1="80" y1="320" x2="620" y2="320" stroke="var(--ink,#14283a)" stroke-width="2"/><text class="fg-s" x="80" y="340">2020</text><text class="fg-s" x="590" y="340">2100</text><path d="M80,230 C250,200.0 420,130 610,90.0" class="fg-ln fg-draw" stroke="var(--climate,#a8323e)" style="animation-delay:0.0s"/><text class="fg-s" x="630" y="94.0" style="fill:var(--climate,#a8323e)">SSP5-8.5</text><path d="M80,230 C250,213.5 420,175 610,153.0" class="fg-ln fg-draw" stroke="var(--energy,#b8790f)" style="animation-delay:0.35s"/><text class="fg-s" x="630" y="157.0" style="fill:var(--energy,#b8790f)">SSP3-7.0</text><path d="M80,230 C250,224.0 420,210 610,202.0" class="fg-ln fg-draw" stroke="var(--economy,#5a4e8c)" style="animation-delay:0.7s"/><text class="fg-s" x="630" y="206.0" style="fill:var(--economy,#5a4e8c)">SSP2-4.5</text><path d="M80,230 C250,242.0 420,270 610,286.0" class="fg-ln fg-draw" stroke="var(--water,#2470a8)" style="animation-delay:1.0499999999999998s"/><text class="fg-s" x="630" y="290.0" style="fill:var(--water,#2470a8)">SSP1-2.6</text><path d="M80,230 C250,251.0 420,300 610,328.0" class="fg-ln fg-draw" stroke="var(--land,#4e7f2f)" style="animation-delay:1.4s"/><text class="fg-s" x="630" y="332.0" style="fill:var(--land,#4e7f2f)">SSP1-1.9</text><g class=""><rect class="fg-box" x="720.0" y="88.0" width="160" height="64" rx="14" stroke="var(--economy,#5a4e8c)" fill="var(--card,#ffffff)"/><path class="fg-ic " d="M4 4h7a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-5a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h5z" transform="translate(733.0,107.0) scale(1.0833333333333333)" stroke="var(--economy,#5a4e8c)" stroke-width="2.03"/><text class="fg-h" x="814" y="116" text-anchor="middle" style="font-size:16px">SSP 1–5</text><text class="fg-s" x="814" y="136" text-anchor="middle">the social story</text></g><g class=""><rect class="fg-box" x="720.0" y="198.0" width="160" height="64" rx="14" stroke="var(--climate,#a8323e)" fill="var(--card,#ffffff)"/><path class="fg-ic " d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" transform="translate(733.0,217.0) scale(1.0833333333333333)" stroke="var(--climate,#a8323e)" stroke-width="2.03"/><text class="fg-h" x="814" y="226" text-anchor="middle" style="font-size:16px">1.9 … 8.5</text><text class="fg-s" x="814" y="246" text-anchor="middle">W/m² in 2100</text></g></svg>

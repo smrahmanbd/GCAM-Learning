@@ -1,0 +1,363 @@
+{
+ "id": "1.7",
+ "go": 1,
+ "slug": "stocks-flows-feedbacks",
+ "title": "Stocks, flows and feedbacks",
+ "minutes": 30,
+ "tag": "Systems",
+ "systems": [
+  "climate",
+  "energy",
+  "land"
+ ],
+ "summary": "Think like a modeller: a stock changes only by its inflow minus its outflow, and loops either amplify or damp a change. These two ideas explain why CO2 keeps rising after emissions fall.",
+ "outcomes": [
+  "Tell a stock from a flow and give three examples from the climate and energy system",
+  "Explain why a stock keeps rising until outflow exceeds inflow",
+  "Tell a reinforcing loop from a balancing loop and name one of each",
+  "Explain why delays and inertia make early action matter"
+ ],
+ "narration_en": "Every integrated assessment model is built from two simple ideas. The first is the difference between a stock and a flow. A stock is an amount that has built up, like water in a bathtub, carbon dioxide in the air, or the cars on the road. A flow is a rate that changes the stock, like the tap and the drain, the emissions each year, or the new cars sold. A stock rises whenever the inflow is bigger than the outflow, even if the inflow is falling. That is why carbon dioxide in the air keeps rising while emissions are being cut: the tap is still running faster than oceans and forests can drain it. The second idea is the feedback loop. In a reinforcing loop, a change feeds itself: warming weakens natural sinks, so more carbon stays in the air, which causes more warming. In a balancing loop, a change is pushed back: higher prices reduce demand, which lowers prices again. Real systems also have delays. Power plants and cars last for decades, so today's choices shape emissions for a long time. Keep these ideas in mind and the behaviour of any model becomes much easier to read.",
+ "narration_ar": "يُبنى كل نموذج للتقييم المتكامل على فكرتين بسيطتين. الأولى هي الفرق بين المخزون والتدفق. المخزون كمية تراكمت، مثل الماء في حوض الاستحمام، أو ثاني أكسيد الكربون في الهواء، أو السيارات على الطرق. والتدفق معدل يغيّر المخزون، مثل الصنبور والمصرف، أو الانبعاثات كل عام، أو السيارات الجديدة المبيعة. يرتفع المخزون كلما كان التدفق الداخل أكبر من التدفق الخارج، حتى لو كان التدفق الداخل يتناقص. لهذا يستمر ثاني أكسيد الكربون في الهواء في الارتفاع بينما تُخفَّض الانبعاثات: فالصنبور لا يزال يتدفق أسرع مما تستطيع المحيطات والغابات تصريفه. والفكرة الثانية هي حلقة التغذية الراجعة. في الحلقة المعزِّزة يغذي التغيير نفسه: فالاحترار يضعف المصارف الطبيعية، فيبقى مزيد من الكربون في الهواء، مما يسبب مزيدًا من الاحترار. وفي الحلقة الموازِنة يُدفع التغيير إلى الوراء: فارتفاع الأسعار يقلل الطلب، مما يخفض الأسعار من جديد. وفي الأنظمة الحقيقية تأخيرات أيضًا. فمحطات الكهرباء والسيارات تدوم عقودًا، لذا تشكّل خيارات اليوم الانبعاثات لزمن طويل. احتفظ بهذه الأفكار في ذهنك وستصبح قراءة سلوك أي نموذج أسهل بكثير.",
+ "diagram": {
+  "title": "The carbon bathtub with two loops",
+  "caption": "Emissions fill the stock of CO2; sinks drain it. Warming weakens the drain (reinforcing); prices damp demand (balancing).",
+  "nodes": [
+   {
+    "id": "dem",
+    "label": "Energy demand",
+    "sub": "people want services",
+    "x": 120,
+    "y": 90,
+    "w": 180,
+    "h": 66,
+    "sys": "economy",
+    "detail": "Demand for energy services drives fuel use. In GCAM it grows with population and income."
+   },
+   {
+    "id": "em",
+    "label": "Emissions",
+    "sub": "flow: Gt CO2 per year",
+    "x": 360,
+    "y": 90,
+    "w": 180,
+    "h": 66,
+    "sys": "energy",
+    "detail": "The <b>inflow</b> to the atmosphere: about 40 Gt CO<sub>2</sub> a year today."
+   },
+   {
+    "id": "stock",
+    "label": "CO2 in the air",
+    "sub": "stock: ppm",
+    "x": 360,
+    "y": 260,
+    "w": 200,
+    "h": 80,
+    "sys": "climate",
+    "detail": "The <b>stock</b>. It rises whenever inflow exceeds outflow, even if the inflow is falling."
+   },
+   {
+    "id": "sink",
+    "label": "Sinks",
+    "sub": "flow out: oceans, forests",
+    "x": 620,
+    "y": 260,
+    "w": 180,
+    "h": 66,
+    "sys": "land",
+    "detail": "The <b>outflow</b>: oceans and plants absorb roughly half of what we emit each year, but they slow as the world warms."
+   },
+   {
+    "id": "temp",
+    "label": "Warming",
+    "sub": "°C",
+    "x": 360,
+    "y": 430,
+    "w": 180,
+    "h": 66,
+    "sys": "climate",
+    "detail": "Temperature follows the CO<sub>2</sub> stock with a delay of a few years to decades."
+   },
+   {
+    "id": "price",
+    "label": "Energy prices",
+    "sub": "balancing loop",
+    "x": 120,
+    "y": 260,
+    "w": 180,
+    "h": 66,
+    "sys": "policy",
+    "detail": "Higher prices reduce demand, which lowers prices: a <b>balancing</b> loop that steadies markets."
+   },
+   {
+    "id": "loop",
+    "label": "Reinforcing loop",
+    "sub": "warmer → weaker sinks",
+    "x": 680,
+    "y": 430,
+    "w": 200,
+    "h": 66,
+    "sys": "climate",
+    "detail": "Warming weakens sinks, so more CO<sub>2</sub> stays, so more warming. Reinforcing loops amplify change."
+   }
+  ],
+  "edges": [
+   {
+    "from": "dem",
+    "to": "em",
+    "label": "burn fuel"
+   },
+   {
+    "from": "em",
+    "to": "stock",
+    "label": "inflow"
+   },
+   {
+    "from": "stock",
+    "to": "sink",
+    "label": "outflow",
+    "sys": "land"
+   },
+   {
+    "from": "stock",
+    "to": "temp",
+    "label": "forcing"
+   },
+   {
+    "from": "temp",
+    "to": "loop",
+    "label": "feeds"
+   },
+   {
+    "from": "loop",
+    "to": "sink",
+    "label": "weakens"
+   },
+   {
+    "from": "dem",
+    "to": "price",
+    "label": "pushes up"
+   },
+   {
+    "from": "price",
+    "to": "dem",
+    "label": "damps",
+    "sys": "policy"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "em",
+     "stock"
+    ],
+    "edges": [
+     [
+      "em",
+      "stock"
+     ]
+    ],
+    "text": "Emissions are a flow into the stock of CO2 in the air."
+   },
+   {
+    "focus": [
+     "stock",
+     "sink"
+    ],
+    "edges": [
+     [
+      "stock",
+      "sink"
+     ]
+    ],
+    "text": "Sinks drain the stock. The level only falls once outflow beats inflow."
+   },
+   {
+    "focus": [
+     "stock",
+     "temp"
+    ],
+    "edges": [
+     [
+      "stock",
+      "temp"
+     ]
+    ],
+    "text": "Warming follows the stock, not this year's flow."
+   },
+   {
+    "focus": [
+     "temp",
+     "loop",
+     "sink"
+    ],
+    "edges": [
+     [
+      "temp",
+      "loop"
+     ],
+     [
+      "loop",
+      "sink"
+     ]
+    ],
+    "text": "Reinforcing loop: warming weakens the drain, so the stock grows faster."
+   },
+   {
+    "focus": [
+     "dem",
+     "price"
+    ],
+    "edges": [
+     [
+      "dem",
+      "price"
+     ],
+     [
+      "price",
+      "dem"
+     ]
+    ],
+    "text": "Balancing loop: higher prices damp demand. Markets in GCAM are full of these."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Stocks and flows",
+   "html": "<p>A <b>stock</b> is an amount that has accumulated: CO<sub>2</sub> in the air, cars on the road, power plants standing, forests growing. A <b>flow</b> is a rate that changes a stock: emissions per year, cars sold per year, plants built or retired per year.</p><div class=\"eq\">stock next year = stock this year + inflow − outflow</div><p>Test: if you could photograph it at one instant, it is a stock. If you need a stopwatch to measure it, it is a flow.</p>"
+  },
+  {
+   "heading": "Why CO2 keeps rising while emissions fall",
+   "html": "<p>Suppose emissions fall from 40 to 30 Gt a year while sinks absorb about 20. The inflow is still bigger than the outflow, so the stock still rises, just more slowly. The level only starts to fall once inflow drops below outflow. This is the bathtub logic of the carbon budget from module 1.2, written as a model.</p>"
+  },
+  {
+   "heading": "Two kinds of loop",
+   "html": "<p>A <b>reinforcing loop</b> amplifies a change: warming → weaker sinks → more CO<sub>2</sub> stays → more warming. Cheaper solar → more solar built → learning → cheaper solar is another (see learning curves in Go 2). A <b>balancing loop</b> pushes back: higher prices → lower demand → lower prices. GCAM's markets are a web of balancing loops; the solver finds the prices where they all settle.</p>"
+  },
+  {
+   "heading": "Delays and inertia",
+   "html": "<p>Stocks change slowly. A coal plant runs for 40 years, a car for 15, a building for a century. GCAM tracks <b>vintages</b>: capital built in one period keeps operating in later ones. So a policy that starts late must work harder, because the old stock still emits. Delays also mean warming keeps responding for years after CO<sub>2</sub> stops rising.</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"Emissions peaked, so the problem is shrinking.\" A falling inflow is not a falling stock. Ask: is the inflow below the outflow yet?</p>"
+  },
+  {
+   "after": 2,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>Hector, GCAM's climate model, is built from carbon stocks (atmosphere, ocean, land) linked by flows. Module 2.8 opens it and traces five feedback loops through the whole model.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "feedback",
+  "intro": "Set when emissions reach zero, how strong the sinks are, and how much warming weakens them. Press Play to watch the stock evolve.",
+  "predict": "If emissions fall in a straight line to zero by 2070, does CO2 in the air peak in 2070, before, or after?"
+ },
+ "code": [
+  {
+   "title": "A stock and its flows in six lines",
+   "lang": "python",
+   "runnable": true,
+   "source": "# CO2 stock (ppm): inflow = emissions, outflow = sinks\nstock, sink_rate = 415.0, 0.015      # 1.5% of the excess above 280 ppm per year\nfor year in range(2020, 2101):\n    emissions = max(0, 40 * (1 - (year - 2020) / 50)) / 7.8   # ppm per year, zero in 2070\n    stock += emissions - sink_rate * (stock - 280)\n    if year % 10 == 0:\n        print(year, round(stock, 1))\n",
+   "explain": "Press Run. When does the stock peak? Change sink_rate to 0.01 (weaker sinks) and run again.",
+   "expected": "2020 418.1\n2030 441.3\n2040 451.6\n2050 450.9\n…"
+  }
+ ],
+ "takeaways": [
+  "A stock changes only by inflow minus outflow.",
+  "CO2 keeps rising until emissions fall below what sinks absorb.",
+  "Reinforcing loops amplify change; balancing loops damp it.",
+  "Long-lived capital and climate delays make early action matter."
+ ],
+ "quiz": [
+  {
+   "q": "Which of these is a stock?",
+   "options": [
+    "Emissions per year",
+    "Cars sold per year",
+    "CO2 in the atmosphere",
+    "Electricity generated per hour"
+   ],
+   "answer": 2,
+   "explain": "You could measure it at one instant. The others are rates."
+  },
+  {
+   "q": "Emissions fall from 40 to 30 Gt a year while sinks take 20. What happens to atmospheric CO2?",
+   "options": [
+    "It falls",
+    "It keeps rising, more slowly",
+    "It stays exactly level",
+    "It rises faster"
+   ],
+   "answer": 1,
+   "explain": "Inflow (30) is still above outflow (20), so the stock still rises."
+  },
+  {
+   "q": "'Warming weakens sinks, so more CO2 stays, so more warming' is a…",
+   "options": [
+    "Balancing loop",
+    "Delay",
+    "Reinforcing loop",
+    "Flow"
+   ],
+   "answer": 2,
+   "explain": "The change feeds itself, so it is reinforcing."
+  },
+  {
+   "q": "Why do vintages matter for policy timing?",
+   "options": [
+    "Old capital keeps emitting for decades",
+    "They set the discount rate",
+    "They fix population",
+    "They remove all delays"
+   ],
+   "answer": 0,
+   "explain": "Plants and vehicles built today keep running, so late policies must work harder."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Stock",
+   "def": "An amount that has accumulated and can be measured at one instant, such as CO2 in the air."
+  },
+  {
+   "term": "Flow",
+   "def": "A rate that adds to or drains a stock, such as emissions per year."
+  },
+  {
+   "term": "Reinforcing loop",
+   "def": "A feedback in which a change causes more of the same change."
+  },
+  {
+   "term": "Balancing loop",
+   "def": "A feedback in which a change triggers a response that pushes it back."
+  },
+  {
+   "term": "Vintage",
+   "def": "Capital built in a given period that keeps operating, with its own efficiency, in later periods."
+  }
+ ],
+ "resources": [
+  {
+   "title": "IPCC AR6 WGI Summary for Policymakers",
+   "url": "https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/",
+   "why": "Carbon sinks, cumulative emissions and climate feedbacks, from the source."
+  },
+  {
+   "title": "Global Carbon Budget",
+   "url": "https://globalcarbonbudget.org/",
+   "why": "Yearly figures for emissions and how much the ocean and land sinks absorb."
+  },
+  {
+   "title": "Hector simple climate model",
+   "url": "https://jgcri.github.io/hector/",
+   "why": "The stock-and-flow climate model that runs inside GCAM."
+  }
+ ]
+}

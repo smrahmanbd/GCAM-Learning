@@ -1,0 +1,25 @@
+<svg class="fig-anim" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How GCAM solves"><title>How GCAM solves</title><style>
+.fg-t{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:15px;fill:var(--ink,#14283a)}
+.fg-h{font-family:Archivo,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:18px;fill:var(--ink,#14283a)}
+.fg-s{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:12.5px;fill:var(--muted,#5d6f7d)}
+.fg-box{fill:var(--card,#ffffff);stroke-width:2.5}
+.fg-ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fg-ic{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fg-draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:fgDraw 3.2s ease-out infinite}
+.fg-pop{transform-box:fill-box;transform-origin:center;animation:fgPop 4s ease-in-out infinite}
+.fg-pulse{transform-box:fill-box;transform-origin:center;animation:fgPulse 2.4s ease-in-out infinite}
+.fg-swing{transform-box:view-box;animation:fgSwing 3.6s ease-in-out infinite}
+.fg-spin{transform-box:fill-box;transform-origin:center;animation:fgSpin 9s linear infinite}
+.fg-flow{stroke-dasharray:10 10;animation:fgFlow 1s linear infinite}
+.fg-grow{transform-box:fill-box;transform-origin:bottom;animation:fgGrow 4.5s ease-out infinite}
+.fg-fade{animation:fgFade 4.5s ease-in-out infinite}
+@keyframes fgDraw{0%{stroke-dashoffset:1400}60%,100%{stroke-dashoffset:0}}
+@keyframes fgPop{0%,8%{opacity:0;transform:scale(.5)}18%,85%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes fgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes fgSwing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes fgSpin{to{transform:rotate(360deg)}}
+@keyframes fgFlow{to{stroke-dashoffset:-20}}
+@keyframes fgGrow{0%{transform:scaleY(0)}35%,90%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:.4}}
+@keyframes fgFade{0%,10%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fg-draw{stroke-dashoffset:0}}
+</style><text class="fg-h" x="24" y="34">GCAM: prices bounce until markets clear, one period at a time</text><text class="fg-s" x="24" y="54">Recursive dynamic, partial equilibrium; logit shares; no foresight</text><line x1="80" y1="300" x2="520" y2="300" stroke="var(--ink,#14283a)" stroke-width="2"/><line x1="80" y1="300" x2="80" y2="80" stroke="var(--ink,#14283a)" stroke-width="2"/><line x1="100" y1="100" x2="500" y2="280" class="fg-ln" stroke="var(--water,#2470a8)"/><line x1="100" y1="280" x2="500" y2="100" class="fg-ln" stroke="var(--energy,#b8790f)"/><text class="fg-s" x="470" y="275">demand</text><text class="fg-s" x="470" y="95">supply</text><circle r="9" fill="var(--climate,#a8323e)"><animateMotion dur="5s" repeatCount="indefinite" path="M120,120 L480,120 L150,250 L420,150 L230,220 L330,180 L290,192 L300,190"/></circle><text class="fg-s" x="300" y="320" text-anchor="middle">solver iterations (Broyden)</text><rect x="600" y="250" width="50" height="40" fill="var(--energy-t,#fbf0dc)" stroke="var(--energy,#b8790f)" class="fg-pop" style="animation-delay:0.0s"/><text class="fg-s" x="625" y="243" text-anchor="middle">2025</text><rect x="655" y="218" width="50" height="72" fill="var(--energy-t,#fbf0dc)" stroke="var(--energy,#b8790f)" class="fg-pop" style="animation-delay:0.5s"/><text class="fg-s" x="680" y="211" text-anchor="middle">2030</text><rect x="710" y="186" width="50" height="104" fill="var(--energy-t,#fbf0dc)" stroke="var(--energy,#b8790f)" class="fg-pop" style="animation-delay:1.0s"/><text class="fg-s" x="735" y="179" text-anchor="middle">2035</text><rect x="765" y="154" width="50" height="136" fill="var(--energy-t,#fbf0dc)" stroke="var(--energy,#b8790f)" class="fg-pop" style="animation-delay:1.5s"/><text class="fg-s" x="790" y="147" text-anchor="middle">2040</text><rect x="820" y="122" width="50" height="168" fill="var(--energy-t,#fbf0dc)" stroke="var(--energy,#b8790f)" class="fg-pop" style="animation-delay:2.0s"/><text class="fg-s" x="845" y="115" text-anchor="middle">2045</text><text class="fg-t" x="710" y="330" text-anchor="middle">solve 2025, then 2030, then 2035…</text></svg>

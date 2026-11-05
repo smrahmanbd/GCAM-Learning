@@ -1,0 +1,342 @@
+{
+ "id": "1.10",
+ "go": 1,
+ "slug": "uncertainty-and-ensembles",
+ "title": "Uncertainty: reading a range, not a line",
+ "minutes": 30,
+ "tag": "Results",
+ "systems": [
+  "climate",
+  "economy",
+  "policy"
+ ],
+ "summary": "Every model result rests on uncertain inputs. Running many versions, or many models, turns one line into a range. Learn to report and read that range honestly.",
+ "outcomes": [
+  "Name three sources of uncertainty in an IAM result",
+  "Explain what an ensemble is and why it gives a range",
+  "Read a median and a likely range, and a probability of crossing a threshold",
+  "Explain why scenarios and probabilities answer different questions"
+ ],
+ "narration_en": "No model can tell us exactly what will happen. Its results depend on inputs we are unsure about: how fast technology costs fall, how the economy grows, how people behave, and how strongly the climate responds to carbon dioxide. There are three main kinds of uncertainty. Parameter uncertainty is about the numbers inside a model. Structural uncertainty is about how the model is built, which is why different models give different answers to the same question. Scenario uncertainty is about choices that society has not made yet. To handle the first two, modellers run ensembles: the same model many times with different inputs, or many models with the same inputs. Instead of one line you get a band. Report the middle, called the median, and a range, such as the likely range covering two thirds of runs. You can also report the chance of crossing a threshold, for example a sixty percent chance of exceeding two degrees. Scenario uncertainty is handled differently: we do not attach probabilities to choices, we compare them. A good reader of model results always asks: what was varied, what was held fixed, and how wide is the band?",
+ "narration_ar": "لا يستطيع أي نموذج أن يخبرنا بدقة بما سيحدث. فنتائجه تعتمد على مدخلات لسنا متأكدين منها: مدى سرعة انخفاض تكاليف التكنولوجيا، وكيف ينمو الاقتصاد، وكيف يتصرف الناس، ومدى قوة استجابة المناخ لثاني أكسيد الكربون. وهناك ثلاثة أنواع رئيسية من عدم اليقين. عدم اليقين في المعاملات يتعلق بالأرقام داخل النموذج. وعدم اليقين البنيوي يتعلق بكيفية بناء النموذج، ولهذا تعطي النماذج المختلفة إجابات مختلفة عن السؤال نفسه. وعدم اليقين في السيناريوهات يتعلق بخيارات لم يتخذها المجتمع بعد. وللتعامل مع النوعين الأولين، يُشغّل المنمذجون مجموعات من التشغيلات: النموذج نفسه مرات كثيرة بمدخلات مختلفة، أو نماذج كثيرة بالمدخلات نفسها. وبدلًا من خط واحد تحصل على نطاق. أبلغ عن الوسط، ويسمى الوسيط، وعن نطاق، مثل النطاق المرجح الذي يغطي ثلثي التشغيلات. ويمكنك أيضًا الإبلاغ عن احتمال تجاوز عتبة ما، مثل احتمال ستين بالمئة لتجاوز درجتين. أما عدم اليقين في السيناريوهات فيُعالج بطريقة مختلفة: فنحن لا نعطي الخيارات احتمالات، بل نقارن بينها. والقارئ الجيد لنتائج النماذج يسأل دائمًا: ما الذي تغيّر، وما الذي ثُبّت، وما مدى اتساع النطاق؟",
+ "diagram": {
+  "title": "From uncertain inputs to an honest range",
+  "caption": "Vary the inputs or the models, run many times, and report a median, a range and a probability.",
+  "nodes": [
+   {
+    "id": "par",
+    "label": "Parameter",
+    "sub": "numbers inside a model",
+    "x": 140,
+    "y": 90,
+    "w": 180,
+    "h": 66,
+    "sys": "data",
+    "detail": "Climate sensitivity, technology costs, elasticities: values we know only within a range."
+   },
+   {
+    "id": "str",
+    "label": "Structural",
+    "sub": "how a model is built",
+    "x": 140,
+    "y": 260,
+    "w": 180,
+    "h": 66,
+    "sys": "data",
+    "detail": "Different equations and solution methods: why models disagree on the same question."
+   },
+   {
+    "id": "scen",
+    "label": "Scenario",
+    "sub": "choices not yet made",
+    "x": 140,
+    "y": 430,
+    "w": 180,
+    "h": 66,
+    "sys": "policy",
+    "detail": "Policy and social choices. Compared side by side, not given probabilities."
+   },
+   {
+    "id": "ens",
+    "label": "Ensemble",
+    "sub": "many runs or many models",
+    "x": 440,
+    "y": 175,
+    "w": 200,
+    "h": 66,
+    "sys": "neutral",
+    "detail": "Run one model many times with sampled inputs, or many models with harmonised inputs."
+   },
+   {
+    "id": "band",
+    "label": "A range",
+    "sub": "median + likely range",
+    "x": 720,
+    "y": 175,
+    "w": 180,
+    "h": 66,
+    "sys": "climate",
+    "detail": "Report the middle and the spread, for example the 17–83% likely range."
+   },
+   {
+    "id": "prob",
+    "label": "A probability",
+    "sub": "chance of crossing 2 °C",
+    "x": 720,
+    "y": 330,
+    "w": 180,
+    "h": 66,
+    "sys": "climate",
+    "detail": "The share of runs above a threshold, read as a chance under those assumptions."
+   },
+   {
+    "id": "cmp",
+    "label": "Side-by-side",
+    "sub": "compare scenarios",
+    "x": 440,
+    "y": 430,
+    "w": 200,
+    "h": 66,
+    "sys": "policy",
+    "detail": "For choices, show each scenario's range next to the others."
+   }
+  ],
+  "edges": [
+   {
+    "from": "par",
+    "to": "ens",
+    "label": "sample"
+   },
+   {
+    "from": "str",
+    "to": "ens",
+    "label": "multi-model"
+   },
+   {
+    "from": "ens",
+    "to": "band",
+    "label": "spread"
+   },
+   {
+    "from": "band",
+    "to": "prob",
+    "label": "threshold"
+   },
+   {
+    "from": "scen",
+    "to": "cmp",
+    "label": "compare"
+   },
+   {
+    "from": "cmp",
+    "to": "band",
+    "label": "each has a range"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "par",
+     "str",
+     "scen"
+    ],
+    "text": "Three sources of uncertainty: parameters, structure and scenarios."
+   },
+   {
+    "focus": [
+     "par",
+     "str",
+     "ens"
+    ],
+    "edges": [
+     [
+      "par",
+      "ens"
+     ],
+     [
+      "str",
+      "ens"
+     ]
+    ],
+    "text": "Ensembles vary parameters (one model) or structure (many models)."
+   },
+   {
+    "focus": [
+     "ens",
+     "band"
+    ],
+    "edges": [
+     [
+      "ens",
+      "band"
+     ]
+    ],
+    "text": "The result is a band: report the median and a likely range."
+   },
+   {
+    "focus": [
+     "band",
+     "prob"
+    ],
+    "edges": [
+     [
+      "band",
+      "prob"
+     ]
+    ],
+    "text": "The share of runs above a threshold is a probability, given the assumptions."
+   },
+   {
+    "focus": [
+     "scen",
+     "cmp"
+    ],
+    "edges": [
+     [
+      "scen",
+      "cmp"
+     ],
+     [
+      "cmp",
+      "band"
+     ]
+    ],
+    "text": "Choices are compared side by side, each with its own range."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Three kinds of uncertainty",
+   "html": "<p><b>Parameter</b>: the numbers inside a model, such as how much warming per tonne of CO<sub>2</sub> (about 0.27–0.63 °C per 1,000 Gt, likely range). <b>Structural</b>: how the model is built; GCAM, MESSAGEix and REMIND can give different answers to the same question. <b>Scenario</b>: what society chooses, such as policy and lifestyles.</p>"
+  },
+  {
+   "heading": "Ensembles turn a line into a band",
+   "html": "<p>A <b>perturbed-parameter ensemble</b> runs one model many times with inputs drawn from their ranges. A <b>multi-model ensemble</b> runs several models on the same scenario, as in the IPCC AR6 scenario database. Either way you get a distribution of results.</p>"
+  },
+  {
+   "heading": "Reading the range",
+   "html": "<p>The <b>median</b> is the middle run. The <b>likely range</b> covers the middle two thirds (17th to 83rd percentile). A probability such as \"a 60% chance of exceeding 2 °C\" is the share of runs above 2 °C, and only holds under the ensemble's assumptions.</p>"
+  },
+  {
+   "heading": "Scenarios are not forecasts",
+   "html": "<p>We do not say \"SSP3 has a 20% chance\". Scenarios describe choices; we compare them, each with its own uncertainty range. When you read a figure, ask three things: what was varied, what was held fixed, and how wide is the band?</p>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 2,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"The models agree, so it is certain.\" Models can share assumptions and data. Agreement narrows parameter and structural doubt; it does not remove scenario uncertainty.</p>"
+  },
+  {
+   "after": 3,
+   "kind": "research",
+   "title": "Comes back in Go 3",
+   "html": "<p>Module 3.4 plans an uncertainty design before running, and 3.6 uses sensitivity analysis and scenario discovery to find which inputs drive the outcome.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "uncertainty",
+  "intro": "Choose how much CO2 is emitted and how uncertain the climate response is, then run the ensemble.",
+  "predict": "If you double the uncertainty in the climate response, does the median warming change much?"
+ },
+ "code": [
+  {
+   "title": "A 1,000-run ensemble",
+   "lang": "python",
+   "runnable": true,
+   "source": "import numpy as np\nrng = np.random.default_rng(1)\ncum = 1500                              # Gt CO2 emitted 2020-2100\ntcre = rng.normal(0.45, 0.11, 1000)     # C per 1000 Gt, sampled\nwarming = 1.1 + tcre * cum / 1000\nprint('median', round(np.median(warming), 2))\nprint('likely range', np.round(np.percentile(warming, [17, 83]), 2))\nprint('chance > 2 C', round((warming > 2).mean() * 100), '%')\n",
+   "explain": "Press Run. Then change cum to 800 and to 3000.",
+   "expected": "median 1.77\nlikely range [1.61 1.92]\nchance > 2 C 7 %"
+  }
+ ],
+ "takeaways": [
+  "Results rest on uncertain parameters, model structures and choices.",
+  "Ensembles turn one line into a band.",
+  "Report a median, a likely range and, if useful, a probability.",
+  "Compare scenarios side by side; do not give them probabilities."
+ ],
+ "quiz": [
+  {
+   "q": "Different models giving different answers to the same scenario shows…",
+   "options": [
+    "Parameter uncertainty",
+    "Structural uncertainty",
+    "A bug",
+    "Scenario uncertainty"
+   ],
+   "answer": 1,
+   "explain": "Models are built differently: structural uncertainty."
+  },
+  {
+   "q": "The 'likely range' in IPCC language usually covers…",
+   "options": [
+    "All runs",
+    "The middle two thirds",
+    "The top 10%",
+    "One run"
+   ],
+   "answer": 1,
+   "explain": "Roughly the 17th to 83rd percentile."
+  },
+  {
+   "q": "Doubling the spread of the climate response mostly changes…",
+   "options": [
+    "The median",
+    "The width of the range",
+    "The emissions",
+    "The scenario name"
+   ],
+   "answer": 1,
+   "explain": "The centre barely moves; the tails widen."
+  },
+  {
+   "q": "Why are scenarios not given probabilities?",
+   "options": [
+    "They describe choices still to be made",
+    "Computers cannot do it",
+    "They are all equally likely",
+    "They are forecasts"
+   ],
+   "answer": 0,
+   "explain": "Choices are compared, not predicted."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Ensemble",
+   "def": "A set of model runs that differ in inputs or in the model used."
+  },
+  {
+   "term": "Median",
+   "def": "The middle value: half the runs are above it, half below."
+  },
+  {
+   "term": "Likely range",
+   "def": "In IPCC usage, a range with about a two-in-three chance of containing the outcome."
+  },
+  {
+   "term": "Structural uncertainty",
+   "def": "Uncertainty from how a model is built, revealed by comparing different models."
+  }
+ ],
+ "resources": [
+  {
+   "title": "IPCC AR6 WGI Summary for Policymakers",
+   "url": "https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/",
+   "why": "How the IPCC reports likely ranges and calibrated language."
+  },
+  {
+   "title": "AR6 Scenario Explorer (IIASA)",
+   "url": "https://data.ece.iiasa.ac.at/ar6/",
+   "why": "Thousands of scenarios from many models: a real multi-model ensemble."
+  },
+  {
+   "title": "GCAM documentation",
+   "url": "https://jgcri.github.io/gcam-doc/",
+   "why": "What GCAM holds fixed and what you can vary."
+  }
+ ]
+}

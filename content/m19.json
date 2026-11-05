@@ -1,0 +1,342 @@
+{
+ "id": "1.9",
+ "go": 1,
+ "slug": "water-energy-food-nexus",
+ "title": "Land, water and food: the nexus",
+ "minutes": 30,
+ "tag": "Big picture",
+ "systems": [
+  "water",
+  "land",
+  "energy"
+ ],
+ "summary": "Farms, power plants and cities share the same land and the same river basins. Pull on one and the others feel it. This is why GCAM models water, land and energy together.",
+ "outcomes": [
+  "Name the three main links between water, energy and food",
+  "Explain how bioenergy ties land to the energy system",
+  "Explain why water has a price in GCAM and what happens as demand nears supply",
+  "Give one example of a policy with a side effect in another system"
+ ],
+ "narration_en": "Water, energy and food are tied together like three overlapping circles. Farms need water for irrigation and energy for pumps, machines and fertiliser. Power plants need water to cool them, and some electricity is used to move and clean water. Land grows food, but it can also grow energy crops, or stay as forest that stores carbon. Because of these links, a decision in one system shows up in the others. Grow more bioenergy to cut emissions, and you may need more land and water, which can raise food prices. Build more thermal power plants in a dry region, and the river basin may run short. GCAM represents these links directly. It divides the world into 235 river basins, each with its own water supply, and into hundreds of land areas. When demand for water gets close to what a basin can renewably supply, a water price rises and more expensive sources come in, first groundwater and then desalination. Land is shared out by profit, so a carbon price that rewards bioenergy or forests changes what is grown. Thinking in terms of the nexus helps you spot the side effects of a policy before they surprise you.",
+ "narration_ar": "ترتبط المياه والطاقة والغذاء ببعضها كثلاث دوائر متداخلة. تحتاج المزارع إلى المياه للري وإلى الطاقة للمضخات والآلات والأسمدة. وتحتاج محطات الكهرباء إلى المياه لتبريدها، ويُستخدم بعض الكهرباء لنقل المياه وتنقيتها. والأرض تنتج الغذاء، لكنها قد تنتج أيضًا محاصيل الطاقة، أو تبقى غابات تخزن الكربون. وبسبب هذه الروابط، يظهر القرار المتخذ في نظام ما في الأنظمة الأخرى. فإن زرعت مزيدًا من الطاقة الحيوية لخفض الانبعاثات، فقد تحتاج إلى مزيد من الأرض والمياه، مما قد يرفع أسعار الغذاء. وإن بنيت مزيدًا من المحطات الحرارية في منطقة جافة، فقد يعاني حوض النهر من نقص. يمثل نموذج جي كام هذه الروابط مباشرة. فهو يقسم العالم إلى مئتين وخمسة وثلاثين حوضًا نهريًا، لكل منها إمداداته المائية، وإلى مئات المناطق الأرضية. وعندما يقترب الطلب على المياه مما يستطيع الحوض توفيره بشكل متجدد، يرتفع سعر المياه وتدخل مصادر أغلى، أولًا المياه الجوفية ثم تحلية المياه. وتُوزَّع الأرض حسب الربحية، لذا فإن سعر الكربون الذي يكافئ الطاقة الحيوية أو الغابات يغيّر ما يُزرع. والتفكير بمنطق الترابط يساعدك على رصد الآثار الجانبية للسياسات قبل أن تفاجئك.",
+ "diagram": {
+  "title": "Three systems, one basin",
+  "caption": "Water, land and energy trade through irrigation, cooling and bioenergy; scarcity shows up as a water price.",
+  "nodes": [
+   {
+    "id": "wat",
+    "label": "Water",
+    "sub": "235 basins",
+    "x": 450,
+    "y": 90,
+    "w": 180,
+    "h": 66,
+    "sys": "water",
+    "detail": "Each basin has renewable water; beyond it come groundwater and desalination at higher cost."
+   },
+   {
+    "id": "food",
+    "label": "Food and land",
+    "sub": "crops, pasture, forest",
+    "x": 180,
+    "y": 300,
+    "w": 180,
+    "h": 66,
+    "sys": "land",
+    "detail": "Land is shared among uses by expected profit per hectare."
+   },
+   {
+    "id": "en",
+    "label": "Energy",
+    "sub": "power, fuels",
+    "x": 720,
+    "y": 300,
+    "w": 180,
+    "h": 66,
+    "sys": "energy",
+    "detail": "Thermal power plants need cooling water; pumping and desalination need energy."
+   },
+   {
+    "id": "bio",
+    "label": "Bioenergy",
+    "sub": "energy crops",
+    "x": 450,
+    "y": 300,
+    "w": 160,
+    "h": 66,
+    "sys": "land",
+    "detail": "Energy grown on land: links the energy system to land, food prices and water."
+   },
+   {
+    "id": "price",
+    "label": "Water price",
+    "sub": "scarcity signal",
+    "x": 450,
+    "y": 440,
+    "w": 180,
+    "h": 66,
+    "sys": "water",
+    "detail": "When demand nears supply in a basin, the price rises and costlier sources come in."
+   },
+   {
+    "id": "pol",
+    "label": "Carbon price",
+    "sub": "rewards bioenergy, forests",
+    "x": 720,
+    "y": 90,
+    "w": 180,
+    "h": 66,
+    "sys": "policy",
+    "detail": "Pricing carbon changes land use, which changes water demand: a side effect to watch."
+   }
+  ],
+  "edges": [
+   {
+    "from": "wat",
+    "to": "food",
+    "label": "irrigation",
+    "sys": "water"
+   },
+   {
+    "from": "wat",
+    "to": "en",
+    "label": "cooling",
+    "sys": "water"
+   },
+   {
+    "from": "bio",
+    "to": "food",
+    "label": "competes"
+   },
+   {
+    "from": "bio",
+    "to": "en",
+    "label": "fuel"
+   },
+   {
+    "from": "food",
+    "to": "price",
+    "label": "demand"
+   },
+   {
+    "from": "en",
+    "to": "price",
+    "label": "demand"
+   },
+   {
+    "from": "pol",
+    "to": "bio",
+    "label": "rewards"
+   }
+  ],
+  "tour": [
+   {
+    "focus": [
+     "wat",
+     "food"
+    ],
+    "edges": [
+     [
+      "wat",
+      "food"
+     ]
+    ],
+    "text": "Irrigation is the largest water use in most basins."
+   },
+   {
+    "focus": [
+     "wat",
+     "en"
+    ],
+    "edges": [
+     [
+      "wat",
+      "en"
+     ]
+    ],
+    "text": "Thermal power plants need cooling water."
+   },
+   {
+    "focus": [
+     "bio",
+     "food",
+     "en"
+    ],
+    "edges": [
+     [
+      "bio",
+      "food"
+     ],
+     [
+      "bio",
+      "en"
+     ]
+    ],
+    "text": "Bioenergy competes with food for land and supplies the energy system."
+   },
+   {
+    "focus": [
+     "price"
+    ],
+    "edges": [
+     [
+      "food",
+      "price"
+     ],
+     [
+      "en",
+      "price"
+     ]
+    ],
+    "text": "As demand nears supply, the basin's water price rises."
+   },
+   {
+    "focus": [
+     "pol",
+     "bio"
+    ],
+    "edges": [
+     [
+      "pol",
+      "bio"
+     ]
+    ],
+    "text": "A carbon price can raise bioenergy demand: a side effect on land and water."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "heading": "Three overlapping circles",
+   "html": "<p><b>Water for food</b>: irrigation. <b>Water for energy</b>: cooling thermal plants, growing biomass, producing fuels. <b>Energy for water</b>: pumping, treatment, desalination. <b>Land for energy</b>: bioenergy crops. Every overlap is a place where one system can constrain another.</p>"
+  },
+  {
+   "heading": "Bioenergy: the strongest link",
+   "html": "<p>Bioenergy can cut emissions, especially combined with carbon capture (BECCS). But it needs land, and sometimes irrigation. More energy crops can mean less forest or higher food prices. Many deep-mitigation scenarios rely on large amounts of bioenergy, so this trade-off matters.</p>"
+  },
+  {
+   "heading": "Water has a price in GCAM",
+   "html": "<p>GCAM tracks water withdrawals and consumption in 235 basins. Supply comes in three tiers: renewable surface water and groundwater first, then non-renewable groundwater, then desalination. As demand nears the cheaper tiers' limits, the basin's water price rises and steers use. Module 2.7 works through the numbers.</p>"
+  },
+  {
+   "heading": "Side effects to look for",
+   "html": "<ul><li>A carbon price that rewards bioenergy can raise land and food prices.</li><li>More thermal power in a dry basin can create water stress; dry cooling uses much less water but costs more.</li><li>Electrifying transport shifts demand to power plants, and so to cooling water.</li></ul>"
+  }
+ ],
+ "callouts": [
+  {
+   "after": 1,
+   "kind": "trap",
+   "title": "Common trap",
+   "html": "<p>\"Bioenergy is carbon-neutral, so more is always better.\" Its land, water and food effects can be large, and land-use change can release carbon.</p>"
+  },
+  {
+   "after": 2,
+   "kind": "gcam",
+   "title": "In GCAM",
+   "html": "<p>GCAM's land model uses more than 300 land units and its water model 235 basins, so the nexus is solved in the same equilibrium as the energy system.</p>"
+  }
+ ],
+ "explorer": {
+  "widget": "nexus",
+  "intro": "Change food demand, irrigation efficiency, power output and bioenergy, and watch the basin's water balance and price.",
+  "predict": "If food demand rises 50% with no efficiency gain, will the basin need groundwater?"
+ },
+ "code": [
+  {
+   "title": "Which supply tier does the basin need?",
+   "lang": "python",
+   "runnable": true,
+   "source": "renewable = 100          # basin renewable supply (units)\nfor food in (100, 130, 160):\n    irrigation = 60 * food / 100\n    demand = irrigation + 15 + 12    # + power cooling + cities\n    tier = 'renewable' if demand <= renewable else 'groundwater' if demand <= 120 else 'desalination'\n    print(f'food {food}%: demand {demand:.0f} -> {tier}')\n",
+   "explain": "Press Run, then add an irrigation efficiency factor of 0.8 and run again.",
+   "expected": "food 100%: demand 87 -> renewable\nfood 130%: demand 105 -> groundwater\nfood 160%: demand 123 -> desalination"
+  }
+ ],
+ "takeaways": [
+  "Water, energy and food are linked through irrigation, cooling and bioenergy.",
+  "Bioenergy ties the energy system to land and food prices.",
+  "GCAM prices water in 235 basins, with costlier supply tiers as demand rises.",
+  "Look for side effects of a policy in the other systems."
+ ],
+ "quiz": [
+  {
+   "q": "Which use takes the most water in most river basins?",
+   "options": [
+    "Cities",
+    "Irrigation",
+    "Data centres",
+    "Desalination"
+   ],
+   "answer": 1,
+   "explain": "Agriculture dominates water withdrawals in most basins."
+  },
+  {
+   "q": "A carbon price that rewards bioenergy can have which side effect?",
+   "options": [
+    "Lower food prices",
+    "Higher land and food prices",
+    "No effect on land",
+    "Less water use everywhere"
+   ],
+   "answer": 1,
+   "explain": "Energy crops compete with food crops for land."
+  },
+  {
+   "q": "In GCAM, what happens as a basin's water demand nears its renewable supply?",
+   "options": [
+    "Nothing",
+    "The water price rises and costlier sources come in",
+    "Population falls",
+    "Power plants close by rule"
+   ],
+   "answer": 1,
+   "explain": "Groundwater, then desalination, at rising prices."
+  },
+  {
+   "q": "Switching power plants to dry cooling mainly…",
+   "options": [
+    "Raises water use",
+    "Cuts water use but costs more",
+    "Cuts CO2 to zero",
+    "Has no effect"
+   ],
+   "answer": 1,
+   "explain": "Dry cooling uses far less water, at a higher cost and slight efficiency loss."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Nexus",
+   "def": "The set of links between water, energy and food (and land) that make them depend on each other."
+  },
+  {
+   "term": "Withdrawal",
+   "def": "Water taken from a source; some returns, some is consumed."
+  },
+  {
+   "term": "BECCS",
+   "def": "Bioenergy with carbon capture and storage, which can remove CO2 from the air."
+  },
+  {
+   "term": "Basin",
+   "def": "The area drained by one river system; GCAM's unit for water supply and demand."
+  }
+ ],
+ "resources": [
+  {
+   "title": "GCAM documentation: water",
+   "url": "https://jgcri.github.io/gcam-doc/water.html",
+   "why": "Basins, demand sectors and supply tiers in GCAM."
+  },
+  {
+   "title": "GCAM documentation: land",
+   "url": "https://jgcri.github.io/gcam-doc/land.html",
+   "why": "How GCAM shares land among crops, forests and bioenergy."
+  },
+  {
+   "title": "IPCC Special Report on Climate Change and Land",
+   "url": "https://www.ipcc.ch/srccl/",
+   "why": "Land, food and bioenergy trade-offs assessed."
+  }
+ ]
+}

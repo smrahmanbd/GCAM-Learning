@@ -5,10 +5,67 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "content"))
 from qbank import Q as QB
 from qhooks import H as QH, PALACE
+import extra  # noqa: F401  (adds modules 1.7–1.10 and 3.9 to the mind maps, question bank and palace)
+from threads import THREADS
+from challenges import CH
+from models import MODELS
+ICONS = json.load(open(os.path.join(ROOT, "content", "icons.json")))
+SYSICON = dict(economy="people", energy="bolt", land="leaf", water="drop", climate="thermo", policy="scale", neutral="market", data="chart")
+LEAFKW = [("price", "coin"), ("cost", "coin"), ("$", "coin"), ("co2", "cloud"), ("emission", "cloud"), ("warm", "thermo"), ("°c", "thermo"), ("land", "leaf"), ("forest", "tree"),
+          ("crop", "wheat"), ("food", "wheat"), ("water", "drop"), ("basin", "drop"), ("solar", "sun"), ("wind", "wind"), ("car", "car"), ("transport", "car"), ("truck", "truck"), ("freight", "truck"),
+          ("air", "plane"), ("people", "people"), ("population", "people"), ("gdp", "chart"), ("income", "coin"), ("market", "market"), ("solver", "gear"), ("logit", "dice"), ("share", "dice"),
+          ("xml", "code"), ("code", "code"), ("query", "search"), ("model", "layers"), ("scenario", "map"), ("ssp", "map"), ("policy", "scale"), ("tax", "scale"), ("cap", "scale"),
+          ("loop", "loop"), ("feedback", "loop"), ("uncertain", "dice"), ("run", "gear"), ("time", "clock"), ("year", "clock"), ("paper", "pen"), ("report", "pen"), ("literature", "book"), ("energy", "bolt"), ("electric", "bolt")]
+
+
+def leaf_icon(t):
+    tl = t.lower()
+    return next((ic for k, ic in LEAFKW if k in tl), None)
+
+
+FIGDIR = os.path.join(ROOT, "assets", "img", "fig")
+FIGCAP = json.load(open(os.path.join(FIGDIR, "captions.json"))) if os.path.exists(os.path.join(FIGDIR, "captions.json")) else {}
+
+
+def figure_html(mid):
+    f = os.path.join(FIGDIR, f"m{mid}.svg")
+    if not os.path.exists(f): return ""
+    t, cap = FIGCAP.get(mid, ["", ""])
+    return (f'<figure class="figure-card">{open(f, encoding="utf-8").read()}<figcaption><b>Picture it: {esc(t)}.</b> <span>{esc(cap)}</span>'
+            f'<button class="btn quiet fig-play" type="button">Pause animation</button></figcaption></figure>')
+
+
+def icon_svg(name, cls=""):
+    return f'<svg viewBox="0 0 24 24" class="{cls}" aria-hidden="true"><path d="{ICONS.get(name, "")}"/></svg>'
+
+
+def threads_html(mid):
+    out = []
+    for t in THREADS:
+        stops = t["stops"]
+        idx = next((i for i, st in enumerate(stops) if st[0] == mid), None)
+        if idx is None: continue
+        steps = "".join(f'<div class="thread-step g{i + 1}{" here" if i == idx else ""}"><div class="tgo">Go {i + 1} · <a href="{slug_of(st[0])}.html">{st[0]}</a></div>{esc(st[1])}</div>' for i, st in enumerate(stops))
+        rec = ""
+        if idx > 0:
+            q, a = stops[idx - 1][2], stops[idx - 1][3]
+            rec = f'<div class="thread-recall"><b>Recall from Go {idx}:</b> {esc(q)} <button class="btn quiet" type="button">Show answer</button><div class="ans">{esc(a)}</div></div>'
+        else:
+            rec = f'<div class="thread-recall"><b>Looking ahead:</b> this idea returns in Go 2 (module {stops[1][0]}) and Go 3 (module {stops[2][0]}), each time deeper.</div>'
+        out.append(f'<div class="thread"><h4>{icon_svg(t["icon"])}Concept thread: {esc(t["name"])}</h4><div class="thread-steps">{steps}</div>{rec}</div>')
+    if not out: return ""
+    return '<h3>The same idea in three goes</h3><p class="small muted">Every core idea comes back in each go, one level deeper. <a href="../spiral.html">See all concept threads</a>.</p>' + "".join(out)
+
+
+SLUGS = {}
+
+
+def slug_of(mid):
+    return SLUGS.get(mid, "")
 SYS = ["economy", "energy", "land", "water", "climate", "policy"]
 SYSNAME = dict(economy="Economy and people", energy="Energy", land="Land and food", water="Water", climate="Emissions and climate", policy="Policy")
 SITE = "GCAM in three goes"
-VER = "20261024c"  # cache-busting tag for CSS/JS
+VER = "20261105a"  # cache-busting tag for CSS/JS
 esc = lambda s: html.escape(str(s), quote=True)
 
 # ------------------------------------------------------------------ the three goes
@@ -57,13 +114,13 @@ GO = {
 
 # module page section names differ by go: the same content, a different reading order and voice
 LABELS = {
-    1: dict(overview="Start here", picture="Look", explore="Predict, then check", parts="The parts", code="Try a quick calculation", take="Remember", quiz="Check yourself", more="Words and links"),
-    2: dict(overview="Start here", picture="Connections map", explore="Play with it", parts="The parts", code="Build it", take="Remember", quiz="Check yourself", more="Words and links"),
-    3: dict(overview="Research brief", picture="The system under study", explore="Stress-test it", parts="Key elements", code="Implement it", take="Research notes", quiz="Check yourself", more="Reading list"),
+    1: dict(overview="Start here", picture="Look", explore="Predict, then check", challenge="Simulation challenges", parts="The parts", code="Try a quick calculation", take="Remember", quiz="Check yourself", more="Words and links"),
+    2: dict(overview="Start here", picture="Connections map", explore="Play with it", challenge="Simulation challenges", parts="The parts", code="Build it", take="Remember", quiz="Check yourself", more="Words and links"),
+    3: dict(overview="Research brief", picture="The system under study", explore="Stress-test it", challenge="Research challenges", parts="Key elements", code="Implement it", take="Research notes", quiz="Check yourself", more="Reading list"),
 }
-ORDER = {1: ["overview", "picture", "explore", "sections", "parts", "code", "mindmap", "take", "quiz", "more"],
-         2: ["overview", "picture", "parts", "sections", "code", "explore", "mindmap", "take", "quiz", "more"],
-         3: ["overview", "picture", "sections", "parts", "code", "explore", "mindmap", "take", "quiz", "more"]}
+ORDER = {1: ["overview", "picture", "explore", "challenge", "sections", "parts", "code", "mindmap", "take", "quiz", "more"],
+         2: ["overview", "picture", "parts", "sections", "code", "explore", "challenge", "mindmap", "take", "quiz", "more"],
+         3: ["overview", "picture", "sections", "parts", "code", "explore", "challenge", "mindmap", "take", "quiz", "more"]}
 
 
 def load():
@@ -85,13 +142,14 @@ def head(title, desc, depth=0, extra=""):
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{up}assets/css/site.css?v={VER}">
 <link rel="icon" href="{up}assets/img/icon.svg" type="image/svg+xml">
+<script src="{up}assets/js/icons.js?v={VER}"></script>
 {extra}</head>
 """
 
 
 def topbar(depth, current, bodyattr=""):
     up = "../" * depth
-    items = [("go1.html", "Foundations"), ("go2.html", "Build and Implement"), ("go3.html", "Research Frontier"), ("questions.html", "Questions"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
+    items = [("go1.html", "Foundations"), ("go2.html", "Build and Implement"), ("go3.html", "Research Frontier"), ("models.html", "Model atlas"), ("spiral.html", "Concept spiral"), ("questions.html", "Questions"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
     nav = "".join(f'<a href="{up}{h}"{" aria-current=page" if h == current else ""}>{t}</a>' for h, t in items)
     dots = "".join(f'<i class="c-{s}"></i>' for s in SYS)
     return f"""<body{bodyattr}>
@@ -105,7 +163,7 @@ def topbar(depth, current, bodyattr=""):
 
 def foot(depth, scripts=True):
     up = "../" * depth
-    s = f'<script src="{up}assets/js/diagrams.js?v={VER}"></script><script src="{up}assets/js/widgets.js?v={VER}"></script><script src="{up}assets/js/site.js?v={VER}"></script>' if scripts else ""
+    s = f'<script src="{up}assets/js/diagrams.js?v={VER}"></script><script src="{up}assets/js/widgets.js?v={VER}"></script><script src="{up}assets/js/widgets2.js?v={VER}"></script><script src="{up}assets/js/site.js?v={VER}"></script><script src="{up}assets/js/challenges.js?v={VER}"></script>' if scripts else ""
     return f"""<footer class="site"><div class="wrap">An open course on the Global Change Analysis Model (GCAM), taught in three goes. GCAM is developed by the Joint Global Change Research Institute (PNNL); this is independent teaching material. GCAM facts follow the GCAM v8.2 documentation and the gcam-core v9.1 source; explorers and toy models are teaching versions with illustrative numbers.</div></footer>
 {s}
 </body></html>"""
@@ -169,11 +227,11 @@ def module_page(m, prev, nxt, diagrams):
     outcomes = "<ul class='outcomes'>" + "".join(f"<li>{esc(o)}</li>" for o in m["outcomes"]) + "</ul>"
     d = m["diagram"]
     blocks = {}
-    blocks["overview"] = lambda: sec("start", L["overview"], f'<h3 style="margin-top:0">{lead}</h3>{outcomes}{narr}')
+    blocks["overview"] = lambda: sec("start", L["overview"], f'<h3 style="margin-top:0">{lead}</h3>{outcomes}{narr}{threads_html(mid)}')
     intro = {1: "Select any box to see what it is, or play the walkthrough to see the idea unfold.",
              2: "This component and the parts of GCAM it trades with. Select a box for detail, or play the walkthrough to follow the mechanism.",
              3: "Select a box for detail, or play the walkthrough."}[g]
-    blocks["picture"] = lambda: sec("picture", L["picture"], f'<p class="prose"><b>{esc(d.get("title", ""))}.</b> {intro}</p>'
+    blocks["picture"] = lambda: sec("picture", L["picture"], figure_html(mid) + f'<p class="prose"><b>{esc(d.get("title", ""))}.</b> {intro}</p>'
                                     f'<div class="diagram-box"><div id="dg-{mid.replace(".", "-")}" data-diagram="m{mid}"><p class="muted">This diagram needs JavaScript. {esc(d.get("caption", ""))}</p></div></div>')
 
     def parts():
@@ -195,6 +253,15 @@ def module_page(m, prev, nxt, diagrams):
         pr = f'<div class="predict"><b>Predict first:</b> {esc(e.get("predict", ""))}</div>' if e.get("predict") else ""
         sec("explore", L["explore"], f'<div class="explorer" data-widget="{e["widget"]}" data-module="{mid}"><p class="prose">{esc(e.get("intro", ""))}</p>{pr}<div class="explorer-box"><p class="muted">This explorer needs JavaScript.</p></div></div>')
     blocks["explore"] = explore
+
+    def challenge():
+        if mid not in CH: return
+        lead3 = {1: "Steer a small model to a goal. Predict first, then move the sliders until the gauge turns green, and press Check. Stars reward first-try solves.",
+                 2: "The same ideas as Go 1, one level deeper: hit each target with the mechanism you just studied.",
+                 3: "Research-style tasks: reproduce, calibrate or stress-test a result with a toy version of the method."}[g]
+        sec("challenges", L["challenge"], f'<p class="prose">{lead3}</p><div class="challenges" data-module="{mid}"><noscript>These challenges need JavaScript.</noscript></div>'
+            f'<script>window.CHALLENGES = window.CHALLENGES || {{}}; window.CHALLENGES[{json.dumps(mid)}] = {json.dumps(CH[mid], ensure_ascii=False)};</script>')
+    blocks["challenge"] = challenge
 
     def code():
         if not m.get("code"): return
@@ -312,6 +379,7 @@ def short(t, n=46):
 def mindmap_data(g, mods):
     return {"title": f"Go {g}: {GO[g]['name']}", "center": f"Go {g}", "subtitle": GO[g]["name"], "promise": GO[g]["promise"],
             "branches": [{"id": m["id"], "title": m["title"], "sys": m["systems"][0], "href": f"modules/{m['slug']}.html", "summary": m["summary"], "hrefLabel": f"Open module {m['id']}",
+                          "img": f"assets/img/fig/m{m['id']}.svg" if os.path.exists(os.path.join(FIGDIR, f"m{m['id']}.svg")) else None,
                           "leaves": [b[0] for b in __import__("mindmaps").MM[m["id"]]][:6], "notes": m["takeaways"][:4]} for m in mods]}
 
 
@@ -337,8 +405,8 @@ def module_mindmap_data(m):
     for i, (title, sysk, summary, leaves) in enumerate(MM[m["id"]]):
         branches.append({"id": str(i + 1), "title": title, "sys": sysk or m["systems"][0], "href": f"#s{i + 1}",
                          "hrefLabel": "Read this section: " + re.sub(r"<[^>]+>", "", m["sections"][i]["heading"]),
-                         "summary": summary, "leaves": [{"t": t, "n": n} for t, n in leaves]})
-    return {"title": f"Module {m['id']}: {m['title']}", "center": m["title"], "subtitle": f"Go {m['go']} · Module {m['id']}",
+                         "summary": summary, "leaves": [dict({"t": t, "n": n}, **({"i": leaf_icon(t + " " + n)} if leaf_icon(t + " " + n) else {})) for t, n in leaves]})
+    return {"title": f"Module {m['id']}: {m['title']}", "center": m["title"], "subtitle": f"Go {m['go']} · Module {m['id']}", "icon": SYSICON.get(m["systems"][0], "globe"),
             "promise": m["summary"], "branches": branches}
 
 
@@ -411,6 +479,8 @@ def questions_page(mods):
 # ------------------------------------------------------------------ build
 def build():
     mods = load()
+    SLUGS.update({m["id"]: m["slug"] for m in mods})
+    open(os.path.join(ROOT, "assets/js/icons.js"), "w").write("window.GCAM_ICONS = " + json.dumps(ICONS) + ";\n")
     os.makedirs(os.path.join(ROOT, "modules"), exist_ok=True)
     for f in glob.glob(os.path.join(ROOT, "modules", "*.html")): os.remove(f)
     diagrams = {"hero": HERO}
@@ -459,7 +529,7 @@ def build():
 <div><h3>Start where you are</h3><p>Each go opens with a three-question check. If you already know the answers, skip ahead. Each go closes with an exit check: tick off what you can do before moving on.</p></div>
 <div><h3>Each go works differently</h3><p>Go 1 is pictures and predict-then-check explorers. Go 2 is connection maps and small models you build. Go 3 is a research brief for each step of a real study, with GCAM files and code.</p></div>
 <div><h3>Real model, honest toys</h3><p>GCAM facts follow the v8.2 documentation and the gcam-core v9.1 source. Explorers and toy models are small teaching versions; their numbers are illustrative and say so.</p></div></div>
-<p style="margin-top:18px"><a href="mindmap-go1.html">Go 1 mind map</a> · <a href="mindmap-go2.html">Go 2 mind map</a> · <a href="mindmap-go3.html">Go 3 mind map</a> · <a href="toolkit.html">Toolkit: {ncode} code examples, handbooks and slides</a> · <a href="glossary.html">Glossary: {len(terms)} terms</a></p>
+<p style="margin-top:18px"><a href="models.html">Model atlas: seven IAMs with animations, simulators and mind maps</a> · <a href="spiral.html">Concept spiral: {len(THREADS)} ideas traced through all three goes</a> · <a href="mindmap-go1.html">Go 1 mind map</a> · <a href="mindmap-go2.html">Go 2 mind map</a> · <a href="mindmap-go3.html">Go 3 mind map</a> · <a href="toolkit.html">Toolkit: {ncode} code examples, handbooks and slides</a> · <a href="glossary.html">Glossary: {len(terms)} terms</a></p>
 </div></section>
 </main>
 """ + foot(0)
@@ -485,6 +555,8 @@ def build():
                 seen.add(r["url"]); res.append(f'<li><a href="{esc(r["url"])}" target="_blank" rel="noopener">{esc(r["title"])}</a><span class="why">{esc(r["why"])} <span class="muted">· module {m["id"]}</span></span></li>')
         mats = [f'<a class="btn" href="{info["handbook"]}">Go {g} handbook (PDF)</a>', f'<a class="btn quiet" href="mindmap-go{g}.html">Zooming mind map</a>', f'<a class="btn quiet" href="questions.html?go={g}">Question bank ({sum(1 for q in QB if q[0].startswith(str(g) + "."))} questions)</a>']
         if info["kit"]: mats.append(f'<a class="btn quiet" href="{info["kit"]}">Go {g} code kit (zip)</a>')
+        if g == 3: mats.append('<a class="btn quiet" href="models.html">Model atlas: 7 IAMs</a>')
+        mats.append('<a class="btn quiet" href="spiral.html">Concept spiral</a>')
         prev_go = f'<a href="go{g - 1}.html">Go {g - 1}</a>' if g > 1 else ""
         nxt = f'<a class="btn" href="go{g + 1}.html">Go on to Go {g + 1}: {esc(GO[g + 1]["name"])}</a>' if g < 3 else '<a class="btn" href="toolkit.html">Start your project with the toolkit</a>'
         skip = f'All three right? You could <a href="go{g + 1}.html">skip ahead to Go {g + 1}</a>, or use this go as revision.' if g < 3 else "All three right? You are ready for the research modules."
@@ -561,7 +633,107 @@ def build():
 <input class="searchbox" id="glossary-search" type="search" placeholder="Search the glossary" aria-label="Search the glossary"><p class="small muted" id="glossary-count">{len(terms)} terms</p></header>
 <dl class="glist" style="margin-top:20px">{gl}</dl></main>""" + foot(0)
     open(os.path.join(ROOT, "glossary.html"), "w").write(page)
+    open(os.path.join(ROOT, "models.html"), "w").write(models_page(mods))
+    open(os.path.join(ROOT, "spiral.html"), "w").write(spiral_page(mods))
     print(f"built {len(mods)} modules, {ncode} code blocks ({nrun} runnable), {len(terms)} terms")
+
+
+
+
+# ------------------------------------------------------------------ model atlas and concept spiral (Nov 2026)
+def models_page(mods):
+    tabs, panels, maps = [], [], {}
+    for i, M in enumerate(MODELS):
+        k = M["key"]
+        tabs.append(f'<button class="narr-lang atlas-tab" type="button" data-k="{k}" aria-pressed="{"true" if i == 0 else "false"}">{icon_svg(M["icon"])}{esc(M["name"])}</button>')
+        facts = "".join(f'<div><b>{esc(a)}</b>{esc(b)}</div>' for a, b in M["facts"])
+        anim = open(os.path.join(FIGDIR, f"model-{k}.svg"), encoding="utf-8").read()
+        disc = "".join(f"<p>{esc(x)}</p>" for x in M["discussion"])
+        maps[f"model-{k}"] = {"title": M["name"], "center": M["name"], "subtitle": "Model atlas", "icon": M["icon"], "promise": M["discussion"][0],
+                              "branches": [{"id": "", "title": t, "sys": sy, "summary": su, "leaves": [dict({"t": a, "n": b}, **({"i": leaf_icon(a + " " + b)} if leaf_icon(a + " " + b) else {})) for a, b in lv]} for t, sy, su, lv in M["mm"]]}
+        panels.append(f"""<section class="atlas-panel" data-k="{k}"{"" if i == 0 else " hidden"}><div class="atlas-card">
+<p class="eyebrow">{esc(M["inst"])}</p><h2 style="margin-top:0">{esc(M["name"])}</h2><div class="atlas-facts">{facts}</div>
+<h3>How it solves (animation)</h3><figure class="figure-card">{anim}<figcaption><b>Watch the solution concept.</b> <span>A teaching animation of the idea, not model output.</span><button class="btn quiet fig-play" type="button">Pause animation</button></figcaption></figure>
+<h3>Discussion</h3><div class="prose">{disc}</div>
+<h3>Simulate it</h3><div class="explorer" data-widget="{M["widget"]}" data-module="atlas-{k}"><div class="explorer-box"><p class="muted">This simulator needs JavaScript.</p></div></div>
+<h3>Mind map</h3>{mm_markup(f"model-{k}", "", embed=True, label=f"Mind map of {M['name']}")}
+</div></section>""")
+    rows = "".join(f'<tr><td><b>{esc(M["name"])}</b></td>' + "".join(f"<td>{esc(dict(M['facts']).get(c, '–'))}</td>" for c in ("Solution", "Foresight", "Regions", "Transport")) + "</tr>" for M in MODELS)
+    whoq = [("I solve one big linear programme with perfect foresight.", 1), ("I clear markets every five years and never look ahead.", 0), ("My regions play a game against each other.", 5),
+            ("I weigh abatement costs against climate damages for one global region.", 6), ("I allocate land to grid cells by suitability.", 3), ("Every market in the economy, labour included, clears each year in me.", 4),
+            ("A planner maximises welfare in me, and my transport module began as a fork of GCAM's.", 2)]
+    names = [M["name"] for M in MODELS]
+    quiz = ""
+    for j, (q, a) in enumerate(whoq):
+        opts = [a] + [x for x in ((a + 1) % 7, (a + 3) % 7, (a + 5) % 7)]
+        rot = j % 4; opts = opts[rot:] + opts[:rot]; ans = opts.index(a)
+        quiz += f'<div class="q" data-answer="{ans}"><p>{j + 1}. "{esc(q)}" Who am I?</p><div class="opts">' + "".join(f'<button class="opt" type="button">{esc(names[o])}</button>' for o in opts) + f'</div><p class="fb" hidden><b class="verdict"></b>It is {esc(names[a])}.</p></div>'
+    page = head(f"Model atlas · {SITE}", "Seven integrated assessment models compared: how each solves, animated, with a simulator, a mind map and a discussion.", 0) + topbar(0, "models.html")
+    page += f"""<main id="main" class="wrap">
+<header class="gohead go3"><p class="eyebrow"><span class="golevel">Go 3 · Research Frontier</span> Companion to module 3.9</p><h1>Model atlas</h1>
+<p class="summary">GCAM and six relatives, each with an animation of how it solves, a toy simulator you can run, a zooming mind map and a discussion of strengths and limits. Read <a href="modules/the-iam-family.html">module 3.9</a> first for the big picture.</p></header>
+<section><h2>All seven at a glance</h2><div class="tscroll"><table class="tbl atlas-cmp"><thead><tr><th>Model</th><th>Solution</th><th>Foresight</th><th>Regions</th><th>Transport</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p class="small muted">From the IAMC model documentation and each model's own documentation. Model versions change: check the version you cite. The simulators are teaching toys that show each solution concept, not the models themselves.</p>
+<div class="explorer" data-widget="modelcompare" data-module="atlas-compare"><div class="explorer-box"></div></div></section>
+<section><h2>Explore one model</h2><div class="atlas-tabs" role="group" aria-label="Choose a model">{"".join(tabs)}</div>{"".join(panels)}</section>
+<section><h2>Quiz: who am I?</h2><div class="quiz" data-module="atlas-quiz">{quiz}<p class="quiz-result" hidden aria-live="polite"></p><button class="btn quiet quiz-again" type="button">Try again</button></div>
+<p class="prose">Then try the <a href="modules/the-iam-family.html#challenges">research challenges in module 3.9</a>: the Hotelling price, the WITCH game and the DICE optimum.</p></section>
+</main>
+<script>window.MINDMAPS = window.MINDMAPS || {{}}; Object.assign(window.MINDMAPS, {json.dumps(maps, ensure_ascii=False)});
+document.querySelectorAll(".atlas-tab").forEach((b) => b.addEventListener("click", () => {{ document.querySelectorAll(".atlas-tab").forEach((x) => x.setAttribute("aria-pressed", x === b)); document.querySelectorAll(".atlas-panel").forEach((p) => (p.hidden = p.dataset.k !== b.dataset.k)); }}));</script>
+<script src="assets/js/mindmap.js?v={VER}"></script>
+""" + foot(0)
+    return page
+
+
+def spiral_page(mods):
+    titles = {m["id"]: m["title"] for m in mods}
+    data = [dict(id=t["id"], name=t["name"], icon=t["icon"], sys=t["sys"], stops=[dict(m=a, slug=SLUGS.get(a, ""), title=titles.get(a, ""), what=b, q=c, a=d) for a, b, c, d in t["stops"]]) for t in THREADS]
+    chips_ = "".join(f'<button class="narr-lang sp-chip" type="button" data-t="{t["id"]}" aria-pressed="false">{esc(t["name"])}</button>' for t in THREADS)
+    page = head(f"Concept spiral · {SITE}", "Every core idea of the course met three times, one level deeper each time.", 0) + topbar(0, "spiral.html")
+    page += f"""<main id="main" class="wrap">
+<header class="gohead"><p class="eyebrow">Spiral curriculum</p><h1>Concept spiral</h1>
+<p class="summary">The course is a spiral: each core idea appears in Go 1 as a picture, returns in Go 2 as a mechanism, and again in Go 3 as a research tool. Select a thread to follow it outward, then test yourself with questions from every level.</p></header>
+<div class="spiral-wrap"><div><svg class="spiral-svg" viewBox="-430 -340 860 680" role="img" aria-label="Concept spiral"></svg>
+<p class="small muted">Inner ring: Go 1 · middle: Go 2 · outer: Go 3. Each coloured line is one idea; select it or a dot.</p></div>
+<div><div class="thread-list" role="group" aria-label="Threads">{chips_}</div><div class="sp-panel atlas-card"><h3 style="margin-top:0">Pick a thread</h3><p>Or press <b>Quiz me</b> for a random question from any go.</p></div>
+<div class="btnrow"><button class="btn sp-quiz" type="button">Quiz me</button><button class="btn quiet sp-play" type="button">Animate all threads</button></div><div class="sp-q"></div></div></div>
+</main>
+<script>
+(function(){{
+const T = {json.dumps(data, ensure_ascii=False)}, NS = "http://www.w3.org/2000/svg", R = [95, 185, 275], svg = document.querySelector(".spiral-svg");
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim(), col = (s) => css("--" + (s === "neutral" ? "ink-soft" : s));
+const el = (t, a, p) => {{ const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p && p.append(e); return e; }};
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}}[c]));
+R.forEach((r, i) => {{ el("circle", {{ cx: 0, cy: 0, r, class: "ring" }}, svg); const t = el("text", {{ x: 0, y: -r + 16, "text-anchor": "middle", style: "font-size:12px;opacity:.6" }}, svg); t.textContent = "Go " + (i + 1); }});
+const lines = {{}};
+T.forEach((t, k) => {{
+  const a0 = (2 * Math.PI * k) / T.length, pts = t.stops.map((s, i) => {{ const a = a0 + i * 0.32; return [R[i] * Math.cos(a), R[i] * Math.sin(a)]; }});
+  const d = `M0,0 Q${{pts[0][0] * 0.5}},${{pts[0][1] * 0.5 - 10}} ${{pts[0][0]}},${{pts[0][1]}} ` + pts.slice(1).map((p, i) => `Q${{(pts[i][0] + p[0]) / 2 * 1.08}},${{(pts[i][1] + p[1]) / 2 * 1.08}} ${{p[0]}},${{p[1]}}`).join(" ");
+  const pth = el("path", {{ d, class: "thr", stroke: col(t.sys) }}, svg); lines[t.id] = pth; pth.addEventListener("click", () => pick(t.id));
+  pts.forEach((p, i) => {{ const g = el("g", {{ class: "stop", tabindex: 0 }}, svg); el("circle", {{ cx: p[0], cy: p[1], r: 9, fill: col(t.sys) }}, g); g.addEventListener("click", () => pick(t.id)); if (i === 2) {{ const tx = el("text", {{ x: p[0] * 1.1, y: p[1] * 1.1 + 4, "text-anchor": p[0] > 0 ? "start" : "end" }}, svg); tx.textContent = t.name; }} }});
+}});
+el("circle", {{ cx: 0, cy: 0, r: 26, fill: css("--ink") }}, svg); const c = el("text", {{ x: 0, y: 5, "text-anchor": "middle", style: `fill:${{css("--paper")}};font-weight:700` }}, svg); c.textContent = "GCAM";
+const panel = document.querySelector(".sp-panel");
+function pick(id) {{
+  const t = T.find((x) => x.id === id);
+  Object.entries(lines).forEach(([k, p]) => p.classList.toggle("on", k === id));
+  document.querySelectorAll(".sp-chip").forEach((b) => b.setAttribute("aria-pressed", b.dataset.t === id));
+  panel.innerHTML = `<h3 style="margin-top:0">${{esc(t.name)}}</h3>` + t.stops.map((s, i) => `<div class="thread-step g${{i + 1}}" style="margin-bottom:8px"><div class="tgo">Go ${{i + 1}} · <a href="modules/${{s.slug}}.html">${{s.m}} ${{esc(s.title)}}</a></div>${{esc(s.what)}}<div class="thread-recall"><b>Recall:</b> ${{esc(s.q)}} <button class="btn quiet" type="button">Show answer</button><div class="ans">${{esc(s.a)}}</div></div></div>`).join("");
+  panel.querySelectorAll(".thread-recall button").forEach((b) => b.addEventListener("click", () => {{ const r = b.closest(".thread-recall"); r.classList.toggle("open"); b.textContent = r.classList.contains("open") ? "Hide" : "Show answer"; }}));
+}}
+document.querySelectorAll(".sp-chip").forEach((b) => b.addEventListener("click", () => pick(b.dataset.t)));
+document.querySelector(".sp-play").addEventListener("click", () => {{ T.forEach((t, i) => setTimeout(() => pick(t.id), i * 900)); }});
+document.querySelector(".sp-quiz").addEventListener("click", () => {{
+  const t = T[Math.floor(Math.random() * T.length)], i = Math.floor(Math.random() * 3), s = t.stops[i], box = document.querySelector(".sp-q");
+  box.innerHTML = `<div class="thread-recall" style="margin-top:12px"><b>Go ${{i + 1}} · ${{esc(t.name)}}:</b> ${{esc(s.q)}} <button class="btn quiet" type="button">Show answer</button><div class="ans">${{esc(s.a)}} <a href="modules/${{s.slug}}.html">Open module ${{s.m}}</a></div></div>`;
+  box.querySelector("button").addEventListener("click", (e) => {{ const r = e.target.closest(".thread-recall"); r.classList.toggle("open"); e.target.textContent = r.classList.contains("open") ? "Hide" : "Show answer"; }});
+  pick(t.id);
+}});
+}})();
+</script>
+""" + foot(0)
+    return page
 
 
 if __name__ == "__main__":

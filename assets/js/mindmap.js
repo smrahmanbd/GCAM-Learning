@@ -15,6 +15,15 @@
     lines.forEach((l) => { const t = el("text", { x, y: ty, "text-anchor": "middle", class: cls, style: `font-size:${size}px` + (color ? `;fill:${color}` : "") }, g); t.textContent = l; ty += lh; });
   }
 
+  const SYSICON = { economy: "people", energy: "bolt", land: "leaf", water: "drop", climate: "thermo", policy: "scale", neutral: "market", data: "chart" };
+  function icon(g, name, cx, cy, r, sys) {
+    const P = (window.GCAM_ICONS || {})[name]; if (!P) return;
+    const ig = el("g", { class: `mm-icon sys-${sys}` }, g);
+    el("circle", { cx, cy, r, class: "mm-icon-bg" }, ig);
+    const k = (r * 1.15) / 24;
+    el("path", { d: P, transform: `translate(${cx - 12 * k},${cy - 12 * k}) scale(${k})`, class: "mm-icon-path", fill: "none", "stroke-width": 1.9 / 1, "stroke-linecap": "round", "stroke-linejoin": "round" }, ig);
+  }
+
   function mount(root, D) {
     const svg = root.querySelector(".mm-svg"), stage = root.querySelector(".mm-stage"), notes = root.querySelector(".mm-notes"), stepEl = root.querySelector(".mm-step");
     const btn = (c) => root.querySelector(".mm-" + c);
@@ -30,6 +39,8 @@
     const subH = sub.length * 30;
     texts(gc, 0, -subH / 2, cl, 38, "node-label", "var(--paper)");
     texts(gc, 0, (cl.length * 44) / 2, sub, 24, "node-sub", "var(--paper)");
+    icon(gc, D.icon || "globe", 0, -CH / 2 - 58, 44, "center");
+    gc.style.setProperty("--d", "0s");
     const all = { x0: -CW / 2, y0: -CH / 2, x1: CW / 2, y1: CH / 2 };
     const grow = (b, x0, y0, x1, y1) => { b.x0 = Math.min(b.x0, x0); b.y0 = Math.min(b.y0, y0); b.x1 = Math.max(b.x1, x1); b.y1 = Math.max(b.y1, y1); };
 
@@ -37,9 +48,13 @@
       const a = -Math.PI / 2 + (2 * Math.PI * i) / n, ux = Math.cos(a), uy = Math.sin(a), side = Math.abs(ux) > 0.35;
       const bx = R1 * ux, by = R1 * uy, BW = 320, blines = wrap(b.title, 22).slice(0, 3), BH = 34 + 30 * (blines.length + (b.id ? 1 : 0));
       const g = el("g", { class: `node br sys-${b.sys}`, tabindex: 0, role: "button", "aria-label": `${b.id ? b.id + ": " : ""}${b.title}. Zoom in` }, gn);
-      el("path", { d: `M0,0 C${R1 * 0.45 * ux},${R1 * 0.45 * uy} ${bx - 140 * ux},${by - 140 * uy} ${bx},${by}`, class: `sysstroke-${b.sys}`, fill: "none", "stroke-width": 7, opacity: 0.55 }, gl);
+      const dly = 0.25 + i * 0.12;
+      g.style.setProperty("--d", dly + "s");
+      const lk = el("path", { d: `M0,0 C${R1 * 0.45 * ux},${R1 * 0.45 * uy} ${bx - 140 * ux},${by - 140 * uy} ${bx},${by}`, class: `sysstroke-${b.sys} mm-link`, "data-b": i, fill: "none", "stroke-width": 7, opacity: 0.55 }, gl);
+      lk.style.setProperty("--d", dly - 0.15 + "s");
       el("rect", { x: bx - BW / 2, y: by - BH / 2, width: BW, height: BH, rx: 16, class: "node-box", "stroke-width": 2.5 }, g);
       texts(g, bx, by, (b.id ? [String(b.id)] : []).concat(blines), 24, "node-label");
+      icon(g, b.icon || SYSICON[b.sys] || "bulb", bx - BW / 2 + 10, by - BH / 2 + 6, 26, b.sys);
       const bb = { x0: bx - BW / 2, y0: by - BH / 2, x1: bx + BW / 2, y1: by + BH / 2 };
       const k = b.leaves.length, H = k * LH + (k - 1) * GAP;
       const ax = side ? bx + Math.sign(ux) * (BW / 2 + 90 + LW / 2) : bx;
@@ -48,11 +63,13 @@
       b.leaves.forEach((lf, j) => {
         const t = typeof lf === "string" ? lf : lf.t, note = typeof lf === "string" ? "" : lf.n || "";
         const ly = ay - H / 2 + LH / 2 + j * (LH + GAP), lx = ax;
-        el("path", { d: `M${bx + (side ? Math.sign(ux) * BW / 2 : 0)},${by + (side ? 0 : Math.sign(uy) * BH / 2)} L${lx - (side ? Math.sign(ux) * LW / 2 : 0)},${ly}`, class: `sysstroke-${b.sys}`, fill: "none", "stroke-width": 2.5, opacity: 0.6 }, gl);
+        const ll = el("path", { d: `M${bx + (side ? Math.sign(ux) * BW / 2 : 0)},${by + (side ? 0 : Math.sign(uy) * BH / 2)} L${lx - (side ? Math.sign(ux) * LW / 2 : 0)},${ly}`, class: `sysstroke-${b.sys} mm-link`, "data-b": i, fill: "none", "stroke-width": 2.5, opacity: 0.6 }, gl);
         const lg = el("g", { class: `node leaf sys-${b.sys}`, tabindex: 0, role: "button", "aria-label": t }, gn);
+        const ld = dly + 0.35 + j * 0.08; lg.style.setProperty("--d", ld + "s"); ll.style.setProperty("--d", ld - 0.1 + "s");
         el("rect", { x: lx - LW / 2, y: ly - LH / 2, width: LW, height: LH, rx: 14, class: "node-box", "stroke-width": 2, style: "fill:var(--card)" }, lg);
         texts(lg, lx, ly, wrap(t, 26).slice(0, 2), 18, "node-label leaf-label", "var(--ink)");
         const q = el("text", { x: lx, y: ly + 8, "text-anchor": "middle", class: "leaf-q", style: "font-size:24px" }, lg); q.textContent = "?";
+        if (typeof lf === "object" && lf.i) icon(lg, lf.i, lx - LW / 2 + 4, ly - LH / 2 + 4, 15, b.sys);
         grow(bb, lx - LW / 2, ly - LH / 2, lx + LW / 2, ly + LH / 2);
         const info = { g: lg, t, note, branch: i, view: { x: lx - LW * 1.8, y: ly - LW * 1.1, w: LW * 3.6, h: LW * 2.2 } };
         lgs.push(info);
@@ -85,12 +102,14 @@
     const dim = (bi, leaf) => {
       groups.forEach((g, j) => (g.style.opacity = bi == null || bi === j ? 1 : 0.35));
       leafGroups.forEach((ls, j) => ls.forEach((l) => { l.g.style.opacity = bi == null || bi === j ? 1 : 0.35; l.g.classList.toggle("picked", l === leaf); }));
+      gl.querySelectorAll(".mm-link").forEach((p) => p.classList.toggle("flow", bi != null && +p.dataset.b === bi));
     };
     const recall = () => root.classList.contains("recall");
     function branchNotes(b, i) {
       const items = leafGroups[i].map((l) => (recall() && !l.g.classList.contains("shown") ? `<li class="muted">? (select it on the map)</li>` : `<li><b>${esc(l.t)}</b>${l.note ? ". " + esc(l.note) : ""}</li>`)).join("");
       const rem = b.notes && b.notes.length ? `<b>Remember</b><ul>${b.notes.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
-      return `<h3>${b.id ? esc(b.id) + " · " : ""}${esc(b.title)}</h3><p>${esc(b.summary || "")}</p><ul class="mm-ideas">${items}</ul>${rem}${b.href ? `<a href="${b.href}">${esc(b.hrefLabel || "Open")}</a>` : ""}`;
+      const img = b.img ? `<img class="mm-img" src="${esc(b.img)}" alt="" loading="lazy">` : "";
+      return `${img}<h3>${b.id ? esc(b.id) + " · " : ""}${esc(b.title)}</h3><p>${esc(b.summary || "")}</p><ul class="mm-ideas">${items}</ul>${rem}${b.href ? `<a href="${b.href}">${esc(b.hrefLabel || "Open")}</a>` : ""}`;
     }
     function go(i) {
       cur = Math.max(0, Math.min(frames.length - 1, i)); const f = frames[cur];
@@ -154,6 +173,7 @@
     const up = (e) => { ptrs.delete(e.pointerId); if (!ptrs.size) { start = null; pinch0 = 0; svg.classList.remove("dragging"); setTimeout(() => (dragged = false), 0); } };
     svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
 
+    if (!reduce) { svg.classList.add("mm-intro"); setTimeout(() => svg.classList.remove("mm-intro"), 4200); }
     go(0);
     return { go, frames: frames.length };
   }

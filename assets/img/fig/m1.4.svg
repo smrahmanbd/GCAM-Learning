@@ -1,0 +1,25 @@
+<svg class="fig-anim" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Market with a carbon tax"><title>Market with a carbon tax</title><style>
+.fg-t{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:15px;fill:var(--ink,#14283a)}
+.fg-h{font-family:Archivo,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:18px;fill:var(--ink,#14283a)}
+.fg-s{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:12.5px;fill:var(--muted,#5d6f7d)}
+.fg-box{fill:var(--card,#ffffff);stroke-width:2.5}
+.fg-ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fg-ic{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fg-draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:fgDraw 3.2s ease-out infinite}
+.fg-pop{transform-box:fill-box;transform-origin:center;animation:fgPop 4s ease-in-out infinite}
+.fg-pulse{transform-box:fill-box;transform-origin:center;animation:fgPulse 2.4s ease-in-out infinite}
+.fg-swing{transform-box:view-box;animation:fgSwing 3.6s ease-in-out infinite}
+.fg-spin{transform-box:fill-box;transform-origin:center;animation:fgSpin 9s linear infinite}
+.fg-flow{stroke-dasharray:10 10;animation:fgFlow 1s linear infinite}
+.fg-grow{transform-box:fill-box;transform-origin:bottom;animation:fgGrow 4.5s ease-out infinite}
+.fg-fade{animation:fgFade 4.5s ease-in-out infinite}
+@keyframes fgDraw{0%{stroke-dashoffset:1400}60%,100%{stroke-dashoffset:0}}
+@keyframes fgPop{0%,8%{opacity:0;transform:scale(.5)}18%,85%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes fgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes fgSwing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes fgSpin{to{transform:rotate(360deg)}}
+@keyframes fgFlow{to{stroke-dashoffset:-20}}
+@keyframes fgGrow{0%{transform:scaleY(0)}35%,90%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:.4}}
+@keyframes fgFade{0%,10%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fg-draw{stroke-dashoffset:0}}
+</style><text class="fg-h" x="24" y="34">Prices balance markets; a carbon price moves the balance</text><text class="fg-s" x="24" y="54">Supply rises with price, demand falls; a tax lifts the supply curve</text><line x1="120" y1="320" x2="560" y2="320" stroke="var(--ink,#14283a)" stroke-width="2.5"/><line x1="120" y1="320" x2="120" y2="70" stroke="var(--ink,#14283a)" stroke-width="2.5"/><text class="fg-s" x="540" y="340">quantity</text><text class="fg-s" x="80" y="80">price</text><line x1="140" y1="90" x2="540" y2="300" class="fg-ln" stroke="var(--water,#2470a8)"/><text class="fg-s" x="470" y="250" fill="var(--water,#2470a8)">demand</text><g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -70;0 -70;0 0" keyTimes="0;.2;.5;.8;1" dur="6s" repeatCount="indefinite"/><line x1="140" y1="300" x2="540" y2="100" class="fg-ln" stroke="var(--energy,#b8790f)"/><text class="fg-s" x="400" y="140">supply + tax</text></g><circle r="9" fill="var(--climate,#a8323e)"><animate attributeName="cx" values="337;337;288;288;337" keyTimes="0;.2;.5;.8;1" dur="6s" repeatCount="indefinite"/><animate attributeName="cy" values="194;194;169;169;194" keyTimes="0;.2;.5;.8;1" dur="6s" repeatCount="indefinite"/></circle><g class=""><rect class="fg-box" x="600.0" y="105.0" width="260" height="70" rx="14" stroke="var(--policy,#3d5a6c)" fill="var(--card,#ffffff)"/><path class="fg-ic " d="M12 3v18M7 21h10M4 7h16M6 7l-3 7a3 3 0 0 0 6 0L6 7zM18 7l-3 7a3 3 0 0 0 6 0l-3-7z" transform="translate(613.0,127.0) scale(1.0833333333333333)" stroke="var(--policy,#3d5a6c)" stroke-width="2.03"/><text class="fg-h" x="744" y="136" text-anchor="middle" style="font-size:16px">Carbon tax</text><text class="fg-s" x="744" y="156" text-anchor="middle">added to dirty options' cost</text></g><g class=""><rect class="fg-box" x="600.0" y="205.0" width="260" height="70" rx="14" stroke="var(--land,#4e7f2f)" fill="var(--card,#ffffff)"/><path class="fg-ic " d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15M5 19c3-4 6-6 10-8" transform="translate(613.0,227.0) scale(1.0833333333333333)" stroke="var(--land,#4e7f2f)" stroke-width="2.03"/><text class="fg-h" x="744" y="236" text-anchor="middle" style="font-size:16px">Cleaner options win</text><text class="fg-s" x="744" y="256" text-anchor="middle">more of the market, not all</text></g><path id="p913686" d="M730,176 L730,204" class="fg-ln fg-flow" stroke="var(--policy,#3d5a6c)"/><path d="M724.7804135906653,193.19463477176788 L730,204 L735.2195864093347,193.19463477176788" class="fg-ln" stroke="var(--policy,#3d5a6c)"/><circle r="6" fill="var(--policy,#3d5a6c)"><animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#p913686"/></animateMotion></circle></svg>

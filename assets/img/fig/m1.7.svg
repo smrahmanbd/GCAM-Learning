@@ -1,0 +1,25 @@
+<svg class="fig-anim" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stock and flow bathtub with feedback"><title>Stock and flow bathtub with feedback</title><style>
+.fg-t{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:15px;fill:var(--ink,#14283a)}
+.fg-h{font-family:Archivo,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:18px;fill:var(--ink,#14283a)}
+.fg-s{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:12.5px;fill:var(--muted,#5d6f7d)}
+.fg-box{fill:var(--card,#ffffff);stroke-width:2.5}
+.fg-ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fg-ic{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fg-draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:fgDraw 3.2s ease-out infinite}
+.fg-pop{transform-box:fill-box;transform-origin:center;animation:fgPop 4s ease-in-out infinite}
+.fg-pulse{transform-box:fill-box;transform-origin:center;animation:fgPulse 2.4s ease-in-out infinite}
+.fg-swing{transform-box:view-box;animation:fgSwing 3.6s ease-in-out infinite}
+.fg-spin{transform-box:fill-box;transform-origin:center;animation:fgSpin 9s linear infinite}
+.fg-flow{stroke-dasharray:10 10;animation:fgFlow 1s linear infinite}
+.fg-grow{transform-box:fill-box;transform-origin:bottom;animation:fgGrow 4.5s ease-out infinite}
+.fg-fade{animation:fgFade 4.5s ease-in-out infinite}
+@keyframes fgDraw{0%{stroke-dashoffset:1400}60%,100%{stroke-dashoffset:0}}
+@keyframes fgPop{0%,8%{opacity:0;transform:scale(.5)}18%,85%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes fgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes fgSwing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes fgSpin{to{transform:rotate(360deg)}}
+@keyframes fgFlow{to{stroke-dashoffset:-20}}
+@keyframes fgGrow{0%{transform:scaleY(0)}35%,90%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:.4}}
+@keyframes fgFade{0%,10%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fg-draw{stroke-dashoffset:0}}
+</style><text class="fg-h" x="24" y="34">A bathtub with a feedback loop</text><text class="fg-s" x="24" y="54">The stock (CO2 in the air) changes by inflow minus outflow; warming weakens the drain</text><path d="M180,140 L180,300 Q180,320 200,320 L440,320 Q460,320 460,300 L460,140" fill="none" stroke="var(--ink,#14283a)" stroke-width="5"/><rect x="185" y="200" width="270" height="117" fill="var(--climate-t,#f7e3e5)"><animate attributeName="y" values="250;180;250" dur="8s" repeatCount="indefinite"/><animate attributeName="height" values="67;137;67" dur="8s" repeatCount="indefinite"/></rect><path d="M140,90 L250,90 L250,120" fill="none" stroke="var(--energy,#b8790f)" stroke-width="8"/><path class="fg-ic " d="M12 22c4 0 7-3 7-7 0-5-5-7-5-12-3 2-4 5-4 7-1-1-2-2-2-4-2 2-3 5-3 9 0 4 3 7 7 7z" transform="translate(105.0,75.0) scale(1.25)" stroke="var(--energy,#b8790f)" stroke-width="1.76"/><circle cx="250" r="5" fill="var(--climate,#a8323e)"><animate attributeName="cy" values="125;250" dur="1s" begin="0.0s" repeatCount="indefinite"/></circle><circle cx="250" r="5" fill="var(--climate,#a8323e)"><animate attributeName="cy" values="125;250" dur="1s" begin="0.25s" repeatCount="indefinite"/></circle><circle cx="250" r="5" fill="var(--climate,#a8323e)"><animate attributeName="cy" values="125;250" dur="1s" begin="0.5s" repeatCount="indefinite"/></circle><circle cx="250" r="5" fill="var(--climate,#a8323e)"><animate attributeName="cy" values="125;250" dur="1s" begin="0.75s" repeatCount="indefinite"/></circle><path d="M455,300 L560,300" fill="none" stroke="var(--land,#4e7f2f)" stroke-width="8" class="fg-flow"/><path class="fg-ic " d="M12 22v-6M12 2l6 8h-3l4 6H5l4-6H6z" transform="translate(573.0,283.0) scale(1.4166666666666667)" stroke="var(--land,#4e7f2f)" stroke-width="1.55"/><text class="fg-s" x="520" y="285" text-anchor="middle">sinks: oceans, forests</text><text class="fg-t" x="320" y="350" text-anchor="middle">stock = CO2 in the air</text><text class="fg-s" x="200" y="80">inflow: emissions</text><g class="fg-spin" style="transform-origin:760px 190px;animation-duration:6s"><path class="fg-ic " d="M20 11a8 8 0 0 0-14.5-4.5M4 13a8 8 0 0 0 14.5 4.5M5 3v4h4M19 21v-4h-4" transform="translate(700.0,130.0) scale(5.0)" stroke="var(--climate,#a8323e)" stroke-width="0.44"/></g><text class="fg-h" x="760" y="196" text-anchor="middle" style="font-size:22px">+</text><text class="fg-t" x="760" y="290" text-anchor="middle">warmer → weaker sinks</text><text class="fg-t" x="760" y="310" text-anchor="middle">→ more CO2 stays → warmer</text></svg>

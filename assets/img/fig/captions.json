@@ -1,0 +1,78 @@
+{
+ "1.1": [
+  "A mobile, not a list",
+  "Like a baby's mobile: touch one piece (say, a carbon price on energy) and land, water and climate all respond."
+ ],
+ "1.2": [
+  "From fuel to fever",
+  "Emissions become concentration, forcing and warming. Watch the dots: they never leave the air, so the stock keeps climbing."
+ ],
+ "1.3": [
+  "Kaya: a four-carriage train",
+  "The Kaya identity splits emissions into four drivers that multiply. Cutting any one factor cuts the product in proportion."
+ ],
+ "1.4": [
+  "A toll on carbon",
+  "The red dot is the market's balance point. When the tax lifts supply, less is sold at a higher price, and cleaner options gain share."
+ ],
+ "1.5": [
+  "A fan of futures",
+  "Five storylines fan out from today. The label pairs the story (SSP) with the forcing it reaches in 2100, not a temperature."
+ ],
+ "1.6": [
+  "GCAM: an auction every five years",
+  "People, energy, land, water and climate orbit one marketplace. GCAM solves one five-year step at a time, without seeing the future."
+ ],
+ "1.7": [
+  "Stocks, flows and loops",
+  "The level only falls when outflow beats inflow. A reinforcing loop (warming weakens sinks) makes the tub fill faster."
+ ],
+ "1.8": [
+  "Cheapest cuts first",
+  "As the dashed carbon price rises, every option whose bar sits below it becomes worth doing. Some cuts even save money."
+ ],
+ "1.9": [
+  "One basin, three thirsts",
+  "Every overlap is a trade-off: more irrigated food or more cooled power both pull on the same basin's water."
+ ],
+ "1.10": [
+  "A band, not a line",
+  "Each thin line is one model run with different assumptions. The shaded band, not any single line, is the honest answer."
+ ],
+ "3.1": [
+  "The research pipeline",
+  "A run is a pipeline. Each stage must be versioned so another researcher can rebuild your exact numbers."
+ ],
+ "3.2": [
+  "Transport as a nesting tree",
+  "Demand flows down the tree: each split is a logit on the generalised cost, which adds the value of travel time."
+ ],
+ "3.3": [
+  "What the literature says",
+  "Read the literature as data: estimates cluster where evidence is strong and scatter where models disagree."
+ ],
+ "3.4": [
+  "A scenario design matrix",
+  "Cells light up one by one: a clear matrix keeps every run tied to a question you can defend."
+ ],
+ "3.5": [
+  "Add-on XML overrides",
+  "The add-on slides over the base inputs and replaces only the values it names; a misspelt name silently adds a new, unused object."
+ ],
+ "3.6": [
+  "Decompose the change",
+  "Each bar grows in turn: rising activity pushes CO2 up, while cleaner modes, efficiency and fuels pull it down to 2050."
+ ],
+ "3.7": [
+  "From region to country",
+  "A region's totals are shared among its countries by rules that converge over time; coupled models add what GCAM cannot see."
+ ],
+ "3.8": [
+  "Write it up, honestly",
+  "Ticks appear one by one: a credible study reports its version, its limits and its distributional effects, and shares its package."
+ ],
+ "3.9": [
+  "The IAM family",
+  "Each model makes different trade-offs. Knowing where a model sits tells you what its results can and cannot mean."
+ ]
+}

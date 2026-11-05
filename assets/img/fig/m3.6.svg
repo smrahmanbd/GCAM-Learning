@@ -1,0 +1,25 @@
+<svg class="fig-anim" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LMDI waterfall"><title>LMDI waterfall</title><style>
+.fg-t{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:15px;fill:var(--ink,#14283a)}
+.fg-h{font-family:Archivo,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:18px;fill:var(--ink,#14283a)}
+.fg-s{font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;font-size:12.5px;fill:var(--muted,#5d6f7d)}
+.fg-box{fill:var(--card,#ffffff);stroke-width:2.5}
+.fg-ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fg-ic{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fg-draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:fgDraw 3.2s ease-out infinite}
+.fg-pop{transform-box:fill-box;transform-origin:center;animation:fgPop 4s ease-in-out infinite}
+.fg-pulse{transform-box:fill-box;transform-origin:center;animation:fgPulse 2.4s ease-in-out infinite}
+.fg-swing{transform-box:view-box;animation:fgSwing 3.6s ease-in-out infinite}
+.fg-spin{transform-box:fill-box;transform-origin:center;animation:fgSpin 9s linear infinite}
+.fg-flow{stroke-dasharray:10 10;animation:fgFlow 1s linear infinite}
+.fg-grow{transform-box:fill-box;transform-origin:bottom;animation:fgGrow 4.5s ease-out infinite}
+.fg-fade{animation:fgFade 4.5s ease-in-out infinite}
+@keyframes fgDraw{0%{stroke-dashoffset:1400}60%,100%{stroke-dashoffset:0}}
+@keyframes fgPop{0%,8%{opacity:0;transform:scale(.5)}18%,85%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes fgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes fgSwing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes fgSpin{to{transform:rotate(360deg)}}
+@keyframes fgFlow{to{stroke-dashoffset:-20}}
+@keyframes fgGrow{0%{transform:scaleY(0)}35%,90%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:.4}}
+@keyframes fgFade{0%,10%{opacity:0}25%,85%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.fg-draw{stroke-dashoffset:0}}
+</style><text class="fg-h" x="24" y="34">Why did transport CO2 change? An LMDI waterfall</text><text class="fg-s" x="24" y="54">Activity, mode structure, energy intensity and carbon factor add up exactly to the total</text><line x1="80" y1="300" x2="860" y2="300" stroke="var(--ink,#14283a)" stroke-width="2"/><rect class="fg-grow" style="animation-delay:0.0s;transform-origin:bottom" x="100" y="160" width="100" height="140" fill="var(--policy-t,#e3eaee)" stroke="var(--policy,#3d5a6c)" stroke-width="2"/><text class="fg-s" x="150" y="325" text-anchor="middle">2020</text><rect class="fg-grow" style="animation-delay:0.4s;transform-origin:bottom" x="240" y="100" width="100" height="60" fill="var(--economy-t,#ece9f6)" stroke="var(--economy,#5a4e8c)" stroke-width="2"/><text class="fg-s" x="290" y="325" text-anchor="middle">activity</text><rect class="fg-grow" style="animation-delay:0.8s;transform-origin:top" x="380" y="100" width="100" height="30" fill="var(--energy-t,#fbf0dc)" stroke="var(--energy,#b8790f)" stroke-width="2"/><text class="fg-s" x="430" y="325" text-anchor="middle">structure</text><rect class="fg-grow" style="animation-delay:1.2000000000000002s;transform-origin:top" x="520" y="130" width="100" height="50" fill="var(--water-t,#e1edf7)" stroke="var(--water,#2470a8)" stroke-width="2"/><text class="fg-s" x="570" y="325" text-anchor="middle">intensity</text><rect class="fg-grow" style="animation-delay:1.6s;transform-origin:top" x="660" y="180" width="100" height="60" fill="var(--land-t,#e6f0dd)" stroke="var(--land,#4e7f2f)" stroke-width="2"/><text class="fg-s" x="710" y="325" text-anchor="middle">carbon</text><rect class="fg-grow" style="animation-delay:2.0s;transform-origin:bottom" x="800" y="240" width="100" height="60" fill="var(--policy-t,#e3eaee)" stroke="var(--policy,#3d5a6c)" stroke-width="2"/><text class="fg-s" x="850" y="325" text-anchor="middle">2050</text></svg>
