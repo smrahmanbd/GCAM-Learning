@@ -1,6 +1,7 @@
 name: Unpack and publish site
 
-# The site is uploaded through the GitHub web page as site-part*.zip (the web uploader cannot keep folders).
+# The site is uploaded through the GitHub web page as site-part*.zip or site*.tar.xz (the web uploader cannot keep folders).
+# After unpacking, the workflow rebuilds figures and pages with content/figgen.py and build.py.
 # This workflow unpacks it into normal files, commits them, and publishes the site with GitHub Pages.
 on:
   push:
@@ -25,8 +26,13 @@ jobs:
         run: |
           shopt -s nullglob
           parts=(site*.zip)
-          if [ ${#parts[@]} -gt 0 ]; then
+          tars=(site*.tar.xz)
+          if [ ${#parts[@]} -gt 0 ] || [ ${#tars[@]} -gt 0 ]; then
             for z in "${parts[@]}"; do unzip -o -q "$z" -d . ; git rm -q --cached "$z" || true; rm -f "$z"; done
+            for t in "${tars[@]}"; do tar -xJf "$t" -C . ; git rm -q --cached "$t" || true; rm -f "$t"; done
+            # regenerate figures and pages from content/ so uploads only need the sources
+            python3 content/figgen.py
+            python3 build.py
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
