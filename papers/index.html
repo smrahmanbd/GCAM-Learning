@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper studies: GCAM and transport · GCAM in three goes</title>
+<meta name="description" content="One journal article at a time: beginner-friendly, interactive summaries of GCAM and transport research.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="plca.css?v=1">
+<link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../go1.html">Foundations</a><a href="../go2.html">Build and Implement</a><a href="../go3.html">Research Frontier</a><a href="index.html" aria-current="page">Paper studies</a><a href="../toolkit.html">Toolkit</a><a href="../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper studies · one journal article at a time</p>
+<h1>Learn GCAM and transport research, one paper a day</h1>
+<p>Each study takes one peer-reviewed journal article and turns it into a beginner-friendly page: what question it asks, how the model works, what it found, animations and explorers to try, a quiz, and how it links to the course. Every page ends with review questions from earlier papers, so what you learned keeps coming back.</p>
+<p class="pl-cite"><span id="count"></span> Newest first. Progress ticks are saved only in this browser.</p>
+</header>
+<section class="pl-sec">
+<div class="pl-ctrls"><label>Search<input id="q" type="search" class="pl-ans" placeholder="title, topic or model"></label></div>
+<div id="list"></div>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material. Summaries are written in our own words; read the original articles via their DOI links. Explorers use illustrative numbers unless a page says otherwise.</div></footer>
+<script src="../assets/js/site.js?v=20261105a"></script>
+<script>
+(async function(){
+  const res = await fetch("papers.json", {cache: "no-cache"}); const P = (await res.json()).sort((a,b)=> b.date.localeCompare(a.date));
+  const done = (()=>{ try { return JSON.parse(localStorage.getItem("gcam-papers-done")||"{}"); } catch(e){ return {}; } })();
+  const save = ()=>{ try { localStorage.setItem("gcam-papers-done", JSON.stringify(done)); } catch(e){} };
+  const esc = (s)=> String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  function draw(){
+    const q = document.getElementById("q").value.toLowerCase();
+    const rows = P.filter(p => !q || JSON.stringify(p).toLowerCase().includes(q));
+    document.getElementById("count").textContent = `${P.length} paper ${P.length===1?"study":"studies"} so far; ${Object.values(done).filter(Boolean).length} marked studied.`;
+    document.getElementById("list").innerHTML = rows.map(p => `<article class="pl-ex">
+      <p class="pl-note">${esc(p.date)} · ${esc(p.level||"Beginner")} · Model: ${esc(p.iam||"")}</p>
+      <h3><a href="${esc(p.pages[p.pages.length-1])}">${esc(p.title)}</a></h3>
+      <p class="pl-cite">${esc(p.citation)} <a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">doi:${esc(p.doi)}</a></p>
+      <p>${(p.topics||[]).map(t=>`<span class="pl-chip" style="background:var(--policy)">${esc(t)}</span>`).join(" ")}</p>
+      <details><summary>Key takeaways</summary><ul>${p.takeaways.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></details>
+      <div class="pl-row">${p.pages.map((g,i)=>`<a class="btn ${i?"":"quiet"}" href="${esc(g)}">${p.pages.length>1 ? (i? "Part 2: the paper" : "Part 1: the basics") : "Open the study"}</a>`).join("")}
+      <label style="margin-left:8px"><input type="checkbox" data-slug="${esc(p.slug)}" ${done[p.slug]?"checked":""}> I've studied this</label></div>
+    </article>`).join("") || "<p>No match.</p>";
+  }
+  document.getElementById("q").addEventListener("input", draw);
+  document.addEventListener("change", e => { if (e.target.dataset.slug) { done[e.target.dataset.slug] = e.target.checked; save(); draw(); } });
+  draw();
+})();
+</script>
+</body></html>

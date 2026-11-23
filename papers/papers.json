@@ -1,0 +1,22 @@
+[
+ {
+  "slug": "bev-plca",
+  "date": "2026-11-23",
+  "title": "Which car has the smallest carbon footprint as the energy system changes?",
+  "citation": "Šimaitis, J., Lupton, R., Vagg, C., Butnar, I., Sacchi, R. & Allen, S. (2025). Communications Earth & Environment 6, 476.",
+  "doi": "10.1038/s43247-025-02447-2",
+  "iam": "TIAM-UCL (via premise)",
+  "topics": ["prospective LCA", "BEV", "hybrids", "hydrogen", "scenarios"],
+  "level": "Beginner",
+  "pages": ["bev-plca-basics.html", "bev-plca.html"],
+  "takeaways": [
+   "A car's footprint depends on when its energy is made, so the use phase should be time-adjusted.",
+   "Electricity decarbonises fastest in every scenario, so BEVs came out 32–47% below hybrids.",
+   "FCEVs won only in the 1.5 °C scenario, thanks to carbon-negative BECCS hydrogen."
+  ],
+  "review": [
+   {"q": "Why does a typical LCA overstate a BEV's footprint?", "a": "It uses today's grid for all 10–20 years of driving, though the grid gets cleaner."},
+   {"q": "What is breakeven mileage?", "a": "The lifetime distance at which a BEV's whole-life footprint drops below a hybrid's."}
+  ]
+ }
+]
