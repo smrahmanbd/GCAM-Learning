@@ -10,11 +10,14 @@ An open, interactive course on the **Global Change Analysis Model (GCAM)**, taug
 
 **Live site:** https://smrahmanbd.github.io/GCAM-Learning/
 
+The **GCAM family** page (`gcam-family.html`) teaches the component models around the core (Hector, Xanthos, Tethys, Demeter, moirai, the land module, the economy and gcamdata) as beginner-friendly decks: one sentence, an animated step-through, an orbitable 3D scene (three.js), inputs and outputs, where it plugs in, a toy explorer and a quiz.
+
 Every module has an interactive system diagram with a walkthrough, a spoken overview (English and Arabic, using the browser's voices), an explorer, code, a short quiz and further reading. Each go has an entry check, an exit check and a zooming mind map (with a PDF of the zoom path that can be imported into Prezi).
 
 ## Structure
 
 - `index.html`, `go1.html`–`go3.html`, `modules/*.html`, `mindmap-go*.html`, `toolkit.html`, `glossary.html` — the site (plain HTML, CSS and JavaScript; no build step needed to host it).
+- `content/family.py` — the GCAM family decks; `assets/js/family3d.js` draws their animations, 3D scenes and explorers (three.js r128 is vendored in `assets/js/vendor/`).
 - `content/*.json` — the source of every module; `build.py` regenerates the pages (`python3 build.py`).
 - `papers/` — paper studies: interactive pages, a study guide and an implementation guide. First study: Šimaitis et al. (2025) on car carbon footprints across 1.5–3 °C pathways (`papers/bev-plca-basics.html`, `papers/bev-plca.html`); slides and study guide PDF in `downloads/papers/`, teaching model in `labs/papers/`.
 - `labs/` — Go 2 toy models (Python and R), the Go 3 transport research kit, and the original R labs.

@@ -9,6 +9,7 @@ import extra  # noqa: F401  (adds modules 1.7–1.10 and 3.9 to the mind maps, q
 from threads import THREADS
 from challenges import CH
 from models import MODELS
+from family import FAMILY, WIDER
 ICONS = json.load(open(os.path.join(ROOT, "content", "icons.json")))
 SYSICON = dict(economy="people", energy="bolt", land="leaf", water="drop", climate="thermo", policy="scale", neutral="market", data="chart")
 LEAFKW = [("price", "coin"), ("cost", "coin"), ("$", "coin"), ("co2", "cloud"), ("emission", "cloud"), ("warm", "thermo"), ("°c", "thermo"), ("land", "leaf"), ("forest", "tree"),
@@ -149,7 +150,7 @@ def head(title, desc, depth=0, extra=""):
 
 def topbar(depth, current, bodyattr=""):
     up = "../" * depth
-    items = [("go1.html", "Foundations"), ("go2.html", "Build and Implement"), ("go3.html", "Research Frontier"), ("models.html", "Model atlas"), ("spiral.html", "Concept spiral"), ("questions.html", "Questions"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
+    items = [("go1.html", "Foundations"), ("go2.html", "Build and Implement"), ("go3.html", "Research Frontier"), ("models.html", "Model atlas"), ("gcam-family.html", "GCAM family"), ("spiral.html", "Concept spiral"), ("questions.html", "Questions"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
     nav = "".join(f'<a href="{up}{h}"{" aria-current=page" if h == current else ""}>{t}</a>' for h, t in items)
     dots = "".join(f'<i class="c-{s}"></i>' for s in SYS)
     return f"""<body{bodyattr}>
@@ -529,7 +530,7 @@ def build():
 <div><h3>Start where you are</h3><p>Each go opens with a three-question check. If you already know the answers, skip ahead. Each go closes with an exit check: tick off what you can do before moving on.</p></div>
 <div><h3>Each go works differently</h3><p>Go 1 is pictures and predict-then-check explorers. Go 2 is connection maps and small models you build. Go 3 is a research brief for each step of a real study, with GCAM files and code.</p></div>
 <div><h3>Real model, honest toys</h3><p>GCAM facts follow the v8.2 documentation and the gcam-core v9.1 source. Explorers and toy models are small teaching versions; their numbers are illustrative and say so.</p></div></div>
-<p style="margin-top:18px"><a href="models.html">Model atlas: seven IAMs with animations, simulators and mind maps</a> · <a href="spiral.html">Concept spiral: {len(THREADS)} ideas traced through all three goes</a> · <a href="mindmap-go1.html">Go 1 mind map</a> · <a href="mindmap-go2.html">Go 2 mind map</a> · <a href="mindmap-go3.html">Go 3 mind map</a> · <a href="toolkit.html">Toolkit: {ncode} code examples, handbooks and slides</a> · <a href="glossary.html">Glossary: {len(terms)} terms</a></p>
+<p style="margin-top:18px"><a href="models.html">Model atlas: seven IAMs with animations, simulators and mind maps</a> · <a href="gcam-family.html">GCAM family: eight component models as animated decks</a> · <a href="spiral.html">Concept spiral: {len(THREADS)} ideas traced through all three goes</a> · <a href="mindmap-go1.html">Go 1 mind map</a> · <a href="mindmap-go2.html">Go 2 mind map</a> · <a href="mindmap-go3.html">Go 3 mind map</a> · <a href="toolkit.html">Toolkit: {ncode} code examples, handbooks and slides</a> · <a href="glossary.html">Glossary: {len(terms)} terms</a></p>
 </div></section>
 </main>
 """ + foot(0)
@@ -643,6 +644,7 @@ def build():
     open(os.path.join(ROOT, "glossary.html"), "w").write(page)
     open(os.path.join(ROOT, "models.html"), "w").write(models_page(mods))
     open(os.path.join(ROOT, "spiral.html"), "w").write(spiral_page(mods))
+    open(os.path.join(ROOT, "gcam-family.html"), "w").write(family_page())
     print(f"built {len(mods)} modules, {ncode} code blocks ({nrun} runnable), {len(terms)} terms")
 
 
@@ -742,6 +744,56 @@ document.querySelector(".sp-quiz").addEventListener("click", () => {{
 </script>
 """ + foot(0)
     return page
+
+
+# ------------------------------------------------------------------ GCAM family decks (Nov 2026)
+def family_page():
+    decks, tabs = [], []
+    for i, M in enumerate(FAMILY):
+        k = M["key"]; slides = []
+        slides.append(f"""<div class="fslide f-title" data-kind="title"><p class="eyebrow"><span class="sys-chip"><i class="c-{M['sys']}"></i>{esc(M['tag'])}</span></p><h2>{esc(M['name'])}</h2><p class="summary">{M['role']}</p><div class="f3d f3d-hero" data-scene="{k}" data-mini="1" aria-hidden="true"></div><p class="small muted">Use the arrows or the ← → keys. Every deck has the same seven stops: one sentence, steps, a 3D view, inputs and outputs, where it plugs in, try it, quiz.</p></div>""")
+        for sl in M["slides"]:
+            kd = sl["kind"]
+            if kd == "sentence":
+                slides.append(f"""<div class="fslide" data-kind="sentence"><p class="eyebrow">In one sentence</p><p class="f-big">{sl['text']}</p><ul class="f-bullets">{''.join(f'<li>{b}</li>' for b in sl['bullets'])}</ul></div>""")
+            elif kd == "steps":
+                items = "".join(f'<li><b>{t}</b><span>{d}</span></li>' for t, d in sl["steps"])
+                slides.append(f"""<div class="fslide" data-kind="steps"><p class="eyebrow">How it works</p><h3>{esc(sl['title'])}</h3><div class="f-steps"><div class="f-anim" data-anim="{sl['anim']}" data-n="{len(sl['steps'])}"></div><ol class="f-steplist">{items}</ol></div><div class="btnrow"><button class="btn quiet f-prev-step" type="button">Previous step</button><button class="btn f-next-step" type="button">Next step</button><button class="btn quiet f-play-steps" type="button">Play all</button></div></div>""")
+            elif kd == "three":
+                slides.append(f"""<div class="fslide" data-kind="three"><p class="eyebrow">In 3D</p><h3>{esc(sl['title'])}</h3><div class="f3d" data-scene="{k}" role="img" aria-label="{esc(sl['title'])}"><p class="muted f3d-fallback">The 3D view needs JavaScript and WebGL.</p></div><p class="f-cap">{sl['caption']}</p><ul class="f-look">{''.join(f'<li>{x}</li>' for x in sl['look'])}</ul></div>""")
+            elif kd == "table":
+                rows = "".join(f'<tr><th scope="row">{esc(a)}</th><td>{b}</td></tr>' for a, b in sl["rows"])
+                slides.append(f"""<div class="fslide" data-kind="table"><p class="eyebrow">Inputs and outputs</p><h3>{esc(sl['title'])}</h3><table class="tbl f-tbl"><tbody>{rows}</tbody></table></div>""")
+            elif kd == "plug":
+                slides.append(f"""<div class="fslide" data-kind="plug"><p class="eyebrow">Where it plugs in</p><h3>{esc(sl['title'])}</h3><div class="f-plug"><div class="f-plug-core" data-sys="{M['sys']}"><span>GCAM core</span></div><div class="f-plug-box f-plug-in"><b>Goes in</b><p>{sl['inp']}</p></div><div class="f-plug-box f-plug-out"><b>Comes back</b><p>{sl['out']}</p></div><div class="f-plug-box f-plug-freq"><b>How often</b><p>{sl['freq']}</p></div></div><p class="f-note"><b>Note.</b> {sl['note']}</p></div>""")
+            elif kd == "try":
+                slides.append(f"""<div class="fslide" data-kind="try"><p class="eyebrow">Try it</p><h3>{esc(sl['title'])}</h3><div class="f-toy explorer-box" data-toy="{sl['toy']}"><p class="muted">This explorer needs JavaScript.</p></div><p class="small muted">{sl['caption']}</p></div>""")
+            elif kd == "quiz":
+                opts = "".join(f'<button class="opt" type="button">{o}</button>' for o in sl["opts"])
+                slides.append(f"""<div class="fslide" data-kind="quiz"><p class="eyebrow">One question</p><div class="quiz" data-module="family-{k}"><div class="q" data-answer="{sl['ans']}"><p class="f-big">{sl['q']}</p><div class="opts">{opts}</div><p class="fb" hidden><b class="verdict"></b>{sl['why']}</p></div><p class="quiz-result" hidden aria-live="polite"></p></div></div>""")
+            elif kd == "read":
+                its = "".join(f'<li><a href="{esc(u)}">{esc(t)}</a><span class="muted"> {esc(n)}</span></li>' for t, u, n in sl["items"])
+                slides.append(f"""<div class="fslide" data-kind="read"><p class="eyebrow">Read more</p><h3>Sources for this deck</h3><ul class="f-read">{its}</ul><p class="small muted">Versions change; check the version you use and cite.</p></div>""")
+        n = len(slides)
+        tabs.append(f'<button class="narr-lang f-tab" type="button" data-k="{k}" aria-pressed="{"true" if i == 0 else "false"}"><i class="c-{M["sys"]}"></i>{esc(M["name"])}</button>')
+        decks.append(f"""<section class="fdeck" data-k="{k}"{"" if i == 0 else " hidden"} aria-label="{esc(M['name'])} deck"><div class="fdeck-bar"><button class="iconbtn f-prev" type="button" aria-label="Previous slide">←</button><span class="f-count"><span class="f-cur">1</span> / {n}</span><button class="iconbtn f-next" type="button" aria-label="Next slide">→</button><span class="f-dots">{''.join('<i></i>' for _ in range(n))}</span><button class="iconbtn f-full" type="button">Full screen</button></div><div class="fstage">{''.join(slides)}</div></section>""")
+    wider = "".join(f'<div class="f-card"><span class="sys-chip"><i class="c-{sy}"></i>{esc(nm)}</span><p>{esc(d)}</p></div>' for _, nm, sy, d in WIDER)
+    page = head(f"GCAM family · {SITE}", "Eight component models of GCAM (Hector, Xanthos, Tethys, Demeter, moirai, land, economy, gcamdata) as beginner-friendly animated decks with 3D views.", 0,
+                extra='<script src="assets/js/vendor/three.min.js"></script>') + topbar(0, "gcam-family.html")
+    page += f"""<main id="main" class="wrap">
+<header class="gohead go2"><p class="eyebrow"><span class="golevel">Go 2 · Build and Implement</span> Companion to modules 2.1 to 2.8</p><h1>The GCAM family</h1>
+<p class="summary">GCAM is a core plus a family of smaller models around it: a climate model inside it, a hydrology model before it, downscalers after it, and a data system that builds its inputs. Each deck below teaches one member in seven stops, with a step animation and a 3D view you can orbit.</p></header>
+<section><h2>The family at a glance</h2><div class="f3d f3d-wide" data-scene="family" role="img" aria-label="The GCAM family in 3D"><p class="muted f3d-fallback">The 3D view needs JavaScript and WebGL.</p></div>
+<p class="small muted">Orbit the family: the core in the middle; models that run <b>before</b> it on the left, <b>inside</b> it in the ring, and <b>after</b> it on the right. Select a member to open its deck.</p>
+<div class="f-tabs" role="group" aria-label="Choose a model">{''.join(tabs)}</div></section>
+<section id="decks">{''.join(decks)}</section>
+<section><h2>The wider family</h2><p class="prose muted">Smaller tools you will meet in papers. Each does one job for GCAM.</p><div class="f-cards">{wider}</div>
+<p class="small muted">Model facts follow each model's documentation and papers, listed on the last slide of every deck. Animations, 3D scenes and explorers are teaching pictures with illustrative numbers, not model output.</p></section>
+</main>
+<script src="assets/js/family3d.js?v={VER}"></script>
+""" + foot(0)
+    return page
+
 
 
 if __name__ == "__main__":
