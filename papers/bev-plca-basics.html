@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The basics: car types, energy and life cycle assessment · GCAM in three goes</title>
+<meta name="description" content="Beginner animations and interactive problems: how BEVs, hybrids, plug-in hybrids and fuel-cell cars work, where their energy comes from, life cycle assessment and IAM scenarios.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="plca.css?v=1">
+<link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../go1.html">Foundations</a><a href="../go2.html">Build and Implement</a><a href="../go3.html">Research Frontier</a><a href="../models.html">Model atlas</a><a href="../toolkit.html">Toolkit</a><a href="../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study · Transport · Part 1 of 2 · No background needed</p>
+<h1>The basics: cars, energy and carbon footprints</h1>
+<p>Before you open the paper, learn the building blocks: the five kinds of car, how energy flows inside each one, where electricity, diesel and hydrogen come from, what a life cycle assessment counts, and what an integrated assessment model scenario is. Every section has something to click and a problem with a worked solution.</p>
+<p class="pl-cite">Then go on to <a href="bev-plca.html">Part 2: the paper, hands-on</a>.</p>
+<ul class="pl-toc">
+<li><a href="#cars">1 · Five kinds of car</a></li><li><a href="#eff">2 · Where the energy goes</a></li><li><a href="#grid">3 · Make your own grid</a></li><li><a href="#h2">4 · Make your own hydrogen</a></li><li><a href="#sort">5 · Sorting game</a></li><li><a href="#lca">6 · Life cycle assessment</a></li><li><a href="#iam">7 · Scenarios from an IAM</a></li><li><a href="#probs">8 · Practice problems</a></li><li><a href="#bquiz">9 · Quiz</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="cars">
+<h2><span class="pl-num">1</span>Animation: five kinds of car</h2>
+<p class="lead">Click a car, then a <b>driving mode</b>. The moving dashes show which way energy flows. Watch for regenerative braking, when the motor runs backwards as a generator and puts energy back into the battery.</p>
+<div class="pl-cards" id="car-cards" role="group" aria-label="Choose a vehicle type"></div>
+<div class="pl-box">
+<div class="pl-ctrls" id="mode-row" role="group" aria-label="Driving mode"></div>
+<svg class="pl-svg" id="car-svg" viewBox="0 50 720 250" role="img" aria-labelledby="car-title"><title id="car-title">Schematic of the selected car's powertrain with animated energy flows</title>
+<defs><marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="currentColor"/></marker></defs>
+<g font-family="var(--body)" font-size="12" fill="var(--ink)">
+<path d="M60 230 L60 170 Q70 140 120 132 L230 120 Q290 70 380 72 L480 74 Q540 80 590 125 L650 140 Q668 146 668 170 L668 230 Z" fill="var(--paper-2)" stroke="var(--ink-soft)" stroke-width="2"/>
+<path d="M250 120 Q300 86 375 86 L470 88 Q520 94 560 124 Z" fill="var(--paper)" stroke="var(--line)"/>
+<g id="c-engine"><rect x="85" y="146" width="105" height="52" rx="8" fill="var(--energy-t)" stroke="var(--energy)" stroke-width="2"/><text x="137" y="170" text-anchor="middle" font-weight="700">Engine</text><text x="137" y="186" text-anchor="middle" font-size="10">burns diesel</text></g>
+<g id="c-motor"><circle cx="232" cy="172" r="26" fill="var(--land-t)" stroke="var(--land)" stroke-width="2"/><text x="232" y="170" text-anchor="middle" font-weight="700" font-size="11">Motor /</text><text x="232" y="183" text-anchor="middle" font-size="10">generator</text></g>
+<g id="c-battery"><rect id="bat-rect" x="270" y="196" width="190" height="26" rx="5" fill="var(--water-t)" stroke="var(--water)" stroke-width="2"/><text id="bat-label" x="365" y="214" text-anchor="middle" font-weight="700" font-size="11">Battery</text></g>
+<g id="c-fc"><rect x="290" y="128" width="90" height="46" rx="6" fill="var(--economy-t)" stroke="var(--economy)" stroke-width="2"/><text x="335" y="148" text-anchor="middle" font-weight="700">Fuel cell</text><text x="335" y="163" text-anchor="middle" font-size="10">H₂ + O₂ → power</text></g>
+<g id="c-h2"><rect x="420" y="128" width="120" height="46" rx="23" fill="var(--economy-t)" stroke="var(--economy)" stroke-width="2"/><text x="480" y="156" text-anchor="middle" font-weight="700">H₂ tank (700 bar)</text></g>
+<g id="c-tank"><rect x="480" y="150" width="80" height="38" rx="5" fill="var(--energy-t)" stroke="var(--energy)" stroke-width="2"/><text x="520" y="174" text-anchor="middle" font-weight="700">Fuel tank</text></g>
+<g id="c-plug"><rect x="640" y="150" width="20" height="18" rx="3" fill="var(--water)"/><path d="M660 159 C690 159 690 100 705 100" stroke="var(--water)" stroke-width="3" fill="none"/><text x="700" y="92" text-anchor="end" font-size="11" fill="var(--water)">plug</text></g>
+<g id="c-pump"><path d="M705 120 L640 140" stroke="var(--economy)" stroke-width="3"/><text x="700" y="112" text-anchor="end" font-size="11" fill="var(--economy)">H₂ pump</text></g>
+<g id="c-exhaust"><rect x="640" y="222" width="34" height="8" rx="3" fill="var(--ink-soft)"/><g id="puffs" fill="var(--data)" opacity=".55"><circle class="puff" cx="684" cy="226" r="6"/><circle class="puff p2" cx="684" cy="226" r="6"/><circle class="puff p3" cx="684" cy="226" r="6"/></g></g>
+<g id="c-water"><g fill="var(--water)" opacity=".7"><circle class="drip" cx="660" cy="236" r="3"/><circle class="drip p2" cx="660" cy="236" r="3"/></g><text x="700" y="268" text-anchor="end" font-size="10" fill="var(--water)">only water</text></g>
+<g class="wheel" id="w1"><circle cx="160" cy="236" r="32" fill="var(--ink)"/><circle cx="160" cy="236" r="12" fill="var(--paper-3)"/><path d="M160 210 V262 M134 236 H186" stroke="var(--paper-3)" stroke-width="4"/></g>
+<g class="wheel" id="w2"><circle cx="560" cy="236" r="32" fill="var(--ink)"/><circle cx="560" cy="236" r="12" fill="var(--paper-3)"/><path d="M560 210 V262 M534 236 H586" stroke="var(--paper-3)" stroke-width="4"/></g>
+<g fill="none" stroke-width="4" stroke-linecap="round">
+<path id="f-tank-eng" class="pl-flow" d="M480 166 C380 110 260 118 192 160" stroke="var(--energy)"/>
+<path id="f-eng-wheel" class="pl-flow" d="M137 198 L155 222" stroke="var(--energy)"/>
+<path id="f-mot-wheel" class="pl-flow" d="M218 194 C200 214 185 222 178 226" stroke="var(--land)"/>
+<path id="f-bat-mot" class="pl-flow" d="M272 206 C262 200 258 192 256 184" stroke="var(--water)"/>
+<path id="f-plug-bat" class="pl-flow" d="M640 160 C600 200 520 210 462 209" stroke="var(--water)"/>
+<path id="f-h2-fc" class="pl-flow" d="M420 151 L382 151" stroke="var(--economy)"/>
+<path id="f-fc-mot" class="pl-flow" d="M290 160 C275 166 266 168 258 170" stroke="var(--economy)"/>
+<path id="f-fc-bat" class="pl-flow" d="M335 174 L335 196" stroke="var(--economy)"/>
+<path id="f-pump-h2" class="pl-flow" d="M640 140 C600 120 570 140 542 148" stroke="var(--economy)"/>
+<path id="f-eng-mot" class="pl-flow" d="M190 172 L206 172" stroke="var(--energy)"/>
+</g>
+<text id="mode-caption" x="360" y="294" text-anchor="middle" font-size="13" fill="var(--ink-soft)"></text>
+</g></svg>
+<div class="pl-grid2" style="margin-top:8px"><div id="car-text"></div><table class="pl-tbl" id="car-tbl"></table></div>
+</div>
+<style>
+.wheel { transform-box: fill-box; transform-origin: center; }
+.spin .wheel { animation: pl-spin 1s linear infinite; } .spin-rev .wheel { animation: pl-spin 1.6s linear infinite; }
+@keyframes pl-spin { to { transform: rotate(-360deg); } }
+.puff { animation: pl-puff 1.8s ease-out infinite; transform-box: fill-box; transform-origin: center; } .p2 { animation-delay: .6s; } .p3 { animation-delay: 1.2s; }
+@keyframes pl-puff { 0% { transform: translate(0,0) scale(.4); opacity: .9; } 100% { transform: translate(34px,-26px) scale(1.8); opacity: 0; } }
+.drip { animation: pl-drip 1.4s ease-in infinite; } @keyframes pl-drip { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(26px); opacity: 0; } }
+#car-svg [hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .spin .wheel, .puff, .drip { animation: none; } }
+</style>
+</section>
+
+<section class="pl-sec" id="eff">
+<h2><span class="pl-num">2</span>Animation: where does the energy go?</h2>
+<p class="lead">Put <b>100 units of energy</b> into each car (in the tank, the battery or the hydrogen tank) and watch how much actually turns the wheels. Rough typical values, not from the paper.</p>
+<div class="pl-box">
+<div class="btnrow"><button class="btn" id="eff-play" type="button">Pour in 100 units</button></div>
+<div id="eff-bars"></div>
+<p class="pl-read">Electric motors waste little energy. Engines lose most of it as heat. That is why a BEV needs only about 19–29 kWh per 100 km in the paper, roughly a third of the energy in the diesel an engine would burn. A fuel cell sits in between. <b>But efficiency is not the whole story:</b> what matters for the climate is also how dirty the energy was to make. That is the next two sections.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="grid">
+<h2><span class="pl-num">3</span>Interactive: make your own electricity grid</h2>
+<p class="lead">A BEV is only as clean as the electricity it charges on. Move the sliders to build a grid (the shares are rescaled to 100%) and watch the BEV's <b>use-phase</b> emissions change. The hybrid line stays put, because it does not use the grid.</p>
+<div class="pl-box">
+<div class="btnrow" id="grid-presets"></div>
+<div class="pl-grid2">
+<div class="pl-ctrls" id="grid-sliders" style="flex-direction:column;align-items:stretch"></div>
+<div><canvas class="pl-canvas" id="grid-cnv" aria-label="Chart comparing BEV and HEV use-phase emissions"></canvas><p class="pl-read" id="grid-read"></p></div>
+</div>
+<p class="pl-note">Life-cycle emission factors per kWh generated, rounded medians from IPCC AR5 (coal 820, gas 490, solar 48, hydro 24, nuclear 12, wind 11 g CO₂e/kWh), plus about 8% grid losses. BEV: 0.20 kWh/km at the plug. HEV: 5.5 L diesel per 100 km × (2.68 exhaust + 0.55 supply) kg CO₂e/L.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="h2">
+<h2><span class="pl-num">4</span>Interactive: make your own hydrogen</h2>
+<p class="lead">Today most hydrogen comes from natural gas. Choose a mix of production routes. <b>Grid electrolysis uses the grid you built above</b>: about 52 kWh of electricity per kg of H₂, so a dirty grid gives dirty hydrogen.</p>
+<div class="pl-box">
+<div class="pl-grid2">
+<div class="pl-ctrls" id="h2-sliders" style="flex-direction:column;align-items:stretch"></div>
+<div><canvas class="pl-canvas" id="h2-cnv" aria-label="Chart of hydrogen carbon intensity and FCEV emissions"></canvas><p class="pl-read" id="h2-read"></p></div>
+</div>
+<p class="pl-note">Illustrative factors: steam methane reforming (SMR) 11, coal gasification 20, renewable electrolysis 1, BECCS −15 kg CO₂e per kg H₂. FCEV: 1.0 kg H₂ per 100 km. In the paper's 1.5 °C scenario, TIAM-UCL builds a lot of BECCS hydrogen. That is why FCEVs come out best there.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="sort">
+<h2><span class="pl-num">5</span>Game: sort the energy routes</h2>
+<p class="lead">Drag each card into a box, or click a card and then click a box. Press <b>Check</b> to see which are right and why.</p>
+<div class="pl-box">
+<div class="pl-sort" id="sort-pool" aria-label="Cards to sort"></div>
+<div class="pl-bins" id="sort-bins"></div>
+<div class="btnrow" style="margin-top:10px"><button class="btn" id="sort-check" type="button">Check</button><button class="btn quiet" id="sort-reset" type="button">Start again</button></div>
+<div id="sort-fb" class="pl-read" aria-live="polite">Sort all 12 cards, then press Check.</div>
+</div>
+</section>
+
+<section class="pl-sec" id="lca">
+<h2><span class="pl-num">6</span>Animation: what a life cycle assessment counts</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead">An <b>LCA</b> adds up the greenhouse gases from every stage of a product's life, <b>cradle to grave</b>:</p>
+<ol class="prose">
+<li><b>Raw materials and manufacturing.</b> Steel, aluminium, battery metals, factories.</li>
+<li><b>Use.</b> Making the energy (well-to-tank), plus anything coming out of the tailpipe (tank-to-wheel).</li>
+<li><b>End of life.</b> Dismantling and recycling.</li>
+</ol>
+<p class="lead">Different gases are converted to <b>CO₂-equivalents (CO₂e)</b> using their 100-year global warming potential (IPCC 2021). The total is divided by the lifetime distance, giving the <b>functional unit</b>: <b>g CO₂e per km</b>.</p>
+<div class="callout trap"><h4>The trap the paper fixes</h4><p>A <b>typical</b> LCA uses 2025 data for all stages. But the use stage happens <i>later</i>, when energy will be cleaner. A <b>prospective, time-adjusted</b> LCA gives each year of driving its own energy mix.</p></div>
+</div>
+<div class="pl-box">
+<div class="pl-ctrls"><label>Method<select id="lca-meth"><option value="No scenario">Typical LCA (2025 energy all life)</option><option value="Ambitious (<2 °C)">Time-adjusted pLCA (&lt;2 °C)</option></select></label><button class="btn" id="lca-play" type="button">Play the life</button></div>
+<canvas class="pl-canvas" id="lca-cnv" aria-label="Animated stacked bars of cumulative emissions through a car's life"></canvas>
+<p class="pl-read" id="lca-read">Press Play. The China, Medium SUV, 200,000 km, 15-year case, using the teaching model.</p>
+</div>
+</div>
+</section>
+
+<section class="pl-sec" id="iam">
+<h2><span class="pl-num">7</span>Scenarios from an integrated assessment model</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead">An <b>integrated assessment model (IAM)</b> represents the world's energy system, economy and emissions. It asks: <i>if the world aims for X °C, which power plants, fuels and hydrogen plants get built, where and when?</i> The paper uses <b>TIAM-UCL</b>, which picks the <b>cheapest</b> way to meet energy demand within a climate limit, across 16 regions.</p>
+<p class="lead">Scenarios combine a <b>storyline</b> (SSP2, "middle of the road") with a <b>climate target</b> (an RCP, measured in W/m² of extra heating in 2100). Click a scenario:</p>
+<div class="pl-cards" id="scen-cards"></div>
+</div>
+<div class="pl-box"><canvas class="pl-canvas" id="scen-cnv" aria-label="Chart of electricity, diesel and hydrogen carbon intensity paths in the selected scenario"></canvas><p class="pl-read" id="scen-read"></p></div>
+</div>
+</section>
+
+<section class="pl-sec" id="probs">
+<h2><span class="pl-num">8</span>Practice problems (with worked solutions)</h2>
+<p class="lead">Pencil-and-paper sums that build up to the paper's method. Type an answer and press Check.</p>
+<div id="prob-list"></div>
+</section>
+
+<section class="pl-sec" id="bquiz">
+<h2><span class="pl-num">9</span>Quiz: which car am I?</h2>
+<div class="pl-quiz" id="bq" data-q='[
+{"q":"I have a small battery (under 5 kWh) that I charge only by braking and from my engine. I cannot be plugged in.","o":["BEV","HEV (full or mild hybrid)","PHEV","FCEV"],"a":1,"e":"A hybrid recovers braking energy to help the engine. The paper uses diesel HEVs as its main combustion car."},
+{"q":"I carry hydrogen at 700 bar and the only thing out of my tailpipe is water.","o":["FCEV","PHEV","ICEV","BEV"],"a":0,"e":"The fuel cell combines hydrogen with oxygen from the air. My climate impact depends on how the hydrogen was made."},
+{"q":"I can drive about 50 km on my plug-in battery, then my engine takes over.","o":["HEV","BEV","PHEV","FCEV"],"a":2,"e":"Plug-in hybrid. The paper assumes 47% of km are electric (the utility factor), but real drivers often charge less."},
+{"q":"My battery is 14–80 kWh (NMC-811 in the paper) and I have no tailpipe.","o":["BEV","HEV","ICEV","FCEV"],"a":0,"e":"A battery electric vehicle. Its big battery means a large production footprint, but low use-phase emissions on a clean grid."},
+{"q":"Which number is closest to the CO₂ released by burning 1 litre of diesel?","o":["0.27 kg","2.7 kg","27 kg","270 g per km"],"a":1,"e":"About 2.68 kg CO₂ per litre. The carbon in the fuel joins with oxygen from the air, which is why the CO₂ weighs more than the fuel."},
+{"q":"What does RCP2.6 mean?","o":["2.6 °C of warming","2.6 W/m² of extra radiative forcing in 2100","26% renewables","Region 2, policy 6"],"a":1,"e":"An RCP names the extra heating at the top of the atmosphere in 2100. RCP2.6 keeps warming well below 2 °C."}
+]'></div>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on Šimaitis et al. (2025), Commun. Earth Environ. 6, 476, CC BY 4.0. Values on this page are rounded or illustrative. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../assets/js/site.js?v=20261105a"></script>
+<script src="bev-plca-model.js?v=1"></script>
+<script src="plca-common.js?v=1"></script>
+<script src="bev-plca-basics.js?v=1"></script>
+</body></html>

@@ -602,6 +602,12 @@ def build():
     kits = "".join([item("downloads/go2-kit.zip", "Go 2 kit: toy models in Python and R", "Nine toy models with identical Python and R versions, plus GCAM reader scripts."),
                     item("downloads/go3-transport-kit.zip", "Go 3 transport research kit", "Transport toy model, add-on XML templates, batch file, queries, decomposition, scenario discovery, downscaling, templates."),
                     item("downloads/iam-course-labs.zip", "R lab project (labs 1 to 14)", "RStudio project with lab scripts, solutions and GCAM files.")])
+    papers = "".join(['<li><a href="papers/bev-plca-basics.html">Cars across 1.5–3 °C futures, part 1: the basics</a><span class="why">Animated car types and energy flows, grid and hydrogen mixers, a sorting game, life cycle assessment and IAM scenarios, with practice problems.</span></li>',
+                      '<li><a href="papers/bev-plca.html">Cars across 1.5–3 °C futures, part 2: the paper hands-on (Šimaitis et al. 2025)</a><span class="why">Time machine, footprint calculator, breakeven race, 5,000-car Monte Carlo and sensitivity explorer, with worked exercises and a quiz.</span></li>',
+                      item("downloads/papers/BEV-pLCA-Simaitis2025-slides.pptx", "Beginner slides (PowerPoint)", "21 slides with speaker notes; a PDF version sits beside it."),
+                      item("downloads/papers/BEV-pLCA-Simaitis2025-study-guide.pdf", "Brief study guide (PDF)", "Three pages: build-up of ideas, numbers to remember, self-test and glossary."),
+                      '<li><a href="labs/papers/bev_plca_toy.py" download>bev_plca_toy.py</a><span class="why">The teaching model behind the explorers, with worked solutions.</span></li>',
+                      '<li><a href="papers/bev-plca-implementation-guide.md">Implementation guide: replicate the study with Claude Code in VS Code</a><span class="why">Three tracks: teaching model, full premise + ecoinvent replication, and a GCAM variant.</span></li>'])
     mm = "".join(item(f"downloads/mindmaps/Go{g}-mind-map-path.pdf", f"Go {g} mind map, zoom path (PDF)", "Each zoom step as a page; import into Prezi or present as is.") for g in (1, 2, 3))
     slides = "".join(item(f"downloads/slides/{os.path.basename(p)}", os.path.basename(p)[:-4].replace("-", " ").replace("Week", "Week "), "Lecture and lab slides (PDF); the editable PowerPoint has the same name.") for p in sorted(glob.glob(os.path.join(ROOT, "downloads", "slides", "*.pdf"))))
     trs = "".join(f'<tr data-id="{m["id"]}"><td>{m["id"]}</td><td><a href="modules/{m["slug"]}.html">{esc(m["title"])}</a></td>' + '<td class="k">–</td>' * 7 + "</tr>" for m in mods)
@@ -612,6 +618,7 @@ def build():
 <div class="tscroll"><table class="tbl"><thead><tr><th>Where</th><th>Example</th><th>Language</th><th>How to use</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
 <h2>Handbooks</h2><ul class="reslist">{hand}</ul>
 <h2>Code kits</h2><ul class="reslist">{kits}</ul>
+<h2>Paper studies</h2><ul class="reslist">{papers}</ul>
 <h2>Mind maps</h2><ul class="reslist">{mm}<li><a href="mindmap-go1.html">Zooming mind maps in the browser</a><span class="why">Go 1, Go 2 and Go 3, presentable full screen.</span></li></ul>
 <h2>GCAM itself</h2><ul class="reslist">
 <li><a href="https://jgcri.github.io/gcam-doc/toc.html" target="_blank" rel="noopener">GCAM v8.2 documentation</a><span class="why">The official documentation: overview, every component, policies, the data system and user guides.</span></li>

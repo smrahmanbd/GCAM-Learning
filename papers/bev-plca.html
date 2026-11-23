@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper study: cars across 1.5–3 °C futures (prospective LCA) · GCAM in three goes</title>
+<meta name="description" content="Beginner-friendly animations, explorers and worked solutions for Šimaitis et al. (2025): battery electric vehicles show the lowest carbon footprints across 1.5–3.0 °C pathways.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="plca.css?v=1">
+<link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../go1.html">Foundations</a><a href="../go2.html">Build and Implement</a><a href="../go3.html">Research Frontier</a><a href="../models.html">Model atlas</a><a href="../toolkit.html">Toolkit</a><a href="../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study · Transport · Go 3 companion · Part 2 of 2</p>
+<h1>Which car has the smallest carbon footprint as the energy system changes?</h1>
+<p>A hands-on companion to <b>Šimaitis, Lupton, Vagg, Butnar, Sacchi &amp; Allen (2025)</b>. In this study a car's footprint is worked out year by year, so each year of driving uses that year's electricity, diesel or hydrogen, taken from an integrated assessment model's scenario. Every chart on this page is driven by a <b>small teaching model</b> whose numbers are made up but set close to the paper's headline results.</p>
+<p class="pl-cite">Paper: <a href="https://doi.org/10.1038/s43247-025-02447-2" target="_blank" rel="noopener">Communications Earth &amp; Environment 6, 476 (2025)</a>, open access (CC BY 4.0). New to cars and LCA? Start with <a href="bev-plca-basics.html">Part 1: the basics</a>.</p>
+<ul class="pl-toc">
+<li><a href="#idea">1 · The big idea</a></li><li><a href="#time">2 · Time machine</a></li><li><a href="#calc">3 · Footprint calculator</a></li><li><a href="#breakeven">4 · Breakeven race</a></li><li><a href="#mc">5 · 5,000 cars</a></li><li><a href="#gsa">6 · What matters most</a></li><li><a href="#ex">7 · Exercises</a></li><li><a href="#quiz">8 · Quiz</a></li><li><a href="#gcam">9 · Link to GCAM</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="idea">
+<h2><span class="pl-num">1</span>The big idea in one minute</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead">A car is built once (<b>year 0</b>) and then driven for 10–20 years. Most life cycle assessments (LCAs) use <b>today's</b> energy data for every stage, as if the whole life happened in 2025. But the electricity grid, diesel and hydrogen will all change while the car is being driven.</p>
+<p class="lead">The authors fix this with a <b>time-adjusted prospective LCA (pLCA)</b>. Production uses 2025 data, the use phase is split into 5-year periods, each with that period's energy mix, and end-of-life sits in the last year. The mixes come from <b>four TIAM-UCL scenarios</b> (3.0 °C down to 1.5 °C).</p>
+<div class="callout try"><h4>The finding</h4><p>In about 5,000 comparisons, <b>battery electric vehicles (BEVs) almost always had the lowest footprint</b>. On average they were 32% (3.0 °C world) to 47% (1.5 °C world) below hybrids. That is because electricity is expected to decarbonise much faster than diesel or hydrogen.</p></div>
+</div>
+<div class="pl-box">
+<svg class="pl-svg" viewBox="0 0 460 300" role="img" aria-label="Diagram: TIAM-UCL scenarios feed premise, which changes the ecoinvent database; carculator builds vehicle inventories; brightway combines them into footprints per kilometre">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink-soft)"/></marker></defs>
+<g font-size="13" font-family="var(--body)" fill="var(--ink)">
+<rect x="10" y="14" width="190" height="56" rx="10" fill="var(--climate-t)" stroke="var(--climate)"/><text x="105" y="38" text-anchor="middle" font-weight="700">TIAM-UCL (the IAM)</text><text x="105" y="56" text-anchor="middle" font-size="11">4 scenarios · 16 regions · 2025–2050</text>
+<rect x="10" y="118" width="190" height="56" rx="10" fill="var(--energy-t)" stroke="var(--energy)"/><text x="105" y="142" text-anchor="middle" font-weight="700">premise</text><text x="105" y="160" text-anchor="middle" font-size="11">rewrites ecoinvent for each scenario/year</text>
+<rect x="260" y="14" width="190" height="56" rx="10" fill="var(--water-t)" stroke="var(--water)"/><text x="355" y="38" text-anchor="middle" font-weight="700">carculator</text><text x="355" y="56" text-anchor="middle" font-size="11">car inventories: 4 powertrains × 7 sizes</text>
+<rect x="10" y="222" width="190" height="56" rx="10" fill="var(--data-t)" stroke="var(--data)"/><text x="105" y="246" text-anchor="middle" font-weight="700">ecoinvent 3.9.1</text><text x="105" y="264" text-anchor="middle" font-size="11">background: grid, diesel, H₂, steel…</text>
+<rect x="260" y="160" width="190" height="70" rx="10" fill="var(--land-t)" stroke="var(--land)"/><text x="355" y="184" text-anchor="middle" font-weight="700">brightway2 + time-adjust</text><text x="355" y="202" text-anchor="middle" font-size="11">match foreground + background</text><text x="355" y="218" text-anchor="middle" font-size="11">→ g CO₂e per km</text>
+<path class="pl-flow" d="M105 70 V114" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M105 222 V178" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M200 146 C230 146 230 190 256 192" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M355 70 V156" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<text x="355" y="262" text-anchor="middle" font-size="11" fill="var(--muted)">+ Monte Carlo (5,000 cases)</text><text x="355" y="278" text-anchor="middle" font-size="11" fill="var(--muted)">+ Sobol sensitivity (SALib)</text>
+</g></svg>
+<p class="pl-note">The paper's workflow. The arrows move to show the direction data flows.</p>
+</div></div>
+</section>
+
+<section class="pl-sec" id="time">
+<h2><span class="pl-num">2</span>Animation: the time machine</h2>
+<p class="lead">Press <b>Play</b>. A BEV built in 2025 drives 200,000 km over 15 years. The <b>dashed line</b> is what a typical LCA assumes: the 2025 grid, forever. The <b>solid line</b> is the scenario's grid, year by year. The shaded gap is the extra carbon a typical LCA wrongly charges to the car.</p>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Region<select id="t-region"></select></label>
+<label>Scenario<select id="t-scen"></select></label>
+<button class="btn" id="t-play" type="button">Play</button><button class="btn quiet" id="t-reset" type="button">Reset</button>
+</div>
+<canvas class="pl-canvas" id="t-cnv" aria-label="Animated chart of electricity carbon intensity over the car's life"></canvas>
+<div class="pl-legend" id="t-leg"></div>
+<div class="pl-stats">
+<div class="pl-stat"><b id="t-year">2025</b><span>year of the car's life</span></div>
+<div class="pl-stat"><b id="t-static">0.0 t</b><span>charging CO₂e, typical LCA (2025 grid)</span></div>
+<div class="pl-stat"><b id="t-plca">0.0 t</b><span>charging CO₂e, time-adjusted pLCA</span></div>
+<div class="pl-stat"><b id="t-diff">0%</b><span>lower with pLCA</span></div>
+</div>
+<p class="pl-read" id="t-read"></p>
+</div>
+</section>
+
+<section class="pl-sec" id="calc">
+<h2><span class="pl-num">3</span>Explorer: the footprint calculator</h2>
+<p class="lead">Every bar is split into <b>where</b> the carbon comes from. For each car, the left (faded) bar is the typical static LCA and the right bar is the time-adjusted pLCA. Change the inputs and see whose bar shrinks most.</p>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Region<select id="c-region"></select></label>
+<label>Scenario<select id="c-scen"></select></label>
+<label>Size<select id="c-size"></select></label>
+<label>Lifetime km <output id="c-kmo">200,000</output><input type="range" id="c-km" min="50000" max="300000" step="10000" value="200000"></label>
+<label>Lifetime (years) <output id="c-lifeo">15</output><input type="range" id="c-life" min="10" max="20" step="1" value="15"></label>
+<label>Built in<select id="c-build"><option>2025</option><option>2035</option></select></label>
+</div>
+<canvas class="pl-canvas" id="c-cnv" aria-label="Stacked bar chart of footprint per km by powertrain"></canvas>
+<div class="pl-legend" id="c-leg"></div>
+<p class="pl-read" id="c-read"></p>
+<p class="pl-note">Recycling credits are left out (the paper uses a cut-off approach). China, Medium SUV, &lt;2 °C, 200,000 km, 15 years is the paper's Fig. 3 case study.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="breakeven">
+<h2><span class="pl-num">4</span>Animation: the breakeven race</h2>
+<p class="lead">A BEV starts with a <b>carbon debt</b> because its battery takes a lot of energy to make. Every kilometre it then pays back part of that debt, since charging emits less than burning diesel. The <b>breakeven mileage</b> is the total lifetime distance at which the BEV's whole-life footprint drops below the hybrid's.</p>
+<div class="pl-grid2">
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Region<select id="b-region"></select></label>
+<label>Scenario<select id="b-scen"></select></label>
+<button class="btn" id="b-play" type="button">Race</button>
+</div>
+<canvas class="pl-canvas" id="b-cnv" aria-label="Animated lines of whole-life emissions against lifetime mileage for BEV and HEV"></canvas>
+<div class="pl-legend" id="b-leg"></div>
+<p class="pl-read" id="b-read"></p>
+</div>
+<div class="pl-box">
+<div class="pl-ctrls"><button class="btn" id="f5-play" type="button">Build the Fig. 5 cloud</button></div>
+<canvas class="pl-canvas" id="f5-cnv" aria-label="Scatter of breakeven mileage against average grid carbon intensity for every region and scenario"></canvas>
+<div class="pl-legend" id="f5-leg"></div>
+<p class="pl-read" id="f5-read">Each dot is one region × scenario (Medium SUV, 15 years). Dirtier grids need more kilometres. Scenarios pull the dots to the left, because the grid cleans up while the car is still being driven.</p>
+</div>
+</div>
+</section>
+
+<section class="pl-sec" id="mc">
+<h2><span class="pl-num">5</span>Animation: 5,000 cars (comparative Monte Carlo)</h2>
+<p class="lead">The authors drew 5,000 random <b>situations</b> (size, region, mileage, lifetime, scenario) and worked out <b>every</b> powertrain in the same situation. That is a <i>dependent</i>, or comparative, Monte Carlo, so each comparison is fair. Each dot is one situation. A dot <b>above</b> the diagonal means car A had the bigger footprint. Compare with the paper's Fig. 2.</p>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Compare<select id="m-pair"><option value="BEV|HEV">BEV vs HEV</option><option value="BEV|PHEV">BEV vs PHEV</option><option value="BEV|FCEV">BEV vs FCEV</option><option value="PHEV|HEV">PHEV vs HEV</option><option value="FCEV|PHEV">FCEV vs PHEV</option><option value="FCEV|HEV">FCEV vs HEV</option></select></label>
+<label>Samples <output id="m-no">2000</output><input type="range" id="m-n" min="500" max="5000" step="500" value="2000"></label>
+<button class="btn" id="m-run" type="button">Run</button>
+</div>
+<div class="pl-grid2">
+<div><canvas class="pl-canvas" id="m-cnv" aria-label="Scatter plot of paired Monte Carlo results"></canvas><div class="pl-legend" id="m-leg"></div></div>
+<div><table class="pl-tbl" id="m-tbl" aria-live="polite"></table><p class="pl-read" id="m-read">Press Run.</p></div>
+</div>
+</div>
+</section>
+
+<section class="pl-sec" id="gsa">
+<h2><span class="pl-num">6</span>Explorer: which input matters most? (sensitivity)</h2>
+<p class="lead">The paper used <b>Sobol indices</b>, which say what share of the spread in a result is caused by each input. Here we estimate the simplest version, the <b>first-order index</b>: group the Monte Carlo runs by one input, take the average result in each group, and see how much those averages differ compared with the total spread.</p>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Result to explain<select id="g-out"><option value="BEV">BEV footprint (g/km)</option><option value="HEV">HEV footprint (g/km)</option><option value="dBEV">BEV vs HEV (% difference)</option><option value="dFCEV">FCEV vs HEV (% difference)</option></select></label>
+<label>Only one region?<select id="g-reg"><option value="">All regions</option><option value="EEU">Eastern Europe (dirty grid)</option><option value="CSA">Central &amp; South America (clean grid)</option></select></label>
+<button class="btn" id="g-run" type="button">Calculate</button>
+</div>
+<canvas class="pl-canvas" id="g-cnv" aria-label="Bar chart of first-order sensitivity indices"></canvas>
+<p class="pl-read" id="g-read"></p>
+</div>
+</section>
+
+<section class="pl-sec" id="ex">
+<h2><span class="pl-num">7</span>Exercises with worked solutions</h2>
+<p class="lead">Try each one with the explorers above first, then type your answer and check it. The same numbers come out of <a href="../labs/papers/bev_plca_toy.py" download>bev_plca_toy.py</a>, so you can repeat everything in Python.</p>
+<div id="ex-list"></div>
+</section>
+
+<section class="pl-sec" id="quiz">
+<h2><span class="pl-num">8</span>Quick quiz</h2>
+<div class="pl-quiz" id="pq" data-q='[
+{"q":"Why does a typical LCA overstate a BEV&#39;s footprint?","o":["It forgets the battery","It uses today&#39;s grid for all 10–20 years of driving","It counts tailpipe emissions","It uses the wrong functional unit"],"a":1,"e":"Charging happens in the future, when the grid will be cleaner in every scenario, so using 2025 electricity for every year overcharges the BEV."},
+{"q":"What is the functional unit in the paper?","o":["One car","One kWh","1 km driven over the vehicle&#39;s lifetime","One year of driving"],"a":2,"e":"Results are in g CO₂e per km, which is the life-cycle total divided by lifetime km."},
+{"q":"Why does the HEV gain least from the scenarios?","o":["Its battery is small","Most of its footprint is fossil CO₂ from the exhaust, and biodiesel only removes part of it","Diesel gets dirtier","Hybrids are not in TIAM-UCL"],"a":1,"e":"Diesel supply does decarbonise (by 41% in China under <2 °C), but the dominant exhaust emissions remain."},
+{"q":"In which scenario do FCEVs beat BEVs, and why?","o":["No climate action, because hydrogen is cheap","Baseline, because of electrolysis","Very ambitious (1.5 °C), because of carbon-negative hydrogen from BECCS","Never"],"a":2,"e":"Only under 1.5 °C does TIAM-UCL make lots of hydrogen from bioenergy with carbon capture (BECCS). The authors call this unrealistic for now because the technology is still immature."},
+{"q":"What does &#39;comparative (dependent) Monte Carlo&#39; mean?","o":["Each powertrain gets its own random inputs","All powertrains in one sample share the same inputs (region, km, size…)","Only uncertainty in ecoinvent is sampled","The model is run 5,000 times on one case"],"a":1,"e":"Sharing inputs makes each pairwise comparison fair."},
+{"q":"On average, what breakeven mileage did the paper find for the &#39;No scenario&#39; (typical LCA) case?","o":["~20,000 km","~51,000 km","~87,000 km","~250,000 km"],"a":2,"e":"87,000 km at 0.381 kg CO₂e/kWh. Under 1.5 °C it falls to 51,000 km."},
+{"q":"Which inputs mattered most for the DIFFERENCE between BEV and HEV?","o":["Lifetime and recycling method","Region and future scenario","Vehicle colour","Battery chemistry"],"a":1,"e":"Size and mileage drive the absolute footprints. For the comparison, region and scenario matter most because they set the electricity and hydrogen carbon intensities."},
+{"q":"Why is a PHEV called &#39;high-risk&#39;?","o":["Its battery may catch fire","Its footprint depends on how often drivers charge (utility factor ~47% assumed)","It cannot use diesel","It is banned in the EU"],"a":1,"e":"Drivers often charge PHEVs less than assumed, which pushes the footprint towards that of a hybrid, or even above it."}
+]'></div>
+</section>
+
+<section class="pl-sec" id="gcam">
+<h2><span class="pl-num">9</span>How this links to GCAM and the course</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead">The paper uses <b>TIAM-UCL</b>, a cost-optimisation IAM (see <a href="../modules/the-iam-family.html">module 3.9, the IAM family</a>). GCAM is a different kind of IAM: it solves for market equilibrium using logit choices. The pLCA method does not care which model the scenario comes from. The <b>premise</b> tool now reads <b>GCAM v8.2</b> scenarios too, alongside REMIND, IMAGE, MESSAGEix and TIAM-UCL.</p>
+<ul class="prose">
+<li><b>Module 1.5 Scenarios.</b> SSP2 with RCP6.0/4.5/2.6/1.9 is exactly the scenario grid used here.</li>
+<li><b>Module 3.2 Transport in GCAM.</b> GCAM decides <i>how many</i> BEVs are sold. pLCA asks <i>how clean</i> each one is over its life.</li>
+<li><b>Module 3.6 Analysing results.</b> Monte Carlo and Sobol sensitivity are the same ideas as scenario discovery.</li>
+</ul>
+</div>
+<div class="callout research"><h4>A research idea for your Go 3 project</h4><p>Repeat the BEV-vs-HEV comparison with <b>GCAM</b> scenarios in premise, and compare it with the TIAM-UCL result. Different IAMs decarbonise at different speeds (the paper stresses this), so does the breakeven mileage move? The <a href="bev-plca-implementation-guide.md">implementation guide</a> walks through doing this with Claude Code in VS Code.</p></div>
+</div>
+<h3>Downloads</h3>
+<ul class="reslist">
+<li><a href="../downloads/papers/BEV-pLCA-Simaitis2025-slides.pptx">Beginner slides (PowerPoint)</a><span class="why">Editable deck with speaker notes; a <a href="../downloads/papers/BEV-pLCA-Simaitis2025-slides.pdf">PDF version</a> too.</span></li>
+<li><a href="../downloads/papers/BEV-pLCA-Simaitis2025-study-guide.pdf">Brief study guide (PDF)</a><span class="why">Key ideas, numbers to remember, a glossary and self-test questions. Also as <a href="bev-plca-study-guide.md">markdown</a>.</span></li>
+<li><a href="../labs/papers/bev_plca_toy.py" download>bev_plca_toy.py</a><span class="why">The teaching model behind this page, with the worked solutions.</span></li>
+<li><a href="bev-plca-implementation-guide.md">Implementation guide: replicate the study with Claude Code in VS Code</a><span class="why">Step by step, with copy-paste prompts.</span></li>
+</ul>
+<p class="pl-note">The teaching model's inputs (grid intensities, production footprints, scenario paths) are illustrative and are <b>not</b> TIAM-UCL, ecoinvent or carculator data. For real numbers use the paper and its Supplementary Data 1.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on Šimaitis et al. (2025), Commun. Earth Environ. 6, 476, CC BY 4.0. Charts use an illustrative toy model, not the paper's data. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../assets/js/site.js?v=20261105a"></script>
+<script src="bev-plca-model.js?v=1"></script>
+<script src="plca-common.js?v=1"></script>
+<script src="bev-plca.js?v=1"></script>
+</body></html>
