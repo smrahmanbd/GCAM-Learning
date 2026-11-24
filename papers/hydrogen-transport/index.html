@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper study: where would hydrogen get used? (GCAM) · GCAM in three goes</title>
+<meta name="description" content="Beginner-friendly study of O’Rourke et al. (2023), Environmental Science &amp; Technology: in GCAM, what decides how much hydrogen trucks, ships, cars and factories use when the world aims for below 2 °C — delivery pipelines or end-use costs?">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="../plca.css?v=1">
+<link rel="icon" href="../../assets/img/icon.svg" type="image/svg+xml">
+<style>
+.hy-step { transition: opacity .35s; }
+.hy-dim .hy-step { opacity: .3; }
+.hy-dim .hy-step.on { opacity: 1; }
+.hy-step.on rect { stroke-width: 3.5; }
+.hy-gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.hy-gloss div { border: 1px solid var(--line); border-radius: var(--r-s); padding: 8px 12px; background: var(--card); }
+.hy-gloss b { display: block; }
+.hy-gloss span { font-size: .93rem; color: var(--ink-soft); }
+.hy-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.hy-seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.hy-reveal[hidden] { display: none; }
+.hy-stack { display: flex; height: 26px; border-radius: 6px; overflow: hidden; background: var(--paper-2); margin: 4px 0 2px; }
+.hy-stack span { display: block; height: 100%; transition: width .4s; }
+.hy-stack-lab { font-size: .86rem; color: var(--muted); margin: 10px 0 0; font-weight: 600; }
+.hy-tblwrap { overflow-x: auto; }
+.pl-sec ul.prose li, .pl-sec ol li { margin-bottom: 4px; }
+.hy-why { overflow-wrap: anywhere; }
+.hy-dot { fill: var(--economy); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../../go1.html">Foundations</a><a href="../../go2.html">Build and Implement</a><a href="../../go3.html">Research Frontier</a><a href="../index.html">Paper studies</a><a href="../../toolkit.html">Toolkit</a><a href="../../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study 3 · Transport fuels · GCAM v5.4 · World</p>
+<h1>Will hydrogen fuel trucks and ships, or mostly factories?</h1>
+<p>A hands-on companion to <b>O’Rourke, Mignone, Kyle, Chapman, Fuhrman, Wolfram &amp; McJeon (2023)</b>. The authors improve how <b>GCAM</b> handles hydrogen: how it is made, how it travels, and who uses it. Then they ask what really decides how much hydrogen gets used in a below-2 °C world. The explorer on this page runs a <b>small teaching model</b> with made-up numbers, tuned to behave roughly like the paper.</p>
+<p class="pl-cite">Paper: <a href="https://doi.org/10.1021/acs.est.3c03751" target="_blank" rel="noopener">Environmental Science &amp; Technology 57(48), 19508–19518 (2023)</a>, open access. Last study: <a href="../ev-materials-china/index.html">battery metal prices and China’s EVs</a> used a logit to share car travel between petrol, battery and fuel-cell cars. This one follows the <b>fuel-cell branch</b>: where does the hydrogen come from, and which vehicles pick it?</p>
+<ul class="pl-toc">
+<li><a href="#minute">1 · In one minute</a></li><li><a href="#goals">2 · Goals</a></li><li><a href="#words">3 · Words</a></li><li><a href="#question">4 · Question</a></li><li><a href="#model">5 · How the model works</a></li><li><a href="#explore">6 · Explorer</a></li><li><a href="#found">7 · Findings</a></li><li><a href="#predict">8 · Predict</a></li><li><a href="#ex">9 · Exercise</a></li><li><a href="#quiz">10 · Quiz</a></li><li><a href="#limits">11 · Limits</a></li><li><a href="#course">12 · Course</a></li><li><a href="#review">13 · Review</a></li><li><a href="#sources">14 · Sources</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="minute">
+<h2><span class="pl-num">1</span>The paper in one minute</h2>
+<ol class="lead">
+<li>Hydrogen could replace oil in trucks, ships, buses and factories, but nobody knows how much of it a low-carbon world will use.</li>
+<li>The authors gave GCAM more hydrogen detail (making it, trucking or piping it, and using it) and tested what changes the amount used in a below-2 °C world.</li>
+<li>Hydrogen reached only 10–22 EJ in 2050 (2–4% of final energy), mostly made on site from clean electricity; cheaper end-use technology raised that amount far more than building pipelines did.</li>
+</ol>
+</section>
+
+<section class="pl-sec" id="goals">
+<h2><span class="pl-num">2</span>Learning goals</h2>
+<p class="lead">After this page you can…</p>
+<ul class="prose">
+<li>…draw GCAM’s hydrogen chain: production routes → delivery → end uses that compete by logit.</li>
+<li>…explain why delivery options change <i>where</i> hydrogen is made more than <i>how much</i> is used.</li>
+<li>…work out a three-way logit share for trucks by hand and see how a cheaper fuel cell moves it.</li>
+<li>…state the main numbers (EJ in 2050, shares by sector) and two limits of the study.</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="words">
+<h2><span class="pl-num">3</span>Words you need</h2>
+<div class="hy-gloss">
+<div><b>GCAM</b><span>Global Change Analysis Model. It links energy, land, water, economy and climate for 32 world regions, in 5-year steps, and finds prices where supply meets demand.</span></div>
+<div><b>Hydrogen (H₂)</b><span>A gas that releases energy when burned or used in a fuel cell, leaving only water. It is an energy <i>carrier</i>: it must be made from something else first.</span></div>
+<div><b>Fuel cell</b><span>A device that turns hydrogen and air into electricity on board a vehicle. A fuel-cell truck is an electric truck that carries hydrogen instead of a big battery.</span></div>
+<div><b>Electrolysis</b><span>Splitting water into hydrogen and oxygen with electricity. With clean power it is nearly zero-carbon.</span></div>
+<div><b>Green hydrogen</b><span>Made by electrolysis using wind, solar or clean grid power.</span></div>
+<div><b>Blue hydrogen</b><span>Made from natural gas, with most of the CO₂ captured and stored (CCS). In the paper, capture rises from 91% to 93%.</span></div>
+<div><b>BECCS hydrogen</b><span>Made from biomass with CO₂ capture. Plants took the carbon from the air, so storing it can make the hydrogen <i>carbon-negative</i>.</span></div>
+<div><b>CCS</b><span>Carbon capture and storage: catching CO₂ at a plant and pumping it underground.</span></div>
+<div><b>Central vs on-site production</b><span>Central = a big plant far from users, so the gas must be delivered. On-site = a small unit right where it is used (for example, at a truck refuelling station).</span></div>
+<div><b>T&amp;D (transmission and distribution)</b><span>Moving hydrogen from plant to user. Here: by liquid-hydrogen truck or by gas pipeline.</span></div>
+<div><b>Blending</b><span>Mixing some hydrogen into the existing natural gas network (up to 20% by volume in one case, about 7% by energy).</span></div>
+<div><b>End use</b><span>Where energy is finally used: a truck, a ship, a cement kiln, a home boiler.</span></div>
+<div><b>Logit choice</b><span>GCAM’s rule for sharing a market among options: cheaper options get bigger shares, but never all of it.</span></div>
+<div><b>Levelised cost</b><span>All costs of an option (equipment, fuel, upkeep) spread over each unit of service, like $ per tonne-km.</span></div>
+<div><b>Carbon price</b><span>A charge per tonne of CO₂ emitted. Here it starts in 2025 and rises 3% a year, set high enough to hit the climate goal.</span></div>
+<div><b>EJ (exajoule)</b><span>A unit of energy: 10¹⁸ joules. The world uses roughly 600 EJ of final energy a year in 2050 in these runs.</span></div>
+<div><b>Final energy</b><span>Energy delivered to users (fuel in the tank, electricity at the socket), after conversion losses.</span></div>
+<div><b>Service demand</b><span>What users actually want: passenger-km, tonne-km, tonnes of cement. Fuels are only a means to it.</span></div>
+<div><b>Below 2 °C / 1.5 °C</b><span>Climate goals for warming by 2100. The paper’s main runs aim for 1.75 °C; a test run aims for 1.5 °C.</span></div>
+<div><b>Sensitivity case</b><span>A run where one assumption is changed to see how much the result depends on it.</span></div>
+</div>
+</section>
+
+<section class="pl-sec" id="question">
+<h2><span class="pl-num">4</span>The question, and why it matters</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead"><b>Question:</b> in a world on track for below 2 °C, how much hydrogen gets used, by whom, and what drives that amount most: the <b>supply side</b> (how hydrogen is made and moved) or the <b>demand side</b> (how cheap hydrogen trucks, ships and furnaces become)?</p>
+<p class="lead"><b>Why it matters:</b> governments are spending billions on hydrogen hubs and pipelines. If the bottleneck is really the cost of fuel-cell trucks or hydrogen furnaces, money spent only on pipelines may not buy much extra hydrogen use. For transport, it tells us where hydrogen may fit: heavy and hard-to-electrify jobs, not most cars.</p>
+</div>
+<div class="callout gcam"><h4>Link to what you know</h4><p>In the last study, the fuel-cell car was one of three options in a <a href="../../modules/choice-the-logit.html">logit</a>, and its cost was simply given. Here the cost of the hydrogen fuel itself comes from <b>another logit</b> one level up: production routes compete to supply the hydrogen. So you will see two logits stacked, which is how GCAM works everywhere.</p></div>
+</div>
+</section>
+
+<section class="pl-sec" id="model">
+<h2><span class="pl-num">5</span>How the model works</h2>
+<p class="lead">Press <b>Play</b> to walk through the chain one step at a time, or click a box. The moving dots show hydrogen travelling from where it is made to where it is used.</p>
+<div class="pl-box">
+<div class="pl-ctrls"><button class="btn" id="d-play" type="button">Play</button><button class="btn quiet" id="d-next" type="button">Next step</button><button class="btn quiet" id="d-all" type="button">Show all</button></div>
+<svg class="pl-svg" id="d-svg" viewBox="0 0 780 400" role="img" aria-label="Diagram: production routes (green electrolysis, blue gas with CCS, BECCS) feed hydrogen either on site or by truck or pipeline to end uses (cars, buses, trucks, rail, ships, industry). In each end use, hydrogen competes with oil and electricity in a logit. A carbon price raises the cost of fossil options.">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink-soft)"/></marker></defs>
+<g font-size="13" font-family="var(--body)" fill="var(--ink)">
+<g class="hy-step" data-i="0">
+<rect x="10" y="20" width="190" height="230" rx="10" fill="var(--land-t)" stroke="var(--land)"/>
+<text x="105" y="44" text-anchor="middle" font-weight="700">1 · Make H₂</text>
+<rect x="24" y="58" width="162" height="40" rx="6" fill="var(--paper)" stroke="var(--land)"/><text x="105" y="76" text-anchor="middle" font-size="12">Green: electrolysis</text><text x="105" y="91" text-anchor="middle" font-size="11" fill="var(--muted)">wind · solar · grid · nuclear</text>
+<rect x="24" y="108" width="162" height="40" rx="6" fill="var(--paper)" stroke="var(--water)"/><text x="105" y="126" text-anchor="middle" font-size="12">Blue: gas + CCS</text><text x="105" y="141" text-anchor="middle" font-size="11" fill="var(--muted)">93% of CO₂ caught</text>
+<rect x="24" y="158" width="162" height="40" rx="6" fill="var(--paper)" stroke="var(--economy)"/><text x="105" y="176" text-anchor="middle" font-size="12">BECCS: biomass + CCS</text><text x="105" y="191" text-anchor="middle" font-size="11" fill="var(--muted)">can be carbon-negative</text>
+<text x="105" y="222" text-anchor="middle" font-size="11" fill="var(--muted)">routes compete by cost</text><text x="105" y="237" text-anchor="middle" font-size="11" fill="var(--muted)">(logit no. 1)</text>
+</g>
+<g class="hy-step" data-i="1">
+<rect x="250" y="20" width="170" height="230" rx="10" fill="var(--data-t)" stroke="var(--data)"/>
+<text x="335" y="44" text-anchor="middle" font-weight="700">2 · Move H₂</text>
+<rect x="264" y="58" width="142" height="40" rx="6" fill="var(--paper)" stroke="var(--data)"/><text x="335" y="76" text-anchor="middle" font-size="12">On site</text><text x="335" y="91" text-anchor="middle" font-size="11" fill="var(--muted)">no delivery needed</text>
+<rect x="264" y="108" width="142" height="40" rx="6" fill="var(--paper)" stroke="var(--data)"/><text x="335" y="126" text-anchor="middle" font-size="12">Liquid-H₂ truck</text><text x="335" y="141" text-anchor="middle" font-size="11" fill="var(--muted)">from central plants</text>
+<rect x="264" y="158" width="142" height="40" rx="6" fill="var(--paper)" stroke="var(--data)"/><text x="335" y="176" text-anchor="middle" font-size="12">Pipeline (from 2030)</text><text x="335" y="191" text-anchor="middle" font-size="11" fill="var(--muted)">from central plants</text>
+<text x="335" y="222" text-anchor="middle" font-size="11" fill="var(--muted)">the paper switches</text><text x="335" y="237" text-anchor="middle" font-size="11" fill="var(--muted)">these on and off</text>
+</g>
+<g class="hy-step" data-i="2">
+<rect x="470" y="20" width="300" height="230" rx="10" fill="var(--policy-t)" stroke="var(--policy)"/>
+<text x="620" y="44" text-anchor="middle" font-weight="700">3 · Use H₂ (logit no. 2)</text>
+<text x="620" y="62" text-anchor="middle" font-size="11" fill="var(--muted)">in each end use, H₂ competes with oil and electricity</text>
+<g font-size="12">
+<text x="484" y="88">Cars</text><rect id="d-b0" x="580" y="77" width="10" height="13" rx="3" fill="var(--economy)"/>
+<text x="484" y="111">Buses</text><rect id="d-b1" x="580" y="100" width="10" height="13" rx="3" fill="var(--economy)"/>
+<text x="484" y="134">Trucks</text><rect id="d-b2" x="580" y="123" width="10" height="13" rx="3" fill="var(--economy)"/>
+<text x="484" y="157">Freight rail</text><rect id="d-b3" x="580" y="146" width="10" height="13" rx="3" fill="var(--economy)"/>
+<text x="484" y="180">Ships</text><rect id="d-b4" x="580" y="169" width="10" height="13" rx="3" fill="var(--economy)"/>
+<text x="484" y="203">Industry heat</text><rect id="d-b5" x="580" y="192" width="10" height="13" rx="3" fill="var(--economy)"/>
+</g>
+<text x="620" y="236" text-anchor="middle" font-size="11" fill="var(--muted)">bars = H₂ share in the explorer’s current settings</text>
+</g>
+<g class="hy-step" data-i="3">
+<rect x="250" y="300" width="270" height="80" rx="10" fill="var(--climate-t)" stroke="var(--climate)"/>
+<text x="385" y="326" text-anchor="middle" font-weight="700">4 · Carbon price</text>
+<text x="385" y="345" text-anchor="middle" font-size="11">makes oil and gas dearer; pays BECCS</text>
+<text x="385" y="361" text-anchor="middle" font-size="11">for removing CO₂</text>
+</g>
+<g class="hy-step" data-i="4">
+<rect x="560" y="300" width="210" height="80" rx="10" fill="var(--energy-t)" stroke="var(--energy)"/>
+<text x="665" y="326" text-anchor="middle" font-weight="700">5 · Totals</text>
+<text x="665" y="345" text-anchor="middle" font-size="11">EJ of H₂ by sector,</text>
+<text x="665" y="361" text-anchor="middle" font-size="11">production mix, delivery mix</text>
+</g>
+<path class="pl-flow" d="M200 135 H246" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M420 135 H466" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M250 340 H105 V254" stroke="var(--climate)" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M520 320 H540 V254" stroke="var(--climate)" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M665 250 V296" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<circle class="hy-dot" r="5" id="dot1"/><circle class="hy-dot" r="5" id="dot2"/><circle class="hy-dot" r="5" id="dot3"/>
+</g></svg>
+<p class="pl-read" id="d-read">Press Play.</p>
+</div>
+<div class="callout model"><h4>What is new in this paper</h4><p>Standard GCAM already had some hydrogen. The authors added detail: more production routes (including dedicated wind and solar electrolysis), costed delivery by truck and pipeline, on-site production, blending into gas grids, and more end uses (trucks, ships, rail, buses, cement and other industry). Then they switched delivery options on and off, and made end-use technology cheaper or not, to see which lever matters.</p></div>
+</section>
+
+<section class="pl-sec" id="explore">
+<h2><span class="pl-num">6</span>Explorer: a toy hydrogen market in 2050</h2>
+<p class="lead">Choose which delivery options exist, how much cheaper hydrogen vehicles and equipment get, and how high the carbon price is. The toy works out the hydrogen price (logit no. 1), then the hydrogen share in each end use (logit no. 2). Dashed outlines show the paper-style <b>Reference</b> run: pipelines and trucks allowed, no cost cut, $150 per tonne.</p>
+<div class="callout trap"><h4>Illustrative numbers</h4><p>All costs, demands, carbon prices and weights here are made up for teaching. They are tuned so the toy behaves roughly like the paper’s 2050 results. They are <b>not</b> GCAM data, and the toy has one year only.</p></div>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Delivery options<span class="hy-seg" id="x-del"></span></label>
+<label>Cut in H₂ vehicle &amp; equipment cost <output id="x-drop-o">0%</output><input type="range" id="x-drop" min="0" max="50" step="5" value="0"></label>
+<label>Carbon price ($/t CO₂) <output id="x-p-o">150</output><input type="range" id="x-p" min="0" max="400" step="10" value="150"></label>
+</div>
+<div class="pl-ctrls"><span class="muted" style="font-size:.86rem;font-weight:600">Presets:</span><span class="hy-seg" id="x-pre"></span></div>
+<canvas class="pl-canvas" id="x-cnv" aria-label="Bar chart of hydrogen use in 2050 by end use, in EJ"></canvas>
+<div class="pl-legend" id="x-leg"></div>
+<p class="hy-stack-lab">Where the hydrogen is made</p>
+<div class="hy-stack" id="x-mix"></div><div class="pl-legend" id="x-mixleg"></div>
+<p class="hy-stack-lab">How it reaches users</p>
+<div class="hy-stack" id="x-via"></div><div class="pl-legend" id="x-vialeg"></div>
+<div class="pl-stats">
+<div class="pl-stat"><b id="s-tot">0</b><span>total H₂ use (EJ)</span></div>
+<div class="pl-stat"><b id="s-trn">0</b><span>of which transport (EJ)</span></div>
+<div class="pl-stat"><b id="s-ind">0</b><span>of which industry (EJ)</span></div>
+<div class="pl-stat"><b id="s-on">0%</b><span>made on site</span></div>
+<div class="pl-stat"><b id="s-pr">0</b><span>H₂ price for transport ($/GJ)</span></div>
+</div>
+<p class="pl-read" id="x-read"></p>
+</div>
+<div class="pl-box">
+<h3 style="margin:0 0 6px;font-size:1.05rem">Run the paper’s test: supply lever vs demand lever</h3>
+<p class="pl-note" style="margin-top:0">This runs six toy cases at the carbon price set above: three delivery options × two end-use cost cases (no cut, and a 30% cut). Compare how much each lever changes the <b>total</b> and the <b>on-site share</b>.</p>
+<button class="btn" type="button" id="x-test">Run six cases</button>
+<div class="hy-tblwrap"><table class="pl-tbl" id="x-tbl" style="margin-top:10px" hidden></table></div>
+<p class="pl-read" id="x-test-read" hidden></p>
+</div>
+<details class="pl-ex"><summary>How the toy model works (for the curious)</summary>
+<div class="pl-sol">
+<ol>
+<li><b>Production routes</b> (made-up $/GJ): on-site green 25, on-site blue 25 (industry only), central green 20, central blue 20.5, central BECCS 30. Blue pays the carbon price on its leftover CO₂. BECCS earns money from it, because it removes CO₂.</li>
+<li><b>Delivery</b> adds $10/GJ by truck or $5.5/GJ by pipeline to central routes. On-site routes need no delivery.</li>
+<li><b>Logit no. 1</b> shares supply among the available routes (exponent 12). The hydrogen price is the logit’s combined cost, which falls a little when more options are added.</li>
+<li><b>Logit no. 2</b>: in each end use, cost of oil = 1 + carbon adder, electricity = fixed, hydrogen = equipment part × (1 − cost cut) + fuel part × H₂ price. Shares = w·c<sup>−6</sup> / Σ w·c<sup>−6</sup>. Industry gets 40% of the cost cut.</li>
+<li>Share weights are set so the Reference run gives shares close to the paper’s 2050 table (for example, cars 1.5%, trucks 1.7%, buses 10%, freight rail 17%, industry 3%).</li>
+<li>H₂ use = share × the end use’s energy demand (cars 40, buses 6, trucks 45, rail 4, ships 16, industry 280 EJ).</li>
+</ol></div></details>
+</section>
+
+<section class="pl-sec" id="found">
+<h2><span class="pl-num">7</span>What they found</h2>
+<div class="pl-cards">
+<div class="pl-card"><h4>Not that much hydrogen</h4><p>Below 2.5 EJ worldwide up to 2030, and 10–22 EJ by 2050 across the six main runs. That is only 2–4% of all final energy in 2050.</p></div>
+<div class="pl-card"><h4>Factories before trucks</h4><p>Industry used 40–76% of the hydrogen. In the lowest run, industry took 8.2 EJ and transport 2.6 EJ. Transport only overtook industry when hydrogen vehicles got cheaper.</p></div>
+<div class="pl-card"><h4>Transport: a niche</h4><p>Even in the most hydrogen-friendly main run, hydrogen met about 7% of road freight and 5% of international shipping service in 2050. Liquid fuels still met 66% and 94%. Buses (up to 25%) and freight rail (up to 20%) had the highest shares.</p></div>
+<div class="pl-card"><h4>Demand side drives the amount</h4><p>Cheaper end-use technology (the High Demand case) raised 2050 hydrogen use by 8–9 EJ, or 70–84%. Adding pipelines and trucks raised it by less than 2 EJ.</p></div>
+<div class="pl-card"><h4>Supply side drives the mix</h4><p>Delivery options mostly decided <i>where</i> hydrogen was made. Without them, nearly all was on site. With pipelines too, central plants supplied about half (47–57%).</p></div>
+<div class="pl-card"><h4>Green and on site wins</h4><p>Green hydrogen was the biggest source in 2050 (36–69%), and over 90% of it was made on site. Blue gave 24–29%, and BECCS 11–21% when delivery existed.</p></div>
+<div class="pl-card"><h4>Stricter goal, more hydrogen</h4><p>Aiming for 1.5 °C instead of below 2 °C more than doubled mid-century hydrogen use, to 30–48 EJ. Ships then relied on it much more heavily.</p></div>
+</div>
+<p class="lead">In one phrase: the scale of hydrogen use depends on the cost of the things that <i>use</i> it, while delivery infrastructure mainly reshapes the supply chain.</p>
+</section>
+
+<section class="pl-sec" id="predict">
+<h2><span class="pl-num">8</span>Predict, then check</h2>
+<div class="pl-ex">
+<h3>Prediction 1</h3>
+<p>Start from a world where hydrogen can only be made on site. Now allow trucks <i>and</i> pipelines from big central plants. What happens to total hydrogen use in 2050?</p>
+<div class="hy-seg" data-ans="1"><button class="btn quiet" type="button">It roughly doubles</button><button class="btn quiet" type="button">It rises only a little</button><button class="btn quiet" type="button">It falls</button></div>
+<p class="pl-check hy-reveal" hidden>It rises <b>only a little</b>: under 2 EJ in the paper’s Reference case. What changes is the supply chain: central plants take a much larger slice. On-site electrolysis already avoids delivery costs, so pipelines add little that is cheaper. Try the delivery buttons in the explorer.</p>
+</div>
+<div class="pl-ex">
+<h3>Prediction 2</h3>
+<p>In the paper’s lowest-hydrogen main run, which sector used more hydrogen in 2050?</p>
+<div class="hy-seg" data-ans="0"><button class="btn quiet" type="button">Industry</button><button class="btn quiet" type="button">Transport</button><button class="btn quiet" type="button">About equal</button></div>
+<p class="pl-check hy-reveal" hidden><b>Industry</b>: 8.2 EJ against 2.6 EJ for transport. Industry has huge energy demand, so even a 3% hydrogen share is a lot of hydrogen. Transport hydrogen only caught up when vehicle costs fell.</p>
+</div>
+<div class="pl-ex">
+<h3>Prediction 3</h3>
+<p>Switch the goal from below 2 °C to 1.5 °C. What happens to mid-century hydrogen use?</p>
+<div class="hy-seg" data-ans="2"><button class="btn quiet" type="button">About the same</button><button class="btn quiet" type="button">About 20% more</button><button class="btn quiet" type="button">More than double</button></div>
+<p class="pl-check hy-reveal" hidden><b>More than double</b>: 30–48 EJ. A higher carbon price makes oil and gas much dearer, so hydrogen wins more of the jobs that are hard to electrify. Use the “1.5 °C-like” preset in the explorer to see the toy do this.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="ex">
+<h2><span class="pl-num">9</span>Worked mini-exercise: a three-way logit for trucks</h2>
+<div class="pl-ex" data-answer="36.2" data-tol="0.03" data-show="about 36.2%">
+<h3>Diesel, battery or fuel cell?</h3>
+<p>With a carbon price included, three truck options cost (per tonne-km, made-up units): <b>diesel 1.00</b>, <b>battery-electric 1.10</b>, <b>fuel-cell 1.20</b>. All share weights are 1 and the logit exponent is 6. The fuel-cell share is 17.6%. Now fuel-cell trucks get 15% cheaper, so they cost <b>1.02</b>. What is the new fuel-cell share, in %?</p>
+<div class="pl-row"><input class="pl-ans" type="text" inputmode="decimal" placeholder="e.g. 25" aria-label="Your answer in percent"><button class="btn pl-checkbtn" type="button">Check</button></div>
+<p class="pl-check" aria-live="polite"></p>
+<details><summary>Hint</summary><div class="pl-sol"><p>Work out c<sup>−6</sup> for each option (that is 1 ÷ c⁶). The share of an option is its value divided by the sum of all three.</p></div></details>
+<details><summary>Step-by-step solution</summary><div class="pl-sol">
+<table><tr><th>Option</th><th>Cost before</th><th>c<sup>−6</sup></th><th>Cost after</th><th>c<sup>−6</sup></th></tr>
+<tr><td>Diesel</td><td>1.00</td><td>1.000</td><td>1.00</td><td>1.000</td></tr>
+<tr><td>Battery</td><td>1.10</td><td>0.564</td><td>1.10</td><td>0.564</td></tr>
+<tr><td>Fuel cell</td><td>1.20</td><td>0.335</td><td>1.02</td><td>0.888</td></tr>
+<tr><td><b>Sum</b></td><td></td><td>1.899</td><td></td><td>2.452</td></tr></table>
+<p>Fuel-cell share before: 0.335 ÷ 1.899 = <b>17.6%</b>. After: 0.888 ÷ 2.452 = <b>36.2%</b>.</p>
+<p>A 15% cheaper truck doubled its share. It took share from both diesel (52.6% → 40.8%) and battery trucks (29.7% → 23.0%). This is the paper’s main point in miniature: making the <i>end-use</i> technology cheaper is a strong lever on how much hydrogen gets used.</p></div></details>
+</div>
+</section>
+
+<section class="pl-sec" id="quiz">
+<h2><span class="pl-num">10</span>Quiz</h2>
+<div class="pl-quiz" id="qz" data-q='[
+{"q":"In this paper, what mainly changed when pipelines and trucks were added to on-site production?","o":["Total hydrogen use doubled","Where hydrogen was made (more from central plants)","Hydrogen use in aviation","Nothing at all"],"a":1,"e":"Delivery options mostly shifted production from on-site units to central plants. Total use rose by less than 2 EJ."},
+{"q":"Which lever raised 2050 hydrogen use the most?","o":["Allowing pipelines","Allowing liquid-hydrogen trucks","Cheaper end-use technology, like fuel-cell trucks","Removing the carbon price"],"a":2,"e":"The High Demand case, with cheaper end-use technology, raised use by 8–9 EJ (70–84%)."},
+{"q":"Roughly what share of total final energy was hydrogen in 2050 in the main below-2 °C runs?","o":["2–4%","15–20%","About 40%","Over 60%"],"a":0,"e":"10–22 EJ out of roughly 585 EJ, so about 2–4%."},
+{"q":"Why can BECCS hydrogen become cheaper as the carbon price rises?","o":["Biomass gets cheaper","It removes CO₂ from the air, so it earns money under a carbon price","It needs no delivery","It uses no water"],"a":1,"e":"Plants took the carbon from the air; capturing and storing it counts as negative emissions, which a carbon price rewards."},
+{"q":"Which source supplied the most hydrogen by 2050?","o":["Blue hydrogen from central gas plants","Green hydrogen, mostly made on site","BECCS hydrogen","Coal without CCS"],"a":1,"e":"Green hydrogen gave 36–69% of production, and over 90% of it was on site. Fossil hydrogen without CCS was left out of the study."}
+]'></div>
+</section>
+
+<section class="pl-sec" id="limits">
+<h2><span class="pl-num">11</span>Limitations and open questions</h2>
+<ul class="prose">
+<li><b>No hydrogen trade between regions.</b> Each of GCAM’s 32 regions makes its own hydrogen. Shipping hydrogen or ammonia across oceans is left for future work.</li>
+<li><b>No hydrogen planes, no e-fuels.</b> Aviation was left out as too uncertain, and so were fuels made from hydrogen (like ammonia or e-kerosene for ships and planes). Hydrogen use by power plants is also missing. Including these could raise transport demand.</li>
+<li><b>Leaks not modelled.</b> Hydrogen that escapes indirectly warms the climate. The authors discuss this but do not calculate it; truck delivery and transport use carry the most risk.</li>
+<li><b>Cost assumptions drive everything.</b> The logit shares depend on assumed vehicle, equipment and electrolyser costs. The main finding is itself about costs, so different cost paths give different amounts.</li>
+<li><b>National policies left out.</b> Subsidies like the US Inflation Reduction Act could make hydrogen cheaper in some places sooner.</li>
+<li><b>Open question:</b> if batteries keep getting cheaper (the last study’s topic), will fuel-cell trucks ever get their chance, or will hydrogen stay mostly in factories and ships?</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="course">
+<h2><span class="pl-num">12</span>Links to the course and to GCAM</h2>
+<ul class="reslist">
+<li><a href="../../modules/transport-in-gcam.html">3.2 Transport in GCAM</a><span class="why">The tree of modes and vehicle technologies where fuel-cell cars, trucks, buses and ships sit.</span></li>
+<li><a href="../../modules/choice-the-logit.html">2.3 Choice: the logit</a><span class="why">The formula behind both logits on this page and the truck exercise.</span></li>
+<li><a href="../../modules/energy-supply.html">Energy supply</a><span class="why">How GCAM turns primary energy into carriers like electricity and hydrogen.</span></li>
+<li><a href="../../modules/options-and-costs.html">Options and costs</a><span class="why">Levelised costs, the inputs every logit compares.</span></li>
+<li><a href="../../modules/emissions-climate-policy-system.html">Emissions, climate and policy</a><span class="why">How a carbon price and a temperature goal are set up in GCAM.</span></li>
+<li><a href="../../modules/scenarios.html">1.5 Scenarios</a><span class="why">Why “Reference” and “High Demand” are what-ifs, not forecasts.</span></li>
+<li><a href="../../modules/the-iam-family.html">3.9 The IAM family</a><span class="why">GCAM next to the other models in the paper studies so far.</span></li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation</a><span class="why">Official docs, including the energy and transportation sections.</span></li>
+</ul>
+</section>
+
+<section class="pl-sec" id="review">
+<h2><span class="pl-num">13</span>Review: from earlier papers</h2>
+<p class="lead">Spaced repetition: try to answer before you open each one.</p>
+<div class="pl-ex"><h3>From: battery metal prices and China’s EVs</h3><p>Why can a 7–10% rise in EV cost cut the EV share by about 14 points in GCAM?</p><details><summary>Show answer</summary><div class="pl-sol">The logit with a large exponent turns small cost gaps into big share shifts, especially when options are close in cost.</div></details></div>
+<div class="pl-ex"><h3>From: battery metal prices and China’s EVs</h3><p>Why did LFP batteries soften the impact of the metal price surge?</p><details><summary>Show answer</summary><div class="pl-sol">LFP contains no cobalt or nickel, so only the lithium price rise reaches the battery cost.</div></details></div>
+<div class="pl-ex"><h3>From: cars across 1.5–3 °C futures</h3><p>Why does a typical LCA overstate a BEV’s footprint?</p><details><summary>Show answer</summary><div class="pl-sol">It uses today’s grid for all 10–20 years of driving, though the grid gets cleaner.</div></details></div>
+</section>
+
+<section class="pl-sec" id="sources">
+<h2><span class="pl-num">14</span>Sources</h2>
+<ul class="prose hy-why">
+<li>O’Rourke, P., Mignone, B. K., Kyle, P., Chapman, B. R., Fuhrman, J., Wolfram, P. &amp; McJeon, H. (2023). Supply and demand drivers of global hydrogen deployment in the transition toward a decarbonized energy system. <i>Environmental Science &amp; Technology</i> 57(48), 19508–19518. <a href="https://doi.org/10.1021/acs.est.3c03751" target="_blank" rel="noopener">doi:10.1021/acs.est.3c03751</a></li>
+<li>Open-access full text read for this study: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10702436" target="_blank" rel="noopener">PubMed Central PMC10702436</a>.</li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation (JGCRI)</a>.</li>
+</ul>
+<p class="pl-note">Summary written in our own words. No figures or tables from the article are copied. The explorer is a teaching toy, not the paper’s model.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on O’Rourke et al. (2023), Environmental Science &amp; Technology 57(48), 19508–19518. Charts use an illustrative toy model, not the paper’s data. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../../assets/js/site.js?v=20261105a"></script>
+<script src="../plca-common.js?v=1"></script>
+<script>
+(function () {
+  const { cv, canvas, legend, quiz } = window.PL;
+  /* ---------- toy model (illustrative numbers, 2050 snapshot) ---------- */
+  const ROUTES = [
+    { k: "On-site green", c: 25, e: 0, cen: false, col: "--land" },
+    { k: "On-site blue", c: 25, e: 0.008, cen: false, ind: true, col: "--water" },
+    { k: "Central green", c: 20, e: 0, cen: true, col: "--land", light: true },
+    { k: "Central blue", c: 20.5, e: 0.008, cen: true, col: "--water", light: true },
+    { k: "Central BECCS", c: 30, e: -0.025, cen: true, col: "--economy" }
+  ];
+  const DELIV = { "On-site only": [], "+ Trucks": [["truck", 10]], "+ Pipelines": [["truck", 10], ["pipe", 5.5]] };
+  const USES = [
+    { k: "Cars", D: 40, tr: true, eL: 0.20, E: 0.97, Hn: 0.75, Hf: 0.28, t: 0.015, te: 0.30 },
+    { k: "Buses", D: 6, tr: true, eL: 0.20, E: 1.00, Hn: 0.75, Hf: 0.28, t: 0.10, te: 0.30 },
+    { k: "Trucks", D: 45, tr: true, eL: 0.20, E: 1.08, Hn: 0.75, Hf: 0.30, t: 0.017, te: 0.08 },
+    { k: "Freight rail", D: 4, tr: true, eL: 0.20, E: 1.05, Hn: 0.75, Hf: 0.28, t: 0.17, te: 0.40 },
+    { k: "Ships", D: 16, tr: true, eL: 0.20, E: 1.60, Hn: 0.70, Hf: 0.33, t: 0.008, te: 0.01 },
+    { k: "Industry heat", D: 280, tr: false, eL: 0.22, E: 1.03, Hn: 0.55, Hf: 0.50, t: 0.03, te: 0.20 }
+  ];
+  const LAM = 6, LAMR = 12, PREF = 150;
+  function hprice(ind, P, del) {
+    const opts = [];
+    for (const r of ROUTES) {
+      if (r.ind && !ind) continue;
+      const base = Math.max(5, r.c + r.e * P);
+      if (!r.cen) opts.push({ r, cost: base, via: "on-site" });
+      else for (const [via, d] of DELIV[del]) opts.push({ r, cost: base + d, via });
+    }
+    const a = opts.map((x) => Math.pow(x.cost, -LAMR)), S = a.reduce((s, v) => s + v, 0);
+    opts.forEach((x, i) => { x.s = a[i] / S; });
+    return { p: Math.pow(S, -1 / LAMR), opts };
+  }
+  function costs(u, P, pH, drop) {
+    return [1 + u.eL * P / 100, u.E, u.Hn * (u.tr ? 1 - drop : 1 - 0.4 * drop) + u.Hf * pH / 25];
+  }
+  (function calib() {
+    const pT = hprice(false, PREF, "+ Pipelines").p, pI = hprice(true, PREF, "+ Pipelines").p;
+    for (const u of USES) {
+      const c = costs(u, PREF, u.tr ? pT : pI, 0), aL = c[0] ** -LAM, aE = c[1] ** -LAM, aH = c[2] ** -LAM, tl = 1 - u.t - u.te;
+      u.we = (u.te / tl) * aL / aE; u.w = (u.t / tl) * aL / aH;
+    }
+  })();
+  function model(o) {
+    const prT = hprice(false, o.P, o.del), prI = hprice(true, o.P, o.del);
+    const out = []; let tot = 0, trn = 0, ind = 0; const mix = {}, via = {};
+    for (const u of USES) {
+      const pr = u.tr ? prT : prI, c = costs(u, o.P, pr.p, o.drop);
+      const a = [c[0] ** -LAM, u.we * c[1] ** -LAM, u.w * c[2] ** -LAM], S = a[0] + a[1] + a[2];
+      const sh = a.map((v) => v / S), h = sh[2] * u.D;
+      out.push({ k: u.k, sh, h }); tot += h; if (u.tr) trn += h; else ind += h;
+      pr.opts.forEach((x) => { mix[x.r.k] = (mix[x.r.k] || 0) + h * x.s; via[x.via] = (via[x.via] || 0) + h * x.s; });
+    }
+    return { out, tot, trn, ind, mix, via, pT: prT.p };
+  }
+  window.HY = { model };
+
+  /* ---------- explorer ---------- */
+  const st = { del: "+ Pipelines", drop: 0, P: 150 };
+  const REF = { del: "+ Pipelines", drop: 0, P: 150 };
+  const PRE = { "Reference": { del: "+ Pipelines", drop: 0, P: 150 }, "High Demand": { del: "+ Pipelines", drop: 0.3, P: 150 }, "On-site only": { del: "On-site only", drop: 0, P: 150 }, "1.5 °C-like": { del: "+ Pipelines", drop: 0, P: 280 } };
+  const delEl = document.getElementById("x-del"), dropEl = document.getElementById("x-drop"), pEl = document.getElementById("x-p");
+  delEl.innerHTML = Object.keys(DELIV).map((d) => `<button class="btn quiet" type="button" data-v="${d}" aria-pressed="${d === st.del}">${d}</button>`).join("");
+  delEl.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; st.del = b.dataset.v; sync(); });
+  const preEl = document.getElementById("x-pre");
+  preEl.innerHTML = Object.keys(PRE).map((d) => `<button class="btn quiet" type="button" data-v="${d}">${d}</button>`).join("");
+  preEl.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; Object.assign(st, PRE[b.dataset.v]); sync(); });
+  dropEl.addEventListener("input", () => { st.drop = +dropEl.value / 100; sync(); });
+  pEl.addEventListener("input", () => { st.P = +pEl.value; sync(); });
+  function sync() {
+    delEl.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x.dataset.v === st.del));
+    dropEl.value = Math.round(st.drop * 100); pEl.value = st.P;
+    document.getElementById("x-drop-o").textContent = Math.round(st.drop * 100) + "%";
+    document.getElementById("x-p-o").textContent = st.P;
+    draw();
+  }
+  legend(document.getElementById("x-leg"), [["Transport", "--policy"], ["Industry", "--energy"], ["Reference run (dashed)", "--muted", true]]);
+  const MIXK = ROUTES.map((r) => r.k), VIAK = [["on-site", "--data"], ["truck", "--energy"], ["pipe", "--policy"]];
+  function stack(el, legEl, parts) {
+    const tot = parts.reduce((s, p) => s + p[1], 0) || 1;
+    el.innerHTML = parts.map(([k, v, c, light]) => `<span title="${k}: ${Math.round(v / tot * 100)}%" style="width:${v / tot * 100}%;background:${cv(c)};${light ? "opacity:.55" : ""}"></span>`).join("");
+    legEl.innerHTML = parts.map(([k, v, c, light]) => `<span class="pl-key"><i style="background:${cv(c)};border-color:${cv(c)};${light ? "opacity:.55" : ""}"></i>${k} ${Math.round(v / tot * 100)}%</span>`).join("");
+  }
+  function draw() {
+    const r = model(st), b = model(REF);
+    const cnv = document.getElementById("x-cnv"), narrow = cnv.clientWidth < 520, { ctx, w, h } = canvas(cnv, narrow ? 0.75 : 0.42);
+    const lab = narrow ? 92 : 110, x0 = lab, x1 = w - 46, y0 = 8, rowH = (h - y0 - 44) / USES.length;
+    const vmax = Math.max(16, ...r.out.map((d) => d.h), ...b.out.map((d) => d.h)) * 1.05;
+    const X = (v) => x0 + v / vmax * (x1 - x0);
+    ctx.font = "12px " + cv("--body"); ctx.textBaseline = "middle";
+    ctx.strokeStyle = cv("--grid"); ctx.fillStyle = cv("--muted"); ctx.textAlign = "center";
+    const step = vmax > 40 ? 10 : 5;
+    for (let v = 0; v <= vmax; v += step) { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), h - 40); ctx.stroke(); ctx.fillText(v, X(v), h - 30); }
+    ctx.fillText(narrow ? "EJ of H₂ in 2050 · share" : "EJ of hydrogen used in 2050 (label: EJ · share of that end use)", (x0 + x1) / 2, h - 10);
+    r.out.forEach((d, i) => {
+      const y = y0 + i * rowH + rowH * 0.2, bh = rowH * 0.6, u = USES[i];
+      ctx.fillStyle = cv("--ink"); ctx.textAlign = "right"; ctx.fillText(d.k, x0 - 8, y + bh / 2);
+      ctx.fillStyle = cv(u.tr ? "--policy" : "--energy"); ctx.fillRect(x0, y, Math.max(1, X(d.h) - x0), bh);
+      ctx.setLineDash([5, 4]); ctx.strokeStyle = cv("--ink-soft"); ctx.lineWidth = 1.5; ctx.strokeRect(x0, y, Math.max(1, X(b.out[i].h) - x0), bh); ctx.setLineDash([]);
+      ctx.fillStyle = cv("--ink"); ctx.textAlign = "left"; ctx.fillText(d.h.toFixed(1) + " · " + (d.sh[2] * 100).toFixed(1) + "%", Math.min(X(Math.max(d.h, b.out[i].h)) + 6, x1 - 2), y + bh / 2);
+    });
+    stack(document.getElementById("x-mix"), document.getElementById("x-mixleg"), MIXK.map((k) => { const R = ROUTES.find((q) => q.k === k); return [k, r.mix[k] || 0, R.col, R.light]; }).filter((p) => p[1] > 0.001));
+    stack(document.getElementById("x-via"), document.getElementById("x-vialeg"), VIAK.map(([k, c]) => [k === "on-site" ? "On site" : k === "truck" ? "Truck" : "Pipeline", r.via[k] || 0, c]).filter((p) => p[1] > 0.001));
+    const on = (r.via["on-site"] || 0) / r.tot;
+    document.getElementById("s-tot").textContent = r.tot.toFixed(1);
+    document.getElementById("s-trn").textContent = r.trn.toFixed(1);
+    document.getElementById("s-ind").textContent = r.ind.toFixed(1);
+    document.getElementById("s-on").textContent = Math.round(on * 100) + "%";
+    document.getElementById("s-pr").textContent = r.pT.toFixed(1);
+    const d = r.tot - b.tot;
+    document.getElementById("x-read").innerHTML = `Total hydrogen use is <b>${r.tot.toFixed(1)} EJ</b>, ${Math.abs(d) < 0.05 ? "the same as" : (d > 0 ? d.toFixed(1) + " EJ more than" : (-d).toFixed(1) + " EJ less than")} the Reference run. ` +
+      (r.ind > r.trn ? "Industry uses more than transport, as in most of the paper’s runs. " : "Transport now uses more than industry, as in the paper’s cheaper end-use cases. ") +
+      `${Math.round(on * 100)}% is made on site${st.del === "On-site only" ? ", because no delivery exists" : ""}. ` +
+      (st.P < 60 ? "With a low carbon price, oil stays cheap and hydrogen barely gets a look in." : st.drop >= 0.2 ? "The equipment cost cut is the big lever: watch the transport bars grow." : "Try the cost-cut slider, then the delivery buttons, and compare which moves the total more.");
+    const k = r.out.map((q) => q.sh[2]);
+    k.forEach((s, i) => document.getElementById("d-b" + i).setAttribute("width", Math.max(3, Math.min(180, s * 300))));
+  }
+  let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(draw, 150); });
+  sync();
+
+  /* ---------- six-case test ---------- */
+  document.getElementById("x-test").addEventListener("click", () => {
+    const rows = []; const dl = Object.keys(DELIV);
+    for (const drop of [0, 0.3]) for (const del of dl) { const r = model({ del, drop, P: st.P }); rows.push({ del, drop, tot: r.tot, on: (r.via["on-site"] || 0) / r.tot }); }
+    const tbl = document.getElementById("x-tbl"); tbl.hidden = false;
+    tbl.innerHTML = "<tr><th>End-use cost</th><th>Delivery</th><th>Total H₂ (EJ)</th><th>Made on site</th></tr>" + rows.map((q) => `<tr><td>${q.drop ? "30% cheaper" : "No cut"}</td><td>${q.del}</td><td>${q.tot.toFixed(1)}</td><td>${Math.round(q.on * 100)}%</td></tr>`).join("");
+    const supply = Math.max(...rows.slice(0, 3).map((q) => q.tot)) - Math.min(...rows.slice(0, 3).map((q) => q.tot));
+    const demand = rows[5].tot - rows[2].tot;
+    const p = document.getElementById("x-test-read"); p.hidden = false;
+    p.innerHTML = `Changing delivery moves the total by at most <b>${supply.toFixed(1)} EJ</b>, but swings the on-site share from ${Math.round(rows[0].on * 100)}% to ${Math.round(rows[2].on * 100)}%. Cutting end-use costs adds <b>${demand.toFixed(1)} EJ</b>. Same pattern as the paper: demand side sets the scale, supply side sets the mix.`;
+  });
+
+  /* ---------- animated diagram ---------- */
+  const TXT = [
+    "1 · Make hydrogen. Green (electrolysis), blue (gas with CO₂ capture) and BECCS (biomass with capture) compete on cost in a logit. Fossil hydrogen without capture is left out.",
+    "2 · Move hydrogen. On-site units skip delivery. Central plants need a liquid-hydrogen truck or, from 2030, a pipeline. The paper runs the model with these switched on or off.",
+    "3 · Use hydrogen. In each end use, hydrogen competes with oil and electricity in a second logit. Its cost = equipment (fuel-cell truck, furnace) + fuel. Bars show the toy’s current hydrogen shares.",
+    "4 · Carbon price. It rises 3% a year from 2025, set high enough to meet the goal. It makes oil and gas dearer, and pays BECCS for the CO₂ it removes.",
+    "5 · Totals. Add up hydrogen by sector, by production route and by delivery route. These are the paper’s main outputs."
+  ];
+  const svg = document.getElementById("d-svg"), steps = [...svg.querySelectorAll(".hy-step")], read = document.getElementById("d-read");
+  let cur = -1, timer = null;
+  function show(i) { cur = i; svg.classList.add("hy-dim"); steps.forEach((s) => s.classList.toggle("on", +s.dataset.i === i)); read.textContent = TXT[i]; }
+  function stop() { clearInterval(timer); timer = null; document.getElementById("d-play").textContent = "Play"; }
+  document.getElementById("d-play").addEventListener("click", () => {
+    if (timer) { stop(); return; }
+    show((cur + 1) % TXT.length); document.getElementById("d-play").textContent = "Pause";
+    timer = setInterval(() => { if (cur >= TXT.length - 1) { stop(); return; } show(cur + 1); }, 3000);
+  });
+  document.getElementById("d-next").addEventListener("click", () => { stop(); show((cur + 1) % TXT.length); });
+  document.getElementById("d-all").addEventListener("click", () => { stop(); cur = -1; svg.classList.remove("hy-dim"); steps.forEach((s) => s.classList.remove("on")); read.textContent = "The whole chain: make H₂ (logit 1) → move it → use it in competition with oil and electricity (logit 2), all under a rising carbon price."; });
+  steps.forEach((s) => { s.style.cursor = "pointer"; s.addEventListener("click", () => { stop(); show(+s.dataset.i); }); });
+  // moving dots: production -> delivery -> end use
+  const dots = ["dot1", "dot2", "dot3"].map((id) => document.getElementById(id));
+  const PATHS = [[[186, 78], [264, 78], [406, 78], [484, 90]], [[186, 128], [264, 128], [406, 128], [484, 130]], [[186, 178], [264, 178], [406, 178], [484, 175]]];
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function at(path, t) { const n = path.length - 1, s = Math.min(n - 1e-6, t * n), i = Math.floor(s), f = s - i; return [path[i][0] + (path[i + 1][0] - path[i][0]) * f, path[i][1] + (path[i + 1][1] - path[i][1]) * f]; }
+  function tick(ts) {
+    dots.forEach((d, i) => { const t = ((ts / 3200) + i / 3) % 1, [x, y] = at(PATHS[i], t); d.setAttribute("cx", x); d.setAttribute("cy", y); });
+    if (!reduce) requestAnimationFrame(tick);
+  }
+  if (reduce) tick(0); else requestAnimationFrame(tick);
+
+  /* ---------- predict-then-check ---------- */
+  document.querySelectorAll("#predict .hy-seg").forEach((g) => g.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    const btns = [...g.querySelectorAll("button")], i = btns.indexOf(b), ok = i === +g.dataset.ans;
+    btns.forEach((x, j) => { x.setAttribute("aria-pressed", x === b); if (j === +g.dataset.ans) x.style.outline = "3px solid " + cv("--land"); });
+    const p = g.parentElement.querySelector(".hy-reveal"); p.hidden = false;
+    p.innerHTML = (ok ? '<b class="pl-good">Good guess.</b> ' : '<b class="pl-bad">Not quite.</b> ') + p.innerHTML.replace(/^<b class="pl-(good|bad)">.*?<\/b> /, "");
+  }));
+
+  quiz(document.getElementById("qz"));
+})();
+</script>
+</body></html>

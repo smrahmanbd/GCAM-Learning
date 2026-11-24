@@ -68,5 +68,41 @@
     "a": "LFP contains no cobalt or nickel, so only the lithium price rise reaches the battery cost."
    }
   ]
+ },
+ {
+  "slug": "hydrogen-transport",
+  "date": "2026-11-24",
+  "title": "Will hydrogen fuel trucks and ships, or mostly factories?",
+  "citation": "O’Rourke, P., Mignone, B. K., Kyle, P., Chapman, B. R., Fuhrman, J., Wolfram, P. & McJeon, H. (2023). Environmental Science & Technology 57(48), 19508–19518.",
+  "doi": "10.1021/acs.est.3c03751",
+  "iam": "GCAM v5.4 (global, hydrogen-enhanced)",
+  "topics": [
+   "GCAM",
+   "hydrogen",
+   "fuel cells",
+   "freight",
+   "shipping",
+   "logit choice",
+   "infrastructure"
+  ],
+  "level": "Beginner–Intermediate",
+  "pages": [
+   "hydrogen-transport/index.html"
+  ],
+  "takeaways": [
+   "In below-2 °C runs, hydrogen reached 10–22 EJ in 2050 (2–4% of final energy), and industry used more than transport in most cases.",
+   "Cheaper end-use technology (e.g. fuel-cell trucks) raised hydrogen use by 70–84%; adding pipelines and trucks added under 2 EJ and mainly shifted production from on-site to central plants.",
+   "Green on-site electrolysis was the largest source (36–69%); a 1.5 °C goal more than doubled hydrogen use to 30–48 EJ."
+  ],
+  "review": [
+   {
+    "q": "In O’Rourke et al. (2023), what mattered more for how much hydrogen gets used: delivery options or end-use costs?",
+    "a": "End-use technology costs. Delivery options mainly changed where hydrogen was made (on site vs central plants)."
+   },
+   {
+    "q": "Why was most green hydrogen made on site in GCAM’s results?",
+    "a": "On-site electrolysis skips the cost of trucking or piping hydrogen, which is large per unit; over 90% of green hydrogen was on site."
+   }
+  ]
  }
 ]
