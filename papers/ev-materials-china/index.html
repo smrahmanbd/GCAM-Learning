@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper study: battery metal prices and China's EVs (GCAM) · GCAM in three goes</title>
+<meta name="description" content="Beginner-friendly study of Wang et al. (2023), Nature Communications: how a surge in lithium, cobalt, nickel and manganese prices would slow electric vehicle uptake in China in GCAM, and what that means for CO2.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="../plca.css?v=1">
+<link rel="icon" href="../../assets/img/icon.svg" type="image/svg+xml">
+<style>
+.em-step { transition: opacity .35s, stroke-width .35s; }
+.em-dim .em-step { opacity: .35; }
+.em-dim .em-step.on { opacity: 1; }
+.em-step.on rect { stroke-width: 3.5; }
+.em-bars { display: grid; gap: 8px; margin-top: 10px; }
+.em-bar { display: grid; grid-template-columns: 70px 1fr 64px; gap: 8px; align-items: center; font-size: .9rem; }
+.em-bar .tr { background: var(--paper-2); border-radius: 6px; height: 20px; overflow: hidden; }
+.em-bar .fill { height: 100%; border-radius: 6px; transition: width .4s; }
+.em-gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.em-gloss div { border: 1px solid var(--line); border-radius: var(--r-s); padding: 8px 12px; background: var(--card); }
+.em-gloss b { display: block; }
+.em-gloss span { font-size: .93rem; color: var(--ink-soft); }
+.em-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.em-seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.em-reveal[hidden] { display: none; }
+.pl-sec ul.prose li, .pl-sec ol li { margin-bottom: 4px; }
+.em-why { overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../../go1.html">Foundations</a><a href="../../go2.html">Build and Implement</a><a href="../../go3.html">Research Frontier</a><a href="../index.html">Paper studies</a><a href="../../toolkit.html">Toolkit</a><a href="../../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study 2 · Transport · GCAM v5.2 · China</p>
+<h1>If battery metals get expensive, do fewer people buy electric cars?</h1>
+<p>A hands-on companion to <b>Wang, Feng, Wang, Yang, Sun, Yang, Chen, Zhang &amp; Li (2023)</b>. The authors add the prices of four battery metals to <b>GCAM</b> and ask what happens to China's electric vehicle (EV) uptake and road CO₂ if those prices surge. The explorer on this page runs a <b>small teaching model</b> with made-up numbers, tuned to behave like the paper.</p>
+<p class="pl-cite">Paper: <a href="https://doi.org/10.1038/s41467-023-36957-4" target="_blank" rel="noopener">Nature Communications 14, 1246 (2023)</a>, open access. Last study: <a href="../bev-plca.html">cars across 1.5–3 °C futures</a> asked how clean each car is. This one asks <i>how many</i> EVs get chosen, which is GCAM's job.</p>
+<ul class="pl-toc">
+<li><a href="#minute">1 · In one minute</a></li><li><a href="#goals">2 · Goals</a></li><li><a href="#words">3 · Words</a></li><li><a href="#question">4 · Question</a></li><li><a href="#model">5 · How the model works</a></li><li><a href="#explore">6 · Explorer</a></li><li><a href="#found">7 · Findings</a></li><li><a href="#predict">8 · Predict</a></li><li><a href="#ex">9 · Exercise</a></li><li><a href="#quiz">10 · Quiz</a></li><li><a href="#limits">11 · Limits</a></li><li><a href="#course">12 · Course</a></li><li><a href="#review">13 · Review</a></li><li><a href="#sources">14 · Sources</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="minute">
+<h2><span class="pl-num">1</span>The paper in one minute</h2>
+<ol class="lead">
+<li>EV batteries need lithium, cobalt, nickel and manganese, and the prices of these metals could rise sharply as demand grows.</li>
+<li>The authors fed rising metal prices into GCAM, where dearer batteries make EVs dearer, so the model's buyers choose fewer of them.</li>
+<li>In their worst case, EVs were 35% of China's vehicles in 2030 (not 49%) and 51% in 2060 (not 67%), and road CO₂ from 2020 to 2060 rose by 28%.</li>
+</ol>
+</section>
+
+<section class="pl-sec" id="goals">
+<h2><span class="pl-num">2</span>Learning goals</h2>
+<p class="lead">After this page you can…</p>
+<ul class="prose">
+<li>…trace how a metal price becomes a cost per passenger-kilometre for an EV in GCAM.</li>
+<li>…work out logit shares by hand and see why a 10% cost rise can move shares by many points.</li>
+<li>…explain why battery chemistry (NCM versus LFP) and recycling change the result.</li>
+<li>…name the main results and two limits of the study.</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="words">
+<h2><span class="pl-num">3</span>Words you need</h2>
+<div class="em-gloss">
+<div><b>GCAM</b><span>Global Change Analysis Model. A model of the world's energy, land, water and economy that finds prices where supply equals demand, every 5 years.</span></div>
+<div><b>EV / BEV</b><span>Electric vehicle. Here it means a battery electric car, bus or truck that runs only on electricity.</span></div>
+<div><b>ICEV</b><span>Internal combustion engine vehicle: a normal petrol or diesel car.</span></div>
+<div><b>FCEV</b><span>Fuel cell electric vehicle. It makes electricity on board from hydrogen.</span></div>
+<div><b>Critical materials</b><span>Metals that are important for clean technology but whose supply is at risk. Here: lithium (Li), cobalt (Co), nickel (Ni), manganese (Mn).</span></div>
+<div><b>Battery chemistry</b><span>The recipe of the battery's positive side (cathode). <b>NCM622</b> = nickel, cobalt, manganese in a 6:2:2 ratio. <b>LFP</b> = lithium iron phosphate, with no cobalt or nickel.</span></div>
+<div><b>Battery pack cost</b><span>The price of the whole battery, usually in $ per kWh of storage. Metals are one part of it.</span></div>
+<div><b>Passenger-kilometre (pkm)</b><span>One person carried one kilometre. GCAM measures passenger transport in pkm, and costs in $ per pkm.</span></div>
+<div><b>Levelised cost</b><span>All costs of a vehicle (buying, fuel, upkeep) spread over every pkm it delivers.</span></div>
+<div><b>Logit choice</b><span>A formula that gives a bigger market share to cheaper options, but never gives everything to the cheapest one.</span></div>
+<div><b>Logit exponent (λ)</b><span>How strongly buyers react to cost differences. Big λ: small cost gaps cause big share shifts.</span></div>
+<div><b>Share weight</b><span>A number that captures non-cost preferences (range, charging, habit). It is calibrated so the model matches history.</span></div>
+<div><b>Baseline (BLS)</b><span>The paper's reference case: no metal price surge, and China on track for carbon neutrality by 2060.</span></div>
+<div><b>Carbon neutrality</b><span>Net zero CO₂: any remaining emissions are balanced by removals.</span></div>
+<div><b>Cumulative emissions</b><span>All emissions added up over a period (here 2020–2060). This is what matters for warming.</span></div>
+<div><b>Recycling (RE)</b><span>Getting metals back from old batteries, so less newly mined metal is needed.</span></div>
+<div><b>Scenario</b><span>A consistent "what if" story about the future. Not a forecast.</span></div>
+<div><b>Exogenous / endogenous</b><span>Exogenous = given to the model as an input (here, metal prices). Endogenous = worked out by the model (here, EV shares).</span></div>
+</div>
+</section>
+
+<section class="pl-sec" id="question">
+<h2><span class="pl-num">4</span>The question, and why it matters</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead"><b>Question:</b> if prices of lithium, cobalt, nickel and manganese surge, how many fewer EVs will China have, and how much more CO₂ will its roads emit on the way to the 2060 net-zero goal?</p>
+<p class="lead"><b>Why it matters:</b> most long-term studies assume batteries simply keep getting cheaper. In 2021–2022, lithium prices jumped several times over. China is the world's biggest EV market, so if dearer metals slow EV sales there, global climate plans feel it too.</p>
+</div>
+<div class="callout gcam"><h4>Link to what you know</h4><p>In the last study, the car mix was given and the question was the footprint of each car. Here the footprint per kilometre comes from the energy system, and the question is the <b>mix</b>: GCAM decides how much travel each vehicle type gets from their costs. That decision is a <a href="../../modules/choice-the-logit.html">logit choice</a>.</p></div>
+</div>
+</section>
+
+<section class="pl-sec" id="model">
+<h2><span class="pl-num">5</span>How the model works</h2>
+<p class="lead">Press <b>Play</b> to walk through the chain one step at a time, or click a box. The dashed arrows move in the direction the effect travels.</p>
+<div class="pl-box">
+<div class="pl-ctrls"><button class="btn" id="d-play" type="button">Play</button><button class="btn quiet" id="d-next" type="button">Next step</button><button class="btn quiet" id="d-all" type="button">Show all</button></div>
+<svg class="pl-svg" id="d-svg" viewBox="0 0 760 330" role="img" aria-label="Diagram: metal prices raise battery cost, which raises EV cost per passenger-km; a logit choice splits travel among ICEV, EV and FCEV; shares set fuel use and CO2">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink-soft)"/></marker></defs>
+<g font-size="13" font-family="var(--body)" fill="var(--ink)">
+<g class="em-step" data-i="0"><rect x="10" y="20" width="160" height="70" rx="10" fill="var(--economy-t)" stroke="var(--economy)"/><text x="90" y="46" text-anchor="middle" font-weight="700">Metal prices</text><text x="90" y="64" text-anchor="middle" font-size="11">Li · Co · Ni · Mn</text><text x="90" y="79" text-anchor="middle" font-size="11">(scenario input)</text></g>
+<g class="em-step" data-i="1"><rect x="200" y="20" width="160" height="70" rx="10" fill="var(--data-t)" stroke="var(--data)"/><text x="280" y="46" text-anchor="middle" font-weight="700">Battery cost</text><text x="280" y="64" text-anchor="middle" font-size="11">depends on chemistry</text><text x="280" y="79" text-anchor="middle" font-size="11">NCM622, LFP…</text></g>
+<g class="em-step" data-i="2"><rect x="390" y="20" width="160" height="70" rx="10" fill="var(--water-t)" stroke="var(--water)"/><text x="470" y="46" text-anchor="middle" font-weight="700">EV cost per pkm</text><text x="470" y="64" text-anchor="middle" font-size="11">car + fuel + upkeep</text><text x="470" y="79" text-anchor="middle" font-size="11">spread over km</text></g>
+<g class="em-step" data-i="3"><rect x="580" y="20" width="170" height="160" rx="10" fill="var(--policy-t)" stroke="var(--policy)"/><text x="665" y="46" text-anchor="middle" font-weight="700">Logit choice</text><text x="665" y="66" text-anchor="middle" font-size="11">share ∝ weight × cost^(−λ)</text>
+<rect id="d-bI" x="600" y="84" width="40" height="16" rx="3" fill="var(--climate)"/><text x="596" y="97" text-anchor="end" font-size="11">ICEV</text>
+<rect id="d-bE" x="600" y="110" width="80" height="16" rx="3" fill="var(--land)"/><text x="596" y="123" text-anchor="end" font-size="11">EV</text>
+<rect id="d-bF" x="600" y="136" width="20" height="16" rx="3" fill="var(--energy)"/><text x="596" y="149" text-anchor="end" font-size="11">FCEV</text>
+<text x="665" y="172" text-anchor="middle" font-size="11" fill="var(--muted)">shares of travel</text></g>
+<g class="em-step" data-i="4"><rect x="390" y="230" width="160" height="80" rx="10" fill="var(--energy-t)" stroke="var(--energy)"/><text x="470" y="256" text-anchor="middle" font-weight="700">Fuel use</text><text x="470" y="274" text-anchor="middle" font-size="11">oil · electricity · H₂</text><text x="470" y="290" text-anchor="middle" font-size="11">set by the shares</text></g>
+<g class="em-step" data-i="5"><rect x="140" y="230" width="190" height="80" rx="10" fill="var(--climate-t)" stroke="var(--climate)"/><text x="235" y="256" text-anchor="middle" font-weight="700">Road CO₂</text><text x="235" y="274" text-anchor="middle" font-size="11">more oil = more CO₂</text><text x="235" y="290" text-anchor="middle" font-size="11">added up 2020–2060</text></g>
+<path class="pl-flow" d="M170 55 H196" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M360 55 H386" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M550 55 H576" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M665 180 V270 H554" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M390 270 H334" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<text x="470" y="140" text-anchor="middle" font-size="11" fill="var(--muted)">ICEV and FCEV costs</text><text x="470" y="155" text-anchor="middle" font-size="11" fill="var(--muted)">barely move</text>
+<path class="pl-flow slow" d="M530 148 H576" stroke="var(--muted)" stroke-width="1.5" fill="none" marker-end="url(#ar)"/>
+</g></svg>
+<p class="pl-read" id="d-read">Press Play.</p>
+</div>
+<div class="callout model"><h4>What is new in this paper</h4><p>Standard GCAM already lets buyers pick vehicles by cost with a logit. The authors' addition is the first box: they link battery cost to the prices of four metals and to the battery chemistry, and they run price paths through to 2060. Everything after that is normal GCAM.</p></div>
+</section>
+
+<section class="pl-sec" id="explore">
+<h2><span class="pl-num">6</span>Explorer: a toy GCAM car market</h2>
+<p class="lead">Pick a metal price scenario, a battery chemistry and a logit exponent. The toy model works out the cost per pkm of each vehicle type, splits car travel with a logit, and adds up CO₂. The <b>dashed line</b> is the no-surge baseline.</p>
+<div class="callout trap"><h4>Illustrative numbers</h4><p>All costs, weights and emission factors here are made up for teaching. They are tuned so the toy behaves roughly like the paper. They are <b>not</b> GCAM data.</p></div>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Metal price scenario<span class="em-seg" id="x-scen"></span></label>
+<label>Battery chemistry<span class="em-seg" id="x-chem"></span></label>
+<label>Logit exponent λ <output id="x-lam-o">6</output><input type="range" id="x-lam" min="1" max="12" step="1" value="6"></label>
+<label>Year for the bars <output id="x-yr-o">2030</output><input type="range" id="x-yr" min="2020" max="2060" step="5" value="2030"></label>
+<label style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="x-rec"> Add recycling</label>
+</div>
+<canvas class="pl-canvas" id="x-cnv" aria-label="Chart of vehicle shares of car travel over time"></canvas>
+<div class="pl-legend" id="x-leg"></div>
+<div class="pl-grid2">
+<div><h3 style="margin:14px 0 4px;font-size:1.02rem">Cost per pkm in <span id="x-yr2">2030</span> (illustrative $)</h3><div class="em-bars" id="x-cost"></div></div>
+<div><h3 style="margin:14px 0 4px;font-size:1.02rem">Share of car travel in <span id="x-yr3">2030</span></h3><div class="em-bars" id="x-share"></div></div>
+</div>
+<div class="pl-stats">
+<div class="pl-stat"><b id="s-ev">0%</b><span>EV share, chosen year</span></div>
+<div class="pl-stat"><b id="s-evb">0%</b><span>EV share, baseline</span></div>
+<div class="pl-stat"><b id="s-cost">0%</b><span>EV cost vs baseline</span></div>
+<div class="pl-stat"><b id="s-co2">0%</b><span>extra cumulative CO₂, 2020–2060</span></div>
+</div>
+<p class="pl-read" id="x-read"></p>
+</div>
+<details class="pl-ex"><summary>How the toy model works (for the curious)</summary>
+<div class="pl-sol">
+<p>Every 5 years from 2020 to 2060:</p>
+<ol>
+<li>Each metal's price index rises from 1 to its scenario multiplier (lithium by 2035, the others by 2060). The High multipliers follow the paper's 2060 rises: cobalt ×5.7, manganese ×4.1, nickel ×2.6, lithium ×4.8. Low and Medium are made up.</li>
+<li>Battery cost per pkm = falling base cost × (non-metal part + Σ metal share × price index). NCM622 uses all four metals. LFP uses only lithium.</li>
+<li>Recycling reduces the price surge felt by the battery, slowly at first and strongly by 2060.</li>
+<li>Share of tech <i>i</i> = w<sub>i</sub>·c<sub>i</sub><sup>−λ</sup> / Σ w<sub>j</sub>·c<sub>j</sub><sup>−λ</sup>.</li>
+<li>CO₂ = travel × Σ share × emission factor. The EV and FCEV factors fall as power and hydrogen get cleaner.</li>
+</ol></div></details>
+</section>
+
+<section class="pl-sec" id="found">
+<h2><span class="pl-num">7</span>What they found</h2>
+<div class="pl-cards">
+<div class="pl-card"><h4>Fewer EVs</h4><p>High surge: EVs were 35% of vehicles in 2030 and 51% in 2060. The baseline had 49% and 67%. Medium and Low surges gave 41%/60% and 43%/66%.</p></div>
+<div class="pl-card"><h4>EVs only a bit dearer…</h4><p>In 2030 a High surge made electric cars about 7–10% dearer per pkm. By 2060 the gap grew to 15–21% for most car sizes. Petrol car costs barely changed.</p></div>
+<div class="pl-card"><h4>…but much more CO₂</h4><p>Road CO₂ added up over 2020–2060 was about 23, 21 and 19 Gt for High, Medium and Low: 28%, 12% and 5% above the baseline.</p></div>
+<div class="pl-card"><h4>Cars hit hardest</h4><p>Passenger cars make up over 60% of road CO₂ and gave most of the extra. Buses and trucks lean toward fuel-cell vehicles, so they were hit less.</p></div>
+<div class="pl-card"><h4>Chemistry matters</h4><p>Cobalt-free LFP and LMO batteries kept more EVs on the road. Cumulative CO₂ came out about 3–14% lower than with NCM622.</p></div>
+<div class="pl-card"><h4>Recycling helps</h4><p>With recycling in the High case, the 2060 EV share rose from 51% to 59%, and cumulative CO₂ fell from about 23 to 22 Gt.</p></div>
+</div>
+<p class="lead">The authors' message, in a phrase: the price surge "could severely undermine the development of EVs". Their fixes are recycling, cobalt-free chemistries and safer, more varied metal supply.</p>
+</section>
+
+<section class="pl-sec" id="predict">
+<h2><span class="pl-num">8</span>Predict, then check</h2>
+<div class="pl-ex" id="p1">
+<h3>Prediction 1</h3>
+<p>In the High scenario, a petrol car's cost barely moves and an electric car gets about 8% dearer in 2030. What happens to the EV share in 2030?</p>
+<div class="em-seg" data-ans="2"><button class="btn quiet" type="button">It falls by about 1 point</button><button class="btn quiet" type="button">It falls by about 8 points</button><button class="btn quiet" type="button">It falls by about 14 points</button></div>
+<p class="pl-check em-reveal" hidden>The paper: 49% → 35%, a fall of <b>14 points</b>. A logit with a large exponent turns a small cost gap into a big share shift. Try λ = 2 and λ = 12 in the explorer to see this.</p>
+</div>
+<div class="pl-ex" id="p2">
+<h3>Prediction 2</h3>
+<p>Which chemistry keeps more EVs on the road when cobalt and nickel get very expensive?</p>
+<div class="em-seg" data-ans="1"><button class="btn quiet" type="button">NCM622</button><button class="btn quiet" type="button">LFP</button><button class="btn quiet" type="button">No difference</button></div>
+<p class="pl-check em-reveal" hidden><b>LFP</b>. It has no cobalt or nickel, so only the lithium surge reaches it. In the paper, cobalt-free LFP and LMO gave 3–14% less cumulative CO₂ than NCM622. Switch the explorer to LFP with the High scenario to check.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="ex">
+<h2><span class="pl-num">9</span>Worked mini-exercise: logit by hand</h2>
+<div class="pl-ex" data-answer="51.5" data-tol="0.03" data-show="about 51.5%">
+<h3>Two cars, one surge</h3>
+<p>A petrol car costs <b>$0.100</b> per pkm. An EV costs <b>$0.090</b>. Both have share weight 1, and λ = 6. Then a metal surge makes the EV 10% dearer (<b>$0.099</b>). What is the EV's new share, in %?</p>
+<div class="pl-row"><input class="pl-ans" type="text" inputmode="decimal" placeholder="e.g. 60" aria-label="Your answer in percent"><button class="btn pl-checkbtn" type="button">Check</button></div>
+<p class="pl-check" aria-live="polite"></p>
+<details><summary>Hint</summary><div class="pl-sol"><p>With equal weights, the EV share is 1 / (1 + (c<sub>EV</sub>/c<sub>ICEV</sub>)<sup>λ</sup>). Equivalently r / (1 + r) with r = (c<sub>ICEV</sub>/c<sub>EV</sub>)<sup>6</sup>.</p></div></details>
+<details><summary>Step-by-step solution</summary><div class="pl-sol">
+<table><tr><th>Step</th><th>Before surge</th><th>After surge</th></tr>
+<tr><td>Cost ratio ICEV / EV</td><td>0.100 / 0.090 = 1.111</td><td>0.100 / 0.099 = 1.010</td></tr>
+<tr><td>Raise to the power 6 (r)</td><td>1.111⁶ = 1.88</td><td>1.010⁶ = 1.06</td></tr>
+<tr><td>EV share = r / (1 + r)</td><td>1.88 / 2.88 = <b>65.3%</b></td><td>1.06 / 2.06 = <b>51.5%</b></td></tr></table>
+<p>A 10% cost rise cut the EV share by about <b>14 points</b>. The EV went from clearly cheapest to almost tied, and the logit splits a near-tie close to 50:50. This is the same mechanism as in the paper.</p></div></details>
+</div>
+</section>
+
+<section class="pl-sec" id="quiz">
+<h2><span class="pl-num">10</span>Quiz</h2>
+<div class="pl-quiz" id="qz" data-q='[
+{"q":"In this paper, which quantity is an input (exogenous) rather than worked out by GCAM?","o":["The EV share of travel","The prices of lithium, cobalt, nickel and manganese","Road CO₂ emissions","Oil use in transport"],"a":1,"e":"The metal price paths are scenario inputs. GCAM then works out costs, shares, fuel use and emissions."},
+{"q":"How does a higher cobalt price reach the EV share?","o":["Through a direct ban on EVs","Battery cost rises, EV cost per pkm rises, and the logit gives EVs a smaller share","Electricity gets dearer","Hydrogen gets cheaper"],"a":1,"e":"Metal → battery → vehicle cost → logit share. The other vehicle types keep almost the same cost, so EVs lose ground."},
+{"q":"What does a larger logit exponent λ do?","o":["Makes buyers ignore cost","Makes shares react more strongly to cost differences","Makes all shares equal","Changes the metal prices"],"a":1,"e":"Larger λ means a small cost gap moves shares a lot. Try it in the explorer."},
+{"q":"Under the High surge, how much higher were cumulative 2020–2060 road CO₂ emissions than the baseline?","o":["About 5%","About 12%","About 28%","About 100%"],"a":2,"e":"About 28% (roughly 23 Gt). Medium gave 12% and Low gave 5%."},
+{"q":"Why did LFP batteries soften the impact?","o":["They hold more energy","They use no cobalt or nickel, so fewer price surges reach them","They are made in the EU","They are recycled automatically"],"a":1,"e":"LFP avoids the two metals with steep price rises in the scenarios; only lithium still matters."}
+]'></div>
+</section>
+
+<section class="pl-sec" id="limits">
+<h2><span class="pl-num">11</span>Limitations and open questions</h2>
+<ul class="prose">
+<li><b>Prices are assumed, not solved.</b> Metal price paths are given to the model. In reality, fewer EVs would mean lower metal demand and maybe lower prices. That feedback is not in the model.</li>
+<li><b>Results lean on the logit.</b> The exponent and share weights decide how strongly buyers react. Different values would give different share drops.</li>
+<li><b>Fuel cells fill the gap.</b> In the model, many trucks and buses go to hydrogen. If fuel cells turn out dearer than assumed, the CO₂ picture could change.</li>
+<li><b>Supply risk is about more than price.</b> Most cobalt comes from one country (about 71% from the DR Congo, per the paper). Shortages or trade limits could bite harder than a smooth price rise.</li>
+<li><b>Open question:</b> new chemistries (for example sodium-ion) and faster recycling could cut metal needs. How fast would they need to grow to cancel the surge?</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="course">
+<h2><span class="pl-num">12</span>Links to the course and to GCAM</h2>
+<ul class="reslist">
+<li><a href="../../modules/transport-in-gcam.html">3.2 Transport in GCAM</a><span class="why">The nesting tree of modes and vehicle technologies that this paper's car choice sits in.</span></li>
+<li><a href="../../modules/choice-the-logit.html">2.3 Choice: the logit</a><span class="why">The formula behind the explorer and the mini-exercise, with share weights and the exponent.</span></li>
+<li><a href="../../modules/prices-and-choices.html">1.4 Prices and choices</a><span class="why">How a cost change flows through to what gets chosen.</span></li>
+<li><a href="../../modules/scenarios.html">1.5 Scenarios</a><span class="why">Why High, Medium and Low are "what ifs", not forecasts.</span></li>
+<li><a href="../../modules/the-iam-family.html">3.9 The IAM family</a><span class="why">GCAM next to TIAM-UCL, the model behind the last paper study.</span></li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation</a><span class="why">Official docs, including the transportation and choice sections.</span></li>
+</ul>
+</section>
+
+<section class="pl-sec" id="review">
+<h2><span class="pl-num">13</span>Review: from earlier papers</h2>
+<p class="lead">Spaced repetition: try to answer before you open each one. (Only one earlier study exists so far, so all three come from it.)</p>
+<div class="pl-ex"><h3>From: cars across 1.5–3 °C futures</h3><p>Why does a typical LCA overstate a BEV's footprint?</p><details><summary>Show answer</summary><div class="pl-sol">It uses today's grid for all 10–20 years of driving, though the grid gets cleaner.</div></details></div>
+<div class="pl-ex"><h3>From: cars across 1.5–3 °C futures</h3><p>What is breakeven mileage?</p><details><summary>Show answer</summary><div class="pl-sol">The lifetime distance at which a BEV's whole-life footprint drops below a hybrid's.</div></details></div>
+<div class="pl-ex"><h3>From: cars across 1.5–3 °C futures</h3><p>In which scenario did fuel cell cars come out best, and why?</p><details><summary>Show answer</summary><div class="pl-sol">Only in the 1.5 °C scenario, thanks to carbon-negative hydrogen made from bioenergy with carbon capture (BECCS).</div></details></div>
+</section>
+
+<section class="pl-sec" id="sources">
+<h2><span class="pl-num">14</span>Sources</h2>
+<ul class="prose em-why">
+<li>Wang, H., Feng, K., Wang, P., Yang, Y., Sun, L., Yang, F., Chen, W.-Q., Zhang, Y. &amp; Li, J. (2023). China's electric vehicle and climate ambitions jeopardized by surging critical material prices. <i>Nature Communications</i> 14, 1246. <a href="https://doi.org/10.1038/s41467-023-36957-4" target="_blank" rel="noopener">doi:10.1038/s41467-023-36957-4</a></li>
+<li>Open-access copy read for this study: <a href="https://eprints.soas.ac.uk/39061/" target="_blank" rel="noopener">SOAS Research Online</a>.</li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation (JGCRI)</a>.</li>
+</ul>
+<p class="pl-note">Summary written in our own words. No figures or tables from the article are copied. The explorer is a teaching toy, not the paper's model.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on Wang et al. (2023), Nature Communications 14, 1246. Charts use an illustrative toy model, not the paper's data. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../../assets/js/site.js?v=20261105a"></script>
+<script src="../plca-common.js?v=1"></script>
+<script>
+(function () {
+  const { cv, canvas, axes, legend, quiz } = window.PL;
+  /* ---------- toy model (illustrative numbers) ---------- */
+  const YEARS = []; for (let y = 2020; y <= 2060; y += 5) YEARS.push(y);
+  const SCEN = { Baseline: { Li: 1, Co: 1, Ni: 1, Mn: 1 }, Low: { Li: 1.95, Co: 2.17, Ni: 1.41, Mn: 1.78 }, Medium: { Li: 2.9, Co: 3.33, Ni: 1.82, Mn: 2.57 }, High: { Li: 4.8, Co: 5.67, Ni: 2.64, Mn: 4.13 } };
+  const CHEM = { NCM622: { Li: .07, Co: .08, Ni: .10, Mn: .02 }, LFP: { Li: .10, Co: 0, Ni: 0, Mn: 0 } };
+  const idx = (m, y, early) => 1 + (m - 1) * Math.min(1, (y - 2020) / ((early ? 2035 : 2060) - 2020));
+  function model(o) {
+    const s = SCEN[o.scen], ch = CHEM[o.chem], lam = o.lam, out = []; let cum = 0;
+    for (const y of YEARS) {
+      const t = y - 2020;
+      const cI = 0.100 + 0.0008 * t;
+      const b0 = 0.040 * Math.max(0.45, 1 - 0.025 * t);
+      const m = ch.Li + ch.Co + ch.Ni + ch.Mn;
+      let fac = (1 - m) + ch.Li * idx(s.Li, y, 1) + ch.Co * idx(s.Co, y) + ch.Ni * idx(s.Ni, y) + ch.Mn * idx(s.Mn, y);
+      if (o.rec) { const r = 0.85 * Math.pow(Math.max(0, t - 5) / 35, 2); fac = 1 + (fac - 1) * (1 - r); }
+      const cE = 0.062 * Math.max(0.85, 1 - 0.004 * t) + b0 * fac;
+      const cF = Math.max(0.082, 0.16 - 0.0024 * t);
+      const w = [1, Math.min(0.75, 0.2 + 0.02 * t), Math.min(0.7, 0.04 + 0.018 * t)];
+      const a = [w[0] * Math.pow(cI, -lam), w[1] * Math.pow(cE, -lam), w[2] * Math.pow(cF, -lam)], S = a[0] + a[1] + a[2];
+      const sh = a.map((v) => v / S);
+      const D = Math.min(1.7, 1 + 0.03 * t), gE = Math.max(0, 0.6 - 0.016 * t), gF = Math.max(0, 0.5 - 0.0125 * t);
+      const co2 = D * (sh[0] + sh[1] * gE * 0.35 + sh[2] * gF * 0.6); cum += co2 * 5;
+      out.push({ y, c: [cI, cE, cF], sh, cum });
+    }
+    return out;
+  }
+  window.EM = { model };
+  const TECH = ["ICEV", "EV", "FCEV"], COL = ["--climate", "--land", "--energy"];
+
+  /* ---------- explorer ---------- */
+  const st = { scen: "High", chem: "NCM622", lam: 6, yr: 2030, rec: false };
+  function seg(id, arr, key) {
+    const el = document.getElementById(id);
+    el.innerHTML = arr.map((a) => `<button class="btn quiet" type="button" aria-pressed="${a === st[key]}" data-v="${a}">${a}</button>`).join("");
+    el.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; st[key] = b.dataset.v; el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b)); draw(); });
+  }
+  seg("x-scen", Object.keys(SCEN), "scen"); seg("x-chem", Object.keys(CHEM), "chem");
+  const lamEl = document.getElementById("x-lam"), yrEl = document.getElementById("x-yr"), recEl = document.getElementById("x-rec");
+  lamEl.addEventListener("input", () => { st.lam = +lamEl.value; document.getElementById("x-lam-o").textContent = st.lam; draw(); });
+  yrEl.addEventListener("input", () => { st.yr = +yrEl.value; ["x-yr-o", "x-yr2", "x-yr3"].forEach((i) => document.getElementById(i).textContent = st.yr); draw(); });
+  recEl.addEventListener("change", () => { st.rec = recEl.checked; draw(); });
+  legend(document.getElementById("x-leg"), [["ICEV", "--climate"], ["EV", "--land"], ["FCEV", "--energy"], ["Baseline (dashed)", "--muted", true]]);
+  const pct = (v) => Math.round(v * 100) + "%";
+  function bars(el, vals, fmt, max) {
+    el.innerHTML = vals.map((v, i) => `<div class="em-bar"><span>${TECH[i]}</span><div class="tr"><div class="fill" style="width:${Math.min(100, v / max * 100)}%;background:${cv(COL[i])}"></div></div><b>${fmt(v)}</b></div>`).join("");
+  }
+  function draw() {
+    const r = model(st), b = model({ ...st, scen: "Baseline", rec: false });
+    const cnv = document.getElementById("x-cnv"), { ctx, w, h } = canvas(cnv, 0.42);
+    const box = { x0: 54, y0: 12, x1: w - 14, y1: h - 42 };
+    const { X, Y } = axes(ctx, box, [2020, 2060], [0, 1], { yfmt: (v) => Math.round(v * 100) + "%", xticks: [2020, 2030, 2040, 2050, 2060], xfmt: String, ylab: "share of car travel" });
+    [0, 1, 2].forEach((k) => {
+      [[b, true], [r, false]].forEach(([d, dash]) => {
+        ctx.strokeStyle = cv(COL[k]); ctx.lineWidth = dash ? 1.6 : 3; ctx.setLineDash(dash ? [6, 5] : []);
+        ctx.beginPath(); d.forEach((p, i) => { const x = X(p.y), yy = Y(p.sh[k]); i ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy); }); ctx.stroke();
+      });
+    });
+    ctx.setLineDash([]); ctx.strokeStyle = cv("--ink-soft"); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X(st.yr), box.y0); ctx.lineTo(X(st.yr), box.y1); ctx.stroke();
+    const p = r.find((d) => d.y === st.yr), pb = b.find((d) => d.y === st.yr);
+    bars(document.getElementById("x-cost"), p.c, (v) => v.toFixed(3), 0.17);
+    bars(document.getElementById("x-share"), p.sh, pct, 1);
+    document.getElementById("s-ev").textContent = pct(p.sh[1]);
+    document.getElementById("s-evb").textContent = pct(pb.sh[1]);
+    const dc = (p.c[1] / pb.c[1] - 1) * 100, dco2 = (r[r.length - 1].cum / b[b.length - 1].cum - 1) * 100;
+    document.getElementById("s-cost").textContent = (dc >= 0 ? "+" : "") + dc.toFixed(0) + "%";
+    document.getElementById("s-co2").textContent = (dco2 >= 0 ? "+" : "") + dco2.toFixed(0) + "%";
+    const gap = Math.round((pb.sh[1] - p.sh[1]) * 100);
+    document.getElementById("x-read").innerHTML = st.scen === "Baseline" && !st.rec
+      ? `This is the baseline: no metal price surge. EVs take ${pct(p.sh[1])} of car travel in ${st.yr}. Pick a surge scenario to compare.`
+      : `In ${st.yr}, the EV costs ${dc.toFixed(0)}% more than in the baseline, and its share is <b>${gap} points ${gap >= 0 ? "lower" : "higher"}</b>. Fewer EVs means more petrol use, so cumulative CO₂ is ${dco2.toFixed(0)}% higher. ${st.chem === "LFP" ? "LFP has no cobalt or nickel, so only the lithium surge reaches it." : "NCM622 feels all four metal surges."}`;
+    // feed the diagram's bars
+    const k = model({ ...st, yr: 2030 }).find((d) => d.y === 2030).sh;
+    [["d-bI", 0], ["d-bE", 1], ["d-bF", 2]].forEach(([id, i]) => document.getElementById(id).setAttribute("width", Math.max(3, k[i] * 130)));
+  }
+  let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(draw, 150); });
+  draw();
+
+  /* ---------- animated diagram ---------- */
+  const TXT = [
+    "1 · Metal prices. The scenario says how much lithium, cobalt, nickel and manganese cost each year. These are inputs.",
+    "2 · Battery cost. The metals make up part of the battery's cost. How much depends on the chemistry: NCM622 uses all four, LFP only lithium.",
+    "3 · EV cost per pkm. The battery is part of the car's price. Spread over all the km the car drives, plus fuel and upkeep, this gives $ per passenger-km.",
+    "4 · Logit choice. GCAM compares the cost of ICEV, EV and FCEV travel. Cheaper options get bigger shares, but never all of it. Dearer EVs → smaller EV bar.",
+    "5 · Fuel use. The shares decide how much oil, electricity and hydrogen the roads use.",
+    "6 · Road CO₂. Fewer EVs means more oil burnt, so more CO₂. The paper adds this up from 2020 to 2060."
+  ];
+  const svg = document.getElementById("d-svg"), steps = [...svg.querySelectorAll(".em-step")], read = document.getElementById("d-read");
+  let cur = -1, timer = null;
+  function show(i) { cur = i; svg.classList.add("em-dim"); steps.forEach((s) => s.classList.toggle("on", +s.dataset.i === i)); read.textContent = TXT[i]; }
+  function stop() { clearInterval(timer); timer = null; document.getElementById("d-play").textContent = "Play"; }
+  document.getElementById("d-play").addEventListener("click", () => {
+    if (timer) { stop(); return; }
+    show((cur + 1) % TXT.length); document.getElementById("d-play").textContent = "Pause";
+    timer = setInterval(() => { if (cur >= TXT.length - 1) { stop(); return; } show(cur + 1); }, 2800);
+  });
+  document.getElementById("d-next").addEventListener("click", () => { stop(); show((cur + 1) % TXT.length); });
+  document.getElementById("d-all").addEventListener("click", () => { stop(); cur = -1; svg.classList.remove("em-dim"); steps.forEach((s) => s.classList.remove("on")); read.textContent = "The whole chain: metal prices → battery cost → EV cost per pkm → logit shares → fuel use → CO₂."; });
+  steps.forEach((s) => { s.style.cursor = "pointer"; s.addEventListener("click", () => { stop(); show(+s.dataset.i); }); });
+
+  /* ---------- predict-then-check ---------- */
+  document.querySelectorAll("#predict .em-seg").forEach((g) => g.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    const btns = [...g.querySelectorAll("button")], i = btns.indexOf(b), ok = i === +g.dataset.ans;
+    btns.forEach((x, j) => { x.setAttribute("aria-pressed", x === b); if (j === +g.dataset.ans) x.style.outline = "3px solid " + cv("--land"); });
+    const p = g.parentElement.querySelector(".em-reveal"); p.hidden = false;
+    p.innerHTML = (ok ? '<b class="pl-good">Good guess.</b> ' : '<b class="pl-bad">Not quite.</b> ') + p.innerHTML.replace(/^<b class="pl-(good|bad)">.*?<\/b> /, "");
+  }));
+
+  quiz(document.getElementById("qz"));
+})();
+</script>
+</body></html>
