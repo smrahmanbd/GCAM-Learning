@@ -596,7 +596,8 @@ def build():
 
     def item(p, t, d):
         return f'<li><a href="{p}">{esc(t)}</a> <span class="muted small">{size(p)}</span><span class="why">{esc(d)}</span></li>' if os.path.exists(os.path.join(ROOT, p)) else ""
-    hand = "".join([item(GO[1]["handbook"], "Go 1 study guide: Foundations (35 pages)", "Visual overview with predict-then-check activities, a quiz and a cheat sheet."),
+    hand = "".join([item("study-guide/index.html", "GCAM from Zero: beginner study guide (web page)", "One guide built from all course materials and the 2025 GCAM training: how GCAM thinks, its components, scenarios, the toolbox (rgcam, Hector, Demeter, Tethys...), downscaling, a transport case, worked calculations, memory route, quiz and cheat sheet."),
+                    item(GO[1]["handbook"], "Go 1 study guide: Foundations (35 pages)", "Visual overview with predict-then-check activities, a quiz and a cheat sheet."),
                     item(GO[2]["handbook"], "Go 2 handbook: Build and Implement (48 pages)", "Each GCAM component, its links to the others, and the toy models."),
                     item(GO[3]["handbook"], "Go 3 handbook: Research Frontier (68 pages)", "GCAM transport in full, literature review, scenario building, analysis, downscaling."),
                     item("downloads/Course-Structure-3-Goes.pdf", "Course structure in three goes", "Modules, outcomes, assessment, and how the original 15 weeks map onto the goes.")])

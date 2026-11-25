@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>GCAM from Zero: A Beginner's Study Guide</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <style>body{max-width:none!important;padding:0!important;margin:0!important}main.guide table{width:100%}main.guide{max-width:880px;margin:0 auto;padding:1.5rem}main.guide table{border-collapse:collapse;display:block;overflow-x:auto}main.guide th,main.guide td{border:1px solid #ccc;padding:.35rem .6rem;vertical-align:top}main.guide pre{overflow-x:auto}main.guide blockquote{border-left:4px solid #888;margin-left:0;padding-left:1rem}pre.mermaid{background:none;text-align:center}</style>
+  <script src="../assets/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded",function(){mermaid.initialize({startOnLoad:false});mermaid.run({querySelector:"pre.mermaid"});});</script>
+</head>
+<body>
+<main class="guide"><p><a href="../index.html">&larr; GCAM in three goes</a> &middot; <a href="GCAM-Beginner-Study-Guide.md">Markdown version</a></p>
+<h1 id="gcam-from-zero-a-beginners-study-guide">GCAM from Zero: A
+Beginner’s Study Guide</h1>
+<p><em>An intuition-first guide to the Global Change Analysis Model
+(GCAM), its toolbox, and how researchers use it. Built from every set of
+materials in the course folder (listed in <a
+href="#where-this-guide-comes-from">Where this guide comes
+from</a>).</em></p>
+<blockquote>
+<p><strong>How to use this guide.</strong> Read one part per sitting.
+Each part opens with <strong>the big idea in one sentence</strong>,
+builds up slowly, gives you <strong>a worked calculation you can do by
+hand</strong>, warns you about <strong>one trap</strong>, and ends with
+a <strong>recap that keeps growing</strong>. At the end you will find a
+memory route, a mind map, a 20-question self-quiz with answers, and a
+one-page cheat sheet.</p>
+<p><strong>Numbers in this guide.</strong> Worked examples use small,
+made-up numbers so you can follow the arithmetic. Facts about GCAM
+(region counts, model structure) come from the 2025 GCAM Annual Meeting
+training slides and the GCAM documentation. They change between GCAM
+versions, so check them against the version you install.</p>
+</blockquote>
+<hr />
+<h2 id="contents">Contents</h2>
+<ol start="0" type="1">
+<li><a href="#where-this-guide-comes-from">Where this guide comes
+from</a></li>
+<li><a href="#part-1--the-big-picture">Part 1 – The big picture: what an
+integrated assessment model is</a></li>
+<li><a href="#part-2--how-gcam-thinks">Part 2 – How GCAM thinks:
+markets, prices and choices</a></li>
+<li><a href="#part-3--a-tour-of-the-boxes">Part 3 – A tour of the boxes:
+energy, land, water, climate</a></li>
+<li><a href="#part-4--scenarios">Part 4 – Scenarios: asking GCAM “what
+if?”</a></li>
+<li><a href="#part-5--the-gcam-toolbox">Part 5 – The GCAM toolbox: from
+database to maps</a></li>
+<li><a href="#part-6--going-finer">Part 6 – Going finer: from regions to
+countries and grids</a></li>
+<li><a href="#part-7--a-research-case-net-zero-transport">Part 7 – A
+research case: net-zero transport</a></li>
+<li><a href="#part-8--your-learning-path">Part 8 – Your learning
+path</a></li>
+<li><a href="#memory-route">Memory route</a></li>
+<li><a href="#mind-maps">Mind maps</a></li>
+<li><a href="#traps-to-avoid">Traps to avoid</a></li>
+<li><a href="#self-quiz">Self-quiz (20 questions)</a></li>
+<li><a href="#cheat-sheet">Cheat sheet</a></li>
+<li><a href="#glossary">Glossary</a></li>
+<li><a href="#answer-key">Answer key</a></li>
+</ol>
+<hr />
+<h2 id="where-this-guide-comes-from">Where this guide comes from</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Material in the folder</th>
+<th>What it contributed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>GCAM-2025-Training/GCAM_Summary_Training_2025.pptx</code> –
+PNNL sectoral overview (Graham, Iyer, Zhao, June 2025)</td>
+<td>Model scope, solution method, logit choice, energy,
+agriculture/land, water (Parts 1–3)</td>
+</tr>
+<tr class="even">
+<td><code>GCAM-2025-Training/*_notebook.pdf</code> – ten official
+training notebooks: gcam-scenarios, rgcam, rchart, rmap, Hector,
+Matilda, STITCHES, Xanthos, Demeter, Tethys</td>
+<td>Scenario design and modification (Part 4); the toolbox (Part 5)</td>
+</tr>
+<tr class="odd">
+<td><code>Zaid/GCAM_Basics_07Oct26.pptx</code> – GCAM framework,
+concepts and a five-step learning path</td>
+<td>Plain-language framing (Part 1), learning path (Part 8)</td>
+</tr>
+<tr class="even">
+<td><code>Running GCAM for a Region and Recovering Country-Level Results.docx</code></td>
+<td>Downscaling routes and workflow (Part 6)</td>
+</tr>
+<tr class="odd">
+<td><code>GCAM_Transport_NetZero_Report.docx</code></td>
+<td>Transport levers and literature findings (Part 7)</td>
+</tr>
+<tr class="even">
+<td><code>Claude-Learning/</code> – 15-week course, three-goes course,
+labs 1–14, toy models, transport kit</td>
+<td>Learning path and links to hands-on practice (Part 8)</td>
+</tr>
+</tbody>
+</table>
+<p>The three videos in <code>Zaid/</code> are not transcribed here.</p>
+<hr />
+<h2 id="part-1-the-big-picture">Part 1 – The big picture</h2>
+<blockquote>
+<p><strong>Big idea:</strong> An integrated assessment model (IAM) is a
+consistent “what if” machine. It links people, the economy, energy,
+land, water and climate so that a change in one place shows up
+everywhere else. It is <strong>not</strong> a crystal ball.</p>
+</blockquote>
+<h3 id="why-integrated">1.1 Why “integrated”?</h3>
+<p>Picture a city where the water company, the power company and the
+farmers never talk. The power company builds plants that need cooling
+water. The farmers expand irrigation. Both assume the river is all
+theirs. On paper each plan works. In reality the river runs dry.</p>
+<p>An IAM makes everyone talk. In GCAM:</p>
+<ul>
+<li>More <strong>people</strong> and more <strong>income</strong> → more
+demand for energy, food and water.</li>
+<li><strong>Energy</strong> needs land (bioenergy) and water (cooling,
+mining).</li>
+<li><strong>Land</strong> use changes carbon in soils and forests.</li>
+<li>All of it produces <strong>emissions</strong>, which change the
+<strong>climate</strong>.</li>
+</ul>
+<h3 id="gcam-in-one-paragraph">1.2 GCAM in one paragraph</h3>
+<p>GCAM is developed at the Joint Global Change Research Institute
+(Pacific Northwest National Laboratory, PNNL). It is a
+<strong>multi-sector, multi-region, dynamic</strong> model that links
+energy, agriculture, land, water, emissions and climate to
+<strong>2100</strong>, usually in <strong>5-year steps</strong>. It
+solves each period by finding the prices at which supply equals demand
+in every market. A simple climate model, <strong>Hector</strong>, turns
+emissions into concentrations, forcing and temperature.</p>
+<h3 id="how-gcam-slices-the-world">1.3 How GCAM slices the world</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Pieces (2025 training slides)</th>
+<th>Why that size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Energy and economy</td>
+<td><strong>32 regions</strong></td>
+<td>Countries or groups of countries with their own markets</td>
+</tr>
+<tr class="even">
+<td>Water</td>
+<td><strong>235 basins</strong></td>
+<td>Water follows rivers, not borders</td>
+</tr>
+<tr class="odd">
+<td>Land</td>
+<td><strong>384 land regions</strong> (the 32 regions × 235 basins
+overlap; 396 with a Ukraine split; one slide shows 391)</td>
+<td>Land needs both an economy (who farms) and water (where)</td>
+</tr>
+<tr class="even">
+<td>United States option</td>
+<td><strong>GCAM-USA: 50 states</strong></td>
+<td>For state-level policy</td>
+</tr>
+</tbody>
+</table>
+<p>Different versions report slightly different land-region counts. That
+is normal: count them in your own version.</p>
+<h3 id="what-goes-in-what-comes-out">1.4 What goes in, what comes
+out</h3>
+<pre class="mermaid">flowchart LR
+  A[Population and GDP] --&gt; M((GCAM&lt;br/&gt;markets and prices))
+  B[Technology costs and efficiencies] --&gt; M
+  C[Resources: fossil, renewable, land, water] --&gt; M
+  D[Policies: carbon price, limits, mandates] --&gt; M
+  M --&gt; E[Energy use by fuel and sector]
+  M --&gt; F[Land use and crop production]
+  M --&gt; G[Water withdrawals]
+  M --&gt; H[Emissions of CO2 and other gases]
+  H --&gt; I[Hector: concentration and temperature]
+  M --&gt; J[Prices of energy, food, carbon]</pre>
+<h3 id="three-words-to-get-right-on-day-one">1.5 Three words to get
+right on day one</h3>
+<ul>
+<li><strong>Top-down vs bottom-up.</strong> Zaid’s slides call GCAM
+“top-down” in the sense that one market framework spans the whole world
+economy. It still has a lot of <strong>technology detail</strong> (four
+types of coal plant, many vehicle types), which is the “bottom-up”
+flavour. Think of GCAM as a hybrid.</li>
+<li><strong>Recursive dynamic.</strong> GCAM solves 2025, then 2030,
+then 2035. Decision makers in 2030 do not know what happens in 2050.
+(Contrast: an <em>intertemporal optimisation</em> model chooses all
+years at once, with perfect foresight.)</li>
+<li><strong>Scenario.</strong> A coherent set of assumptions. GCAM’s
+answers depend on them (Part 4).</li>
+</ul>
+<blockquote>
+<p><strong>Trap:</strong> “GCAM predicts that in 2050…”. No. GCAM shows
+what follows <em>if</em> the assumptions hold. Always say “in this
+scenario”.</p>
+</blockquote>
+<blockquote>
+<p><strong>Two-minute exercise.</strong> Name one chain of cause and
+effect that crosses three GCAM systems. <em>(Example: a carbon price →
+more bioenergy → more cropland for energy crops → higher food
+prices.)</em></p>
+</blockquote>
+<p><strong>Recap after Part 1</strong> 1. An IAM links people, economy,
+energy, land, water and climate so that changes ripple through. 2. GCAM:
+32 energy-economy regions, 235 water basins, about 384 land regions, to
+2100 in 5-year steps. 3. GCAM is recursive dynamic (no perfect
+foresight) and gives scenario results, not predictions.</p>
+<hr />
+<h2 id="part-2-how-gcam-thinks">Part 2 – How GCAM thinks</h2>
+<blockquote>
+<p><strong>Big idea:</strong> GCAM is a giant marketplace. In each
+period it searches for the set of prices at which <strong>every supply
+equals every demand</strong>. Prices are the messages the sectors send
+each other. Who wins a market is decided by a <strong>logit</strong>
+choice: cheaper options get bigger shares, but not all of the
+market.</p>
+</blockquote>
+<h3 id="market-equilibrium-slowly">2.1 Market equilibrium, slowly</h3>
+<p>Imagine one market: electricity in one region.</p>
+<ul>
+<li>If the price is too low, people want more electricity than plants
+will supply → raise the price.</li>
+<li>If the price is too high, plants supply more than people want →
+lower the price.</li>
+<li>The <strong>equilibrium price</strong> is where the two meet. The
+market “clears”.</li>
+</ul>
+<p>GCAM does this for thousands of linked markets at once (electricity,
+refined liquids, crops, land, water, carbon…). Its solver keeps
+adjusting all prices together until all markets clear within a
+tolerance. Then it moves to the next 5-year period.</p>
+<p>Because each period is solved on its own terms, GCAM’s results are
+<strong>not</strong> necessarily the cheapest path over the century.
+That is a feature: it mimics actors who do not see the future.</p>
+<h3 id="why-not-just-pick-the-cheapest-technology">2.2 Why not just pick
+the cheapest technology?</h3>
+<p>If coal power costs $50 and gas costs $51, a pure cost-minimiser
+gives <strong>100 %</strong> to coal. Real markets do not behave like
+that: sites differ, firms differ, people have preferences. GCAM assumes
+each actor faces a slightly different cost, so the cheapest option on
+average wins the <strong>biggest share</strong>, not all of it.</p>
+<p>This is the <strong>logit choice</strong>. For technologies
+<em>i</em> with cost <em>cᵢ</em>:</p>
+<pre><code>share_i  =  αᵢ · cᵢ^λ  /  Σⱼ ( αⱼ · cⱼ^λ )</code></pre>
+<ul>
+<li><strong>αᵢ (share weight)</strong>: a dial for everything that is
+not cost (preferences, infrastructure, barriers). Set during
+calibration.</li>
+<li><strong>λ (logit exponent)</strong>: negative. The more negative,
+the more strongly cost differences matter.</li>
+</ul>
+<h3 id="worked-calculation-three-power-technologies">2.3 Worked
+calculation: three power technologies</h3>
+<p>Costs: coal $50, gas $60, solar $80 per MWh. Share weights 1, 1, 0.5.
+Exponent λ = −6.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Coal</th>
+<th>Gas</th>
+<th>Solar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cost^λ = cost^−6</td>
+<td>50⁻⁶ = 6.40 × 10⁻¹¹</td>
+<td>60⁻⁶ = 2.14 × 10⁻¹¹</td>
+<td>80⁻⁶ = 0.38 × 10⁻¹¹</td>
+</tr>
+<tr class="even">
+<td>× share weight</td>
+<td>6.40</td>
+<td>2.14</td>
+<td>0.19 (× 10⁻¹¹)</td>
+</tr>
+<tr class="odd">
+<td>÷ total (8.73)</td>
+<td><strong>73.3 %</strong></td>
+<td><strong>24.5 %</strong></td>
+<td><strong>2.2 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Now three experiments:</p>
+<ul>
+<li><strong>Solar cost falls to $60:</strong> shares become 66.6 % /
+22.3 % / 11.1 %. Solar quintuples, but does not take over: its share
+weight of 0.5 still holds it back.</li>
+<li><strong>Exponent softened to λ = −3</strong> (original costs): 58.8
+% / 34.0 % / 7.2 %. Cost matters less, so shares spread out.</li>
+<li><strong>Share weight of solar set to 0:</strong> solar gets 0 % no
+matter how cheap. This is how GCAM keeps a technology out until its
+start year.</li>
+</ul>
+<h3 id="share-weights-and-calibration">2.4 Share weights and
+calibration</h3>
+<p>GCAM is <strong>calibrated</strong> to a historical base year (the
+2025 training uses <strong>2021</strong>, averaging 2020–2022). In
+calibration mode GCAM works out the share weights that make the model
+reproduce the base year <strong>exactly</strong>. The technology with
+the largest share gets a share weight of 1; others are set relative to
+it.</p>
+<p>So a share weight is a <strong>memory of history</strong>: it soaks
+up everything costs alone cannot explain. Two rules from the official
+scenario notebook:</p>
+<ol type="1">
+<li>Be careful changing calibrated share weights of technologies that
+already exist. You are overriding observed behaviour.</li>
+<li>To phase in a <strong>new</strong> technology, start its share
+weight low and raise it toward 1 over time. A share weight of 1 means
+“compete on cost alone”.</li>
+</ol>
+<h3 id="nests">2.5 Nests</h3>
+<p>Choices are stacked. Transport, for example: first choose a
+<strong>mode</strong> (road, rail, air), then a
+<strong>sub-mode</strong> (bus, car), then a <strong>size
+class</strong>, then a <strong>drivetrain</strong> (petrol,
+battery-electric, hydrogen). Each level is its own logit. Land uses the
+same idea (Part 3).</p>
+<h3 id="non-linear-by-design">2.6 Non-linear by design</h3>
+<p>The training slides stress that GCAM’s supplies, demands and
+production functions are non-linear: marginal costs rise as you use more
+of a resource, returns diminish. That is why GCAM does
+<strong>not</strong> need hard linear limits to stop one technology from
+taking 100 % of a market.</p>
+<blockquote>
+<p><strong>Trap:</strong> “A share weight is a subsidy.” No. It is not a
+cost and does not appear in prices. It shifts the share for a given
+cost.</p>
+</blockquote>
+<blockquote>
+<p><strong>Two-minute exercise.</strong> With the starting numbers, what
+happens to the coal share if gas gets a share weight of 2? <em>(Answer
+in the <a href="#answer-key">answer key</a>.)</em></p>
+</blockquote>
+<p><strong>Recap after Part 2</strong> 1. An IAM links people, economy,
+energy, land, water and climate so that changes ripple through. 2. GCAM:
+32 energy-economy regions, 235 water basins, about 384 land regions, to
+2100 in 5-year steps. 3. GCAM is recursive dynamic (no perfect
+foresight) and gives scenario results, not predictions. 4. Each period,
+GCAM finds the prices that clear every market. Prices carry signals
+between sectors. 5. Logit choice: cheaper options win bigger shares, not
+everything. Share weights (calibrated to 2021) hold non-cost factors. λ
+sets cost sensitivity.</p>
+<hr />
+<h2 id="part-3-a-tour-of-the-boxes">Part 3 – A tour of the boxes</h2>
+<blockquote>
+<p><strong>Big idea:</strong> GCAM has five big systems – <strong>people
+and economy, energy, agriculture and land, water, emissions and
+climate</strong> – and they are coupled through shared markets and
+physical flows.</p>
+</blockquote>
+<h3 id="people-and-economy-the-drivers">3.1 People and economy (the
+drivers)</h3>
+<ul>
+<li><strong>Population</strong> and <strong>GDP</strong> set the scale
+of everything. In the 2025 version these come from the <strong>SSP
+database v3</strong>.</li>
+<li>Labour productivity is calibrated to match per-capita GDP
+growth.</li>
+<li>Swapping in a different SSP (SSP1 to SSP5) changes the size of the
+world’s demand for energy, food and water.</li>
+</ul>
+<h3 id="energy">3.2 Energy</h3>
+<p>Think of the energy system as four layers: <strong>resources →
+transformation → distribution → final demand</strong>.</p>
+<p><strong>Fossil resources: a resource–reserve model.</strong>
+<em>Resources</em> are all that is in the ground. <em>Reserves</em> are
+the part that has been developed (a well or a mine). New reserves are
+added according to a supply curve (cheapest first) and produced over a
+well or mine lifetime. Technology change slowly lowers extraction
+costs.</p>
+<p><strong>Renewable resources.</strong> Onshore and offshore wind,
+solar, geothermal, hydro, biomass (plus traditional biomass in some
+regions). Wind and rooftop solar have supply curves: the best sites go
+first, so costs rise. Utility solar PV and CSP are treated as unlimited.
+Wind and solar come with and without storage.</p>
+<p><strong>Electricity.</strong> Existing plants keep running for their
+lifetime as long as they cover operating costs. <strong>New</strong>
+capacity is chosen by levelised cost (capital, O&amp;M, fuel, plus
+integration costs for variable renewables).</p>
+<p><em>Worked calculation – the value-factor idea (from the 2025
+slides).</em> Variable renewables are worth less per MWh as they become
+a larger share of supply (they all produce at the same sunny or windy
+hours). GCAM captures this with a <strong>profitability-adjusted
+LCOE</strong>:</p>
+<pre><code>PLCOE = LCOE / value factor        integration cost = PLCOE − LCOE</code></pre>
+<p>A solar plant with LCOE $40/MWh and a value factor of 0.8 → PLCOE =
+40 / 0.8 = <strong>$50</strong>, so the integration cost is
+<strong>$10/MWh</strong>. As solar’s share grows, the value factor falls
+(linearly with share in GCAM), and the integration cost rises faster and
+faster.</p>
+<p><strong>Hydrogen.</strong> Produced in 10 “central” routes and 2
+“forecourt” (on-site) routes, from gas, coal, biomass (with and without
+CCS) and electrolysis, with explicit transmission and distribution
+losses.</p>
+<p><strong>Final demand sectors.</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sector</th>
+<th>How demand grows</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Buildings</strong></td>
+<td>Floorspace per person rises with income, then
+<strong>saturates</strong></td>
+<td>Residential and commercial; heating, cooling, other; residential
+split into income deciles; climate (heating and cooling degree days)
+matters</td>
+</tr>
+<tr class="even">
+<td><strong>Industry</strong></td>
+<td>Income elasticities</td>
+<td>Iron and steel, chemicals, aluminium, cement, fertiliser, pulp and
+paper, food processing, construction, mining, agricultural energy,
+other</td>
+</tr>
+<tr class="odd">
+<td><strong>Transport</strong></td>
+<td>Per-capita GDP, income elasticity, service price, price elasticity,
+population</td>
+<td>Four final demands: passenger air, other passenger, international
+shipping, other freight. Mode choice depends on cost, <strong>travel
+time</strong>, and income</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trade.</strong> Most fuels are traded through a global pool
+using an <strong>Armington</strong> structure (gross imports and exports
+kept separate). Natural gas moves by LNG globally and through <strong>6
+regional pipeline networks</strong>. GCAM can represent anything from
+fully global trade to bilateral trade to no trade.</p>
+<h3 id="agriculture-and-land">3.3 Agriculture and land</h3>
+<ul>
+<li><strong>Every</strong> hectare is represented: crops, pasture,
+forest, grass and shrub, and other natural land. About 80 land types
+once crop technologies are counted.</li>
+<li>Land is shared out by a <strong>nested logit</strong> on profit per
+hectare. More profitable uses expand, but gradually.</li>
+<li>Each crop has four ways to be grown: <strong>irrigated or rainfed, ×
+high or low input</strong>. Irrigated crops buy water from the water
+module. A price rise shifts land toward high-yield practices
+(<em>price-induced intensification</em>).</li>
+<li>Calibrated to historical data (via the <code>moirai</code> and
+<code>gcamfaostat</code> data tools) so the base year is reproduced
+exactly.</li>
+<li><strong>Food demand</strong> grows with income and population, with
+calorie-based competition between staples and non-staples.</li>
+<li><strong>Links to energy</strong>: bioenergy crops, fertiliser, food
+processing, pulp and paper.</li>
+</ul>
+<p><strong>Land-use change emissions.</strong> If a land unit changes
+between two periods, GCAM computes the change in soil and vegetation
+carbon. If nothing changed, no new land-use emissions. Agricultural
+non-CO₂ gases (methane, nitrous oxide and others) use emission factors
+calibrated to the CEDS inventory.</p>
+<h3 id="water">3.4 Water</h3>
+<ul>
+<li><strong>Supply</strong>: each of 235 basins has a renewable-water
+cost curve (built from the <strong>Xanthos</strong> hydrology model) and
+a <strong>groundwater</strong> cost curve (from
+<strong>Superwell</strong>, in 24 cost grades). Cheap water goes first.
+When renewable water runs short, price rises until groundwater is
+competitive.</li>
+<li><strong>Demand</strong>: agriculture (irrigation), electricity
+(cooling), primary energy (mining), manufacturing, domestic,
+livestock.</li>
+</ul>
+<p>Know the difference:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Withdrawal</strong></td>
+<td>Water taken from a river or aquifer (some may be returned)</td>
+</tr>
+<tr class="even">
+<td><strong>Consumption</strong></td>
+<td>Water that does not return (evaporated, transpired, built into
+products)</td>
+</tr>
+<tr class="odd">
+<td><strong>Biophysical consumption</strong></td>
+<td>All water crops evapotranspire: blue (rivers and groundwater) +
+green (soil moisture)</td>
+</tr>
+<tr class="even">
+<td><strong>Seawater</strong></td>
+<td>Ocean or brackish water used for cooling or desalination</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emissions-and-climate">3.5 Emissions and climate</h3>
+<p>GCAM tracks CO₂ and the other main greenhouse gases plus air
+pollutants. Emissions go to <strong>Hector</strong>, a
+reduced-complexity Earth system model, which returns CO₂ concentration,
+radiative forcing and global temperature. (Part 5 shows how to run
+Hector on its own.)</p>
+<pre class="mermaid">flowchart TB
+  P[People and GDP] --&gt; EN[Energy]
+  P --&gt; AG[Agriculture and land]
+  P --&gt; W[Water]
+  EN -- bioenergy demand --&gt; AG
+  AG -- fertiliser, food processing --&gt; EN
+  EN -- cooling, mining water --&gt; W
+  AG -- irrigation water --&gt; W
+  W -- water price --&gt; AG
+  W -- water price --&gt; EN
+  EN --&gt; EM[Emissions]
+  AG --&gt; EM
+  EM --&gt; H[Hector climate]</pre>
+<blockquote>
+<p><strong>Trap:</strong> “GCAM’s reference scenario includes climate
+change impacts.” By default it does <strong>not</strong>: the reference
+configuration holds heating and cooling degree days flat after 2015, and
+the reference has no explicit climate policy.</p>
+</blockquote>
+<blockquote>
+<p><strong>Two-minute exercise.</strong> A carbon price makes bioenergy
+attractive. Trace two effects outside the energy box. <em>(Hint: land
+and water.)</em></p>
+</blockquote>
+<p><strong>Recap after Part 3</strong> 1–5. <em>(as before)</em> 6.
+Drivers: population and GDP from the SSP database. Energy: resources →
+transformation → distribution → buildings, industry, transport. 7. New
+power plants compete on levelised cost; variable renewables pay an
+integration cost that grows with share (PLCOE = LCOE ÷ value factor). 8.
+Land: every hectare, nested logit on profit, crops irrigated or rainfed
+× high or low input. 9. Water: basin supply curves (renewable then
+groundwater); know withdrawal vs consumption. 10. Emissions go to Hector
+for concentration and temperature.</p>
+<hr />
+<h2 id="part-4-scenarios">Part 4 – Scenarios</h2>
+<blockquote>
+<p><strong>Big idea:</strong> GCAM’s output is only as meaningful as its
+scenario. A scenario is a <strong>plausible, coherent, internally
+consistent</strong> set of assumptions, compared against a
+<strong>reference</strong>.</p>
+</blockquote>
+<h3
+id="definitions-from-the-ipcc-glossary-as-used-in-the-official-notebook">4.1
+Definitions (from the IPCC glossary, as used in the official
+notebook)</h3>
+<ul>
+<li><strong>Scenario</strong>: a plausible description of how the future
+may develop, based on coherent and internally consistent assumptions.
+Neither a prediction nor a forecast.</li>
+<li><strong>Storyline</strong>: the narrative behind a scenario
+(e.g. SSP3, a fragmented, rival world).</li>
+<li><strong>Reference scenario</strong>: the starting point you compare
+others against.</li>
+</ul>
+<p>GCAM’s own reference has <strong>no explicit policy</strong> (though
+past policies affect calibration; GCAM-USA includes a few) and
+<strong>no climate impacts</strong>.</p>
+<h3 id="designing-scenarios-four-questions">4.2 Designing scenarios:
+four questions</h3>
+<ol type="1">
+<li><strong>How many?</strong> Few are easy to explain; many explore
+more futures.</li>
+<li><strong>One change or many?</strong> One change isolates its effect.
+Several together reveal interactions.</li>
+<li><strong>Global or regional?</strong> Keep assumptions consistent
+across regions.</li>
+<li><strong>What is the research question?</strong> It decides 1–3.</li>
+</ol>
+<h3 id="the-files-you-will-meet">4.3 The files you will meet</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>configuration.xml</code></td>
+<td>Master switchboard: which input XML files to read, which years,
+solver settings, output database</td>
+</tr>
+<tr class="even">
+<td>Input XML files (<code>input/gcamdata/xml/…</code>)</td>
+<td>The model’s data, e.g. <code>socioeconomics_SSP3.xml</code>,
+<code>solar_low.xml</code></td>
+</tr>
+<tr class="odd">
+<td>Add-on / policy XML (<code>input/policy/…</code>)</td>
+<td>Carbon prices, emission limits, mandates</td>
+</tr>
+<tr class="even">
+<td>Batch file</td>
+<td>Runs many scenarios from one configuration
+(e.g. <code>batch_SSP_REF.xml</code> holds the full, consistent SSP file
+sets)</td>
+</tr>
+<tr class="odd">
+<td>Output database (BaseX)</td>
+<td>Results, read with ModelInterface queries or <code>rgcam</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="six-ways-to-change-gcam-easiest-most-robust">4.4 Six ways to
+change GCAM (easiest → most robust)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Good for</th>
+<th>Watch out</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Hand-edit an XML</strong></td>
+<td>Quick tests, simple policy files</td>
+<td>Easy to make mistakes (did you include all 32 regions?) and hard to
+trace</td>
+</tr>
+<tr class="even">
+<td><strong>Use pre-existing XMLs</strong></td>
+<td>SSPs, low/advanced tech costs, CCS options, carbon price paths</td>
+<td>Keep the set internally consistent</td>
+</tr>
+<tr class="odd">
+<td><strong>Change gcamdata inputs</strong> and run
+<code>driver_drake()</code></td>
+<td>Long-lived changes; anything you might return to core GCAM</td>
+<td>Hard to predict which XMLs change; <code>driver_drake()</code> only
+rebuilds what changed</td>
+</tr>
+<tr class="even">
+<td><strong>R script + gcamdata helpers</strong>
+(<code>create_xml()</code>, <code>add_xml_data()</code>,
+<code>run_xml_conversion()</code>)</td>
+<td>New data (e.g. a national GDP forecast) without writing a chunk</td>
+<td>May miss downstream dependencies (use <code>dstrace()</code> to
+follow data)</td>
+</tr>
+<tr class="odd">
+<td><strong>User modification functions</strong></td>
+<td>Reproducible user changes kept separate from core; outputs get a
+suffix like <code>__1</code></td>
+<td>Remember to add the new XMLs to <code>configuration.xml</code></td>
+</tr>
+<tr class="even">
+<td><strong>gcamwrapper</strong> (R or Python)</td>
+<td>Changing parameters in a <em>running</em> GCAM and reading results
+directly</td>
+<td>More advanced</td>
+</tr>
+</tbody>
+</table>
+<p>Whatever you do, <strong>track your changes</strong>: use Git, keep
+your assumptions apart from the defaults, and document copies.</p>
+<h3 id="worked-calculation-reading-a-carbon-price-file">4.5 Worked
+calculation: reading a carbon price file</h3>
+<p>The official notebook’s example carbon tax
+(<code>carbon_tax_25_5.xml</code>) lists a <code>fixedTax</code> for
+each year: <strong>321.86</strong> in 2025 and <strong>373.13</strong>
+in 2030.</p>
+<ul>
+<li>Growth over 5 years: 373.13 ÷ 321.86 = 1.159.</li>
+<li>Per year: 1.159^(1/5) = <strong>1.03</strong> → the price rises
+<strong>3 % a year</strong>.</li>
+<li>By 2100 it reaches 2954.36, about <strong>9.2 ×</strong> the 2025
+value.</li>
+</ul>
+<p>Units matter: GCAM’s internal carbon prices are usually in
+<strong>1990 US$ per tonne of carbon</strong> (not CO₂). Divide by 3.667
+to get per tonne CO₂, then adjust for inflation. Check the units in your
+version before quoting a price.</p>
+<p>The structure is always the same:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">scenario</span>&gt;&lt;<span class="kw">world</span>&gt;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">region</span><span class="ot"> name=</span><span class="st">&quot;USA&quot;</span>&gt;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">ghgpolicy</span><span class="ot"> name=</span><span class="st">&quot;CO2_LTG&quot;</span>&gt;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">market</span>&gt;global&lt;/<span class="kw">market</span>&gt;</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">fixedTax</span><span class="ot"> year=</span><span class="st">&quot;2025&quot;</span>&gt;321.863&lt;/<span class="kw">fixedTax</span>&gt;</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="co">&lt;!-- ... one line per period ... --&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">ghgpolicy</span>&gt;</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">region</span>&gt;</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">world</span>&gt;&lt;/<span class="kw">scenario</span>&gt;</span></code></pre></div>
+<h3 id="a-tax-or-a-cap">4.6 A tax or a cap?</h3>
+<ul>
+<li><strong>Carbon price (tax)</strong>: you set the price, GCAM finds
+the emissions.</li>
+<li><strong>Emissions constraint (cap)</strong>: you set the emissions,
+GCAM finds the price that delivers it (the shadow price).</li>
+</ul>
+<h3 id="the-golden-loop">4.7 The golden loop</h3>
+<p>From Zaid’s learning guide and the official notebook alike:</p>
+<blockquote>
+<p><strong>Run the reference → change one thing → run again → compare →
+explain why.</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Trap:</strong> Changing a share weight to force an outcome,
+then reporting the outcome as a “finding”. If you set the answer, you
+did not find it. Say clearly which results are imposed and which
+emerge.</p>
+</blockquote>
+<blockquote>
+<p><strong>Two-minute exercise.</strong> You want to test cheaper
+batteries for electric trucks. Which method from 4.4 would you pick for
+a quick test, and which for a paper? <em>(Answer key.)</em></p>
+</blockquote>
+<p><strong>Recap after Part 4</strong> 1–10. <em>(as before)</em> 11.
+Scenarios are coherent “what ifs”, compared with a reference that has no
+new policy and no climate impacts. 12. <code>configuration.xml</code>
+chooses the inputs; batch files run sets of scenarios; results land in a
+database. 13. Six ways to change GCAM, from hand-editing XML to
+gcamwrapper; for lasting work use gcamdata and track changes. 14. Tax:
+set price, get emissions. Cap: set emissions, get price.</p>
+<hr />
+<h2 id="part-5-the-gcam-toolbox">Part 5 – The GCAM toolbox</h2>
+<blockquote>
+<p><strong>Big idea:</strong> GCAM sits in a family of open tools. Some
+<strong>read and draw</strong> its results, some do the
+<strong>climate</strong> side, and some <strong>downscale</strong> its
+coarse results to a fine grid.</p>
+</blockquote>
+<h3 id="the-family-at-a-glance">5.1 The family at a glance</h3>
+<pre class="mermaid">flowchart LR
+  subgraph Prepare
+    GD[gcamdata&lt;br/&gt;builds input XML]
+    GW[gcamwrapper&lt;br/&gt;drives a running GCAM]
+  end
+  GD --&gt; G((GCAM run))
+  GW &lt;--&gt; G
+  G --&gt; DB[(Output database)]
+  DB --&gt; RG[rgcam&lt;br/&gt;query into R]
+  RG --&gt; RC[rchart&lt;br/&gt;charts]
+  RG --&gt; RM[rmap&lt;br/&gt;maps]
+  G -. emissions .-&gt; HE[Hector&lt;br/&gt;simple climate]
+  HE --&gt; MA[Matilda&lt;br/&gt;probabilistic Hector]
+  HE -. temperature path .-&gt; ST[STITCHES&lt;br/&gt;emulate big climate models]
+  ST -. gridded climate .-&gt; XA[Xanthos&lt;br/&gt;hydrology]
+  XA -. water supply .-&gt; G
+  G -. regional land .-&gt; DE[Demeter&lt;br/&gt;land to grid]
+  G -. regional water demand .-&gt; TE[Tethys&lt;br/&gt;water demand to grid]</pre>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Language</th>
+<th>What it does</th>
+<th>One thing to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>rgcam</strong></td>
+<td>R</td>
+<td>Pulls query results from a GCAM database into R</td>
+<td>Needs a query XML wrapped in <code>&lt;queries&gt;</code> and
+<code>&lt;aQuery&gt;</code> tags</td>
+</tr>
+<tr class="even">
+<td><strong>rchart</strong></td>
+<td>R</td>
+<td>Standard GCAM charts across scenarios, regions, classes</td>
+<td>Data needs columns <code>subRegion</code>, <code>year</code>,
+<code>value</code> (optional <code>param</code>, <code>scenario</code>,
+<code>class</code>)</td>
+</tr>
+<tr class="odd">
+<td><strong>rmap</strong></td>
+<td>R</td>
+<td>Maps by GCAM region, basin, country; difference maps between
+scenarios</td>
+<td>Rename <code>region</code> to <code>subRegion</code> to use the
+built-in maps</td>
+</tr>
+<tr class="even">
+<td><strong>Hector</strong></td>
+<td>C++ with R package</td>
+<td>Reduced-complexity climate model, 1745–2300</td>
+<td>Comes with SSP input files; change parameters like climate
+sensitivity</td>
+</tr>
+<tr class="odd">
+<td><strong>Matilda</strong></td>
+<td>R</td>
+<td>Runs Hector many times with sampled parameters; weights runs by fit
+to history</td>
+<td>Turns one climate line into a probability range</td>
+</tr>
+<tr class="even">
+<td><strong>STITCHES</strong></td>
+<td>Python</td>
+<td>Emulates full Earth system models by stitching 9-year chunks of
+their archived runs</td>
+<td>Needs an archive (one model) and a target temperature path</td>
+</tr>
+<tr class="odd">
+<td><strong>Xanthos</strong></td>
+<td>Python</td>
+<td>Global hydrology, 0.5°, monthly; runoff, evapotranspiration, soil
+moisture</td>
+<td>Builds the basin water-supply curves GCAM uses</td>
+</tr>
+<tr class="even">
+<td><strong>Demeter</strong></td>
+<td>Python</td>
+<td>Downscales GCAM land use to a grid (e.g. 0.05°)</td>
+<td>Run from a config file, one step or all steps</td>
+</tr>
+<tr class="odd">
+<td><strong>Tethys</strong></td>
+<td>Python</td>
+<td>Downscales GCAM water demand to a grid (e.g. 0.125°) using proxies
+such as population</td>
+<td>Keeps grid totals consistent with GCAM regional totals</td>
+</tr>
+<tr class="even">
+<td><strong>gcamdata</strong></td>
+<td>R</td>
+<td>The data system that turns raw data into GCAM input XML</td>
+<td><code>driver_drake()</code> rebuilds only what changed</td>
+</tr>
+<tr class="odd">
+<td><strong>gcamwrapper</strong></td>
+<td>R, Python</td>
+<td>Start GCAM, run to a period, change values, read results</td>
+<td>Good for sensitivity loops</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mini-walkthroughs-code-you-can-recognise">5.2 Mini-walkthroughs
+(code you can recognise)</h3>
+<p><strong>Read results with rgcam</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgcam)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">localDBConn</span>(<span class="st">&quot;path/to/output&quot;</span>, <span class="st">&quot;database_basexdb&quot;</span>)       <span class="co"># connect</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>prj  <span class="ot">&lt;-</span> <span class="fu">addScenario</span>(conn, <span class="st">&quot;my_project.dat&quot;</span>, <span class="st">&quot;Reference&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">queryFile =</span> <span class="st">&quot;my_queries.xml&quot;</span>)                <span class="co"># extract</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>prj  <span class="ot">&lt;-</span> <span class="fu">loadProject</span>(<span class="st">&quot;my_project.dat&quot;</span>)                           <span class="co"># next time: just load</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>pop  <span class="ot">&lt;-</span> <span class="fu">getQuery</span>(prj, <span class="st">&quot;population by region&quot;</span>)                    <span class="co"># get a table</span></span></code></pre></div>
+<p>Columns returned: <code>Units, scenario, region, year, value</code>
+(plus a class column for queries like electricity by subsector).</p>
+<p><strong>Run Hector and double the climate sensitivity</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hector)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>core <span class="ot">&lt;-</span> <span class="fu">newcore</span>(<span class="fu">system.file</span>(<span class="st">&quot;input/hector_ssp245.ini&quot;</span>, <span class="at">package =</span> <span class="st">&quot;hector&quot;</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">run</span>(core)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">fetchvars</span>(core, <span class="dv">1850</span><span class="sc">:</span><span class="dv">2100</span>, <span class="fu">c</span>(<span class="fu">GLOBAL_TAS</span>(), <span class="fu">CONCENTRATIONS_CO2</span>()))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ecs  <span class="ot">&lt;-</span> <span class="fu">fetchvars</span>(core, <span class="cn">NA</span>, <span class="fu">ECS</span>())<span class="sc">$</span>value          <span class="co"># default 3 °C</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">setvar</span>(core, <span class="cn">NA</span>, <span class="fu">ECS</span>(), <span class="dv">2</span> <span class="sc">*</span> ecs, <span class="fu">getunits</span>(<span class="fu">ECS</span>()))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">run</span>(core)                                          <span class="co"># core resets and reruns</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>high <span class="ot">&lt;-</span> <span class="fu">fetchvars</span>(core, <span class="dv">1850</span><span class="sc">:</span><span class="dv">2100</span>, <span class="fu">GLOBAL_TAS</span>())</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">shutdown</span>(core)</span></code></pre></div>
+<p>Same emissions, higher sensitivity → more warming. Concentration
+hardly changes; temperature does.</p>
+<p><strong>Matilda in three steps</strong>:
+<code>generate_params(core, draws = 20)</code> samples six parameters
+(CO₂ fertilisation, soil respiration sensitivity, initial plant
+productivity, aerosol scaling, ocean heat diffusivity, climate
+sensitivity) → <code>iterate_model()</code> runs Hector for each →
+weight each run by how well it matches observed history.</p>
+<p><strong>Demeter, Tethys, Xanthos</strong> all follow one pattern:
+download example data, edit paths in a configuration file
+(<code>.ini</code> or <code>.yml</code>), call
+<code>run_model(config)</code>, plot the gridded output.</p>
+<blockquote>
+<p><strong>Trap:</strong> Downscaled maps look precise. They are GCAM’s
+regional totals <strong>shared out</strong> by proxies. The grid adds
+spatial pattern, not new information about how a place would
+respond.</p>
+</blockquote>
+<blockquote>
+<p><strong>Two-minute exercise.</strong> Match the question to the tool:
+(a) “What is the 5–95 % range of warming for this emissions path?” (b)
+“Where inside the Indus basin will irrigation water demand grow?” (c)
+“Draw electricity generation by fuel for two scenarios.” <em>(Answer
+key.)</em></p>
+</blockquote>
+<p><strong>Recap after Part 5</strong> 1–14. <em>(as before)</em> 15.
+Read and draw: rgcam → rchart and rmap. Climate: Hector, Matilda
+(uncertainty), STITCHES (emulate big models). Water supply: Xanthos.
+Downscale: Demeter (land), Tethys (water demand). Build and drive:
+gcamdata, gcamwrapper.</p>
+<hr />
+<h2 id="part-6-going-finer">Part 6 – Going finer</h2>
+<blockquote>
+<p><strong>Big idea:</strong> GCAM’s markets live at the regional level.
+You can still get <strong>country</strong> numbers, but they are
+<em>constrained estimates</em>, not model outputs.</p>
+</blockquote>
+<h3 id="three-routes">6.1 Three routes</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Route</th>
+<th>What it does</th>
+<th>Cost</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. <strong>Downscale with convergence</strong> (e.g. DSCALE)</td>
+<td>Start from each country’s base-year data; let its energy and
+emission intensity converge toward the regional path; force the
+countries to add up to the region</td>
+<td>Medium</td>
+<td>Many countries, consistent totals</td>
+</tr>
+<tr class="even">
+<td>2. <strong>Proxy / fixed shares</strong></td>
+<td>Split regional totals by GDP, population or base-year shares</td>
+<td>Low</td>
+<td>Quick, transparent first look; poor when countries differ a lot</td>
+</tr>
+<tr class="odd">
+<td>3. <strong>Native split</strong></td>
+<td>Rebuild the data system so the country is its own GCAM region</td>
+<td>High (new calibration; GCAM-Europe needs ~50 % more memory)</td>
+<td>One country’s own policy response, prices, trade</td>
+</tr>
+</tbody>
+</table>
+<p>Published country versions already exist, so check them first:
+<strong>GCAM-KSA</strong> (Saudi Arabia; 33 regions),
+<strong>GCAM-LA</strong> (South America), <strong>GCAM-Europe</strong>,
+<strong>GCAM-USA</strong>, <strong>GCAM-China</strong>, and others.</p>
+<h3 id="worked-calculation-a-proxy-split-and-its-weakness">6.2 Worked
+calculation: a proxy split and its weakness</h3>
+<p>A region emits 1,000 Mt CO₂. Country A has 60 % of the region’s GDP,
+country B 40 %.</p>
+<ul>
+<li>GDP-share split: A = 600 Mt, B = 400 Mt.</li>
+<li>But in the base year A actually emitted 450 Mt and B 550 Mt (B is a
+fossil-heavy exporter).</li>
+<li>The proxy split is off by 150 Mt for each country already in year
+one. That is why the better methods <strong>start from real base-year
+data</strong> and converge gradually.</li>
+</ul>
+<h3 id="workflow-in-brief">6.3 Workflow in brief</h3>
+<ol type="1">
+<li>Decide which country variables you need (CO₂, energy, power mix,
+land, water). Each needs a different method.</li>
+<li>Run GCAM for the region (reference + policy).</li>
+<li>Gather country base-year data (energy balances, emission
+inventories, SSP country GDP and population).</li>
+<li>Harmonise so countries sum to GCAM’s base year.</li>
+<li>Downscale drivers, then energy and CO₂ with convergence; reconcile
+with the regional total.</li>
+<li>Downscale land with Demeter, then aggregate to borders.</li>
+<li>Compare with national plans and native models; run sensitivities on
+the convergence speed; report <strong>ranges</strong>.</li>
+</ol>
+<p><strong>Rule of thumb:</strong> downscale when you need many
+countries and consistent regional totals; split natively when you need
+one country’s own policy response, trade or resource constraints.</p>
+<blockquote>
+<p><strong>Trap:</strong> Reporting a downscaled country’s response to a
+<em>national</em> carbon price. Prices in GCAM are regional, so
+downscaling cannot show a national policy response.</p>
+</blockquote>
+<p><strong>Recap after Part 6</strong> 1–15. <em>(as before)</em> 16.
+Country results: proxy (cheap, crude), convergence downscaling (good
+compromise), native split (faithful, expensive). Always sum back to the
+region, and report ranges.</p>
+<hr />
+<h2 id="part-7-a-research-case-net-zero-transport">Part 7 – A research
+case: net-zero transport</h2>
+<blockquote>
+<p><strong>Big idea:</strong> To study a policy in GCAM you translate it
+into <strong>levers</strong> the model understands, run it against a
+reference, and explain the difference.</p>
+</blockquote>
+<h3 id="transport-inside-gcam-recap">7.1 Transport inside GCAM
+(recap)</h3>
+<p>Four final demands (passenger air, other passenger, international
+shipping, other freight). Demand (passenger-km, tonne-km) grows with
+income and population and falls with price. Passengers choose among
+modes by <strong>cost + time</strong>; richer travellers value time
+more, so faster modes gain as incomes rise.</p>
+<h3 id="the-lever-box">7.2 The lever box</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Real-world idea</th>
+<th>GCAM lever</th>
+<th>In plain words</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ban new petrol cars from 2035</td>
+<td>Share weight of the fossil technology → 0 from that year</td>
+<td>Stop selling it</td>
+</tr>
+<tr class="even">
+<td>EV purchase subsidy</td>
+<td>Lower capital cost of the EV technology</td>
+<td>Make it cheaper up front</td>
+</tr>
+<tr class="odd">
+<td>Sustainable aviation fuel mandate</td>
+<td>Minimum share of liquids from bio- or e-fuels</td>
+<td>Force a blend</td>
+</tr>
+<tr class="even">
+<td>Travel less as we get richer</td>
+<td>Lower <strong>income elasticity</strong></td>
+<td>Demand grows more slowly</td>
+</tr>
+<tr class="odd">
+<td>Ridesharing</td>
+<td>Raise <strong>load factor</strong></td>
+<td>More people per vehicle</td>
+</tr>
+<tr class="even">
+<td>Better public transport</td>
+<td>Change <strong>value of time</strong> or transit share weights</td>
+<td>Buses and trains look more attractive</td>
+</tr>
+<tr class="odd">
+<td>Economy-wide net zero</td>
+<td>Carbon <strong>constraint</strong></td>
+<td>GCAM finds the carbon price</td>
+</tr>
+</tbody>
+</table>
+<h3 id="worked-calculation-lowering-income-elasticity">7.3 Worked
+calculation: lowering income elasticity</h3>
+<p>Demand scales roughly with income^elasticity. If income doubles:</p>
+<ul>
+<li>Elasticity 1.0 → demand × 2^1.0 = <strong>2.00</strong>.</li>
+<li>Elasticity 0.8 → demand × 2^0.8 = <strong>1.74</strong>.</li>
+</ul>
+<p>A change from 1.0 to 0.8 removes about <strong>13 %</strong> of the
+growth in travel (1.74 vs 2.00) for that doubling. This is how a major
+global net-zero transport study in the report lowered passenger demand
+growth.</p>
+<h3 id="what-the-literature-found-summary-of-the-report">7.4 What the
+literature found (summary of the report)</h3>
+<ul>
+<li>In a global GCAM study of a zero-emission transport sector by 2050,
+<strong>electrification</strong> contributes most; <strong>biofuels and
+hydrogen</strong> are essential for aviation and shipping; e-fuels play
+a smaller role.</li>
+<li>In a multi-model net-zero comparison, transport CO₂ in 2050 ranged
+widely across models, and deep cuts needed combined technology,
+behaviour and policy bundles.</li>
+<li>Regional GCAM studies exist for the United States (including state
+level), China, Saudi Arabia (GCAM-KSA road freight), South Korea and
+India.</li>
+<li>Gaps: ammonia, waste-based fuels and critical minerals are thinly
+covered; few GCAM transport studies for Africa and Latin America were
+found.</li>
+</ul>
+<h3 id="going-beyond-from-the-reports-proposals">7.5 Going beyond (from
+the report’s proposals)</h3>
+<ul>
+<li><strong>Downscale</strong> national transport results to provinces
+and cities with a <strong>sum-preserving rule</strong>: every allocation
+must add back to the GCAM total.</li>
+<li><strong>Machine learning</strong> can help allocate or emulate, but
+never change the GCAM total.</li>
+<li><strong>Large language models</strong> help with reading papers,
+drafting inputs and documenting code. The numbers must still come from
+GCAM runs.</li>
+<li><strong>Equity</strong>: use income-decile versions to see who gains
+and who pays.</li>
+</ul>
+<blockquote>
+<p><strong>Trap:</strong> Treating proposals as findings. In the report,
+sections on new initiatives, downscaling, ML and geopolitics are
+<em>ideas for experiments</em>, not published results.</p>
+</blockquote>
+<p><strong>Recap after Part 7</strong> 1–16. <em>(as before)</em> 17.
+Turn a policy into GCAM levers (share weights, costs, mandates,
+elasticities, load factors, value of time, constraints), run against a
+reference, explain the difference.</p>
+<hr />
+<h2 id="part-8-your-learning-path">Part 8 – Your learning path</h2>
+<p>Zaid’s five steps, mapped to the materials in the folder:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>What to do</th>
+<th>Where in the folder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. <strong>Understand the model</strong></td>
+<td>GCAM overview; GCAM v8.2 documentation; overview paper</td>
+<td>This guide Parts 1–3; <code>09-Three-Goes/Go1</code> study guide;
+weekly decks 1–7</td>
+</tr>
+<tr class="even">
+<td>2. <strong>Get GCAM running</strong></td>
+<td>Quickstart; run the reference before changing anything; learn
+<code>configuration.xml</code>, batch files, input XMLs,
+ModelInterface</td>
+<td>Lab 7 (<code>lab7.R</code>);
+<code>GCAM-2025-Training/rgcam_notebook.pdf</code></td>
+</tr>
+<tr class="odd">
+<td>3. <strong>Learn how GCAM is structured</strong></td>
+<td>Economy and demand, energy supply, land, water, marketplace</td>
+<td><code>Go2</code> handbook and the nine toy models in
+<code>go2-kit</code> (R and Python)</td>
+</tr>
+<tr class="even">
+<td>4. <strong>Learn by modifying scenarios</strong></td>
+<td>Run → change one thing → compare → explain</td>
+<td>Labs 8–10 (cheap solar, land and water maps, carbon price and net
+zero); <code>gcam-scenarios_notebook.pdf</code></td>
+</tr>
+<tr class="odd">
+<td>5. <strong>Go deeper</strong></td>
+<td>gcamdata, source code, published applications, your own
+scenario</td>
+<td><code>Go3</code> research handbook and
+<code>go3-transport-kit</code>; the two Word reports</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Best practice (Zaid):</strong> don’t read everything first.
+Learn the basics, run GCAM, modify one thing at a time, inspect the
+outputs, and use the documentation as your reference.</p>
+<p>Suggested six-week plan for a beginner:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Read</th>
+<th>Do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Parts 1–2</td>
+<td>Logit by hand (Part 2.3); <code>go2-kit</code>
+<code>m23_logit</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Part 3</td>
+<td>Toy models <code>m24_supply</code>, <code>m26_land</code>,
+<code>m27_water</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Part 4</td>
+<td>Install GCAM; run the reference; read
+<code>configuration.xml</code></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Part 5</td>
+<td>rgcam + rchart + rmap on your reference run; Hector notebook</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Part 4 again</td>
+<td>One change (e.g. low solar cost), compare, explain</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Parts 6–7</td>
+<td>Sketch a small research question with the transport kit
+templates</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="memory-route">Memory route</h2>
+<p>Walk through a house you know well. Put one strange, vivid image in
+each room. (No acronyms: the pictures do the work.)</p>
+<ol type="1">
+<li><strong>Front door – the cracked crystal ball.</strong> A fortune
+teller’s ball is cracked down the middle and labelled “WHAT IF”.
+<em>GCAM gives scenarios, not predictions.</em></li>
+<li><strong>Hallway – a map cut into 32 cake slices, sitting in 235
+bowls of soup.</strong> The slices overlap the bowls, making about 384
+tiny pieces. <em>32 regions, 235 basins, ~384 land regions.</em></li>
+<li><strong>Living room – an auctioneer who can’t stop shouting
+prices</strong> until every buyer and seller in the room shakes hands,
+then she jumps forward five years on a pogo stick. <em>Market clearing
+each period; recursive 5-year steps.</em></li>
+<li><strong>Kitchen – three chefs share a pie by price</strong>, but the
+cheapest chef never gets the whole pie, and one chef wears a heavy
+weighted hat (the share weight) that slows him down. <em>Logit choice
+and share weights.</em></li>
+<li><strong>Dining room – a photo album from 2021 glued to the
+table</strong> so the meal must look exactly like the photo.
+<em>Calibration to the base year.</em></li>
+<li><strong>Staircase – a miner climbing a staircase of coal</strong>
+where each step costs more, while a solar panel sunbathes on a lounger
+that never ends. <em>Resource supply curves; solar PV
+unlimited.</em></li>
+<li><strong>Bathroom – a bathtub with two taps</strong>: a cheap river
+tap and an expensive deep-well tap that only opens when the river runs
+dry. <em>Water: renewable first, then groundwater.</em></li>
+<li><strong>Bedroom – a small robot called Hector</strong> reading a
+thermometer and blowing smoke rings. <em>Emissions to
+temperature.</em></li>
+<li><strong>Study – a toolbox with eleven drawers</strong>, each
+labelled with a GCAM tool; Demeter and Tethys are sprinkling sand over a
+map. <em>The toolbox; downscaling.</em></li>
+<li><strong>Garden – a bus full of people overtaking a sports car with
+one driver.</strong> <em>Transport levers: load factor, value of
+time.</em></li>
+</ol>
+<hr />
+<h2 id="mind-maps">Mind maps</h2>
+<p><strong>The whole guide</strong></p>
+<pre class="mermaid">mindmap
+  root((GCAM))
+    Big picture
+      Integrated assessment model
+      32 regions, 235 basins, about 384 land regions
+      To 2100, 5-year steps
+      Scenarios not predictions
+    How it thinks
+      Market equilibrium
+      Recursive dynamic
+      Logit choice
+      Share weights and calibration
+      Nests
+    Boxes
+      People and GDP
+      Energy
+        Resources and reserves
+        Electricity and value factor
+        Hydrogen
+        Buildings, industry, transport
+      Agriculture and land
+        Nested logit on profit
+        Irrigated or rainfed, high or low
+      Water
+        Renewable then groundwater
+        Withdrawal vs consumption
+      Emissions and Hector
+    Scenarios
+      Reference has no new policy
+      configuration and batch files
+      Six ways to change GCAM
+      Tax vs cap
+    Toolbox
+      rgcam, rchart, rmap
+      Hector, Matilda, STITCHES
+      Xanthos
+      Demeter, Tethys
+      gcamdata, gcamwrapper
+    Going finer
+      Proxy split
+      Convergence downscaling
+      Native split
+    Research case
+      Transport levers
+      Literature findings
+      Sum-preserving downscaling</pre>
+<p>Ready-made image mind maps for the 15-week course are in
+<code>downloads/mindmaps/</code> and on the interactive mind-map pages
+(<code>mindmap-go1.html</code> to <code>mindmap-go3.html</code>).</p>
+<hr />
+<h2 id="traps-to-avoid">Traps to avoid</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Trap</th>
+<th>Better</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>“GCAM predicts…”</td>
+<td>“In this scenario, GCAM projects…”</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>“GCAM finds the cheapest path to 2100”</td>
+<td>It solves each period in turn (recursive dynamic)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>“The cheapest technology takes the market”</td>
+<td>It takes the largest share (logit)</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>“A share weight is a subsidy”</td>
+<td>It is a non-cost preference parameter</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>“The reference includes climate impacts and current policy”</td>
+<td>By default it has neither</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Hand-editing XML for a paper</td>
+<td>Use gcamdata or user modifications; track changes in Git</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Mixing carbon units</td>
+<td>Check $/t C vs $/t CO₂ and the price year</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Trusting downscaled maps as new information</td>
+<td>They share out regional totals</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Reporting a national policy response from downscaled results</td>
+<td>Prices are regional; use a native split</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Confusing withdrawal and consumption</td>
+<td>Consumption is what does not return</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="self-quiz">Self-quiz</h2>
+<p><em>Score yourself: 17–20 → go straight to Part 7 and the transport
+kit; 12–16 → re-read the parts you missed; under 12 → re-read Parts 1–4
+and redo the worked calculations.</em></p>
+<ol type="1">
+<li>What does “integrated” mean in “integrated assessment model”?</li>
+<li>How many energy-economy regions does standard GCAM have? How many
+water basins?</li>
+<li>What time step and end year does GCAM usually use?</li>
+<li>Is GCAM an intertemporal optimisation model? Explain in one
+sentence.</li>
+<li>What does it mean for a market to “clear”?</li>
+<li>In the logit formula, what does a more negative exponent do?</li>
+<li>Costs 50 and 50, share weights 1 and 0.25. Which technology has the
+larger share, and roughly what is it?</li>
+<li>What is calibration, and which base year does the 2025 training
+use?</li>
+<li>Why would a modeller set a new technology’s share weight low at
+first?</li>
+<li>Name the four final transport demands in GCAM.</li>
+<li>What happens to building energy demand per person as income keeps
+rising?</li>
+<li>LCOE $60/MWh, value factor 0.75. What is the PLCOE and the
+integration cost?</li>
+<li>What are the four ways each crop can be grown in GCAM?</li>
+<li>Water: define withdrawal and consumption.</li>
+<li>Which tool turns GCAM emissions into temperature? Which tool gives a
+probability range for that temperature?</li>
+<li>Which two tools downscale GCAM land and water demand to a grid?</li>
+<li>Name two ways to change GCAM inputs, one quick and one robust.</li>
+<li>Carbon tax vs emissions cap: what do you set, and what does GCAM
+find, in each?</li>
+<li>Give one weakness of a GDP-share (proxy) split to countries.</li>
+<li>Translate “ridesharing” into a GCAM lever.</li>
+</ol>
+<hr />
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Remember</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What GCAM is</td>
+<td>Multi-sector, multi-region, dynamic IAM: energy, agriculture, land,
+water, emissions, climate</td>
+</tr>
+<tr class="even">
+<td>Resolution</td>
+<td>32 regions · 235 basins · ~384 land regions · GCAM-USA 50
+states</td>
+</tr>
+<tr class="odd">
+<td>Time</td>
+<td>To 2100, 5-year steps, base year 2021 (2025 training)</td>
+</tr>
+<tr class="even">
+<td>Solution</td>
+<td>Prices adjust until every market clears; recursive dynamic</td>
+</tr>
+<tr class="odd">
+<td>Logit</td>
+<td>share = α·c^λ / Σ α·c^λ; λ &lt; 0; α = share weight</td>
+</tr>
+<tr class="even">
+<td>Share weights</td>
+<td>Calibrated to base year; 0 = off; 1 = cost-only competition</td>
+</tr>
+<tr class="odd">
+<td>Electricity</td>
+<td>New capacity by levelised cost; PLCOE = LCOE / value factor</td>
+</tr>
+<tr class="even">
+<td>Land</td>
+<td>Nested logit on profit; irrigated/rainfed × high/low</td>
+</tr>
+<tr class="odd">
+<td>Water</td>
+<td>Renewable curve → groundwater; withdrawal ≠ consumption</td>
+</tr>
+<tr class="even">
+<td>Climate</td>
+<td>Hector (simple model); Matilda for uncertainty; STITCHES emulates
+big models</td>
+</tr>
+<tr class="odd">
+<td>Files</td>
+<td><code>configuration.xml</code> · input XMLs · policy XMLs · batch
+file · output database</td>
+</tr>
+<tr class="even">
+<td>Change methods</td>
+<td>Hand-edit XML · pre-existing XML · gcamdata +
+<code>driver_drake()</code> · R + <code>create_xml()</code> · user
+modification · gcamwrapper</td>
+</tr>
+<tr class="odd">
+<td>Results</td>
+<td>rgcam → rchart (charts) · rmap (maps)</td>
+</tr>
+<tr class="even">
+<td>Downscale</td>
+<td>Demeter (land) · Tethys (water demand) · DSCALE-type convergence
+(countries)</td>
+</tr>
+<tr class="odd">
+<td>Golden loop</td>
+<td>Reference → change one thing → rerun → compare → explain</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="glossary">Glossary</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Word</th>
+<th>Plain meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Armington trade</strong></td>
+<td>Imports and exports kept separate, so a region can buy and sell the
+same good</td>
+</tr>
+<tr class="even">
+<td><strong>Base year</strong></td>
+<td>The historical year the model is set to reproduce exactly</td>
+</tr>
+<tr class="odd">
+<td><strong>Batch file</strong></td>
+<td>A file that runs many scenarios in one go</td>
+</tr>
+<tr class="even">
+<td><strong>Calibration</strong></td>
+<td>Tuning parameters (mostly share weights) so the base year matches
+data</td>
+</tr>
+<tr class="odd">
+<td><strong>Carbon constraint</strong></td>
+<td>A cap on emissions; GCAM finds the carbon price that meets it</td>
+</tr>
+<tr class="even">
+<td><strong>Downscaling</strong></td>
+<td>Sharing a coarse result out to finer areas (countries, grid
+cells)</td>
+</tr>
+<tr class="odd">
+<td><strong>Elasticity (income / price)</strong></td>
+<td>How much demand changes when income / price changes by 1 %</td>
+</tr>
+<tr class="even">
+<td><strong>Equilibrium</strong></td>
+<td>All supplies equal all demands at the current prices</td>
+</tr>
+<tr class="odd">
+<td><strong>gcamdata</strong></td>
+<td>GCAM’s R data system that turns raw data into input XML</td>
+</tr>
+<tr class="even">
+<td><strong>Hector</strong></td>
+<td>GCAM’s simple climate model (emissions → concentrations →
+temperature)</td>
+</tr>
+<tr class="odd">
+<td><strong>Levelised cost (LCOE)</strong></td>
+<td>Lifetime cost of a power plant per unit of electricity</td>
+</tr>
+<tr class="even">
+<td><strong>Load factor</strong></td>
+<td>People (or tonnes) carried per vehicle</td>
+</tr>
+<tr class="odd">
+<td><strong>Logit</strong></td>
+<td>Choice rule giving larger shares to cheaper options, not all to
+one</td>
+</tr>
+<tr class="even">
+<td><strong>Nest</strong></td>
+<td>A choice inside a choice (mode, then vehicle, then drivetrain)</td>
+</tr>
+<tr class="odd">
+<td><strong>Recursive dynamic</strong></td>
+<td>Solving one period at a time with no knowledge of the future</td>
+</tr>
+<tr class="even">
+<td><strong>Reference scenario</strong></td>
+<td>The comparison baseline; in GCAM, no new policy</td>
+</tr>
+<tr class="odd">
+<td><strong>Share weight</strong></td>
+<td>Calibrated non-cost dial in the logit choice</td>
+</tr>
+<tr class="even">
+<td><strong>SSP</strong></td>
+<td>Shared Socioeconomic Pathway: a story about population and economic
+growth (SSP1 sustainable … SSP5 fossil-fuelled)</td>
+</tr>
+<tr class="odd">
+<td><strong>Value factor</strong></td>
+<td>Value of a technology’s output relative to the average electricity
+price</td>
+</tr>
+<tr class="even">
+<td><strong>Value of time</strong></td>
+<td>Cost attached to time spent travelling</td>
+</tr>
+<tr class="odd">
+<td><strong>Withdrawal / consumption</strong></td>
+<td>Water taken / water that does not return</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="answer-key">Answer key</h2>
+<p><strong>Part exercises</strong></p>
+<ul>
+<li><em>Part 2:</em> With gas share weight 2: weights coal 6.40, gas
+4.29, solar 0.19 (× 10⁻¹¹) → coal ≈ 58.8 %, gas ≈ 39.4 %, solar ≈ 1.8 %.
+Coal falls from 73 % to about 59 %.</li>
+<li><em>Part 3:</em> More land for energy crops (less forest or pasture,
+possible land-use emissions, higher food prices); more irrigation water
+demand in some basins.</li>
+<li><em>Part 4:</em> Quick test: hand-edit or reuse an add-on XML
+lowering the electric-truck cost. Paper: change the gcamdata input (or a
+user modification function), rebuild with <code>driver_drake()</code>,
+keep it in Git.</li>
+<li><em>Part 5:</em> (a) Matilda (Hector ensembles). (b) Tethys. (c)
+rgcam + rchart.</li>
+</ul>
+<p><strong>Self-quiz</strong></p>
+<ol type="1">
+<li>The model links people, economy, energy, land, water and climate so
+changes in one affect the others.</li>
+<li>32 regions; 235 basins.</li>
+<li>5-year steps to 2100.</li>
+<li>No. It is recursive dynamic: each period is solved in turn without
+foresight.</li>
+<li>Supply equals demand at the current price.</li>
+<li>Makes shares more sensitive to cost differences (closer to “cheapest
+takes all”).</li>
+<li>The one with share weight 1: 1 / (1 + 0.25) = 80 %.</li>
+<li>Tuning parameters so the model reproduces historical data exactly;
+2021.</li>
+<li>To phase it in gradually and realistically rather than jumping to a
+large share.</li>
+<li>Passenger air, other passenger, international shipping, other
+freight.</li>
+<li>It saturates (levels off).</li>
+<li>PLCOE = 60 / 0.75 = $80/MWh; integration cost = $20/MWh.</li>
+<li>Irrigated or rainfed, each with high or low input.</li>
+<li>Withdrawal: water taken from a source. Consumption: water that is
+not returned.</li>
+<li>Hector; Matilda.</li>
+<li>Demeter (land) and Tethys (water demand).</li>
+<li>Quick: hand-edit an XML or reuse a pre-existing XML. Robust:
+gcamdata inputs with <code>driver_drake()</code>, or a user modification
+function.</li>
+<li>Tax: you set the price, GCAM finds emissions. Cap: you set
+emissions, GCAM finds the price.</li>
+<li>It ignores real base-year differences (e.g. a fossil exporter gets
+too little), so errors start in year one.</li>
+<li>Raise the load factor (more passengers per vehicle).</li>
+</ol>
+<hr />
+<p><em>Independent teaching material. GCAM is developed by the Joint
+Global Change Research Institute (PNNL). Model facts follow the 2025
+GCAM Annual Meeting training materials and the GCAM documentation; check
+them against the GCAM version you use.</em></p>
+</main>
+</body>
+</html>

@@ -20,6 +20,7 @@ Every module has an interactive system diagram with a walkthrough, a spoken over
 - `content/family.py` — the GCAM family decks; `assets/js/family3d.js` draws their animations, 3D scenes and explorers (three.js r128 is vendored in `assets/js/vendor/`).
 - `content/*.json` — the source of every module; `build.py` regenerates the pages (`python3 build.py`).
 - `papers/` — paper studies: interactive pages, a study guide and an implementation guide. First study: Šimaitis et al. (2025) on car carbon footprints across 1.5–3 °C pathways (`papers/bev-plca-basics.html`, `papers/bev-plca.html`); slides and study guide PDF in `downloads/papers/`, teaching model in `labs/papers/`.
+- `study-guide/` — *GCAM from Zero*, a beginner study guide (Markdown and web page) built from all course materials and the 2025 GCAM training notebooks.
 - `labs/` — Go 2 toy models (Python and R), the Go 3 transport research kit, and the original R labs.
 - `downloads/` — handbooks for each go, code kits, mind-map PDFs and weekly slides.
 - `.github/workflows/deploy.yml` — publishes the site with GitHub Pages on every push to `main`.
