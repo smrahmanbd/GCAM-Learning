@@ -104,5 +104,41 @@
     "a": "On-site electrolysis skips the cost of trucking or piping hydrogen, which is large per unit; over 90% of green hydrogen was on site."
    }
   ]
+ },
+ {
+  "slug": "ev-grid-usa",
+  "date": "2026-11-25",
+  "title": "When the US switches to electric cars, what happens to the rest of the energy system?",
+  "citation": "Sadavarte, P., Shindell, D. & Loughlin, D. (2025). PLOS Climate 4(10), e0000714.",
+  "doi": "10.1371/journal.pclm.0000714",
+  "iam": "GCAM-USA v7.0 (via EPA GLIMPSE v1.1)",
+  "topics": [
+   "GCAM-USA",
+   "BEV",
+   "electricity grid",
+   "air pollution",
+   "life cycle",
+   "market share constraint",
+   "United States"
+  ],
+  "level": "Beginner–Intermediate",
+  "pages": [
+   "ev-grid-usa/index.html"
+  ],
+  "takeaways": [
+   "A system-wide (consequential) run counts knock-on effects: more power plant output, less refining, shifted fuel prices.",
+   "With 75% BEV sales by 2050 (vs 31% in REF), car CO2 fell about 54%, fuel production CO2 about 19%, and power CO2 rose only about 6%; US CO2 was 4,010 vs 4,200 Tg.",
+   "A BEV starts about 30% higher in CO2 (battery making) but catches up in about two years; car NOx, SO2 and CO fell by about half, with a small coal-driven SO2 bump around 2030."
+  ],
+  "review": [
+   {
+    "q": "In Sadavarte et al. (2025), why did US CO2 fall only about 5% when car CO2 fell by about half?",
+    "a": "Cars are one slice of national emissions, and the power sector emitted about 6% more; other sectors stayed the same."
+   },
+   {
+    "q": "How do you work out a BEV's carbon breakeven time?",
+    "a": "Divide the extra CO2 from making the battery by the CO2 the BEV saves each year compared with a petrol car."
+   }
+  ]
  }
 ]

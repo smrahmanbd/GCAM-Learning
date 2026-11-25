@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper study: US electric cars and the whole energy system (GCAM-USA) · GCAM in three goes</title>
+<meta name="description" content="Beginner-friendly study of Sadavarte, Shindell & Loughlin (2025), PLOS Climate: what happens to CO2 and air pollution across the US energy system when far more battery electric cars are sold, using GCAM-USA v7.0.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="../plca.css?v=1">
+<link rel="icon" href="../../assets/img/icon.svg" type="image/svg+xml">
+<style>
+.em-step { transition: opacity .35s; }
+.em-dim .em-step { opacity: .3; }
+.em-dim .em-step.on { opacity: 1; }
+.em-step.on rect { stroke-width: 3.5; }
+.em-bars { display: grid; gap: 8px; margin-top: 10px; }
+.em-bar { display: grid; grid-template-columns: 112px 1fr 76px; gap: 8px; align-items: center; font-size: .9rem; }
+.em-bar .tr { background: var(--paper-2); border-radius: 6px; height: 20px; position: relative; overflow: hidden; }
+.em-bar .mid { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--ink-soft); }
+.em-bar .fill { position: absolute; top: 0; height: 100%; border-radius: 4px; transition: left .4s, width .4s; }
+.em-gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.em-gloss div { border: 1px solid var(--line); border-radius: var(--r-s); padding: 8px 12px; background: var(--card); }
+.em-gloss b { display: block; }
+.em-gloss span { font-size: .93rem; color: var(--ink-soft); }
+.em-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.em-seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.em-reveal[hidden] { display: none; }
+.pl-sec ul.prose li, .pl-sec ol li { margin-bottom: 4px; }
+.em-why { overflow-wrap: anywhere; }
+.pl-sol table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.pl-sol td, .pl-sol th { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: left; }
+@media (max-width: 520px) { .em-bar { grid-template-columns: 88px 1fr 64px; font-size: .82rem; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../../go1.html">Foundations</a><a href="../../go2.html">Build and Implement</a><a href="../../go3.html">Research Frontier</a><a href="../index.html">Paper studies</a><a href="../../toolkit.html">Toolkit</a><a href="../../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study 4 · Transport · GCAM-USA v7.0 · United States</p>
+<h1>When the US switches to electric cars, what happens to the rest of the energy system?</h1>
+<p>A hands-on companion to <b>Sadavarte, Shindell &amp; Loughlin (2025)</b>. The authors push far more battery electric cars into <b>GCAM-USA</b> and follow the ripples: more power plants run, fewer refineries run, fuel prices shift. Then they add up CO₂ and air pollution for the whole country. The explorer on this page runs a <b>small teaching model</b> with made-up numbers.</p>
+<p class="pl-cite">Paper: <a href="https://doi.org/10.1371/journal.pclm.0000714" target="_blank" rel="noopener">PLOS Climate 4(10), e0000714 (2025)</a>, open access. Builds on: <a href="../bev-plca.html">study 1</a> (how clean is each car?) and <a href="../ev-materials-china/index.html">study 2</a> (how GCAM's logit picks cars). This one asks what a big EV push does to <i>everything else</i>.</p>
+<ul class="pl-toc">
+<li><a href="#minute">1 · In one minute</a></li><li><a href="#goals">2 · Goals</a></li><li><a href="#words">3 · Words</a></li><li><a href="#question">4 · Question</a></li><li><a href="#model">5 · How the model works</a></li><li><a href="#explore">6 · Explorer</a></li><li><a href="#found">7 · Findings</a></li><li><a href="#predict">8 · Predict</a></li><li><a href="#ex">9 · Exercise</a></li><li><a href="#quiz">10 · Quiz</a></li><li><a href="#limits">11 · Limits</a></li><li><a href="#course">12 · Course</a></li><li><a href="#review">13 · Review</a></li><li><a href="#sources">14 · Sources</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="minute">
+<h2><span class="pl-num">1</span>The paper in one minute</h2>
+<ol class="lead">
+<li>Most car footprint studies hold the power grid fixed, but millions of new electric cars change the grid, the refineries and fuel prices too.</li>
+<li>The authors used GCAM-USA to compare a reference future with three futures where battery electric cars reach 46%, 61% or 75% of new car sales by 2050.</li>
+<li>In the most ambitious case, car CO₂ fell by about half and power-sector CO₂ rose only about 6%, so US CO₂ still fell, and car pollution like NOx fell by about half too.</li>
+</ol>
+</section>
+
+<section class="pl-sec" id="goals">
+<h2><span class="pl-num">2</span>Learning goals</h2>
+<p class="lead">After this page you can…</p>
+<ul class="prose">
+<li>…explain the difference between a fixed-grid footprint and a <b>system-wide</b> (consequential) one.</li>
+<li>…trace how an EV sales target in GCAM moves electricity demand, refinery output and emissions in three sectors.</li>
+<li>…work out a simple carbon breakeven time for a battery electric car.</li>
+<li>…name the main results and three limits of the study.</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="words">
+<h2><span class="pl-num">3</span>Words you need</h2>
+<div class="em-gloss">
+<div><b>GCAM-USA</b><span>A version of GCAM that splits the United States into its 50 states plus DC, while the rest of the world stays in 31 regions. It steps forward 5 years at a time.</span></div>
+<div><b>GLIMPSE</b><span>A tool from the US Environmental Protection Agency (EPA) that packages GCAM-USA with ready-made scenarios. The paper used version 1.1.</span></div>
+<div><b>BEV</b><span>Battery electric vehicle. Runs only on electricity from a big battery.</span></div>
+<div><b>ICE / ICEV</b><span>Internal combustion engine vehicle: a normal petrol (gasoline) car.</span></div>
+<div><b>LDV</b><span>Light-duty vehicle: cars, SUVs and pick-up trucks. In the paper, "Cars" and "Large Cars and Trucks".</span></div>
+<div><b>Sales share</b><span>The share of <i>new</i> cars sold in a year. Different from the <b>stock share</b>, the share of all cars on the road, which changes slowly.</span></div>
+<div><b>Logit choice</b><span>The formula GCAM uses to split travel between options. Cheaper options get bigger shares, but never all of it.</span></div>
+<div><b>Share weight</b><span>A number that adds non-cost preferences (habit, range worries) to the logit. 1 means no bias.</span></div>
+<div><b>Market share constraint</b><span>A rule that forces a technology's share to be at least some value. The paper uses it to make sure BEV targets are met.</span></div>
+<div><b>Well-to-tank</b><span>Emissions from making and delivering the fuel: drilling, refining, or generating electricity.</span></div>
+<div><b>Tank-to-wheel</b><span>Emissions from using the fuel in the car. For a petrol car, the exhaust. For a BEV, zero.</span></div>
+<div><b>Life cycle</b><span>All stages added up: making the car and battery, the fuel, and driving.</span></div>
+<div><b>Systemic response</b><span>Knock-on changes elsewhere in the energy system: the power plant mix, refinery output, fuel prices, other sectors switching fuel.</span></div>
+<div><b>Consequential view</b><span>Asking "what changes in the whole system because of this choice?" instead of "what is the footprint of one item on today's grid?".</span></div>
+<div><b>Grid mix</b><span>The shares of gas, coal, wind, solar, nuclear and hydro in electricity. It sets how much CO₂ each kWh carries.</span></div>
+<div><b>NOx, SO₂, CO</b><span>Air pollutants. Nitrogen oxides (smog), sulphur dioxide (mainly from coal) and carbon monoxide (from engines).</span></div>
+<div><b>kWh / GWh / EJ</b><span>Energy units. A car battery holds tens of kWh. 1 GWh = 1 million kWh. An EJ (exajoule) is a huge unit used for national energy.</span></div>
+<div><b>Social cost (damages)</b><span>A money value for the harm from one tonne of a pollutant: health effects, climate damage and so on.</span></div>
+<div><b>RGGI / RPS</b><span>Existing US power policies in the reference case: a CO₂ cap in north-eastern states (RGGI) and state renewable targets (RPS).</span></div>
+</div>
+</section>
+
+<section class="pl-sec" id="question">
+<h2><span class="pl-num">4</span>The question, and why it matters</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead"><b>Question:</b> if the US sells far more battery electric cars up to 2050, how do national CO₂ and air pollution change once we count the power sector, the refineries, battery making and all the ripple effects?</p>
+<p class="lead"><b>Why it matters:</b> people often ask "are EVs really cleaner, given the grid?". A footprint for one car on today's grid cannot answer what happens when <i>tens of millions</i> of cars switch. Extra demand can keep old coal plants open for longer, and lower oil demand can make petrol cheaper for everyone else. Policy makers need the whole picture.</p>
+</div>
+<div class="callout gcam"><h4>Link to what you know</h4><p>Study 1 used a fixed set of grid futures to rate each car. Study 2 let GCAM choose how many EVs to buy. Here the EV numbers are <b>pushed up on purpose</b>, and GCAM works out how the rest of the energy system <b>responds</b>. That is why GCAM-USA, with its detailed state power sectors, is the tool.</p></div>
+</div>
+</section>
+
+<section class="pl-sec" id="model">
+<h2><span class="pl-num">5</span>How the model works</h2>
+<p class="lead">Press <b>Play</b> to walk through the chain, or click a box. Dashed arrows move in the direction the effect travels.</p>
+<div class="pl-box">
+<div class="pl-ctrls"><button class="btn" id="d-play" type="button">Play</button><button class="btn quiet" id="d-next" type="button">Next step</button><button class="btn quiet" id="d-all" type="button">Show all</button></div>
+<svg class="pl-svg" id="d-svg" viewBox="0 0 790 360" role="img" aria-label="Diagram: an EV sales target constrains the car logit; shares set gasoline and electricity use; gasoline drives refinery and exhaust emissions, electricity drives power plant emissions; all add up to national CO2 and air pollution, with price ripples to other sectors">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink-soft)"/></marker></defs>
+<g font-size="13" font-family="var(--body)" fill="var(--ink)">
+<g class="em-step" data-i="0"><rect x="10" y="20" width="160" height="72" rx="10" fill="var(--policy-t)" stroke="var(--policy)"/><text x="90" y="46" text-anchor="middle" font-weight="700">BEV sales target</text><text x="90" y="64" text-anchor="middle" font-size="11">REF · OPT · PRG · AMB</text><text x="90" y="80" text-anchor="middle" font-size="11">31% → 75% in 2050</text></g>
+<g class="em-step" data-i="1"><rect x="200" y="20" width="180" height="72" rx="10" fill="var(--data-t)" stroke="var(--data)"/><text x="290" y="46" text-anchor="middle" font-weight="700">Car logit + constraint</text><text x="290" y="64" text-anchor="middle" font-size="11">BEV share ≥ target</text><text x="290" y="80" text-anchor="middle" font-size="11">old cars retire slowly</text></g>
+<g class="em-step" data-i="2"><rect x="420" y="10" width="150" height="56" rx="10" fill="var(--climate-t)" stroke="var(--climate)"/><text x="495" y="34" text-anchor="middle" font-weight="700">Gasoline ↓</text><text x="495" y="52" text-anchor="middle" font-size="11">fewer petrol cars</text></g>
+<g class="em-step" data-i="2"><rect x="420" y="84" width="150" height="56" rx="10" fill="var(--water-t)" stroke="var(--water)"/><text x="495" y="108" text-anchor="middle" font-weight="700">Electricity ↑</text><text x="495" y="126" text-anchor="middle" font-size="11">about +9% by 2050</text></g>
+<g class="em-step" data-i="3"><rect x="600" y="10" width="150" height="56" rx="10" fill="var(--energy-t)" stroke="var(--energy)"/><text x="675" y="32" text-anchor="middle" font-weight="700">Exhaust + refinery</text><text x="675" y="50" text-anchor="middle" font-size="11">CO₂, NOx, CO fall</text></g>
+<g class="em-step" data-i="4"><rect x="600" y="84" width="150" height="110" rx="10" fill="var(--land-t)" stroke="var(--land)"/><text x="675" y="106" text-anchor="middle" font-weight="700">Power plants</text>
+<rect id="d-g1" x="615" y="118" width="54" height="12" rx="2" fill="var(--economy)"/><text x="674" y="128" font-size="10">gas</text>
+<rect id="d-g2" x="615" y="136" width="24" height="12" rx="2" fill="var(--climate)"/><text x="644" y="146" font-size="10">coal</text>
+<rect id="d-g3" x="615" y="154" width="44" height="12" rx="2" fill="var(--land)"/><text x="664" y="164" font-size="10">wind+solar</text>
+<text x="675" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">who meets extra demand?</text></g>
+<g class="em-step" data-i="5"><rect x="200" y="140" width="180" height="70" rx="10" fill="var(--economy-t)" stroke="var(--economy)"/><text x="290" y="164" text-anchor="middle" font-weight="700">Price ripples</text><text x="290" y="182" text-anchor="middle" font-size="11">cheaper oil, dearer power</text><text x="290" y="198" text-anchor="middle" font-size="11">other sectors adjust</text></g>
+<g class="em-step" data-i="6"><rect x="10" y="140" width="160" height="70" rx="10" fill="var(--paper-2)" stroke="var(--ink-soft)"/><text x="90" y="164" text-anchor="middle" font-weight="700">Battery making</text><text x="90" y="182" text-anchor="middle" font-size="11">75 kg CO₂e per kWh</text><text x="90" y="198" text-anchor="middle" font-size="11">extra GWh of batteries</text></g>
+<g class="em-step" data-i="7"><rect x="200" y="260" width="550" height="80" rx="10" fill="var(--card)" stroke="var(--ink)"/><text x="475" y="286" text-anchor="middle" font-weight="700">National totals, every 5 years to 2050</text><text x="475" y="306" text-anchor="middle" font-size="11">CO₂ + air pollutants by sector, compared with the reference (REF)</text><text x="475" y="324" text-anchor="middle" font-size="11">→ per car life cycle, and per kWh of battery added</text></g>
+<path class="pl-flow" d="M170 56 H196" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M380 50 L416 40" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M380 70 L416 108" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M570 38 H596" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M570 112 H596" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M495 140 V175 H384" stroke="var(--muted)" stroke-width="1.8" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M675 194 V256" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M750 38 H776 V300 H754" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M290 210 V256" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M90 210 V300 H196" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+</g></svg>
+<p class="pl-read" id="d-read">Press Play.</p>
+</div>
+<div class="callout model"><h4>What is new in this paper</h4><p>The car choice and the power sector are normal GCAM-USA. The authors' contribution is the <b>bookkeeping</b>: they force higher BEV sales, take the difference from the reference run in every sector, and turn it into a life-cycle footprint per car and per kWh of battery. Car exhaust factors come from EPA's MOVES model, and battery making uses 75 kg CO₂e per kWh.</p></div>
+</section>
+
+<section class="pl-sec" id="explore">
+<h2><span class="pl-num">6</span>Explorer: a toy US car-and-grid system</h2>
+<p class="lead">Pick a BEV scenario and a grid future, and choose whether the grid <b>responds</b> to the extra demand (as in GCAM) or stays <b>fixed</b> (as in a simple footprint). The chart shows CO₂ from cars, fuel production and electricity. The <b>dashed lines</b> are the reference (REF).</p>
+<div class="callout trap"><h4>Illustrative numbers</h4><p>All demands, emission factors and grid paths here are made up for teaching. Only the BEV sales targets follow the paper. The toy is tuned to behave roughly like the paper, but it is <b>not</b> GCAM-USA data.</p></div>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>BEV scenario<span class="em-seg" id="x-scen"></span></label>
+<label>Grid future<span class="em-seg" id="x-grid"></span></label>
+<label>Extra demand is met by…<span class="em-seg" id="x-resp"></span></label>
+<label>Year for the bars <output id="x-yr-o">2050</output><input type="range" id="x-yr" min="2025" max="2050" step="5" value="2050"></label>
+</div>
+<canvas class="pl-canvas" id="x-cnv" aria-label="Chart of CO2 from cars, fuel production and electricity over time"></canvas>
+<div class="pl-legend" id="x-leg"></div>
+<h3 style="margin:14px 0 4px;font-size:1.02rem">Change versus REF in <span id="x-yr2">2050</span> (toy Tg CO₂; left = less, right = more)</h3>
+<div class="em-bars" id="x-delta"></div>
+<div class="pl-stats">
+<div class="pl-stat"><b id="s-sales">0%</b><span>BEV share of new sales</span></div>
+<div class="pl-stat"><b id="s-stock">0%</b><span>BEV share of cars on the road</span></div>
+<div class="pl-stat"><b id="s-elec">0%</b><span>extra electricity vs REF</span></div>
+<div class="pl-stat"><b id="s-net">0%</b><span>net change in these 3 sectors</span></div>
+</div>
+<p class="pl-read" id="x-read"></p>
+</div>
+<details class="pl-ex"><summary>How the toy model works (for the curious)</summary>
+<div class="pl-sol">
+<ol>
+<li>BEV <b>sales</b> shares follow the paper's targets (REF about 31%, OPT 46%, PRG 61%, AMB 75% in 2050; in-between years are rough).</li>
+<li>The BEV <b>stock</b> share is the average of the last three 5-year sales shares, because cars last about 15 years.</li>
+<li>Car travel grows 1% a year. Petrol use = travel × (1 − stock share) × a slowly improving fuel economy. BEVs use about 30% as much energy per km.</li>
+<li>Exhaust CO₂ = petrol × 70. Fuel production CO₂ = a fixed part (refining for other users) + 15% of exhaust CO₂.</li>
+<li>Electricity CO₂ = grid intensity × (other demand + EV demand). If the grid <b>responds</b>, the extra EV demand carries a different intensity than the average: dirtier early (old coal stays open longer), cleaner later (new wind, solar and gas get built). If it is <b>fixed</b>, the extra demand gets the average intensity.</li>
+</ol></div></details>
+</section>
+
+<section class="pl-sec" id="found">
+<h2><span class="pl-num">7</span>What they found</h2>
+<div class="pl-cards">
+<div class="pl-card"><h4>Far more batteries</h4><p>Battery capacity in new cars reached about 770 GWh a year in 2050 in REF, and about 1,930 GWh in the most ambitious case (AMB). Each new BEV's battery was assumed to grow from 40 kWh (2020) to 150 kWh (2050).</p></div>
+<div class="pl-card"><h4>A bit more electricity</h4><p>In 2050, AMB used about 9% more electricity than REF (27.9 vs 25.7 EJ). The reference grid in 2050 was about 44% gas, 22% wind, 17% solar and 6% coal.</p></div>
+<div class="pl-card"><h4>Shifts between sectors</h4><p>AMB versus REF in 2050: car CO₂ down about 54%, fuel production CO₂ down about 19%, electricity CO₂ up only about 6%.</p></div>
+<div class="pl-card"><h4>National CO₂ falls, modestly</h4><p>US CO₂ was about 4,690 Tg in 2020. In 2050 it was about 4,200 Tg in REF and 4,010 Tg in AMB (OPT 4,120, PRG 4,070). Cars are only one slice of all emissions.</p></div>
+<div class="pl-card"><h4>Cleaner air from cars</h4><p>In AMB, car NOx, SO₂ and CO fell by about half by 2050. Power-sector NOx rose about 2%. SO₂ rose a little around 2030, because extra demand kept some coal plants open longer, but that bump was gone by 2050.</p></div>
+<div class="pl-card"><h4>Per car and per battery</h4><p>A new BEV starts with about 30% more CO₂ than a petrol car (battery making), but its total drops below the petrol car's after about two years. In 2030, each extra kWh of battery avoided about 220 kg of CO₂. Petrol cars caused about 2 to 3.5 times the damage cost of BEVs over their lives.</p></div>
+</div>
+<p class="lead">The big picture: once the whole system is counted, power-sector increases are small next to the drop in exhaust and refinery emissions. The gap widens as the grid gets cleaner.</p>
+</section>
+
+<section class="pl-sec" id="predict">
+<h2><span class="pl-num">8</span>Predict, then check</h2>
+<div class="pl-ex" id="p1">
+<h3>Prediction 1</h3>
+<p>In 2050, AMB has 75% BEV sales and REF has 31%. AMB uses about 9% more electricity. How much more CO₂ does the power sector emit in AMB?</p>
+<div class="em-seg" data-ans="0"><button class="btn quiet" type="button">About 6% more</button><button class="btn quiet" type="button">About 30% more</button><button class="btn quiet" type="button">About twice as much</button></div>
+<p class="pl-check em-reveal" hidden>About <b>6% more</b>. Electricity demand rises only about 9%, and by 2050 much of the extra comes from new wind, solar and gas, which are cleaner than the average plant. In the explorer, set AMB, 2050 and "grid responds" to see a similar pattern.</p>
+</div>
+<div class="pl-ex" id="p2">
+<h3>Prediction 2</h3>
+<p>Car CO₂ falls by about half in AMB versus REF in 2050. How much lower is <b>total US CO₂</b>?</p>
+<div class="em-seg" data-ans="1"><button class="btn quiet" type="button">About 50% lower</button><button class="btn quiet" type="button">About 5% lower</button><button class="btn quiet" type="button">Higher, because of the grid</button></div>
+<p class="pl-check em-reveal" hidden>About <b>5% lower</b>: 4,010 vs 4,200 Tg. Cars are only part of US emissions. Industry, buildings, freight and power plants for other uses all stay, and some ripple effects (like cheaper oil) eat into the gain. A big fall in one sector looks small in the national total.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="ex">
+<h2><span class="pl-num">9</span>Worked mini-exercise: carbon breakeven time</h2>
+<div class="pl-ex" data-answer="1.5" data-tol="0.07" data-show="1.5 years">
+<h3>When does the BEV catch up?</h3>
+<p>Use these <b>illustrative</b> numbers. A BEV has a <b>60 kWh</b> battery, and making batteries emits <b>75 kg CO₂e per kWh</b> (the paper's factor). Apart from the battery, making the two cars emits the same. Each year, the petrol car emits <b>5.0 t</b> CO₂ (exhaust plus fuel production). The BEV's electricity emits <b>2.0 t</b> CO₂ a year. After how many years has the BEV caught up?</p>
+<div class="pl-row"><input class="pl-ans" type="text" inputmode="decimal" placeholder="years, e.g. 3" aria-label="Your answer in years"><button class="btn pl-checkbtn" type="button">Check</button></div>
+<p class="pl-check" aria-live="polite"></p>
+<details><summary>Hint</summary><div class="pl-sol"><p>First find the BEV's extra "head start" CO₂ from the battery. Then find how much less CO₂ it emits each year. Breakeven = head start ÷ yearly saving.</p></div></details>
+<details><summary>Step-by-step solution</summary><div class="pl-sol">
+<table><tr><th>Step</th><th>Working</th><th>Result</th></tr>
+<tr><td>Battery head start</td><td>60 kWh × 75 kg/kWh</td><td>4,500 kg = 4.5 t</td></tr>
+<tr><td>Yearly saving</td><td>5.0 t − 2.0 t</td><td>3.0 t per year</td></tr>
+<tr><td>Breakeven</td><td>4.5 t ÷ 3.0 t per year</td><td><b>1.5 years</b></td></tr></table>
+<p>The paper found about two years with its own numbers. Now ask: what if the grid were dirtier? With BEV electricity at 3.5 t a year, the saving is 1.5 t, and breakeven takes 3 years. A cleaner grid makes the BEV catch up sooner, which is why the paper's damage gap grows over time.</p></div></details>
+</div>
+</section>
+
+<section class="pl-sec" id="quiz">
+<h2><span class="pl-num">10</span>Quiz</h2>
+<div class="pl-quiz" id="qz" data-q='[
+{"q":"What does a systemic (system-wide) analysis add to a simple car footprint?","o":["It ignores the power sector","It counts knock-on changes, such as the power plant mix, refinery output and fuel prices","It only looks at battery making","It uses today&#39;s grid for every year"],"a":1,"e":"The paper lets GCAM-USA work out how power plants, refineries and other sectors respond to millions of extra EVs."},
+{"q":"How did the authors make sure the high BEV targets were met in GCAM-USA?","o":["They deleted petrol cars from the model","They added lower-bound market share constraints and set share weights to 1","They doubled the price of oil","They changed the logit into a fixed table"],"a":1,"e":"A market share constraint forces at least the target share. Share weights of 1 remove the usual bias against BEVs."},
+{"q":"In 2050, AMB versus REF, power-sector CO₂ was…","o":["about 6% higher","about 6% lower","about 50% higher","unchanged"],"a":0,"e":"Electricity demand rose about 9%, and power CO₂ about 6%. Car CO₂ fell about 54%, which is much bigger."},
+{"q":"Why did total US CO₂ fall only about 4–5% when car CO₂ fell by about half?","o":["Because BEVs emit more than petrol cars","Because cars are one slice of national emissions, and some gains are offset elsewhere","Because the model has no power sector","Because the targets were never met"],"a":1,"e":"Industry, buildings, freight and other power demand remain. The power sector also emits a little more."},
+{"q":"Why did SO₂ rise a little around 2030 in the high-BEV runs?","o":["Battery factories burn sulphur","Extra electricity demand kept some coal plants open longer","Petrol got dirtier","Wind farms emit SO₂"],"a":1,"e":"Coal is the main SO₂ source. Delayed coal retirement caused a temporary bump, which disappeared by 2050 as coal left the grid."}
+]'></div>
+</section>
+
+<section class="pl-sec" id="limits">
+<h2><span class="pl-num">11</span>Limitations and open questions</h2>
+<ul class="prose">
+<li><b>Not every stage is counted.</b> End-of-life and recycling, charging stations, road and refinery building, and fuel transport are left out. Methane leaks from gas supply are left out too.</li>
+<li><b>Targets are imposed.</b> The BEV shares are forced with constraints, not chosen by GCAM's buyers. The study tells us "what if" these shares happen, not "will" they.</li>
+<li><b>The reference future is dated.</b> The reference case leaves out the 2021 infrastructure law and the 2022 Inflation Reduction Act. Plug-in hybrids are not modelled on their own.</li>
+<li><b>Only some harms are valued.</b> Damage costs cover CO₂, CO, SO₂ and NOx only. Mining impacts and water use are not in the totals.</li>
+<li><b>Funding.</b> The work was funded by a lithium producer, declared by the authors as a competing interest. That does not make the results wrong, but it is worth knowing when you read them.</li>
+<li><b>Open question:</b> how would results change with a faster-cleaning grid, smart charging at times of high solar, or a full battery recycling loop?</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="course">
+<h2><span class="pl-num">12</span>Links to the course and to GCAM</h2>
+<ul class="reslist">
+<li><a href="../../modules/transport-in-gcam.html">Transport in GCAM</a><span class="why">The tree of modes and vehicle technologies that the BEV targets act on.</span></li>
+<li><a href="../../modules/choice-the-logit.html">Choice: the logit</a><span class="why">Share weights and the logit, and why a constraint is needed to force a target.</span></li>
+<li><a href="../../modules/energy-supply.html">Energy supply</a><span class="why">How GCAM decides which power plants meet extra electricity demand.</span></li>
+<li><a href="../../modules/emissions-climate-policy-system.html">Emissions, climate and policy</a><span class="why">How emissions are tracked by sector, and how policies like caps enter.</span></li>
+<li><a href="../../modules/scenarios.html">Scenarios</a><span class="why">Why REF, OPT, PRG and AMB are "what ifs", not forecasts.</span></li>
+<li><a href="../../modules/the-iam-family.html">The IAM family</a><span class="why">GCAM-USA next to other models and next to life cycle assessment.</span></li>
+<li><a href="https://jgcri.github.io/gcam-doc/gcam-usa.html" target="_blank" rel="noopener">GCAM-USA documentation</a><span class="why">The official description of the state-level version of GCAM.</span></li>
+</ul>
+</section>
+
+<section class="pl-sec" id="review">
+<h2><span class="pl-num">13</span>Review: from earlier papers</h2>
+<p class="lead">Spaced repetition: try to answer before you open each one.</p>
+<div class="pl-ex"><h3>From: cars across 1.5–3 °C futures (study 1)</h3><p>What is breakeven mileage?</p><details><summary>Show answer</summary><div class="pl-sol">The lifetime distance at which a BEV's whole-life footprint drops below a hybrid's. Today's breakeven time is the same idea, measured in years.</div></details></div>
+<div class="pl-ex"><h3>From: battery metals and China's EVs (study 2)</h3><p>Why can a 7–10% rise in EV cost cut the EV share by about 14 points in GCAM?</p><details><summary>Show answer</summary><div class="pl-sol">The logit with a large exponent turns small cost gaps into big share shifts, especially when options are close in cost.</div></details></div>
+<div class="pl-ex"><h3>From: hydrogen in trucks, ships and factories (study 3)</h3><p>What mattered more for how much hydrogen gets used: delivery options or end-use costs?</p><details><summary>Show answer</summary><div class="pl-sol">End-use technology costs. Delivery options mainly changed where hydrogen was made (on site vs central plants).</div></details></div>
+</section>
+
+<section class="pl-sec" id="sources">
+<h2><span class="pl-num">14</span>Sources</h2>
+<ul class="prose em-why">
+<li>Sadavarte, P., Shindell, D. &amp; Loughlin, D. (2025). Comparing the climate and air pollution footprints of Lithium-ion BEVs and ICEs in the US incorporating systemic energy system responses. <i>PLOS Climate</i> 4(10), e0000714. <a href="https://doi.org/10.1371/journal.pclm.0000714" target="_blank" rel="noopener">doi:10.1371/journal.pclm.0000714</a> (open access, CC BY 4.0; read on the <a href="https://journals.plos.org/climate/article?id=10.1371%2Fjournal.pclm.0000714" target="_blank" rel="noopener">PLOS Climate page</a>).</li>
+<li><a href="https://www.epa.gov/air-research/glimpse-computational-framework-supporting-state-level-environmental-and-energy" target="_blank" rel="noopener">GLIMPSE (US EPA)</a>, the decision-support tool built on GCAM-USA.</li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation (JGCRI)</a>.</li>
+</ul>
+<p class="pl-note">Summary written in our own words. No figures or tables from the article are copied. The explorer is a teaching toy, not the paper's model.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on Sadavarte, Shindell &amp; Loughlin (2025), PLOS Climate 4(10), e0000714. Charts use an illustrative toy model, not the paper's data. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../../assets/js/site.js?v=20261105a"></script>
+<script src="../plca-common.js?v=1"></script>
+<script>
+(function () {
+  const { cv, canvas, axes, legend, quiz } = window.PL;
+  /* ---------- toy model (illustrative numbers; only the 2050 sales targets follow the paper) ---------- */
+  const YEARS = [2020, 2025, 2030, 2035, 2040, 2045, 2050];
+  const OPT = [2, 21, 46, 50, 48, 47, 46], AMB = [2, 50, 55, 60, 65, 70, 75];
+  const SALES = {
+    REF: [2, 14, 32, 34, 33, 32, 31],
+    OPT: OPT,
+    PRG: OPT.map((v, i) => i === 0 ? 2 : Math.round((v + AMB[i]) / 2)),
+    AMB: AMB
+  };
+  const GRID = { Slow: [110, 104, 98, 92, 86, 80, 75], Reference: [110, 98, 86, 76, 66, 58, 50], Fast: [110, 90, 70, 52, 36, 24, 15] };
+  const MARG = [1, 1.5, 1.4, 1.1, 0.9, 0.8, 0.72]; // extra demand vs average intensity when the grid responds
+  function model(o) {
+    const s = SALES[o.scen], g = GRID[o.grid], out = [];
+    YEARS.forEach((y, i) => {
+      const t = y - 2020;
+      const stock = ((i >= 2 ? s[i - 2] : 1) + (i >= 1 ? s[i - 1] : 1) + s[i]) / 300;
+      const D = Math.pow(1.01, t), eff = 1 - 0.008 * t;
+      const gas = 15 * D * (1 - stock) * eff;          // toy EJ of petrol
+      const evE = 15 * D * stock * eff * 0.30;         // toy EJ of electricity for EVs
+      const other = 14 * Math.pow(1.008, t);            // toy EJ of other electricity
+      const ldv = gas * 70, fuel = 205 + 0.15 * ldv;
+      const m = o.resp === "Grid responds" ? MARG[i] : 1;
+      const elec = g[i] * other + g[i] * m * evE;
+      out.push({ y, sales: s[i] / 100, stock, evE, tot: other + evE, ldv, fuel, elec, elecBase: g[i] * other, m });
+    });
+    return out;
+  }
+  window.EG = { model };
+  const SEC = ["Cars (exhaust)", "Fuel production", "Electricity"], KEY = ["ldv", "fuel", "elec"], COL = ["--climate", "--energy", "--water"];
+
+  /* ---------- explorer ---------- */
+  const st = { scen: "AMB", grid: "Reference", resp: "Grid responds", yr: 2050 };
+  function seg(id, arr, key) {
+    const el = document.getElementById(id);
+    el.innerHTML = arr.map((a) => `<button class="btn quiet" type="button" aria-pressed="${a === st[key]}" data-v="${a}">${a}</button>`).join("");
+    el.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; st[key] = b.dataset.v; el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b)); draw(); });
+  }
+  seg("x-scen", Object.keys(SALES), "scen"); seg("x-grid", Object.keys(GRID), "grid"); seg("x-resp", ["Grid responds", "Fixed grid"], "resp");
+  const yrEl = document.getElementById("x-yr");
+  yrEl.addEventListener("input", () => { st.yr = +yrEl.value; ["x-yr-o", "x-yr2"].forEach((i) => document.getElementById(i).textContent = st.yr); draw(); });
+  legend(document.getElementById("x-leg"), [["Cars (exhaust)", "--climate"], ["Fuel production", "--energy"], ["Electricity", "--water"], ["REF (dashed)", "--muted", true]]);
+  const pct = (v) => Math.round(v * 100) + "%";
+  const sgn = (v, d) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0);
+  function draw() {
+    const r = model(st), b = model({ ...st, scen: "REF" });
+    const cnv = document.getElementById("x-cnv"), { ctx, w, h } = canvas(cnv, (cnv.clientWidth || 600) < 520 ? 0.7 : 0.42);
+    const box = { x0: 58, y0: 12, x1: w - 14, y1: h - 42 };
+    const { X, Y } = axes(ctx, box, [2020, 2050], [0, 2000], { xticks: [2020, 2030, 2040, 2050], xfmt: String, ylab: "toy Tg CO₂ / yr" });
+    KEY.forEach((k, j) => {
+      [[b, true], [r, false]].forEach(([d, dash]) => {
+        ctx.strokeStyle = cv(COL[j]); ctx.lineWidth = dash ? 1.6 : 3; ctx.setLineDash(dash ? [6, 5] : []);
+        ctx.beginPath(); d.forEach((p, i) => { const x = X(p.y), yy = Y(Math.min(2000, p[k])); i ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy); }); ctx.stroke();
+      });
+    });
+    ctx.setLineDash([]); ctx.strokeStyle = cv("--ink-soft"); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X(st.yr), box.y0); ctx.lineTo(X(st.yr), box.y1); ctx.stroke();
+    const p = r.find((d) => d.y === st.yr), pb = b.find((d) => d.y === st.yr);
+    const dl = KEY.map((k) => p[k] - pb[k]); const net = dl[0] + dl[1] + dl[2]; dl.push(net);
+    const max = 450, names = SEC.concat(["Net change"]), cols = COL.concat(["--ink"]);
+    document.getElementById("x-delta").innerHTML = dl.map((v, i) => {
+      const wd = Math.min(50, Math.abs(v) / max * 50), left = v < 0 ? 50 - wd : 50;
+      return `<div class="em-bar"><span>${names[i]}</span><div class="tr"><div class="mid"></div><div class="fill" style="left:${left}%;width:${wd}%;background:${cv(cols[i])}"></div></div><b>${sgn(v)}</b></div>`;
+    }).join("");
+    const totB = pb.ldv + pb.fuel + pb.elec;
+    document.getElementById("s-sales").textContent = pct(p.sales);
+    document.getElementById("s-stock").textContent = pct(p.stock);
+    document.getElementById("s-elec").textContent = sgn((p.tot / pb.tot - 1) * 100) + "%";
+    document.getElementById("s-net").textContent = sgn(net / totB * 100) + "%";
+    const pe = (p.elec / pb.elec - 1) * 100, pl = (p.ldv / pb.ldv - 1) * 100;
+    document.getElementById("x-read").innerHTML = st.scen === "REF"
+      ? `This is the reference run itself, so every change is zero. Pick OPT, PRG or AMB to compare.`
+      : `In ${st.yr}, car exhaust CO₂ is ${sgn(pl)}% and electricity CO₂ is ${sgn(pe)}% versus REF. Net change in these three sectors: <b>${sgn(net)} toy Tg</b>. ` +
+        (st.resp === "Grid responds" ? (p.m > 1 ? "Early on, the extra demand keeps older, dirtier plants running, so each extra kWh is dirtier than average." : "By now the extra demand is met mostly by newly built, cleaner plants, so each extra kWh is cleaner than average.") : "With a fixed grid, each extra kWh simply gets the average intensity.") +
+        (st.grid === "Fast" ? " A fast-cleaning grid makes the power-sector increase tiny." : st.grid === "Slow" ? " A slow-cleaning grid makes the power-sector increase bigger, but the net change is still a fall." : "");
+    // feed the diagram's power-plant bars (Reference grid, illustrative)
+    const gi = YEARS.indexOf(st.yr), f = (GRID[st.grid][gi] - 15) / 95;
+    document.getElementById("d-g1").setAttribute("width", 30 + 30 * f);
+    document.getElementById("d-g2").setAttribute("width", Math.max(3, 40 * f * f));
+    document.getElementById("d-g3").setAttribute("width", Math.max(6, 70 * (1 - f)));
+  }
+  let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(draw, 150); });
+  draw();
+
+  /* ---------- animated diagram ---------- */
+  const TXT = [
+    "1 · BEV sales target. Each scenario says what share of new cars must be battery electric: about 31% (REF), 46% (OPT), 61% (PRG) or 75% (AMB) by 2050.",
+    "2 · Car logit plus a constraint. GCAM-USA still splits car travel with a logit, but a market share constraint makes sure BEVs reach at least the target. Old cars retire slowly, so the cars on the road change more slowly than sales.",
+    "3 · Fuels change. Fewer petrol cars means less gasoline. More BEVs means more electricity: about 9% more in 2050 in AMB.",
+    "4 · Exhaust and refineries. Less gasoline means less exhaust CO₂, NOx and CO, and refineries run less.",
+    "5 · Power plants. GCAM-USA decides which plants meet the extra demand in each state. Early on, some old coal plants stay open longer. Later, new wind, solar and gas do most of the work.",
+    "6 · Price ripples. Lower oil demand makes liquid fuels a bit cheaper; more power demand makes electricity a bit dearer. Other sectors switch fuels a little in response.",
+    "7 · Battery making. Every extra kWh of battery adds about 75 kg CO₂e at the factory. The paper adds this to get life-cycle totals.",
+    "8 · National totals. Subtract the REF run from each scenario, sector by sector. That gives the net change in CO₂ and air pollutants, per year, per car and per kWh of battery."
+  ];
+  const svg = document.getElementById("d-svg"), steps = [...svg.querySelectorAll(".em-step")], read = document.getElementById("d-read");
+  let cur = -1, timer = null;
+  function show(i) { cur = i; svg.classList.add("em-dim"); steps.forEach((s) => s.classList.toggle("on", +s.dataset.i === i)); read.textContent = TXT[i]; }
+  function stop() { clearInterval(timer); timer = null; document.getElementById("d-play").textContent = "Play"; }
+  document.getElementById("d-play").addEventListener("click", () => {
+    if (timer) { stop(); return; }
+    show((cur + 1) % TXT.length); document.getElementById("d-play").textContent = "Pause";
+    timer = setInterval(() => { if (cur >= TXT.length - 1) { stop(); return; } show(cur + 1); }, 3000);
+  });
+  document.getElementById("d-next").addEventListener("click", () => { stop(); show((cur + 1) % TXT.length); });
+  document.getElementById("d-all").addEventListener("click", () => { stop(); cur = -1; svg.classList.remove("em-dim"); steps.forEach((s) => s.classList.remove("on")); read.textContent = "The whole chain: BEV target → car shares → less gasoline, more electricity → exhaust, refinery and power plant emissions (+ battery making and price ripples) → national totals versus REF."; });
+  steps.forEach((s) => { s.style.cursor = "pointer"; s.addEventListener("click", () => { stop(); show(+s.dataset.i); }); });
+
+  /* ---------- predict-then-check ---------- */
+  document.querySelectorAll("#predict .em-seg").forEach((g) => g.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    const btns = [...g.querySelectorAll("button")], i = btns.indexOf(b), ok = i === +g.dataset.ans;
+    btns.forEach((x, j) => { x.setAttribute("aria-pressed", x === b); if (j === +g.dataset.ans) x.style.outline = "3px solid " + cv("--land"); });
+    const p = g.parentElement.querySelector(".em-reveal"); p.hidden = false;
+    p.innerHTML = (ok ? '<b class="pl-good">Good guess.</b> ' : '<b class="pl-bad">Not quite.</b> ') + p.innerHTML.replace(/^<b class="pl-(good|bad)">.*?<\/b> /, "");
+  }));
+
+  quiz(document.getElementById("qz"));
+})();
+</script>
+</body></html>
