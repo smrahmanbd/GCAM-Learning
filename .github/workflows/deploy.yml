@@ -43,6 +43,14 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
+  # Deploy runs as its own job (GitHub's standard layout). When upload and deploy
+  # shared one job, deploy-pages sometimes looked for the artifact before it was
+  # registered ("No artifacts named github-pages were found") and the site did not update.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
     environment:
