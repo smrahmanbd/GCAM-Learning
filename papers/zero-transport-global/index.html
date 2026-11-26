@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper study: zero-emission transport for the whole world, planes and ships included (GCAM 6.0) · GCAM in three goes</title>
+<meta name="description" content="Beginner-friendly study of Speizer et al. (2024), Nature Communications: can every transport mode, including aviation and shipping, reach zero CO2 under a 1.5 °C limit? Uses GCAM 6.0 with e-fuels added.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="../plca.css?v=1">
+<link rel="icon" href="../../assets/img/icon.svg" type="image/svg+xml">
+<style>
+.em-step { transition: opacity .35s; }
+.em-dim .em-step { opacity: .28; }
+.em-dim .em-step.on { opacity: 1; }
+.em-step.on rect { stroke-width: 3.5; }
+.em-gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.em-gloss div { border: 1px solid var(--line); border-radius: var(--r-s); padding: 8px 12px; background: var(--card); }
+.em-gloss b { display: block; }
+.em-gloss span { font-size: .93rem; color: var(--ink-soft); }
+.em-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.em-seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.em-reveal[hidden] { display: none; }
+.pl-sec ul.prose li, .pl-sec ol li { margin-bottom: 4px; }
+.em-why { overflow-wrap: anywhere; }
+.pl-sol table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.pl-sol td, .pl-sol th { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: left; }
+.zt-stack { display: flex; height: 30px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); margin: 6px 0 4px; }
+.zt-stack div { height: 100%; transition: width .35s; display: grid; place-items: center; color: #fff; font-size: .78rem; font-weight: 700; overflow: hidden; white-space: nowrap; }
+.zt-be { display: grid; gap: 6px; margin-top: 8px; }
+.zt-be div { display: grid; grid-template-columns: 100px 1fr 92px; gap: 8px; align-items: center; font-size: .9rem; }
+.zt-be .tr { background: var(--paper-2); border-radius: 6px; height: 14px; position: relative; overflow: hidden; }
+.zt-be .fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px; transition: width .35s; }
+.zt-be .now { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--ink); }
+.tscroll { overflow-x: auto; }
+@media (max-width: 520px) { .zt-be div { grid-template-columns: 74px 1fr 78px; font-size: .82rem; } .pl-ctrls input[type=range] { width: 100%; } .pl-ctrls label { width: 100%; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../../go1.html">Foundations</a><a href="../../go2.html">Build and Implement</a><a href="../../go3.html">Research Frontier</a><a href="../index.html">Paper studies</a><a href="../../toolkit.html">Toolkit</a><a href="../../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study 5 · Transport · GCAM 6.0 · Global · all modes</p>
+<h1>Can all of transport, even planes and ships, reach zero CO₂ by 2050?</h1>
+<p>A hands-on companion to <b>Speizer et al. (2024)</b>. The authors take the whole transport sector in <b>GCAM 6.0</b> (cars, buses, trucks, trains, ships and planes) and ask how fast it can stop emitting CO₂ inside a world that stays below 1.5 °C. They also add a new fuel to GCAM: <b>e-fuels</b> made from captured air CO₂ and hydrogen. The explorer on this page runs a <b>small teaching model</b> with made-up numbers.</p>
+<p class="pl-cite">Paper: <a href="https://doi.org/10.1038/s41467-024-48424-9" target="_blank" rel="noopener">Nature Communications 15, 4439 (2024)</a>, open access. Builds on: <a href="../ev-materials-china/index.html">study 2</a> (the car logit), <a href="../hydrogen-transport/index.html">study 3</a> (hydrogen in trucks and ships) and <a href="../ev-grid-usa/index.html">study 4</a> (knock-on effects in other sectors). This one zooms out to <i>every</i> mode, worldwide.</p>
+<ul class="pl-toc">
+<li><a href="#minute">1 · In one minute</a></li><li><a href="#goals">2 · Goals</a></li><li><a href="#words">3 · Words</a></li><li><a href="#question">4 · Question</a></li><li><a href="#model">5 · How the model works</a></li><li><a href="#explore">6 · Explorer</a></li><li><a href="#found">7 · Findings</a></li><li><a href="#predict">8 · Predict</a></li><li><a href="#ex">9 · Exercise</a></li><li><a href="#quiz">10 · Quiz</a></li><li><a href="#limits">11 · Limits</a></li><li><a href="#course">12 · Course</a></li><li><a href="#review">13 · Review</a></li><li><a href="#sources">14 · Sources</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="minute">
+<h2><span class="pl-num">1</span>The paper in one minute</h2>
+<ol class="lead">
+<li>Planes and ships are the hardest part of transport to clean up, and few global studies had modelled zero emissions for every mode together with the rest of the economy.</li>
+<li>The authors ran GCAM 6.0 with a 1.5 °C carbon limit and three levels of transport ambition (low, medium, high), which differ in how fast fossil fuels are banned and how fast electric and hydrogen vehicles arrive.</li>
+<li>In the high case, transport stopped emitting CO₂ by 2050: electricity did most of the work, hydrogen led for big ocean ships, and biofuels kept long flights going, while weaker transport ambition pushed extra cuts onto industry and power.</li>
+</ol>
+</section>
+
+<section class="pl-sec" id="goals">
+<h2><span class="pl-num">2</span>Learning goals</h2>
+<p class="lead">After this page you can…</p>
+<ul class="prose">
+<li>…name the low-carbon option that leads in each transport mode in GCAM, and say why long-haul flights are the odd one out.</li>
+<li>…explain how a <b>fixed carbon budget</b> links transport to other sectors: what transport does not cut, someone else must.</li>
+<li>…work out a <b>break-even carbon price</b> for a clean technology and compare it with the cost of direct air capture.</li>
+<li>…describe how a carbon price can cut emissions by switching fuels <i>or</i> by cutting travel (demand destruction).</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="words">
+<h2><span class="pl-num">3</span>Words you need</h2>
+<div class="em-gloss">
+<div><b>GCAM 6.0</b><span>The version of the Global Change Analysis Model used here. 32 world regions, 5-year steps, energy, land, water and climate linked together.</span></div>
+<div><b>Mode</b><span>A way of travelling or moving goods: car, bus, rail, truck, ship, plane. GCAM splits planes into short-haul and long-haul, and ships into domestic and international.</span></div>
+<div><b>Service</b><span>How much transport is done. Passenger-km (pass-km) for people, tonne-km (ton-km) for goods. One person carried 1 km = 1 pass-km.</span></div>
+<div><b>Technology</b><span>The vehicle type inside a mode: oil-fuelled, battery electric (BEV), hydrogen fuel cell (FCEV), or, for planes, a hydrogen-burning turbine.</span></div>
+<div><b>Logit choice</b><span>GCAM's way of sharing out demand among options. Cheaper options win bigger shares, but not all of it.</span></div>
+<div><b>Share weight</b><span>A logit setting that captures non-cost factors, like how ready a new technology is. Low weight = slow uptake.</span></div>
+<div><b>Decarbonise</b><span>Cut CO₂ emissions towards zero.</span></div>
+<div><b>Direct vs indirect emissions</b><span>Direct: from the vehicle's exhaust. Indirect: from making its fuel (power plants, refineries, hydrogen plants).</span></div>
+<div><b>1.5 °C carbon constraint</b><span>A cap on total CO₂ from fuels and industry, set so that warming stays under 1.5 °C in 2100. GCAM finds the carbon price that meets it.</span></div>
+<div><b>Carbon price</b><span>A cost per tonne of CO₂ emitted. It makes fossil fuels dearer, so clean options win more logit share.</span></div>
+<div><b>Break-even carbon price</b><span>The carbon price at which a clean technology costs the same as the fossil one. Extra cost ÷ CO₂ saved.</span></div>
+<div><b>Residual emissions</b><span>Emissions that remain after all the cuts. Under net zero, they must be balanced by CO₂ removal.</span></div>
+<div><b>Biofuel (FT)</b><span>Liquid fuel made from plants. Here only the Fischer–Tropsch (FT) route from cellulosic biomass (grasses, wood, crop waste) counts, not food crops.</span></div>
+<div><b>E-fuel</b><span>Synthetic petrol-like liquid made from CO₂ captured from the air plus hydrogen. Works in today's engines ("drop-in").</span></div>
+<div><b>DAC</b><span>Direct air capture: machines that pull CO₂ out of the air. Used here to make e-fuels, and as a yardstick for the cost of removing CO₂.</span></div>
+<div><b>BECCS / CCS</b><span>Carbon capture and storage (CCS) traps CO₂ at a plant. With bioenergy (BECCS), the net result can be CO₂ removed from the air.</span></div>
+<div><b>Blending mandate</b><span>A rule that a minimum share of liquid fuel must be biofuel or e-fuel. Used for planes and ships here.</span></div>
+<div><b>Phase-out date</b><span>The year after which no new fossil-fuelled vehicles are sold in a mode.</span></div>
+<div><b>SSP1</b><span>"Sustainability" storyline of the Shared Socioeconomic Pathways: lower population growth and greener habits. Used for population and GDP here.</span></div>
+<div><b>Income elasticity</b><span>How much travel grows when income grows. 1 means 10% more income gives 10% more travel. The paper lowers it to mimic people choosing to travel less.</span></div>
+<div><b>Price elasticity</b><span>How much travel falls when travel gets dearer. A carbon price can shrink flying and shipping this way.</span></div>
+<div><b>Demand destruction</b><span>Cutting emissions by doing less travel or freight, because it costs more, instead of switching fuel.</span></div>
+<div><b>Load factor</b><span>People per vehicle. Ridesharing raises it, so fewer car-km are needed for the same pass-km.</span></div>
+<div><b>Stranded asset</b><span>A ship, plant or vehicle that must retire early because the rules or prices changed.</span></div>
+<div><b>EJ / Gt CO₂</b><span>Exajoule: a huge energy unit (the world uses about 600 EJ a year). Gigatonne: a billion tonnes of CO₂.</span></div>
+<div><b>AR6 database</b><span>The big collection of scenarios from many models gathered for the IPCC's Sixth Assessment Report.</span></div>
+</div>
+</section>
+
+<section class="pl-sec" id="question">
+<h2><span class="pl-num">4</span>The question, and why it matters</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead"><b>Question:</b> in a world that holds warming below 1.5 °C, which low-carbon option should each transport mode use, how early can the whole sector reach zero CO₂, and what does that mean for fuels, power plants, hydrogen and other sectors?</p>
+<p class="lead"><b>Why it matters:</b> transport makes over a fifth of the world's CO₂. Cars now have a clear path (batteries), but planes and ships need lots of energy in a small, light tank and last for decades. Industry groups have set net-zero goals for aviation and shipping. Planners need to know which technologies to back, and what happens if transport moves slowly: the CO₂ it keeps emitting has to be cut somewhere else.</p>
+</div>
+<div class="callout gcam"><h4>Link to what you know</h4><p>Study 2 showed how the car logit reacts to cost. Study 3 showed hydrogen competing for trucks and ships. Study 4 showed how one sector's change ripples into the power sector. This paper puts all three ideas together: <b>every mode</b> runs its own technology logit, and a <b>single world carbon cap</b> ties transport to industry, buildings and power.</p></div>
+</div>
+</section>
+
+<section class="pl-sec" id="model">
+<h2><span class="pl-num">5</span>How the model works</h2>
+<p class="lead">Press <b>Play</b> to walk through the chain, or click a box. Dashed arrows move in the direction the effect travels. The loop at the bottom is the carbon price feeding back into costs.</p>
+<div class="pl-box">
+<div class="pl-ctrls"><button class="btn" id="d-play" type="button">Play</button><button class="btn quiet" id="d-next" type="button">Next step</button><button class="btn quiet" id="d-all" type="button">Show all</button></div>
+<svg class="pl-svg" id="d-svg" viewBox="0 0 800 400" role="img" aria-label="Diagram: population and GDP drive transport service demand; demand is split into modes, then each mode chooses technologies by logit; technologies use liquids, electricity or hydrogen; those fuels are made upstream with bioenergy capped; CO2 adds up against the 1.5 degree cap, which sets a carbon price that feeds back into costs. Policy rules set phase-out dates and blending mandates.">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink-soft)"/></marker></defs>
+<g font-size="13" font-family="var(--body)" fill="var(--ink)">
+<g class="em-step" data-i="0"><rect x="10" y="20" width="150" height="76" rx="10" fill="var(--economy-t)" stroke="var(--economy)"/><text x="85" y="44" text-anchor="middle" font-weight="700">People + income</text><text x="85" y="62" text-anchor="middle" font-size="11">SSP1 population, GDP</text><text x="85" y="78" text-anchor="middle" font-size="11">lower income elasticity</text></g>
+<g class="em-step" data-i="1"><rect x="190" y="20" width="160" height="76" rx="10" fill="var(--data-t)" stroke="var(--data)"/><text x="270" y="44" text-anchor="middle" font-weight="700">Service demand</text><text x="270" y="62" text-anchor="middle" font-size="11">pass-km and ton-km</text><text x="270" y="78" text-anchor="middle" font-size="11">split into modes</text></g>
+<g class="em-step" data-i="2"><rect x="380" y="10" width="200" height="140" rx="10" fill="var(--policy-t)" stroke="var(--policy)"/><text x="480" y="32" text-anchor="middle" font-weight="700">Technology logit, per mode</text>
+<g font-size="11"><rect x="394" y="44" width="80" height="20" rx="4" fill="var(--climate)"/><text x="434" y="58" text-anchor="middle" fill="#fff">oil</text>
+<rect x="486" y="44" width="80" height="20" rx="4" fill="var(--energy)"/><text x="526" y="58" text-anchor="middle" fill="#fff">bio / e-fuel</text>
+<rect x="394" y="72" width="80" height="20" rx="4" fill="var(--water)"/><text x="434" y="86" text-anchor="middle" fill="#fff">battery</text>
+<rect x="486" y="72" width="80" height="20" rx="4" fill="var(--economy)"/><text x="526" y="86" text-anchor="middle" fill="#fff">hydrogen</text>
+<text x="480" y="114" text-anchor="middle">cheapest gets most share</text><text x="480" y="132" text-anchor="middle">cost = fuel + vehicle + CO₂ price</text></g></g>
+<g class="em-step" data-i="3"><rect x="610" y="10" width="180" height="140" rx="10" fill="var(--energy-t)" stroke="var(--energy)"/><text x="700" y="32" text-anchor="middle" font-weight="700">Fuels</text><text x="700" y="56" text-anchor="middle" font-size="11">refined liquids (oil,</text><text x="700" y="72" text-anchor="middle" font-size="11">FT biofuel, e-fuel)</text><text x="700" y="96" text-anchor="middle" font-size="11">electricity</text><text x="700" y="120" text-anchor="middle" font-size="11">hydrogen</text></g>
+<g class="em-step" data-i="4"><rect x="610" y="184" width="180" height="96" rx="10" fill="var(--land-t)" stroke="var(--land)"/><text x="700" y="206" text-anchor="middle" font-weight="700">Upstream supply</text><text x="700" y="226" text-anchor="middle" font-size="11">power plants, H₂ plants,</text><text x="700" y="242" text-anchor="middle" font-size="11">DAC + H₂ → e-fuel,</text><text x="700" y="258" text-anchor="middle" font-size="11">bioenergy ≤ 100 EJ</text></g>
+<g class="em-step" data-i="5"><rect x="380" y="184" width="200" height="96" rx="10" fill="var(--climate-t)" stroke="var(--climate)"/><text x="480" y="206" text-anchor="middle" font-weight="700">World CO₂ under a cap</text><text x="480" y="226" text-anchor="middle" font-size="11">transport + industry +</text><text x="480" y="242" text-anchor="middle" font-size="11">buildings + power</text><text x="480" y="262" text-anchor="middle" font-size="11">must fit the 1.5 °C budget</text></g>
+<g class="em-step" data-i="6"><rect x="190" y="184" width="160" height="96" rx="10" fill="var(--card)" stroke="var(--ink)"/><text x="270" y="206" text-anchor="middle" font-weight="700">Carbon price</text><text x="270" y="226" text-anchor="middle" font-size="11">raised until the cap</text><text x="270" y="242" text-anchor="middle" font-size="11">is met; makes oil dearer</text><text x="270" y="262" text-anchor="middle" font-size="11">and travel dearer</text></g>
+<g class="em-step" data-i="7"><rect x="10" y="184" width="150" height="96" rx="10" fill="var(--paper-2)" stroke="var(--ink-soft)"/><text x="85" y="206" text-anchor="middle" font-weight="700">Policy rules</text><text x="85" y="226" text-anchor="middle" font-size="11">fossil sales end dates</text><text x="85" y="242" text-anchor="middle" font-size="11">bio/e-fuel mandates</text><text x="85" y="262" text-anchor="middle" font-size="11">(low · medium · high)</text></g>
+<g class="em-step" data-i="8"><rect x="10" y="316" width="780" height="70" rx="10" fill="var(--card)" stroke="var(--ink)"/><text x="400" y="342" text-anchor="middle" font-weight="700">Same cap, different ambition</text><text x="400" y="362" text-anchor="middle" font-size="11">If transport cuts less, the price rises and industry, power and buildings must cut more (or CO₂ must be removed).</text><text x="400" y="377" text-anchor="middle" font-size="11">Compare each run with the others: emissions, fuels, hydrogen, electricity, bioenergy, by sector.</text></g>
+<path class="pl-flow" d="M160 58 H186" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M350 58 H376" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M580 80 H606" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M700 150 V180" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M610 232 H584" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M380 232 H354" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M300 184 V160 H420 V154" stroke="var(--climate)" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M240 184 V100" stroke="var(--climate)" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M85 184 V130 H376" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M480 280 V312" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+</g></svg>
+<p class="pl-read" id="d-read">Press Play.</p>
+</div>
+<div class="callout model"><h4>What is new in this paper</h4><p>Most of the machinery is standard GCAM 6.0. The authors add <b>e-fuels</b> (four ways to make them, using grid, wind or solar power for the air capture and the hydrogen), require plane and ship biofuels to come from the <b>FT cellulosic</b> route, cap world bioenergy at <b>100 EJ in 2100</b>, and design <b>three ambition levels</b> with phase-out dates for each mode. Hydrogen and batteries for planes and ships are given cost and efficiency numbers in the paper's supplement.</p></div>
+</section>
+
+<section class="pl-sec" id="explore">
+<h2><span class="pl-num">6</span>Explorer: a toy technology race in one mode</h2>
+<p class="lead">Pick a <b>mode</b>, a <b>transport ambition</b> and a <b>carbon price</b>. A five-way logit shares the mode's travel among oil, biofuel, e-fuel, battery and hydrogen. The chart shows how the shares change as the carbon price rises. The vertical line is your price. This is a 2050 snapshot.</p>
+<div class="callout trap"><h4>Illustrative numbers</h4><p>All costs, emission factors, weights and elasticities are made up for teaching. They are tuned so that the <b>ranking</b> of technologies by mode and the rough break-even prices behave like the paper's story. It is <b>not</b> GCAM data.</p></div>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Mode<span class="em-seg" id="x-mode"></span></label>
+</div>
+<div class="pl-ctrls">
+<label>Transport ambition<span class="em-seg" id="x-amb"></span></label>
+<label>Carbon price <output id="x-p-o">$200</output> per t CO₂<input type="range" id="x-p" min="0" max="1500" step="25" value="200" aria-label="Carbon price in dollars per tonne of CO2"></label>
+</div>
+<canvas class="pl-canvas" id="x-cnv" aria-label="Chart of technology shares against carbon price for the chosen mode"></canvas>
+<div class="pl-legend" id="x-leg"></div>
+<h3 style="margin:14px 0 2px;font-size:1.02rem">Shares at your carbon price</h3>
+<div class="zt-stack" id="x-stack"></div>
+<h3 style="margin:14px 0 2px;font-size:1.02rem">Break-even carbon price of each clean option (toy, without rules)</h3>
+<div class="zt-be" id="x-be"></div>
+<div class="pl-stats">
+<div class="pl-stat"><b id="s-oil">0%</b><span>oil share of this mode</span></div>
+<div class="pl-stat"><b id="s-serv">0%</b><span>travel vs no-policy world</span></div>
+<div class="pl-stat"><b id="s-co2">0%</b><span>direct CO₂ vs no-policy world</span></div>
+<div class="pl-stat"><b id="s-lead">–</b><span>leading clean option</span></div>
+</div>
+<p class="pl-read" id="x-read"></p>
+</div>
+<details class="pl-ex"><summary>How the toy model works (for the curious)</summary>
+<div class="pl-sol">
+<ol>
+<li>Each technology has a cost per unit of service (oil = 100) and direct CO₂ per unit (oil 0.2 t, biofuel 0.02, e-fuel 0.01, battery and hydrogen 0). Its total cost = cost + CO₂ × carbon price.</li>
+<li>Shares follow a logit: share ∝ weight × (total cost)<sup>−6</sup>. Battery and hydrogen weights are 0.35 (low), 0.7 (medium) or 1 (high ambition), and their costs are 10% higher (low) or 8% lower (high) than in medium.</li>
+<li>Toy rules for 2050. <b>High</b>: no oil at all; cars and trucks use no liquids; ships and planes may burn only biofuel or e-fuel. <b>Medium</b>: oil is capped at half of the mode (cars, trucks) or half of the liquids (ships, planes). <b>Low</b>: no rules.</li>
+<li>Travel = no-policy travel × (average cost ÷ no-policy average cost)<sup>−elasticity</sup>, with elasticity 0.25 for road and 0.5 for ships and planes.</li>
+<li>Break-even price = (clean cost − oil cost) ÷ (oil CO₂ − clean CO₂).</li>
+</ol></div></details>
+</section>
+
+<section class="pl-sec" id="found">
+<h2><span class="pl-num">7</span>What they found</h2>
+<div class="pl-cards">
+<div class="pl-card"><h4>Zero by 2050 is possible</h4><p>With no climate policy, transport's direct CO₂ grew over 40% from 2020 to 2100. In the high case it hit zero by 2050, and direct plus fuel-making emissions fell 99% from 2020.</p></div>
+<div class="pl-card"><h4>Leftovers are costly</h4><p>From 2050 to 2100, transport still emitted about 39 Gt CO₂ in the medium case and 157 Gt in the low case. Removing that with DAC would cost roughly $7–14 trillion (medium) or $27–54 trillion (low).</p></div>
+<div class="pl-card"><h4>Big savings</h4><p>Over the century, high saved 245 Gt CO₂ versus low, about 60% of a 1.5 °C budget. Freight trucks (78 Gt) and cars (70 Gt) saved most in tonnes; flights saved most in percent (75–77%). Planes and ships gave 34% of the savings.</p></div>
+<div class="pl-card"><h4>Electricity leads most modes</h4><p>By 2050 in the high case, most modes were mainly electric. Domestic ships were over 80% electric. Short flights were 56% electric, with hydrogen and clean liquids sharing the rest. Buses were about 44% hydrogen.</p></div>
+<div class="pl-card"><h4>The exceptions</h4><p>International shipping was the only mode where hydrogen beat batteries. Long-haul flights relied on clean liquids for over 88% of service. E-fuels stayed small (under 16% of clean liquids) because biofuels were much cheaper.</p></div>
+<div class="pl-card"><h4>Break-even prices</h4><p>In 2050, electric and hydrogen ships and short-haul planes broke even at about $135–496 per t CO₂, similar to DAC at $172–351. Electric domestic ships and hydrogen ocean ships needed under $250. Long-haul electric or hydrogen planes needed over $1,300.</p></div>
+<div class="pl-card"><h4>Less travel if fuels can't switch</h4><p>In the low case, flying and shipping fell by 40% or more over the century versus no policy, and the carbon price caused over half of that drop for ships and short flights. More ambition won back 2–7% of that travel.</p></div>
+<div class="pl-card"><h4>The see-saw with industry</h4><p>With low transport ambition, industry had to reach zero CO₂ by 2100. High versus low freed up 128 Gt CO₂ for industry and 74 Gt for power over the century, and needed less carbon capture.</p></div>
+<div class="pl-card"><h4>Fuel ripples</h4><p>In 2050, transport used 17 EJ of hydrogen in high (69% of all hydrogen), 9.4 EJ in medium and 5.5 EJ in low. Transport used 39 EJ of electricity in high versus 25 EJ in low, while industry used 20 EJ less. Plane and ship biofuel passed 13 EJ, about five times today's transport biofuel.</p></div>
+</div>
+<div class="tscroll"><table class="pl-tbl" style="margin-top:8px">
+<thead><tr><th>Numbers from the paper</th><th>Low</th><th>Medium</th><th>High</th></tr></thead>
+<tbody>
+<tr><td>New fossil car sales end</td><td>no end date</td><td>2050</td><td>2030</td></tr>
+<tr><td>Plane and ship liquids fully bio/e-fuel by</td><td>no rule</td><td>2100</td><td>2050</td></tr>
+<tr><td>Transport CO₂ left, 2050–2100 (Gt)</td><td>157</td><td>39</td><td>≈ 0</td></tr>
+<tr><td>Transport hydrogen in 2050 (EJ, share of all H₂)</td><td>5.5 (28%)</td><td>9.4 (47%)</td><td>17+ (69%)</td></tr>
+<tr><td>Hydrogen from BECCS in 2050</td><td>17% (3.4 EJ)</td><td>–</td><td>5% (1.3 EJ)</td></tr>
+</tbody></table></div>
+<p class="lead" style="margin-top:12px">The big picture: under one world carbon cap, transport ambition does not change <i>whether</i> 1.5 °C is met in the model, it changes <i>who</i> does the cutting and <i>which</i> fuels are used. The authors sum it up as finding that "electrification contributes most to decarbonization across the sector". Results held up in seven sensitivity runs (other SSPs, more travel, tighter bioenergy): transport CO₂ changed by under 8 Gt, though the fuel needs changed a lot.</p>
+</section>
+
+<section class="pl-sec" id="predict">
+<h2><span class="pl-num">8</span>Predict, then check</h2>
+<div class="pl-ex" id="p1">
+<h3>Prediction 1</h3>
+<p>In the high case in 2050, which mode gets <b>more service from hydrogen than from batteries</b>?</p>
+<div class="em-seg" data-ans="2"><button class="btn quiet" type="button">Passenger cars</button><button class="btn quiet" type="button">Domestic shipping</button><button class="btn quiet" type="button">International shipping</button><button class="btn quiet" type="button">Long-haul flights</button></div>
+<p class="pl-check em-reveal" hidden><b>International shipping.</b> Ocean ships sail thousands of km without a stop, so batteries are far too heavy and costly. Hydrogen fuel cells win, helped by clean liquids early on. Long-haul flights also can't use batteries, but hydrogen turbines were too costly there too, so they relied on biofuel. Try "Intl. ship" and "Long flight" in the explorer.</p>
+</div>
+<div class="pl-ex" id="p2">
+<h3>Prediction 2</h3>
+<p>E-fuels work in today's engines and need no farmland. What share of the clean liquid fuel for planes and ships did they supply in the main runs?</p>
+<div class="em-seg" data-ans="0"><button class="btn quiet" type="button">Under 16%</button><button class="btn quiet" type="button">About half</button><button class="btn quiet" type="button">Over 80%</button></div>
+<p class="pl-check em-reveal" hidden><b>Under 16%.</b> Making e-fuel needs lots of electricity for air capture and hydrogen, so it costs far more than FT biofuel. E-fuels grew only when biomass was tighter or in the fast-growth SSP5 world, where wind-powered e-fuels got cheapest. In the explorer, see how small the striped e-fuel band and dashed e-fuel line stay.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="ex">
+<h2><span class="pl-num">9</span>Worked mini-exercise: a break-even carbon price</h2>
+<div class="pl-ex" data-answer="300" data-tol="0.05" data-show="$300 per tonne">
+<h3>When does an electric short-haul plane pay off?</h3>
+<p>Use these <b>illustrative</b> numbers. Flying 1,000 passenger-km in an oil-fuelled short-haul plane costs <b>$120</b> and emits <b>0.06 t</b> CO₂. The same trip in a battery-electric plane costs <b>$138</b> and has zero direct CO₂. At what carbon price (in $ per tonne) do they cost the same?</p>
+<div class="pl-row"><input class="pl-ans" type="text" inputmode="decimal" placeholder="$ per t, e.g. 150" aria-label="Your answer in dollars per tonne"><button class="btn pl-checkbtn" type="button">Check</button></div>
+<p class="pl-check" aria-live="polite"></p>
+<details><summary>Hint</summary><div class="pl-sol"><p>At the break-even price, the carbon cost added to the oil plane equals the extra cost of the electric plane. So divide the extra cost by the CO₂ saved.</p></div></details>
+<details><summary>Step-by-step solution</summary><div class="pl-sol">
+<table><tr><th>Step</th><th>Working</th><th>Result</th></tr>
+<tr><td>Extra cost of the electric plane</td><td>$138 − $120</td><td>$18 per 1,000 pass-km</td></tr>
+<tr><td>CO₂ saved</td><td>0.06 t − 0 t</td><td>0.06 t per 1,000 pass-km</td></tr>
+<tr><td>Break-even price</td><td>$18 ÷ 0.06 t</td><td><b>$300 per t CO₂</b></td></tr>
+<tr><td>Check</td><td>$120 + 0.06 × $300</td><td>$138, same as electric ✓</td></tr></table>
+<p>Compare with the paper: break-even prices for clean ships and short flights were $135–496 per t in 2050, and DAC cost $172–351. So $300 sits in the same range: paying for the electric plane is about as costly as keeping the oil plane and removing its CO₂ with DAC. For long-haul flights the gap is much bigger (over $1,300), because batteries and hydrogen are so costly on long routes.</p></div></details>
+</div>
+</section>
+
+<section class="pl-sec" id="quiz">
+<h2><span class="pl-num">10</span>Quiz</h2>
+<div class="pl-quiz" id="qz" data-q='[
+{"q":"What makes the three 1.5 °C scenarios (low, medium, high) different from each other?","o":["Different temperature targets","How fast fossil fuels are phased out of transport and how fast electric and hydrogen vehicles arrive","Different population and GDP","Only the price of oil"],"a":1,"e":"All three meet the same 1.5 °C cap with the same SSP1 drivers and the same demand cuts. Only transport technology ambition changes, so its effect can be isolated."},
+{"q":"Why did long-haul flights rely mainly on biofuels in the high case?","o":["Biofuels have zero cost","Batteries and hydrogen turbines were far too costly on long routes (break-even over $1,300 per t)","GCAM has no long-haul aviation","E-fuels were banned"],"a":1,"e":"Long flights need a lot of energy in a light tank. Liquid fuels give that, so clean liquids (mostly FT biofuel) supplied over 88% of service."},
+{"q":"If transport cuts less CO₂ under the same world cap, what happens in GCAM?","o":["Warming goes above 1.5 °C","The carbon price rises and other sectors, mainly industry and power, must cut more","Nothing changes elsewhere","Transport demand doubles"],"a":1,"e":"The cap is fixed, so the model finds a higher price. In the low case industry had to reach zero CO₂ by 2100."},
+{"q":"In the low ambition case, why did flying and shipping fall by 40% or more versus no policy?","o":["People stopped wanting to travel","Hard-to-switch fuels meant the carbon price made trips dearer, so demand fell (demand destruction)","Ships were banned","GCAM ran out of oil"],"a":1,"e":"With few clean options, the carbon price mostly raised costs. Price elasticity then cut the amount of service. More ambition won back 2–7%."},
+{"q":"Why were e-fuels a small part of the clean liquids in the main runs?","o":["They cannot be burned in jet engines","They cost much more than FT biofuels, because air capture and hydrogen need a lot of electricity","They emit more CO₂ than oil","They were not in the model"],"a":1,"e":"E-fuels are drop-in fuels, but cost kept them under 16%. They grew when bioenergy was tighter or in the fast-growth SSP5 world."}
+]'></div>
+</section>
+
+<section class="pl-sec" id="limits">
+<h2><span class="pl-num">11</span>Limitations and open questions</h2>
+<ul class="prose">
+<li><b>An optimistic world.</b> All main runs use SSP1 and assume people travel less, share rides more and use more public transport. With more travel demand, the same cuts need over 50% more hydrogen and electricity for transport by 2100.</li>
+<li><b>Unproven fuels.</b> FT cellulosic biofuel is not yet made at large scale, yet long flights depend on it. Hydrogen planes could end up doing more than the model shows.</li>
+<li><b>Fuels left out.</b> Ammonia for ships was not modelled, because its leaks could harm the nitrogen cycle. Methanol from captured CO₂ was also left out.</li>
+<li><b>Simple cost yardsticks.</b> Break-even prices count only direct emissions and use reference-run costs. DAC costs are assumptions, not market prices.</li>
+<li><b>No bottlenecks.</b> The model does not limit how fast chargers, hydrogen networks, battery minerals, factories or skilled workers can scale up. In the high case, clean passenger travel grows eightfold in ten years.</li>
+<li><b>Choices held fixed.</b> Demand cuts, load factors and efficiency are the same in every scenario, so their effect is not tested. Air quality, health and fairness are not valued.</li>
+<li><b>Open question:</b> which policies (carbon prices, mandates, subsidies) would actually deliver the high case, and at what cost to whom?</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="course">
+<h2><span class="pl-num">12</span>Links to the course and to GCAM</h2>
+<ul class="reslist">
+<li><a href="../../modules/transport-in-gcam.html">Transport in GCAM</a><span class="why">The tree of passenger and freight modes and their technologies, including aviation and shipping.</span></li>
+<li><a href="../../modules/choice-the-logit.html">Choice: the logit</a><span class="why">Why a carbon price shifts shares smoothly, and what share weights do.</span></li>
+<li><a href="../../modules/energy-demand.html">Energy demand</a><span class="why">Income and price elasticities, and how they shape travel demand.</span></li>
+<li><a href="../../modules/emissions-climate-policy-system.html">Emissions, climate and policy</a><span class="why">How a CO₂ cap becomes a carbon price in GCAM.</span></li>
+<li><a href="../../modules/land-food-bioenergy.html">Land, food and bioenergy</a><span class="why">Why a bioenergy cap matters for land and food.</span></li>
+<li><a href="../../modules/scenarios.html">Scenarios</a><span class="why">Low, medium and high ambition as "what ifs", and the SSPs used for sensitivity.</span></li>
+<li><a href="../../modules/the-iam-family.html">The IAM family</a><span class="why">How this GCAM run compares with other models in the AR6 database.</span></li>
+<li><a href="https://jgcri.github.io/gcam-doc/energy.html#transportation" target="_blank" rel="noopener">GCAM documentation: transportation</a><span class="why">The official description of GCAM's transport sector.</span></li>
+</ul>
+</section>
+
+<section class="pl-sec" id="review">
+<h2><span class="pl-num">13</span>Review: from earlier papers</h2>
+<p class="lead">Spaced repetition: try to answer before you open each one.</p>
+<div class="pl-ex"><h3>From: cars across 1.5–3 °C futures (study 1)</h3><p>Why does a typical life cycle assessment overstate a BEV's footprint?</p><details><summary>Show answer</summary><div class="pl-sol">It uses today's grid for all 10–20 years of driving, though the grid gets cleaner. Today's paper makes the same point at world scale: 99% of electricity is low-carbon by 2050 in all 1.5 °C runs.</div></details></div>
+<div class="pl-ex"><h3>From: hydrogen in trucks, ships and factories (study 3)</h3><p>Why was most green hydrogen made on site in GCAM's results?</p><details><summary>Show answer</summary><div class="pl-sol">On-site electrolysis skips the cost of trucking or piping hydrogen, which is large per unit; over 90% of green hydrogen was on site. Today's paper also found most extra hydrogen came from electrolysis using grid power.</div></details></div>
+<div class="pl-ex"><h3>From: US electric cars and the grid (study 4)</h3><p>Why did US CO₂ fall only about 5% when car CO₂ fell by about half?</p><details><summary>Show answer</summary><div class="pl-sol">Cars are one slice of national emissions, and the power sector emitted about 6% more; other sectors stayed the same. Today's paper flips this view: with a fixed world cap, what one sector does not cut, others must.</div></details></div>
+</section>
+
+<section class="pl-sec" id="sources">
+<h2><span class="pl-num">14</span>Sources</h2>
+<ul class="prose em-why">
+<li>Speizer, S., Fuhrman, J., Aldrete Lopez, L., George, M., Kyle, P., Monteith, S. &amp; McJeon, H. (2024). Integrated assessment modeling of a zero-emissions global transportation sector. <i>Nature Communications</i> 15, 4439. <a href="https://doi.org/10.1038/s41467-024-48424-9" target="_blank" rel="noopener">doi:10.1038/s41467-024-48424-9</a> (open access, CC BY 4.0; full text read on <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11126718/" target="_blank" rel="noopener">PubMed Central</a>).</li>
+<li><a href="https://www.pnnl.gov/publications/integrated-assessment-modeling-zero-emissions-global-transportation-sector" target="_blank" rel="noopener">PNNL publication page</a> for the article.</li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation (JGCRI)</a>.</li>
+</ul>
+<p class="pl-note">Summary written in our own words. No figures or tables from the article are copied; the small table above lists a few numbers reported in the text. The explorer is a teaching toy, not the paper's model.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on Speizer et al. (2024), Nature Communications 15, 4439. Charts use an illustrative toy model, not the paper's data. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../../assets/js/site.js?v=20261105a"></script>
+<script src="../plca-common.js?v=1"></script>
+<script>
+(function () {
+  const { cv, canvas, axes, legend, quiz } = window.PL;
+  /* ---------- toy model (all numbers illustrative) ---------- */
+  const TECH = ["Oil", "Biofuel", "E-fuel", "Battery", "Hydrogen"];
+  const TCOL = ["--climate", "--energy", "--policy", "--water", "--economy"];
+  const EMIS = [0.2, 0.02, 0.01, 0, 0];
+  const MODES = {
+    "Car":         { name: "passenger cars",            c: [100, 160, 260, 104, 118], road: true,  el: 0.25 },
+    "Truck":       { name: "freight trucks",            c: [100, 160, 260, 118, 125], road: true,  el: 0.25 },
+    "Coastal ship":{ name: "domestic shipping",         c: [100, 155, 255, 130, 165], road: false, el: 0.5 },
+    "Intl. ship":  { name: "international shipping",    c: [100, 150, 250, 320, 145], road: false, el: 0.5 },
+    "Short flight":{ name: "short-haul aviation",       c: [100, 150, 250, 127, 150], road: false, el: 0.5 },
+    "Long flight": { name: "long-haul aviation",        c: [100, 150, 250, 420, 370], road: false, el: 0.5 }
+  };
+  const AMB = { Low: { w: 0.35, k: 1.10, rule: 0 }, Medium: { w: 0.7, k: 1.0, rule: 1 }, High: { w: 1.0, k: 0.92, rule: 2 } };
+  const G = 6;
+  function costs(m, a) { const M = MODES[m], A = AMB[a]; return M.c.map((c, i) => i >= 3 ? c * A.k : c); }
+  function shares(m, a, P, noRules) {
+    const M = MODES[m], A = AMB[a], c = costs(m, a);
+    const w = [1, 1, 1, A.w, A.w];
+    const rule = noRules ? 0 : A.rule;
+    if (rule === 2) { w[0] = 0; if (M.road) { w[1] = 0; w[2] = 0; } }
+    const tot = c.map((x, i) => x + EMIS[i] * P);
+    let s = tot.map((x, i) => w[i] * Math.pow(x / 100, -G));
+    const sum = s.reduce((p, q) => p + q, 0); s = s.map((x) => x / sum);
+    if (rule === 1) {
+      if (M.road) {
+        if (s[0] > 0.5) { const ex = s[0] - 0.5, rest = 1 - s[0]; s = s.map((x, i) => i === 0 ? 0.5 : x + ex * x / rest); }
+      } else {
+        const L = s[0] + s[1] + s[2];
+        if (s[0] > 0.5 * L) { const ex = s[0] - 0.5 * L, cl = s[1] + s[2]; s[1] += ex * s[1] / cl; s[2] += ex * s[2] / cl; s[0] = 0.5 * L; }
+      }
+    }
+    const avg = s.reduce((p, x, i) => p + x * tot[i], 0), co2 = s.reduce((p, x, i) => p + x * EMIS[i], 0);
+    return { s, avg, co2, tot };
+  }
+  function run(m, a, P) {
+    const r = shares(m, a, P), ref = shares(m, "Low", 0, true);
+    const serv = Math.pow(r.avg / ref.avg, -MODES[m].el);
+    return { ...r, serv, co2rel: serv * r.co2 / ref.co2 };
+  }
+  function breakEven(m, a) { const c = costs(m, a); return [1, 2, 3, 4].map((i) => (c[i] - c[0]) / (EMIS[0] - EMIS[i])); }
+  window.ZT = { run, breakEven, shares };
+
+  /* ---------- explorer ---------- */
+  const st = { mode: "Intl. ship", amb: "High", P: 200 };
+  function seg(id, arr, key) {
+    const el = document.getElementById(id);
+    el.innerHTML = arr.map((a) => `<button class="btn quiet" type="button" aria-pressed="${a === st[key]}" data-v="${a}">${a}</button>`).join("");
+    el.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; st[key] = b.dataset.v; el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b)); draw(); });
+  }
+  seg("x-mode", Object.keys(MODES), "mode"); seg("x-amb", Object.keys(AMB), "amb");
+  const pEl = document.getElementById("x-p");
+  pEl.addEventListener("input", () => { st.P = +pEl.value; document.getElementById("x-p-o").textContent = "$" + st.P; draw(); });
+  legend(document.getElementById("x-leg"), TECH.map((t, i) => [t, TCOL[i]]));
+  const pct = (v) => Math.round(v * 100) + "%";
+  function draw() {
+    const cnv = document.getElementById("x-cnv"), { ctx, w, h } = canvas(cnv, (cnv.clientWidth || 600) < 520 ? 0.72 : 0.4);
+    const box = { x0: 52, y0: 12, x1: w - 26, y1: h - 42 };
+    const { X, Y } = axes(ctx, box, [0, 1500], [0, 100], { xticks: w < 520 ? [0, 500, 1000, 1500] : [0, 250, 500, 750, 1000, 1250, 1500], xfmt: (v) => "$" + v, yfmt: (v) => v + "%", xlab: "carbon price ($ per t CO₂)", ylab: "share of travel" });
+    const ps = []; for (let p = 0; p <= 1500; p += 25) ps.push(p);
+    const runs = ps.map((p) => shares(st.mode, st.amb, p).s);
+    TECH.forEach((t, j) => {
+      ctx.strokeStyle = cv(TCOL[j]); ctx.lineWidth = 3; ctx.setLineDash(j === 2 ? [7, 4] : []);
+      ctx.beginPath(); runs.forEach((s, i) => { const x = X(ps[i]), y = Y(s[j] * 100); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); ctx.stroke();
+    });
+    ctx.setLineDash([]); ctx.strokeStyle = cv("--ink"); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X(st.P), box.y0); ctx.lineTo(X(st.P), box.y1); ctx.stroke();
+    const r = run(st.mode, st.amb, st.P);
+    document.getElementById("x-stack").innerHTML = r.s.map((v, i) => `<div style="width:${(v * 100).toFixed(2)}%;background:${cv(TCOL[i])}${i === 2 ? ";background-image:repeating-linear-gradient(45deg,transparent 0 5px,rgba(255,255,255,.35) 5px 9px)" : ""}" title="${TECH[i]} ${pct(v)}">${v > 0.09 ? TECH[i] + " " + pct(v) : ""}</div>`).join("");
+    const be = breakEven(st.mode, st.amb), maxBE = 2000;
+    document.getElementById("x-be").innerHTML = be.map((v, k) => {
+      const i = k + 1, wd = Math.min(100, Math.max(0, v) / maxBE * 100);
+      return `<div><span>${TECH[i]}</span><div class="tr"><div class="fill" style="width:${wd}%;background:${cv(TCOL[i])}"></div><div class="now" style="left:${Math.min(100, st.P / maxBE * 100)}%"></div></div><b>${v <= 0 ? "already cheaper" : v > maxBE ? "> $2,000" : "$" + Math.round(v / 5) * 5}</b></div>`;
+    }).join("");
+    document.getElementById("s-oil").textContent = pct(r.s[0]);
+    document.getElementById("s-serv").textContent = pct(r.serv);
+    document.getElementById("s-co2").textContent = pct(r.co2rel);
+    const clean = [1, 2, 3, 4].sort((a, b) => r.s[b] - r.s[a])[0];
+    document.getElementById("s-lead").textContent = TECH[clean];
+    const M = MODES[st.mode];
+    let txt = `In ${M.name} at $${st.P} per tonne with ${st.amb.toLowerCase()} ambition, oil keeps ${pct(r.s[0])} of travel and ${TECH[clean].toLowerCase()} leads the clean options. Travel is ${pct(r.serv)} and direct CO₂ ${pct(r.co2rel)} of the no-policy world. `;
+    if (st.amb === "High") txt += M.road ? "The high-ambition rule removes all liquid fuels from road transport, so only batteries and hydrogen are left. " : "The high-ambition rule bans fossil oil, so liquids must be biofuel or e-fuel. ";
+    else if (st.amb === "Medium") txt += "The medium rule caps oil at half (of the mode on roads, of the liquids for ships and planes). ";
+    else txt += "Low ambition has no rules, so only the carbon price pushes oil out, and travel shrinks instead. ";
+    if (st.mode === "Long flight") txt += "Batteries and hydrogen never get close here: their break-even prices are far off the chart, which is why the paper's long flights run on clean liquids.";
+    else if (st.mode === "Intl. ship") txt += "Hydrogen breaks even long before batteries, matching the paper's finding for ocean shipping.";
+    else if (st.mode === "Car" || st.mode === "Truck") txt += "Batteries break even at a low price, so electricity wins quickly.";
+    document.getElementById("x-read").textContent = txt;
+  }
+  let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(draw, 150); });
+  draw();
+
+  /* ---------- animated diagram ---------- */
+  const TXT = [
+    "1 · People and income. Population and GDP follow SSP1. In the 1.5 °C runs, travel grows more slowly with income (for example, long-haul flying's income elasticity drops from 1 to 0.75), and cars carry 25% more people by 2050.",
+    "2 · Service demand. GCAM turns income and prices into passenger-km and tonne-km, then splits them across modes (car, bus, rail, truck, ship, plane) with a logit that also counts travel time.",
+    "3 · Technology logit inside each mode. Oil, clean liquids (FT biofuel or e-fuel), batteries and hydrogen compete. The cheapest option, counting the carbon price, wins the biggest share.",
+    "4 · Fuels. Vehicles draw on refined liquids, electricity and hydrogen. Refined liquids can come from oil, FT biofuel or the new e-fuels.",
+    "5 · Upstream supply. Power plants, hydrogen plants and e-fuel plants (air capture plus hydrogen) make the fuels. World bioenergy is capped at 100 EJ by 2100 to protect land and food.",
+    "6 · World CO₂ under one cap. CO₂ from all sectors is added up. Together it must stay inside a budget that keeps warming below 1.5 °C in 2100.",
+    "7 · Carbon price. GCAM raises the price until the cap is met. The price feeds back: it makes oil dearer in the logit (switching) and travel dearer overall (less demand).",
+    "8 · Policy rules. On top of the price, each scenario sets end dates for new fossil vehicle sales and blending mandates for plane and ship fuels. High: cars by 2030, trucks 2035, rail 2050, clean liquids by 2050.",
+    "9 · Same cap, different ambition. Because the cap is fixed, what transport does not cut must be cut by industry, power and buildings, or removed later. Comparing low, medium and high shows this see-saw."
+  ];
+  const svg = document.getElementById("d-svg"), steps = [...svg.querySelectorAll(".em-step")], read = document.getElementById("d-read");
+  let cur = -1, timer = null;
+  function show(i) { cur = i; svg.classList.add("em-dim"); steps.forEach((s) => s.classList.toggle("on", +s.dataset.i === i)); read.textContent = TXT[i]; }
+  function stop() { clearInterval(timer); timer = null; document.getElementById("d-play").textContent = "Play"; }
+  document.getElementById("d-play").addEventListener("click", () => {
+    if (timer) { stop(); return; }
+    show((cur + 1) % TXT.length); document.getElementById("d-play").textContent = "Pause";
+    timer = setInterval(() => { if (cur >= TXT.length - 1) { stop(); return; } show(cur + 1); }, 3200);
+  });
+  document.getElementById("d-next").addEventListener("click", () => { stop(); show((cur + 1) % TXT.length); });
+  document.getElementById("d-all").addEventListener("click", () => { stop(); cur = -1; svg.classList.remove("em-dim"); steps.forEach((s) => s.classList.remove("on")); read.textContent = "The whole chain: people and income → service demand by mode → technology logit in each mode → fuels → upstream supply → world CO₂ under the 1.5 °C cap → carbon price feeding back into costs, with policy rules setting the ambition level."; });
+  steps.forEach((s) => { s.style.cursor = "pointer"; s.addEventListener("click", () => { stop(); show(+s.dataset.i); }); });
+
+  /* ---------- predict-then-check ---------- */
+  document.querySelectorAll("#predict .em-seg").forEach((g) => g.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    const btns = [...g.querySelectorAll("button")], i = btns.indexOf(b), ok = i === +g.dataset.ans;
+    btns.forEach((x, j) => { x.setAttribute("aria-pressed", x === b); if (j === +g.dataset.ans) x.style.outline = "3px solid " + cv("--land"); });
+    const p = g.parentElement.querySelector(".em-reveal"); p.hidden = false;
+    p.innerHTML = (ok ? '<b class="pl-good">Good guess.</b> ' : '<b class="pl-bad">Not quite.</b> ') + p.innerHTML.replace(/^<b class="pl-(good|bad)">.*?<\/b> /, "");
+  }));
+
+  quiz(document.getElementById("qz"));
+})();
+</script>
+</body></html>

@@ -140,5 +140,43 @@
     "a": "Divide the extra CO2 from making the battery by the CO2 the BEV saves each year compared with a petrol car."
    }
   ]
+ },
+ {
+  "slug": "zero-transport-global",
+  "date": "2026-11-26",
+  "title": "Can all of transport, even planes and ships, reach zero CO2 by 2050?",
+  "citation": "Speizer, S., Fuhrman, J., Aldrete Lopez, L., George, M., Kyle, P., Monteith, S. & McJeon, H. (2024). Nature Communications 15, 4439.",
+  "doi": "10.1038/s41467-024-48424-9",
+  "iam": "GCAM v6.0 (global, with e-fuels added)",
+  "topics": [
+   "GCAM",
+   "aviation",
+   "shipping",
+   "electrification",
+   "hydrogen",
+   "biofuels",
+   "e-fuels",
+   "1.5 °C",
+   "carbon price"
+  ],
+  "level": "Beginner–Intermediate",
+  "pages": [
+   "zero-transport-global/index.html"
+  ],
+  "takeaways": [
+   "Under a 1.5 °C cap, the high-ambition case took transport's direct CO2 to zero by 2050; medium and low left 39 and 157 Gt CO2 for 2050–2100, costing roughly $7–14 or $27–54 trillion to remove with DAC.",
+   "Electricity led most modes; international shipping was the one mode led by hydrogen, and long-haul flights relied on clean liquids (over 88%), mostly FT biofuel, since e-fuels stayed under 16%.",
+   "With one world cap, weak transport ambition shifts cuts to industry and power (128 and 74 Gt CO2 over the century), and shrinks flying and shipping by 40% or more through the carbon price."
+  ],
+  "review": [
+   {
+    "q": "In Speizer et al. (2024), why did long-haul flights run mostly on biofuel even in the high-ambition case?",
+    "a": "Batteries and hydrogen turbines were far too costly for long routes (break-even over $1,300 per t CO2), so drop-in clean liquids won, and FT biofuel was much cheaper than e-fuel."
+   },
+   {
+    "q": "How do you work out a break-even carbon price for a clean technology?",
+    "a": "Divide its extra cost per unit of service by the CO2 it saves per unit. Example: $18 extra ÷ 0.06 t saved = $300 per t."
+   }
+  ]
  }
 ]
