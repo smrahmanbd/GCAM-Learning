@@ -150,7 +150,7 @@ def head(title, desc, depth=0, extra=""):
 
 def topbar(depth, current, bodyattr=""):
     up = "../" * depth
-    items = [("go1.html", "Foundations"), ("go2.html", "Build and Implement"), ("go3.html", "Research Frontier"), ("models.html", "Model atlas"), ("gcam-family.html", "GCAM family"), ("spiral.html", "Concept spiral"), ("questions.html", "Questions"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
+    items = [("go1.html", "Foundations"), ("go2.html", "Build and Implement"), ("go3.html", "Research Frontier"), ("models.html", "Model atlas"), ("gcam-family.html", "GCAM family"), ("spiral.html", "Concept spiral"), ("questions.html", "Questions"), ("papers/index.html", "Paper studies"), ("toolkit.html", "Toolkit"), ("glossary.html", "Glossary")]
     nav = "".join(f'<a href="{up}{h}"{" aria-current=page" if h == current else ""}>{t}</a>' for h, t in items)
     dots = "".join(f'<i class="c-{s}"></i>' for s in SYS)
     return f"""<body{bodyattr}>
@@ -508,12 +508,22 @@ def build():
         bands.append(f"""<a class="goband go{g}" href="go{g}.html"><span class="gb-n">Go {g}</span><span class="gb-body"><span class="gb-depth">{GO[g]["depth"]}</span>
 <span class="gb-name">{esc(GO[g]["name"])}</span><span class="gb-promise">{esc(GO[g]["promise"])}</span>
 <span class="gb-meta">{(str(len(ms)) + " modules · about " + str(hrs) + " hours") if ms else "Modules being added"} · you need: {esc(GO[g]["need"].split(".")[0].lower())}</span></span></a>""")
+    try:
+        paper_list = sorted(json.load(open(os.path.join(ROOT, "papers", "papers.json"))), key=lambda p: p["date"], reverse=True)
+    except Exception:
+        paper_list = []
+    paper_items = "".join(f'<li><a href="papers/{p["pages"][-1]}">{esc(p["title"])}</a><span class="why">{esc(p["citation"].split(").")[0] + ")")} · {esc(p["iam"])} · {esc(p["date"])}</span></li>' for p in paper_list[:5])
     idx = head(f"{SITE}: learn the Global Change Analysis Model", "Learn GCAM three times, each time deeper: the big picture, the components and how they interact, and research with the model.", 0) + topbar(0, "index.html")
     idx += f"""<main id="main">
 <section class="hero3"><div class="wrap">
 <h1>Learn GCAM three times, each time deeper</h1>
 <p class="lede">GCAM links people, energy, land, water and climate in one model of the world. You will meet the whole system three times: first as a picture, then as working parts that push on each other, then as a research tool you change and test.</p>
 <div class="gobands">{"".join(bands)}</div>
+</div></section>
+<section class="section" id="papers"><div class="wrap"><h2>Latest paper studies</h2>
+<p class="prose muted">One peer-reviewed journal article on GCAM and transport, studied each day: plain summary, animated model diagram, a toy explorer, exercises and a quiz.</p>
+<ul class="reslist">{paper_items}</ul>
+<p><a class="btn" href="papers/index.html">All {len(paper_list)} paper studies</a></p>
 </div></section>
 <section class="section"><div class="wrap">
 <h2>The same system, three depths</h2>
