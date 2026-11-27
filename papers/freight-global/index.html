@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper study: why freight is the hardest part of transport to clean up (GCAM) · GCAM in three goes</title>
+<meta name="description" content="Beginner-friendly study of Muratori et al. (2017), Environmental Science & Technology: how fast freight grows with GDP, and how much a carbon price can cut freight CO2 in GCAM.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="../plca.css?v=1">
+<link rel="icon" href="../../assets/img/icon.svg" type="image/svg+xml">
+<style>
+.em-step { transition: opacity .35s; }
+.em-dim .em-step { opacity: .28; }
+.em-dim .em-step.on { opacity: 1; }
+.em-step.on rect { stroke-width: 3.5; }
+.em-gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.em-gloss div { border: 1px solid var(--line); border-radius: var(--r-s); padding: 8px 12px; background: var(--card); }
+.em-gloss b { display: block; }
+.em-gloss span { font-size: .93rem; color: var(--ink-soft); }
+.em-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.em-seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.em-reveal[hidden] { display: none; }
+.pl-sec ul.prose li, .pl-sec ol li { margin-bottom: 4px; }
+.em-why { overflow-wrap: anywhere; }
+.pl-sol table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.pl-sol td, .pl-sol th { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: left; }
+.fr-stack { display: flex; height: 30px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); margin: 6px 0 4px; background: var(--paper-2); }
+.fr-stack div { height: 100%; transition: width .35s; display: grid; place-items: center; color: #fff; font-size: .78rem; font-weight: 700; overflow: hidden; white-space: nowrap; }
+.fr-tog { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.pl-ctrls.fr-tog label { display: inline-flex; flex-direction: row; gap: 6px; align-items: center; }
+.tscroll { overflow-x: auto; }
+@media (max-width: 520px) { .pl-ctrls label { width: 100%; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../../go1.html">Foundations</a><a href="../../go2.html">Build and Implement</a><a href="../../go3.html">Research Frontier</a><a href="../index.html">Paper studies</a><a href="../../toolkit.html">Toolkit</a><a href="../../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study 6 · Transport · GCAM · Global · freight</p>
+<h1>When the world prices carbon, why is freight so hard to clean up?</h1>
+<p>A hands-on companion to <b>Muratori et al. (2017)</b>. The authors use <b>GCAM</b> to look only at <b>freight</b>: trucks, trains and ships moving goods. They ask how fast freight will grow as the world gets richer, and how much a carbon price can cut its CO₂ compared with other sectors. The explorer on this page runs a <b>small teaching model</b> with made-up numbers.</p>
+<p class="pl-cite">Paper: <a href="https://doi.org/10.1021/acs.est.6b04515" target="_blank" rel="noopener">Environmental Science &amp; Technology 51(6), 3526–3533 (2017)</a>, open access. Builds on: <a href="../hydrogen-transport/index.html">study 3</a> (hydrogen trucks and ships) and <a href="../zero-transport-global/index.html">study 5</a> (every mode under 1.5 °C). This one is older and simpler: it zooms in on freight and asks <i>which lever</i> does the cutting.</p>
+<ul class="pl-toc">
+<li><a href="#minute">1 · In one minute</a></li><li><a href="#goals">2 · Goals</a></li><li><a href="#words">3 · Words</a></li><li><a href="#question">4 · Question</a></li><li><a href="#model">5 · How the model works</a></li><li><a href="#explore">6 · Explorer</a></li><li><a href="#found">7 · Findings</a></li><li><a href="#predict">8 · Predict</a></li><li><a href="#ex">9 · Exercise</a></li><li><a href="#quiz">10 · Quiz</a></li><li><a href="#limits">11 · Limits</a></li><li><a href="#course">12 · Course</a></li><li><a href="#review">13 · Review</a></li><li><a href="#sources">14 · Sources</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="minute">
+<h2><span class="pl-num">1</span>The paper in one minute</h2>
+<ol class="lead">
+<li>Freight has always grown in step with the economy, and there is little sign yet that this link is breaking, so GCAM projects freight energy use to grow 4 to 7 times by 2100 if nothing is done.</li>
+<li>The authors ran GCAM with no climate policy and with four climate targets, each with high and low freight growth, and split the CO₂ cuts into three levers: less freight, cleaner modes and technologies, and cleaner fuel.</li>
+<li>Under the strictest target, freight CO₂ over the century fell about 70%, but less than in other sectors; most of the cut came from cleaner liquid fuel (biofuels with carbon capture), then from less freight, while switching to trains or ships did little.</li>
+</ol>
+</section>
+
+<section class="pl-sec" id="goals">
+<h2><span class="pl-num">2</span>Learning goals</h2>
+<p class="lead">After this page you can…</p>
+<ul class="prose">
+<li>…explain how GCAM turns GDP growth into freight demand, and what <b>decoupling</b> means.</li>
+<li>…name the <b>three levers</b> a carbon price can pull in freight (less freight, mode or technology shift, cleaner fuel) and say which one did most in the paper.</li>
+<li>…split a CO₂ cut into those levers yourself with a simple <b>decomposition</b>.</li>
+<li>…explain why freight is cut <b>less</b> than buildings or industry under the same carbon price.</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="words">
+<h2><span class="pl-num">3</span>Words you need</h2>
+<div class="em-gloss">
+<div><b>GCAM</b><span>The Global Change Analysis Model. It links energy, land, water and climate for 32 world regions in 5-year steps, from 2010 to 2100.</span></div>
+<div><b>Freight</b><span>Moving goods, not people. Trucks, freight trains, river and coastal ships, international ships and cargo planes.</span></div>
+<div><b>Passenger transport</b><span>Moving people: cars, buses, trains, planes. The other half of GCAM's transport sector.</span></div>
+<div><b>Tonne-km</b><span>The unit of freight service. One tonne of goods moved one kilometre = 1 tonne-km.</span></div>
+<div><b>Mode</b><span>The way goods travel: truck, rail, ship or plane. Ships and rail use far less energy per tonne-km than trucks.</span></div>
+<div><b>Technology</b><span>The vehicle type inside a mode, for example a diesel truck or a natural gas truck.</span></div>
+<div><b>Logit choice</b><span>GCAM's rule for sharing demand among options. Cheaper options get bigger shares, but not all of it. A low "exponent" means people stick with what they have.</span></div>
+<div><b>GDP</b><span>Gross domestic product: the size of an economy. GCAM uses it, with population, to drive demand.</span></div>
+<div><b>Income elasticity</b><span>How much freight grows when GDP grows. 1 means 10% more GDP gives 10% more tonne-km.</span></div>
+<div><b>Decoupling</b><span>When freight grows more slowly than GDP (income elasticity drops below 1). Think of a richer economy selling more services and data, not more heavy goods.</span></div>
+<div><b>Price elasticity</b><span>How much freight falls when moving goods gets dearer. A carbon price cuts freight this way.</span></div>
+<div><b>Energy intensity</b><span>Energy used per tonne-km. Better engines and fuller trucks lower it. In this paper it improves on its own over time, not because of the carbon price.</span></div>
+<div><b>Carbon intensity of fuel</b><span>CO₂ per unit of fuel energy. Diesel is high, biofuel is near zero, and biofuel with carbon capture can be below zero.</span></div>
+<div><b>Carbon price</b><span>A cost per tonne of CO₂ emitted. GCAM raises it until a climate target is met.</span></div>
+<div><b>Climate target (LCP)</b><span>The paper's four mitigation cases: LCP 6.0, 4.5, 3.7 and 2.6. Like the better-known RCPs, the number is the extra heat-trapping (W/m²) allowed in 2100. 2.6 is the strictest.</span></div>
+<div><b>No Mitigation</b><span>The reference case with no climate policy, used as the yardstick.</span></div>
+<div><b>Biofuel</b><span>Liquid fuel made from plants. It can go in the same tanks as diesel.</span></div>
+<div><b>CCS / BECCS</b><span>Carbon capture and storage traps CO₂ at a plant. Making biofuel with CCS (bioenergy with CCS) can take CO₂ out of the air overall.</span></div>
+<div><b>Direct emissions</b><span>CO₂ from the vehicle's exhaust.</span></div>
+<div><b>Indirect emissions</b><span>CO₂ from making the fuel, for example at a refinery or biofuel plant.</span></div>
+<div><b>Decomposition</b><span>Splitting a change in CO₂ into parts, one per cause, so the parts add up to the total.</span></div>
+<div><b>Cumulative emissions</b><span>All the CO₂ added up over many years, here 2010–2100. What matters for warming.</span></div>
+<div><b>Mitigation cost</b><span>The economic cost of meeting a climate target. "Discounted" means future costs count a bit less than today's.</span></div>
+<div><b>EJ</b><span>Exajoule, a huge energy unit. The world uses roughly 600 EJ of energy a year.</span></div>
+</div>
+</section>
+
+<section class="pl-sec" id="question">
+<h2><span class="pl-num">4</span>The question, and why it matters</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead"><b>Question:</b> how much will freight grow this century, how much can climate policy cut its CO₂, and <b>which</b> changes do the cutting: less freight, a shift to trains and ships, new truck technologies, or cleaner fuel?</p>
+<p class="lead"><b>Why it matters:</b> freight uses about <b>40%</b> of transport energy today and makes a similar share of transport CO₂. Trucks use most of it; international shipping uses about a quarter. Many earlier studies focused on cars. If freight keeps growing with the economy and is hard to clean up, it could become a larger and larger slice of the CO₂ left over in a climate-safe world.</p>
+</div>
+<div class="callout gcam"><h4>Link to what you know</h4><p>Study 3 showed that hydrogen trucks only win if their costs fall. Study 5 showed that, in a 1.5 °C world, freight trucks gave the biggest CO₂ savings in tonnes. This 2017 paper is the earlier, simpler view: it uses a carbon price alone, no special truck rules, and asks how far that gets freight.</p></div>
+</div>
+</section>
+
+<section class="pl-sec" id="model">
+<h2><span class="pl-num">5</span>How the model works</h2>
+<p class="lead">Press <b>Play</b> to walk through the chain, or click a box. Dashed arrows move in the direction the effect travels. The red arrows at the bottom are the three ways a carbon price pushes back on freight.</p>
+<div class="pl-box">
+<div class="pl-ctrls"><button class="btn" id="d-play" type="button">Play</button><button class="btn quiet" id="d-next" type="button">Next step</button><button class="btn quiet" id="d-all" type="button">Show all</button></div>
+<svg class="pl-svg" id="d-svg" viewBox="0 0 800 400" role="img" aria-label="Diagram: GDP and population drive freight demand in tonne-km through an income elasticity; a mode logit splits it into truck, rail, ship and air; each mode uses technologies and fuels; liquid fuel comes from oil refining, biofuels or biofuels with carbon capture; CO2 adds up; a carbon price feeds back on demand, mode choice and fuel choice.">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink-soft)"/></marker></defs>
+<g font-size="13" font-family="var(--body)" fill="var(--ink)">
+<g class="em-step" data-i="0"><rect x="10" y="20" width="150" height="90" rx="10" fill="var(--economy-t)" stroke="var(--economy)"/><text x="85" y="44" text-anchor="middle" font-weight="700">GDP + people</text><text x="85" y="64" text-anchor="middle" font-size="11">economy grows</text><text x="85" y="80" text-anchor="middle" font-size="11">each region, 5-year</text><text x="85" y="96" text-anchor="middle" font-size="11">steps to 2100</text></g>
+<g class="em-step" data-i="1"><rect x="190" y="20" width="160" height="90" rx="10" fill="var(--data-t)" stroke="var(--data)"/><text x="270" y="44" text-anchor="middle" font-weight="700">Freight demand</text><text x="270" y="64" text-anchor="middle" font-size="11">tonne-km</text><text x="270" y="80" text-anchor="middle" font-size="11">grows with GDP ×</text><text x="270" y="96" text-anchor="middle" font-size="11">income elasticity</text></g>
+<g class="em-step" data-i="2"><rect x="380" y="10" width="200" height="140" rx="10" fill="var(--policy-t)" stroke="var(--policy)"/><text x="480" y="32" text-anchor="middle" font-weight="700">Mode logit</text>
+<g font-size="11"><rect x="394" y="44" width="80" height="20" rx="4" fill="var(--climate)"/><text x="434" y="58" text-anchor="middle" fill="#fff">truck</text>
+<rect x="486" y="44" width="80" height="20" rx="4" fill="var(--water)"/><text x="526" y="58" text-anchor="middle" fill="#fff">rail</text>
+<rect x="394" y="72" width="80" height="20" rx="4" fill="var(--land)"/><text x="434" y="86" text-anchor="middle" fill="#fff">ship</text>
+<rect x="486" y="72" width="80" height="20" rx="4" fill="var(--economy)"/><text x="526" y="86" text-anchor="middle" fill="#fff">air</text>
+<text x="480" y="114" text-anchor="middle">cheaper mode, bigger share</text><text x="480" y="132" text-anchor="middle">but goods can't all go by rail</text></g></g>
+<g class="em-step" data-i="3"><rect x="610" y="10" width="180" height="140" rx="10" fill="var(--energy-t)" stroke="var(--energy)"/><text x="700" y="32" text-anchor="middle" font-weight="700">Technology + fuel</text><text x="700" y="56" text-anchor="middle" font-size="11">trucks: mostly liquid</text><text x="700" y="72" text-anchor="middle" font-size="11">fuel, some gas</text><text x="700" y="96" text-anchor="middle" font-size="11">energy per tonne-km</text><text x="700" y="112" text-anchor="middle" font-size="11">improves over time</text><text x="700" y="132" text-anchor="middle" font-size="11">(set in advance)</text></g>
+<g class="em-step" data-i="4"><rect x="610" y="184" width="180" height="96" rx="10" fill="var(--land-t)" stroke="var(--land)"/><text x="700" y="206" text-anchor="middle" font-weight="700">Liquid fuel supply</text><text x="700" y="226" text-anchor="middle" font-size="11">oil refining</text><text x="700" y="242" text-anchor="middle" font-size="11">biofuel</text><text x="700" y="258" text-anchor="middle" font-size="11">biofuel + CCS (below zero)</text></g>
+<g class="em-step" data-i="5"><rect x="380" y="184" width="200" height="96" rx="10" fill="var(--climate-t)" stroke="var(--climate)"/><text x="480" y="206" text-anchor="middle" font-weight="700">Freight CO₂</text><text x="480" y="226" text-anchor="middle" font-size="11">tonne-km × energy per</text><text x="480" y="242" text-anchor="middle" font-size="11">tonne-km × CO₂ per unit</text><text x="480" y="262" text-anchor="middle" font-size="11">of fuel</text></g>
+<g class="em-step" data-i="6"><rect x="190" y="184" width="160" height="96" rx="10" fill="var(--card)" stroke="var(--ink)"/><text x="270" y="206" text-anchor="middle" font-weight="700">Carbon price</text><text x="270" y="226" text-anchor="middle" font-size="11">set by the climate</text><text x="270" y="242" text-anchor="middle" font-size="11">target (LCP 6.0 → 2.6);</text><text x="270" y="262" text-anchor="middle" font-size="11">same for every sector</text></g>
+<g class="em-step" data-i="7"><rect x="10" y="184" width="150" height="96" rx="10" fill="var(--paper-2)" stroke="var(--ink-soft)"/><text x="85" y="206" text-anchor="middle" font-weight="700">Two demand</text><text x="85" y="222" text-anchor="middle" font-weight="700">futures</text><text x="85" y="244" text-anchor="middle" font-size="11">high: no decoupling</text><text x="85" y="260" text-anchor="middle" font-size="11">low: faster decoupling</text></g>
+<g class="em-step" data-i="8"><rect x="10" y="316" width="780" height="70" rx="10" fill="var(--card)" stroke="var(--ink)"/><text x="400" y="340" text-anchor="middle" font-weight="700">Three levers, then a decomposition</text><text x="400" y="360" text-anchor="middle" font-size="11">Carbon price → (1) dearer freight, so less tonne-km · (2) shift to rail, ship or other trucks · (3) cleaner liquid fuel.</text><text x="400" y="376" text-anchor="middle" font-size="11">The authors split each CO₂ cut into these parts to see which one matters most.</text></g>
+<path class="pl-flow" d="M160 65 H186" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M350 65 H376" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M580 80 H606" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M700 180 V154" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M610 232 H584" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M380 232 H354" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M240 184 V114" stroke="var(--climate)" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M300 184 V164 H440 V154" stroke="var(--climate)" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M330 280 V300 H660 V284" stroke="var(--climate)" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M85 184 V130 H200 V114" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+</g></svg>
+<p class="pl-read" id="d-read">Press Play.</p>
+</div>
+<div class="callout model"><h4>What is special in this paper</h4><p>The GCAM machinery is standard: demand from GDP, logit choices for modes and technologies, and one carbon price for the whole economy. What the authors add is a careful look at <b>freight demand</b> (two futures: freight keeps tracking GDP, or it decouples faster) and a <b>decomposition</b> of the CO₂ cut. Energy use per tonne-km improves over time in both futures, but it is set in advance, so the carbon price cannot speed it up. Sensitivity runs try easier mode shifting and more efficient trucks.</p></div>
+</section>
+
+<section class="pl-sec" id="explore">
+<h2><span class="pl-num">6</span>Explorer: a toy freight sector, 2010–2100</h2>
+<p class="lead">Choose a <b>freight demand future</b> and a <b>climate target</b>. The target sets a carbon price that rises to 2100. The chart shows freight CO₂ with no policy (grey, dashed) and with your target (solid). The bar splits the cut in 2100 into the three levers. Tick the boxes to see what easy mode shifting or no biofuel-with-CCS would change.</p>
+<div class="callout trap"><h4>Illustrative numbers</h4><p>All growth rates, costs, elasticities and carbon prices here are made up for teaching. They are tuned so the <b>pattern</b> looks like the paper's (fuel lever largest, mode shift small, low demand about 40% lower CO₂ in 2100). It is <b>not</b> GCAM data, and CO₂ is shown as an index (2010 = 100).</p></div>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>Freight demand<span class="em-seg" id="x-dem"></span></label>
+<label>Climate target<span class="em-seg" id="x-lcp"></span></label>
+</div>
+<div class="pl-ctrls fr-tog">
+<label><input type="checkbox" id="x-mode"> Easy mode shift (goods move to rail and ship more readily)</label>
+<label><input type="checkbox" id="x-ccs" checked> Biofuel with CCS available</label>
+</div>
+<canvas class="pl-canvas" id="x-cnv" aria-label="Chart of freight CO2 index over time with and without climate policy"></canvas>
+<div class="pl-legend" id="x-leg"></div>
+<h3 style="margin:14px 0 2px;font-size:1.02rem">Where the 2100 cut comes from</h3>
+<div class="fr-stack" id="x-stack"></div>
+<p class="muted small" id="x-stack-note"></p>
+<div class="pl-stats">
+<div class="pl-stat"><b id="s-en">–</b><span>freight energy in 2100 vs 2010 (with policy)</span></div>
+<div class="pl-stat"><b id="s-cum">–</b><span>cut in cumulative freight CO₂, 2010–2100</span></div>
+<div class="pl-stat"><b id="s-fr">–</b><span>freight exhaust CO₂ from oil, cut in 2100</span></div>
+<div class="pl-stat"><b id="s-bld">–</b><span>toy buildings CO₂ cut in 2100, same price</span></div>
+</div>
+<p class="pl-read" id="x-read"></p>
+</div>
+<details class="pl-ex"><summary>How the toy model works (for the curious)</summary>
+<div class="pl-sol">
+<ol>
+<li><b>Demand.</b> GDP grows 2.8% a year. Freight tonne-km grows at GDP growth × income elasticity. High demand: elasticity 0.95 all century. Low demand: it falls from 0.95 to 0.55 by 2100 (decoupling).</li>
+<li><b>Modes.</b> Truck, rail and ship share tonne-km by a logit on cost per tonne-km (exponent 1.5, or 3 with easy mode shift). Rail uses 30% and ships 18% of a truck's energy per tonne-km. Energy per tonne-km also falls 0.6% a year for all modes, whatever the price.</li>
+<li><b>Fuel.</b> Oil, biofuel and biofuel with CCS share liquid fuel by a logit (exponent 4). CO₂ per unit: oil 1, biofuel 0, biofuel with CCS −0.7. Biomass gets dearer as the carbon price rises, so biofuel cannot take over for free.</li>
+<li><b>Demand response.</b> Tonne-km falls with the average cost of freight, price elasticity 0.8.</li>
+<li><b>Carbon price in 2100:</b> LCP 6.0 = $40, 4.5 = $120, 3.7 = $250, 2.6 = $600 per t CO₂, rising from zero in 2020.</li>
+<li><b>Decomposition</b> (adds up exactly): demand lever = lost tonne-km × old intensity × old fuel CO₂; mode lever = new tonne-km × drop in intensity × old fuel CO₂; fuel lever = new tonne-km × new intensity × drop in fuel CO₂.</li>
+<li><b>Buildings (toy).</b> Gas and clean electricity share heating by a logit (exponent 6, electricity only a little dearer than gas). The cut is the fall in gas use at the same carbon price. "Exhaust CO₂ from oil" for freight leaves out the below-zero credit from biofuel with CCS, so the two numbers are fair to compare.</li>
+</ol></div></details>
+</section>
+
+<section class="pl-sec" id="found">
+<h2><span class="pl-num">7</span>What they found</h2>
+<div class="pl-cards">
+<div class="pl-card"><h4>Freight follows GDP</h4><p>In the past, freight energy and CO₂ grew together with GDP. The authors found little sign that the world as a whole is breaking this link yet, though some decoupling later this century is plausible.</p></div>
+<div class="pl-card"><h4>Big growth without policy</h4><p>With no climate policy, freight energy use grew by a factor of 4 to 7 by 2100, depending on the demand future. Freight CO₂ grew faster than passenger transport or any other big end-use sector.</p></div>
+<div class="pl-card"><h4>Demand matters a lot</h4><p>With no policy, direct freight CO₂ in 2100 was about 40% lower in the low-demand future. World fossil CO₂ in 2100 was 16% higher in the high-demand future, mainly because freight used about 70% more fuel.</p></div>
+<div class="pl-card"><h4>Strict target: about 70% less</h4><p>Under LCP 2.6, freight CO₂ over the century fell 68% (low demand) to 73% (high demand) versus no policy. Freight energy in 2100 was about one-third lower.</p></div>
+<div class="pl-card"><h4>Cleaner fuel does most</h4><p>Most of the freight cut came from lowering the CO₂ in liquid fuel, above all biofuels made with carbon capture. Less freight, because it got dearer, came second.</p></div>
+<div class="pl-card"><h4>Mode shift barely helps</h4><p>Switching to rail or ships, or to other truck technologies, did little in GCAM. Even a sensitivity run with easier mode shifting changed the results only a little.</p></div>
+<div class="pl-card"><h4>Freight lags other sectors</h4><p>Buildings and industry cut CO₂ faster, mainly because they can switch to electricity. So the stricter the target, the larger freight's share of the CO₂ that is left.</p></div>
+<div class="pl-card"><h4>Slow freight growth saves money</h4><p>The low-demand future cut the discounted cost of meeting the targets by 49% (LCP 6.0), 24% (4.5), 17% (3.7) and 20% (2.6).</p></div>
+<div class="pl-card"><h4>Near term: still growing</h4><p>Even under LCP 2.6, freight energy in 2040 was 70–100% above 2010, compared with 86–128% with no policy. Strict climate policy slows freight growth, but does not stop it soon.</p></div>
+</div>
+<div class="tscroll"><table class="pl-tbl" style="margin-top:8px">
+<thead><tr><th>Numbers from the paper</th><th>Low demand</th><th>High demand</th></tr></thead>
+<tbody>
+<tr><td>Freight energy growth 2010→2100, no policy</td><td colspan="2">4× to 7× (across the two futures)</td></tr>
+<tr><td>Freight energy in 2040 vs 2010, LCP 2.6</td><td colspan="2">+70% to +100% (no policy: +86% to +128%)</td></tr>
+<tr><td>Cut in cumulative freight CO₂ to 2100, LCP 2.6 vs no policy</td><td>68%</td><td>73%</td></tr>
+<tr><td>Saving in discounted mitigation cost, low vs high demand</td><td colspan="2">49% (6.0) · 24% (4.5) · 17% (3.7) · 20% (2.6)</td></tr>
+</tbody></table></div>
+<p class="lead" style="margin-top:12px">The big picture: in a carbon-price-only world, GCAM keeps trucks running on liquid fuel and cleans the fuel instead of the truck. That leans heavily on biofuels with carbon capture, a technology that does not yet exist at scale. Later studies (like <a href="../zero-transport-global/index.html">study 5</a>) add electric and hydrogen trucks and sales rules, which change this picture.</p>
+</section>
+
+<section class="pl-sec" id="predict">
+<h2><span class="pl-num">8</span>Predict, then check</h2>
+<div class="pl-ex" id="p1">
+<h3>Prediction 1</h3>
+<p>Under the strictest target (LCP 2.6), which lever cut freight CO₂ the most in GCAM?</p>
+<div class="em-seg" data-ans="2"><button class="btn quiet" type="button">Moving goods from trucks to trains and ships</button><button class="btn quiet" type="button">Less freight, because it got dearer</button><button class="btn quiet" type="button">Cleaner liquid fuel (biofuels with CCS)</button></div>
+<p class="pl-check em-reveal" hidden><b>Cleaner liquid fuel.</b> Trucks kept burning liquid fuel, but more of it came from biomass, much of it made with carbon capture. Less freight came second, and mode shift was small. In the explorer, untick "Biofuel with CCS" at LCP 2.6 and watch the fuel slice shrink and the cumulative cut drop.</p>
+</div>
+<div class="pl-ex" id="p2">
+<h3>Prediction 2</h3>
+<p>The same carbon price applies to every sector. Which is cut <b>more</b> in percent?</p>
+<div class="em-seg" data-ans="1"><button class="btn quiet" type="button">Freight</button><button class="btn quiet" type="button">Buildings</button><button class="btn quiet" type="button">About the same</button></div>
+<p class="pl-check em-reveal" hidden><b>Buildings.</b> Heating, cooling and appliances can switch to electricity from a clean grid. Freight has few cheap ways to leave liquid fuel, so the same price buys a smaller cut. Compare the last two numbers under the explorer's chart.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="ex">
+<h2><span class="pl-num">9</span>Worked mini-exercise: split a CO₂ cut into levers</h2>
+<div class="pl-ex" data-answer="45.6" data-tol="0.03" data-show="45.6 Mt">
+<h3>How much of the cut is due to cleaner fuel?</h3>
+<p>Use these <b>illustrative</b> numbers for one region in 2100. Freight CO₂ = tonne-km × energy per tonne-km × CO₂ per unit of fuel.</p>
+<ul class="prose">
+<li><b>No policy:</b> 100 units of tonne-km, energy intensity 1.0, fuel CO₂ factor 1.0 → 100 Mt CO₂.</li>
+<li><b>With a carbon price:</b> 80 units of tonne-km, energy intensity 0.95 (a little mode shift), fuel CO₂ factor 0.4 → 80 × 0.95 × 0.4 = 30.4 Mt.</li>
+</ul>
+<p>The total cut is 69.6 Mt. Using the step order demand → mode → fuel, how many Mt of the cut come from <b>cleaner fuel</b>?</p>
+<div class="pl-row"><input class="pl-ans" type="text" inputmode="decimal" placeholder="Mt CO₂, e.g. 30" aria-label="Your answer in Mt CO2"><button class="btn pl-checkbtn" type="button">Check</button></div>
+<p class="pl-check" aria-live="polite"></p>
+<details><summary>Hint</summary><div class="pl-sol"><p>Change one thing at a time and keep the earlier changes. For the fuel step, tonne-km and intensity are already at their new values (80 and 0.95). Only the fuel factor drops, from 1.0 to 0.4.</p></div></details>
+<details><summary>Step-by-step solution</summary><div class="pl-sol">
+<table><tr><th>Lever</th><th>Working</th><th>Cut (Mt)</th></tr>
+<tr><td>1 · Less freight</td><td>(100 − 80) × 1.0 × 1.0</td><td>20.0</td></tr>
+<tr><td>2 · Mode shift</td><td>80 × (1.0 − 0.95) × 1.0</td><td>4.0</td></tr>
+<tr><td>3 · Cleaner fuel</td><td>80 × 0.95 × (1.0 − 0.4)</td><td><b>45.6</b></td></tr>
+<tr><td>Check</td><td>20.0 + 4.0 + 45.6</td><td>69.6 = 100 − 30.4 ✓</td></tr></table>
+<p>So cleaner fuel gives about two-thirds of the cut (45.6 ÷ 69.6 ≈ 66%), less freight about 29%, and mode shift about 6%. That is the same ranking the paper found. Note: if you change the order of the steps, the split moves a little; the total does not.</p></div></details>
+</div>
+</section>
+
+<section class="pl-sec" id="quiz">
+<h2><span class="pl-num">10</span>Quiz</h2>
+<div class="pl-quiz" id="qz" data-q='[
+{"q":"What does \"decoupling\" of freight mean in this paper?","o":["Trucks are separated from trailers","Freight grows more slowly than GDP","Freight moves from trucks to trains","Freight and passenger transport are modelled apart"],"a":1,"e":"Decoupling means the income elasticity of freight falls below 1, so tonne-km grows slower than the economy. The low-demand future assumes faster decoupling."},
+{"q":"With no climate policy, how much did GCAM project freight energy use to grow by 2100?","o":["It stayed about flat","It roughly doubled","It grew by a factor of 4 to 7","It grew 20-fold"],"a":2,"e":"Freight energy grew 4 to 7 times, depending on how much freight demand decouples from GDP."},
+{"q":"Under LCP 2.6, what was the main source of freight CO2 cuts?","o":["Electric trucks","A big shift from trucks to rail","Lower carbon intensity of liquid fuel, mainly biofuels with CCS","Banning international shipping"],"a":2,"e":"Trucks kept using liquid fuel, but that fuel got cleaner. Price-driven drops in freight came second; mode and technology shifts were small."},
+{"q":"Why did buildings and industry cut CO2 faster than freight under the same carbon price?","o":["They got a higher carbon price","They can switch to electricity more easily","They were not growing","GCAM ignores their emissions"],"a":1,"e":"There is one carbon price for all sectors. Buildings and industry have cheaper low-carbon options (mostly electricity), so they cut more. Freight becomes a larger share of what is left."},
+{"q":"In the explorer and the paper, why does slower freight growth (low demand) make climate targets cheaper?","o":["Less freight means less CO2 to cut, so a lower carbon price is needed","Low demand bans trucks","It raises GDP","It makes biofuels free"],"a":0,"e":"Less freight means less fuel and less CO2, so the target is met with fewer costly cuts. The paper found 17–49% lower discounted mitigation costs."}
+]'></div>
+</section>
+
+<section class="pl-sec" id="limits">
+<h2><span class="pl-num">11</span>Limitations and open questions</h2>
+<ul class="prose">
+<li><b>Demand is an assumption.</b> The two freight futures are chosen by the authors. Faster decoupling (for example from 3D printing or less coal and oil to ship) would change everything downstream.</li>
+<li><b>Efficiency is fixed in advance.</b> Better engines and fuller trucks improve over time, but the carbon price cannot speed them up. Real policies like fuel economy standards could do more.</li>
+<li><b>Mode shift is limited.</b> Rail lines and ports constrain how much can move off trucks, so GCAM allows little shifting. Whether that is too strict is open.</li>
+<li><b>Big bet on biofuels with CCS.</b> The main lever depends on a technology not yet used at scale. Land-use CO₂ from growing bioenergy was not counted in the indirect emissions.</li>
+<li><b>An older GCAM.</b> This 2017 version had few zero-emission truck options. Newer GCAM versions add battery and hydrogen trucks, which later papers show can matter a lot.</li>
+<li><b>Open question:</b> what mix of fuel rules, truck standards and logistics changes would cut freight CO₂ without relying so much on bioenergy?</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="course">
+<h2><span class="pl-num">12</span>Links to the course and to GCAM</h2>
+<ul class="reslist">
+<li><a href="../../modules/transport-in-gcam.html">Transport in GCAM</a><span class="why">The freight branch of the transport tree: trucks, rail, ships and planes, and their technologies.</span></li>
+<li><a href="../../modules/energy-demand.html">Energy demand</a><span class="why">How GDP, income elasticity and price elasticity set the amount of service demanded.</span></li>
+<li><a href="../../modules/choice-the-logit.html">Choice: the logit</a><span class="why">Why a low logit exponent keeps goods on trucks even when rail is cheaper.</span></li>
+<li><a href="../../modules/emissions-climate-policy-system.html">Emissions, climate and policy</a><span class="why">How a climate target becomes one carbon price for every sector.</span></li>
+<li><a href="../../modules/land-food-bioenergy.html">Land, food and bioenergy</a><span class="why">Where the biofuels and BECCS that clean freight fuel come from.</span></li>
+<li><a href="../../modules/scenarios.html">Scenarios</a><span class="why">High and low freight demand as "what if" storylines, crossed with climate targets.</span></li>
+<li><a href="../../modules/the-iam-family.html">The IAM family</a><span class="why">How GCAM's freight compares with freight in other models.</span></li>
+<li><a href="https://jgcri.github.io/gcam-doc/energy.html#transportation" target="_blank" rel="noopener">GCAM documentation: transportation</a><span class="why">The official description of GCAM's transport sector, freight included.</span></li>
+</ul>
+</section>
+
+<section class="pl-sec" id="review">
+<h2><span class="pl-num">13</span>Review: from earlier papers</h2>
+<p class="lead">Spaced repetition: try to answer before you open each one.</p>
+<div class="pl-ex"><h3>From: battery metals and China's EVs (study 2)</h3><p>Why can a 7–10% rise in EV cost cut the EV share by about 14 points in GCAM?</p><details><summary>Show answer</summary><div class="pl-sol">The logit with a large exponent turns small cost gaps into big share shifts, especially when options are close in cost. Today's paper shows the flip side: freight modes have a <i>low</i> exponent, so even big cost gaps move little freight to rail.</div></details></div>
+<div class="pl-ex"><h3>From: hydrogen in trucks, ships and factories (study 3)</h3><p>What mattered more for how much hydrogen gets used: delivery options or end-use costs?</p><details><summary>Show answer</summary><div class="pl-sol">End-use technology costs. Delivery options mainly changed where hydrogen was made (on site vs central plants). The 2017 freight paper had no cheap hydrogen trucks, which is one reason its trucks stayed on liquid fuel.</div></details></div>
+<div class="pl-ex"><h3>From: zero-emission transport worldwide (study 5)</h3><p>How do you work out a break-even carbon price for a clean technology?</p><details><summary>Show answer</summary><div class="pl-sol">Divide its extra cost per unit of service by the CO₂ it saves per unit. Example: $18 extra ÷ 0.06 t saved = $300 per t. In today's paper, biofuel with CCS has a low break-even price because it saves more than 100% of the CO₂.</div></details></div>
+</section>
+
+<section class="pl-sec" id="sources">
+<h2><span class="pl-num">14</span>Sources</h2>
+<ul class="prose em-why">
+<li>Muratori, M., Smith, S. J., Kyle, P., Link, R., Mignone, B. K. &amp; Kheshgi, H. S. (2017). Role of the freight sector in future climate change mitigation scenarios. <i>Environmental Science &amp; Technology</i> 51(6), 3526–3533. <a href="https://doi.org/10.1021/acs.est.6b04515" target="_blank" rel="noopener">doi:10.1021/acs.est.6b04515</a> (open access).</li>
+<li><a href="https://www.osti.gov/biblio/1349019" target="_blank" rel="noopener">OSTI record</a> and <a href="https://www.pnnl.gov/publications/role-freight-sector-future-climate-change-mitigation-scenarios" target="_blank" rel="noopener">PNNL publication page</a> for the article.</li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation (JGCRI)</a>.</li>
+</ul>
+<p class="pl-note">Summary written in our own words. No figures or tables from the article are copied; the small table above lists a few numbers reported in the text. The explorer is a teaching toy, not the paper's model.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on Muratori et al. (2017), Environmental Science &amp; Technology 51(6), 3526–3533. Charts use an illustrative toy model, not the paper's data. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../../assets/js/site.js?v=20261105a"></script>
+<script src="../plca-common.js?v=1"></script>
+<script>
+(function () {
+  const { cv, canvas, axes, legend, quiz } = window.PL;
+  /* ---------- toy model (all numbers illustrative) ---------- */
+  const YRS = []; for (let y = 2010; y <= 2100; y += 5) YRS.push(y);
+  const LCP = { "None": 0, "LCP 6.0": 40, "LCP 4.5": 120, "LCP 3.7": 250, "LCP 2.6": 600 };
+  const MODES = [{ n: "Truck", nf: 0.70, e: 1.0, w: 1 }, { n: "Rail", nf: 0.62, e: 0.30, w: 0.62 }, { n: "Ship", nf: 0.66, e: 0.18, w: 0.55 }];
+  function model(o) {
+    const gam = o.easy ? 3 : 1.5;
+    const price = (y) => y <= 2020 ? 0 : o.P * Math.pow(Math.min(1, (y - 2020) / 80), 1.3);
+    function fuel(P) {
+      const F = [{ c: 20, ef: 0.072, w: 1 }, { c: 34, ef: 0, w: 0.5 }, { c: 46, ef: -0.05, w: o.ccs ? 0.45 : 0 }];
+      const land = 0.035 * P;
+      const tot = F.map((f, i) => f.c + f.ef * P + (i ? land : 0));
+      const s = tot.map((t, i) => F[i].w * Math.pow(Math.max(t, 2) / 20, -4)), S = s.reduce((a, b) => a + b, 0), sh = s.map((x) => x / S);
+      return { sh, cost: sh.reduce((a, x, i) => a + x * tot[i], 0), ci: sh.reduce((a, x, i) => a + x * F[i].ef, 0) / 0.072 };
+    }
+    function modes(fc) {
+      const tot = MODES.map((m) => m.nf + m.e * 0.3 * fc / 20);
+      const s = tot.map((t, i) => MODES[i].w * Math.pow(t, -gam)), S = s.reduce((a, b) => a + b, 0), sh = s.map((x) => x / S);
+      return { sh, cost: sh.reduce((a, x, i) => a + x * tot[i], 0), I: sh.reduce((a, x, i) => a + x * MODES[i].e, 0) };
+    }
+    let serv = 1; const out = [];
+    const f0 = fuel(0), m0 = modes(f0.cost);
+    for (const y of YRS) {
+      const t = (y - 2010) / 90, eps = o.dem === "High" ? 0.95 : 0.95 - 0.4 * t;
+      if (y > 2010) serv *= Math.pow(1.028, 5 * eps);
+      const EI = Math.pow(0.994, y - 2010), P = price(y), f = fuel(P), m = modes(f.cost);
+      const sp = serv * Math.pow(m.cost / m0.cost, -0.8);
+      out.push({ y, P, co2ref: serv * m0.I * EI * f0.ci, co2: sp * m.I * EI * f.ci, oilref: serv * m0.I * EI * f0.sh[0], oil: sp * m.I * EI * f.sh[0], en: sp * m.I * EI, truck: m.sh[0], fsh: f.sh,
+        dDem: (serv - sp) * m0.I * EI * f0.ci, dMode: sp * (m0.I - m.I) * EI * f0.ci, dFuel: sp * m.I * EI * (f0.ci - f.ci) });
+    }
+    const base = out[0].co2ref;
+    out.forEach((r) => { ["co2ref", "co2", "oilref", "oil", "en", "dDem", "dMode", "dFuel"].forEach((k) => r[k] = r[k] / base * 100); });
+    return out;
+  }
+  function buildings(P) { const gas = (p) => { const g = Math.pow((20 + 0.056 * p) / 20, -6), e = Math.pow(24 / 20, -6); return g / (g + e); }; return 1 - gas(P) / gas(0); }
+  window.FR = { model, buildings };
+
+  /* ---------- explorer ---------- */
+  const st = { dem: "High", lcp: "LCP 2.6", easy: false, ccs: true };
+  function seg(id, arr, key) {
+    const el = document.getElementById(id);
+    el.innerHTML = arr.map((a) => `<button class="btn quiet" type="button" aria-pressed="${a === st[key]}" data-v="${a}">${a}</button>`).join("");
+    el.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; st[key] = b.dataset.v; el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b)); draw(); });
+  }
+  seg("x-dem", ["High", "Low"], "dem"); seg("x-lcp", Object.keys(LCP), "lcp");
+  document.getElementById("x-mode").addEventListener("change", (e) => { st.easy = e.target.checked; draw(); });
+  document.getElementById("x-ccs").addEventListener("change", (e) => { st.ccs = e.target.checked; draw(); });
+  legend(document.getElementById("x-leg"), [["No policy (same demand future)", "--ink-soft", true], ["With your climate target", "--climate"], ["Other demand future, no policy", "--data", true]]);
+  const pct = (v) => Math.round(v * 100) + "%";
+  const LEV = [["Less freight", "--economy"], ["Mode shift", "--water"], ["Cleaner fuel", "--energy"]];
+  function draw() {
+    const o = { dem: st.dem, P: LCP[st.lcp], easy: st.easy, ccs: st.ccs };
+    const r = model(o), other = model({ ...o, dem: st.dem === "High" ? "Low" : "High", P: 0 });
+    const cnv = document.getElementById("x-cnv"), narrow = (cnv.clientWidth || 600) < 520, { ctx, w, h } = canvas(cnv, narrow ? 0.72 : 0.42);
+    const box = { x0: 52, y0: 12, x1: w - 20, y1: h - 42 };
+    const ymax = 700, ymin = Math.min(-200, Math.floor(Math.min(...r.map((x) => x.co2)) / 100) * 100);
+    const { X, Y } = axes(ctx, box, [2010, 2100], [ymin, ymax], { xticks: narrow ? [2010, 2040, 2070, 2100] : [2010, 2025, 2040, 2055, 2070, 2085, 2100], xfmt: (v) => String(v), yfmt: (v) => String(v), xlab: "year", ylab: "freight CO₂ (2010 = 100)" });
+    ctx.strokeStyle = cv("--line"); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(box.x0, Y(0)); ctx.lineTo(box.x1, Y(0)); ctx.stroke();
+    const line = (arr, key, col, dash, lw) => { ctx.strokeStyle = cv(col); ctx.lineWidth = lw; ctx.setLineDash(dash ? [7, 5] : []); ctx.beginPath(); arr.forEach((p, i) => { const x = X(p.y), y = Y(p[key]); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); ctx.stroke(); };
+    line(other, "co2ref", "--data", true, 2);
+    line(r, "co2ref", "--ink-soft", true, 2.5);
+    line(r, "co2", "--climate", false, 3.5);
+    ctx.setLineDash([]);
+    const L = r[r.length - 1], tot = L.dDem + L.dMode + L.dFuel;
+    const stack = document.getElementById("x-stack"), note = document.getElementById("x-stack-note");
+    if (tot < 0.5) { stack.innerHTML = ""; note.textContent = "No climate target, so nothing is cut. Pick an LCP target."; }
+    else {
+      const parts = [L.dDem, L.dMode, L.dFuel].map((v) => Math.max(0, v)), ps = parts.reduce((a, b) => a + b, 0);
+      stack.innerHTML = parts.map((v, i) => { const f = v / ps; return `<div style="width:${(f * 100).toFixed(2)}%;background:${cv(LEV[i][1])}" title="${LEV[i][0]} ${pct(f)}">${f > 0.1 ? LEV[i][0] + " " + pct(f) : ""}</div>`; }).join("");
+      note.textContent = LEV.map(([n], i) => `${n}: ${pct(parts[i] / ps)}`).join(" · ") + (L.co2 < 0 ? " · Freight CO₂ goes below zero because biofuel with CCS is credited to the fuel." : "");
+    }
+    const cum = r.reduce((a, x) => a + x.co2, 0), cum0 = r.reduce((a, x) => a + x.co2ref, 0);
+    document.getElementById("s-en").textContent = (L.en / r[0].en).toFixed(1) + "×";
+    document.getElementById("s-cum").textContent = pct(1 - cum / cum0);
+    document.getElementById("s-fr").textContent = pct(1 - L.oil / L.oilref);
+    document.getElementById("s-bld").textContent = pct(buildings(LCP[st.lcp]));
+    let txt = `${st.dem} freight demand, ${st.lcp === "None" ? "no climate target" : st.lcp + " (carbon price rising to $" + LCP[st.lcp] + " per t in 2100)"}. Freight energy grows ${(L.en / r[0].en).toFixed(1)}-fold by 2100, and trucks carry ${pct(L.truck)} of tonne-km in 2100. `;
+    if (st.lcp === "None") txt += st.dem === "High" ? "Without policy, CO₂ climbs with GDP. Switch to Low demand: the blue dashed line shows how much decoupling alone saves." : "Low demand alone keeps 2100 CO₂ about 40% below the high-demand line (blue dashed), with no carbon price at all.";
+    else if (!st.ccs) txt += "Without biofuel with CCS, the fuel lever is much weaker, so more of the cut has to come from less freight, and the cumulative cut is far smaller.";
+    else if (st.easy) txt += "Even with easy mode shifting, the mode slice stays small: rail and ships are already cheaper, and the fuel lever still dominates.";
+    else txt += "Cleaner fuel gives most of the cut, less freight comes second and mode shift is small, the same ranking as in the paper.";
+    document.getElementById("x-read").textContent = txt;
+  }
+  let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(draw, 150); });
+  draw();
+
+  /* ---------- animated diagram ---------- */
+  const TXT = [
+    "1 · GDP and people. Each of GCAM's 32 regions has a path for population and GDP. As economies grow, they buy, make and ship more goods.",
+    "2 · Freight demand. GCAM turns GDP into tonne-km. The income elasticity says how strongly freight follows GDP. Historically the link has been close.",
+    "3 · Mode logit. Tonne-km is shared among truck, rail, ship and air by cost. The logit exponent is low: goods often cannot switch, because a rail line or port is not there.",
+    "4 · Technology and fuel. Each mode has vehicle technologies. Freight trucks run mostly on liquid fuel. Energy per tonne-km improves over time on a path set in advance.",
+    "5 · Liquid fuel supply. The liquid fuel can come from oil, from biofuel, or from biofuel made with carbon capture, which can remove more CO₂ than the fuel releases.",
+    "6 · Freight CO₂. Emissions = tonne-km × energy per tonne-km × CO₂ per unit of fuel. Each factor is one lever.",
+    "7 · Carbon price. A climate target (LCP 6.0, 4.5, 3.7 or 2.6) sets one carbon price for the whole economy. It makes fuel dearer, which feeds back on demand, mode choice and fuel choice.",
+    "8 · Two demand futures. High demand: freight keeps tracking GDP. Low demand: it decouples faster. Each is run with no policy and with all four targets.",
+    "9 · Three levers. The authors decompose the cut into less freight, mode and technology shift, and cleaner fuel. Cleaner fuel was by far the biggest."
+  ];
+  const svg = document.getElementById("d-svg"), steps = [...svg.querySelectorAll(".em-step")], read = document.getElementById("d-read");
+  let cur = -1, timer = null;
+  function show(i) { cur = i; svg.classList.add("em-dim"); steps.forEach((s) => s.classList.toggle("on", +s.dataset.i === i)); read.textContent = TXT[i]; }
+  function stop() { clearInterval(timer); timer = null; document.getElementById("d-play").textContent = "Play"; }
+  document.getElementById("d-play").addEventListener("click", () => {
+    if (timer) { stop(); return; }
+    show((cur + 1) % TXT.length); document.getElementById("d-play").textContent = "Pause";
+    timer = setInterval(() => { if (cur >= TXT.length - 1) { stop(); return; } show(cur + 1); }, 3200);
+  });
+  document.getElementById("d-next").addEventListener("click", () => { stop(); show((cur + 1) % TXT.length); });
+  document.getElementById("d-all").addEventListener("click", () => { stop(); cur = -1; svg.classList.remove("em-dim"); steps.forEach((s) => s.classList.remove("on")); read.textContent = "The whole chain: GDP → freight tonne-km → mode logit → technology and fuel → liquid fuel supply → freight CO₂, with the carbon price pushing back on demand, mode and fuel."; });
+  steps.forEach((s) => { s.style.cursor = "pointer"; s.addEventListener("click", () => { stop(); show(+s.dataset.i); }); });
+
+  /* ---------- predict-then-check ---------- */
+  document.querySelectorAll("#predict .em-seg").forEach((g) => g.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    const btns = [...g.querySelectorAll("button")], i = btns.indexOf(b), ok = i === +g.dataset.ans;
+    btns.forEach((x, j) => { x.setAttribute("aria-pressed", x === b); if (j === +g.dataset.ans) x.style.outline = "3px solid " + cv("--land"); });
+    const p = g.parentElement.querySelector(".em-reveal"); p.hidden = false;
+    p.innerHTML = (ok ? '<b class="pl-good">Good guess.</b> ' : '<b class="pl-bad">Not quite.</b> ') + p.innerHTML.replace(/^<b class="pl-(good|bad)">.*?<\/b> /, "");
+  }));
+
+  quiz(document.getElementById("qz"));
+})();
+</script>
+</body></html>

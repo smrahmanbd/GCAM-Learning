@@ -178,5 +178,42 @@
     "a": "Divide its extra cost per unit of service by the CO2 it saves per unit. Example: $18 extra ÷ 0.06 t saved = $300 per t."
    }
   ]
+ },
+ {
+  "slug": "freight-global",
+  "date": "2026-11-27",
+  "title": "When the world prices carbon, why is freight so hard to clean up?",
+  "citation": "Muratori, M., Smith, S. J., Kyle, P., Link, R., Mignone, B. K. & Kheshgi, H. S. (2017). Environmental Science & Technology 51(6), 3526–3533.",
+  "doi": "10.1021/acs.est.6b04515",
+  "iam": "GCAM (global, 2017-era version)",
+  "topics": [
+   "GCAM",
+   "freight",
+   "trucks",
+   "demand and GDP",
+   "decoupling",
+   "carbon price",
+   "biofuels with CCS",
+   "decomposition"
+  ],
+  "level": "Beginner",
+  "pages": [
+   "freight-global/index.html"
+  ],
+  "takeaways": [
+   "Freight has tracked GDP with little sign of decoupling yet; with no policy, GCAM's freight energy grows 4–7× by 2100 and its CO2 grows faster than passenger transport or other end uses.",
+   "Under the strictest target (LCP 2.6), cumulative freight CO2 to 2100 fell 68–73% versus no policy, mostly through cleaner liquid fuel (biofuels with CCS), then less freight; mode and technology shifts did little.",
+   "Slower freight growth matters: 2100 direct freight CO2 was about 40% lower with no policy, and mitigation costs were 17–49% lower, depending on the target."
+  ],
+  "review": [
+   {
+    "q": "In Muratori et al. (2017), which lever cut freight CO2 most under a strict carbon price?",
+    "a": "Lower carbon intensity of liquid fuel, especially biofuels made with CCS; price-driven drops in freight came second, and mode shift was small."
+   },
+   {
+    "q": "Why is freight cut less than buildings under the same carbon price in GCAM?",
+    "a": "Buildings can switch to clean electricity easily; freight relies on liquid fuels and has few cheap low-carbon mode or technology options."
+   }
+  ]
  }
 ]
