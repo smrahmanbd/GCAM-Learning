@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper study: can biojet fuel clean up flying? (GCAM) · GCAM in three goes</title>
+<meta name="description" content="Beginner-friendly study of Wise, Muratori and Kyle (2017), Transportation Research Part D: how a carbon price and biojet fuel, with and without carbon capture, change aviation CO2 in GCAM.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css?v=20261105a">
+<link rel="stylesheet" href="../plca.css?v=1">
+<link rel="icon" href="../../assets/img/icon.svg" type="image/svg+xml">
+<style>
+.em-step { transition: opacity .35s; }
+.em-dim .em-step { opacity: .28; }
+.em-dim .em-step.on { opacity: 1; }
+.em-step.on rect { stroke-width: 3.5; }
+.em-gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.em-gloss div { border: 1px solid var(--line); border-radius: var(--r-s); padding: 8px 12px; background: var(--card); }
+.em-gloss b { display: block; }
+.em-gloss span { font-size: .93rem; color: var(--ink-soft); }
+.em-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.em-seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.em-reveal[hidden] { display: none; }
+.pl-sec ul.prose li, .pl-sec ol li { margin-bottom: 4px; }
+.em-why { overflow-wrap: anywhere; }
+.pl-sol table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.pl-sol td, .pl-sol th { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: left; }
+.fr-stack { display: flex; height: 30px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); margin: 6px 0 4px; background: var(--paper-2); }
+.fr-stack div { height: 100%; transition: width .35s; display: grid; place-items: center; color: #fff; font-size: .78rem; font-weight: 700; overflow: hidden; white-space: nowrap; }
+.tscroll { overflow-x: auto; }
+.bj-plane { transition: transform .1s linear; }
+.pl-ctrls input[type=range] { width: 100%; }
+.pl-ctrls label:has(input[type=range]) { flex: 1 1 280px; }
+.pl-ctrls output { font-family: var(--mono, monospace); font-weight: 600; }
+.bj-off { opacity: .45; }
+@media (max-width: 520px) { .pl-ctrls label { width: 100%; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../../index.html"><span class="dots" aria-hidden="true"><i class="c-economy"></i><i class="c-energy"></i><i class="c-land"></i><i class="c-water"></i><i class="c-climate"></i><i class="c-policy"></i></span>GCAM in three goes</a>
+<nav class="nav" aria-label="Main"><a href="../../go1.html">Foundations</a><a href="../../go2.html">Build and Implement</a><a href="../../go3.html">Research Frontier</a><a href="../index.html">Paper studies</a><a href="../../toolkit.html">Toolkit</a><a href="../../glossary.html">Glossary</a><button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme">Light / dark</button></nav>
+</div></header>
+
+<main id="main" class="wrap">
+<header class="pl-hero">
+<p class="eyebrow">Paper study 7 · Transport · GCAM · Global · aviation</p>
+<h1>Planes need liquid fuel. Can biojet fuel clean up flying?</h1>
+<p>A hands-on companion to <b>Wise, Muratori &amp; Kyle (2017)</b>. The authors add a separate <b>jet fuel</b> sector to <b>GCAM</b>, with jet fuel made from plants (<b>biojet</b>). They ask what a carbon price does to flying, with and without biojet, and with and without <b>carbon capture</b> at the biojet plant. The explorer on this page runs a <b>small teaching model</b> with made-up numbers.</p>
+<p class="pl-cite">Paper: <a href="https://doi.org/10.1016/j.trd.2017.03.006" target="_blank" rel="noopener">Transportation Research Part D 52(A), 244–253 (2017)</a>, open access. Builds on: <a href="../freight-global/index.html">study 6</a> (freight, by the same team, same year) and <a href="../zero-transport-global/index.html">study 5</a> (why long-haul flights ran on biofuel). Same tools as yesterday, one new mode: the plane.</p>
+<ul class="pl-toc">
+<li><a href="#minute">1 · In one minute</a></li><li><a href="#goals">2 · Goals</a></li><li><a href="#words">3 · Words</a></li><li><a href="#question">4 · Question</a></li><li><a href="#model">5 · How the model works</a></li><li><a href="#explore">6 · Explorer</a></li><li><a href="#found">7 · Findings</a></li><li><a href="#predict">8 · Predict</a></li><li><a href="#ex">9 · Exercise</a></li><li><a href="#quiz">10 · Quiz</a></li><li><a href="#limits">11 · Limits</a></li><li><a href="#course">12 · Course</a></li><li><a href="#review">13 · Review</a></li><li><a href="#sources">14 · Sources</a></li>
+</ul>
+</header>
+
+<section class="pl-sec" id="minute">
+<h2><span class="pl-num">1</span>The paper in one minute</h2>
+<ol class="lead">
+<li>Flying grows fast as people get richer: in GCAM, world demand for air travel grows four times between 2010 and 2050, and planes have no easy option other than liquid fuel.</li>
+<li>With only fossil jet fuel, a carbon price strong enough to halve energy CO₂ by 2050 cuts aviation CO₂ by only about 10–20%, and only by making people fly less.</li>
+<li>Adding biojet fuel lowers the CO₂ per litre, uses only about a tenth of the world's bioenergy, and works far better when the biojet plant captures and stores its CO₂.</li>
+</ol>
+</section>
+
+<section class="pl-sec" id="goals">
+<h2><span class="pl-num">2</span>Learning goals</h2>
+<p class="lead">After this page you can…</p>
+<ul class="prose">
+<li>…explain why a carbon price on its own cuts flying CO₂ <b>less</b> than CO₂ elsewhere, and where that small cut comes from.</li>
+<li>…describe how GCAM chooses between <b>fossil jet</b>, <b>biojet</b> and <b>biojet with CCS</b> using costs and a logit.</li>
+<li>…work out the <b>net CO₂</b> of a fuel mix when biojet with CCS gives "negative" emissions.</li>
+<li>…say why biojet did <b>not</b> crowd out bioenergy in the rest of the energy system in this study.</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="words">
+<h2><span class="pl-num">3</span>Words you need</h2>
+<div class="em-gloss">
+<div><b>GCAM</b><span>The Global Change Analysis Model. It links energy, land, water and climate for world regions in 5-year steps. This paper used GCAM version 4.</span></div>
+<div><b>Aviation</b><span>Flying people and goods by plane. In GCAM it is one mode inside transport, next to cars, buses, trains, trucks and ships.</span></div>
+<div><b>Aviation service demand</b><span>How much flying people want, measured in passenger-km (and tonne-km for air cargo). One passenger flown one km = 1 passenger-km.</span></div>
+<div><b>Jet fuel</b><span>The kerosene-type liquid fuel planes burn. Normally made from crude oil at a refinery.</span></div>
+<div><b>Biojet</b><span>Jet fuel made from plants or plant waste instead of oil. It can go into the same planes and tanks ("drop-in" fuel).</span></div>
+<div><b>Feedstock</b><span>The raw material a fuel is made from. For biojet: grasses, wood, crop residues, oil crops, sugar or corn.</span></div>
+<div><b>Lignocellulosic biomass</b><span>The tough, woody part of plants: wood, straw, energy grasses. Not food, but it needs land.</span></div>
+<div><b>FT (Fischer–Tropsch)</b><span>A process that turns biomass into a gas and then into liquid fuel. In this paper about 95% of biojet came this way.</span></div>
+<div><b>ETJ and HEFA</b><span>Two other biojet routes. ETJ (ethanol-to-jet) turns alcohol into jet fuel. HEFA treats plant oils and fats with hydrogen. Both were small here.</span></div>
+<div><b>Conversion efficiency</b><span>How much fuel you get from the feedstock. Here about 2 GJ of biomass gives 1 GJ of biojet.</span></div>
+<div><b>CCS</b><span>Carbon capture and storage: catching CO₂ at a plant and pumping it deep underground.</span></div>
+<div><b>BECCS / biojet with CCS</b><span>Bioenergy with CCS. Plants take CO₂ from the air; part of it is stored at the fuel plant. Overall, the fuel can remove more CO₂ than it releases.</span></div>
+<div><b>Net-zero (carbon-neutral) bioenergy</b><span>The assumption that burning plant fuel only returns the CO₂ the plants took up while growing, so it adds nothing overall.</span></div>
+<div><b>Carbon intensity</b><span>CO₂ per unit of fuel energy. Fossil jet is high, biojet near zero, biojet with CCS below zero.</span></div>
+<div><b>Carbon price</b><span>A cost per tonne of CO₂ emitted. GCAM raises it until a climate target is met, with the same price in every sector.</span></div>
+<div><b>Logit choice</b><span>GCAM's rule for sharing a market among options by cost. The cheapest option gets the biggest share, but not all of it.</span></div>
+<div><b>Price elasticity</b><span>How much demand falls when the price rises. If flying gets dearer, people fly a bit less.</span></div>
+<div><b>Energy intensity</b><span>Fuel used per passenger-km. Newer planes and fuller flights lower it, so fuel grows slower than flying.</span></div>
+<div><b>Reference scenario</b><span>The "no climate policy" yardstick. No carbon price.</span></div>
+<div><b>Mitigation scenario</b><span>Here: energy-system CO₂ in 2050 must be half of what it was in 2005.</span></div>
+<div><b>Crowding out</b><span>When one user of a limited resource (here, biomass) pushes other users out.</span></div>
+<div><b>Land-use change emissions</b><span>CO₂ released when forests or grassland are cleared, for example to grow energy crops.</span></div>
+<div><b>EJ, GJ</b><span>Energy units. 1 GJ is about 26 litres of jet fuel. 1 EJ is a billion GJ.</span></div>
+</div>
+</section>
+
+<section class="pl-sec" id="question">
+<h2><span class="pl-num">4</span>The question, and why it matters</h2>
+<div class="pl-grid2">
+<div>
+<p class="lead"><b>Question:</b> if the world puts a price on carbon, what happens to aviation? How much can its CO₂ fall with fossil jet fuel only, and how much more if biojet is available, made with or without carbon capture? And would biojet take bioenergy away from other sectors that need it?</p>
+<p class="lead"><b>Why it matters:</b> aviation is a small part of world CO₂ today, but it grows fast and is almost entirely oil. Cars can use batteries. Planes, especially on long routes, cannot easily do so, because batteries are too heavy. That makes clean liquid fuel the main hope, and the main question is whether there is enough biomass for it.</p>
+</div>
+<div class="callout gcam"><h4>Link to what you know</h4><p>Yesterday's freight paper found that a carbon price kept trucks on liquid fuel and cleaned the <i>fuel</i> instead. Planes are an even stronger case: there is no rail line in the sky. Study 5 (2024) found long-haul flights ran mostly on biofuel even in its high-ambition case. This 2017 paper is where that idea was first tested in GCAM.</p></div>
+</div>
+</section>
+
+<section class="pl-sec" id="model">
+<h2><span class="pl-num">5</span>How the model works</h2>
+<p class="lead">Press <b>Play</b> to walk through the chain, or click a box. Dashed arrows move in the direction the effect travels. The red arrows show the carbon price pushing back on demand and fuel choice.</p>
+<div class="pl-box">
+<div class="pl-ctrls"><button class="btn" id="d-play" type="button">Play</button><button class="btn quiet" id="d-next" type="button">Next step</button><button class="btn quiet" id="d-all" type="button">Show all</button></div>
+<svg class="pl-svg" id="d-svg" viewBox="0 0 800 420" role="img" aria-label="Diagram: GDP and population drive aviation demand; planes use jet fuel with improving efficiency; a jet fuel logit chooses among fossil jet from a refinery, biojet, and biojet with carbon capture; biojet uses biomass from land that competes with food and other bioenergy; aviation CO2 is tailpipe CO2 minus stored CO2; a carbon price feeds back on demand and fuel choice, and is shared with the rest of the energy system.">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink-soft)"/></marker></defs>
+<g font-size="13" font-family="var(--body)" fill="var(--ink)">
+<g class="em-step" data-i="0"><rect x="10" y="20" width="150" height="90" rx="10" fill="var(--economy-t)" stroke="var(--economy)"/><text x="85" y="44" text-anchor="middle" font-weight="700">GDP + people</text><text x="85" y="64" text-anchor="middle" font-size="11">incomes rise, most</text><text x="85" y="80" text-anchor="middle" font-size="11">in today's developing</text><text x="85" y="96" text-anchor="middle" font-size="11">economies</text></g>
+<g class="em-step" data-i="1"><rect x="190" y="20" width="160" height="90" rx="10" fill="var(--data-t)" stroke="var(--data)"/><text x="270" y="44" text-anchor="middle" font-weight="700">Flying demand</text><text x="270" y="64" text-anchor="middle" font-size="11">passenger-km</text><text x="270" y="80" text-anchor="middle" font-size="11">×4 from 2010 to 2050</text><text x="270" y="96" text-anchor="middle" font-size="11">(no climate policy)</text></g>
+<g class="em-step" data-i="2"><rect x="380" y="20" width="170" height="90" rx="10" fill="var(--energy-t)" stroke="var(--energy)"/><text x="465" y="44" text-anchor="middle" font-weight="700">Planes</text><text x="465" y="64" text-anchor="middle" font-size="11">burn only liquid fuel</text><text x="465" y="80" text-anchor="middle" font-size="11">get more efficient:</text><text x="465" y="96" text-anchor="middle" font-size="11">fuel grows ×3, not ×4</text></g>
+<g class="bj-planeg" aria-hidden="true"><path class="bj-plane" id="d-plane" d="M0,-4 L14,-1 L18,0 L14,1 L0,4 L3,0 Z M6,-1 L2,-9 L5,-9 L11,-1 Z M6,1 L2,9 L5,9 L11,1 Z" fill="var(--ink)" transform="translate(395,128)"/></g>
+<g class="em-step" data-i="3"><rect x="580" y="10" width="210" height="190" rx="10" fill="var(--policy-t)" stroke="var(--policy)"/><text x="685" y="32" text-anchor="middle" font-weight="700">Jet fuel logit</text>
+<g font-size="11"><rect x="596" y="44" width="178" height="24" rx="4" fill="var(--climate)"/><text x="685" y="60" text-anchor="middle" fill="#fff">fossil jet (oil refinery)</text>
+<rect x="596" y="76" width="178" height="24" rx="4" fill="var(--land)"/><text x="685" y="92" text-anchor="middle" fill="#fff">biojet (FT, ETJ, HEFA)</text>
+<rect x="596" y="108" width="178" height="24" rx="4" fill="var(--water)"/><text x="685" y="124" text-anchor="middle" fill="#fff">biojet + CCS</text>
+<text x="685" y="156" text-anchor="middle">cheaper fuel, bigger share;</text><text x="685" y="174" text-anchor="middle">carbon price changes</text><text x="685" y="190" text-anchor="middle">which one is cheaper</text></g></g>
+<g class="em-step" data-i="4"><rect x="580" y="236" width="210" height="96" rx="10" fill="var(--land-t)" stroke="var(--land)"/><text x="685" y="258" text-anchor="middle" font-weight="700">Biomass and land</text><text x="685" y="278" text-anchor="middle" font-size="11">~2 GJ biomass per GJ biojet</text><text x="685" y="294" text-anchor="middle" font-size="11">competes with food, forests</text><text x="685" y="310" text-anchor="middle" font-size="11">and other bioenergy users</text></g>
+<g class="em-step" data-i="5"><rect x="330" y="236" width="220" height="96" rx="10" fill="var(--climate-t)" stroke="var(--climate)"/><text x="440" y="258" text-anchor="middle" font-weight="700">Aviation CO₂ (net)</text><text x="440" y="278" text-anchor="middle" font-size="11">fossil jet: CO₂ out of the tailpipe</text><text x="440" y="294" text-anchor="middle" font-size="11">biojet: about zero overall</text><text x="440" y="310" text-anchor="middle" font-size="11">biojet + CCS: below zero</text></g>
+<g class="em-step" data-i="6"><rect x="120" y="236" width="180" height="96" rx="10" fill="var(--card)" stroke="var(--ink)"/><text x="210" y="258" text-anchor="middle" font-weight="700">Carbon price</text><text x="210" y="278" text-anchor="middle" font-size="11">set so energy CO₂ in</text><text x="210" y="294" text-anchor="middle" font-size="11">2050 = half of 2005;</text><text x="210" y="310" text-anchor="middle" font-size="11">same in every sector</text></g>
+<g class="em-step" data-i="7"><rect x="10" y="356" width="780" height="54" rx="10" fill="var(--paper-2)" stroke="var(--ink-soft)"/><text x="400" y="378" text-anchor="middle" font-weight="700">Four scenarios = 2 worlds × 2 fuel menus</text><text x="400" y="398" text-anchor="middle" font-size="11">Reference or Mitigation  ×  Fossil-jet only or Biojet available. The rest of the energy system shares the same carbon price and the same biomass.</text></g>
+<path class="pl-flow" d="M160 65 H186" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M350 65 H376" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M550 65 H576" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M685 232 V204" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M600 200 V218 H520 V232" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow" d="M330 284 H304" stroke="var(--ink-soft)" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M180 236 V180 H250 V114" stroke="var(--climate)" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<path class="pl-flow slow" d="M260 236 V150 H576" stroke="var(--climate)" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+</g></svg>
+<p class="pl-read" id="d-read">Press Play.</p>
+</div>
+<div class="callout model"><h4>What is special in this paper</h4><p>Standard GCAM 4 lumps jet fuel in with other refined liquids. The authors split out a <b>separate jet fuel sector</b>, so planes can buy biojet directly, through several biojet routes with their own costs and efficiencies, some with CCS. Everything else is standard GCAM: demand from income and population, a logit for fuel choice, one carbon price for the whole economy, and a land model where energy crops compete with food and forests.</p></div>
+</section>
+
+<section class="pl-sec" id="explore">
+<h2><span class="pl-num">6</span>Explorer: a toy aviation sector, 2010–2050</h2>
+<p class="lead">Pick a <b>world</b> (no climate policy, or a carbon price) and a <b>fuel menu</b>. In the Mitigation world, the slider sets the carbon price in 2050. The second slider sets how strongly people cut flying when it gets dearer. The chart shows aviation CO₂ as an index (2010 = 100). The bar shows the 2050 jet fuel mix.</p>
+<div class="callout trap"><h4>Illustrative numbers</h4><p>All costs, weights, elasticities and carbon prices here are made up for teaching. They are tuned so the <b>pattern</b> looks like the paper's (flying ×4, fuel ×3, fossil-only mitigation cuts CO₂ by only 10–20%, biojet with CCS cuts far more). It is <b>not</b> GCAM data.</p></div>
+<div class="pl-box">
+<div class="pl-ctrls">
+<label>World<span class="em-seg" id="x-world"></span></label>
+<label>Fuel menu<span class="em-seg" id="x-fuel"></span></label>
+</div>
+<div class="pl-ctrls">
+<label id="x-plab">Carbon price in 2050: <output id="x-pout">$150</output> per t CO₂<input type="range" id="x-p" min="50" max="400" step="25" value="150"></label>
+<label>How much people cut flying when it gets dearer (price elasticity): <output id="x-eout">1.0</output><input type="range" id="x-el" min="0.2" max="1.6" step="0.1" value="1"></label>
+</div>
+<canvas class="pl-canvas" id="x-cnv" aria-label="Chart of aviation CO2 index from 2010 to 2050 for the reference case and your chosen scenario"></canvas>
+<div class="pl-legend" id="x-leg"></div>
+<h3 style="margin:14px 0 2px;font-size:1.02rem">Jet fuel mix in 2050</h3>
+<div class="fr-stack" id="x-stack"></div>
+<p class="muted small" id="x-stack-note"></p>
+<div class="pl-stats">
+<div class="pl-stat"><b id="s-dem">–</b><span>flying in 2050 vs 2010</span></div>
+<div class="pl-stat"><b id="s-co2">–</b><span>aviation CO₂ in 2050 vs Reference, fossil jet</span></div>
+<div class="pl-stat"><b id="s-bio">–</b><span>biomass for biojet in 2050 (toy EJ)</span></div>
+<div class="pl-stat"><b id="s-rest">–</b><span>toy rest-of-economy CO₂ cut at the same price</span></div>
+</div>
+<p class="pl-read" id="x-read"></p>
+</div>
+<details class="pl-ex"><summary>How the toy model works (for the curious)</summary>
+<div class="pl-sol">
+<ol>
+<li><b>Demand.</b> With no policy, flying grows 4× from 2010 to 2050. Fuel per passenger-km falls 25% over the same time, so fuel grows 3×.</li>
+<li><b>Fuel costs</b> ($ per GJ, made up): fossil jet 15 plus the carbon price × 0.072 t CO₂ per GJ. Biojet 32. Biojet with CCS 38, minus a credit of 0.072 t CO₂ per GJ × the carbon price (it stores about as much CO₂ as one GJ of fossil jet releases). Both biojets also get 0.03 × carbon price dearer, because biomass and land cost more when every sector wants them.</li>
+<li><b>Logit.</b> Share of each fuel ∝ weight × (cost / 15)<sup>−5</sup>. Weights: fossil 1, biojet 1.5, biojet with CCS 1.2. Options not on the menu get weight 0.</li>
+<li><b>Demand response.</b> Cost of flying = 70% non-fuel costs + 30% fuel. Flying = no-policy flying × (cost of flying ÷ cost with no policy)<sup>−elasticity</sup>.</li>
+<li><b>CO₂ per GJ</b>, relative to fossil: fossil 1, biojet 0, biojet with CCS −1. Net CO₂ = fuel use × (fossil share − CCS share).</li>
+<li><b>Carbon price</b> starts in 2020 and rises to your 2050 value. The "rest of economy" number is a toy curve, 1 − e<sup>−price/220</sup>, standing in for sectors that can switch to clean electricity.</li>
+<li><b>Biomass.</b> 2010 jet fuel is taken as 13 EJ (rounded, for scale only). Biomass = 2 × biojet energy.</li>
+</ol></div></details>
+</section>
+
+<section class="pl-sec" id="found">
+<h2><span class="pl-num">7</span>What they found</h2>
+<div class="pl-cards">
+<div class="pl-card"><h4>Flying grows 4×</h4><p>With no climate policy, world demand for flying grew by a factor of 4 from 2010 to 2050. Europe and the US fly most today, but most of the growth was in today's developing economies.</p></div>
+<div class="pl-card"><h4>Fuel and CO₂ grow 3×</h4><p>Planes got more efficient, so fossil jet fuel grew about 3× rather than 4×. With fossil fuel only, aviation CO₂ also grew about 3×.</p></div>
+<div class="pl-card"><h4>Small, but fast-growing</h4><p>Aviation stayed under 5% of total energy-sector CO₂ in all four scenarios. The concern is its growth, and that it is hard to clean.</p></div>
+<div class="pl-card"><h4>Fossil only: a small cut</h4><p>Under the Mitigation target (2050 CO₂ = half of 2005), aviation CO₂ with only fossil jet fell only about 10–20% below Reference by 2050. The rest of the energy system cut much more deeply.</p></div>
+<div class="pl-card"><h4>…and it comes from flying less</h4><p>With no clean fuel, the only way to cut was to slow the growth of flying. The CO₂ per litre stayed the same. That makes aviation costly to decarbonise.</p></div>
+<div class="pl-card"><h4>Biojet helps even without policy</h4><p>In the Reference world, having biojet on the menu cut aviation CO₂ by about 100 million tonnes in 2050.</p></div>
+<div class="pl-card"><h4>Biojet + CCS: the big change</h4><p>In the Mitigation world with biojet, by 2050 there was nearly half as much biojet with CCS as fossil jet. Each unit of it roughly cancelled one unit of fossil jet, so net aviation CO₂ fell to about half of today's level.</p></div>
+<div class="pl-card"><h4>No CCS, much less gain</h4><p>Without CCS at the biojet plant, net aviation CO₂ in 2050 would have been more than twice as high as with it.</p></div>
+<div class="pl-card"><h4>Mostly woody biomass via FT</h4><p>About 95% of biojet came from FT conversion of woody and grassy (lignocellulosic) biomass. It took about 2 GJ of biomass to make 1 GJ of biojet.</p></div>
+<div class="pl-card"><h4>Little crowding out</h4><p>Biojet used only about 10% of all bioenergy in the Mitigation world. Its availability lowered the carbon price only a little, and it did not squeeze other sectors' use of bioenergy much.</p></div>
+<div class="pl-card"><h4>Land: a side cost</h4><p>Growing more biomass raised land-use change CO₂, but the increase was small next to the aviation cut (roughly 10–20% of it). The study kept 90% of unmanaged forests and grasslands off-limits to farming.</p></div>
+<div class="pl-card"><h4>Flying still costs more</h4><p>Even with biojet, the carbon price still held back the growth of flying a little, because biojet costs more to make than fossil jet.</p></div>
+</div>
+<div class="tscroll"><table class="pl-tbl" style="margin-top:8px">
+<thead><tr><th>Numbers from the paper (2050)</th><th>Fossil jet only</th><th>Biojet available</th></tr></thead>
+<tbody>
+<tr><td>Reference (no carbon price)</td><td>flying ×4, fuel and CO₂ ×3 vs 2010</td><td>about 100 Mt CO₂ less than fossil only</td></tr>
+<tr><td>Mitigation (2050 CO₂ = ½ of 2005)</td><td>aviation CO₂ only ~10–20% below Reference</td><td>net aviation CO₂ ~50% below today; biojet + CCS ≈ half as much as fossil jet</td></tr>
+<tr><td>Bioenergy for jet fuel, Mitigation</td><td>–</td><td>about 10% of all bioenergy</td></tr>
+</tbody></table></div>
+<p class="muted small">Note: the paper's results section says "nearly 20%" lower and its conclusion says "about 10%", so this page gives the range.</p>
+<p class="lead" style="margin-top:12px">The big picture: a carbon price alone barely dents flying CO₂ unless a clean liquid fuel exists. Biojet is that fuel in GCAM, and carbon capture at the biojet plant turns it from "about zero" into "below zero", which is what makes the large cut possible. That leans on a technology (BECCS) that is not yet used at scale.</p>
+</section>
+
+<section class="pl-sec" id="predict">
+<h2><span class="pl-num">8</span>Predict, then check</h2>
+<div class="pl-ex" id="p1">
+<h3>Prediction 1</h3>
+<p>Mitigation world, <b>fossil jet only</b>. By 2050, how much lower is aviation CO₂ than in the Reference world?</p>
+<div class="em-seg" data-ans="0"><button class="btn quiet" type="button">About 10–20% lower</button><button class="btn quiet" type="button">About 50% lower</button><button class="btn quiet" type="button">About 90% lower</button></div>
+<p class="pl-check em-reveal" hidden><b>About 10–20%.</b> With no clean fuel, the carbon price can only make flying dearer, so people fly a bit less. The rest of the energy system cut CO₂ far more. In the explorer, choose Mitigation + Fossil jet only and slide the elasticity: the cut moves, but stays modest.</p>
+</div>
+<div class="pl-ex" id="p2">
+<h3>Prediction 2</h3>
+<p>Mitigation world with biojet. What share of the world's bioenergy went into jet fuel?</p>
+<div class="em-seg" data-ans="1"><button class="btn quiet" type="button">Over half</button><button class="btn quiet" type="button">About a tenth</button><button class="btn quiet" type="button">Almost none</button></div>
+<p class="pl-check em-reveal" hidden><b>About a tenth.</b> Aviation is a small sector (under 5% of energy CO₂), so even a big biojet share needs only a modest slice of the world's biomass. That is why the authors found little crowding out of other sectors.</p>
+</div>
+<div class="pl-ex" id="p3">
+<h3>Prediction 3</h3>
+<p>Same Mitigation world with biojet, but the biojet plants do <b>not</b> capture CO₂. What happens to net aviation CO₂ in 2050?</p>
+<div class="em-seg" data-ans="2"><button class="btn quiet" type="button">Almost no change</button><button class="btn quiet" type="button">It falls further</button><button class="btn quiet" type="button">It is more than twice as high</button></div>
+<p class="pl-check em-reveal" hidden><b>More than twice as high.</b> Biojet without CCS only replaces fossil CO₂ with "about zero". With CCS, each unit also cancels out about one unit of fossil jet. In the explorer, switch the fuel menu between "+ biojet" and "+ biojet with CCS" at the same carbon price.</p>
+</div>
+</section>
+
+<section class="pl-sec" id="ex">
+<h2><span class="pl-num">9</span>Worked mini-exercise: net CO₂ with negative-emission fuel</h2>
+<div class="pl-ex" data-answer="720" data-tol="0.02" data-show="720 Mt CO₂">
+<h3>What is net aviation CO₂?</h3>
+<p>Use these <b>illustrative</b> numbers for the world in 2050.</p>
+<ul class="prose">
+<li>Planes burn <b>30 EJ</b> of jet fuel: <b>20 EJ</b> fossil jet and <b>10 EJ</b> biojet made with CCS.</li>
+<li>Fossil jet releases about <b>72 Mt CO₂ per EJ</b> (72 kg per GJ).</li>
+<li>As in the paper, one unit of biojet with CCS roughly <b>cancels</b> one unit of fossil jet: its net CO₂ is about <b>−72 Mt per EJ</b>.</li>
+</ul>
+<p>What is net aviation CO₂ in Mt?</p>
+<div class="pl-row"><input class="pl-ans" type="text" inputmode="decimal" placeholder="Mt CO₂, e.g. 1000" aria-label="Your answer in Mt CO2"><button class="btn pl-checkbtn" type="button">Check</button></div>
+<p class="pl-check" aria-live="polite"></p>
+<details><summary>Hint</summary><div class="pl-sol"><p>Work out each fuel on its own (energy × CO₂ per EJ), then add. The biojet-with-CCS term is negative, so it subtracts.</p></div></details>
+<details><summary>Step-by-step solution</summary><div class="pl-sol">
+<table><tr><th>Step</th><th>Working</th><th>Mt CO₂</th></tr>
+<tr><td>1 · Fossil jet</td><td>20 EJ × 72</td><td>+1,440</td></tr>
+<tr><td>2 · Biojet with CCS</td><td>10 EJ × (−72)</td><td>−720</td></tr>
+<tr><td>3 · Net</td><td>1,440 − 720</td><td><b>720</b></td></tr>
+<tr><td>Compare: no CCS</td><td>20 × 72 + 10 × 0</td><td>1,440 (twice as much)</td></tr></table>
+<p>Why is biojet with CCS negative? The plants took CO₂ out of the air as they grew. Part of that carbon ends up in the fuel and goes back to the air when the plane burns it. The rest is released at the plant, where it is captured and stored underground. So, overall, CO₂ leaves the air. Extra: the biojet needed about 2 × 10 = <b>20 EJ of biomass</b>.</p></div></details>
+</div>
+</section>
+
+<section class="pl-sec" id="quiz">
+<h2><span class="pl-num">10</span>Quiz</h2>
+<div class="pl-quiz" id="qz" data-q='[
+{"q":"Why is aviation hard to decarbonise in GCAM?","o":["It is the biggest source of CO2","Planes have no practical option other than liquid fuel","GCAM does not include aviation","Air travel is shrinking"],"a":1,"e":"Planes need energy-dense liquid fuel. Without a clean liquid, a carbon price can only make flying dearer."},
+{"q":"With fossil jet fuel only, where did the (small) cut in aviation CO2 come from?","o":["Cleaner jet fuel","Electric planes","Slower growth in flying","Moving flights to trains"],"a":2,"e":"The CO2 per litre stayed the same. The carbon price raised the cost of flying, so demand grew more slowly."},
+{"q":"Flying grows 4 times by 2050 but jet fuel grows only about 3 times. Why?","o":["Planes get more efficient","Biojet replaces a quarter","Fewer cargo flights","A carbon price"],"a":0,"e":"This is the Reference case, with no carbon price. Fuel per passenger-km falls as planes and flights become more efficient."},
+{"q":"Why can biojet made with CCS have negative net emissions?","o":["The plane burns no fuel","The plants took CO2 from the air and part of it is stored underground at the plant","The carbon price is negative","CCS removes CO2 from the plane exhaust"],"a":1,"e":"The fuel returns its carbon to the air in flight, but the CO2 captured at the plant stays underground. Overall, more CO2 is removed than released."},
+{"q":"Did biojet crowd out bioenergy in the rest of the energy system?","o":["Yes, it used most of the biomass","Not much: about 10% of bioenergy, and the carbon price fell only a little","It made bioenergy free","GCAM cannot tell"],"a":1,"e":"Aviation is small, so biojet needed only about a tenth of all bioenergy in the Mitigation world, and other sectors kept most of theirs."}
+]'></div>
+</section>
+
+<section class="pl-sec" id="limits">
+<h2><span class="pl-num">11</span>Limitations and open questions</h2>
+<ul class="prose">
+<li><b>Only CO₂.</b> Planes also warm the climate through contrails and nitrogen oxides at high altitude. The paper does not include these, so the full climate effect of flying is larger.</li>
+<li><b>Bioenergy is assumed carbon-neutral.</b> Burning plant fuel is counted as adding no CO₂. Real supply chains (fertiliser, farming, transport) add some.</li>
+<li><b>A big bet on CCS.</b> Most of the gain comes from biojet with CCS, which is not yet used at scale. The authors say large-scale CCS remains questionable.</li>
+<li><b>Costs are assumptions.</b> Biojet routes have assumed costs and efficiencies. If they turn out higher, less biojet would be used.</li>
+<li><b>No other clean options.</b> The 2017 model had no hydrogen planes, battery planes for short routes, or e-fuels made from electricity. Study 5 (2024) adds these.</li>
+<li><b>Land and food.</b> Land-use CO₂ was small here, partly because most unmanaged land was protected. Other land rules could change that.</li>
+<li><b>Open question:</b> if many sectors (shipping, trucks, industry) all want biomass at once, is there still enough for planes?</li>
+</ul>
+</section>
+
+<section class="pl-sec" id="course">
+<h2><span class="pl-num">12</span>Links to the course and to GCAM</h2>
+<ul class="reslist">
+<li><a href="../../modules/transport-in-gcam.html">Transport in GCAM</a><span class="why">Where aviation sits in the transport tree, next to road, rail and shipping.</span></li>
+<li><a href="../../modules/choice-the-logit.html">Choice: the logit</a><span class="why">How fossil jet, biojet and biojet with CCS share the jet fuel market by cost.</span></li>
+<li><a href="../../modules/energy-demand.html">Energy demand</a><span class="why">How income and prices set how much people fly.</span></li>
+<li><a href="../../modules/energy-supply.html">Energy supply</a><span class="why">Refineries and biofuel plants: the supply side of liquid fuels.</span></li>
+<li><a href="../../modules/land-food-bioenergy.html">Land, food and bioenergy</a><span class="why">Where the biomass for biojet comes from, and what it competes with.</span></li>
+<li><a href="../../modules/emissions-climate-policy-system.html">Emissions, climate and policy</a><span class="why">How a climate target becomes one carbon price, and how negative emissions are counted.</span></li>
+<li><a href="../../modules/scenarios.html">Scenarios</a><span class="why">The 2 × 2 design: two worlds crossed with two fuel menus.</span></li>
+<li><a href="../../modules/the-iam-family.html">The IAM family</a><span class="why">How other models treat aviation fuels.</span></li>
+<li><a href="https://jgcri.github.io/gcam-doc/energy.html#transportation" target="_blank" rel="noopener">GCAM documentation: transportation</a><span class="why">The official description of GCAM's transport sector, aviation included.</span></li>
+</ul>
+</section>
+
+<section class="pl-sec" id="review">
+<h2><span class="pl-num">13</span>Review: from earlier papers</h2>
+<p class="lead">Spaced repetition: try to answer before you open each one.</p>
+<div class="pl-ex"><h3>From: freight and a carbon price (study 6)</h3><p>Why is freight cut less than buildings under the same carbon price in GCAM?</p><details><summary>Show answer</summary><div class="pl-sol">Buildings can switch to clean electricity easily; freight relies on liquid fuels and has few cheap low-carbon mode or technology options. Today's paper shows the same for planes, even more strongly.</div></details></div>
+<div class="pl-ex"><h3>From: zero-emission transport worldwide (study 5)</h3><p>Why did long-haul flights run mostly on biofuel even in the high-ambition case?</p><details><summary>Show answer</summary><div class="pl-sol">Batteries and hydrogen turbines were far too costly for long routes (break-even over $1,300 per t CO₂), so drop-in clean liquids won, and FT biofuel was much cheaper than e-fuel. Today's 2017 paper is the earlier test of that biojet idea, also mostly via FT.</div></details></div>
+<div class="pl-ex"><h3>From: EVs and the US grid (study 4)</h3><p>Why did US CO₂ fall only about 5% when car CO₂ fell by about half?</p><details><summary>Show answer</summary><div class="pl-sol">Cars are one slice of national emissions, and the power sector emitted about 6% more; other sectors stayed the same. Same lesson today in reverse: aviation is under 5% of energy CO₂, so even a large change in it barely moves the global total.</div></details></div>
+</section>
+
+<section class="pl-sec" id="sources">
+<h2><span class="pl-num">14</span>Sources</h2>
+<ul class="prose em-why">
+<li>Wise, M., Muratori, M. &amp; Kyle, P. (2017). Biojet fuels and emissions mitigation in aviation: an integrated assessment modeling analysis. <i>Transportation Research Part D: Transport and Environment</i> 52(A), 244–253. <a href="https://doi.org/10.1016/j.trd.2017.03.006" target="_blank" rel="noopener">doi:10.1016/j.trd.2017.03.006</a> (open access).</li>
+<li><a href="https://www.osti.gov/biblio/1393757" target="_blank" rel="noopener">OSTI record</a> and <a href="https://www.pnnl.gov/publications/biojet-fuels-and-emissions-mitigation-aviation-integrated-assessment-modeling-analysis" target="_blank" rel="noopener">PNNL publication page</a> for the article.</li>
+<li><a href="https://scispace.com/papers/biojet-fuels-and-emissions-mitigation-in-aviation-an-1l8q5tpdde" target="_blank" rel="noopener">SciSpace record</a>, used to read the article text.</li>
+<li><a href="https://jgcri.github.io/gcam-doc/" target="_blank" rel="noopener">GCAM documentation (JGCRI)</a>.</li>
+</ul>
+<p class="pl-note">Summary written in our own words. No figures or tables from the article are copied; the small table above lists a few numbers reported in the text. The explorer is a teaching toy, not the paper's model.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">Independent teaching material on Wise, Muratori &amp; Kyle (2017), Transportation Research Part D 52(A), 244–253. Charts use an illustrative toy model, not the paper's data. GCAM is developed by the Joint Global Change Research Institute (PNNL).</div></footer>
+<script src="../../assets/js/site.js?v=20261105a"></script>
+<script src="../plca-common.js?v=1"></script>
+<script>
+(function () {
+  const { cv, canvas, axes, legend, quiz } = window.PL;
+  /* ---------- toy model (all numbers illustrative) ---------- */
+  const YRS = []; for (let y = 2010; y <= 2050; y += 5) YRS.push(y);
+  const K = { cb: 32, cc: 38, land: 0.03, wb: 1.5, wc: 1.2, lam: 5 };
+  function model(o) {
+    const price = (y) => (o.mit && y > 2015) ? o.P * Math.pow((y - 2015) / 35, 1.5) : 0;
+    function fuel(P) {
+      const F = [{ c: 15 + 0.072 * P, ef: 1, w: 1 }, { c: K.cb + K.land * P, ef: 0, w: o.f >= 1 ? K.wb : 0 }, { c: K.cc + K.land * P - 0.072 * P, ef: -1, w: o.f >= 2 ? K.wc : 0 }];
+      const s = F.map((f) => f.w * Math.pow(Math.max(f.c, 3) / 15, -K.lam)), S = s.reduce((a, b) => a + b, 0), sh = s.map((x) => x / S);
+      return { sh, cost: sh.reduce((a, x, i) => a + x * F[i].c, 0), ci: sh.reduce((a, x, i) => a + x * F[i].ef, 0) };
+    }
+    return YRS.map((y) => {
+      const t = (y - 2010) / 40, Dr = Math.pow(4, t), EI = Math.pow(0.75, t), f = fuel(price(y));
+      const D = Dr * Math.pow(0.7 + 0.3 * f.cost / 15, -o.el);
+      return { y, P: price(y), D, E: D * EI, co2: D * EI * f.ci * 100, sh: f.sh };
+    });
+  }
+  window.BJ = { model };
+
+  /* ---------- explorer ---------- */
+  const WORLDS = ["Reference", "Mitigation"], FUELS = ["Fossil jet only", "+ biojet", "+ biojet with CCS"];
+  const st = { world: "Mitigation", fuel: "Fossil jet only", P: 150, el: 1 };
+  function seg(id, arr, key) {
+    const el = document.getElementById(id);
+    el.innerHTML = arr.map((a) => `<button class="btn quiet" type="button" aria-pressed="${a === st[key]}" data-v="${a}">${a}</button>`).join("");
+    el.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; st[key] = b.dataset.v; el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b)); draw(); });
+  }
+  seg("x-world", WORLDS, "world"); seg("x-fuel", FUELS, "fuel");
+  const pIn = document.getElementById("x-p"), eIn = document.getElementById("x-el");
+  pIn.addEventListener("input", () => { st.P = +pIn.value; draw(); });
+  eIn.addEventListener("input", () => { st.el = +eIn.value; draw(); });
+  legend(document.getElementById("x-leg"), [["Reference, fossil jet only", "--ink-soft", true], ["Your scenario (net CO₂)", "--climate"], ["Your scenario, fossil jet only", "--energy", true]]);
+  const pct = (v) => Math.round(v * 100) + "%";
+  const FC = [["Fossil jet", "--climate"], ["Biojet", "--land"], ["Biojet + CCS", "--water"]];
+  function draw() {
+    const mit = st.world === "Mitigation", f = FUELS.indexOf(st.fuel);
+    document.getElementById("x-pout").textContent = "$" + st.P;
+    document.getElementById("x-eout").textContent = st.el.toFixed(1);
+    document.getElementById("x-plab").classList.toggle("bj-off", !mit); pIn.disabled = !mit;
+    const o = { mit, f, P: st.P, el: st.el };
+    const r = model(o), ref = model({ mit: false, f: 0, P: 0, el: st.el }), fos = model({ ...o, f: 0 });
+    const cnv = document.getElementById("x-cnv"), narrow = (cnv.clientWidth || 600) < 520, { ctx, w, h } = canvas(cnv, narrow ? 0.72 : 0.42);
+    const box = { x0: 52, y0: 12, x1: w - 20, y1: h - 42 };
+    const lo = Math.min(...r.map((x) => x.co2)), ymin = lo < 0 ? Math.floor(lo / 100) * 100 : 0;
+    const { X, Y } = axes(ctx, box, [2010, 2050], [ymin, 320], { xticks: narrow ? [2010, 2030, 2050] : [2010, 2020, 2030, 2040, 2050], xfmt: (v) => String(v), yfmt: (v) => String(v), xlab: "year", ylab: "aviation CO₂ (2010 = 100)" });
+    ctx.strokeStyle = cv("--line"); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(box.x0, Y(100)); ctx.lineTo(box.x1, Y(100)); ctx.stroke();
+    ctx.fillStyle = cv("--muted"); ctx.font = "11px sans-serif"; ctx.textAlign = "right"; ctx.fillText("2010 level", box.x1 - 4, Y(100) + 14); ctx.textAlign = "left";
+    if (ymin < 0) { ctx.strokeStyle = cv("--ink-soft"); ctx.beginPath(); ctx.moveTo(box.x0, Y(0)); ctx.lineTo(box.x1, Y(0)); ctx.stroke(); }
+    const line = (arr, col, dash, lw) => { ctx.strokeStyle = cv(col); ctx.lineWidth = lw; ctx.setLineDash(dash ? [7, 5] : []); ctx.beginPath(); arr.forEach((p, i) => { const x = X(p.y), y = Y(p.co2); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); ctx.stroke(); };
+    line(ref, "--ink-soft", true, 2.5);
+    if (f > 0) line(fos, "--energy", true, 2.5);
+    line(r, "--climate", false, 3.5);
+    ctx.setLineDash([]);
+    const L = r[r.length - 1], R = ref[ref.length - 1];
+    document.getElementById("x-stack").innerHTML = L.sh.map((v, i) => `<div style="width:${(v * 100).toFixed(2)}%;background:${cv(FC[i][1])}" title="${FC[i][0]} ${pct(v)}">${v > 0.12 ? FC[i][0] + " " + pct(v) : ""}</div>`).join("");
+    document.getElementById("x-stack-note").textContent = FC.map(([n], i) => `${n}: ${pct(L.sh[i])}`).join(" · ") + (L.co2 < 0 ? " · Net CO₂ is below zero: biojet with CCS stores more than the fossil jet releases." : "");
+    document.getElementById("s-dem").textContent = L.D.toFixed(1) + "×";
+    const d = L.co2 / R.co2 - 1;
+    document.getElementById("s-co2").textContent = (d > 0.005 ? "+" : "") + Math.round(d * 100) + "%";
+    document.getElementById("s-bio").textContent = (13 * L.E * (L.sh[1] + L.sh[2]) * 2).toFixed(0);
+    const P2050 = mit ? st.P : 0;
+    document.getElementById("s-rest").textContent = pct(1 - Math.exp(-P2050 / 220));
+    let txt = `${st.world}${mit ? " (carbon price rising to $" + st.P + " per t in 2050)" : " (no carbon price)"}, fuel menu “${st.fuel}”. Flying grows ${L.D.toFixed(1)}-fold by 2050. `;
+    if (!mit && f === 0) txt += "This is the yardstick: flying ×4, fuel and CO₂ ×3. Switch to Mitigation to add a carbon price.";
+    else if (!mit) txt += "With no carbon price, biojet is dearer than fossil jet, so it wins only a small share. CCS earns nothing without a carbon price.";
+    else if (f === 0) txt += `With no clean fuel, the only cut comes from flying less: CO₂ is ${pct(-d)} below Reference, while the toy rest of the economy cuts ${pct(1 - Math.exp(-P2050 / 220))}. Try the elasticity slider.`;
+    else if (f === 1) txt += "Biojet lowers the CO₂ per litre, but at best to zero. Now try “+ biojet with CCS” at the same price.";
+    else txt += "Biojet with CCS cancels out fossil jet unit for unit, so net CO₂ falls far below the fossil-only line (orange dashed).";
+    document.getElementById("x-read").textContent = txt;
+  }
+  let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(draw, 150); });
+  draw();
+
+  /* ---------- animated diagram ---------- */
+  const TXT = [
+    "1 · GDP and people. Each GCAM region has a path for population and income. Richer people fly more. Most of the growth is in today's developing economies.",
+    "2 · Flying demand. GCAM turns income, population and the cost of flying (compared with other modes) into passenger-km. With no policy it grows 4× from 2010 to 2050.",
+    "3 · Planes. Planes run on liquid fuel only. They become more efficient over time, so fuel grows about 3× while flying grows 4×.",
+    "4 · Jet fuel logit. The authors added a separate jet fuel market. Fossil jet, biojet and biojet with CCS compete on cost; the cheapest gets the largest share, not all of it.",
+    "5 · Biomass and land. Biojet needs about 2 GJ of biomass per GJ of fuel, mostly woody or grassy biomass via FT. That biomass competes for land with food, forests and other bioenergy users.",
+    "6 · Net aviation CO₂. Fossil jet adds CO₂. Biojet adds about zero overall. Biojet with CCS stores CO₂ at the plant, so it counts as below zero and can cancel out fossil jet.",
+    "7 · Carbon price. One price for the whole economy, set so energy CO₂ in 2050 is half of 2005. It makes fossil jet dearer (less flying, more biojet) and rewards CCS.",
+    "8 · Four scenarios. Reference or Mitigation, crossed with fossil jet only or biojet available. Comparing them isolates what the carbon price does and what biojet adds."
+  ];
+  const svg = document.getElementById("d-svg"), steps = [...svg.querySelectorAll(".em-step")], read = document.getElementById("d-read"), plane = document.getElementById("d-plane");
+  let cur = -1, timer = null;
+  function show(i) { cur = i; svg.classList.add("em-dim"); steps.forEach((s) => s.classList.toggle("on", +s.dataset.i === i)); read.textContent = TXT[i]; }
+  function stop() { clearInterval(timer); timer = null; document.getElementById("d-play").textContent = "Play"; }
+  document.getElementById("d-play").addEventListener("click", () => {
+    if (timer) { stop(); return; }
+    show((cur + 1) % TXT.length); document.getElementById("d-play").textContent = "Pause";
+    timer = setInterval(() => { if (cur >= TXT.length - 1) { stop(); return; } show(cur + 1); }, 3200);
+  });
+  document.getElementById("d-next").addEventListener("click", () => { stop(); show((cur + 1) % TXT.length); });
+  document.getElementById("d-all").addEventListener("click", () => { stop(); cur = -1; svg.classList.remove("em-dim"); steps.forEach((s) => s.classList.remove("on")); read.textContent = "The whole chain: income and people → flying demand → planes → jet fuel logit (fossil, biojet, biojet + CCS) → biomass and land → net aviation CO₂, with the carbon price pushing back on demand and fuel choice."; });
+  steps.forEach((s) => { s.style.cursor = "pointer"; s.addEventListener("click", () => { stop(); show(+s.dataset.i); }); });
+  /* little plane flying along the top, unless reduced motion is requested */
+  const still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let t0 = null;
+  function fly(ts) { if (t0 === null) t0 = ts; const u = ((ts - t0) / 6000) % 1, x = 395 + u * 150, y = 128 - Math.sin(u * Math.PI) * 8; plane.setAttribute("transform", `translate(${x.toFixed(1)},${y.toFixed(1)})`); requestAnimationFrame(fly); }
+  if (!still) requestAnimationFrame(fly);
+
+  /* ---------- predict-then-check ---------- */
+  document.querySelectorAll("#predict .em-seg").forEach((g) => g.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    const btns = [...g.querySelectorAll("button")], i = btns.indexOf(b), ok = i === +g.dataset.ans;
+    btns.forEach((x, j) => { x.setAttribute("aria-pressed", x === b); if (j === +g.dataset.ans) x.style.outline = "3px solid " + cv("--land"); });
+    const p = g.parentElement.querySelector(".em-reveal"); p.hidden = false;
+    p.innerHTML = (ok ? '<b class="pl-good">Good guess.</b> ' : '<b class="pl-bad">Not quite.</b> ') + p.innerHTML.replace(/^<b class="pl-(good|bad)">.*?<\/b> /, "");
+  }));
+
+  quiz(document.getElementById("qz"));
+})();
+</script>
+</body></html>

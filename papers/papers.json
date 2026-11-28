@@ -215,5 +215,42 @@
     "a": "Buildings can switch to clean electricity easily; freight relies on liquid fuels and has few cheap low-carbon mode or technology options."
    }
   ]
+ },
+ {
+  "slug": "biojet-aviation",
+  "date": "2026-11-28",
+  "title": "Planes need liquid fuel. Can biojet fuel clean up flying?",
+  "citation": "Wise, M., Muratori, M. & Kyle, P. (2017). Transportation Research Part D: Transport and Environment 52(A), 244–253.",
+  "doi": "10.1016/j.trd.2017.03.006",
+  "iam": "GCAM v4 (global, with a separate jet fuel sector)",
+  "topics": [
+   "GCAM",
+   "aviation",
+   "jet fuel",
+   "biojet",
+   "biofuels with CCS",
+   "carbon price",
+   "bioenergy competition",
+   "logit choice"
+  ],
+  "level": "Beginner",
+  "pages": [
+   "biojet-aviation/index.html"
+  ],
+  "takeaways": [
+   "With no climate policy, GCAM's demand for flying grows 4× from 2010 to 2050, while jet fuel and aviation CO2 grow about 3× because planes get more efficient.",
+   "With fossil jet fuel only, a carbon price that halves 2050 energy CO2 (vs 2005) cuts aviation CO2 by only about 10–20%, and only by slowing the growth of flying.",
+   "Biojet, mostly FT from woody biomass, cuts aviation CO2 much more when made with CCS (net about 50% below today by 2050), while using only about 10% of all bioenergy."
+  ],
+  "review": [
+   {
+    "q": "In Wise et al. (2017), why did a carbon price cut aviation CO2 so little when only fossil jet fuel was available?",
+    "a": "Planes had no clean fuel to switch to, so the only response was flying less; CO2 per litre stayed the same."
+   },
+   {
+    "q": "Why does biojet made with CCS count as negative emissions?",
+    "a": "Plants took CO2 from the air; the fuel's carbon returns in flight, but the CO2 captured at the plant is stored underground, so overall CO2 leaves the air."
+   }
+  ]
  }
 ]
